@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESL Lesson Planning and Classroom Management - The Architect's Blueprint</title>
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="icon" href="/favicon.png">
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ startOnLoad: true });
+    </script>
+    <style>
+        .analogy-box {
+            background: linear-gradient(135deg, #e8f5e8, #f0f4ff);
+            border-left: 4px solid #4CAF50;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .example-container {
+            background: #f8f9fa;
+            border: 2px solid #17a2b8;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 10px;
+        }
+        .practice-activity {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+        .lesson-plan-template {
+            background: #e7f3ff;
+            border: 2px solid #2196F3;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+        .timing-wheel {
+            width: 300px;
+            height: 300px;
+            margin: 20px auto;
+            display: block;
+        }
+        .classroom-layout {
+            width: 100%;
+            height: 400px;
+            border: 2px solid #666;
+            border-radius: 10px;
+            margin: 20px 0;
+            position: relative;
+            background: #f5f5f5;
+        }
+        .student-desk {
+            width: 40px;
+            height: 30px;
+            background: #8BC34A;
+            border: 1px solid #689F38;
+            border-radius: 5px;
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            color: white;
+            font-weight: bold;
+        }
+        .teacher-area {
+            width: 80px;
+            height: 60px;
+            background: #FF9800;
+            border: 2px solid #F57C00;
+            border-radius: 10px;
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: white;
+            font-weight: bold;
+        }
+        .board {
+            width: 200px;
+            height: 40px;
+            background: #2E7D32;
+            border: 2px solid #1B5E20;
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        .energy-meter {
+            width: 100%;
+            height: 200px;
+            margin: 20px 0;
+        }
+        .mistake-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .mistake-card {
+            background: #fff;
+            border: 2px solid #e91e63;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+        }
+        .interactive-timer {
+            background: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px;
+        }
+        .timer-display {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            margin: 20px 0;
+            padding: 20px;
+            background: #f0f0f0;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🏗️ ESL Lesson Planning and Classroom Management: The Architect's Blueprint</h1>
+        <p><strong>Estimated Time:</strong> 18-22 minutes | <strong>Level:</strong> Beginning to Intermediate ESL Instructors</p>
+    </header>
+
+    <main>
+        <section class="introduction">
+            <h2>The Master Architect's Approach</h2>
+            
+            <div class="analogy-box">
+                <h3>🏛️ Building Your Classroom Cathedral</h3>
+                <p>Imagine you're designing a magnificent cathedral. You wouldn't start laying bricks randomly! A master architect first studies the land (your students), creates detailed blueprints (lesson plans), considers the flow of people through the space (classroom management), and ensures every element serves both beauty and function. Your ESL classroom is your cathedral, and every lesson is a carefully crafted space where language learning miracles happen.</p>
+            </div>
+
+            <div class="mermaid">
+                graph TD
+                    A[Assessment of Students] --> B[Learning Objectives]
+                    B --> C[Lesson Structure Design]
+                    C --> D[Activity Selection]
+                    D --> E[Material Preparation]
+                    E --> F[Classroom Management Plan]
+                    F --> G[Assessment Strategy]
+                    G --> H[Reflection & Adaptation]
+                    H --> A
+                    
+                    style A fill:#e3f2fd
+                    style B fill:#f3e5f5
+                    style C fill:#e8f5e8
+                    style D fill:#fff3e0
+                    style E fill:#fce4ec
+                    style F fill:#f1f8e9
+                    style G fill:#e0f2f1
+                    style H fill:#fff8e1
+            </div>
+        </section>
+
+        <section class="lesson-timing">
+            <h2>The Sacred Rhythm: Lesson Timing and Energy Management</h2>
+            
+            <div class="analogy-box">
+                <h3>🎼 The Classroom Symphony</h3>
+                <p>Think of your lesson as a symphony. You need <strong>crescendos</strong> (high-energy activities), <strong>andantes</strong> (steady-paced learning), and <strong>diminuendos</strong> (reflection time). Just like a conductor reads the orchestra's energy, you must read your students' attention spans and adjust the tempo accordingly.</p>
+            </div>
+
+            <svg class="timing-wheel" viewBox="0 0 300 300">
+                <defs>
+                    <linearGradient id="energyGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#ff6b6b;stop-opacity:1" />
+                        <stop offset="50%" style="stop-color:#4ecdc4;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#45b7d1;stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+                
+                <!-- Clock face -->
+                <circle cx="150" cy="150" r="140" fill="none" stroke="#333" stroke-width="3"/>
+                
+                <!-- Time segments -->
+                <path d="M 150 10 A 140 140 0 0 1 290 150 L 150 150 Z" fill="#ff6b6b" opacity="0.7"/>
+                <text x="200" y="80" text-anchor="middle" font-size="14" font-weight="bold">WARM-UP</text>
+                <text x="200" y="95" text-anchor="middle" font-size="10">5-10 min</text>
+                <text x="200" y="110" text-anchor="middle" font-size="10">High Energy</text>
+                
+                <path d="M 290 150 A 140 140 0 0 1 150 290 L 150 150 Z" fill="#4ecdc4" opacity="0.7"/>
+                <text x="220" y="220" text-anchor="middle" font-size="14" font-weight="bold">PRESENTATION</text>
+                <text x="220" y="235" text-anchor="middle" font-size="10">15-20 min</text>
+                <text x="220" y="250" text-anchor="middle" font-size="10">Medium Energy</text>
+                
+                <path d="M 150 290 A 140 140 0 0 1 10 150 L 150 150 Z" fill="#45b7d1" opacity="0.7"/>
+                <text x="80" y="220" text-anchor="middle" font-size="14" font-weight="bold">PRACTICE</text>
+                <text x="80" y="235" text-anchor="middle" font-size="10">20-25 min</text>
+                <text x="80" y="250" text-anchor="middle" font-size="10">Active Energy</text>
+                
+                <path d="M 10 150 A 140 140 0 0 1 150 10 L 150 150 Z" fill="#95e1d3" opacity="0.7"/>
+                <text x="100" y="80" text-anchor="middle" font-size="14" font-weight="bold">WRAP-UP</text>
+                <text x="100" y="95" text-anchor="middle" font-size="10">5-10 min</text>
+                <text x="100" y="110" text-anchor="middle" font-size="10">Calm Energy</text>
+                
+                <!-- Center -->
+                <circle cx="150" cy="150" r="20" fill="#333"/>
+                <text x="150" y="155" text-anchor="middle" fill="white" font-size="12" font-weight="bold">60 MIN</text>
+            </svg>
+
+            <div class="example-container">
+                <h3>🔥 Student Energy Patterns (Real Classroom Data)</h3>
+                <canvas id="energyChart" width="600" height="200" style="border: 1px solid #ddd; border-radius: 5px;"></canvas>
+                <p><strong>Key Insight:</strong> Student attention peaks at 10-15 minutes, dips around 30 minutes (decision fatigue), and can be revived with movement or interaction around 40 minutes.</p>
+            </div>
+
+            <script>
+                const energyCanvas = document.getElementById('energyChart');
+                const energyCtx = energyCanvas.getContext('2d');
+                
+                function drawEnergyChart() {
+                    energyCtx.clearRect(0, 0, energyCanvas.width, energyCanvas.height);
+                    
+                    // Draw axes
+                    energyCtx.strokeStyle = '#333';
+                    energyCtx.lineWidth = 2;
+                    energyCtx.beginPath();
+                    energyCtx.moveTo(50, 20);
+                    energyCtx.lineTo(50, 180);
+                    energyCtx.lineTo(580, 180);
+                    energyCtx.stroke();
+                    
+                    // Labels
+                    energyCtx.fillStyle = '#333';
+                    energyCtx.font = '12px Arial';
+                    energyCtx.fillText('Energy Level', 10, 15);
+                    energyCtx.fillText('Time (minutes)', 520, 195);
+                    
+                    // Time markers
+                    for (let i = 0; i <= 60; i += 10) {
+                        const x = 50 + (i / 60) * 530;
+                        energyCtx.fillText(i.toString(), x - 5, 195);
+                        energyCtx.strokeStyle = '#ddd';
+                        energyCtx.lineWidth = 1;
+                        energyCtx.beginPath();
+                        energyCtx.moveTo(x, 20);
+                        energyCtx.lineTo(x, 180);
+                        energyCtx.stroke();
+                    }
+                    
+                    // Energy curve
+                    const dataPoints = [
+                        {time: 0, energy: 0.6},
+                        {time: 5, energy: 0.8},
+                        {time: 15, energy: 0.9},
+                        {time: 25, energy: 0.7},
+                        {time: 35, energy: 0.5},
+                        {time: 40, energy: 0.8}, // Break/activity boost
+                        {time: 50, energy: 0.6},
+                        {time: 60, energy: 0.4}
+                    ];
+                    
+                    energyCtx.strokeStyle = '#4CAF50';
+                    energyCtx.lineWidth = 3;
+                    energyCtx.beginPath();
+                    
+                    dataPoints.forEach((point, index) => {
+                        const x = 50 + (point.time / 60) * 530;
+                        const y = 180 - (point.energy * 160);
+                        
+                        if (index === 0) {
+                            energyCtx.moveTo(x, y);
+                        } else {
+                            energyCtx.lineTo(x, y);
+                        }
+                        
+                        // Mark critical points
+                        energyCtx.fillStyle = '#FF5722';
+                        energyCtx.beginPath();
+                        energyCtx.arc(x, y, 4, 0, Math.PI * 2);
+                        energyCtx.fill();
+                    });
+                    
+                    energyCtx.stroke();
+                }
+                
+                drawEnergyChart();
+            </script>
+        </section>
+
+        <section class="lesson-structure">
+            <h2>The PPP Framework: Presentation, Practice, Production</h2>
+            
+            <div class="lesson-plan-template">
+                <h3>📋 Master Lesson Plan Template</h3>
+                
+                <div class="mermaid">
+                    graph LR
+                        A[WARM-UP<br/>5-10 min] --> B[PRESENTATION<br/>15-20 min]
+                        B --> C[GUIDED PRACTICE<br/>10-15 min]
+                        C --> D[FREE PRACTICE<br/>10-15 min]
+                        D --> E[WRAP-UP<br/>5-10 min]
+                        
+                        A --> A1[Energy Builder<br/>Review Connection<br/>Interest Hook]
+                        B --> B1[New Language<br/>Context Setting<br/>Clear Examples]
+                        C --> C1[Controlled Activities<br/>Error Correction<br/>Confidence Building]
+                        D --> D1[Real Communication<br/>Creative Expression<br/>Fluency Focus]
+                        E --> E1[Summary<br/>Assessment<br/>Preview Next]
+                        
+                        style A fill:#ff6b6b
+                        style B fill:#4ecdc4
+                        style C fill:#45b7d1
+                        style D fill:#96ceb4
+                        style E fill:#ffeaa7
+                </div>
+            </div>
+
+            <div class="example-container">
+                <h3>🍕 Real Lesson Example: "Ordering Food at a Restaurant"</h3>
+                
+                <h4>WARM-UP (7 minutes) - The Appetite Builder</h4>
+                <ul>
+                    <li><strong>Food Photo Gallery:</strong> Students describe their favorite foods (activates prior knowledge)</li>
+                    <li><strong>Quick Poll:</strong> "How often do you eat at restaurants?" (cultural connection)</li>
+                    <li><strong>Vocabulary Activation:</strong> Brainstorm restaurant words on board</li>
+                </ul>
+
+                <h4>PRESENTATION (18 minutes) - The Menu Introduction</h4>
+                <ul>
+                    <li><strong>Context Setting:</strong> "You're hungry after work and decide to try a new restaurant..."</li>
+                    <li><strong>Target Language:</strong> "I'd like...", "Could I have...", "What do you recommend?"</li>
+                    <li><strong>Cultural Notes:</strong> Tipping, eye contact with servers, small talk expectations</li>
+                    <li><strong>Pronunciation Focus:</strong> Intonation for polite requests</li>
+                </ul>
+
+                <h4>GUIDED PRACTICE (12 minutes) - The Safe Kitchen</h4>
+                <ul>
+                    <li><strong>Controlled Dialogue:</strong> Students practice with real menu items</li>
+                    <li><strong>Error Correction:</strong> Teacher models correct pronunciation gently</li>
+                    <li><strong>Substitution Drills:</strong> Change items while keeping structure</li>
+                </ul>
+
+                <h4>FREE PRACTICE (15 minutes) - The Real Restaurant</h4>
+                <ul>
+                    <li><strong>Role-Play:</strong> Students create their own restaurant scenarios</li>
+                    <li><strong>Problem Solving:</strong> "The kitchen is out of your first choice..."</li>
+                    <li><strong>Fluency Focus:</strong> Teacher monitors but doesn't interrupt</li>
+                </ul>
+
+                <h4>WRAP-UP (8 minutes) - The Check Please</h4>
+                <ul>
+                    <li><strong>Reflection:</strong> "What was challenging? What felt natural?"</li>
+                    <li><strong>Language Recap:</strong> Students share one new phrase they learned</li>
+                    <li><strong>Real-World Challenge:</strong> "Try ordering something new this week!"</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="classroom-management">
+            <h2>Classroom Management: The Art of Orchestration</h2>
+            
+            <div class="analogy-box">
+                <h3>🎭 The Theater Director's Secret</h3>
+                <p>Great theater directors don't control actors; they create conditions where actors can perform their best. Similarly, effective classroom management isn't about control—it's about creating an environment where students feel safe to make mistakes, take risks, and express themselves in a new language.</p>
+            </div>
+
+            <h3>Physical Space Design</h3>
+            <div class="classroom-layout">
+                <div class="board">WHITEBOARD</div>
+                <div class="teacher-area" style="top: 80px; left: 50%; transform: translateX(-50%);">TEACHER</div>
+                
+                <!-- U-Shape arrangement for maximum interaction -->
+                <div class="student-desk" style="top: 140px; left: 100px;">S1</div>
+                <div class="student-desk" style="top: 140px; left: 150px;">S2</div>
+                <div class="student-desk" style="top: 140px; left: 200px;">S3</div>
+                <div class="student-desk" style="top: 140px; left: 400px;">S4</div>
+                <div class="student-desk" style="top: 140px; left: 450px;">S5</div>
+                <div class="student-desk" style="top: 140px; left: 500px;">S6</div>
+                
+                <div class="student-desk" style="top: 200px; left: 80px;">S7</div>
+                <div class="student-desk" style="top: 260px; left: 80px;">S8</div>
+                <div class="student-desk" style="top: 320px; left: 100px;">S9</div>
+                <div class="student-desk" style="top: 320px; left: 150px;">S10</div>
+                <div class="student-desk" style="top: 320px; left: 400px;">S11</div>
+                <div class="student-desk" style="top: 320px; left: 450px;">S12</div>
+                <div class="student-desk" style="top: 260px; left: 520px;">S13</div>
+                <div class="student-desk" style="top: 200px; left: 520px;">S14</div>
+                
+                <div style="position: absolute; bottom: 10px; left: 10px; font-size: 12px; color: #666;">
+                    <strong>U-Shape Benefits:</strong> Eye contact, equal participation, easy regrouping
+                </div>
+            </div>
+
+            <div class="example-container">
+                <h3>🚦 The Traffic Light System for Participation</h3>
+                <ul>
+                    <li><strong>🟢 Green Light Students:</strong> Eager to participate, sometimes dominate discussions</li>
+                    <li><strong>🟡 Yellow Light Students:</strong> Participate when comfortable, need gentle encouragement</li>
+                    <li><strong>🔴 Red Light Students:</strong> Reluctant to speak, need safety and scaffolding</li>
+                </ul>
+                <p><strong>Strategy:</strong> Use "Think-Pair-Share" to give Yellow and Red Light students preparation time. Ask Green Light students to help explain or demonstrate rather than always answering first.</p>
+            </div>
+        </section>
+
+        <section class="error-handling">
+            <h2>Error Correction: The Gentle Art of Growth</h2>
+            
+            <div class="analogy-box">
+                <h3>🌱 The Gardener's Touch</h3>
+                <p>When a gardener sees a plant growing crooked, they don't yank it straight—they provide gentle support and guidance. Student errors are like crooked growth: natural parts of the learning process that need gentle redirection, not harsh correction that might damage the learner's confidence.</p>
+            </div>
+
+            <div class="mistake-types">
+                <div class="mistake-card">
+                    <h4>🎯 Accuracy Errors</h4>
+                    <p><strong>Example:</strong> "I have 25 years old"</p>
+                    <p><strong>When to Correct:</strong> During controlled practice</p>
+                    <p><strong>How:</strong> Gentle modeling: "Yes, you ARE 25 years old"</p>
+                </div>
+                
+                <div class="mistake-card">
+                    <h4>🗣️ Fluency Errors</h4>
+                    <p><strong>Example:</strong> "Yesterday I... uh... go... went to store"</p>
+                    <p><strong>When to Correct:</strong> After communication is complete</p>
+                    <p><strong>How:</strong> Note for later review, don't interrupt flow</p>
+                </div>
+                
+                <div class="mistake-card">
+                    <h4>🔄 Fossilized Errors</h4>
+                    <p><strong>Example:</strong> Consistent "th" pronunciation issues</p>
+                    <p><strong>When to Correct:</strong> Dedicated pronunciation sessions</p>
+                    <p><strong>How:</strong> Specific drills and awareness raising</p>
+                </div>
+                
+                <div class="mistake-card">
+                    <h4>💡 Creative Errors</h4>
+                    <p><strong>Example:</strong> "I'm very happy-ing today!"</p>
+                    <p><strong>When to Correct:</strong> Celebrate creativity first!</p>
+                    <p><strong>How:</strong> "I love your enthusiasm! We say 'very happy'"</p>
+                </div>
+            </div>
+
+            <div class="example-container">
+                <h3>🎭 Error Correction Techniques in Action</h3>
+                
+                <h4>The Echo Technique</h4>
+                <p><strong>Student:</strong> "I go to school yesterday"<br>
+                <strong>Teacher:</strong> "You... went to school yesterday?" (rising intonation)<br>
+                <strong>Student:</strong> "Yes, I went to school yesterday!"</p>
+                
+                <h4>The Clarification Request</h4>
+                <p><strong>Student:</strong> "My brother is very tall high"<br>
+                <strong>Teacher:</strong> "Sorry, could you say that again?"<br>
+                <strong>Student:</strong> "My brother is very tall"</p>
+                
+                <h4>The Positive Sandwich</h4>
+                <p><strong>Student:</strong> "I like very much swimming"<br>
+                <strong>Teacher:</strong> "Great! I can see you love swimming. We usually say 'I like swimming very much' or 'I really like swimming.' So you really enjoy it?"</p>
+            </div>
+        </section>
+
+        <section class="differentiation">
+            <h2>Differentiation: Meeting Every Student Where They Are</h2>
+            
+            <div class="analogy-box">
+                <h3>🎪 The Circus Performer's Balance</h3>
+                <p>In your classroom circus, you have students performing at different levels on various tightropes. Some are confident acrobats ready for advanced tricks, others are still learning to balance, and some need a safety net. Your job is to keep all performers engaged and progressing, regardless of their starting point.</p>
+            </div>
+
+            <div class="example-container">
+                <h3>🎯 Same Activity, Multiple Levels</h3>
+                <h4>Activity: Restaurant Role-Play</h4>
+                
+                <h5>Beginner Level (Safety Net):</h5>
+                <ul>
+                    <li>Provided dialogue script with gaps to fill</li>
+                    <li>Picture menu with simple items</li>
+                    <li>Partner support from stronger student</li>
+                </ul>
+                
+                <h5>Intermediate Level (Steady Practice):</h5>
+                <ul>
+                    <li>Conversation prompts and useful phrases</li>
+                    <li>Text menu with descriptions</li>
+                    <li>Add complications: dietary restrictions, special requests</li>
+                </ul>
+                
+                <h5>Advanced Level (High Wire):</h5>
+                <ul>
+                    <li>No script, natural conversation expected</li>
+                    <li>Complex scenarios: complaint about food, splitting bills</li>
+                    <li>Cultural nuances: small talk, appropriate topics</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="assessment-integration">
+            <h2>Assessment: The Continuous Conversation</h2>
+            
+            <div class="analogy-box">
+                <h3>🩺 The Language Health Check</h3>
+                <p>Assessment isn't a final exam—it's like regular health checkups. You're constantly taking your students' "language pulse," checking their "communication blood pressure," and adjusting the "treatment plan" (your teaching) based on what you discover. The goal is language wellness, not perfect test scores.</p>
+            </div>
+
+            <div class="timer-display" id="assessmentTimer">
+                Quick Assessment Timer: 00:00
+            </div>
+            
+            <button class="interactive-timer" onclick="startQuickAssessment(2)">2-Minute Check</button>
+            <button class="interactive-timer" onclick="startQuickAssessment(5)">5-Minute Review</button>
+            <button class="interactive-timer" onclick="stopTimer()">Stop</button>
+
+            <script>
+                let assessmentInterval;
+                let seconds = 0;
+                
+                function startQuickAssessment(minutes) {
+                    stopTimer();
+                    seconds = minutes * 60;
+                    updateDisplay();
+                    
+                    assessmentInterval = setInterval(() => {
+                        seconds--;
+                        updateDisplay();
+                        
+                        if (seconds <= 0) {
+                            stopTimer();
+                            alert(`Time's up! ${minutes}-minute assessment complete.`);
+                        }
+                    }, 1000);
+                }
+                
+                function stopTimer() {
+                    if (assessmentInterval) {
+                        clearInterval(assessmentInterval);
+                        assessmentInterval = null;
+                    }
+                }
+                
+                function updateDisplay() {
+                    const mins = Math.floor(seconds / 60);
+                    const secs = seconds % 60;
+                    document.getElementById('assessmentTimer').textContent = 
+                        `Quick Assessment Timer: ${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+                }
+            </script>
+
+            <div class="example-container">
+                <h3>🔍 Quick Assessment Techniques</h3>
+                
+                <h4>The Exit Ticket (2 minutes)</h4>
+                <ul>
+                    <li>One thing you learned today</li>
+                    <li>One question you still have</li>
+                    <li>Rate your confidence (1-5) with today's material</li>
+                </ul>
+                
+                <h4>The Human Graph (3 minutes)</h4>
+                <p>Students physically move to different areas of the room based on their comfort level with the lesson content. Visual and immediate feedback!</p>
+                
+                <h4>The Mistake Gallery (5 minutes)</h4>
+                <p>Collect common errors (anonymously) and turn them into learning opportunities. Students become error detectives!</p>
+            </div>
+        </section>
+
+        <section class="practice-activities">
+            <div class="practice-activity">
+                <h2>🎯 Hands-On Practice Activities</h2>
+                
+                <h3>Activity 1: Design Your Classroom</h3>
+                <p>Sketch three different classroom layouts for:</p>
+                <ul>
+                    <li>A conversation class (12 students)</li>
+                    <li>A grammar-focused lesson (20 students)</li>
+                    <li>A mixed-level writing workshop (15 students)</li>
+                </ul>
+                <p>Consider: sight lines, movement patterns, group work possibilities, and individual attention opportunities.</p>
+                
+                <h3>Activity 2: The 15-Minute Lesson Plan Challenge</h3>
+                <p>Create a complete 15-minute mini-lesson plan for teaching "How to give directions." Include all PPP elements and specify timing for each section. Use the master template as your guide.</p>
+                
+                <h3>Activity 3: Error Correction Role-Play</h3>
+                <p>Practice these scenarios with different correction techniques:</p>
+                <ul>
+                    <li>A confident student makes a basic grammar error</li>
+                    <li>A shy student mispronounces a word during fluency practice</li>
+                    <li>A student uses creative but incorrect word formation</li>
+                    <li>An intermediate student makes the same pronunciation error repeatedly</li>
+                </ul>
+                
+                <h3>Activity 4: Traffic Light Analysis</h3>
+                <p>Think of 6 students you know (or imagine). Categorize them as Green, Yellow, or Red Light learners. Design specific strategies to engage each type during a single lesson on "describing your hometown."</p>
+                
+                <h3>Activity 5: Energy Management Experiment</h3>
+                <p>Track student energy levels during your next lesson at 10-minute intervals. Note when attention dips and what activities boost engagement. Adjust your lesson plan accordingly.</p>
+            </div>
+        </section>
+
+        <section class="troubleshooting">
+            <h2>🔧 Common Classroom Challenges and Solutions</h2>
+            
+            <div class="example-container">
+                <h3>The Silent Student Syndrome</h3>
+                <p><strong>Challenge:</strong> Students won't speak in class</p>
+                <p><strong>Solutions:</strong></p>
+                <ul>
+                    <li>Start with written responses, then move to speaking</li>
+                    <li>Use pair work before whole-class sharing</li>
+                    <li>Provide thinking time before asking for responses</li>
+                    <li>Create "low-stakes" speaking opportunities (not graded)</li>
+                </ul>
+                
+                <h3>The Dominating Discusser</h3>
+                <p><strong>Challenge:</strong> One student monopolizes discussion time</p>
+                <p><strong>Solutions:</strong></p>
+                <ul>
+                    <li>Use talking sticks or token systems</li>
+                    <li>Assign specific roles: questioner, summarizer, timekeeper</li>
+                    <li>Private conversation about sharing space</li>
+                    <li>Channel enthusiasm into helping others</li>
+                </ul>
+                
+                <h3>The Mixed-Level Meltdown</h3>
+                <p><strong>Challenge:</strong> Huge proficiency gaps in one class</p>
+                <p><strong>Solutions:</strong></p>
+                <ul>
+                    <li>Peer tutoring pairs (advanced with beginner)</li>
+                    <li>Tiered assignments for same topic</li>
+                    <li>Learning stations with different difficulty levels</li>
+                    <li>Choice boards allowing student self-selection</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="technology-integration">
+            <h2>💻 Technology as Your Teaching Assistant</h2>
+            
+            <div class="analogy-box">
+                <h3>🤖 The Digital Teaching Assistant</h3>
+                <p>Technology in ESL isn't about replacing human connection—it's like having a super-efficient teaching assistant who never gets tired, can provide infinite patience for pronunciation practice, and can adapt to each student's pace. Use tech to enhance, not replace, the magic of human language learning.</p>
+            </div>
+
+            <div class="example-container">
+                <h3>🛠️ Essential Digital Tools for ESL</h3>
+                
+                <h4>For Pronunciation Practice:</h4>
+                <ul>
+                    <li><strong>Sounds app:</strong> Interactive phonetic chart</li>
+                    <li><strong>Voice recording tools:</strong> Students compare their pronunciation to native speakers</li>
+                    <li><strong>Speech-to-text:</strong> Real-time pronunciation feedback</li>
+                </ul>
+                
+                <h4>For Vocabulary Building:</h4>
+                <ul>
+                    <li><strong>Digital flashcards:</strong> Spaced repetition systems</li>
+                    <li><strong>Image generators:</strong> Visual vocabulary support</li>
+                    <li><strong>Corpus tools:</strong> Show authentic language usage</li>
+                </ul>
+                
+                <h4>For Interactive Lessons:</h4>
+                <ul>
+                    <li><strong>Polling tools:</strong> Instant feedback and engagement</li>
+                    <li><strong>Collaborative documents:</strong> Real-time writing practice</li>
+                    <li><strong>Virtual reality:</strong> Immersive conversation practice</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="reflection-tools">
+            <h2>🪞 Reflection: The Teacher's Mirror</h2>
+            
+            <div class="example-container">
+                <h3>📝 Daily Reflection Questions</h3>
+                <ul>
+                    <li>Which students spoke the most/least today? Why?</li>
+                    <li>What moment felt most successful? What made it work?</li>
+                    <li>If I taught this lesson again, what would I change?</li>
+                    <li>Which students seemed confused? How could I support them better?</li>
+                    <li>Did my lesson timing match reality? Where did I rush or drag?</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="key-takeaways">
+            <div class="analogy-box">
+                <h2>🎯 Master Architect's Blueprint Summary</h2>
+                <ul>
+                    <li><strong>Structure creates freedom:</strong> Good planning allows for spontaneous teaching moments</li>
+                    <li><strong>Energy management is everything:</strong> Read the room and adjust accordingly</li>
+                    <li><strong>Mistakes are building materials:</strong> Use errors constructively, not destructively</li>
+                    <li><strong>Every student needs a different bridge:</strong> Differentiation isn't extra work—it's essential work</li>
+                    <li><strong>Assessment is conversation:</strong> Constant dialogue about learning, not judgment</li>
+                    <li><strong>Technology serves humanity:</strong> Digital tools enhance human connection</li>
+                    <li><strong>Reflection refines craft:</strong> Great teachers are great learners</li>
+                </ul>
+            </div>
+        </section>
+
+        <footer>
+            <p><strong>Next Lesson Preview:</strong> We'll dive deep into "Teaching Grammar Communicatively" - how to make grammar rules come alive through meaningful communication rather than boring drills.</p>
+            <p><em>"Teaching is the profession that teaches all other professions." - Unknown</em></p>
+        </footer>
+    </main>
+</body>
+</html>

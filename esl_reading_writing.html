@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reading and Writing for Real Purposes - Beyond Comprehension Questions</title>
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="icon" href="/favicon.png">
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ startOnLoad: true });
+    </script>
+    <style>
+        .analogy-box {
+            background: linear-gradient(135deg, #f3e5f5, #e8f5e8);
+            border-left: 4px solid #9c27b0;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .example-container {
+            background: #e3f2fd;
+            border: 2px solid #1976d2;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 10px;
+        }
+        .practice-activity {
+            background: #f1f8e9;
+            border: 2px solid #558b2f;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+        .reading-journey {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .journey-stage {
+            background: white;
+            border: 3px solid #4caf50;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            transition: transform 0.3s;
+        }
+        .journey-stage:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        .writing-process {
+            width: 100%;
+            height: 300px;
+            margin: 20px 0;
+            position: relative;
+            background: linear-gradient(135deg, #fff8e1, #e8f5e8);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        .process-stage {
+            position: absolute;
+            border: 2px solid #ff9800;
+            border-radius: 10px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            text-align: center;
+            min-width: 120px;
+        }
+        .process-arrow {
+            position: absolute;
+            font-size: 24px;
+            color: #4caf50;
+            font-weight: bold;
+        }
+        .text-type-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .text-type-card {
+            background: white;
+            border: 2px solid #2196f3;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+        }
+        .authentic-vs-artificial {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .artificial-side {
+            background: #ffebee;
+            border: 3px solid #f44336;
+            padding: 20px;
+            border-radius: 15px;
+        }
+        .authentic-side {
+            background: #e8f5e8;
+            border: 3px solid #4caf50;
+            padding: 20px;
+            border-radius: 15px;
+        }
+        .literacy-skill {
+            background: #f3e5f5;
+            border: 2px solid #9c27b0;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 10px;
+        }
+        .scaffolding-pyramid {
+            width: 100%;
+            height: 300px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .pyramid-level {
+            position: absolute;
+            background: rgba(76, 175, 80, 0.8);
+            border: 2px solid #4caf50;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            font-size: 12px;
+        }
+        .genre-wheel {
+            width: 300px;
+            height: 300px;
+            margin: 20px auto;
+            position: relative;
+        }
+        .assessment-matrix {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .matrix-cell {
+            background: #f5f5f5;
+            border: 2px solid #666;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .digital-literacy {
+            background: #e1f5fe;
+            border: 2px solid #0277bd;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 15px;
+        }
+        .critical-thinking {
+            background: #fff3e0;
+            border: 2px solid #f57c00;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 10px;
+        }
+        .real-world-task {
+            background: #f1f8e9;
+            border: 3px dashed #558b2f;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 15px;
+        }
+        .interactive-demo {
+            background: #fce4ec;
+            border: 3px solid #e91e63;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 15px;
+            text-align: center;
+        }
+        .demo-button {
+            background: #e91e63;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+            font-size: 14px;
+        }
+        .demo-button:hover {
+            background: #c2185b;
+        }
+        .strategy-toolkit {
+            background: #fff8e1;
+            border: 2px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 10px;
+        }
+        .writing-rubric {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        .writing-rubric th, .writing-rubric td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        .writing-rubric th {
+            background: #4caf50;
+            color: white;
+        }
+        .writing-rubric tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>📚 Reading and Writing for Real Purposes: Beyond Comprehension Questions</h1>
+        <p><strong>Estimated Time:</strong> 25-30 minutes | <strong>Level:</strong> Intermediate to Advanced ESL Instructors</p>
+    </header>
+
+    <main>
+        <section class="introduction">
+            <h2>Breaking Free from Artificial Literacy</h2>
+            
+            <div class="analogy-box">
+                <h3>🗝️ The Master Key Metaphor</h3>
+                <p>Traditional ESL reading and writing instruction is like teaching someone to make <strong>decorative keys</strong> that look beautiful but don't open any real doors. Real literacy instruction creates <strong>master keys</strong>—skills that unlock authentic opportunities: understanding lease agreements, writing compelling job applications, reading news critically, composing persuasive emails. We're not teaching reading and writing; we're teaching life navigation through text.</p>
+            </div>
+
+            <div class="authentic-vs-artificial">
+                <div class="artificial-side">
+                    <h3>🚫 Artificial Literacy Tasks</h3>
+                    <ul>
+                        <li>"Read this passage about dolphins and answer 5 comprehension questions"</li>
+                        <li>"Write a 5-paragraph essay about your favorite season"</li>
+                        <li>"Complete the sentences with the correct word"</li>
+                        <li>"Summarize this story in exactly 100 words"</li>
+                        <li>"Write a letter to your imaginary pen pal"</li>
+                    </ul>
+                    <p><strong>Problem:</strong> Students perform well on these tasks but struggle with real-world literacy demands.</p>
+                </div>
+                
+                <div class="authentic-side">
+                    <h3>✅ Authentic Literacy Purposes</h3>
+                    <ul>
+                        <li>Reading apartment listings to find suitable housing</li>
+                        <li>Writing emails to resolve billing disputes</li>
+                        <li>Understanding medical forms and insurance documents</li>
+                        <li>Researching products before major purchases</li>
+                        <li>Writing cover letters for actual job applications</li>
+                    </ul>
+                    <p><strong>Result:</strong> Students develop transferable skills for life success.</p>
+                </div>
+            </div>
+
+            <div class="mermaid">
+                graph TD
+                    A[Traditional Approach] --> B[Artificial Texts]
+                    A --> C[Generic Tasks] 
+                    A --> D[Teacher-Imposed Purposes]
+                    
+                    E[Authentic Approach] --> F[Real-World Texts]
+                    E --> G[Meaningful Tasks]
+                    E --> H[Student-Driven Purposes]
+                    
+                    B --> I[Limited Transfer]
+                    C --> I
+                    D --> I
+                    
+                    F --> J[Life Preparation]
+                    G --> J
+                    H --> J
+                    
+                    style A fill:#f44336,color:#fff
+                    style E fill:#4caf50,color:#fff
+                    style I fill:#ffebee
+                    style J fill:#e8f5e8
+            </div>
+        </section>
+
+        <section class="reading-as-inquiry">
+            <h2>Reading as Detective Work: The Inquiry Approach</h2>
+            
+            <div class="analogy-box">
+                <h3>🔍 The Detective's Investigation</h3>
+                <p>Effective readers are like <strong>skilled detectives</strong>—they don't just collect information passively. They ask questions, make predictions, gather evidence, test hypotheses, and draw conclusions. They read with purpose, skepticism, and curiosity. Our job is to teach students to be reading detectives, not reading robots who answer predetermined questions.</p>
+            </div>
+
+            <div class="reading-journey">
+                <div class="journey-stage">
+                    <h4>🎯 PURPOSE SETTING</h4>
+                    <p>"Why am I reading this?"</p>
+                    <p>"What do I need to find out?"</p>
+                </div>
+                <div class="journey-stage">
+                    <h4>🔮 PREDICTION</h4>
+                    <p>"What will this text tell me?"</p>
+                    <p>"What do I already know about this topic?"</p>
+                </div>
+                <div class="journey-stage">
+                    <h4>🕵️ INVESTIGATION</h4>
+                    <p>"What evidence supports my hypothesis?"</p>
+                    <p>"What questions arise as I read?"</p>
+                </div>
+                <div class="journey-stage">
+                    <h4>⚖️ EVALUATION</h4>
+                    <p>"Is this source reliable?"</p>
+                    <p>"What's the author's purpose/bias?"</p>
+                </div>
+                <div class="journey-stage">
+                    <h4>🔗 APPLICATION</h4>
+                    <p>"How does this information help me?"</p>
+                    <p>"What will I do with what I learned?"</p>
+                </div>
+            </div>
+
+            <div class="example-container">
+                <h3>🏠 Real-World Reading Example: Apartment Hunting</h3>
+                
+                <h4>❌ Traditional Approach:</h4>
+                <p>"Read this apartment listing and answer: 1) How many bedrooms? 2) What's the rent? 3) Are pets allowed?"</p>
+                
+                <h4>✅ Detective Approach:</h4>
+                
+                <div style="background: white; padding: 15px; border-radius: 10px; margin: 10px 0;">
+                    <h5>🎯 Purpose Setting (Student-Driven):</h5>
+                    <p>"You need to find an apartment within 30 minutes of your job, under $1200/month, that allows cats."</p>
+                    
+                    <h5>🔍 Strategic Reading Questions:</h5>
+                    <ul>
+                        <li>"What's NOT mentioned that you need to know?"</li>
+                        <li>"What words suggest this might be expensive? (luxury, premium, exclusive)"</li>
+                        <li>"What questions would you ask the landlord?"</li>
+                        <li>"How can you verify this information?"</li>
+                    </ul>
+                    
+                    <h5>🎭 Critical Analysis:</h5>
+                    <ul>
+                        <li>"Why might they not mention the neighborhood clearly?"</li>
+                        <li>"What does 'cozy' usually mean in apartment ads?"</li>
+                        <li>"Is this listing trying to hide any problems?"</li>
+                    </ul>
+                    
+                    <h5>🔗 Real Application:</h5>
+                    <p>"Based on this listing, write three specific questions you'd ask before visiting."</p>
+                </div>
+            </div>
+
+            <div class="critical-thinking">
+                <h3>🧠 Building Critical Reading Skills</h3>
+                
+                <h4>The CRAAP Test for Source Evaluation:</h4>
+                <ul>
+                    <li><strong>Currency:</strong> When was this written? Is the information current?</li>
+                    <li><strong>Relevance:</strong> Does this match my information needs?</li>
+                    <li><strong>Authority:</strong> Who wrote this? What are their credentials?</li>
+                    <li><strong>Accuracy:</strong> Can I verify this information elsewhere?</li>
+                    <li><strong>Purpose:</strong> Why was this written? Who benefits?</li>
+                </ul>
+                
+                <h4>Bias Detection Strategies:</h4>
+                <ul>
+                    <li>Emotional language vs. neutral reporting</li>
+                    <li>What information is emphasized/minimized?</li>
+                    <li>What perspectives are missing?</li>
+                    <li>Who funded or published this information?</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="writing-as-communication">
+            <h2>Writing as Real Communication: Beyond the Essay</h2>
+            
+            <div class="analogy-box">
+                <h3>📧 The Message in a Bottle Principle</h3>
+                <p>Traditional writing assignments are like having students practice putting messages in bottles that no one will ever find. <strong>Authentic writing</strong> is like sending urgent messages to real people who need the information: emails that solve problems, reports that inform decisions, proposals that change minds. Every piece of writing should have a real audience, real purpose, and real consequences.</p>
+            </div>
+
+            <div class="writing-process">
+                <div class="process-stage" style="top: 20px; left: 20px;">
+                    <strong>REAL NEED</strong><br>
+                    <small>Authentic communication purpose</small>
+                </div>
+                <div class="process-arrow" style="top: 45px; left: 150px;">→</div>
+                
+                <div class="process-stage" style="top: 20px; left: 180px;">
+                    <strong>AUDIENCE ANALYSIS</strong><br>
+                    <small>Who will read this? What do they need?</small>
+                </div>
+                <div class="process-arrow" style="top: 45px; left: 320px;">→</div>
+                
+                <div class="process-stage" style="top: 20px; right: 20px;">
+                    <strong>GENRE SELECTION</strong><br>
+                    <small>What type of writing serves this purpose?</small>
+                </div>
+                <div class="process-arrow" style="top: 90px; right: 70px; transform: rotate(90deg);">↓</div>
+                
+                <div class="process-stage" style="top: 120px; right: 20px;">
+                    <strong>DRAFTING</strong><br>
+                    <small>Getting ideas down first</small>
+                </div>
+                <div class="process-arrow" style="top: 145px; right: 150px;">←</div>
+                
+                <div class="process-stage" style="top: 120px; left: 180px;">
+                    <strong>FEEDBACK</strong><br>
+                    <small>Does this work for the audience?</small>
+                </div>
+                <div class="process-arrow" style="top: 145px; left: 150px;">←</div>
+                
+                <div class="process-stage" style="top: 120px; left: 20px;">
+                    <strong>REVISION</strong><br>
+                    <small>Improving for effectiveness</small>
+                </div>
+                <div class="process-arrow" style="top: 190px; left: 70px; transform: rotate(90deg);">↓</div>
+                
+                <div class="process-stage" style="bottom: 20px; left: 20px;">
+                    <strong>PUBLISHING</strong><br>
+                    <small>Reaching the real audience</small>
+                </div>
+                <div class="process-arrow" style="bottom: 45px; left: 150px;">→</div>
+                
+                <div class="process-stage" style="bottom: 20px; right: 20px;">
+                    <strong>IMPACT</strong><br>
+                    <small>Did the writing achieve its purpose?</small>
+                </div>
+            </div>
+
+            <div class="text-type-grid">
+                <div class="text-type-card">
+                    <h4>📧 PERSUASIVE WRITING</h4>
+                    <p><strong>Real Examples:</strong></p>
+                    <ul>
+                        <li>Email to landlord about repair issues</li>
+                        <li>Letter to school about child's needs</li>
+                        <li>Product review influencing buyers</li>
+                        <li>Grant proposal for community project</li>
+                    </ul>
+                </div>
+                
+                <div class="text-type-card">
+                    <h4>📋 INFORMATIONAL WRITING</h4>
+                    <p><strong>Real Examples:</strong></p>
+                    <ul>
+                        <li>Instructions for new employees</li>
+                        <li>Medical history for doctor visits</li>
+                        <li>Accident report for insurance</li>
+                        <li>Recipe sharing with family</li>
+                    </ul>
+                </div>
+                
+                <div class="text-type-card">
+                    <h4>💼 PROFESSIONAL WRITING</h4>
+                    <p><strong>Real Examples:</strong></p>
+                    <ul>
+                        <li>Cover letter for dream job</li>
+                        <li>Performance self-evaluation</li>
+                        <li>Project status update</li>
+                        <li>Client communication</li>
+                    </ul>
+                </div>
+                
+                <div class="text-type-card">
+                    <h4>🏛️ CIVIC WRITING</h4>
+                    <p><strong>Real Examples:</strong></p>
+                    <ul>
+                        <li>Letter to elected representative</li>
+                        <li>Community newsletter article</li>
+                        <li>Petition for neighborhood change</li>
+                        <li>School board meeting comments</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="real-world-task">
+                <h3>🎯 Authentic Writing Project: The Workplace Communication Challenge</h3>
+                
+                <h4>📋 The Scenario:</h4>
+                <p>Students work at a company experiencing communication problems between departments. The HR manager has asked each department to propose solutions.</p>
+                
+                <h4>✍️ The Writing Tasks:</h4>
+                <ol>
+                    <li><strong>Research Phase:</strong> Survey real people about workplace communication challenges</li>
+                    <li><strong>Analysis Phase:</strong> Write a brief report summarizing findings</li>
+                    <li><strong>Proposal Phase:</strong> Create a formal proposal with specific solutions</li>
+                    <li><strong>Presentation Phase:</strong> Design visual aids and talking points</li>
+                    <li><strong>Implementation Phase:</strong> Write follow-up emails with action steps</li>
+                </ol>
+                
+                <h4>🎯 Why This Works:</h4>
+                <ul>
+                    <li>Multiple authentic text types in realistic sequence</li>
+                    <li>Real audience (classmates as HR managers)</li>
+                    <li>Measurable outcome (proposal acceptance/rejection)</li>
+                    <li>Transferable skills to actual workplace situations</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="scaffolding-complex-texts">
+            <h2>Scaffolding Complex Texts: Building Reading Confidence</h2>
+            
+            <div class="analogy-box">
+                <h3>🏗️ The Scaffolding Master's Approach</h3>
+                <p>A master builder doesn't remove scaffolding all at once—they gradually reduce support as the structure becomes self-supporting. Teaching complex reading works the same way. We start with maximum support (graphic organizers, vocabulary pre-teaching, guided practice) and systematically remove scaffolds until students can navigate challenging texts independently.</p>
+            </div>
+
+            <div class="scaffolding-pyramid">
+                <div class="pyramid-level" style="bottom: 0; left: 0; width: 100%; height: 15%;">
+                    INDEPENDENT READING<br><small>Authentic texts, self-selected strategies</small>
+                </div>
+                <div class="pyramid-level" style="bottom: 15%; left: 10%; width: 80%; height: 15%;">
+                    GUIDED PRACTICE<br><small>Teacher modeling with gradual release</small>
+                </div>
+                <div class="pyramid-level" style="bottom: 30%; left: 20%; width: 60%; height: 15%;">
+                    COLLABORATIVE READING<br><small>Peer support and strategy sharing</small>
+                </div>
+                <div class="pyramid-level" style="bottom: 45%; left: 30%; width: 40%; height: 15%;">
+                    STRUCTURED SUPPORT<br><small>Graphic organizers, chunking, glossaries</small>
+                </div>
+                <div class="pyramid-level" style="bottom: 60%; left: 40%; width: 20%; height: 15%;">
+                    MAXIMUM SUPPORT<br><small>Pre-teaching, predictions, simplified versions</small>
+                </div>
+            </div>
+
+            <div class="example-container">
+                <h3>📊 Scaffolding Example: Reading a Lease Agreement</h3>
+                
+                <h4>🔧 Level 5: Maximum Support</h4>
+                <ul>
+                    <li>Pre-teach key vocabulary (deposit, liability, tenant rights)</li>
+                    <li>Provide simplified lease summary first</li>
+                    <li>Discuss students' rental experiences and concerns</li>
+                    <li>Show visual diagram of lease relationship (landlord-tenant-property)</li>
+                </ul>
+                
+                <h4>🔧 Level 4: Structured Support</h4>
+                <ul>
+                    <li>Provide graphic organizer: "Key Information Finder"</li>
+                    <li>Chunk the lease into manageable sections</li>
+                    <li>Give specific scanning tasks: "Find information about pets"</li>
+                    <li>Glossary of legal terms with plain English explanations</li>
+                </ul>
+                
+                <h4>🔧 Level 3: Collaborative Reading</h4>
+                <ul>
+                    <li>Jigsaw reading: pairs take different sections, share findings</li>
+                    <li>Students create questions for other pairs to answer</li>
+                    <li>Compare lease terms across different properties</li>
+                    <li>Peer teaching: explain sections to each other</li>
+                </ul>
+                
+                <h4>🔧 Level 2: Guided Practice</h4>
+                <ul>
+                    <li>Teacher demonstrates close reading of one paragraph</li>
+                    <li>Students practice same technique on new paragraph</li>
+                    <li>Identify potential problem clauses together</li>
+                    <li>Discuss questions a renter should ask</li>
+                </ul>
+                
+                <h4>🔧 Level 1: Independent Reading</h4>
+                <ul>
+                    <li>Students analyze new lease independently</li>
+                    <li>Create their own summary and questions</li>
+                    <li>Research tenant rights in their state</li>
+                    <li>Write advice for future renters</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="digital-literacy-integration">
+            <h2>Digital Literacy: Reading and Writing in the 21st Century</h2>
+            
+            <div class="digital-literacy">
+                <h3>💻 Beyond Books: Multimodal Literacy Skills</h3>
+                
+                <h4>🌐 Digital Reading Skills:</h4>
+                <ul>
+                    <li><strong>Hypertext Navigation:</strong> Following links strategically, avoiding rabbit holes</li>
+                    <li><strong>Multi-source Synthesis:</strong> Comparing information across websites</li>
+                    <li><strong>Visual Literacy:</strong> Reading infographics, charts, memes</li>
+                    <li><strong>Search Strategy:</strong> Using keywords effectively, evaluating search results</li>
+                    <li><strong>Information Verification:</strong> Fact-checking, identifying fake news</li>
+                </ul>
+                
+                <h4>⌨️ Digital Writing Skills:</h4>
+                <ul>
+                    <li><strong>Platform Awareness:</strong> Adapting tone for email vs. social media vs. formal documents</li>
+                    <li><strong>Multimedia Integration:</strong> Combining text, images, video effectively</li>
+                    <li><strong>Collaborative Writing:</strong> Using shared documents, tracking changes</li>
+                    <li><strong>Digital Etiquette:</strong> Appropriate online communication norms</li>
+                    <li><strong>Privacy Awareness:</strong> Understanding permanent nature of digital writing</li>
+                </ul>
+            </div>
+
+            <div class="interactive-demo">
+                <h3>🔍 Digital Literacy Challenge: Fact-Checking News</h3>
+                <p>Practice identifying reliable vs. unreliable sources</p>
+                
+                <button class="demo-button" onclick="showSourceAnalysis('reliable')">Analyze Reliable Source</button>
+                <button class="demo-button" onclick="showSourceAnalysis('unreliable')">Analyze Unreliable Source</button>
+                
+                <div id="sourceAnalysis" style="margin-top: 20px; padding: 15px; background: white; border-radius: 10px; min-height: 150px;">
+                    <p><em>Click a button above to practice source evaluation skills!</em></p>
+                </div>
+                
+                <script>
+                    function showSourceAnalysis(type) {
+                        const resultDiv = document.getElementById('sourceAnalysis');
+                        
+                        if (type === 'reliable') {
+                            resultDiv.innerHTML = `
+                                <h4>📰 RELIABLE SOURCE EXAMPLE</h4>
+                                <p><strong>Source:</strong> "Local Hospital Reports 15% Increase in Emergency Visits" - City Health Department Official Website</p>
+                                <h5>✅ Reliability Indicators:</h5>
+                                <ul>
+                                    <li><strong>Authority:</strong> Official government health department</li>
+                                    <li><strong>Currency:</strong> Published yesterday with current data</li>
+                                    <li><strong>Evidence:</strong> Specific statistics, quotes from named officials</li>
+                                    <li><strong>Transparency:</strong> Methods and sources clearly stated</li>
+                                    <li><strong>Objectivity:</strong> Neutral tone, multiple perspectives included</li>
+                                </ul>
+                                <p><em>Student Task: Find two more sources reporting on the same topic. Do the numbers match?</em></p>
+                            `;
+                        } else {
+                            resultDiv.innerHTML = `
+                                <h4>⚠️ UNRELIABLE SOURCE EXAMPLE</h4>
+                                <p><strong>Source:</strong> "SHOCKING: Hospitals Hiding MASSIVE Crisis!!!" - UnknownTruthSeeker99 Blog</p>
+                                <h5>❌ Red Flags:</h5>
+                                <ul>
+                                    <li><strong>Authority:</strong> Anonymous blogger, no credentials listed</li>
+                                    <li><strong>Bias:</strong> Emotional language, sensational headline</li>
+                                    <li><strong>Evidence:</strong> Vague claims, no specific data or sources</li>
+                                    <li><strong>Currency:</strong> No publication date, references old events</li>
+                                    <li><strong>Purpose:</strong> Seems designed to create fear rather than inform</li>
+                                </ul>
+                                <p><em>Student Task: How could you verify if there's any truth to these claims?</em></p>
+                            `;
+                        }
+                    }
+                </script>
+            </div>
+        </section>
+
+        <section class="genre-awareness">
+            <h2>Genre Awareness: Understanding Text Types and Purposes</h2>
+            
+            <div class="analogy-box">
+                <h3>🎭 The Genre Costume Party</h3>
+                <p>Different genres are like different costumes for ideas. The same information gets "dressed up" differently depending on its purpose and audience. A scientific discovery might wear the formal coat of an academic paper, the casual clothes of a news article, or the flashy outfit of a social media post. Teaching genre awareness helps students choose the right "costume" for their ideas.</p>
+            </div>
+
+            <svg class="genre-wheel" viewBox="0 0 300 300">
+                <circle cx="150" cy="150" r="140" fill="none" stroke="#666" stroke-width="2"/>
+                <circle cx="150" cy="150" r="30" fill="#4caf50"/>
+                <text x="150" y="155" text-anchor="middle" fill="white" font-weight="bold" font-size="12">GENRE</text>
+                
+                <!-- Genre sections -->
+                <g transform="rotate(0 150 150)">
+                    <path d="M 150 150 L 150 10 A 140 140 0 0 1 233 44 Z" fill="#e3f2fd" opacity="0.8"/>
+                    <text x="180" y="50" text-anchor="middle" font-size="11" font-weight="bold">NARRATIVE</text>
+                </g>
+                
+                <g transform="rotate(60 150 150)">
+                    <path d="M 150 150 L 233 44 A 140 140 0 0 1 267 174 Z" fill="#f3e5f5" opacity="0.8"/>
+                    <text x="240" y="120" text-anchor="middle" font-size="11" font-weight="bold">DESCRIPTIVE</text>
+                </g>
+                
+                <g transform="rotate(120 150 150)">
+                    <path d="M 150 150 L 267 174 A 140 140 0 0 1 233 256 Z" fill="#e8f5e8" opacity="0.8"/>
+                    <text x="240" y="200" text-anchor="middle" font-size="11" font-weight="bold">EXPOSITORY</text>
+                </g>
+                
+                <g transform="rotate(180 150 150)">
+                    <path d="M 150 150 L 233 256 A 140 140 0 0 1 67 256 Z" fill="#fff3e0" opacity="0.8"/>
+                    <text x="150" y="250" text-anchor="middle" font-size="11" font-weight="bold">PERSUASIVE</text>
+                </g>
+                
+                <g transform="rotate(240 150 150)">
+                    <path d="M 150 150 L 67 256 A 140 140 0 0 1 33 174 Z" fill="#ffebee" opacity="0.8"/>
+                    <text x="60" y="200" text-anchor="middle" font-size="11" font-weight="bold">PROCEDURAL</text>
+                </g>
+                
+                <g transform="rotate(300 150 150)">
+                    <path d="M 150 150 L 33 174 A 140 140 0 0 1 67 44 Z" fill="#f1f8e9" opacity="0.8"/>
+                    <text x="60" y="120" text-anchor="middle" font-size="11" font-weight="bold">ANALYTICAL</text>
+                </g>
+            </svg>
+
+            <div class="example-container">
+                <h3>🎯 Genre in Action: The Smartphone Review</h3>
+                
+                <p><strong>Same Topic, Different Genres:</strong></p>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 15px 0;">
+                    <div style="background: #e3f2fd; padding: 15px; border-radius: 10px;">
+                        <h4>📱 PRODUCT REVIEW (Informational)</h4>
+                        <p><em>"The XPhone 15 features a 6.1-inch display, 128GB storage, and 12-hour battery life. In our tests, the camera performed well in daylight but struggled in low-light conditions..."</em></p>
+                        <p><strong>Purpose:</strong> Inform purchasing decisions</p>
+                    </div>
+                    
+                    <div style="background: #fff3e0; padding: 15px; border-radius: 10px;">
+                        <h4>💰 SALES PITCH (Persuasive)</h4>
+                        <p><em>"Don't miss out on the revolutionary XPhone 15! Transform your photography with our cutting-edge camera technology. Limited time offer - upgrade now and save $200!"</em></p>
+                        <p><strong>Purpose:</strong> Convince to buy</p>
+                    </div>
+                    
+                    <div style="background: #e8f5e8; padding: 15px; border-radius: 10px;">
+                        <h4>🔧 USER MANUAL (Procedural)</h4>
+                        <p><em>"To activate Night Mode: 1) Open Camera app, 2) Tap the moon icon, 3) Hold phone steady for 3 seconds, 4) Tap the shutter button..."</em></p>
+                        <p><strong>Purpose:</strong> Enable successful use</p>
+                    </div>
+                    
+                    <div style="background: #f3e5f5; padding: 15px; border-radius: 10px;">
+                        <h4>📖 PERSONAL STORY (Narrative)</h4>
+                        <p><em>"I'll never forget the moment I dropped my XPhone 15 into the lake. My heart sank faster than the phone. But when I fished it out three hours later..."</em></p>
+                        <p><strong>Purpose:</strong> Entertain and share experience</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="assessment-authentic-literacy">
+            <h2>Assessing Real-World Literacy: Beyond the Test</h2>
+            
+            <div class="analogy-box">
+                <h3>🏆 The Olympic Scoring System</h3>
+                <p>Olympic judges don't just count how many jumps a figure skater completes—they evaluate the entire performance: technical skill, artistic expression, and competitive spirit. <strong>Authentic literacy assessment</strong> works the same way. We evaluate not just correctness, but effectiveness, appropriateness, and real-world application. Can students use literacy to achieve their actual goals?</p>
+            </div>
+
+            <div class="assessment-matrix">
+                <div class="matrix-cell" style="background: #4caf50; color: white;">
+                    <h4>EFFECTIVENESS</h4>
+                    <p>Does the writing achieve its purpose?</p>
+                    <p>Does the reader understand the intended message?</p>
+                </div>
+                <div class="matrix-cell" style="background: #2196f3; color: white;">
+                    <h4>APPROPRIATENESS</h4>
+                    <p>Is the genre suitable for the task?</p>
+                    <p>Is the tone appropriate for the audience?</p>
+                </div>
+                <div class="matrix-cell" style="background: #ff9800; color: white;">
+                    <h4>ENGAGEMENT</h4>
+                    <p>Does the writing hold reader interest?</p>
+                    <p>Does the reading demonstrate deep thinking?</p>
+                </div>
+                <div class="matrix-cell" style="background: #9c27b0; color: white;">
+                    <h4>ACCURACY</h4>
+                    <p>Is the language correct enough to be credible?</p>
+                    <p>Are facts and sources reliable?</p>
+                </div>
+                <div class="matrix-cell" style="background: #f44336; color: white;">
+                    <h4>INNOVATION</h4>
+                    <p>Does the work show original thinking?</p>
+                    <p>Are creative solutions presented?</p>
+                </div>
+                <div class="matrix-cell" style="background: #795548; color: white;">
+                    <h4>IMPACT</h4>
+                    <p>What real-world difference does this make?</p>
+                    <p>How might this influence readers/decisions?</p>
+                </div>
+            </div>
+
+            <table class="writing-rubric">
+                <thead>
+                    <tr>
+                        <th>Criteria</th>
+                        <th>Developing (1-2)</th>
+                        <th>Proficient (3-4)</th>
+                        <th>Advanced (5-6)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Purpose Achievement</strong></td>
+                        <td>Unclear purpose; doesn't meet communication goal</td>
+                        <td>Clear purpose; mostly achieves communication goal</td>
+                        <td>Compelling purpose; fully achieves and exceeds goal</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Audience Awareness</strong></td>
+                        <td>Little consideration of reader needs</td>
+                        <td>Generally appropriate for intended audience</td>
+                        <td>Expertly tailored to audience knowledge and needs</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Genre Conventions</strong></td>
+                        <td>Mismatched genre; doesn't follow expected format</td>
+                        <td>Appropriate genre; follows most conventions</td>
+                        <td>Genre used strategically; innovative within conventions</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Language Effectiveness</strong></td>
+                        <td>Language interferes with communication</td>
+                        <td>Language generally supports communication</td>
+                        <td>Language enhances and elevates communication</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Real-World Application</strong></td>
+                        <td>Limited transfer to real situations</td>
+                        <td>Clear connections to real-world use</td>
+                        <td>Sophisticated understanding of real-world application</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="real-world-task">
+                <h3>🎯 Portfolio-Based Assessment Example</h3>
+                
+                <h4>📁 "Community Problem-Solver" Portfolio</h4>
+                
+                <h5>Portfolio Contents:</h5>
+                <ol>
+                    <li><strong>Research Phase:</strong> Annotated bibliography of sources about local issue</li>
+                    <li><strong>Investigation Phase:</strong> Interview transcripts with community members</li>
+                    <li><strong>Analysis Phase:</strong> Written analysis identifying root causes and stakeholders</li>
+                    <li><strong>Proposal Phase:</strong> Formal proposal with specific solutions and budget</li>
+                    <li><strong>Communication Phase:</strong> Letter to city council, social media campaign, or presentation</li>
+                    <li><strong>Reflection Phase:</strong> Self-assessment of learning and process</li>
+                </ol>
+                
+                <h5>🏆 Assessment Focus:</h5>
+                <ul>
+                    <li>Can students read complex texts for specific information?</li>
+                    <li>Can they synthesize information from multiple sources?</li>
+                    <li>Do they write effectively for different audiences and purposes?</li>
+                    <li>Are their solutions realistic and well-supported?</li>
+                    <li>How well do they adapt their communication for different contexts?</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="technology-enhanced-literacy">
+            <h2>Technology-Enhanced Literacy Learning</h2>
+            
+            <div class="example-container">
+                <h3>💻 Digital Tools for Authentic Literacy</h3>
+                
+                <h4>📚 Reading Enhancement Tools:</h4>
+                <ul>
+                    <li><strong>Annotation Platforms:</strong> Collaborative text marking and discussion</li>
+                    <li><strong>Research Databases:</strong> Access to authentic, current materials</li>
+                    <li><strong>Text-to-Speech:</strong> Support for pronunciation and comprehension</li>
+                    <li><strong>Translation Tools:</strong> Strategic L1 support when needed</li>
+                    <li><strong>Fact-Checking Sites:</strong> Verify information and build critical thinking</li>
+                </ul>
+                
+                <h4>✍️ Writing Enhancement Tools:</h4>
+                <ul>
+                    <li><strong>Collaborative Editors:</strong> Real-time feedback and peer review</li>
+                    <li><strong>Grammar Checkers:</strong> Support for editing and error patterns</li>
+                    <li><strong>Publishing Platforms:</strong> Authentic audiences for student writing</li>
+                    <li><strong>Multimedia Integration:</strong> Combine text, images, video for impact</li>
+                    <li><strong>Portfolio Platforms:</strong> Track progress over time</li>
+                </ul>
+                
+                <h4>🌐 Authentic Digital Literacy Tasks:</h4>
+                <ul>
+                    <li>Create Wikipedia entries for local historical figures</li>
+                    <li>Start petition for community issue on Change.org</li>
+                    <li>Write product reviews for actual purchases</li>
+                    <li>Contribute to community forums solving real problems</li>
+                    <li>Design infographics explaining complex topics to peers</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="practice-activities">
+            <div class="practice-activity">
+                <h2>🎯 Transform Your Literacy Teaching</h2>
+                
+                <h3>Activity 1: Artificial to Authentic Makeover</h3>
+                <p>Take three traditional reading/writing activities you currently use and redesign them for authentic purposes:</p>
+                <ul>
+                    <li>Identify the real-world equivalent of each artificial task</li>
+                    <li>Find authentic materials that serve actual purposes</li>
+                    <li>Create realistic contexts where students need these literacy skills</li>
+                    <li>Design assessment that focuses on effectiveness, not just correctness</li>
+                </ul>
+                
+                <h3>Activity 2: Genre Analysis Workshop</h3>
+                <p>Create a genre comparison activity for your students:</p>
+                <ul>
+                    <li>Choose one topic relevant to student needs (housing, healthcare, employment)</li>
+                    <li>Find examples of this topic in 4-5 different genres</li>
+                    <li>Design analysis questions that help students see how purpose shapes language</li>
+                    <li>Create a writing task where students practice using different genres for the same topic</li>
+                </ul>
+                
+                <h3>Activity 3: Critical Reading Strategy Training</h3>
+                <p>Design a sequence of lessons that build critical reading skills:</p>
+                <ul>
+                    <li>Start with obviously biased sources (advertisements, political campaigns)</li>
+                    <li>Gradually move to more subtle bias (news articles, academic papers)</li>
+                    <li>Teach specific strategies for source evaluation and fact-checking</li>
+                    <li>Practice with current, controversial topics relevant to students</li>
+                    <li>Culminate with students creating their own bias detection guide</li>
+                </ul>
+                
+                <h3>Activity 4: Scaffolding Sequence Design</h3>
+                <p>Choose a complex text type your students need to read (medical forms, legal documents, academic papers):</p>
+                <ul>
+                    <li>Identify the specific challenges this text type presents</li>
+                    <li>Design 5 levels of scaffolding from maximum support to independence</li>
+                    <li>Create materials and activities for each scaffolding level</li>
+                    <li>Plan how you'll know when students are ready to move to the next level</li>
+                </ul>
+                
+                <h3>Activity 5: Real-World Writing Project</h3>
+                <p>Design a writing project that addresses an actual need in your community:</p>
+                <ul>
+                    <li>Identify a real problem or need in your local community</li>
+                    <li>Connect with community partners who could use student writing</li>
+                    <li>Design a writing project that produces genuinely useful texts</li>
+                    <li>Create opportunities for students to receive feedback from real audiences</li>
+                    <li>Plan how students will see the impact of their writing</li>
+                </ul>
+                
+                <h3>Activity 6: Digital Literacy Integration</h3>
+                <p>Integrate 21st-century literacy skills into your curriculum:</p>
+                <ul>
+                    <li>Audit your current reading/writing tasks for digital components</li>
+                    <li>Identify technology tools that enhance rather than complicate learning</li>
+                    <li>Design tasks that require students to navigate, evaluate, and create digital texts</li>
+                    <li>Include explicit instruction in digital citizenship and information literacy</li>
+                    <li>Create assessment strategies that value digital literacy skills</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="troubleshooting-literacy">
+            <h2>🔧 Troubleshooting Common Literacy Challenges</h2>
+            
+            <div class="example-container">
+                <h3>Challenge 1: "Students can't handle complex texts"</h3>
+                <p><strong>Diagnosis:</strong> Insufficient scaffolding or lack of purpose</p>
+                <p><strong>Solutions:</strong></p>
+                <ul>
+                    <li>Start with why: Give students compelling reasons to read difficult texts</li>
+                    <li>Build background knowledge before introducing complex readings</li>
+                    <li>Use graduated difficulty: start with accessible versions, build up</li>
+                    <li>Teach specific strategies for handling unknown vocabulary and complex syntax</li>
+                    <li>Focus on gist understanding before details</li>
+                </ul>
+                
+                <h3>Challenge 2: "Their writing lacks sophistication"</h3>
+                <p><strong>Diagnosis:</strong> Limited exposure to genre models or unclear audience</p>
+                <p><strong>Solutions:</strong></p>
+                <ul>
+                    <li>Provide mentor texts: show examples of effective writing in target genre</li>
+                    <li>Analyze what makes writing effective for specific purposes</li>
+                    <li>Give students real audiences and purposes for writing</li>
+                    <li>Focus on content and organization before language accuracy</li>
+                    <li>Teach revision strategies that improve communication effectiveness</li>
+                </ul>
+                
+                <h3>Challenge 3: "They resist reading assignments"</h3>
+                <p><strong>Diagnosis:</strong> Texts don't connect to student interests or goals</p>
+                <p><strong>Solutions:</strong></p>
+                <ul>
+                    <li>Survey students about their information needs and interests</li>
+                    <li>Connect reading to student goals (job applications, healthcare, parenting)</li>
+                    <li>Use choice: let students select from several authentic options</li>
+                    <li>Make reading social: book clubs, discussion groups, peer recommendations</li>
+                    <li>Show immediate applications: how can they use this information today?</li>
+                </ul>
+                
+                <h3>Challenge 4: "Digital distractions interfere with deep reading"</h3>
+                <p><strong>Diagnosis:</strong> Need to teach digital reading strategies explicitly</p>
+                <p><strong>Solutions:</strong></p>
+                <ul>
+                    <li>Teach purpose-driven online reading: set specific goals before browsing</li>
+                    <li>Practice sustained attention building gradually</li>
+                    <li>Show how to use technology tools to enhance rather than distract from reading</li>
+                    <li>Create offline reading experiences that build concentration</li>
+                    <li>Help students understand different types of reading for different purposes</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="key-takeaways">
+            <div class="analogy-box">
+                <h2>🎯 The Literacy Liberation Manifesto</h2>
+                <ul>
+                    <li><strong>Purpose drives everything:</strong> Reading and writing must serve real communication needs</li>
+                    <li><strong>Detective reading beats passive absorption:</strong> Teach inquiry, not just comprehension</li>
+                    <li><strong>Authentic audiences transform writing:</strong> Real readers create real motivation</li>
+                    <li><strong>Genre awareness is power:</strong> Understanding text types unlocks effective communication</li>
+                    <li><strong>Scaffolding builds independence:</strong> Systematic support removal creates confident readers and writers</li>
+                    <li><strong>Critical literacy is survival:</strong> Information evaluation skills are essential for citizenship</li>
+                    <li><strong>Digital skills complement traditional literacy:</strong> 21st-century communication requires both</li>
+                    <li><strong>Assessment mirrors real use:</strong> Evaluate effectiveness in authentic contexts</li>
+                    <li><strong>Technology amplifies purpose:</strong> Digital tools should enhance, not replace, meaningful communication</li>
+                    <li><strong>Transfer is the ultimate goal:</strong> Students must apply literacy skills to achieve their life goals</li>
+                </ul>
+            </div>
+        </section>
+
+        <footer>
+            <p><strong>Next Lesson Preview:</strong> "Cultural Competence and Sensitivity in ESL Teaching" - Navigating the delicate balance between respecting students' cultural identities while helping them develop cross-cultural communication skills for success in English-speaking environments.</p>
+            <p><em>"Reading is to the mind what exercise is to the body." - Joseph Addison</em></p>
+        </footer>
+    </main>
+</body>
+</html>

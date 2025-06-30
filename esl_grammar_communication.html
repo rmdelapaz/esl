@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teaching Grammar Communicatively - Making Rules Come Alive</title>
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="icon" href="/favicon.png">
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ startOnLoad: true });
+    </script>
+    <style>
+        .analogy-box {
+            background: linear-gradient(135deg, #fff8e1, #e8f5e8);
+            border-left: 4px solid #ff9800;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .example-container {
+            background: #f3e5f5;
+            border: 2px solid #9c27b0;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 10px;
+        }
+        .practice-activity {
+            background: #e1f5fe;
+            border: 2px solid #0277bd;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+        .grammar-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .traditional-method {
+            background: #ffebee;
+            border: 2px solid #f44336;
+            padding: 15px;
+            border-radius: 10px;
+        }
+        .communicative-method {
+            background: #e8f5e8;
+            border: 2px solid #4caf50;
+            padding: 15px;
+            border-radius: 10px;
+        }
+        .grammar-detective {
+            background: #fff3e0;
+            border: 2px solid #ff9800;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            position: relative;
+        }
+        .grammar-detective::before {
+            content: "🔍";
+            font-size: 24px;
+            position: absolute;
+            top: 10px;
+            right: 15px;
+        }
+        .timeline-container {
+            width: 100%;
+            height: 300px;
+            margin: 20px 0;
+            position: relative;
+            background: linear-gradient(90deg, #ffcdd2 0%, #c8e6c9 50%, #bbdefb 100%);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .timeline-stage {
+            position: absolute;
+            height: 100%;
+            border-right: 2px dashed #666;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .interactive-example {
+            background: #f5f5f5;
+            border: 3px solid #2196f3;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .scenario-card {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .scenario-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .grammar-structure-viz {
+            width: 100%;
+            height: 250px;
+            margin: 20px 0;
+        }
+        .meaning-form-use {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .mfu-card {
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+            font-weight: bold;
+        }
+        .meaning-card { background: #e91e63; }
+        .form-card { background: #2196f3; }
+        .use-card { background: #4caf50; }
+        .discovery-activity {
+            background: #fff8e1;
+            border: 3px dashed #ffc107;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 15px;
+        }
+        .error-analysis {
+            background: #fce4ec;
+            border: 2px solid #e91e63;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 10px;
+        }
+        .correction-ladder {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .ladder-step {
+            background: #e3f2fd;
+            border: 2px solid #1976d2;
+            padding: 15px;
+            border-radius: 10px;
+            position: relative;
+        }
+        .ladder-step::before {
+            content: counter(step-counter);
+            counter-increment: step-counter;
+            position: absolute;
+            left: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #1976d2;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        .correction-ladder {
+            counter-reset: step-counter;
+        }
+        .game-board {
+            background: #f0f4c3;
+            border: 3px solid #827717;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🎭 Teaching Grammar Communicatively: Making Rules Come Alive</h1>
+        <p><strong>Estimated Time:</strong> 20-25 minutes | <strong>Level:</strong> Intermediate ESL Instructors</p>
+    </header>
+
+    <main>
+        <section class="introduction">
+            <h2>The Great Grammar Revolution</h2>
+            
+            <div class="analogy-box">
+                <h3>🎪 From Grammar Jail to Grammar Playground</h3>
+                <p>Traditional grammar teaching was like a <strong>prison</strong>—rigid rules, isolated sentences, and students locked away from real communication. Communicative grammar teaching is like a <strong>playground</strong>—rules exist to make the game possible, meaningful, and fun. Students don't just memorize how language works; they discover why it matters and when to use it in their real lives.</p>
+            </div>
+
+            <div class="grammar-comparison">
+                <div class="traditional-method">
+                    <h3>❌ The Old Way: Grammar Prison</h3>
+                    <ul>
+                        <li>"Repeat: I have been working"</li>
+                        <li>Fill-in-the-blank worksheets</li>
+                        <li>Rules before examples</li>
+                        <li>Perfect sentences, no context</li>
+                        <li>Focus on accuracy only</li>
+                        <li>Teacher-centered explanation</li>
+                    </ul>
+                </div>
+                
+                <div class="communicative-method">
+                    <h3>✅ The New Way: Grammar Playground</h3>
+                    <ul>
+                        <li>"Tell me about your dream job"</li>
+                        <li>Real-world problem solving</li>
+                        <li>Discovery before rules</li>
+                        <li>Meaningful communication</li>
+                        <li>Fluency + accuracy together</li>
+                        <li>Student-centered exploration</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mermaid">
+                graph TB
+                    A[Real Communication Need] --> B[Grammar Discovery]
+                    B --> C[Pattern Recognition]
+                    C --> D[Rule Formation]
+                    D --> E[Guided Practice]
+                    E --> F[Free Communication]
+                    F --> G[Error Analysis & Refinement]
+                    G --> A
+                    
+                    H[Traditional Approach] --> I[Rule Presentation]
+                    I --> J[Mechanical Practice]
+                    J --> K[Test]
+                    K --> L[Forget]
+                    
+                    style A fill:#4caf50
+                    style F fill:#4caf50
+                    style H fill:#f44336
+                    style L fill:#f44336
+            </div>
+        </section>
+
+        <section class="meaning-form-use-framework">
+            <h2>The MFU Trinity: Meaning, Form, and Use</h2>
+            
+            <div class="analogy-box">
+                <h3>🔺 The Grammar Triangle</h3>
+                <p>Think of grammar as a <strong>three-legged stool</strong>. Traditional teaching focused only on FORM (the grammar rules), making the stool wobbly and useless. Communicative teaching balances all three legs: MEANING (what does it mean?), FORM (how is it made?), and USE (when do we use it?). Only with all three legs does the grammar become sturdy enough to support real communication.</p>
+            </div>
+
+            <div class="meaning-form-use">
+                <div class="mfu-card meaning-card">
+                    <h3>MEANING</h3>
+                    <p>What does it communicate?</p>
+                    <p>Why would someone say this?</p>
+                </div>
+                <div class="mfu-card form-card">
+                    <h3>FORM</h3>
+                    <p>How is it constructed?</p>
+                    <p>What are the rules?</p>
+                </div>
+                <div class="mfu-card use-card">
+                    <h3>USE</h3>
+                    <p>When do we use it?</p>
+                    <p>What's the context?</p>
+                </div>
+            </div>
+
+            <div class="example-container">
+                <h3>🎯 MFU in Action: Present Perfect</h3>
+                
+                <h4>Traditional Approach (Form Only):</h4>
+                <p>"Present Perfect = have/has + past participle. I have worked, she has eaten, they have gone."</p>
+                
+                <h4>Communicative Approach (MFU Integration):</h4>
+                
+                <div class="interactive-example">
+                    <h5>🎬 MEANING Discovery Scenario</h5>
+                    <p><strong>Context:</strong> Job interview</p>
+                    <p><strong>Interviewer:</strong> "Tell me about your experience with customer service."</p>
+                    <p><strong>Candidate A:</strong> "I worked in retail for three years." (simple past)</p>
+                    <p><strong>Candidate B:</strong> "I have worked in retail for three years." (present perfect)</p>
+                    <p><strong>Question for students:</strong> "Which candidate is probably still working in retail? How do you know?"</p>
+                </div>
+
+                <div class="interactive-example">
+                    <h5>🔧 FORM Discovery Activity</h5>
+                    <p>Students collect examples from real conversations:</p>
+                    <ul>
+                        <li>"I've lived here since 2020"</li>
+                        <li>"Have you ever been to Japan?"</li>
+                        <li>"We've just finished dinner"</li>
+                        <li>"She's worked here for five years"</li>
+                    </ul>
+                    <p><strong>Student task:</strong> "What patterns do you notice?"</p>
+                </div>
+
+                <div class="interactive-example">
+                    <h5>🎭 USE Exploration</h5>
+                    <p>Students decide which situations need present perfect:</p>
+                    <div class="scenario-card" onclick="toggleAnswer(this, 'Yes! Experience relevant to now')">
+                        <strong>Scenario 1:</strong> Talking about life experiences in a job interview
+                    </div>
+                    <div class="scenario-card" onclick="toggleAnswer(this, 'No! Specific completed time = simple past')">
+                        <strong>Scenario 2:</strong> Describing what you did yesterday
+                    </div>
+                    <div class="scenario-card" onclick="toggleAnswer(this, 'Yes! Action started in past, continues now')">
+                        <strong>Scenario 3:</strong> Explaining how long you\'ve known your best friend
+                    </div>
+                    <div class="scenario-card" onclick="toggleAnswer(this, 'Yes! Recent action affecting present')">
+                        <strong>Scenario 4:</strong> Explaining why you can\'t go out (just finished work)
+                    </div>
+                </div>
+
+                <script>
+                    function toggleAnswer(element, answer) {
+                        if (element.style.backgroundColor === 'lightgreen') {
+                            element.style.backgroundColor = '';
+                            element.innerHTML = element.innerHTML.split('<br>')[0];
+                        } else {
+                            element.style.backgroundColor = 'lightgreen';
+                            element.innerHTML += '<br><em>' + answer + '</em>';
+                        }
+                    }
+                </script>
+            </div>
+        </section>
+
+        <section class="discovery-learning">
+            <h2>The Grammar Detective Approach</h2>
+            
+            <div class="grammar-detective">
+                <h3>🕵️ Making Students Grammar Detectives</h3>
+                <p>Instead of telling students the rules, turn them into <strong>language detectives</strong> who discover patterns in authentic materials. When students discover rules themselves, they remember better, understand deeper, and feel more confident using the language.</p>
+            </div>
+
+            <div class="discovery-activity">
+                <h3>🔍 Detective Activity: Uncovering Conditionals</h3>
+                
+                <h4>Step 1: The Evidence (Authentic Materials)</h4>
+                <div style="background: white; padding: 15px; border-radius: 5px; margin: 10px 0;">
+                    <p><strong>Weather App Notification:</strong> "If it rains tomorrow, bring an umbrella."</p>
+                    <p><strong>Recipe Instruction:</strong> "If the sauce is too thick, add more water."</p>
+                    <p><strong>Friend's Text:</strong> "If I win the lottery, I'll buy a house by the beach!"</p>
+                    <p><strong>Parent's Advice:</strong> "If you had studied harder, you would have passed the exam."</p>
+                    <p><strong>News Headline:</strong> "If the vote passes, taxes will increase next year."</p>
+                </div>
+
+                <h4>Step 2: The Investigation Questions</h4>
+                <ul>
+                    <li>What word starts each condition? (All students can find this)</li>
+                    <li>Which situations are probably going to happen? (Meaning focus)</li>
+                    <li>Which situations are just imagination? (Meaning focus)</li>
+                    <li>Which situation already happened but didn't work out? (Meaning focus)</li>
+                    <li>What verb forms follow "if"? (Form focus)</li>
+                    <li>When would you use each type? (Use focus)</li>
+                </ul>
+
+                <h4>Step 3: The Hypothesis</h4>
+                <p>Students work in groups to create their own "rules" based on the evidence. Teacher guides but doesn't provide answers yet.</p>
+
+                <h4>Step 4: Testing the Theory</h4>
+                <p>Students try to create their own examples and test them with classmates. Do their rules work?</p>
+            </div>
+        </section>
+
+        <section class="contexts-and-situations">
+            <h2>Context is King: Grammar in Real Situations</h2>
+            
+            <div class="analogy-box">
+                <h3>🎬 The Movie Director's Approach</h3>
+                <p>Great movie directors don't just tell actors what to say—they create situations where the dialogue feels natural and necessary. As a grammar teacher, you're the director creating <strong>realistic scenarios</strong> where specific grammar structures become the natural, obvious choice for communication.</p>
+            </div>
+
+            <div class="timeline-container">
+                <div class="timeline-stage" style="left: 0; width: 25%;">
+                    <div style="background: #f44336; color: white; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+                        <strong>CONTEXT SETTING</strong>
+                    </div>
+                    <p style="font-size: 12px;">Create realistic situation where grammar is needed</p>
+                </div>
+                <div class="timeline-stage" style="left: 25%; width: 25%;">
+                    <div style="background: #ff9800; color: white; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+                        <strong>EXPOSURE</strong>
+                    </div>
+                    <p style="font-size: 12px;">Students encounter target grammar naturally in context</p>
+                </div>
+                <div class="timeline-stage" style="left: 50%; width: 25%;">
+                    <div style="background: #4caf50; color: white; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+                        <strong>EXPLORATION</strong>
+                    </div>
+                    <p style="font-size: 12px;">Students notice patterns and discover rules</p>
+                </div>
+                <div class="timeline-stage" style="left: 75%; width: 25%;">
+                    <div style="background: #2196f3; color: white; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+                        <strong>EXPERIMENTATION</strong>
+                    </div>
+                    <p style="font-size: 12px;">Students use grammar in new, personalized contexts</p>
+                </div>
+            </div>
+
+            <div class="example-container">
+                <h3>🏠 Context Example: Teaching "Going to" for Future Plans</h3>
+                
+                <h4>❌ Traditional Context-Free Approach:</h4>
+                <p>"Today we learn 'going to' for future. Formula: Subject + am/is/are + going to + verb. Practice: I am going to eat. She is going to work."</p>
+
+                <h4>✅ Communicative Context-Rich Approach:</h4>
+                
+                <div style="background: #e8f5e8; padding: 15px; border-radius: 10px; margin: 10px 0;">
+                    <h5>🎬 Context: Planning a Class Party</h5>
+                    <p><strong>Teacher:</strong> "Great news! Our principal approved a class party for next Friday. We need to plan everything. What should we do?"</p>
+                    
+                    <p><strong>Natural student responses emerge:</strong></p>
+                    <ul>
+                        <li>"We should bring food" (should for advice)</li>
+                        <li>"I will bring pizza" (will for instant decisions)</li>
+                        <li>"I'm going to make a playlist tonight" (going to for plans)</li>
+                        <li>"Maria is going to decorate the room" (going to for arrangements)</li>
+                    </ul>
+
+                    <p><strong>Teacher notices and highlights:</strong> "Interesting! I notice you used different ways to talk about the future. Let's explore when we use each one..."</p>
+                </div>
+
+                <h5>Discovery Questions That Emerge Naturally:</h5>
+                <ul>
+                    <li>Which plans are already decided? (going to)</li>
+                    <li>Which are instant decisions? (will)</li>
+                    <li>Which are suggestions? (should)</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="error-as-learning">
+            <h2>Errors as Learning Opportunities</h2>
+            
+            <div class="analogy-box">
+                <h3>🔬 The Scientist's Mindset</h3>
+                <p>In science, "failed" experiments provide the most valuable data. Student errors aren't failures—they're <strong>research data</strong> showing us exactly how their minds are processing language. Each error reveals a hypothesis the student is testing about how English works. Our job is to help them refine their hypotheses, not punish them for experimenting.</p>
+            </div>
+
+            <div class="error-analysis">
+                <h3>🧬 Error Analysis: Present Perfect Confusion</h3>
+                
+                <h4>Student Error: "I have seen that movie yesterday"</h4>
+                
+                <div class="correction-ladder">
+                    <div class="ladder-step">
+                        <strong>Diagnose the Logic:</strong> Student understands present perfect connects past and present, but doesn't know "yesterday" = simple past
+                    </div>
+                    <div class="ladder-step">
+                        <strong>Find the Positive:</strong> "Great! You know present perfect connects past to now. That's exactly right!"
+                    </div>
+                    <div class="ladder-step">
+                        <strong>Create Awareness:</strong> "Help me understand: when you say 'yesterday,' are you thinking about a specific time or general experience?"
+                    </div>
+                    <div class="ladder-step">
+                        <strong>Guide Discovery:</strong> "Let's sort these time expressions: yesterday, ever, just, last week, recently, in 2019..."
+                    </div>
+                    <div class="ladder-step">
+                        <strong>Practice in Context:</strong> "Tell me about movies—one you saw recently (any time) and one you saw yesterday (specific time)"
+                    </div>
+                </div>
+            </div>
+
+            <div class="example-container">
+                <h3>🎯 Common Grammar Errors and Their Hidden Logic</h3>
+                
+                <h4>"I am here since 2020"</h4>
+                <p><strong>Student Logic:</strong> "I'm still here, so I use present tense"</p>
+                <p><strong>Teaching Opportunity:</strong> Explore how different languages show ongoing actions</p>
+
+                <h4>"I have 25 years old"</h4>
+                <p><strong>Student Logic:</strong> "I possess 25 years" (literal translation logic)</p>
+                <p><strong>Teaching Opportunity:</strong> Compare "have" for possession vs. "be" for states</p>
+
+                <h4>"If I will see John, I'll tell him"</h4>
+                <p><strong>Student Logic:</strong> "Both are future, so both use 'will'"</p>
+                <p><strong>Teaching Opportunity:</strong> Discover why conditions use present tense</p>
+            </div>
+        </section>
+
+        <section class="communicative-activities">
+            <h2>Grammar Games and Communicative Activities</h2>
+            
+            <div class="analogy-box">
+                <h3>🎮 The Game Designer's Secret</h3>
+                <p>Great video games don't teach you the controls by making you memorize button combinations. They create situations where you <strong>need</strong> to jump, run, or fight to succeed, so you learn controls naturally while pursuing meaningful goals. Grammar games should work the same way—students learn structures while pursuing communication goals.</p>
+            </div>
+
+            <div class="game-board">
+                <h3>🎲 Grammar Game: "The Alibi Game" (Past Continuous + Simple Past)</h3>
+                
+                <h4>The Setup:</h4>
+                <p>A crime happened at 8 PM last night. Students work in pairs to create alibis using past continuous.</p>
+                
+                <h4>The Grammar Target:</h4>
+                <p>Students must use: "At 8 PM, I was [verb]ing..." and "When the crime happened, I was [verb]ing..."</p>
+                
+                <h4>The Twist:</h4>
+                <p>Partners must have matching stories, but they prepare separately. Inconsistencies reveal "guilty" parties!</p>
+                
+                <h4>Why It Works:</h4>
+                <ul>
+                    <li>Students need grammar to succeed in the game</li>
+                    <li>Meaningful communication (defending innocence!)</li>
+                    <li>Natural repetition without boredom</li>
+                    <li>Students self-correct to win</li>
+                </ul>
+            </div>
+
+            <div class="example-container">
+                <h3>🎪 More Communicative Grammar Activities</h3>
+                
+                <h4>For Comparatives: "Desert Island Ranking"</h4>
+                <p>Students rank items for survival, explaining: "Water is more important than matches because..." Forces natural comparison use.</p>
+                
+                <h4>For Modal Verbs: "Advice Column"</h4>
+                <p>Students write problems, others give advice using different modals: "You should/could/might/must..." Real problems = real investment.</p>
+                
+                <h4>For Question Forms: "Celebrity Interview Preparation"</h4>
+                <p>Students prepare to interview their favorite celebrity, creating questions they genuinely want answered. Grammar becomes a tool for curiosity.</p>
+                
+                <h4>For Reported Speech: "Office Gossip"</h4>
+                <p>Students receive "confidential memos" and must share information without showing the paper: "The boss said that..." / "Maria told me she was..."</p>
+            </div>
+        </section>
+
+        <section class="scaffolding-independence">
+            <h2>From Support to Independence: The Scaffolding Journey</h2>
+            
+            <div class="analogy-box">
+                <h3>🏗️ The Construction Metaphor</h3>
+                <p>When building a house, scaffolding provides essential support during construction, but it's gradually removed as the structure becomes self-supporting. Grammar scaffolding works the same way—we provide maximum support initially, then gradually remove it until students can use grammar independently in real communication.</p>
+            </div>
+
+            <svg class="grammar-structure-viz" viewBox="0 0 800 250">
+                <!-- Building structure -->
+                <rect x="200" y="50" width="400" height="150" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+                <text x="400" y="130" text-anchor="middle" font-size="16" font-weight="bold">Student Grammar Knowledge</text>
+                
+                <!-- Scaffolding levels -->
+                <g id="maxSupport">
+                    <rect x="50" y="50" width="150" height="30" fill="#ff5722" opacity="0.8"/>
+                    <text x="125" y="70" text-anchor="middle" fill="white" font-size="12">Maximum Support</text>
+                    
+                    <rect x="50" y="85" width="150" height="30" fill="#ff9800" opacity="0.8"/>
+                    <text x="125" y="105" text-anchor="middle" fill="white" font-size="12">Guided Practice</text>
+                    
+                    <rect x="50" y="120" width="150" height="30" fill="#ffc107" opacity="0.8"/>
+                    <text x="125" y="140" text-anchor="middle" fill="white" font-size="12">Semi-Independent</text>
+                    
+                    <rect x="50" y="155" width="150" height="30" fill="#4caf50" opacity="0.8"/>
+                    <text x="125" y="175" text-anchor="middle" fill="white" font-size="12">Independent Use</text>
+                </g>
+                
+                <!-- Arrows showing progression -->
+                <path d="M 200 65 L 175 65" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+                <path d="M 200 100 L 175 100" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+                <path d="M 200 135 L 175 135" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+                <path d="M 200 170 L 175 170" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+                
+                <!-- Goal -->
+                <rect x="650" y="100" width="100" height="50" fill="#4caf50" stroke="#2e7d32" stroke-width="2"/>
+                <text x="700" y="125" text-anchor="middle" fill="white" font-size="12" font-weight="bold">Fluent</text>
+                <text x="700" y="140" text-anchor="middle" fill="white" font-size="12" font-weight="bold">Communication</text>
+                
+                <defs>
+                    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                        <polygon points="0 0, 10 3.5, 0 7" fill="#666"/>
+                    </marker>
+                </defs>
+            </svg>
+
+            <div class="example-container">
+                <h3>🎯 Scaffolding Example: Teaching Passive Voice</h3>
+                
+                <h4>Level 1: Maximum Support (Controlled Practice)</h4>
+                <ul>
+                    <li>Students transform given sentences: "Shakespeare wrote Romeo and Juliet" → "Romeo and Juliet was written by Shakespeare"</li>
+                    <li>All vocabulary provided, clear examples, immediate correction</li>
+                </ul>
+
+                <h4>Level 2: Guided Practice (Semi-Controlled)</h4>
+                <ul>
+                    <li>Students describe how products are made using visual prompts</li>
+                    <li>Some language support provided, teacher monitors and assists</li>
+                </ul>
+
+                <h4>Level 3: Semi-Independent (Communicative Practice)</h4>
+                <ul>
+                    <li>Students explain processes they know about (cooking, sports, hobbies)</li>
+                    <li>Focus on communication, passive voice emerges naturally</li>
+                </ul>
+
+                <h4>Level 4: Independent Use (Free Communication)</h4>
+                <ul>
+                    <li>Students engage in authentic tasks where passive might be useful</li>
+                    <li>Writing formal reports, describing scientific processes, news reporting</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="assessment-integration">
+            <h2>Assessing Grammar Communicatively</h2>
+            
+            <div class="analogy-box">
+                <h3>🎭 The Performance Review</h3>
+                <p>Traditional grammar tests are like asking actors to recite lines perfectly in an empty theater. Communicative assessment is like watching actors perform in front of a real audience—we evaluate not just accuracy, but whether the performance achieves its intended effect on real people in real situations.</p>
+            </div>
+
+            <div class="example-container">
+                <h3>🎪 Assessment Techniques That Work</h3>
+                
+                <h4>Portfolio-Based Assessment</h4>
+                <ul>
+                    <li>Students collect examples of target grammar from their real-life English use</li>
+                    <li>Reflection essays: "How has my use of conditionals improved my ability to give advice?"</li>
+                    <li>Progress tracking through authentic communication samples</li>
+                </ul>
+
+                <h4>Task-Based Assessment</h4>
+                <ul>
+                    <li>Students complete real-world tasks requiring target grammar</li>
+                    <li>Example: Plan a company event (future forms), write a complaint letter (conditionals), describe a process (passive voice)</li>
+                    <li>Assessment focuses on task completion AND appropriate grammar use</li>
+                </ul>
+
+                <h4>Peer Assessment Activities</h4>
+                <ul>
+                    <li>Students evaluate each other's communication effectiveness</li>
+                    <li>"Did you understand their message?" comes before "Was their grammar perfect?"</li>
+                    <li>Students become grammar coaches for each other</li>
+                </ul>
+
+                <h4>Self-Assessment Tools</h4>
+                <ul>
+                    <li>"Can-do" statements: "I can give advice using modal verbs appropriately"</li>
+                    <li>Error logs: Students track their own common mistakes and improvements</li>
+                    <li>Goal-setting conferences: "What grammar do YOU want to improve for YOUR goals?"</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="technology-enhanced-grammar">
+            <h2>Technology-Enhanced Grammar Discovery</h2>
+            
+            <div class="example-container">
+                <h3>💻 Digital Tools for Communicative Grammar</h3>
+                
+                <h4>Corpus Tools for Pattern Discovery</h4>
+                <ul>
+                    <li>Students search real language databases to discover grammar patterns</li>
+                    <li>Example: Search "since" vs "for" in authentic texts to understand usage</li>
+                    <li>Students become language researchers, not rule memorizers</li>
+                </ul>
+
+                <h4>Video Analysis for Context</h4>
+                <ul>
+                    <li>Students analyze grammar in movie clips, YouTube videos, TED talks</li>
+                    <li>Focus on why speakers choose specific structures in specific moments</li>
+                    <li>Connect grammar to real communicative intentions</li>
+                </ul>
+
+                <h4>Interactive Grammar Games</h4>
+                <ul>
+                    <li>Digital escape rooms requiring specific grammar to solve puzzles</li>
+                    <li>Story-building apps where grammar choices affect narrative outcomes</li>
+                    <li>Virtual reality scenarios for practicing grammar in immersive contexts</li>
+                </ul>
+
+                <h4>AI-Powered Feedback</h4>
+                <ul>
+                    <li>Chatbots for low-stakes grammar practice in conversation</li>
+                    <li>Automated error analysis showing patterns in student writing</li>
+                    <li>Personalized grammar practice based on individual error patterns</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="practice-activities">
+            <div class="practice-activity">
+                <h2>🎯 Transform Your Grammar Teaching</h2>
+                
+                <h3>Activity 1: The Grammar Detective Challenge</h3>
+                <p>Choose one grammar point you typically teach traditionally. Design a discovery activity where students find patterns in authentic materials. Include:</p>
+                <ul>
+                    <li>Realistic context where the grammar naturally appears</li>
+                    <li>Authentic materials (not textbook sentences)</li>
+                    <li>Investigation questions that guide discovery</li>
+                    <li>Student hypothesis formation before rule presentation</li>
+                </ul>
+                
+                <h3>Activity 2: Context Creation Workshop</h3>
+                <p>For each of these grammar points, create a meaningful context where students would naturally need to use them:</p>
+                <ul>
+                    <li>Modal verbs for advice (should, could, might)</li>
+                    <li>Past perfect for explaining sequences</li>
+                    <li>Reported speech for sharing information</li>
+                    <li>Comparatives for making decisions</li>
+                </ul>
+                
+                <h3>Activity 3: Error Analysis Lab</h3>
+                <p>Analyze these student errors using the MFU framework. What does each error reveal about the student's understanding?</p>
+                <ul>
+                    <li>"I am living here since five years"</li>
+                    <li>"If I will have time, I will call you"</li>
+                    <li>"The house was built by my father in 1995"</li>
+                    <li>"I have seen that movie yesterday night"</li>
+                </ul>
+                
+                <h3>Activity 4: Game Design Challenge</h3>
+                <p>Design a communicative activity/game for teaching one of these grammar points:</p>
+                <ul>
+                    <li>Third conditional (unreal past situations)</li>
+                    <li>Present perfect continuous (ongoing actions)</li>
+                    <li>Relative clauses (defining and non-defining)</li>
+                    <li>Future perfect (completed actions in future time)</li>
+                </ul>
+                <p>Your game should make the grammar necessary for success, not just practice.</p>
+                
+                <h3>Activity 5: Scaffolding Sequence</h3>
+                <p>Create a four-level scaffolding sequence (maximum support → independent use) for teaching passive voice in context. Include specific activities and assessment strategies for each level.</p>
+            </div>
+        </section>
+
+        <section class="common-challenges">
+            <h2>🔧 Troubleshooting Common Challenges</h2>
+            
+            <div class="example-container">
+                <h3>Challenge 1: "But students expect explicit grammar rules!"</h3>
+                <p><strong>Solution:</strong> Bridge traditional expectations with discovery learning. Start lessons with context, guide discovery, then provide the explicit rule as confirmation, not introduction.</p>
+                
+                <h3>Challenge 2: "Discovery takes too much time!"</h3>
+                <p><strong>Solution:</strong> Remember that deep learning takes time initially but saves time later. Students who discover patterns remember longer and apply more flexibly.</p>
+                
+                <h3>Challenge 3: "Students make more errors with communicative approach!"</h3>
+                <p><strong>Solution:</strong> Errors in communication are different from errors in isolation. Students are stretching their language, which initially creates more errors but leads to greater long-term fluency.</p>
+                
+                <h3>Challenge 4: "How do I handle mixed proficiency levels?"</h3>
+                <p><strong>Solution:</strong> Use tiered discovery materials. Give beginning students simpler examples, advanced students more complex contexts, but have all students discover the same basic pattern.</p>
+            </div>
+        </section>
+
+        <section class="key-takeaways">
+            <div class="analogy-box">
+                <h2>🎯 The Grammar Revolution Manifesto</h2>
+                <ul>
+                    <li><strong>Context is king:</strong> Grammar without context is like music without melody</li>
+                    <li><strong>Students are detectives:</strong> Discovery beats dictation every time</li>
+                    <li><strong>Errors are data:</strong> Each mistake reveals student thinking patterns</li>
+                    <li><strong>MFU framework:</strong> Balance meaning, form, and use for complete understanding</li>
+                    <li><strong>Communication first:</strong> Grammar serves communication, not the reverse</li>
+                    <li><strong>Scaffolding to independence:</strong> Graduate support systematically</li>
+                    <li><strong>Assessment as communication:</strong> Test grammar use, not just grammar knowledge</li>
+                    <li><strong>Technology as enabler:</strong> Digital tools enhance discovery and practice</li>
+                </ul>
+            </div>
+        </section>
+
+        <footer>
+            <p><strong>Next Lesson Preview:</strong> "Developing Speaking and Listening Skills" - Creating natural conversation opportunities and building listening strategies that prepare students for real-world English communication.</p>
+            <p><em>"Grammar is a piano I play by ear, since I seem to have been out of school the day they taught piano playing." - Joan Didion</em></p>
+        </footer>
+    </main>
+</body>
+</html>
