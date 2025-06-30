@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Reading Comprehension - Mastering Text Understanding</title>
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="icon" href="/favicon.png" type="image/png">
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ startOnLoad: true });
+    </script>
+    <style>
+        .reading-demo {
+            background: #f0f8ff;
+            border-left: 4px solid #4a90e2;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        .reading-exercise {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .analogy {
+            background: #e8f5e8;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        .text-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .text-type {
+            background: #e3f2fd;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid #2196f3;
+        }
+        .strategy-box {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+        .highlighted-text {
+            background: #ffeb3b;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        .context-clue {
+            background: #e1f5fe;
+            border-left: 3px solid #03a9f4;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .reading-speed {
+            background: #f3e5f5;
+            border: 2px solid #9c27b0;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .comprehension-quiz {
+            background: #e8f5e8;
+            border: 2px solid #4caf50;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .quiz-question {
+            margin: 15px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        .quiz-option {
+            display: block;
+            margin: 8px 0;
+            padding: 8px;
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .quiz-option:hover {
+            background: #e9ecef;
+        }
+        .quiz-option.selected {
+            background: #4caf50;
+            color: white;
+            border-color: #2e7d32;
+        }
+        .quiz-option.correct {
+            background: #4caf50;
+            color: white;
+        }
+        .quiz-option.incorrect {
+            background: #f44336;
+            color: white;
+        }
+        .reading-tracker {
+            background: #fff3e0;
+            border: 2px solid #ff9800;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        .progress-fill {
+            height: 100%;
+            background: #4caf50;
+            transition: width 0.5s ease;
+        }
+        .vocabulary-builder {
+            background: #fce4ec;
+            border: 2px solid #e91e63;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .word-card {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .word-card:hover {
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+        .word-definition {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 5px;
+            border-left: 3px solid #e91e63;
+        }
+        .word-card.revealed .word-definition {
+            display: block;
+        }
+        canvas {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .reading-timer {
+            text-align: center;
+            font-size: 2em;
+            font-weight: bold;
+            color: #2196f3;
+            margin: 20px 0;
+        }
+        .text-sample {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            line-height: 1.6;
+            font-family: 'Georgia', serif;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>English Reading Comprehension</h1>
+        <p class="subtitle">Mastering Text Understanding</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>Welcome to Strategic Reading</h2>
+            <p>Reading in English is like being a detective. You're not just looking at words - you're gathering clues, making connections, and solving the mystery of meaning. Today, we'll develop your investigative skills to become a confident, efficient reader who can tackle any English text with strategy and success.</p>
+
+            <div class="analogy">
+                <h3>🕵️ The Detective Investigation Analogy</h3>
+                <p>Think of reading comprehension like solving a case. You start with the big picture (scanning for overall meaning), then examine the evidence (key details and context clues), connect the dots (understand relationships between ideas), and finally draw conclusions (comprehend the full message). Good detectives use specific techniques and tools - and so do good readers!</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>The Reading Comprehension Framework</h2>
+            <p>Effective reading involves multiple levels of understanding, from basic word recognition to critical analysis.</p>
+
+            <div class="mermaid">
+                graph TD
+                    A[Reading Comprehension Levels] --> B[Literal Understanding<br/>What does it say?]
+                    A --> C[Inferential Understanding<br/>What does it mean?]
+                    A --> D[Critical Understanding<br/>What do I think about it?]
+                    
+                    B --> E[Word Recognition<br/>Vocabulary & Context]
+                    B --> F[Main Ideas<br/>Topic & Supporting Details]
+                    B --> G[Sequence & Structure<br/>Organization of Information]
+                    
+                    C --> H[Reading Between Lines<br/>Implied Meanings]
+                    C --> I[Author's Purpose<br/>Why was this written?]
+                    C --> J[Cause & Effect<br/>Relationships & Connections]
+                    
+                    D --> K[Evaluate Arguments<br/>Fact vs Opinion]
+                    D --> L[Compare Sources<br/>Multiple Perspectives]
+                    D --> M[Apply Knowledge<br/>Use Information]
+            </div>
+        </section>
+
+        <section>
+            <h2>Interactive Reading Speed & Comprehension Tracker</h2>
+            <p>Practice your reading skills with this sample text. We'll track your speed and test your comprehension:</p>
+            
+            <div class="reading-tracker">
+                <div class="reading-timer" id="readingTimer">00:00</div>
+                <button onclick="startReading()" id="startBtn" style="padding: 10px 20px; background: #4caf50; color: white; border: none; border-radius: 5px; cursor: pointer;">Start Reading</button>
+                <button onclick="finishReading()" id="finishBtn" style="padding: 10px 20px; background: #f44336; color: white; border: none; border-radius: 5px; cursor: pointer; display: none;">Finish Reading</button>
+                
+                <div class="text-sample" id="sampleText" style="display: none;">
+                    <h3>The Future of Urban Transportation</h3>
+                    <p>Cities around the world are facing unprecedented challenges in transportation. As urban populations continue to grow, traditional transportation systems are becoming overwhelmed, leading to increased traffic congestion, air pollution, and commuting times. However, innovative solutions are emerging that promise to revolutionize how we move through cities.</p>
+                    
+                    <p>Electric vehicles represent one of the most significant developments in urban transportation. Unlike conventional gasoline-powered cars, electric vehicles produce zero direct emissions, making them an environmentally friendly alternative. Major automobile manufacturers are investing billions of dollars in electric vehicle technology, with some companies pledging to phase out internal combustion engines entirely within the next two decades.</p>
+                    
+                    <p>Another promising development is the rise of shared mobility services. Car-sharing programs, bike-sharing systems, and ride-sharing applications are changing how people think about transportation ownership. Instead of owning a personal vehicle that sits unused 95% of the time, urban residents are increasingly choosing to access transportation when they need it. This shift could dramatically reduce the number of vehicles required in cities, freeing up space currently used for parking.</p>
+                    
+                    <p>Perhaps the most futuristic solution being developed is autonomous vehicles. Self-driving cars could operate more efficiently than human drivers, reducing traffic congestion and accidents. When combined with sharing services, autonomous vehicles could provide personalized transportation without the need for individual ownership. However, significant technological and regulatory hurdles remain before autonomous vehicles become mainstream.</p>
+                    
+                    <p>The integration of these technologies suggests that the future of urban transportation will be electric, shared, and autonomous. This transformation will require substantial investment in infrastructure, changes to regulations, and shifts in public behavior. Cities that successfully navigate this transition will likely see improvements in air quality, reduced traffic congestion, and more livable urban environments.</p>
+                </div>
+                
+                <div id="readingResults" style="display: none;">
+                    <h4>Your Reading Performance:</h4>
+                    <p>Reading Time: <span id="timeResult"></span></p>
+                    <p>Estimated Speed: <span id="speedResult"></span> words per minute</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="speedProgress"></div>
+                    </div>
+                    <p><small>Average adult reading speed: 200-300 WPM</small></p>
+                </div>
+            </div>
+            
+            <script>
+                let startTime, endTime;
+                const wordCount = 347; // Approximate word count of the sample text
+                
+                function startReading() {
+                    startTime = new Date();
+                    document.getElementById('sampleText').style.display = 'block';
+                    document.getElementById('startBtn').style.display = 'none';
+                    document.getElementById('finishBtn').style.display = 'inline-block';
+                    
+                    // Start timer display
+                    const timer = setInterval(() => {
+                        if (!startTime) {
+                            clearInterval(timer);
+                            return;
+                        }
+                        const elapsed = new Date() - startTime;
+                        const minutes = Math.floor(elapsed / 60000);
+                        const seconds = Math.floor((elapsed % 60000) / 1000);
+                        document.getElementById('readingTimer').textContent = 
+                            `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                    }, 1000);
+                }
+                
+                function finishReading() {
+                    endTime = new Date();
+                    const timeElapsed = (endTime - startTime) / 1000; // seconds
+                    const minutes = timeElapsed / 60;
+                    const wpm = Math.round(wordCount / minutes);
+                    
+                    document.getElementById('timeResult').textContent = 
+                        `${Math.floor(minutes)} minutes ${Math.round(timeElapsed % 60)} seconds`;
+                    document.getElementById('speedResult').textContent = wpm;
+                    
+                    // Calculate progress bar (300 WPM = 100%)
+                    const progressPercent = Math.min((wpm / 300) * 100, 100);
+                    document.getElementById('speedProgress').style.width = progressPercent + '%';
+                    
+                    document.getElementById('readingResults').style.display = 'block';
+                    document.getElementById('finishBtn').style.display = 'none';
+                    
+                    // Show comprehension quiz
+                    document.getElementById('comprehensionQuiz').style.display = 'block';
+                    
+                    startTime = null; // Stop timer
+                }
+            </script>
+        </section>
+
+        <section>
+            <h2>Reading Comprehension Quiz</h2>
+            <div class="comprehension-quiz" id="comprehensionQuiz" style="display: none;">
+                <h3>Test Your Understanding</h3>
+                <p>Answer these questions based on the text you just read:</p>
+                
+                <div class="quiz-question">
+                    <p><strong>1. What is the main topic of the passage?</strong></p>
+                    <div class="quiz-option" onclick="selectAnswer(this, false)">A) The history of automobiles</div>
+                    <div class="quiz-option" onclick="selectAnswer(this, false)">B) Environmental pollution in cities</div>
+                    <div class="quiz-option" onclick="selectAnswer(this, true)">C) Future innovations in urban transportation</div>
+                    <div class="quiz-option" onclick="selectAnswer(this, false)">D) Traffic congestion problems</div>
+                </div>
+                
+                <div class="quiz-question">
+                    <p><strong>2. According to the text, what percentage of time do personal vehicles typically sit unused?</strong></p>
+                    <div class="quiz-option" onclick="selectAnswer(this, false)">A) 85%</div>
+                    <div class="quiz-option" onclick="selectAnswer(this, false)">B) 90%</div>
+                    <div class="quiz-option" onclick="selectAnswer(this, true)">C) 95%</div>
+                    <div class="quiz-option" onclick="selectAnswer(this, false)">D) 98%</div>
+                </div>
+                
+                <div class="quiz-question">
+                    <p><strong>3. The author's tone toward future transportation developments is:</strong></p>
+                    <div class="quiz-option" onclick="selectAnswer(this, false)">A) Skeptical and doubtful</div>
+                    <div class="quiz-option" onclick="selectAnswer(this, true)">B) Optimistic but realistic about challenges</div>
+                    <div class="quiz-option" onclick="selectAnswer(this, false)">C) Completely enthusiastic</div>
+                    <div class="quiz-option" onclick="selectAnswer(this, false)">D) Neutral and detached</div>
+                </div>
+                
+                <div id="quizResults" style="display: none; margin-top: 20px; padding: 15px; background: #e8f5e8; border-radius: 5px;">
+                    <h4>Quiz Complete!</h4>
+                    <p>Your comprehension score: <span id="scoreDisplay"></span></p>
+                    <p id="scoreInterpretation"></p>
+                </div>
+            </div>
+            
+            <script>
+                let correctAnswers = 0;
+                let totalQuestions = 3;
+                let answeredQuestions = 0;
+                
+                function selectAnswer(element, isCorrect) {
+                    // Prevent multiple selections for the same question
+                    const question = element.parentElement;
+                    const options = question.querySelectorAll('.quiz-option');
+                    
+                    // Check if already answered
+                    let alreadyAnswered = false;
+                    options.forEach(opt => {
+                        if (opt.classList.contains('selected')) {
+                            alreadyAnswered = true;
+                        }
+                    });
+                    
+                    if (alreadyAnswered) return;
+                    
+                    // Mark the selected answer
+                    element.classList.add('selected');
+                    
+                    // Show correct/incorrect
+                    setTimeout(() => {
+                        options.forEach(opt => {
+                            const wasCorrect = opt.onclick.toString().includes('true');
+                            if (wasCorrect) {
+                                opt.classList.add('correct');
+                            } else if (opt.classList.contains('selected')) {
+                                opt.classList.add('incorrect');
+                            }
+                        });
+                    }, 500);
+                    
+                    if (isCorrect) {
+                        correctAnswers++;
+                    }
+                    
+                    answeredQuestions++;
+                    
+                    if (answeredQuestions === totalQuestions) {
+                        setTimeout(() => {
+                            showQuizResults();
+                        }, 1500);
+                    }
+                }
+                
+                function showQuizResults() {
+                    const percentage = Math.round((correctAnswers / totalQuestions) * 100);
+                    document.getElementById('scoreDisplay').textContent = `${correctAnswers}/${totalQuestions} (${percentage}%)`;
+                    
+                    let interpretation = "";
+                    if (percentage >= 90) {
+                        interpretation = "Excellent comprehension! You understood the text very well.";
+                    } else if (percentage >= 70) {
+                        interpretation = "Good comprehension! You grasped the main ideas effectively.";
+                    } else if (percentage >= 50) {
+                        interpretation = "Fair comprehension. Try the reading strategies below to improve.";
+                    } else {
+                        interpretation = "Focus on the reading strategies and practice more. You'll improve!";
+                    }
+                    
+                    document.getElementById('scoreInterpretation').textContent = interpretation;
+                    document.getElementById('quizResults').style.display = 'block';
+                }
+            </script>
+        </section>
+
+        <section>
+            <h2>Essential Reading Strategies</h2>
+            <p>Different types of texts require different reading approaches. Master these strategies to become a more efficient reader:</p>
+
+            <div class="text-types">
+                <div class="strategy-box">
+                    <h3>📖 Pre-Reading Strategy</h3>
+                    <h4>Survey Before You Read</h4>
+                    <ul>
+                        <li><strong>Scan the title and headings</strong> - What's the topic?</li>
+                        <li><strong>Look at images and captions</strong> - Visual clues</li>
+                        <li><strong>Read the first and last paragraphs</strong> - Main ideas</li>
+                        <li><strong>Notice text features</strong> - Bold words, bullet points</li>
+                        <li><strong>Predict the content</strong> - What will this be about?</li>
+                    </ul>
+                    <div class="context-clue">
+                        <strong>Real-world example:</strong> Before reading a news article, scan the headline, subheadings, and photo captions. This gives you the story's framework in 30 seconds.
+                    </div>
+                </div>
+
+                <div class="strategy-box">
+                    <h3>🎯 Active Reading Strategy</h3>
+                    <h4>Engage With the Text</h4>
+                    <ul>
+                        <li><strong>Ask questions while reading</strong> - Who? What? Why? How?</li>
+                        <li><strong>Make connections</strong> - Link to your experience</li>
+                        <li><strong>Visualize</strong> - Create mental pictures</li>
+                        <li><strong>Summarize paragraphs</strong> - What's the main point?</li>
+                        <li><strong>Monitor understanding</strong> - Do I get this?</li>
+                    </ul>
+                    <div class="context-clue">
+                        <strong>Real-world example:</strong> While reading a work email, ask "What does my boss want me to do?" and "When is this due?" This keeps you focused on actionable information.
+                    </div>
+                </div>
+
+                <div class="strategy-box">
+                    <h3>🔄 Post-Reading Strategy</h3>
+                    <h4>Consolidate Understanding</h4>
+                    <ul>
+                        <li><strong>Summarize main ideas</strong> - In your own words</li>
+                        <li><strong>Review difficult parts</strong> - Reread for clarity</li>
+                        <li><strong>Connect to bigger picture</strong> - How does this fit?</li>
+                        <li><strong>Apply the information</strong> - How will I use this?</li>
+                        <li><strong>Reflect on the process</strong> - What helped me understand?</li>
+                    </ul>
+                    <div class="context-clue">
+                        <strong>Real-world example:</strong> After reading a training manual, summarize the key steps and practice applying them. This moves information from short-term to long-term memory.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Context Clues: Your Vocabulary Detective Tools</h2>
+            <p>When you encounter unknown words, don't panic! Use these context clue strategies to unlock meaning:</p>
+
+            <div class="vocabulary-builder">
+                <h3>Interactive Vocabulary Detective Challenge</h3>
+                <p>Click each word card to reveal how context clues help you understand meaning:</p>
+                
+                <div class="word-card" onclick="revealDefinition(this)">
+                    <h4>Word: "Ubiquitous"</h4>
+                    <p><strong>Context:</strong> "Smartphones have become <span class="highlighted-text">ubiquitous</span> in modern society. You see them everywhere - on buses, in restaurants, at work, and even in remote villages around the world."</p>
+                    <div class="word-definition">
+                        <strong>Context Clue Type:</strong> Examples and explanation<br>
+                        <strong>Meaning:</strong> Present everywhere; widespread<br>
+                        <strong>How we know:</strong> The text says "everywhere" and lists multiple locations
+                    </div>
+                </div>
+                
+                <div class="word-card" onclick="revealDefinition(this)">
+                    <h4>Word: "Mitigate"</h4>
+                    <p><strong>Context:</strong> "To <span class="highlighted-text">mitigate</span> the effects of climate change, scientists recommend reducing carbon emissions, unlike ignoring the problem which would worsen the situation."</p>
+                    <div class="word-definition">
+                        <strong>Context Clue Type:</strong> Contrast (unlike)<br>
+                        <strong>Meaning:</strong> To reduce or lessen the severity of something<br>
+                        <strong>How we know:</strong> Contrasted with "ignoring" and "worsen," suggesting the opposite action
+                    </div>
+                </div>
+                
+                <div class="word-card" onclick="revealDefinition(this)">
+                    <h4>Word: "Meticulous"</h4>
+                    <p><strong>Context:</strong> "Sarah is incredibly <span class="highlighted-text">meticulous</span> in her work; she carefully checks every detail, reviews each calculation twice, and ensures perfect accuracy in all her reports."</p>
+                    <div class="word-definition">
+                        <strong>Context Clue Type:</strong> Definition through examples<br>
+                        <strong>Meaning:</strong> Extremely careful and precise<br>
+                        <strong>How we know:</strong> The text describes specific careful behaviors that define the word
+                    </div>
+                </div>
+                
+                <div class="word-card" onclick="revealDefinition(this)">
+                    <h4>Word: "Obsolete"</h4>
+                    <p><strong>Context:</strong> "Many technologies become <span class="highlighted-text">obsolete</span> quickly. For example, VHS tapes, floppy disks, and pagers are no longer used because newer, better alternatives have replaced them."</p>
+                    <div class="word-definition">
+                        <strong>Context Clue Type:</strong> Examples and explanation<br>
+                        <strong>Meaning:</strong> No longer used; outdated<br>
+                        <strong>How we know:</strong> Examples of old technologies "no longer used" and "replaced"
+                    </div>
+                </div>
+            </div>
+            
+            <script>
+                function revealDefinition(card) {
+                    card.classList.toggle('revealed');
+                }
+            </script>
+
+            <div class="strategy-box">
+                <h3>Context Clue Types to Master</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                    <div>
+                        <h4>🔍 Definition Clues</h4>
+                        <p>The meaning is directly stated</p>
+                        <p><em>"A carnivore, an animal that eats meat, hunts daily."</em></p>
+                    </div>
+                    <div>
+                        <h4>📝 Example Clues</h4>
+                        <p>Examples help explain the word</p>
+                        <p><em>"Citrus fruits like oranges, lemons, and limes..."</em></p>
+                    </div>
+                    <div>
+                        <h4>↔️ Contrast Clues</h4>
+                        <p>Opposite meaning is given</p>
+                        <p><em>"Unlike his gregarious brother, Tom was shy."</em></p>
+                    </div>
+                    <div>
+                        <h4>🔄 Synonym Clues</h4>
+                        <p>Similar word provides meaning</p>
+                        <p><em>"The ancient, old building stood majestically."</em></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Reading Different Text Types</h2>
+            <p>Each type of text has its own structure and purpose. Knowing what to expect helps you read more effectively:</p>
+
+            <div class="text-types">
+                <div class="text-type">
+                    <h3>📰 News Articles</h3>
+                    <div class="reading-demo">
+                        <h4>Structure Pattern:</h4>
+                        <ol>
+                            <li><strong>Headline:</strong> Main story in few words</li>
+                            <li><strong>Lead:</strong> Who, what, when, where, why</li>
+                            <li><strong>Body:</strong> Details in order of importance</li>
+                            <li><strong>Quotes:</strong> Expert opinions and witnesses</li>
+                        </ol>
+                        <h4>Reading Strategy:</h4>
+                        <ul>
+                            <li>Read headline and first paragraph for main story</li>
+                            <li>Scan for key facts and quotes</li>
+                            <li>Look for bias and multiple perspectives</li>
+                            <li>Check source credibility and date</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="text-type">
+                    <h3>📧 Professional Emails</h3>
+                    <div class="reading-demo">
+                        <h4>Key Elements to Find:</h4>
+                        <ol>
+                            <li><strong>Purpose:</strong> Why is this being sent?</li>
+                            <li><strong>Action items:</strong> What do I need to do?</li>
+                            <li><strong>Deadlines:</strong> When is it due?</li>
+                            <li><strong>Context:</strong> Background information</li>
+                        </ol>
+                        <h4>Reading Strategy:</h4>
+                        <ul>
+                            <li>Scan for action words: "please," "need," "by [date]"</li>
+                            <li>Look for numbered lists or bullet points</li>
+                            <li>Check CC and subject line for context</li>
+                            <li>Identify urgent vs. informational content</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="text-type">
+                    <h3>📚 Academic Texts</h3>
+                    <div class="reading-demo">
+                        <h4>Structure Pattern:</h4>
+                        <ol>
+                            <li><strong>Abstract/Introduction:</strong> Main argument</li>
+                            <li><strong>Literature Review:</strong> Background research</li>
+                            <li><strong>Methodology:</strong> How research was done</li>
+                            <li><strong>Results/Discussion:</strong> Findings and analysis</li>
+                            <li><strong>Conclusion:</strong> Implications and future research</li>
+                        </ol>
+                        <h4>Reading Strategy:</h4>
+                        <ul>
+                            <li>Read abstract first for overview</li>
+                            <li>Focus on introduction and conclusion</li>
+                            <li>Look for thesis statement and main arguments</li>
+                            <li>Pay attention to transitions and signpost words</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="text-type">
+                    <h3>📖 Literature & Fiction</h3>
+                    <div class="reading-demo">
+                        <h4>Elements to Track:</h4>
+                        <ol>
+                            <li><strong>Characters:</strong> Who are the main people?</li>
+                            <li><strong>Setting:</strong> When and where does it happen?</li>
+                            <li><strong>Plot:</strong> What happens? (conflict, climax, resolution)</li>
+                            <li><strong>Theme:</strong> What's the deeper message?</li>
+                        </ol>
+                        <h4>Reading Strategy:</h4>
+                        <ul>
+                            <li>Pay attention to character development</li>
+                            <li>Notice symbolism and recurring motifs</li>
+                            <li>Consider author's tone and style</li>
+                            <li>Think about themes and life lessons</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Speed Reading Techniques</h2>
+            <p>Reading faster doesn't mean understanding less. These techniques help you process text more efficiently:</p>
+
+            <div class="reading-speed">
+                <h3>Progressive Speed Reading Exercise</h3>
+                <p>Practice these techniques with increasingly challenging speeds:</p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                    <div style="background: white; padding: 15px; border-radius: 8px;">
+                        <h4>🚫 Eliminate Subvocalization</h4>
+                        <p><strong>Problem:</strong> "Hearing" words in your head slows reading</p>
+                        <p><strong>Solution:</strong> Hum softly while reading or chew gum to occupy your vocal cords</p>
+                        <p><strong>Practice:</strong> Read while counting 1-2-3-4 in your head</p>
+                    </div>
+                    
+                    <div style="background: white; padding: 15px; border-radius: 8px;">
+                        <h4>👀 Reduce Eye Fixations</h4>
+                        <p><strong>Problem:</strong> Eyes stop too often on individual words</p>
+                        <p><strong>Solution:</strong> Train eyes to see word groups</p>
+                        <p><strong>Practice:</strong> Use your finger to guide eyes in smooth sweeps across lines</p>
+                    </div>
+                    
+                    <div style="background: white; padding: 15px; border-radius: 8px;">
+                        <h4>⚡ Use Peripheral Vision</h4>
+                        <p><strong>Problem:</strong> Reading word-by-word is slow</p>
+                        <p><strong>Solution:</strong> See multiple words at once</p>
+                        <p><strong>Practice:</strong> Focus on center of line and try to see words on both sides</p>
+                    </div>
+                    
+                    <div style="background: white; padding: 15px; border-radius: 8px;">
+                        <h4>🔍 Strategic Skimming</h4>
+                        <p><strong>Problem:</strong> Reading every word equally</p>
+                        <p><strong>Solution:</strong> Focus on content words</p>
+                        <p><strong>Practice:</strong> Skip articles (a, an, the) and focus on nouns and verbs</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="analogy">
+                <h3>🚗 The Highway Driving Analogy</h3>
+                <p>Speed reading is like highway driving. When you first learn to drive, you focus intensely on every detail - every sign, every line on the road. But experienced drivers develop "highway vision" - they see the important information while their peripheral vision handles the routine details. Similarly, experienced readers develop "text vision" - they quickly identify key information while skipping unnecessary words.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Critical Reading and Analysis</h2>
+            <p>Advanced reading goes beyond understanding what the text says to evaluating its quality, bias, and reliability:</p>
+
+            <div class="reading-exercise">
+                <h3>Critical Reading Checklist</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                    <div>
+                        <h4>🎯 Evaluate the Author</h4>
+                        <ul>
+                            <li>What are the author's credentials?</li>
+                            <li>What might be their bias or agenda?</li>
+                            <li>Are they an expert in this field?</li>
+                            <li>What is their reputation?</li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4>📊 Analyze the Evidence</h4>
+                        <ul>
+                            <li>Are claims supported with facts?</li>
+                            <li>Are sources cited and credible?</li>
+                            <li>Is the reasoning logical?</li>
+                            <li>Are counterarguments addressed?</li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4>🔍 Question the Content</h4>
+                        <ul>
+                            <li>Is this fact or opinion?</li>
+                            <li>What evidence is missing?</li>
+                            <li>Are there logical fallacies?</li>
+                            <li>How current is this information?</li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4>🌐 Consider the Context</h4>
+                        <ul>
+                            <li>When was this written?</li>
+                            <li>Who is the intended audience?</li>
+                            <li>What was happening at the time?</li>
+                            <li>How does this fit with other sources?</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Practice Exercises</h2>
+            
+            <div class="reading-exercise">
+                <h3>Exercise 1: Speed Reading Challenge</h3>
+                <p>Time yourself reading this paragraph and answer the comprehension question:</p>
+                <div class="text-sample">
+                    <p>Artificial intelligence is transforming healthcare through predictive analytics, diagnostic imaging, and personalized treatment plans. Machine learning algorithms can analyze medical images faster and more accurately than human radiologists in many cases. For example, AI systems have been trained to detect early-stage cancers in mammograms with 94% accuracy, compared to 88% for human doctors. Additionally, AI can predict patient outcomes by analyzing vast amounts of medical data, helping doctors make more informed decisions about treatment options. However, concerns remain about data privacy, algorithm bias, and the need for human oversight in critical medical decisions.</p>
+                </div>
+                <p><strong>Comprehension Question:</strong> What is the main benefit of AI in healthcare mentioned in the text?</p>
+                <textarea style="width: 100%; height: 60px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" placeholder="Write your answer here..."></textarea>
+            </div>
+
+            <div class="reading-exercise">
+                <h3>Exercise 2: Context Clues Practice</h3>
+                <p>Determine the meaning of the italicized words using context clues:</p>
+                <ol>
+                    <li>"The company's <em>revenue</em> increased by 25% this quarter, bringing in $2.5 million compared to $2 million last quarter."</li>
+                    <li>"She was known for her <em>candid</em> remarks; unlike others who spoke diplomatically, she always said exactly what she thought."</li>
+                    <li>"The new policy aims to <em>streamline</em> operations by eliminating unnecessary steps, reducing paperwork, and making processes more efficient."</li>
+                </ol>
+                <textarea style="width: 100%; height: 80px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" placeholder="Write the meanings and explain how you figured them out..."></textarea>
+            </div>
+
+            <div class="reading-exercise">
+                <h3>Exercise 3: Text Structure Analysis</h3>
+                <p>Read this email and identify its key components:</p>
+                <div class="text-sample">
+                    <p><strong>Subject:</strong> Urgent: Project Deadline Extension Request</p>
+                    <p>Dear Ms. Johnson,</p>
+                    <p>I am writing to request a one-week extension for the marketing campaign proposal, originally due this Friday, March 15th. Our team has encountered unexpected challenges with the market research component that require additional time to resolve properly.</p>
+                    <p>Specifically, our primary research vendor experienced technical difficulties that delayed their data delivery by four days. Additionally, we discovered that our target demographic analysis needs to be expanded to include recent market changes.</p>
+                    <p>We believe the extra week will allow us to deliver a significantly stronger proposal that better serves the client's needs. The new deadline would be Friday, March 22nd.</p>
+                    <p>Please let me know if this extension is possible. I'm available to discuss this further at your convenience.</p>
+                    <p>Best regards,<br>Alex Chen<br>Marketing Team Lead</p>
+                </div>
+                <p><strong>Analysis Questions:</strong></p>
+                <ul>
+                    <li>What is the main request?</li>
+                    <li>What reasons are given?</li>
+                    <li>What specific action is needed from the recipient?</li>
+                    <li>How would you categorize the tone (formal, informal, urgent, apologetic)?</li>
+                </ul>
+                <textarea style="width: 100%; height: 100px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" placeholder="Write your analysis here..."></textarea>
+            </div>
+
+            <div class="reading-exercise">
+                <h3>Exercise 4: Critical Reading Practice</h3>
+                <p>Read this paragraph and evaluate its credibility:</p>
+                <div class="text-sample">
+                    <p>"A recent study shows that 90% of successful entrepreneurs wake up before 6 AM, proving that early rising is the key to business success. Famous billionaires like Jeff Bezos and Elon Musk are known early risers, which clearly demonstrates the connection between morning routines and wealth. If you want to be successful, you should definitely start waking up early every day."</p>
+                </div>
+                <p><strong>Critical Analysis Questions:</strong></p>
+                <ul>
+                    <li>What claims are made?</li>
+                    <li>What evidence is provided?</li>
+                    <li>What information is missing?</li>
+                    <li>Are there any logical fallacies?</li>
+                    <li>How reliable is this argument?</li>
+                </ul>
+                <textarea style="width: 100%; height: 120px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" placeholder="Write your critical analysis here..."></textarea>
+            </div>
+        </section>
+
+        <section>
+            <h2>Building Your Reading Habit</h2>
+            <p>Becoming a strong reader requires consistent practice across different types of texts and contexts.</p>
+
+            <div class="analogy">
+                <h3>🏋️ The Athletic Training Analogy</h3>
+                <p>Reading improvement is like athletic training. Just as athletes practice different skills - endurance, speed, strength, and technique - readers need to develop different abilities: speed, comprehension, vocabulary, and critical analysis. Professional athletes cross-train with various exercises, and effective readers should "cross-train" with different types of texts, from news articles to novels to technical documents.</p>
+            </div>
+
+            <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                <h4>Daily Reading Development Plan (20-30 minutes)</h4>
+                <ul>
+                    <li><strong>Week 1-2:</strong> Focus on reading speed - practice with news articles</li>
+                    <li><strong>Week 3-4:</strong> Vocabulary building - keep a context clues journal</li>
+                    <li><strong>Week 5-6:</strong> Comprehension skills - practice summarizing what you read</li>
+                    <li><strong>Week 7-8:</strong> Critical reading - analyze opinion pieces and editorials</li>
+                    <li><strong>Ongoing:</strong> Read diverse materials - mix fiction, non-fiction, and professional texts</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>Digital Reading in the Modern World</h2>
+            <p>Today's reading often happens on screens with unique challenges and opportunities:</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                <div style="background: #e8f5e8; padding: 15px; border-radius: 8px;">
+                    <h4>📱 Mobile Reading Tips</h4>
+                    <ul>
+                        <li>Adjust brightness to reduce eye strain</li>
+                        <li>Use reading mode when available</li>
+                        <li>Take frequent breaks (20-20-20 rule)</li>
+                        <li>Increase font size for comfort</li>
+                        <li>Minimize distractions and notifications</li>
+                    </ul>
+                </div>
+                <div style="background: #e8f5e8; padding: 15px; border-radius: 8px;">
+                    <h4>💻 Online Reading Strategies</h4>
+                    <ul>
+                        <li>Use browser reading features</li>
+                        <li>Bookmark important information</li>
+                        <li>Take digital notes and highlights</li>
+                        <li>Verify sources and check dates</li>
+                        <li>Be aware of clickbait and bias</li>
+                    </ul>
+                </div>
+                <div style="background: #e8f5e8; padding: 15px; border-radius: 8px;">
+                    <h4>📧 Email & Document Reading</h4>
+                    <ul>
+                        <li>Scan for action items first</li>
+                        <li>Use search functions effectively</li>
+                        <li>Organize with folders and labels</li>
+                        <li>Flag important items for follow-up</li>
+                        <li>Practice active reading techniques</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Your Reading Mastery Journey</h2>
+            <p>Congratulations on developing your English reading comprehension skills! You now have the tools to tackle any English text with confidence and understanding.</p>
+
+            <div style="background: #fff3cd; border: 2px solid #ffc107; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                <h3>📚 This Week's Reading Challenge</h3>
+                <ol>
+                    <li>Read one news article daily using the pre-reading strategy</li>
+                    <li>Practice speed reading with online articles - track your improvement</li>
+                    <li>Keep a vocabulary journal - write down 3 new words daily with context clues</li>
+                    <li>Read one professional email or document and summarize the key points</li>
+                    <li>Choose one longer text (article or chapter) and practice critical reading analysis</li>
+                </ol>
+            </div>
+
+            <p>You've now completed the comprehensive English as a Second Language learning series! From pronunciation basics to reading mastery, you have the foundational skills needed for confident English communication. Remember that language learning is a journey - continue practicing, stay curious, and celebrate your progress every step of the way!</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Remember: Reading is not just about understanding words - it's about engaging with ideas, expanding your knowledge, and connecting with the world. Every text you read makes you a better communicator and critical thinker. Keep reading, keep learning, and keep growing! 📖</p>
+    </footer>
+</body>
+</html>

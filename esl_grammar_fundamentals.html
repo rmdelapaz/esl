@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Grammar Fundamentals - Building Clear and Correct Sentences</title>
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="icon" href="/favicon.png" type="image/png">
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ startOnLoad: true });
+    </script>
+    <style>
+        .grammar-demo {
+            background: #f0f8ff;
+            border-left: 4px solid #4a90e2;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        .sentence-builder {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .analogy {
+            background: #e8f5e8;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        .tense-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .tense-box {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid #2196f3;
+        }
+        .sentence-part {
+            display: inline-block;
+            margin: 3px;
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .subject {
+            background: #ffcdd2;
+            border: 2px solid #f44336;
+        }
+        .verb {
+            background: #c8e6c9;
+            border: 2px solid #4caf50;
+        }
+        .object {
+            background: #bbdefb;
+            border: 2px solid #2196f3;
+        }
+        .modifier {
+            background: #f8bbd9;
+            border: 2px solid #e91e63;
+        }
+        .error-example {
+            background: #ffebee;
+            border-left: 4px solid #f44336;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        .correct-example {
+            background: #e8f5e8;
+            border-left: 4px solid #4caf50;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        canvas {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .interactive-builder {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .word-bank {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        .word-option {
+            background: #e0e0e0;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+        .word-option:hover {
+            background: #d0d0d0;
+            border-color: #666;
+        }
+        .word-option.selected {
+            background: #4caf50;
+            color: white;
+            border-color: #2e7d32;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>English Grammar Fundamentals</h1>
+        <p class="subtitle">Building Clear and Correct Sentences</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>Welcome to the Architecture of English</h2>
+            <p>Think of learning English grammar like learning to build a house. Just as a house needs a strong foundation, walls, and a roof in the right order, English sentences need specific components arranged in particular patterns. Today, we'll explore the essential building blocks of English grammar and how to combine them to create clear, effective communication.</p>
+
+            <div class="analogy">
+                <h3>🏗️ The Construction Blueprint Analogy</h3>
+                <p>Grammar is like the blueprint for building sentences. Just as architects follow specific rules to create stable, beautiful buildings, we follow grammar rules to create clear, meaningful sentences. The foundation is the subject, the frame is the verb, and everything else adds structure and detail to complete our communication "building."</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>The Essential Sentence Structure</h2>
+            <p>Every English sentence follows basic patterns. Understanding these patterns is like having a master key that unlocks clear communication.</p>
+
+            <div class="mermaid">
+                graph TD
+                    A[English Sentence Structure] --> B[Basic Pattern: SVO]
+                    B --> C[Subject<br/>Who or what]
+                    B --> D[Verb<br/>Action or state]
+                    B --> E[Object<br/>Receives action]
+                    
+                    A --> F[Extended Patterns]
+                    F --> G[SVOO<br/>Subject-Verb-Object-Object]
+                    F --> H[SVC<br/>Subject-Verb-Complement]
+                    F --> I[SVOA<br/>Subject-Verb-Object-Adverbial]
+                    
+                    C --> J[The cat<br/>My friend<br/>Students]
+                    D --> K[sleeps<br/>bought<br/>are studying]
+                    E --> L[fish<br/>a car<br/>English]
+            </div>
+        </section>
+
+        <section>
+            <h2>Interactive Sentence Builder</h2>
+            <p>Let's build sentences step by step. Click the components below to see how they fit together:</p>
+            
+            <div class="interactive-builder">
+                <canvas id="sentenceCanvas" width="700" height="150"></canvas>
+                
+                <div>
+                    <h4>Choose your sentence components:</h4>
+                    <div class="word-bank">
+                        <div class="word-option" data-type="subject" onclick="selectWord(this, 'The student')">The student</div>
+                        <div class="word-option" data-type="subject" onclick="selectWord(this, 'My sister')">My sister</div>
+                        <div class="word-option" data-type="subject" onclick="selectWord(this, 'The children')">The children</div>
+                        
+                        <div class="word-option" data-type="verb" onclick="selectWord(this, 'reads')">reads</div>
+                        <div class="word-option" data-type="verb" onclick="selectWord(this, 'bought')">bought</div>
+                        <div class="word-option" data-type="verb" onclick="selectWord(this, 'are playing')">are playing</div>
+                        
+                        <div class="word-option" data-type="object" onclick="selectWord(this, 'a book')">a book</div>
+                        <div class="word-option" data-type="object" onclick="selectWord(this, 'new shoes')">new shoes</div>
+                        <div class="word-option" data-type="object" onclick="selectWord(this, 'soccer')">soccer</div>
+                        
+                        <div class="word-option" data-type="modifier" onclick="selectWord(this, 'every day')">every day</div>
+                        <div class="word-option" data-type="modifier" onclick="selectWord(this, 'at the mall')">at the mall</div>
+                        <div class="word-option" data-type="modifier" onclick="selectWord(this, 'in the park')">in the park</div>
+                    </div>
+                </div>
+                
+                <div id="builtSentence" style="margin-top: 20px; padding: 15px; background: white; border-radius: 5px; min-height: 40px; font-size: 1.2em; font-weight: bold;">
+                    <span id="sentenceText">Click words above to build your sentence!</span>
+                </div>
+            </div>
+            
+            <script>
+                let selectedWords = {
+                    subject: '',
+                    verb: '',
+                    object: '',
+                    modifier: ''
+                };
+                
+                function selectWord(element, word) {
+                    const type = element.getAttribute('data-type');
+                    
+                    // Clear previous selection of same type
+                    document.querySelectorAll(`[data-type="${type}"]`).forEach(el => {
+                        el.classList.remove('selected');
+                    });
+                    
+                    // Select current word
+                    element.classList.add('selected');
+                    selectedWords[type] = word;
+                    
+                    updateSentence();
+                    drawSentenceStructure();
+                }
+                
+                function updateSentence() {
+                    const parts = [
+                        selectedWords.subject,
+                        selectedWords.verb,
+                        selectedWords.object,
+                        selectedWords.modifier
+                    ].filter(part => part !== '');
+                    
+                    const sentence = parts.length > 0 ? parts.join(' ') + '.' : 'Click words above to build your sentence!';
+                    document.getElementById('sentenceText').textContent = sentence;
+                }
+                
+                function drawSentenceStructure() {
+                    const canvas = document.getElementById('sentenceCanvas');
+                    const ctx = canvas.getContext('2d');
+                    ctx.clearRect(0, 0, 700, 150);
+                    
+                    const parts = [
+                        { text: selectedWords.subject, label: 'SUBJECT', color: '#ffcdd2', x: 50 },
+                        { text: selectedWords.verb, label: 'VERB', color: '#c8e6c9', x: 200 },
+                        { text: selectedWords.object, label: 'OBJECT', color: '#bbdefb', x: 350 },
+                        { text: selectedWords.modifier, label: 'MODIFIER', color: '#f8bbd9', x: 500 }
+                    ];
+                    
+                    parts.forEach(part => {
+                        if (part.text) {
+                            // Draw box
+                            ctx.fillStyle = part.color;
+                            ctx.fillRect(part.x, 60, 120, 40);
+                            ctx.strokeStyle = '#333';
+                            ctx.lineWidth = 2;
+                            ctx.strokeRect(part.x, 60, 120, 40);
+                            
+                            // Draw label
+                            ctx.fillStyle = '#333';
+                            ctx.font = 'bold 12px Arial';
+                            ctx.textAlign = 'center';
+                            ctx.fillText(part.label, part.x + 60, 50);
+                            
+                            // Draw text
+                            ctx.font = '14px Arial';
+                            ctx.fillText(part.text, part.x + 60, 85);
+                        }
+                    });
+                }
+                
+                // Initial draw
+                drawSentenceStructure();
+            </script>
+        </section>
+
+        <section>
+            <h2>Understanding English Verb Tenses</h2>
+            <p>Verb tenses are like time machines - they tell us when something happens. English has 12 main tenses, but don't worry! We'll focus on the most essential ones first.</p>
+
+            <div class="analogy">
+                <h3>⏰ The Time Travel Analogy</h3>
+                <p>Think of verb tenses as different time machines. The simple present is like a photo of "now," the simple past is like looking through a rearview mirror at "then," and the future is like a crystal ball showing "later." Each tense machine takes you to a different time and shows you what's happening there.</p>
+            </div>
+
+            <div class="tense-grid">
+                <div class="tense-box">
+                    <h4>Present Simple</h4>
+                    <p><strong>Form:</strong> I/you/we/they + verb<br/>
+                    he/she/it + verb + s</p>
+                    <p><strong>Use:</strong> Habits, facts, routines</p>
+                    <p><strong>Examples:</strong></p>
+                    <ul>
+                        <li>"I <strong>drink</strong> coffee every morning."</li>
+                        <li>"The sun <strong>rises</strong> in the east."</li>
+                        <li>"She <strong>works</strong> at a bank."</li>
+                    </ul>
+                </div>
+
+                <div class="tense-box">
+                    <h4>Present Continuous</h4>
+                    <p><strong>Form:</strong> am/is/are + verb + ing</p>
+                    <p><strong>Use:</strong> Actions happening now</p>
+                    <p><strong>Examples:</strong></p>
+                    <ul>
+                        <li>"I <strong>am reading</strong> a book right now."</li>
+                        <li>"They <strong>are watching</strong> TV."</li>
+                        <li>"It <strong>is raining</strong> outside."</li>
+                    </ul>
+                </div>
+
+                <div class="tense-box">
+                    <h4>Past Simple</h4>
+                    <p><strong>Form:</strong> verb + ed (regular)<br/>
+                    irregular forms (went, saw, etc.)</p>
+                    <p><strong>Use:</strong> Completed actions in the past</p>
+                    <p><strong>Examples:</strong></p>
+                    <ul>
+                        <li>"I <strong>visited</strong> my grandmother yesterday."</li>
+                        <li>"We <strong>went</strong> to the movies last week."</li>
+                        <li>"She <strong>finished</strong> her homework."</li>
+                    </ul>
+                </div>
+
+                <div class="tense-box">
+                    <h4>Future Simple</h4>
+                    <p><strong>Form:</strong> will + verb</p>
+                    <p><strong>Use:</strong> Plans, predictions, promises</p>
+                    <p><strong>Examples:</strong></p>
+                    <ul>
+                        <li>"I <strong>will call</strong> you tomorrow."</li>
+                        <li>"It <strong>will be</strong> sunny next week."</li>
+                        <li>"They <strong>will arrive</strong> at 3 PM."</li>
+                    </ul>
+                </div>
+
+                <div class="tense-box">
+                    <h4>Present Perfect</h4>
+                    <p><strong>Form:</strong> have/has + past participle</p>
+                    <p><strong>Use:</strong> Past actions connected to now</p>
+                    <p><strong>Examples:</strong></p>
+                    <ul>
+                        <li>"I <strong>have lived</strong> here for 5 years."</li>
+                        <li>"She <strong>has finished</strong> her work."</li>
+                        <li>"We <strong>have seen</strong> that movie."</li>
+                    </ul>
+                </div>
+
+                <div class="tense-box">
+                    <h4>Past Continuous</h4>
+                    <p><strong>Form:</strong> was/were + verb + ing</p>
+                    <p><strong>Use:</strong> Actions in progress in the past</p>
+                    <p><strong>Examples:</strong></p>
+                    <ul>
+                        <li>"I <strong>was sleeping</strong> when you called."</li>
+                        <li>"They <strong>were playing</strong> soccer."</li>
+                        <li>"It <strong>was raining</strong> all day."</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Common Grammar Mistakes and Solutions</h2>
+            <p>Every English learner makes these mistakes. Recognizing them is the first step to avoiding them:</p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 20px;">
+                <div>
+                    <div class="error-example">
+                        <h4>❌ Subject-Verb Agreement Error</h4>
+                        <p><strong>Wrong:</strong> "My friend <s>like</s> pizza."</p>
+                        <p><strong>Problem:</strong> Third person singular needs 's'</p>
+                    </div>
+                    <div class="correct-example">
+                        <h4>✅ Correct Version</h4>
+                        <p><strong>Right:</strong> "My friend <strong>likes</strong> pizza."</p>
+                        <p><strong>Rule:</strong> He/she/it + verb + s</p>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="error-example">
+                        <h4>❌ Article Confusion</h4>
+                        <p><strong>Wrong:</strong> "I need <s>a</s> advice."</p>
+                        <p><strong>Problem:</strong> 'Advice' is uncountable</p>
+                    </div>
+                    <div class="correct-example">
+                        <h4>✅ Correct Version</h4>
+                        <p><strong>Right:</strong> "I need <strong>some</strong> advice."</p>
+                        <p><strong>Rule:</strong> Use 'some' with uncountable nouns</p>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="error-example">
+                        <h4>❌ Tense Confusion</h4>
+                        <p><strong>Wrong:</strong> "I <s>am living</s> here since 2020."</p>
+                        <p><strong>Problem:</strong> Need present perfect for duration</p>
+                    </div>
+                    <div class="correct-example">
+                        <h4>✅ Correct Version</h4>
+                        <p><strong>Right:</strong> "I <strong>have lived</strong> here since 2020."</p>
+                        <p><strong>Rule:</strong> Present perfect for past→present</p>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="error-example">
+                        <h4>❌ Word Order Error</h4>
+                        <p><strong>Wrong:</strong> "I like very much <s>pizza</s>."</p>
+                        <p><strong>Problem:</strong> Object should come before adverb</p>
+                    </div>
+                    <div class="correct-example">
+                        <h4>✅ Correct Version</h4>
+                        <p><strong>Right:</strong> "I like <strong>pizza</strong> very much."</p>
+                        <p><strong>Rule:</strong> Subject + Verb + Object + Adverb</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Articles: The Tiny Words with Big Impact</h2>
+            <p>Articles (a, an, the) are small but crucial. They're like traffic signs for nouns - they tell us whether we're talking about something specific or general.</p>
+
+            <div class="analogy">
+                <h3>🚦 The Traffic Sign Analogy</h3>
+                <p>Articles are like traffic signs for nouns. "The" is like a specific address sign pointing to one exact location: "THE house on the corner." "A/an" is like a general direction sign: "A house" (any house will do). No article is like a highway sign for general concepts: "Houses are expensive" (all houses in general).</p>
+            </div>
+
+            <div class="grammar-demo">
+                <h3>Article Rules Made Simple</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                    <div style="background: #fff3cd; padding: 15px; border-radius: 5px;">
+                        <h4>Use "A/AN"</h4>
+                        <ul>
+                            <li>First time mentioning something</li>
+                            <li>One of many (not specific)</li>
+                            <li>Job titles: "She's <strong>a</strong> teacher"</li>
+                            <li>Before consonant sounds: "<strong>a</strong> book"</li>
+                            <li>Before vowel sounds: "<strong>an</strong> apple"</li>
+                        </ul>
+                    </div>
+                    <div style="background: #e8f5e8; padding: 15px; border-radius: 5px;">
+                        <h4>Use "THE"</h4>
+                        <ul>
+                            <li>Specific, known item</li>
+                            <li>Second mention of something</li>
+                            <li>Unique things: "<strong>the</strong> sun"</li>
+                            <li>Superlatives: "<strong>the</strong> best"</li>
+                            <li>With some proper nouns: "<strong>the</strong> USA"</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f0f8ff; padding: 15px; border-radius: 5px;">
+                        <h4>Use NO ARTICLE</h4>
+                        <ul>
+                            <li>General statements: "Dogs are friendly"</li>
+                            <li>Most proper nouns: "John, Paris"</li>
+                            <li>Uncountable nouns: "I love music"</li>
+                            <li>Plural general: "Cars are expensive"</li>
+                            <li>Abstract concepts: "Love is important"</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Question Formation: Getting the Information You Need</h2>
+            <p>Asking questions correctly is essential for communication. English has specific patterns for different types of questions.</p>
+
+            <div class="sentence-builder">
+                <h3>Question Formation Patterns</h3>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                    <div>
+                        <h4>Yes/No Questions</h4>
+                        <p><strong>Pattern:</strong> Auxiliary + Subject + Main Verb</p>
+                        <div class="grammar-demo">
+                            <p><span class="verb">Do</span> <span class="subject">you</span> <span class="object">like coffee</span>?</p>
+                            <p><span class="verb">Is</span> <span class="subject">she</span> <span class="object">coming</span>?</p>
+                            <p><span class="verb">Have</span> <span class="subject">they</span> <span class="object">finished</span>?</p>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4>WH- Questions</h4>
+                        <p><strong>Pattern:</strong> WH-word + Auxiliary + Subject + Main Verb</p>
+                        <div class="grammar-demo">
+                            <p><span class="modifier">What</span> <span class="verb">do</span> <span class="subject">you</span> <span class="object">want</span>?</p>
+                            <p><span class="modifier">Where</span> <span class="verb">is</span> <span class="subject">the library</span>?</p>
+                            <p><span class="modifier">Why</span> <span class="verb">did</span> <span class="subject">he</span> <span class="object">leave</span>?</p>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4>Subject Questions</h4>
+                        <p><strong>Pattern:</strong> WH-word + Verb + Object</p>
+                        <div class="grammar-demo">
+                            <p><span class="subject">Who</span> <span class="verb">called</span> <span class="object">you</span>?</p>
+                            <p><span class="subject">What</span> <span class="verb">happened</span>?</p>
+                            <p><span class="subject">Which car</span> <span class="verb">costs</span> <span class="object">more</span>?</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Real-World Grammar Applications</h2>
+            <p>Understanding when and why to use different grammar structures makes your communication more effective in real situations:</p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 20px 0;">
+                <div class="grammar-demo">
+                    <h4>💼 Professional Emails</h4>
+                    <p><strong>Present Perfect:</strong> "I <em>have completed</em> the report."</p>
+                    <p><strong>Future:</strong> "I <em>will send</em> it by Friday."</p>
+                    <p><strong>Conditional:</strong> "I <em>would appreciate</em> your feedback."</p>
+                    <p><strong>Why it matters:</strong> Shows professionalism and clear timelines</p>
+                </div>
+                
+                <div class="grammar-demo">
+                    <h4>🛒 Shopping & Services</h4>
+                    <p><strong>Present Simple:</strong> "I <em>need</em> help finding shoes."</p>
+                    <p><strong>Modal verbs:</strong> "<em>Could</em> you show me the menu?"</p>
+                    <p><strong>Questions:</strong> "How much <em>does</em> this cost?"</p>
+                    <p><strong>Why it matters:</strong> Gets you what you need politely</p>
+                </div>
+                
+                <div class="grammar-demo">
+                    <h4>🏥 Medical Appointments</h4>
+                    <p><strong>Present Perfect:</strong> "I <em>have been feeling</em> sick."</p>
+                    <p><strong>Past Simple:</strong> "The pain <em>started</em> yesterday."</p>
+                    <p><strong>Present Continuous:</strong> "It <em>is getting</em> worse."</p>
+                    <p><strong>Why it matters:</strong> Accurate health communication</p>
+                </div>
+                
+                <div class="grammar-demo">
+                    <h4>🎓 Academic Discussions</h4>
+                    <p><strong>Passive Voice:</strong> "The study <em>was conducted</em> in 2020."</p>
+                    <p><strong>Complex sentences:</strong> "Although the results were surprising, they confirm our hypothesis."</p>
+                    <p><strong>Why it matters:</strong> Sounds academic and objective</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Practice Exercises</h2>
+            
+            <div class="sentence-builder">
+                <h3>Exercise 1: Tense Recognition</h3>
+                <p>Identify the tense and explain why it's used:</p>
+                <ol>
+                    <li>"I have been studying English for three years."</li>
+                    <li>"She was cooking when I arrived."</li>
+                    <li>"We will meet at the coffee shop tomorrow."</li>
+                    <li>"He works at a technology company."</li>
+                    <li>"They are watching a movie right now."</li>
+                </ol>
+                <details style="margin-top: 10px;">
+                    <summary><strong>Click for answers</strong></summary>
+                    <ol>
+                        <li>Present Perfect Continuous - action started in past, continues now</li>
+                        <li>Past Continuous - action in progress when another action happened</li>
+                        <li>Future Simple - planned action in the future</li>
+                        <li>Present Simple - permanent situation/routine</li>
+                        <li>Present Continuous - action happening now</li>
+                    </ol>
+                </details>
+            </div>
+
+            <div class="sentence-builder">
+                <h3>Exercise 2: Error Correction</h3>
+                <p>Find and correct the grammar mistakes:</p>
+                <ol>
+                    <li>"I am living in this city since five years."</li>
+                    <li>"Do you can help me with this problem?"</li>
+                    <li>"She don't likes spicy food."</li>
+                    <li>"I have seen a interesting movie yesterday."</li>
+                    <li>"Where you are going for vacation?"</li>
+                </ol>
+                <details style="margin-top: 10px;">
+                    <summary><strong>Click for corrections</strong></summary>
+                    <ol>
+                        <li>"I <strong>have lived</strong> in this city <strong>for</strong> five years."</li>
+                        <li>"<strong>Can you</strong> help me with this problem?"</li>
+                        <li>"She <strong>doesn't like</strong> spicy food."</li>
+                        <li>"I <strong>saw an</strong> interesting movie yesterday."</li>
+                        <li>"Where <strong>are you</strong> going for vacation?"</li>
+                    </ol>
+                </details>
+            </div>
+
+            <div class="sentence-builder">
+                <h3>Exercise 3: Article Practice</h3>
+                <p>Fill in the blanks with a, an, the, or no article (-):</p>
+                <ol>
+                    <li>"I saw ___ movie last night. ___ movie was fantastic!"</li>
+                    <li>"She's ___ engineer at ___ Microsoft."</li>
+                    <li>"___ coffee is popular around ___ world."</li>
+                    <li>"Can you pass me ___ salt, please?"</li>
+                    <li>"I need ___ advice about ___ life in ___ Canada."</li>
+                </ol>
+                <details style="margin-top: 10px;">
+                    <summary><strong>Click for answers</strong></summary>
+                    <ol>
+                        <li>"I saw <strong>a</strong> movie last night. <strong>The</strong> movie was fantastic!"</li>
+                        <li>"She's <strong>an</strong> engineer at <strong>-</strong> Microsoft."</li>
+                        <li>"<strong>-</strong> Coffee is popular around <strong>the</strong> world."</li>
+                        <li>"Can you pass me <strong>the</strong> salt, please?"</li>
+                        <li>"I need <strong>-</strong> advice about <strong>-</strong> life in <strong>-</strong> Canada."</li>
+                    </ol>
+                </details>
+            </div>
+
+            <div class="sentence-builder">
+                <h3>Exercise 4: Question Formation</h3>
+                <p>Transform these statements into questions:</p>
+                <ol>
+                    <li>"She is coming to the party." (Yes/No question)</li>
+                    <li>"They live in New York." (Where question)</li>
+                    <li>"The meeting starts at 3 PM." (What time question)</li>
+                    <li>"John called you." (Who question)</li>
+                    <li>"She has finished her homework." (Yes/No question)</li>
+                </ol>
+                <details style="margin-top: 10px;">
+                    <summary><strong>Click for answers</strong></summary>
+                    <ol>
+                        <li>"<strong>Is she coming</strong> to the party?"</li>
+                        <li>"<strong>Where do they live</strong>?"</li>
+                        <li>"<strong>What time does the meeting start</strong>?"</li>
+                        <li>"<strong>Who called</strong> you?"</li>
+                        <li>"<strong>Has she finished</strong> her homework?"</li>
+                    </ol>
+                </details>
+            </div>
+        </section>
+
+        <section>
+            <h2>Building Grammar Confidence</h2>
+            <p>Grammar confidence comes from understanding patterns and practicing regularly. Here's your development strategy:</p>
+
+            <div class="analogy">
+                <h3>🧩 The Puzzle Piece Analogy</h3>
+                <p>Think of grammar as assembling a jigsaw puzzle. At first, you focus on finding the edge pieces (basic sentence structure). Then you work on sections (verb tenses, articles). Eventually, you see how all pieces fit together to create the complete picture (fluent communication). Each grammar rule you master is another piece that makes the whole picture clearer.</p>
+            </div>
+
+            <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                <h4>Daily Grammar Practice (15 minutes)</h4>
+                <ul>
+                    <li><strong>Review (3 minutes):</strong> Review one grammar rule from yesterday</li>
+                    <li><strong>New concept (5 minutes):</strong> Study one new grammar point</li>
+                    <li><strong>Practice (5 minutes):</strong> Complete 5-10 practice sentences</li>
+                    <li><strong>Application (2 minutes):</strong> Write 2 original sentences using the new concept</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>Grammar in Digital Communication</h2>
+            <p>Modern communication happens online, and good grammar helps you sound professional and clear:</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                <div style="background: #e8f5e8; padding: 15px; border-radius: 8px;">
+                    <h4>📧 Email Grammar</h4>
+                    <ul>
+                        <li>Use complete sentences</li>
+                        <li>Check subject-verb agreement</li>
+                        <li>Use appropriate tenses for timelines</li>
+                        <li>Proofread before sending</li>
+                    </ul>
+                </div>
+                <div style="background: #e8f5e8; padding: 15px; border-radius: 8px;">
+                    <h4>💬 Text Messages</h4>
+                    <ul>
+                        <li>Abbreviations are OK with friends</li>
+                        <li>Use full grammar for work texts</li>
+                        <li>Clear questions get better responses</li>
+                        <li>Autocorrect can help but double-check</li>
+                    </ul>
+                </div>
+                <div style="background: #e8f5e8; padding: 15px; border-radius: 8px;">
+                    <h4>🌐 Social Media</h4>
+                    <ul>
+                        <li>Good grammar builds credibility</li>
+                        <li>Clear posts get more engagement</li>
+                        <li>Professional posts need perfect grammar</li>
+                        <li>Personal posts can be more casual</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Troubleshooting Grammar Problems</h2>
+            <p>When you're stuck on grammar, try these strategies:</p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                <div class="grammar-demo">
+                    <h4>Problem: "I don't know which tense to use"</h4>
+                    <p><strong>Strategy:</strong> Ask yourself "When did this happen?" and "Is it finished or continuing?"</p>
+                    <p><strong>Practice:</strong> Create a timeline of events and match tenses to the timeline.</p>
+                </div>
+                
+                <div class="grammar-demo">
+                    <h4>Problem: "Articles confuse me"</h4>
+                    <p><strong>Strategy:</strong> Ask "Am I talking about something specific (the) or general (a/an/no article)?"</p>
+                    <p><strong>Practice:</strong> Read news articles and notice how articles are used.</p>
+                </div>
+                
+                <div class="grammar-demo">
+                    <h4>Problem: "Word order feels wrong"</h4>
+                    <p><strong>Strategy:</strong> Remember the basic pattern: Subject + Verb + Object + Time/Place</p>
+                    <p><strong>Practice:</strong> Rearrange scrambled sentences daily.</p>
+                </div>
+                
+                <div class="grammar-demo">
+                    <h4>Problem: "I make the same mistakes repeatedly"</h4>
+                    <p><strong>Strategy:</strong> Keep a personal error log and review it weekly</p>
+                    <p><strong>Practice:</strong> Create practice sentences that target your specific weak areas.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Your Grammar Development Journey</h2>
+            <p>Congratulations on building your grammar foundation! These structures will support all your future English communication.</p>
+
+            <div style="background: #fff3cd; border: 2px solid #ffc107; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                <h3>📝 This Week's Grammar Goals</h3>
+                <ol>
+                    <li>Master one new verb tense completely (forms, uses, examples)</li>
+                    <li>Practice article usage in everything you read</li>
+                    <li>Write 5 questions daily using different question patterns</li>
+                    <li>Keep a grammar error log - note mistakes and corrections</li>
+                    <li>Use the sentence builder tool to create 10 different sentence types</li>
+                </ol>
+            </div>
+
+            <p>In our next lesson, we'll explore "Everyday English Conversations" - practical dialogues and phrases for real-world situations. You'll learn how to navigate common conversations confidently, from small talk to problem-solving, using the grammar foundation you've built here.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Remember: Grammar is not about perfection - it's about clear communication. Every mistake is a learning opportunity that brings you closer to fluency. Keep building, keep practicing, and celebrate your progress! 🏗️</p>
+    </footer>
+</body>
+</html>

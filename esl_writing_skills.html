@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Writing Skills - From Texts to Professional Documents</title>
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="icon" href="/favicon.png" type="image/png">
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ startOnLoad: true });
+    </script>
+    <style>
+        .writing-demo {
+            background: #f0f8ff;
+            border-left: 4px solid #4a90e2;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        .writing-exercise {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .analogy {
+            background: #e8f5e8;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        .writing-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .writing-type {
+            background: #e3f2fd;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid #2196f3;
+        }
+        .example-good {
+            background: #e8f5e8;
+            border-left: 4px solid #4caf50;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .example-bad {
+            background: #ffebee;
+            border-left: 4px solid #f44336;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .writing-tool {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border: 1px solid #dee2e6;
+        }
+        .sentence-length {
+            display: inline-block;
+            margin: 3px;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 12px;
+        }
+        .short-sentence {
+            background: #c8e6c9;
+            border: 1px solid #4caf50;
+        }
+        .medium-sentence {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+        }
+        .long-sentence {
+            background: #ffcdd2;
+            border: 1px solid #f44336;
+        }
+        .writing-builder {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .tone-selector {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        .tone-option {
+            background: #e0e0e0;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+        .tone-option:hover {
+            background: #d0d0d0;
+            border-color: #666;
+        }
+        .tone-option.selected {
+            background: #4caf50;
+            color: white;
+            border-color: #2e7d32;
+        }
+        .structure-visual {
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        canvas {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            margin: 8px 0;
+        }
+        .checklist-item input[type="checkbox"] {
+            margin-right: 10px;
+            transform: scale(1.2);
+        }
+        .writing-sample {
+            background: #ffffff;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-family: 'Times New Roman', serif;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>English Writing Skills</h1>
+        <p class="subtitle">From Texts to Professional Documents</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>Welcome to the World of English Writing</h2>
+            <p>Think of writing like cooking. Speaking is like preparing a quick meal - you can improvise, adjust as you go, and use gestures to help explain. Writing is like baking - it requires planning, precise ingredients (words), proper structure, and careful timing. But just like baking, once you understand the recipes and techniques, you can create something wonderful that lasts.</p>
+
+            <div class="analogy">
+                <h3>🏗️ The Architecture Analogy</h3>
+                <p>Writing is like designing and building a structure. You start with a blueprint (outline), lay a foundation (main idea), build the frame (paragraphs), add walls and details (supporting sentences), and finish with paint and decorations (style and voice). Each type of writing requires a different architectural approach - a text message is like a simple shed, while a business proposal is like designing an office building.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>The Writing Spectrum: From Casual to Formal</h2>
+            <p>English writing exists on a spectrum from very casual to highly formal. Understanding where your writing should fall on this spectrum is crucial for effective communication.</p>
+
+            <div class="mermaid">
+                graph LR
+                    A[Writing Formality Spectrum] --> B[Very Casual<br/>Texts, Social Media]
+                    A --> C[Casual<br/>Personal Emails, Notes]
+                    A --> D[Semi-Formal<br/>Work Emails, Reports]
+                    A --> E[Formal<br/>Business Letters, Proposals]
+                    A --> F[Very Formal<br/>Academic Papers, Legal Documents]
+                    
+                    B --> G[Short sentences<br/>Contractions<br/>Slang OK<br/>Emojis 😊]
+                    C --> H[Conversational tone<br/>Some contractions<br/>Personal stories]
+                    D --> I[Clear, direct<br/>Professional tone<br/>Complete sentences]
+                    E --> J[Structured format<br/>Formal vocabulary<br/>No contractions]
+                    F --> K[Complex sentences<br/>Academic language<br/>Citations required]
+            </div>
+        </section>
+
+        <section>
+            <h2>Interactive Writing Tone Builder</h2>
+            <p>Practice adapting the same message for different audiences and purposes:</p>
+            
+            <div class="writing-builder">
+                <div>
+                    <h4>Choose your writing situation:</h4>
+                    <div class="tone-selector">
+                        <div class="tone-option" onclick="selectTone('text')" data-tone="text">Text to Friend</div>
+                        <div class="tone-option" onclick="selectTone('email')" data-tone="email">Casual Email</div>
+                        <div class="tone-option" onclick="selectTone('work')" data-tone="work">Work Email</div>
+                        <div class="tone-option" onclick="selectTone('formal')" data-tone="formal">Business Letter</div>
+                        <div class="tone-option" onclick="selectTone('academic')" data-tone="academic">Academic Writing</div>
+                    </div>
+                </div>
+                
+                <div class="writing-sample" id="writingSample">
+                    <h4 id="sampleTitle">Select a writing style above to see examples</h4>
+                    <div id="sampleContent">Choose a tone to see how the same message changes for different audiences.</div>
+                </div>
+                
+                <canvas id="toneCanvas" width="600" height="200"></canvas>
+            </div>
+            
+            <script>
+                const toneExamples = {
+                    text: {
+                        title: "Text Message to Friend",
+                        content: "hey! can't make it tonight 😔 something came up at work. rain check? maybe this weekend? sorry!!",
+                        features: ["Very short", "Contractions", "Lowercase", "Emojis", "Informal language"]
+                    },
+                    email: {
+                        title: "Casual Email",
+                        content: "Hi Sarah,<br><br>I hope you're doing well! I'm really sorry, but I won't be able to make it to dinner tonight. Something unexpected came up at work that I need to handle.<br><br>Could we reschedule for this weekend instead? I was really looking forward to catching up with you.<br><br>Thanks for understanding!<br><br>Best,<br>Alex",
+                        features: ["Personal greeting", "Conversational tone", "Some contractions", "Explanation provided", "Friendly closing"]
+                    },
+                    work: {
+                        title: "Professional Work Email",
+                        content: "Dear Team,<br><br>I am writing to inform you that I will not be able to attend tonight's project meeting due to an urgent matter that requires my immediate attention.<br><br>I would appreciate the opportunity to reschedule this meeting for later this week. Please let me know what times work best for everyone.<br><br>I apologize for any inconvenience this may cause and look forward to hearing from you.<br><br>Best regards,<br>Alex Johnson",
+                        features: ["Formal greeting", "Complete sentences", "No contractions", "Professional vocabulary", "Structured format"]
+                    },
+                    formal: {
+                        title: "Formal Business Letter",
+                        content: "Dear Mr. Williams,<br><br>I regret to inform you that I will be unable to attend the board meeting scheduled for this evening, March 15th, 2024, due to unforeseen circumstances that require my immediate attention.<br><br>I would be grateful if we could arrange an alternative meeting time at your earliest convenience. I remain committed to discussing the quarterly projections and am prepared to meet at any time that suits your schedule.<br><br>Please accept my sincere apologies for any inconvenience this may cause. I look forward to your response.<br><br>Yours sincerely,<br>Alexander Johnson<br>Senior Manager, Operations",
+                        features: ["Very formal greeting", "Complex sentences", "Formal vocabulary", "Full name/title", "Traditional business format"]
+                    },
+                    academic: {
+                        title: "Academic Writing",
+                        content: "This correspondence serves to notify relevant stakeholders that the author's attendance at the previously scheduled conference will not be feasible due to conflicting professional obligations that have emerged subsequent to the initial commitment.<br><br>The author requests the opportunity to propose alternative arrangements that would facilitate the continuation of productive discourse regarding the quarterly analysis. Such arrangements would demonstrate continued dedication to the collaborative process while accommodating unforeseen professional demands.<br><br>The author extends sincere regrets for any disruption this may cause to established schedules and maintains optimism regarding future collaborative opportunities.",
+                        features: ["Third person", "Complex vocabulary", "Long sentences", "Passive voice", "Academic tone"]
+                    }
+                };
+                
+                function selectTone(tone) {
+                    // Clear previous selections
+                    document.querySelectorAll('.tone-option').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+                    
+                    // Select current option
+                    event.target.classList.add('selected');
+                    
+                    // Update sample
+                    const example = toneExamples[tone];
+                    document.getElementById('sampleTitle').textContent = example.title;
+                    document.getElementById('sampleContent').innerHTML = example.content;
+                    
+                    drawToneSpectrum(tone);
+                }
+                
+                function drawToneSpectrum(selectedTone) {
+                    const canvas = document.getElementById('toneCanvas');
+                    const ctx = canvas.getContext('2d');
+                    ctx.clearRect(0, 0, 600, 200);
+                    
+                    const tones = ['text', 'email', 'work', 'formal', 'academic'];
+                    const toneLabels = ['Text', 'Casual Email', 'Work Email', 'Business Letter', 'Academic'];
+                    const colors = ['#4caf50', '#2196f3', '#ff9800', '#9c27b0', '#f44336'];
+                    
+                    // Draw spectrum line
+                    ctx.strokeStyle = '#ccc';
+                    ctx.lineWidth = 3;
+                    ctx.beginPath();
+                    ctx.moveTo(50, 100);
+                    ctx.lineTo(550, 100);
+                    ctx.stroke();
+                    
+                    // Draw tone markers
+                    tones.forEach((tone, index) => {
+                        const x = 50 + (index * 125);
+                        const isSelected = tone === selectedTone;
+                        
+                        // Draw circle
+                        ctx.fillStyle = isSelected ? colors[index] : '#e0e0e0';
+                        ctx.beginPath();
+                        ctx.arc(x, 100, isSelected ? 20 : 15, 0, 2 * Math.PI);
+                        ctx.fill();
+                        
+                        if (isSelected) {
+                            ctx.strokeStyle = colors[index];
+                            ctx.lineWidth = 3;
+                            ctx.stroke();
+                        }
+                        
+                        // Draw label
+                        ctx.fillStyle = isSelected ? colors[index] : '#666';
+                        ctx.font = isSelected ? 'bold 14px Arial' : '12px Arial';
+                        ctx.textAlign = 'center';
+                        ctx.fillText(toneLabels[index], x, 140);
+                        
+                        // Draw features for selected tone
+                        if (isSelected) {
+                            const features = toneExamples[tone].features;
+                            ctx.font = '11px Arial';
+                            ctx.fillStyle = '#333';
+                            features.forEach((feature, fIndex) => {
+                                ctx.fillText(`• ${feature}`, x, 160 + (fIndex * 12));
+                            });
+                        }
+                    });
+                    
+                    // Draw spectrum labels
+                    ctx.fillStyle = '#666';
+                    ctx.font = 'bold 16px Arial';
+                    ctx.textAlign = 'left';
+                    ctx.fillText('Casual', 20, 30);
+                    ctx.textAlign = 'right';
+                    ctx.fillText('Formal', 580, 30);
+                }
+                
+                // Initialize with work email
+                selectTone('work');
+            </script>
+        </section>
+
+        <section>
+            <h2>Essential Writing Types for Daily Life</h2>
+            <p>Let's explore the most common types of writing you'll use in English-speaking environments:</p>
+
+            <div class="writing-types">
+                <div class="writing-type">
+                    <h3>📱 Text Messages & Social Media</h3>
+                    <div class="example-good">
+                        <h4>✅ Effective Text</h4>
+                        <p>"Running 10 mins late! Traffic is crazy. Start without me 👍"</p>
+                        <p><small><strong>Why it works:</strong> Clear, immediate, includes emoji for tone</small></p>
+                    </div>
+                    <div class="example-bad">
+                        <h4>❌ Problematic Text</h4>
+                        <p>"I am approximately ten minutes behind schedule due to unexpected vehicular congestion..."</p>
+                        <p><small><strong>Why it doesn't work:</strong> Too formal for the medium</small></p>
+                    </div>
+                    <div class="writing-tool">
+                        <h4>Key Features:</h4>
+                        <ul>
+                            <li>Short and direct</li>
+                            <li>Contractions are normal</li>
+                            <li>Emojis add emotion/tone</li>
+                            <li>Abbreviations acceptable (LOL, BTW)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="writing-type">
+                    <h3>📧 Email Communication</h3>
+                    <div class="example-good">
+                        <h4>✅ Professional Email</h4>
+                        <div class="writing-sample">
+                            <p><strong>Subject:</strong> Meeting Request - Project Update</p>
+                            <p>Dear Ms. Rodriguez,</p>
+                            <p>I hope this email finds you well. I would like to schedule a meeting to discuss the current status of the marketing campaign project.</p>
+                            <p>Would next Tuesday at 2 PM work for your schedule? The meeting should take approximately one hour.</p>
+                            <p>Please let me know if this time suits you, or suggest an alternative that works better.</p>
+                            <p>Best regards,<br>Sarah Chen</p>
+                        </div>
+                        <p><small><strong>Why it works:</strong> Clear subject, polite tone, specific request, professional closing</small></p>
+                    </div>
+                    <div class="writing-tool">
+                        <h4>Email Structure:</h4>
+                        <ol>
+                            <li>Clear, specific subject line</li>
+                            <li>Appropriate greeting</li>
+                            <li>Purpose stated early</li>
+                            <li>Details in logical order</li>
+                            <li>Clear call to action</li>
+                            <li>Professional closing</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="writing-type">
+                    <h3>📋 Reports & Summaries</h3>
+                    <div class="example-good">
+                        <h4>✅ Executive Summary</h4>
+                        <div class="writing-sample">
+                            <p><strong>Quarterly Sales Report - Executive Summary</strong></p>
+                            <p>Our sales team exceeded targets by 15% this quarter, generating $2.3 million in revenue. Key achievements include:</p>
+                            <ul>
+                                <li>New client acquisition increased by 25%</li>
+                                <li>Customer retention improved to 92%</li>
+                                <li>Average deal size grew by 8%</li>
+                            </ul>
+                            <p>The primary growth driver was our expanded digital marketing strategy, which generated 40% more qualified leads than the previous quarter.</p>
+                        </div>
+                        <p><small><strong>Why it works:</strong> Starts with key result, uses specific numbers, clear structure</small></p>
+                    </div>
+                    <div class="writing-tool">
+                        <h4>Report Elements:</h4>
+                        <ul>
+                            <li>Executive summary first</li>
+                            <li>Specific data and metrics</li>
+                            <li>Clear headings and sections</li>
+                            <li>Objective, factual tone</li>
+                            <li>Conclusions and recommendations</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="writing-type">
+                    <h3>✍️ Personal & Creative Writing</h3>
+                    <div class="example-good">
+                        <h4>✅ Personal Narrative</h4>
+                        <div class="writing-sample">
+                            <p>The coffee shop was buzzing with the usual morning energy when I realized I had left my wallet at home. My face flushed as I stood at the counter, frantically searching through my bag while the line grew behind me.</p>
+                            <p>"Don't worry about it," said the barista with a genuine smile. "Pay it forward next time."</p>
+                            <p>That simple act of kindness changed my entire day—and reminded me how powerful small gestures can be.</p>
+                        </div>
+                        <p><small><strong>Why it works:</strong> Vivid details, emotional connection, clear narrative arc</small></p>
+                    </div>
+                    <div class="writing-tool">
+                        <h4>Creative Writing Tips:</h4>
+                        <ul>
+                            <li>Show, don't just tell</li>
+                            <li>Use sensory details</li>
+                            <li>Vary sentence length</li>
+                            <li>Create emotional connection</li>
+                            <li>Have a clear beginning, middle, end</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Sentence Variety and Flow</h2>
+            <p>Good writing uses a mix of sentence lengths and structures, like a musician using different notes to create a melody.</p>
+
+            <div class="writing-demo">
+                <h3>Sentence Length Analysis</h3>
+                <p>Look at this paragraph and notice the rhythm created by varying sentence lengths:</p>
+                
+                <div class="writing-sample">
+                    <p>
+                        <span class="short-sentence">The storm hit suddenly.</span>
+                        <span class="medium-sentence">Rain pounded against the windows while wind howled through the trees.</span>
+                        <span class="long-sentence">Sarah grabbed her flashlight and carefully made her way to the basement, where she knew her family would be waiting with supplies they had gathered earlier that week when the weather forecast first predicted severe storms.</span>
+                        <span class="short-sentence">They were prepared.</span>
+                        <span class="medium-sentence">The power went out, but they had everything they needed.</span>
+                    </p>
+                </div>
+                
+                <div class="writing-tool">
+                    <h4>Sentence Variety Guidelines:</h4>
+                    <ul>
+                        <li><strong>Short sentences (4-8 words):</strong> Create impact, emphasis, urgency</li>
+                        <li><strong>Medium sentences (9-20 words):</strong> Main workhorses of writing, clear and readable</li>
+                        <li><strong>Long sentences (21+ words):</strong> Add detail, show relationships, create flow</li>
+                        <li><strong>Mix all three:</strong> Creates natural rhythm and keeps readers engaged</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Common Writing Problems and Solutions</h2>
+            <p>Every writer faces these challenges. Recognizing them helps you write more effectively:</p>
+
+            <div class="writing-types">
+                <div class="example-bad">
+                    <h4>❌ Problem: Run-on Sentences</h4>
+                    <p>"I went to the store and I bought groceries and then I went home and I cooked dinner and after that I watched TV and then I went to bed because I was really tired from my long day at work."</p>
+                    <p><strong>Issue:</strong> Too many ideas crammed into one sentence</p>
+                </div>
+                <div class="example-good">
+                    <h4>✅ Solution: Break It Up</h4>
+                    <p>"I went to the store and bought groceries. When I got home, I cooked dinner and watched TV. Finally, I went to bed because I was exhausted from my long day at work."</p>
+                    <p><strong>Better because:</strong> Each sentence has one main idea</p>
+                </div>
+
+                <div class="example-bad">
+                    <h4>❌ Problem: Unclear Pronouns</h4>
+                    <p>"John told Mark that he should bring his laptop to the meeting because he would need it for his presentation."</p>
+                    <p><strong>Issue:</strong> Who is "he"? Whose laptop? Whose presentation?</p>
+                </div>
+                <div class="example-good">
+                    <h4>✅ Solution: Be Specific</h4>
+                    <p>"John told Mark to bring Mark's laptop to the meeting because Mark would need it for Mark's presentation."</p>
+                    <p><strong>Better because:</strong> No confusion about who does what</p>
+                </div>
+
+                <div class="example-bad">
+                    <h4>❌ Problem: Weak Verbs</h4>
+                    <p>"The manager was talking about the new policy. There were several concerns that were brought up by employees."</p>
+                    <p><strong>Issue:</strong> Passive voice and weak verbs make writing dull</p>
+                </div>
+                <div class="example-good">
+                    <h4>✅ Solution: Strong, Active Verbs</h4>
+                    <p>"The manager explained the new policy. Employees raised several concerns about implementation."</p>
+                    <p><strong>Better because:</strong> Active voice is clearer and more engaging</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>The Writing Process: From Idea to Final Draft</h2>
+            <p>Professional writers don't get it right the first time. They follow a process that ensures clarity and effectiveness.</p>
+
+            <div class="mermaid">
+                graph TD
+                    A[Writing Process] --> B[Prewriting<br/>Brainstorm & Plan]
+                    A --> C[First Draft<br/>Get Ideas Down]
+                    A --> D[Revision<br/>Improve Content & Structure]
+                    A --> E[Editing<br/>Fix Grammar & Style]
+                    A --> F[Proofreading<br/>Final Error Check]
+                    
+                    B --> G[Mind mapping<br/>Outline<br/>Research]
+                    C --> H[Don't worry about perfection<br/>Focus on content<br/>Keep writing]
+                    D --> I[Reorganize paragraphs<br/>Add/remove content<br/>Clarify ideas]
+                    E --> J[Check grammar<br/>Improve word choice<br/>Fix sentence structure]
+                    F --> K[Spelling check<br/>Punctuation<br/>Final read-through]
+            </div>
+
+            <div class="writing-exercise">
+                <h3>Writing Process Checklist</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                    <div>
+                        <h4>📝 Prewriting Phase</h4>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="purpose">
+                            <label for="purpose">Defined purpose and audience</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="brainstorm">
+                            <label for="brainstorm">Brainstormed main ideas</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="outline">
+                            <label for="outline">Created basic outline</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="research">
+                            <label for="research">Gathered necessary information</label>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4>✍️ Drafting Phase</h4>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="intro">
+                            <label for="intro">Written clear introduction</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="body">
+                            <label for="body">Developed main points</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="conclusion">
+                            <label for="conclusion">Added strong conclusion</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="flow">
+                            <label for="flow">Connected ideas with transitions</label>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4>🔍 Revision Phase</h4>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="clarity">
+                            <label for="clarity">Checked for clarity</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="organization">
+                            <label for="organization">Improved organization</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="evidence">
+                            <label for="evidence">Added supporting details</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="tone">
+                            <label for="tone">Checked tone and style</label>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4>📖 Final Edit</h4>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="grammar">
+                            <label for="grammar">Fixed grammar errors</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="spelling">
+                            <label for="spelling">Checked spelling</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="punctuation">
+                            <label for="punctuation">Verified punctuation</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="format">
+                            <label for="format">Confirmed formatting</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Digital Writing in the Modern World</h2>
+            <p>Today's writing happens across many digital platforms, each with its own conventions and expectations:</p>
+
+            <div class="writing-demo">
+                <h3>Platform-Specific Writing Guidelines</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+                    <div style="background: #e3f2fd; padding: 15px; border-radius: 8px;">
+                        <h4>📧 Email Best Practices</h4>
+                        <ul>
+                            <li><strong>Subject line:</strong> Specific and actionable</li>
+                            <li><strong>Opening:</strong> Professional but warm</li>
+                            <li><strong>Body:</strong> Organized with clear purpose</li>
+                            <li><strong>Call to action:</strong> Specific and clear</li>
+                            <li><strong>Closing:</strong> Appropriate to relationship</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: #e8f5e8; padding: 15px; border-radius: 8px;">
+                        <h4>💬 Instant Messaging</h4>
+                        <ul>
+                            <li><strong>Length:</strong> Keep messages brief</li>
+                            <li><strong>Tone:</strong> Match the platform culture</li>
+                            <li><strong>Timing:</strong> Respect work/personal boundaries</li>
+                            <li><strong>Clarity:</strong> Be direct and specific</li>
+                            <li><strong>Follow-up:</strong> Use email for complex topics</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: #fff3cd; padding: 15px; border-radius: 8px;">
+                        <h4>📱 Social Media</h4>
+                        <ul>
+                            <li><strong>Audience:</strong> Consider who will see it</li>
+                            <li><strong>Tone:</strong> Match platform expectations</li>
+                            <li><strong>Length:</strong> Respect platform limits</li>
+                            <li><strong>Engagement:</strong> Encourage interaction</li>
+                            <li><strong>Professional image:</strong> Maintain reputation</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: #f8bbd9; padding: 15px; border-radius: 8px;">
+                        <h4>📄 Documents & Reports</h4>
+                        <ul>
+                            <li><strong>Structure:</strong> Use headings and sections</li>
+                            <li><strong>Format:</strong> Consistent throughout</li>
+                            <li><strong>Evidence:</strong> Support claims with data</li>
+                            <li><strong>Executive summary:</strong> Key points first</li>
+                            <li><strong>Action items:</strong> Clear next steps</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Advanced Writing Techniques</h2>
+            <p>Once you master the basics, these techniques will make your writing more engaging and persuasive:</p>
+
+            <div class="writing-demo">
+                <h3>Persuasive Writing Strategies</h3>
+                <div class="writing-sample">
+                    <h4>Example: Persuasive Business Proposal</h4>
+                    <p><strong>Problem:</strong> "Our customer service response time averages 48 hours, causing customer frustration and lost sales."</p>
+                    <p><strong>Solution:</strong> "Implementing a live chat system could reduce response time to under 2 hours."</p>
+                    <p><strong>Evidence:</strong> "Companies using live chat see 15% higher customer satisfaction and 20% increased sales conversion."</p>
+                    <p><strong>Call to Action:</strong> "I recommend we pilot this system for three months with a $5,000 investment."</p>
+                </div>
+                
+                <div class="writing-tool">
+                    <h4>Persuasion Framework (PAS):</h4>
+                    <ul>
+                        <li><strong>Problem:</strong> Identify the issue clearly</li>
+                        <li><strong>Agitate:</strong> Show the consequences</li>
+                        <li><strong>Solution:</strong> Present your proposal</li>
+                        <li><strong>Evidence:</strong> Support with data/examples</li>
+                        <li><strong>Action:</strong> Tell them what to do next</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Practice Exercises</h2>
+            
+            <div class="writing-exercise">
+                <h3>Exercise 1: Email Transformation</h3>
+                <p>Rewrite this casual message for three different audiences:</p>
+                <div class="example-bad">
+                    <p><strong>Original message:</strong> "hey can't make the thing tomorrow something came up lol sorry"</p>
+                </div>
+                <p><strong>Rewrite for:</strong></p>
+                <ol>
+                    <li><strong>Your boss (formal):</strong> ________________</li>
+                    <li><strong>A colleague (professional):</strong> ________________</li>
+                    <li><strong>A close friend (casual but clear):</strong> ________________</li>
+                </ol>
+                <details style="margin-top: 15px;">
+                    <summary><strong>Click for sample answers</strong></summary>
+                    <ol>
+                        <li><strong>Boss:</strong> "Dear Mr. Smith, I regret to inform you that I will be unable to attend tomorrow's meeting due to an unexpected family emergency. I apologize for the short notice and will follow up to reschedule. Best regards, [Name]"</li>
+                        <li><strong>Colleague:</strong> "Hi Sarah, I won't be able to make it to tomorrow's project meeting - something urgent came up. Could we reschedule for later this week? Thanks for understanding!"</li>
+                        <li><strong>Friend:</strong> "Hey! Can't make dinner tomorrow - family emergency came up. Rain check for next week? Sorry for the last-minute change!"</li>
+                    </ol>
+                </details>
+            </div>
+
+            <div class="writing-exercise">
+                <h3>Exercise 2: Sentence Variety Challenge</h3>
+                <p>Improve this paragraph by varying sentence length and structure:</p>
+                <div class="example-bad">
+                    <p>"The weather was bad. It was raining hard. The wind was strong. People were running for shelter. The streets were empty. Cars were driving slowly. The storm lasted two hours. Then the sun came out."</p>
+                </div>
+                <p><strong>Your improved version:</strong></p>
+                <textarea style="width: 100%; height: 100px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" placeholder="Rewrite the paragraph here..."></textarea>
+                <details style="margin-top: 15px;">
+                    <summary><strong>Click for a sample improvement</strong></summary>
+                    <p>"The storm hit with surprising fury. Rain pounded the sidewalks while powerful winds bent trees nearly to the ground, sending people running for shelter wherever they could find it. Empty streets gleamed with water as cars crawled through the downpour. Two hours later, as suddenly as it had begun, the storm passed. The sun emerged, revealing a city washed clean and sparkling."</p>
+                </details>
+            </div>
+
+            <div class="writing-exercise">
+                <h3>Exercise 3: Professional Writing Practice</h3>
+                <p>Write a brief business email (150-200 words) for this scenario:</p>
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <p><strong>Scenario:</strong> You work at ABC Company. Your client, Green Valley Corp, requested a proposal by Friday, but your team needs until Monday to complete the research. Write an email requesting a deadline extension.</p>
+                    <p><strong>Include:</strong> Polite greeting, explanation, specific new deadline, reason for delay, next steps, professional closing</p>
+                </div>
+                <textarea style="width: 100%; height: 150px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" placeholder="Write your professional email here..."></textarea>
+            </div>
+
+            <div class="writing-exercise">
+                <h3>Exercise 4: Creative Writing Warm-up</h3>
+                <p>Write a short paragraph (100 words) that includes:</p>
+                <ul>
+                    <li>One short sentence (under 7 words)</li>
+                    <li>One long sentence (over 20 words)</li>
+                    <li>At least one sensory detail (sight, sound, smell, taste, touch)</li>
+                    <li>An emotion or feeling</li>
+                </ul>
+                <p><strong>Topic prompt:</strong> Describe your favorite place to think or relax</p>
+                <textarea style="width: 100%; height: 120px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" placeholder="Write your creative paragraph here..."></textarea>
+            </div>
+        </section>
+
+        <section>
+            <h2>Building Your Writing Habit</h2>
+            <p>Becoming a confident writer requires consistent practice, just like developing any other skill.</p>
+
+            <div class="analogy">
+                <h3>🏃‍♀️ The Fitness Training Analogy</h3>
+                <p>Writing improvement is like physical fitness - you can't get fit by exercising once a month for 8 hours. Instead, you need consistent, focused practice. Start with small, manageable goals (like writing one email per day with extra attention to clarity) and gradually increase the challenge. Your "writing muscles" will get stronger with regular use.</p>
+            </div>
+
+            <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                <h4>Daily Writing Practice (15-20 minutes)</h4>
+                <ul>
+                    <li><strong>Week 1-2:</strong> Focus on email clarity - rewrite one email daily before sending</li>
+                    <li><strong>Week 3-4:</strong> Practice different tones - write the same message formally and casually</li>
+                    <li><strong>Week 5-6:</strong> Work on sentence variety - combine short and long sentences in paragraphs</li>
+                    <li><strong>Week 7-8:</strong> Try creative writing - describe daily experiences in vivid detail</li>
+                    <li><strong>Ongoing:</strong> Keep a writing journal to track progress and challenges</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>Writing Technology Tools</h2>
+            <p>Modern technology offers powerful tools to improve your writing quality and efficiency:</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                <div style="background: #e8f5e8; padding: 15px; border-radius: 8px;">
+                    <h4>📖 Grammar & Style Checkers</h4>
+                    <ul>
+                        <li>Grammarly for grammar and tone</li>
+                        <li>Hemingway Editor for readability</li>
+                        <li>ProWritingAid for detailed analysis</li>
+                        <li>Built-in spell checkers</li>
+                    </ul>
+                </div>
+                <div style="background: #e8f5e8; padding: 15px; border-radius: 8px;">
+                    <h4>🗂️ Organization Tools</h4>
+                    <ul>
+                        <li>Google Docs for collaboration</li>
+                        <li>Notion for project planning</li>
+                        <li>Mind mapping software</li>
+                        <li>Outline templates</li>
+                    </ul>
+                </div>
+                <div style="background: #e8f5e8; padding: 15px; border-radius: 8px;">
+                    <h4>📚 Reference Resources</h4>
+                    <ul>
+                        <li>Online dictionaries and thesauruses</li>
+                        <li>Style guides (APA, MLA, Chicago)</li>
+                        <li>Industry-specific writing examples</li>
+                        <li>Grammar reference websites</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Your Writing Development Journey</h2>
+            <p>Congratulations on building your English writing foundation! Remember that great writers are made through practice, not born with perfect skills.</p>
+
+            <div style="background: #fff3cd; border: 2px solid #ffc107; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                <h3>📝 This Week's Writing Challenge</h3>
+                <ol>
+                    <li>Write one professional email daily, focusing on clarity and appropriate tone</li>
+                    <li>Practice the same message in three different formality levels</li>
+                    <li>Keep a daily writing journal with one paragraph about your day</li>
+                    <li>Rewrite one paragraph from a news article in your own words</li>
+                    <li>Use the writing process checklist for one important document</li>
+                </ol>
+            </div>
+
+            <p>In our next lesson, we'll explore "English Reading Comprehension" - strategies for understanding different types of texts, from news articles to academic papers. You'll learn how to read more efficiently, extract key information, and expand your vocabulary through contextual learning.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Remember: Every professional writer started with a blank page and made mistakes. Your writing voice will develop with practice and patience. Focus on clarity over perfection, and celebrate your progress along the way! ✍️</p>
+    </footer>
+</body>
+</html>

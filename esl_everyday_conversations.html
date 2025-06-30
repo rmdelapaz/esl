@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Everyday English Conversations - Real-World Communication Skills</title>
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="icon" href="/favicon.png" type="image/png">
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ startOnLoad: true });
+    </script>
+    <style>
+        .conversation-demo {
+            background: #f0f8ff;
+            border-left: 4px solid #4a90e2;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        .dialogue-box {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .analogy {
+            background: #e8f5e8;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        .scenario-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .scenario-box {
+            background: #e3f2fd;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid #2196f3;
+        }
+        .speaker-a {
+            background: #ffcdd2;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 8px;
+            border-left: 4px solid #f44336;
+        }
+        .speaker-b {
+            background: #c8e6c9;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 8px;
+            border-left: 4px solid #4caf50;
+        }
+        .phrase-bank {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        .useful-phrase {
+            display: inline-block;
+            background: #e0e0e0;
+            padding: 8px 12px;
+            margin: 3px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .formal-phrase {
+            background: #bbdefb;
+            border: 1px solid #2196f3;
+        }
+        .informal-phrase {
+            background: #c8e6c9;
+            border: 1px solid #4caf50;
+        }
+        .neutral-phrase {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+        }
+        .conversation-simulator {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .response-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        .response-option {
+            background: #e0e0e0;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+        .response-option:hover {
+            background: #d0d0d0;
+            border-color: #666;
+        }
+        .response-option.selected {
+            background: #4caf50;
+            color: white;
+            border-color: #2e7d32;
+        }
+        .cultural-note {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        canvas {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Everyday English Conversations</h1>
+        <p class="subtitle">Real-World Communication Skills</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>Welcome to Real-World English</h2>
+            <p>Learning English conversation is like learning to dance. You can know all the steps (grammar and vocabulary), but real dancing happens when you flow naturally with the music and your partner. Today, we'll practice the art of English conversation - the natural flow of real communication that happens in everyday life.</p>
+
+            <div class="analogy">
+                <h3>🎭 The Theater Performance Analogy</h3>
+                <p>Think of everyday conversations like improvisational theater. You don't have a script, but you do have common patterns, typical responses, and cultural cues that guide the performance. The goal isn't to memorize lines, but to understand the rhythm and flow so you can respond naturally in any scene life presents to you.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>The Anatomy of English Conversations</h2>
+            <p>Every conversation has a structure, like the framework of a building. Understanding this structure helps you participate confidently in any discussion.</p>
+
+            <div class="mermaid">
+                graph TD
+                    A[English Conversation Structure] --> B[Opening<br/>Greetings & Ice Breakers]
+                    A --> C[Body<br/>Main Topic Exchange]
+                    A --> D[Closing<br/>Wrap-up & Farewell]
+                    
+                    B --> E[Formal<br/>Good morning, How do you do?]
+                    B --> F[Informal<br/>Hey, What's up?]
+                    B --> G[Small Talk<br/>Weather, Current Events]
+                    
+                    C --> H[Information Exchange<br/>Questions & Answers]
+                    C --> I[Opinion Sharing<br/>I think, In my opinion]
+                    C --> J[Problem Solving<br/>Suggestions & Solutions]
+                    
+                    D --> K[Transition Signals<br/>Well, Anyway, So...]
+                    D --> L[Future Plans<br/>See you later, Talk soon]
+                    D --> M[Polite Endings<br/>Nice talking to you]
+            </div>
+        </section>
+
+        <section>
+            <h2>Interactive Conversation Simulator</h2>
+            <p>Practice responding in different scenarios. Choose the most appropriate response for each situation:</p>
+            
+            <div class="conversation-simulator">
+                <canvas id="conversationCanvas" width="600" height="300"></canvas>
+                
+                <div id="scenarioDisplay">
+                    <div class="speaker-a">
+                        <strong>Person A:</strong> <span id="speakerAText">Hi! How are you today?</span>
+                    </div>
+                    <div style="margin: 15px 0;">
+                        <strong>Your response:</strong>
+                        <div class="response-options" id="responseOptions">
+                            <div class="response-option" onclick="selectResponse(this, 'formal')">I'm doing very well, thank you. How are you?</div>
+                            <div class="response-option" onclick="selectResponse(this, 'informal')">Pretty good! How about you?</div>
+                            <div class="response-option" onclick="selectResponse(this, 'neutral')">I'm fine, thanks. And you?</div>
+                        </div>
+                    </div>
+                    <div id="feedback" style="margin-top: 15px; padding: 10px; border-radius: 5px; display: none;"></div>
+                </div>
+                
+                <div style="text-align: center; margin: 20px 0;">
+                    <button onclick="nextScenario()" style="padding: 10px 20px; background: #2196f3; color: white; border: none; border-radius: 5px; cursor: pointer;">Next Scenario</button>
+                </div>
+            </div>
+            
+            <script>
+                let currentScenario = 0;
+                const scenarios = [
+                    {
+                        prompt: "Hi! How are you today?",
+                        responses: [
+                            { text: "I'm doing very well, thank you. How are you?", type: "formal", feedback: "Perfect for professional or first meetings!" },
+                            { text: "Pretty good! How about you?", type: "informal", feedback: "Great for friends and casual situations!" },
+                            { text: "I'm fine, thanks. And you?", type: "neutral", feedback: "Safe choice for any situation!" }
+                        ]
+                    },
+                    {
+                        prompt: "Excuse me, could you help me find the library?",
+                        responses: [
+                            { text: "I'd be happy to help. It's on the second floor.", type: "formal", feedback: "Very polite and helpful!" },
+                            { text: "Sure! Just go upstairs and turn right.", type: "informal", feedback: "Friendly and direct!" },
+                            { text: "Of course. Follow me, I'll show you.", type: "neutral", feedback: "Helpful and accommodating!" }
+                        ]
+                    },
+                    {
+                        prompt: "What do you think about the weather today?",
+                        responses: [
+                            { text: "It's quite pleasant, isn't it?", type: "formal", feedback: "Polite small talk response!" },
+                            { text: "It's awesome! Perfect for outdoor activities.", type: "informal", feedback: "Enthusiastic and engaging!" },
+                            { text: "It's really nice. Good day to be outside.", type: "neutral", feedback: "Positive and conversational!" }
+                        ]
+                    }
+                ];
+                
+                function selectResponse(element, type) {
+                    // Clear previous selections
+                    document.querySelectorAll('.response-option').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+                    
+                    // Select current option
+                    element.classList.add('selected');
+                    
+                    // Show feedback
+                    const scenario = scenarios[currentScenario];
+                    const response = scenario.responses.find(r => r.type === type);
+                    const feedback = document.getElementById('feedback');
+                    feedback.innerHTML = `<strong>${response.feedback}</strong><br><em>Style: ${type.charAt(0).toUpperCase() + type.slice(1)}</em>`;
+                    feedback.style.display = 'block';
+                    feedback.style.background = '#e8f5e8';
+                    
+                    drawConversationFlow(type);
+                }
+                
+                function nextScenario() {
+                    currentScenario = (currentScenario + 1) % scenarios.length;
+                    const scenario = scenarios[currentScenario];
+                    
+                    document.getElementById('speakerAText').textContent = scenario.prompt;
+                    
+                    const optionsContainer = document.getElementById('responseOptions');
+                    optionsContainer.innerHTML = '';
+                    
+                    scenario.responses.forEach(response => {
+                        const option = document.createElement('div');
+                        option.className = 'response-option';
+                        option.textContent = response.text;
+                        option.onclick = () => selectResponse(option, response.type);
+                        optionsContainer.appendChild(option);
+                    });
+                    
+                    document.getElementById('feedback').style.display = 'none';
+                    clearCanvas();
+                }
+                
+                function drawConversationFlow(responseType) {
+                    const canvas = document.getElementById('conversationCanvas');
+                    const ctx = canvas.getContext('2d');
+                    ctx.clearRect(0, 0, 600, 300);
+                    
+                    // Draw conversation flow
+                    const colors = {
+                        formal: '#2196f3',
+                        informal: '#4caf50',
+                        neutral: '#ff9800'
+                    };
+                    
+                    // Draw speaker A
+                    ctx.fillStyle = '#ffcdd2';
+                    ctx.fillRect(50, 50, 150, 60);
+                    ctx.strokeStyle = '#f44336';
+                    ctx.lineWidth = 2;
+                    ctx.strokeRect(50, 50, 150, 60);
+                    
+                    ctx.fillStyle = '#000';
+                    ctx.font = '14px Arial';
+                    ctx.textAlign = 'center';
+                    ctx.fillText('Person A', 125, 75);
+                    ctx.fillText('(Question)', 125, 95);
+                    
+                    // Draw arrow
+                    ctx.strokeStyle = colors[responseType];
+                    ctx.lineWidth = 3;
+                    ctx.beginPath();
+                    ctx.moveTo(200, 80);
+                    ctx.lineTo(350, 80);
+                    ctx.lineTo(340, 70);
+                    ctx.moveTo(350, 80);
+                    ctx.lineTo(340, 90);
+                    ctx.stroke();
+                    
+                    // Draw speaker B (you)
+                    ctx.fillStyle = colors[responseType] + '40';
+                    ctx.fillRect(400, 50, 150, 60);
+                    ctx.strokeStyle = colors[responseType];
+                    ctx.lineWidth = 2;
+                    ctx.strokeRect(400, 50, 150, 60);
+                    
+                    ctx.fillStyle = '#000';
+                    ctx.fillText('You', 475, 75);
+                    ctx.fillText(`(${responseType})`, 475, 95);
+                    
+                    // Draw conversation outcome
+                    ctx.fillStyle = '#e8f5e8';
+                    ctx.fillRect(200, 150, 200, 80);
+                    ctx.strokeStyle = '#4caf50';
+                    ctx.lineWidth = 2;
+                    ctx.strokeRect(200, 150, 200, 80);
+                    
+                    ctx.fillStyle = '#000';
+                    ctx.font = 'bold 16px Arial';
+                    ctx.fillText('Successful', 300, 175);
+                    ctx.fillText('Communication!', 300, 195);
+                    ctx.font = '12px Arial';
+                    ctx.fillText(`Style: ${responseType}`, 300, 215);
+                }
+                
+                function clearCanvas() {
+                    const canvas = document.getElementById('conversationCanvas');
+                    const ctx = canvas.getContext('2d');
+                    ctx.clearRect(0, 0, 600, 300);
+                }
+                
+                // Initialize
+                nextScenario();
+            </script>
+        </section>
+
+        <section>
+            <h2>Essential Conversation Scenarios</h2>
+            <p>Master these common situations and you'll feel confident in most English-speaking environments:</p>
+
+            <div class="scenario-grid">
+                <div class="scenario-box">
+                    <h3>🛒 Shopping & Services</h3>
+                    <div class="dialogue-box">
+                        <div class="speaker-a"><strong>You:</strong> "Excuse me, where can I find the electronics section?"</div>
+                        <div class="speaker-b"><strong>Employee:</strong> "It's on the second floor, just take the escalator up."</div>
+                        <div class="speaker-a"><strong>You:</strong> "Thank you so much!"</div>
+                        <div class="speaker-b"><strong>Employee:</strong> "You're welcome. Let me know if you need anything else."</div>
+                    </div>
+                    <div class="phrase-bank">
+                        <h4>Key Phrases:</h4>
+                        <span class="useful-phrase neutral-phrase">Excuse me</span>
+                        <span class="useful-phrase neutral-phrase">Where can I find...?</span>
+                        <span class="useful-phrase neutral-phrase">How much does this cost?</span>
+                        <span class="useful-phrase formal-phrase">I'd like to return this</span>
+                        <span class="useful-phrase informal-phrase">Can I try this on?</span>
+                    </div>
+                </div>
+
+                <div class="scenario-box">
+                    <h3>🏥 Medical Appointments</h3>
+                    <div class="dialogue-box">
+                        <div class="speaker-a"><strong>Receptionist:</strong> "How can I help you today?"</div>
+                        <div class="speaker-b"><strong>You:</strong> "I'd like to schedule an appointment with Dr. Smith."</div>
+                        <div class="speaker-a"><strong>Receptionist:</strong> "What's the reason for your visit?"</div>
+                        <div class="speaker-b"><strong>You:</strong> "I've been having headaches for the past week."</div>
+                    </div>
+                    <div class="phrase-bank">
+                        <h4>Key Phrases:</h4>
+                        <span class="useful-phrase formal-phrase">I'd like to schedule...</span>
+                        <span class="useful-phrase neutral-phrase">I've been having...</span>
+                        <span class="useful-phrase neutral-phrase">The pain started...</span>
+                        <span class="useful-phrase formal-phrase">Could you explain...?</span>
+                        <span class="useful-phrase neutral-phrase">When should I come back?</span>
+                    </div>
+                </div>
+
+                <div class="scenario-box">
+                    <h3>🍕 Restaurants & Ordering</h3>
+                    <div class="dialogue-box">
+                        <div class="speaker-a"><strong>Server:</strong> "Good evening! Are you ready to order?"</div>
+                        <div class="speaker-b"><strong>You:</strong> "Could I have a few more minutes to decide?"</div>
+                        <div class="speaker-a"><strong>Server:</strong> "Of course! Can I start you with something to drink?"</div>
+                        <div class="speaker-b"><strong>You:</strong> "I'll have a water with lemon, please."</div>
+                    </div>
+                    <div class="phrase-bank">
+                        <h4>Key Phrases:</h4>
+                        <span class="useful-phrase formal-phrase">Could I have...?</span>
+                        <span class="useful-phrase neutral-phrase">I'll have the...</span>
+                        <span class="useful-phrase informal-phrase">What do you recommend?</span>
+                        <span class="useful-phrase neutral-phrase">Could we get the check?</span>
+                        <span class="useful-phrase formal-phrase">Everything was delicious</span>
+                    </div>
+                </div>
+
+                <div class="scenario-box">
+                    <h3>🏢 Professional Meetings</h3>
+                    <div class="dialogue-box">
+                        <div class="speaker-a"><strong>Colleague:</strong> "Thanks for joining us today. How's the project going?"</div>
+                        <div class="speaker-b"><strong>You:</strong> "We're making good progress. We should finish by Friday."</div>
+                        <div class="speaker-a"><strong>Colleague:</strong> "That's great to hear. Any challenges we should know about?"</div>
+                        <div class="speaker-b"><strong>You:</strong> "We might need some additional resources for the final phase."</div>
+                    </div>
+                    <div class="phrase-bank">
+                        <h4>Key Phrases:</h4>
+                        <span class="useful-phrase formal-phrase">We're making progress</span>
+                        <span class="useful-phrase formal-phrase">I'd like to propose...</span>
+                        <span class="useful-phrase neutral-phrase">Let me clarify...</span>
+                        <span class="useful-phrase formal-phrase">Could we schedule a follow-up?</span>
+                        <span class="useful-phrase neutral-phrase">I'll get back to you on that</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Small Talk Mastery</h2>
+            <p>Small talk is the social glue that connects people. It's not about deep topics - it's about building rapport and showing you're friendly and approachable.</p>
+
+            <div class="analogy">
+                <h3>🌉 The Bridge Building Analogy</h3>
+                <p>Small talk is like building a bridge between you and another person. You start with safe, neutral topics (the foundation), add some personal touches (the structure), and create a pathway for deeper conversation (the roadway). Weather, current events, and shared experiences are your building materials.</p>
+            </div>
+
+            <div class="conversation-demo">
+                <h3>Small Talk Topics That Always Work</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                    <div>
+                        <h4>🌤️ Weather</h4>
+                        <ul>
+                            <li>"Beautiful day, isn't it?"</li>
+                            <li>"I hope this rain stops soon."</li>
+                            <li>"Perfect weather for [activity]!"</li>
+                            <li>"It's supposed to be sunny tomorrow."</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>📅 Current Events/Holidays</h4>
+                        <ul>
+                            <li>"Are you doing anything special for the weekend?"</li>
+                            <li>"How was your holiday?"</li>
+                            <li>"Can you believe it's already December?"</li>
+                            <li>"Did you hear about [local event]?"</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>🏢 Work/Study (if appropriate)</h4>
+                        <ul>
+                            <li>"How's work treating you?"</li>
+                            <li>"Busy day today?"</li>
+                            <li>"What do you do for work?"</li>
+                            <li>"How are your classes going?"</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>🎭 Entertainment</h4>
+                        <ul>
+                            <li>"Have you seen any good movies lately?"</li>
+                            <li>"Are you watching anything interesting on TV?"</li>
+                            <li>"Have you tried that new restaurant?"</li>
+                            <li>"Did you catch the game last night?"</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cultural-note">
+                <h3>🌍 Cultural Note: Small Talk Expectations</h3>
+                <p><strong>In English-speaking cultures:</strong> Small talk is expected in elevators, waiting rooms, and casual encounters. It shows politeness and social awareness. Keep it light, positive, and brief unless the other person seems interested in continuing.</p>
+                <p><strong>Safe topics:</strong> Weather, local events, positive news, shared experiences</p>
+                <p><strong>Avoid:</strong> Personal finances, health problems, controversial politics, negative complaints</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Conversation Maintenance Techniques</h2>
+            <p>Keeping a conversation flowing naturally requires specific skills. Think of yourself as a conversation DJ - you need to read the room and keep the energy flowing.</p>
+
+            <div class="conversation-demo">
+                <h3>Essential Conversation Tools</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                    <div style="background: #fff3cd; padding: 15px; border-radius: 8px;">
+                        <h4>🔄 Follow-up Questions</h4>
+                        <p><strong>Purpose:</strong> Show interest and keep conversation going</p>
+                        <ul>
+                            <li>"That sounds interesting! Tell me more."</li>
+                            <li>"How did you get into that?"</li>
+                            <li>"What was that like?"</li>
+                            <li>"Really? How so?"</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: #e8f5e8; padding: 15px; border-radius: 8px;">
+                        <h4>👂 Active Listening Responses</h4>
+                        <p><strong>Purpose:</strong> Show you're engaged and understanding</p>
+                        <ul>
+                            <li>"Oh wow!" / "That's amazing!"</li>
+                            <li>"I can imagine!" / "That must have been..."</li>
+                            <li>"Absolutely!" / "I totally agree!"</li>
+                            <li>"No way!" / "You're kidding!"</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: #f0f8ff; padding: 15px; border-radius: 8px;">
+                        <h4>🔗 Topic Transitions</h4>
+                        <p><strong>Purpose:</strong> Smoothly change subjects</p>
+                        <ul>
+                            <li>"Speaking of [topic]..."</li>
+                            <li>"That reminds me of..."</li>
+                            <li>"By the way..."</li>
+                            <li>"Oh, before I forget..."</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: #ffebee; padding: 15px; border-radius: 8px;">
+                        <h4>⏰ Conversation Ending</h4>
+                        <p><strong>Purpose:</strong> Politely conclude conversations</p>
+                        <ul>
+                            <li>"Well, I should probably get going..."</li>
+                            <li>"It was great talking to you!"</li>
+                            <li>"I don't want to keep you..."</li>
+                            <li>"Let's catch up again soon!"</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Handling Difficult Conversation Situations</h2>
+            <p>Sometimes conversations don't go smoothly. Here's how to handle challenging moments with grace and confidence:</p>
+
+            <div class="scenario-grid">
+                <div class="conversation-demo">
+                    <h4>😕 When You Don't Understand</h4>
+                    <div class="dialogue-box">
+                        <div class="speaker-a"><strong>Person:</strong> "The quarterly projections indicate a significant paradigm shift."</div>
+                        <div class="speaker-b"><strong>You:</strong> "I'm sorry, could you explain what you mean by 'paradigm shift'?"</div>
+                    </div>
+                    <div class="phrase-bank">
+                        <h4>Useful Phrases:</h4>
+                        <span class="useful-phrase neutral-phrase">Could you explain...?</span>
+                        <span class="useful-phrase formal-phrase">I'm not familiar with that term</span>
+                        <span class="useful-phrase neutral-phrase">What do you mean by...?</span>
+                        <span class="useful-phrase informal-phrase">Sorry, you lost me there</span>
+                    </div>
+                </div>
+
+                <div class="conversation-demo">
+                    <h4>💭 When You Need Time to Think</h4>
+                    <div class="dialogue-box">
+                        <div class="speaker-a"><strong>Person:</strong> "What do you think about the new policy changes?"</div>
+                        <div class="speaker-b"><strong>You:</strong> "That's a good question. Let me think about that for a moment..."</div>
+                    </div>
+                    <div class="phrase-bank">
+                        <h4>Useful Phrases:</h4>
+                        <span class="useful-phrase neutral-phrase">That's a good question</span>
+                        <span class="useful-phrase formal-phrase">Let me consider that</span>
+                        <span class="useful-phrase neutral-phrase">Hmm, well...</span>
+                        <span class="useful-phrase informal-phrase">You know what...</span>
+                    </div>
+                </div>
+
+                <div class="conversation-demo">
+                    <h4>🚫 When You Disagree Politely</h4>
+                    <div class="dialogue-box">
+                        <div class="speaker-a"><strong>Person:</strong> "I think we should cancel the project entirely."</div>
+                        <div class="speaker-b"><strong>You:</strong> "I understand your concerns, but I have a different perspective..."</div>
+                    </div>
+                    <div class="phrase-bank">
+                        <h4>Useful Phrases:</h4>
+                        <span class="useful-phrase formal-phrase">I see your point, but...</span>
+                        <span class="useful-phrase neutral-phrase">I have a different view</span>
+                        <span class="useful-phrase formal-phrase">I respectfully disagree</span>
+                        <span class="useful-phrase neutral-phrase">Have you considered...?</span>
+                    </div>
+                </div>
+
+                <div class="conversation-demo">
+                    <h4>🔄 When You Need to Change Topics</h4>
+                    <div class="dialogue-box">
+                        <div class="speaker-a"><strong>Person:</strong> "...and then my ex-boyfriend said..."</div>
+                        <div class="speaker-b"><strong>You:</strong> "Speaking of relationships, how's your family doing?"</div>
+                    </div>
+                    <div class="phrase-bank">
+                        <h4>Useful Phrases:</h4>
+                        <span class="useful-phrase neutral-phrase">Speaking of...</span>
+                        <span class="useful-phrase neutral-phrase">That reminds me...</span>
+                        <span class="useful-phrase informal-phrase">By the way...</span>
+                        <span class="useful-phrase neutral-phrase">On a different note...</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Phone and Video Call Conversations</h2>
+            <p>Digital communication requires special skills since you can't rely on body language and visual cues as much:</p>
+
+            <div class="conversation-demo">
+                <h3>📞 Phone Call Structure</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                    <div style="background: #e3f2fd; padding: 15px; border-radius: 8px;">
+                        <h4>Opening a Call</h4>
+                        <ul>
+                            <li><strong>Answer:</strong> "Hello, this is [name]"</li>
+                            <li><strong>Make call:</strong> "Hi, this is [name] calling"</li>
+                            <li><strong>State purpose:</strong> "I'm calling about..."</li>
+                            <li><strong>Check timing:</strong> "Is this a good time to talk?"</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: #e8f5e8; padding: 15px; border-radius: 8px;">
+                        <h4>During the Call</h4>
+                        <ul>
+                            <li><strong>Check understanding:</strong> "Does that make sense?"</li>
+                            <li><strong>Clarify:</strong> "Let me make sure I understand..."</li>
+                            <li><strong>Can't hear:</strong> "Sorry, could you repeat that?"</li>
+                            <li><strong>Hold on:</strong> "Could you hold on just a moment?"</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: #fff3cd; padding: 15px; border-radius: 8px;">
+                        <h4>Ending the Call</h4>
+                        <ul>
+                            <li><strong>Summarize:</strong> "So to summarize..."</li>
+                            <li><strong>Next steps:</strong> "I'll follow up with an email"</li>
+                            <li><strong>Thank:</strong> "Thank you for your time"</li>
+                            <li><strong>Close:</strong> "Have a great day!"</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cultural-note">
+                <h3>💻 Video Call Etiquette</h3>
+                <ul>
+                    <li><strong>Technical check:</strong> "Can you see and hear me clearly?"</li>
+                    <li><strong>Mute management:</strong> "I'll mute myself while you're presenting"</li>
+                    <li><strong>Screen sharing:</strong> "Are you able to see my screen?"</li>
+                    <li><strong>Connection issues:</strong> "I think you're cutting out a bit"</li>
+                    <li><strong>Background noise:</strong> "Sorry about the background noise"</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>Practice Exercises</h2>
+            
+            <div class="dialogue-box">
+                <h3>Exercise 1: Role-Play Scenarios</h3>
+                <p>Practice these situations by speaking out loud (you can record yourself!):</p>
+                <ol>
+                    <li><strong>Scenario:</strong> You're at a coffee shop and want to order a latte with oat milk.
+                        <br><em>Practice: Greeting, ordering, asking questions, paying, thanking</em></li>
+                    <li><strong>Scenario:</strong> You're at work and need to ask your colleague about a project deadline.
+                        <br><em>Practice: Polite interruption, asking for information, confirming understanding</em></li>
+                    <li><strong>Scenario:</strong> You're at a party and want to join a group conversation about travel.
+                        <br><em>Practice: Joining the group, asking questions, sharing experiences</em></li>
+                    <li><strong>Scenario:</strong> You need to call your doctor's office to reschedule an appointment.
+                        <br><em>Practice: Phone greetings, explaining the situation, scheduling, confirming details</em></li>
+                </ol>
+            </div>
+
+            <div class="dialogue-box">
+                <h3>Exercise 2: Small Talk Generator</h3>
+                <p>Practice starting conversations in these locations:</p>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;">
+                    <div>
+                        <h4>🚶 Elevator</h4>
+                        <p>Create 3 different opening lines for a 30-second elevator ride</p>
+                    </div>
+                    <div>
+                        <h4>☕ Coffee Shop Line</h4>
+                        <p>Practice commenting on the menu, wait time, or atmosphere</p>
+                    </div>
+                    <div>
+                        <h4>🚌 Public Transportation</h4>
+                        <p>Develop safe, brief conversation starters</p>
+                    </div>
+                    <div>
+                        <h4>🏃 Gym/Exercise Class</h4>
+                        <p>Create fitness-related small talk that's encouraging</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dialogue-box">
+                <h3>Exercise 3: Conversation Repair Practice</h3>
+                <p>Practice these recovery phrases when conversations get awkward:</p>
+                <ul>
+                    <li><strong>Misunderstanding:</strong> "I think there might be a misunderstanding..."</li>
+                    <li><strong>Awkward silence:</strong> "So... [transition to new topic]"</li>
+                    <li><strong>Forgot something:</strong> "Sorry, what was I saying?"</li>
+                    <li><strong>Need to leave:</strong> "I hate to cut this short, but..."</li>
+                    <li><strong>Topic too personal:</strong> "That's quite personal. How about we talk about..."</li>
+                </ul>
+            </div>
+
+            <div class="dialogue-box">
+                <h3>Exercise 4: Daily Conversation Challenge</h3>
+                <p>This week, practice one conversation type each day:</p>
+                <ul>
+                    <li><strong>Monday:</strong> Make small talk with a cashier or service worker</li>
+                    <li><strong>Tuesday:</strong> Have a phone conversation (call a business for information)</li>
+                    <li><strong>Wednesday:</strong> Practice professional conversation (ask a colleague about their work)</li>
+                    <li><strong>Thursday:</strong> Engage in social conversation (comment on a friend's social media post, then call them)</li>
+                    <li><strong>Friday:</strong> Practice problem-solving conversation (ask for help or directions)</li>
+                    <li><strong>Weekend:</strong> Free practice - use English in any conversation opportunity</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>Building Conversation Confidence</h2>
+            <p>Confidence in conversation comes from preparation and practice. Here's your development strategy:</p>
+
+            <div class="analogy">
+                <h3>🎸 The Musician's Practice Analogy</h3>
+                <p>Learning conversation skills is like learning to play music. Musicians practice scales (vocabulary and phrases), study songs (conversation patterns), and then improvise (natural dialogue). The more you practice the basics, the more natural your "improvisation" becomes in real conversations.</p>
+            </div>
+
+            <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                <h4>Daily Conversation Practice (20 minutes)</h4>
+                <ul>
+                    <li><strong>Phrase review (5 minutes):</strong> Practice 10 useful phrases from today's lesson</li>
+                    <li><strong>Scenario practice (10 minutes):</strong> Role-play one complete conversation scenario</li>
+                    <li><strong>Real application (5 minutes):</strong> Have one genuine English conversation</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>Conversation Troubleshooting</h2>
+            <p>When conversations feel challenging, try these strategies:</p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                <div class="conversation-demo">
+                    <h4>Problem: "I freeze up and can't think of what to say"</h4>
+                    <p><strong>Solution:</strong> Prepare 5 "go-to" questions that work in any situation</p>
+                    <p><strong>Examples:</strong> "How has your day been?" "What brings you here?" "How do you know [host/topic]?"</p>
+                </div>
+                
+                <div class="conversation-demo">
+                    <h4>Problem: "People speak too fast for me"</h4>
+                    <p><strong>Solution:</strong> It's okay to ask them to slow down</p>
+                    <p><strong>Say:</strong> "Sorry, could you speak a bit slower? I want to make sure I understand."</p>
+                </div>
+                
+                <div class="conversation-demo">
+                    <h4>Problem: "I make grammar mistakes when I speak"</h4>
+                    <p><strong>Solution:</strong> Focus on communication, not perfection</p>
+                    <p><strong>Remember:</strong> Native speakers make mistakes too. Your ideas matter more than perfect grammar.</p>
+                </div>
+                
+                <div class="conversation-demo">
+                    <h4>Problem: "I don't understand cultural references"</h4>
+                    <p><strong>Solution:</strong> Ask for clarification - people enjoy explaining</p>
+                    <p><strong>Say:</strong> "I'm not familiar with that. Could you tell me more about it?"</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Your Conversation Development Journey</h2>
+            <p>Congratulations on building your conversation toolkit! Remember, every great conversationalist started with practice and gradually built confidence.</p>
+
+            <div style="background: #fff3cd; border: 2px solid #ffc107; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                <h3>📝 This Week's Conversation Challenge</h3>
+                <ol>
+                    <li>Have one small talk conversation every day</li>
+                    <li>Practice one phone call (even if it's just calling a business for their hours)</li>
+                    <li>Join or start one group conversation</li>
+                    <li>Practice disagreeing politely in a safe conversation</li>
+                    <li>Record yourself doing a role-play scenario and listen for improvement areas</li>
+                </ol>
+            </div>
+
+            <p>In our next lesson, we'll explore "English Writing Skills" - from emails and texts to formal documents. You'll learn how to transfer your speaking confidence into clear, effective written communication that gets results in both personal and professional contexts.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Remember: Great conversations are like jazz music - they have structure, but the magic happens in the improvisation. Keep practicing, stay curious about others, and let your personality shine through your English! 🎭</p>
+    </footer>
+</body>
+</html>

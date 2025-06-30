@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Pronunciation Basics - Your Foundation to Clear Communication</title>
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="icon" href="/favicon.png" type="image/png">
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ startOnLoad: true });
+    </script>
+    <style>
+        .sound-demo {
+            background: #f0f8ff;
+            border-left: 4px solid #4a90e2;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        .practice-box {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .analogy {
+            background: #e8f5e8;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        .vowel-chart {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .vowel-box {
+            background: #e3f2fd;
+            padding: 15px;
+            text-align: center;
+            border-radius: 8px;
+            border: 2px solid #2196f3;
+        }
+        canvas {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>English Pronunciation Basics</h1>
+        <p class="subtitle">Building Your Foundation for Clear Communication</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>Welcome to Your English Pronunciation Journey</h2>
+            <p>Think of learning English pronunciation like learning to play a musical instrument. Just as a piano has 88 keys that create different sounds, English has specific sounds that, when combined correctly, create clear communication. Today, we'll explore the fundamental sounds of English and how to produce them correctly.</p>
+
+            <div class="analogy">
+                <h3>🎵 The Music Analogy</h3>
+                <p>Your mouth is like a musical instrument. Your tongue, lips, and teeth are the keys and strings. Your breath is the bow or the fingers that create the sound. Just like a musician practices scales, we'll practice the basic sounds of English.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Understanding the English Sound System</h2>
+            <p>English has approximately 44 distinct sounds (phonemes), but only 26 letters in the alphabet. This is why English spelling can be tricky - one letter can represent multiple sounds, and one sound can be spelled in multiple ways.</p>
+
+            <div class="mermaid">
+                graph TD
+                    A[English Sounds] --> B[Vowels - 20 sounds]
+                    A --> C[Consonants - 24 sounds]
+                    B --> D[Short Vowels<br/>cat, bed, hit, hot, cup]
+                    B --> E[Long Vowels<br/>cake, beet, bite, boat, cute]
+                    B --> F[Diphthongs<br/>boy, cow, hair]
+                    C --> G[Voiced<br/>b, d, g, v, z]
+                    C --> H[Voiceless<br/>p, t, k, f, s]
+                    C --> I[Nasals<br/>m, n, ng]
+            </div>
+        </section>
+
+        <section>
+            <h2>The Vowel Sounds - The Heart of English</h2>
+            <p>Vowels are like the engine of a car - they power every syllable. In English, vowels can be short, long, or combined (diphthongs). Let's explore each type:</p>
+
+            <div class="vowel-chart">
+                <div class="vowel-box">
+                    <h4>Short Vowels</h4>
+                    <p>/æ/ - <strong>cat</strong><br/>
+                    /ɛ/ - <strong>bed</strong><br/>
+                    /ɪ/ - <strong>hit</strong><br/>
+                    /ɒ/ - <strong>hot</strong><br/>
+                    /ʌ/ - <strong>cup</strong></p>
+                </div>
+                <div class="vowel-box">
+                    <h4>Long Vowels</h4>
+                    <p>/eɪ/ - <strong>cake</strong><br/>
+                    /iː/ - <strong>beet</strong><br/>
+                    /aɪ/ - <strong>bite</strong><br/>
+                    /oʊ/ - <strong>boat</strong><br/>
+                    /juː/ - <strong>cute</strong></p>
+                </div>
+                <div class="vowel-box">
+                    <h4>Diphthongs</h4>
+                    <p>/ɔɪ/ - <strong>boy</strong><br/>
+                    /aʊ/ - <strong>cow</strong><br/>
+                    /ɛr/ - <strong>hair</strong><br/>
+                    /ɪr/ - <strong>here</strong><br/>
+                    /ʊr/ - <strong>tour</strong></p>
+                </div>
+            </div>
+
+            <div class="sound-demo">
+                <h3>🔊 Interactive Vowel Practice</h3>
+                <p>Try this exercise: Place your hand on your throat and say "ahhhh" like you're at the doctor. Feel the vibration? That's your vocal cords working. Now try each vowel sound and notice how your mouth shape changes:</p>
+                <ul>
+                    <li><strong>/iː/ (beet):</strong> Smile wide, tongue high and forward</li>
+                    <li><strong>/uː/ (boot):</strong> Round your lips like you're kissing, tongue high and back</li>
+                    <li><strong>/æ/ (cat):</strong> Open your mouth wide, tongue low and forward</li>
+                    <li><strong>/ɒ/ (hot):</strong> Open your mouth, tongue low and back</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>Mouth Position Visualization</h2>
+            <p>Understanding where to place your tongue and how to shape your mouth is crucial. Let's visualize this with an interactive diagram:</p>
+            
+            <canvas id="mouthCanvas" width="400" height="300"></canvas>
+            
+            <script>
+                const canvas = document.getElementById('mouthCanvas');
+                const ctx = canvas.getContext('2d');
+                
+                function drawMouth(tonguePosition) {
+                    ctx.clearRect(0, 0, 400, 300);
+                    
+                    // Draw mouth outline
+                    ctx.strokeStyle = '#8B4513';
+                    ctx.lineWidth = 3;
+                    ctx.beginPath();
+                    ctx.arc(200, 150, 120, 0, Math.PI);
+                    ctx.stroke();
+                    
+                    // Draw teeth
+                    ctx.fillStyle = '#FFFFFF';
+                    ctx.fillRect(80, 150, 240, 10);
+                    ctx.fillRect(80, 30, 240, 10);
+                    
+                    // Draw tongue based on position
+                    ctx.fillStyle = '#FF69B4';
+                    ctx.beginPath();
+                    
+                    switch(tonguePosition) {
+                        case 'high-front': // for /iː/
+                            ctx.ellipse(150, 100, 80, 30, 0, 0, 2 * Math.PI);
+                            break;
+                        case 'high-back': // for /uː/
+                            ctx.ellipse(250, 100, 80, 30, 0, 0, 2 * Math.PI);
+                            break;
+                        case 'low-front': // for /æ/
+                            ctx.ellipse(150, 180, 80, 25, 0, 0, 2 * Math.PI);
+                            break;
+                        case 'low-back': // for /ɒ/
+                            ctx.ellipse(250, 180, 80, 25, 0, 0, 2 * Math.PI);
+                            break;
+                        default:
+                            ctx.ellipse(200, 140, 100, 30, 0, 0, 2 * Math.PI);
+                    }
+                    ctx.fill();
+                    
+                    // Add labels
+                    ctx.fillStyle = '#000';
+                    ctx.font = '16px Arial';
+                    ctx.fillText('Front', 100, 280);
+                    ctx.fillText('Back', 280, 280);
+                    ctx.fillText('High', 20, 60);
+                    ctx.fillText('Low', 20, 220);
+                }
+                
+                // Initial drawing
+                drawMouth('neutral');
+                
+                // Add interactive buttons
+                const buttonsHTML = `
+                    <div style="margin: 20px 0; text-align: center;">
+                        <button onclick="drawMouth('high-front')" style="margin: 5px; padding: 10px; background: #e3f2fd; border: 1px solid #2196f3; border-radius: 5px;">/iː/ - beet</button>
+                        <button onclick="drawMouth('high-back')" style="margin: 5px; padding: 10px; background: #e3f2fd; border: 1px solid #2196f3; border-radius: 5px;">/uː/ - boot</button>
+                        <button onclick="drawMouth('low-front')" style="margin: 5px; padding: 10px; background: #e3f2fd; border: 1px solid #2196f3; border-radius: 5px;">/æ/ - cat</button>
+                        <button onclick="drawMouth('low-back')" style="margin: 5px; padding: 10px; background: #e3f2fd; border: 1px solid #2196f3; border-radius: 5px;">/ɒ/ - hot</button>
+                    </div>
+                `;
+                canvas.insertAdjacentHTML('afterend', buttonsHTML);
+            </script>
+        </section>
+
+        <section>
+            <h2>Consonant Sounds - The Framework</h2>
+            <p>If vowels are the engine, consonants are the chassis that gives structure to words. Let's understand how consonants work:</p>
+
+            <div class="analogy">
+                <h3>🏗️ The Construction Analogy</h3>
+                <p>Think of consonants as different tools in a toolbox. Some are hammers (plosives like /p/, /b/, /t/, /d/) that create sharp, quick sounds. Others are saws (fricatives like /f/, /v/, /s/, /z/) that create continuous, flowing sounds. Each tool has its specific job in building clear speech.</p>
+            </div>
+
+            <div class="mermaid">
+                graph LR
+                    A[Consonant Production] --> B[Place of Articulation<br/>Where is the sound made?]
+                    A --> C[Manner of Articulation<br/>How is the sound made?]
+                    A --> D[Voicing<br/>Do vocal cords vibrate?]
+                    
+                    B --> E[Lips: p, b, m]
+                    B --> F[Teeth: f, v, th]
+                    B --> G[Tongue tip: t, d, n, l, r]
+                    B --> H[Tongue back: k, g, ng]
+                    
+                    C --> I[Stop: p, b, t, d, k, g]
+                    C --> J[Fricative: f, v, s, z, sh, th]
+                    C --> K[Nasal: m, n, ng]
+                    C --> L[Liquid: l, r]
+                    
+                    D --> M[Voiced: b, d, g, v, z]
+                    D --> N[Voiceless: p, t, k, f, s]
+            </div>
+        </section>
+
+        <section>
+            <h2>Common Pronunciation Challenges</h2>
+            <p>Every language has its unique sound system, which means certain English sounds might not exist in your native language. Here are some common challenges and solutions:</p>
+
+            <div class="sound-demo">
+                <h3>Challenge: The /θ/ (th) Sound</h3>
+                <p><strong>The Problem:</strong> Many languages don't have this sound, so speakers might substitute /s/ or /t/.</p>
+                <p><strong>The Solution:</strong> Place your tongue tip between your teeth and blow air gently. Practice with words like "think," "thank," "three."</p>
+                <p><strong>Real-world Impact:</strong> Saying "I sink" instead of "I think" can cause confusion!</p>
+            </div>
+
+            <div class="sound-demo">
+                <h3>Challenge: /r/ and /l/ Distinction</h3>
+                <p><strong>The Problem:</strong> Some languages don't distinguish between these sounds.</p>
+                <p><strong>The Solution:</strong> For /r/, curl your tongue back without touching the roof of your mouth. For /l/, touch your tongue tip to the ridge behind your upper teeth.</p>
+                <p><strong>Practice Pairs:</strong> rice/lice, right/light, rock/lock</p>
+            </div>
+
+            <div class="sound-demo">
+                <h3>Challenge: Final Consonants</h3>
+                <p><strong>The Problem:</strong> Some languages don't allow consonants at the end of words.</p>
+                <p><strong>The Solution:</strong> Practice holding the final sound. Don't add extra vowels!</p>
+                <p><strong>Example:</strong> "cat" not "cat-uh," "stop" not "stop-uh"</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Real-World Applications</h2>
+            <p>Clear pronunciation impacts every aspect of your English communication:</p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 20px 0;">
+                <div class="sound-demo">
+                    <h4>🏢 Professional Settings</h4>
+                    <p>In job interviews, meetings, and presentations, clear pronunciation builds confidence and credibility. Mispronouncing key terms in your field can undermine your expertise.</p>
+                </div>
+                <div class="sound-demo">
+                    <h4>🛒 Daily Life</h4>
+                    <p>Ordering food, asking for directions, shopping - clear pronunciation helps you get what you need without frustration or embarrassment.</p>
+                </div>
+                <div class="sound-demo">
+                    <h4>🎓 Academic Success</h4>
+                    <p>Participating in class discussions, giving presentations, and communicating with professors becomes easier with clear pronunciation.</p>
+                </div>
+                <div class="sound-demo">
+                    <h4>🤝 Social Connections</h4>
+                    <p>Making friends and building relationships is easier when people can understand you clearly and you feel confident speaking.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Practice Exercises</h2>
+            
+            <div class="practice-box">
+                <h3>Exercise 1: Minimal Pairs Practice</h3>
+                <p>Practice these word pairs that differ by only one sound. This helps train your ear and mouth to distinguish similar sounds:</p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                    <div>
+                        <h4>Vowel Contrasts</h4>
+                        <ul>
+                            <li>bit / beat</li>
+                            <li>cat / cut</li>
+                            <li>hot / hut</li>
+                            <li>full / fool</li>
+                            <li>pen / pan</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>Consonant Contrasts</h4>
+                        <ul>
+                            <li>thin / tin</li>
+                            <li>rice / lice</li>
+                            <li>vat / bat</li>
+                            <li>zip / ship</li>
+                            <li>yet / jet</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="practice-box">
+                <h3>Exercise 2: Tongue Twisters</h3>
+                <p>These help you practice specific sounds and improve your articulation speed:</p>
+                <ul>
+                    <li><strong>For /θ/ sound:</strong> "Thirty-three thousand three hundred thirty-three"</li>
+                    <li><strong>For /r/ sound:</strong> "Red lorry, yellow lorry"</li>
+                    <li><strong>For /s/ and /ʃ/:</strong> "She sells seashells by the seashore"</li>
+                    <li><strong>For /w/ and /v/:</strong> "Very well, very well, very well"</li>
+                </ul>
+            </div>
+
+            <div class="practice-box">
+                <h3>Exercise 3: Record and Compare</h3>
+                <p>Use your phone to record yourself saying these sentences, then listen back:</p>
+                <ol>
+                    <li>"The weather is getting better every day."</li>
+                    <li>"I would like to schedule a meeting for three thirty."</li>
+                    <li>"Please check your email for the attachment."</li>
+                    <li>"Thank you for your time and consideration."</li>
+                </ol>
+                <p><strong>Self-Assessment Questions:</strong></p>
+                <ul>
+                    <li>Can I hear all the final consonants clearly?</li>
+                    <li>Are my vowel sounds distinct?</li>
+                    <li>Is my rhythm natural and flowing?</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>Building Your Practice Routine</h2>
+            <p>Like physical exercise, pronunciation improvement requires consistent practice. Here's your roadmap:</p>
+
+            <div class="analogy">
+                <h3>🏃‍♀️ The Fitness Analogy</h3>
+                <p>Think of pronunciation practice like going to the gym. You wouldn't expect to lift heavy weights on day one, and you won't master all English sounds immediately. Start with basic exercises, practice regularly, and gradually increase the difficulty. Your "pronunciation muscles" will get stronger over time!</p>
+            </div>
+
+            <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                <h4>Daily Practice Schedule (15-20 minutes)</h4>
+                <ul>
+                    <li><strong>Warm-up (3 minutes):</strong> Practice basic vowel sounds</li>
+                    <li><strong>Focus Practice (7 minutes):</strong> Work on one challenging sound</li>
+                    <li><strong>Context Practice (5 minutes):</strong> Use the sound in sentences</li>
+                    <li><strong>Cool-down (3 minutes):</strong> Record yourself reading a short paragraph</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>Technology Tools for Practice</h2>
+            <p>Modern technology offers excellent tools to support your pronunciation learning:</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                <div style="background: #e8f5e8; padding: 15px; border-radius: 8px;">
+                    <h4>📱 Mobile Apps</h4>
+                    <ul>
+                        <li>Voice recording apps for self-assessment</li>
+                        <li>Speech-to-text to test clarity</li>
+                        <li>Pronunciation-focused language apps</li>
+                    </ul>
+                </div>
+                <div style="background: #e8f5e8; padding: 15px; border-radius: 8px;">
+                    <h4>🌐 Online Resources</h4>
+                    <ul>
+                        <li>YouTube pronunciation channels</li>
+                        <li>Online pronunciation dictionaries</li>
+                        <li>Interactive phonetic charts</li>
+                    </ul>
+                </div>
+                <div style="background: #e8f5e8; padding: 15px; border-radius: 8px;">
+                    <h4>🤖 AI Tools</h4>
+                    <ul>
+                        <li>Voice assistants for practice conversations</li>
+                        <li>Pronunciation feedback software</li>
+                        <li>Speech analysis applications</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Your Next Steps</h2>
+            <p>Congratulations on starting your pronunciation journey! Remember that improvement takes time and consistent practice. Focus on progress, not perfection.</p>
+
+            <div style="background: #fff3cd; border: 2px solid #ffc107; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                <h3>📝 Action Plan for This Week</h3>
+                <ol>
+                    <li>Identify your three most challenging sounds</li>
+                    <li>Practice the vowel chart daily using the mouth positions</li>
+                    <li>Record yourself reading one paragraph each day</li>
+                    <li>Choose one tongue twister and practice it until fluent</li>
+                    <li>Use speech-to-text on your phone to test clarity</li>
+                </ol>
+            </div>
+
+            <p>In our next lesson, we'll explore English rhythm and stress patterns - the music that makes English sound natural and flowing. You'll learn why some words sound stronger than others and how to make your speech more engaging and easier to understand.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Remember: Every native speaker was once a beginner. Your pronunciation will improve with consistent practice and patience. Keep practicing, and celebrate your progress along the way! 🌟</p>
+    </footer>
+</body>
+</html>

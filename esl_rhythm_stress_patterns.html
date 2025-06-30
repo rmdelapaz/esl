@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Rhythm and Stress Patterns - The Music of Natural Speech</title>
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="icon" href="/favicon.png" type="image/png">
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ startOnLoad: true });
+    </script>
+    <style>
+        .rhythm-demo {
+            background: #f0f8ff;
+            border-left: 4px solid #4a90e2;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        .stress-pattern {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .analogy {
+            background: #e8f5e8;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        .stress-word {
+            display: inline-block;
+            margin: 5px;
+            padding: 8px 12px;
+            background: #e3f2fd;
+            border-radius: 5px;
+            border: 2px solid #2196f3;
+        }
+        .strong-stress {
+            background: #ffcdd2;
+            border-color: #f44336;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        .weak-stress {
+            background: #e8f5e8;
+            border-color: #4caf50;
+            opacity: 0.7;
+        }
+        .rhythm-visualizer {
+            background: #f5f5f5;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .beat-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 5px;
+            line-height: 40px;
+            color: white;
+            font-weight: bold;
+        }
+        .strong-beat {
+            background: #f44336;
+        }
+        .weak-beat {
+            background: #9e9e9e;
+        }
+        canvas {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>English Rhythm and Stress Patterns</h1>
+        <p class="subtitle">The Music of Natural Speech</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>Welcome to the Music of English</h2>
+            <p>Imagine English as a song. Every song has a rhythm - some beats are strong, others are weak. This creates a pattern that makes music enjoyable to listen to. English speech works exactly the same way! Understanding and using proper rhythm and stress patterns will transform your English from robotic-sounding speech into natural, flowing communication.</p>
+
+            <div class="analogy">
+                <h3>🎵 The Drumbeat Analogy</h3>
+                <p>Think of English rhythm like a drumbeat in your favorite song. The drummer doesn't hit every beat with the same force - some beats are STRONG (the downbeats) and others are weak (the offbeats). In English, some syllables are STRONG (stressed) and others are weak (unstressed). This creates the natural flow that makes English sound musical.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>What is Stress in English?</h2>
+            <p>Stress is the emphasis we place on certain syllables or words. It's like turning up the volume on specific parts of speech. When we stress a syllable, we make it louder, longer, and higher in pitch.</p>
+
+            <div class="mermaid">
+                graph TD
+                    A[English Stress] --> B[Word Stress<br/>Syllables within words]
+                    A --> C[Sentence Stress<br/>Words within sentences]
+                    
+                    B --> D[Primary Stress<br/>The strongest syllable]
+                    B --> E[Secondary Stress<br/>Medium emphasis]
+                    B --> F[Unstressed<br/>Weak syllables]
+                    
+                    C --> G[Content Words<br/>nouns, verbs, adjectives]
+                    C --> H[Function Words<br/>articles, prepositions, pronouns]
+                    
+                    D --> I[TEA-cher<br/>BEAU-ti-ful<br/>im-POR-tant]
+                    G --> J[I LOVE my NEW JOB]
+                    H --> K[the, a, in, of, to, is]
+            </div>
+        </section>
+
+        <section>
+            <h2>Understanding Word Stress Patterns</h2>
+            <p>Every English word with more than one syllable has a stress pattern. Getting this right makes the difference between sounding natural and sounding foreign.</p>
+
+            <div class="stress-pattern">
+                <h3>Common Word Stress Patterns</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 20px 0;">
+                    <div>
+                        <h4>Two-Syllable Words</h4>
+                        <p><strong>Nouns:</strong> Usually first syllable</p>
+                        <div class="stress-word strong-stress">TEA</div><div class="stress-word weak-stress">cher</div><br/>
+                        <div class="stress-word strong-stress">WIN</div><div class="stress-word weak-stress">dow</div><br/>
+                        <div class="stress-word strong-stress">TA</div><div class="stress-word weak-stress">ble</div>
+                        
+                        <p><strong>Verbs:</strong> Usually second syllable</p>
+                        <div class="stress-word weak-stress">re</div><div class="stress-word strong-stress">PEAT</div><br/>
+                        <div class="stress-word weak-stress">be</div><div class="stress-word strong-stress">GIN</div><br/>
+                        <div class="stress-word weak-stress">for</div><div class="stress-word strong-stress">GET</div>
+                    </div>
+                    <div>
+                        <h4>Three-Syllable Words</h4>
+                        <p><strong>Words ending in -tion, -sion:</strong></p>
+                        <div class="stress-word weak-stress">in</div><div class="stress-word weak-stress">for</div><div class="stress-word strong-stress">MA</div><div class="stress-word weak-stress">tion</div><br/>
+                        <div class="stress-word weak-stress">de</div><div class="stress-word weak-stress">ci</div><div class="stress-word strong-stress">SION</div>
+                        
+                        <p><strong>Words ending in -ic:</strong></p>
+                        <div class="stress-word weak-stress">fan</div><div class="stress-word strong-stress">TAS</div><div class="stress-word weak-stress">tic</div><br/>
+                        <div class="stress-word weak-stress">spe</div><div class="stress-word strong-stress">CI</div><div class="stress-word weak-stress">fic</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Interactive Stress Pattern Visualizer</h2>
+            <p>Let's see how stress patterns create rhythm. Click the buttons below to hear and see different stress patterns:</p>
+            
+            <canvas id="stressCanvas" width="600" height="200"></canvas>
+            
+            <div style="text-align: center; margin: 20px 0;">
+                <button onclick="visualizeStress('wonderful')" style="margin: 5px; padding: 10px; background: #e3f2fd; border: 1px solid #2196f3; border-radius: 5px;">WON-der-ful</button>
+                <button onclick="visualizeStress('important')" style="margin: 5px; padding: 10px; background: #e3f2fd; border: 1px solid #2196f3; border-radius: 5px;">im-POR-tant</button>
+                <button onclick="visualizeStress('understand')" style="margin: 5px; padding: 10px; background: #e3f2fd; border: 1px solid #2196f3; border-radius: 5px;">un-der-STAND</button>
+                <button onclick="visualizeStress('comfortable')" style="margin: 5px; padding: 10px; background: #e3f2fd; border: 1px solid #2196f3; border-radius: 5px;">COM-fort-a-ble</button>
+            </div>
+            
+            <script>
+                const canvas = document.getElementById('stressCanvas');
+                const ctx = canvas.getContext('2d');
+                
+                const stressPatterns = {
+                    'wonderful': ['strong', 'weak', 'weak'],
+                    'important': ['weak', 'strong', 'weak'],
+                    'understand': ['weak', 'weak', 'strong'],
+                    'comfortable': ['strong', 'weak', 'weak', 'weak']
+                };
+                
+                function visualizeStress(word) {
+                    ctx.clearRect(0, 0, 600, 200);
+                    const pattern = stressPatterns[word];
+                    const syllableWidth = 500 / pattern.length;
+                    
+                    // Draw title
+                    ctx.fillStyle = '#000';
+                    ctx.font = '20px Arial';
+                    ctx.fillText(`Stress Pattern: ${word.toUpperCase()}`, 50, 30);
+                    
+                    // Draw syllables
+                    pattern.forEach((stress, index) => {
+                        const x = 50 + (index * syllableWidth);
+                        const height = stress === 'strong' ? 80 : 40;
+                        const y = 150 - height;
+                        
+                        // Draw bar
+                        ctx.fillStyle = stress === 'strong' ? '#f44336' : '#9e9e9e';
+                        ctx.fillRect(x, y, syllableWidth - 10, height);
+                        
+                        // Draw syllable text
+                        ctx.fillStyle = '#000';
+                        ctx.font = stress === 'strong' ? 'bold 16px Arial' : '14px Arial';
+                        const syllables = {
+                            'wonderful': ['WON', 'der', 'ful'],
+                            'important': ['im', 'POR', 'tant'],
+                            'understand': ['un', 'der', 'STAND'],
+                            'comfortable': ['COM', 'fort', 'a', 'ble']
+                        };
+                        ctx.fillText(syllables[word][index], x + 10, y + height + 20);
+                    });
+                }
+                
+                // Initial visualization
+                visualizeStress('wonderful');
+            </script>
+        </section>
+
+        <section>
+            <h2>Sentence Stress - The Bigger Picture</h2>
+            <p>Just as words have stressed syllables, sentences have stressed words. This is where English gets its natural rhythm and flow.</p>
+
+            <div class="analogy">
+                <h3>🏔️ The Mountain Range Analogy</h3>
+                <p>Think of a sentence like a mountain range. Some words are tall peaks (stressed content words) and others are valleys (unstressed function words). The peaks stand out and catch your attention, while the valleys connect them smoothly. This creates the landscape of English speech.</p>
+            </div>
+
+            <div class="rhythm-demo">
+                <h3>Content Words vs Function Words</h3>
+                <p><strong>Content Words</strong> (usually stressed): nouns, main verbs, adjectives, adverbs, question words</p>
+                <p><strong>Function Words</strong> (usually unstressed): articles (a, an, the), prepositions (in, on, at), pronouns (he, she, it), auxiliary verbs (is, are, was), conjunctions (and, but, or)</p>
+                
+                <div style="background: #f8f9fa; padding: 15px; margin: 15px 0; border-radius: 5px;">
+                    <p><strong>Example sentence:</strong></p>
+                    <p style="font-size: 1.2em;">
+                        <span style="text-decoration: underline;">I</span> 
+                        <span style="font-weight: bold; color: #f44336;">LOVE</span> 
+                        <span style="text-decoration: underline;">my</span> 
+                        <span style="font-weight: bold; color: #f44336;">NEW</span> 
+                        <span style="font-weight: bold; color: #f44336;">JOB</span> 
+                        <span style="text-decoration: underline;">in</span> 
+                        <span style="font-weight: bold; color: #f44336;">LONDON</span>
+                    </p>
+                    <p><small>Bold = stressed content words | Underlined = unstressed function words</small></p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>The Rhythm of English Speech</h2>
+            <p>English is a "stress-timed" language, which means the time between stressed syllables tends to be equal, regardless of how many unstressed syllables are in between.</p>
+
+            <div class="rhythm-visualizer">
+                <h3>🥁 Rhythm Visualization</h3>
+                <p>Notice how the stressed syllables occur at regular intervals:</p>
+                
+                <div style="margin: 20px 0;">
+                    <p><strong>The CAT is SIT-ting on the MAT</strong></p>
+                    <div>
+                        <span class="beat-circle strong-beat">CAT</span>
+                        <span class="beat-circle weak-beat">is</span>
+                        <span class="beat-circle strong-beat">SIT</span>
+                        <span class="beat-circle weak-beat">ting</span>
+                        <span class="beat-circle weak-beat">on</span>
+                        <span class="beat-circle weak-beat">the</span>
+                        <span class="beat-circle strong-beat">MAT</span>
+                    </div>
+                </div>
+                
+                <div style="margin: 20px 0;">
+                    <p><strong>The CATS are SIT-ting on the MATS</strong></p>
+                    <div>
+                        <span class="beat-circle strong-beat">CATS</span>
+                        <span class="beat-circle weak-beat">are</span>
+                        <span class="beat-circle strong-beat">SIT</span>
+                        <span class="beat-circle weak-beat">ting</span>
+                        <span class="beat-circle weak-beat">on</span>
+                        <span class="beat-circle weak-beat">the</span>
+                        <span class="beat-circle strong-beat">MATS</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Common Stress and Rhythm Mistakes</h2>
+            <p>Understanding these common errors will help you avoid them and sound more natural:</p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                <div class="rhythm-demo">
+                    <h4>❌ Mistake: Equal Stress</h4>
+                    <p><strong>Wrong:</strong> I-LOVE-MY-NEW-JOB (robot-like)</p>
+                    <p><strong>Right:</strong> I <strong>LOVE</strong> my <strong>NEW</strong> <strong>JOB</strong> (natural)</p>
+                    <p><strong>Why it matters:</strong> Equal stress makes you sound like a robot and is exhausting to listen to.</p>
+                </div>
+                
+                <div class="rhythm-demo">
+                    <h4>❌ Mistake: Wrong Word Stress</h4>
+                    <p><strong>Wrong:</strong> pho-TO-graph (sounds like "photography")</p>
+                    <p><strong>Right:</strong> PHO-to-graph</p>
+                    <p><strong>Why it matters:</strong> Wrong stress can change the meaning or make words unrecognizable.</p>
+                </div>
+                
+                <div class="rhythm-demo">
+                    <h4>❌ Mistake: Stressing Function Words</h4>
+                    <p><strong>Wrong:</strong> <strong>I</strong> <strong>AM</strong> <strong>GOING</strong> <strong>TO</strong> <strong>THE</strong> <strong>STORE</strong></p>
+                    <p><strong>Right:</strong> I am <strong>GOING</strong> to the <strong>STORE</strong></p>
+                    <p><strong>Why it matters:</strong> Stressing function words disrupts natural rhythm.</p>
+                </div>
+                
+                <div class="rhythm-demo">
+                    <h4>❌ Mistake: Syllable-Timed Speech</h4>
+                    <p><strong>Wrong:</strong> EACH-SYL-LA-BLE-GETS-E-QUAL-TIME</p>
+                    <p><strong>Right:</strong> <strong>STRESSED</strong> syllables get <strong>E</strong>qual <strong>TIME</strong></p>
+                    <p><strong>Why it matters:</strong> English flows between stressed syllables, not individual syllables.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Real-World Applications of Proper Rhythm</h2>
+            <p>Mastering English rhythm and stress has immediate practical benefits in all areas of life:</p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 20px 0;">
+                <div class="rhythm-demo">
+                    <h4>🎤 Public Speaking</h4>
+                    <p><strong>Scenario:</strong> Giving a presentation</p>
+                    <p><strong>With good stress:</strong> "This <strong>PRODUCT</strong> will <strong>CHANGE</strong> the <strong>MARKET</strong>"</p>
+                    <p><strong>Impact:</strong> Sounds confident and persuasive</p>
+                </div>
+                
+                <div class="rhythm-demo">
+                    <h4>📞 Phone Conversations</h4>
+                    <p><strong>Scenario:</strong> Calling customer service</p>
+                    <p><strong>With good stress:</strong> "I <strong>NEED</strong> to <strong>CANCEL</strong> my <strong>ORDER</strong>"</p>
+                    <p><strong>Impact:</strong> Clear communication, faster resolution</p>
+                </div>
+                
+                <div class="rhythm-demo">
+                    <h4>👥 Social Interactions</h4>
+                    <p><strong>Scenario:</strong> Meeting new people</p>
+                    <p><strong>With good stress:</strong> "It's <strong>GREAT</strong> to <strong>MEET</strong> you!"</p>
+                    <p><strong>Impact:</strong> Sounds warm and genuine</p>
+                </div>
+                
+                <div class="rhythm-demo">
+                    <h4>💼 Job Interviews</h4>
+                    <p><strong>Scenario:</strong> Describing your experience</p>
+                    <p><strong>With good stress:</strong> "I have <strong>FIVE</strong> years of <strong>EX</strong>perience in <strong>MAR</strong>keting"</p>
+                    <p><strong>Impact:</strong> Demonstrates fluency and professionalism</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Advanced Stress Patterns</h2>
+            <p>As you progress, understanding these advanced concepts will make your English even more natural:</p>
+
+            <div class="mermaid">
+                graph TD
+                    A[Advanced Stress Concepts] --> B[Contrastive Stress<br/>Emphasizing differences]
+                    A --> C[Emotional Stress<br/>Expressing feelings]
+                    A --> D[New Information Stress<br/>Highlighting important info]
+                    
+                    B --> E["I said CAR, not BAR"<br/>"SHE did it, not HE"]
+                    C --> F["That's TERRIBLE!"<br/>"I'm SO excited!"]
+                    D --> G["Meeting moved to FRIDAY"<br/>"Bring your LAPTOP"]
+            </div>
+
+            <div class="stress-pattern">
+                <h3>Contrastive Stress Examples</h3>
+                <p>When you want to emphasize a contrast or correction:</p>
+                <ul>
+                    <li><strong>A:</strong> "Did you buy a <strong>RED</strong> car?" <strong>B:</strong> "No, I bought a <strong>BLUE</strong> car."</li>
+                    <li><strong>A:</strong> "Is <strong>SARAH</strong> coming?" <strong>B:</strong> "No, <strong>MARY</strong> is coming."</li>
+                    <li><strong>Correcting:</strong> "I said <strong>THIRTEEN</strong>, not <strong>THIRTY</strong>."</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>Practice Exercises</h2>
+            
+            <div class="stress-pattern">
+                <h3>Exercise 1: Word Stress Practice</h3>
+                <p>Mark the stressed syllable in these words, then practice saying them:</p>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
+                    <div>
+                        <h4>Two Syllables</h4>
+                        <ul>
+                            <li>hotel</li>
+                            <li>mother</li>
+                            <li>guitar</li>
+                            <li>window</li>
+                            <li>begin</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>Three Syllables</h4>
+                        <ul>
+                            <li>computer</li>
+                            <li>banana</li>
+                            <li>important</li>
+                            <li>beautiful</li>
+                            <li>understand</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>Four Syllables</h4>
+                        <ul>
+                            <li>information</li>
+                            <li>university</li>
+                            <li>dictionary</li>
+                            <li>comfortable</li>
+                            <li>incredible</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stress-pattern">
+                <h3>Exercise 2: Sentence Stress Practice</h3>
+                <p>Identify and practice the stressed words in these sentences:</p>
+                <ol>
+                    <li>"I'm going to the store to buy some milk."</li>
+                    <li>"She works at a big company in downtown Chicago."</li>
+                    <li>"The meeting has been moved from Tuesday to Thursday."</li>
+                    <li>"Can you help me find my keys? I think I lost them."</li>
+                    <li>"We're planning a surprise party for her birthday next week."</li>
+                </ol>
+                <p><strong>Hint:</strong> Focus on nouns, main verbs, adjectives, and adverbs!</p>
+            </div>
+
+            <div class="stress-pattern">
+                <h3>Exercise 3: Rhythm Clapping</h3>
+                <p>Try this physical exercise to feel the rhythm:</p>
+                <ol>
+                    <li>Clap your hands on stressed syllables only</li>
+                    <li>Say the sentence while clapping</li>
+                    <li>Notice the regular rhythm of your claps</li>
+                </ol>
+                <p><strong>Practice sentences:</strong></p>
+                <ul>
+                    <li>"The <strong>CAT</strong> is <strong>SIT</strong>ting on the <strong>MAT</strong>" (clap 3 times)</li>
+                    <li>"I <strong>LOVE</strong> to <strong>EAT</strong> <strong>CHOC</strong>olate <strong>CAKE</strong>" (clap 4 times)</li>
+                    <li>"<strong>WHEN</strong> are you <strong>COM</strong>ing <strong>HOME</strong>?" (clap 3 times)</li>
+                </ul>
+            </div>
+
+            <div class="stress-pattern">
+                <h3>Exercise 4: Record and Analyze</h3>
+                <p>Record yourself reading this paragraph, then listen for stress patterns:</p>
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <p>"<strong>YES</strong>terday, I <strong>WENT</strong> to the <strong>STORE</strong> to <strong>BUY</strong> some <strong>GRO</strong>ceries. I <strong>NEED</strong>ed <strong>BREAD</strong>, <strong>MILK</strong>, and <strong>AP</strong>ples for <strong>BREAK</strong>fast. The <strong>STORE</strong> was very <strong>CROWD</strong>ed, but I <strong>FOUND</strong> everything I <strong>NEED</strong>ed. <strong>AF</strong>ter <strong>SHOP</strong>ping, I <strong>WENT</strong> <strong>HOME</strong> and <strong>COOKED</strong> a <strong>DE</strong>licious <strong>MEAL</strong>."</p>
+                </div>
+                <p><strong>Check:</strong> Did you stress the content words? Did your speech have a natural rhythm?</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Building Natural Rhythm Habits</h2>
+            <p>Creating good rhythm and stress habits takes consistent practice. Here's your development plan:</p>
+
+            <div class="analogy">
+                <h3>🎼 The Orchestra Conductor Analogy</h3>
+                <p>Think of yourself as the conductor of an orchestra. A good conductor doesn't just wave their arms randomly - they emphasize certain beats, create crescendos and diminuendos, and control the tempo. As you speak English, you're conducting the orchestra of your words, giving some instruments (words) the spotlight while others provide gentle background support.</p>
+            </div>
+
+            <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                <h4>Daily Rhythm Practice (10-15 minutes)</h4>
+                <ul>
+                    <li><strong>Warm-up (2 minutes):</strong> Practice word stress with 10 multi-syllable words</li>
+                    <li><strong>Sentence drill (5 minutes):</strong> Read 5 sentences focusing only on content words</li>
+                    <li><strong>Rhythm exercise (3 minutes):</strong> Practice the clapping exercise with new sentences</li>
+                    <li><strong>Natural speech (5 minutes):</strong> Describe your day using proper stress patterns</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>Technology Tools for Rhythm Practice</h2>
+            <p>Use these modern tools to perfect your English rhythm:</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                <div style="background: #e8f5e8; padding: 15px; border-radius: 8px;">
+                    <h4>🎵 Audio Tools</h4>
+                    <ul>
+                        <li>Metronome apps for rhythm practice</li>
+                        <li>Music apps to feel natural rhythm</li>
+                        <li>Audiobook speed adjustment for practice</li>
+                    </ul>
+                </div>
+                <div style="background: #e8f5e8; padding: 15px; border-radius: 8px;">
+                    <h4>📱 Speech Apps</h4>
+                    <ul>
+                        <li>Voice recording for self-assessment</li>
+                        <li>Speech analysis software</li>
+                        <li>Pronunciation apps with stress focus</li>
+                    </ul>
+                </div>
+                <div style="background: #e8f5e8; padding: 15px; border-radius: 8px;">
+                    <h4>🎬 Media Practice</h4>
+                    <ul>
+                        <li>YouTube videos with subtitles</li>
+                        <li>TV shows for natural rhythm exposure</li>
+                        <li>Podcast listening for rhythm patterns</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Troubleshooting Common Problems</h2>
+            <p>If you're struggling with rhythm and stress, here are targeted solutions:</p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                <div class="rhythm-demo">
+                    <h4>Problem: "Everything sounds flat"</h4>
+                    <p><strong>Solution:</strong> Exaggerate stress differences. Make stressed syllables MUCH louder and longer than unstressed ones.</p>
+                    <p><strong>Exercise:</strong> Whisper unstressed words, speak stressed words normally.</p>
+                </div>
+                
+                <div class="rhythm-demo">
+                    <h4>Problem: "I don't know which words to stress"</h4>
+                    <p><strong>Solution:</strong> Focus on content words first: nouns, main verbs, adjectives, adverbs.</p>
+                    <p><strong>Exercise:</strong> Circle content words in text before reading aloud.</p>
+                </div>
+                
+                <div class="rhythm-demo">
+                    <h4>Problem: "My speech sounds choppy"</h4>
+                    <p><strong>Solution:</strong> Connect unstressed words smoothly to stressed words.</p>
+                    <p><strong>Exercise:</strong> Practice linking words together in rhythm groups.</p>
+                </div>
+                
+                <div class="rhythm-demo">
+                    <h4>Problem: "Native speakers talk too fast"</h4>
+                    <p><strong>Solution:</strong> They're not necessarily faster - they're using rhythm efficiently.</p>
+                    <p><strong>Exercise:</strong> Focus on stressed syllables; let unstressed ones flow quickly.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Your Rhythm Development Journey</h2>
+            <p>Congratulations on learning about English rhythm and stress! This knowledge will transform how natural you sound when speaking English.</p>
+
+            <div style="background: #fff3cd; border: 2px solid #ffc107; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                <h3>📝 This Week's Rhythm Challenge</h3>
+                <ol>
+                    <li>Choose one paragraph from your favorite book or article</li>
+                    <li>Mark all the stressed words with a highlighter</li>
+                    <li>Practice reading it with exaggerated stress differences</li>
+                    <li>Record yourself and listen for natural rhythm</li>
+                    <li>Practice the same paragraph every day until it sounds natural</li>
+                </ol>
+            </div>
+
+            <p>In our next lesson, we'll explore "English Grammar Fundamentals" - the building blocks that hold your sentences together. You'll learn how to construct clear, correct sentences that follow English patterns naturally, making your communication more effective and professional.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Remember: English rhythm is like dancing - once you feel the beat, everything becomes more natural and enjoyable. Keep practicing, and soon you'll be speaking with the natural flow of a confident English speaker! 🎵</p>
+    </footer>
+</body>
+</html>
