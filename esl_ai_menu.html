@@ -106,7 +106,7 @@
                     </div>
                     
                     <div class="module-footer">
-                        <button class="start-module-btn">Start Foundation Course →</button>
+                        <button class="start-module-btn" onclick="openModule('foundations')">Start Foundation Course →</button>
                     </div>
                 </div>
 
@@ -150,7 +150,7 @@
                     </div>
                     
                     <div class="module-footer">
-                        <button class="start-module-btn">Practice Conversations →</button>
+                        <button class="start-module-btn" onclick="openModule('conversation')">Practice Conversations →</button>
                     </div>
                 </div>
 
@@ -194,7 +194,7 @@
                     </div>
                     
                     <div class="module-footer">
-                        <button class="start-module-btn">Perfect Your Speech →</button>
+                        <button class="start-module-btn" onclick="openModule('pronunciation')">Perfect Your Speech →</button>
                     </div>
                 </div>
 
@@ -238,7 +238,7 @@
                     </div>
                     
                     <div class="module-footer">
-                        <button class="start-module-btn">Master Writing Skills →</button>
+                        <button class="start-module-btn" onclick="openModule('writing')">Master Writing Skills →</button>
                     </div>
                 </div>
 
@@ -282,7 +282,7 @@
                     </div>
                     
                     <div class="module-footer">
-                        <button class="start-module-btn">Achieve Mastery →</button>
+                        <button class="start-module-btn" onclick="openModule('advanced')">Achieve Mastery →</button>
                     </div>
                 </div>
             </div>
@@ -322,7 +322,7 @@
                             <span class="step-content">Module 5: Study Habits (Build sustainable practices)</span>
                         </div>
                     </div>
-                    <button class="path-button beginner-btn">Start Beginner Journey</button>
+                                            <button class="path-button beginner-btn" onclick="openModule('foundations')">Start Beginner Journey</button>
                 </div>
 
                 <div class="path-card intermediate-path">
@@ -351,7 +351,7 @@
                             <span class="step-content">Module 5: Advanced Strategies (Power techniques)</span>
                         </div>
                     </div>
-                    <button class="path-button intermediate-btn">Accelerate Learning</button>
+                                            <button class="path-button intermediate-btn" onclick="openModule('foundations')">Accelerate Learning</button>
                 </div>
 
                 <div class="path-card professional-path">
@@ -380,7 +380,7 @@
                             <span class="step-content">Module 5: Career-focused strategies</span>
                         </div>
                     </div>
-                    <button class="path-button professional-btn">Advance Your Career</button>
+                                            <button class="path-button professional-btn" onclick="openModule('foundations')">Advance Your Career</button>
                 </div>
 
                 <div class="path-card mastery-path">
@@ -409,7 +409,7 @@
                             <span class="step-content">AI Learning Master Certification</span>
                         </div>
                     </div>
-                    <button class="path-button mastery-btn">Become a Master</button>
+                                            <button class="path-button mastery-btn" onclick="openModule('foundations')">Become a Master</button>
                 </div>
             </div>
         </section>
@@ -626,11 +626,11 @@
             <div class="footer-section">
                 <h4>🎓 Learning Resources</h4>
                 <ul>
-                    <li><a href="#foundations">Foundation Course</a></li>
-                    <li><a href="#conversation">Conversation Practice</a></li>
-                    <li><a href="#pronunciation">Pronunciation Guide</a></li>
-                    <li><a href="#writing">Writing Workshop</a></li>
-                    <li><a href="#advanced">Advanced Strategies</a></li>
+                    <li><a href="esl_ai_foundations.html" target="_blank">Foundation Course</a></li>
+                    <li><a href="ai_conversation_mastery.html" target="_blank">Conversation Practice</a></li>
+                    <li><a href="ai_pronunciation_listening_mastery.html" target="_blank">Pronunciation Guide</a></li>
+                    <li><a href="ai_enhanced_writing_mastery.html" target="_blank">Writing Workshop</a></li>
+                    <li><a href="ai_advanced_study_strategies_longterm_success.html" target="_blank">Advanced Strategies</a></li>
                 </ul>
             </div>
             
@@ -681,8 +681,10 @@
                 'advanced': 'ai_advanced_study_strategies_longterm_success.html'
             };
             
-            // In a real application, this would navigate to the actual files
-            alert(`Opening: ${moduleFiles[moduleId]}\n\nIn a real implementation, this would open the corresponding course module.`);
+            // Navigate to the actual module file
+            if (moduleFiles[moduleId]) {
+                window.open(moduleFiles[moduleId], '_blank');
+            }
         }
         
         // Quick access tools
@@ -733,7 +735,8 @@
         }
         
         function takeAssessment() {
-            openTool('assessment');
+            // Open the mastery assessment from the advanced module
+            window.open('ai_advanced_study_strategies_longterm_success.html#interactive-mastery-demo', '_blank');
         }
         
         // Auto-advance success stories
