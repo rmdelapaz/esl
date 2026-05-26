@@ -358,3 +358,33 @@ footer {
   padding: 1rem 0;
   text-align: left;
 }
+
+/* BEGIN footer-nav-styles (managed by add_footer_nav.py) */
+/* Static lesson footer (inserted by add_footer_nav.py into each lesson HTML) */
+.site-footer {
+    text-align: center;
+    padding: 1.5rem 1rem;
+    font-size: .85rem;
+    color: var(--text);
+    border-top: 1px solid var(--border);
+    margin-top: 2rem;
+}
+.site-footer a { color: var(--link); text-decoration: none; }
+.site-footer a:hover { text-decoration: underline; }
+.site-footer p { margin: .35rem 0; }
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: .5rem;
+}
+
+/* First/last in a section uses <span></span> as a placeholder; keep it inert */
+.page-nav > span:empty { flex: 0 0 auto; }
+
+@media print {
+    .site-footer { display: none !important; }
+}
+/* END footer-nav-styles */
