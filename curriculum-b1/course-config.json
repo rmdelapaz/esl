@@ -1,0 +1,98 @@
+{
+  "course": {
+    "title": "Independent English (B1 Intermediate)",
+    "subtitle": "A complete self-paced intermediate English curriculum",
+    "description": "Twelve real, sequenced B1 lessons building on A2 — perfect tenses, conditionals, wishes, reported speech, relative clauses, the passive voice, and modals of deduction — so a learner can handle most situations, give opinions, and connect ideas fluently.",
+    "author": {
+      "name": "Ray de la Paz",
+      "email": "contact via website",
+      "website": "https://rays-home.netlify.app/",
+      "bio": "Technical trainer and course developer."
+    },
+    "version": "1.0.0",
+    "lastUpdated": "2026-09-09",
+    "language": "en",
+    "difficulty": "intermediate",
+    "cefr": "B1",
+    "estimatedHours": 12,
+    "tags": ["esl", "english", "b1", "intermediate", "cefr", "curriculum"]
+  },
+
+  "branding": {
+    "primaryColor": "#3b82f6",
+    "secondaryColor": "#f8fafc",
+    "accentColor": "#6366f1",
+    "fontFamily": "Segoe UI, system-ui, -apple-system, sans-serif",
+    "favicon": "favicon.png"
+  },
+
+  "navigation": {
+    "showBreadcrumbs": false,
+    "showProgressBar": false,
+    "showLessonNav": true,
+    "showSearch": true,
+    "showThemeToggle": true,
+    "keyboardShortcuts": true,
+    "externalLinks": [
+      { "label": "ESL Hub", "url": "/" },
+      { "label": "Everyday English (A2)", "url": "/curriculum-a2/" },
+      { "label": "Ray's House of Fun", "url": "https://rays-home.netlify.app/" }
+    ]
+  },
+
+  "modules": [
+    {
+      "id": "module-1",
+      "title": "Time, Experience & Past Habits",
+      "description": "The perfect tenses and two ways to talk about how life used to be.",
+      "lessons": [
+        { "id": "lesson-1-1", "title": "Present Perfect vs Past Simple", "filename": "lesson_01.html", "duration": "55 minutes", "difficulty": "intermediate" },
+        { "id": "lesson-1-2", "title": "Present Perfect Continuous", "filename": "lesson_02.html", "duration": "55 minutes", "difficulty": "intermediate" },
+        { "id": "lesson-1-3", "title": "Used to & Would — Past Habits", "filename": "lesson_03.html", "duration": "50 minutes", "difficulty": "intermediate" }
+      ]
+    },
+    {
+      "id": "module-2",
+      "title": "If & Imagining (Conditionals)",
+      "description": "Talk about what's real, what's likely, and what's only imagined.",
+      "lessons": [
+        { "id": "lesson-2-1", "title": "Zero & First Conditional", "filename": "lesson_04.html", "duration": "55 minutes", "difficulty": "intermediate" },
+        { "id": "lesson-2-2", "title": "Second Conditional — Imagining", "filename": "lesson_05.html", "duration": "55 minutes", "difficulty": "intermediate" },
+        { "id": "lesson-2-3", "title": "Wish & If Only — Regrets & Wishes", "filename": "lesson_06.html", "duration": "50 minutes", "difficulty": "intermediate" }
+      ]
+    },
+    {
+      "id": "module-3",
+      "title": "Reporting & Connecting Ideas",
+      "description": "Report what people say and link ideas into longer, smoother sentences.",
+      "lessons": [
+        { "id": "lesson-3-1", "title": "Reported Speech — Statements", "filename": "lesson_07.html", "duration": "55 minutes", "difficulty": "intermediate" },
+        { "id": "lesson-3-2", "title": "Reported Questions, Requests & Commands", "filename": "lesson_08.html", "duration": "55 minutes", "difficulty": "intermediate" },
+        { "id": "lesson-3-3", "title": "Relative Clauses", "filename": "lesson_09.html", "duration": "55 minutes", "difficulty": "intermediate" }
+      ]
+    },
+    {
+      "id": "module-4",
+      "title": "Structures for Fluency",
+      "description": "The passive, deduction, and a capstone discussion project.",
+      "lessons": [
+        { "id": "lesson-4-1", "title": "The Passive Voice", "filename": "lesson_10.html", "duration": "55 minutes", "difficulty": "intermediate" },
+        { "id": "lesson-4-2", "title": "Modals of Deduction & Obligation", "filename": "lesson_11.html", "duration": "55 minutes", "difficulty": "intermediate" },
+        { "id": "lesson-4-3", "title": "Review Project — Opinions & Storytelling", "filename": "lesson_12.html", "duration": "60 minutes", "difficulty": "intermediate" }
+      ]
+    }
+  ],
+
+  "features": {
+    "codeHighlighting": false,
+    "copyCodeButton": true,
+    "progressTracking": false,
+    "responsiveDesign": true,
+    "accessibility": true,
+    "printFriendly": true,
+    "searchEnabled": true,
+    "darkMode": true,
+    "mermaidDiagrams": true,
+    "svgDarkModeSupport": true
+  }
+}
