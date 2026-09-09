@@ -99,6 +99,14 @@ h5 { font-weight: 600; margin: 1rem 0 .5rem; }
 
 /* === TEXT === */
 p { margin: .75rem 0; }
+/* Header subtitle — centered below the (centered) h1 */
+.subtitle {
+  text-align: center;
+  color: var(--text);
+  font-size: 1.15rem;
+  max-width: 700px;
+  margin: .25rem auto 1.25rem;
+}
 blockquote {
   margin: 1rem 0;
   padding: .85rem 1.25rem;

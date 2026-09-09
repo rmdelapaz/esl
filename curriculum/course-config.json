@@ -1,0 +1,98 @@
+{
+  "course": {
+    "title": "English Foundations (A1 Beginner)",
+    "subtitle": "A complete self-paced beginner English curriculum",
+    "description": "Twelve real, sequenced A1 lessons taking a complete beginner from the alphabet to their first everyday conversations — greetings, family, daily routines, telling the time, food, and getting around.",
+    "author": {
+      "name": "Ray de la Paz",
+      "email": "contact via website",
+      "website": "https://rays-home.netlify.app/",
+      "bio": "Technical trainer and course developer."
+    },
+    "version": "1.0.0",
+    "lastUpdated": "2026-09-09",
+    "language": "en",
+    "difficulty": "beginner",
+    "cefr": "A1",
+    "estimatedHours": 10,
+    "tags": ["esl", "english", "a1", "beginner", "cefr", "curriculum"]
+  },
+
+  "branding": {
+    "primaryColor": "#3b82f6",
+    "secondaryColor": "#f8fafc",
+    "accentColor": "#6366f1",
+    "fontFamily": "Segoe UI, system-ui, -apple-system, sans-serif",
+    "favicon": "favicon.png"
+  },
+
+  "navigation": {
+    "showBreadcrumbs": false,
+    "showProgressBar": false,
+    "showLessonNav": true,
+    "showSearch": true,
+    "showThemeToggle": true,
+    "keyboardShortcuts": true,
+    "externalLinks": [
+      { "label": "ESL Hub", "url": "/" },
+      { "label": "Ray's House of Fun", "url": "https://rays-home.netlify.app/" },
+      { "label": "Contact", "url": "https://rays-home.netlify.app/contact" }
+    ]
+  },
+
+  "modules": [
+    {
+      "id": "module-1",
+      "title": "First Words & Meeting People",
+      "description": "The letters, sounds, and phrases you need to say hello and introduce yourself.",
+      "lessons": [
+        { "id": "lesson-1-1", "title": "The English Alphabet & First Sounds", "filename": "lesson_01.html", "duration": "45 minutes", "difficulty": "beginner" },
+        { "id": "lesson-1-2", "title": "Greetings & Introductions", "filename": "lesson_02.html", "duration": "45 minutes", "difficulty": "beginner" },
+        { "id": "lesson-1-3", "title": "Numbers, Age & Personal Information", "filename": "lesson_03.html", "duration": "50 minutes", "difficulty": "beginner" }
+      ]
+    },
+    {
+      "id": "module-2",
+      "title": "People, Places & Things",
+      "description": "The verb 'to be' plus the words for the world around you.",
+      "lessons": [
+        { "id": "lesson-2-1", "title": "The Verb 'To Be' — Countries & Nationalities", "filename": "lesson_04.html", "duration": "50 minutes", "difficulty": "beginner" },
+        { "id": "lesson-2-2", "title": "This & That, a/an & Everyday Objects", "filename": "lesson_05.html", "duration": "50 minutes", "difficulty": "beginner" },
+        { "id": "lesson-2-3", "title": "My Family & Possessives", "filename": "lesson_06.html", "duration": "50 minutes", "difficulty": "beginner" }
+      ]
+    },
+    {
+      "id": "module-3",
+      "title": "Everyday Life",
+      "description": "Talk about your routine, tell the time, and describe your home.",
+      "lessons": [
+        { "id": "lesson-3-1", "title": "Present Simple — Daily Routines", "filename": "lesson_07.html", "duration": "55 minutes", "difficulty": "beginner" },
+        { "id": "lesson-3-2", "title": "Telling the Time, Days & He/She (-s)", "filename": "lesson_08.html", "duration": "55 minutes", "difficulty": "beginner" },
+        { "id": "lesson-3-3", "title": "There is / There are — My Home", "filename": "lesson_09.html", "duration": "50 minutes", "difficulty": "beginner" }
+      ]
+    },
+    {
+      "id": "module-4",
+      "title": "Getting Around & Doing Things",
+      "description": "Abilities, food, actions happening now, and a final review project.",
+      "lessons": [
+        { "id": "lesson-4-1", "title": "Can / Can't — Abilities & Food", "filename": "lesson_10.html", "duration": "55 minutes", "difficulty": "beginner" },
+        { "id": "lesson-4-2", "title": "Present Continuous — Happening Right Now", "filename": "lesson_11.html", "duration": "55 minutes", "difficulty": "beginner" },
+        { "id": "lesson-4-3", "title": "Review Project — Shopping & Directions", "filename": "lesson_12.html", "duration": "60 minutes", "difficulty": "beginner" }
+      ]
+    }
+  ],
+
+  "features": {
+    "codeHighlighting": false,
+    "copyCodeButton": true,
+    "progressTracking": false,
+    "responsiveDesign": true,
+    "accessibility": true,
+    "printFriendly": true,
+    "searchEnabled": true,
+    "darkMode": true,
+    "mermaidDiagrams": true,
+    "svgDarkModeSupport": true
+  }
+}
