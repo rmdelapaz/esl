@@ -1,0 +1,98 @@
+{
+  "course": {
+    "title": "Business English",
+    "subtitle": "A complete self-paced professional-communication course",
+    "description": "Twelve practical lessons in workplace English — register & tone, emails & messaging, calls, meetings, small talk & networking, diplomatic communication, presentations, negotiations, pitching, business writing, and job interviews.",
+    "author": {
+      "name": "Ray de la Paz",
+      "email": "contact via website",
+      "website": "https://rays-home.netlify.app/",
+      "bio": "Technical trainer and course developer."
+    },
+    "version": "1.0.0",
+    "lastUpdated": "2026-09-09",
+    "language": "en",
+    "difficulty": "professional",
+    "cefr": "B1+ (professional skills)",
+    "estimatedHours": 13,
+    "tags": ["esl", "english", "business", "professional", "workplace", "communication", "curriculum"]
+  },
+
+  "branding": {
+    "primaryColor": "#3b82f6",
+    "secondaryColor": "#f8fafc",
+    "accentColor": "#6366f1",
+    "fontFamily": "Segoe UI, system-ui, -apple-system, sans-serif",
+    "favicon": "favicon.png"
+  },
+
+  "navigation": {
+    "showBreadcrumbs": false,
+    "showProgressBar": false,
+    "showLessonNav": true,
+    "showSearch": true,
+    "showThemeToggle": true,
+    "keyboardShortcuts": true,
+    "externalLinks": [
+      { "label": "ESL Hub", "url": "/" },
+      { "label": "Ray's House of Fun", "url": "https://rays-home.netlify.app/" },
+      { "label": "Contact", "url": "https://rays-home.netlify.app/contact" }
+    ]
+  },
+
+  "modules": [
+    {
+      "id": "module-1",
+      "title": "Professional Communication Foundations",
+      "description": "Register and tone, plus the everyday channels: email, messaging, and calls.",
+      "lessons": [
+        { "id": "lesson-1-1", "title": "Business Register, Tone & First Impressions", "filename": "lesson_01.html", "duration": "50 minutes", "difficulty": "professional" },
+        { "id": "lesson-1-2", "title": "Professional Emails & Messaging", "filename": "lesson_02.html", "duration": "55 minutes", "difficulty": "professional" },
+        { "id": "lesson-1-3", "title": "Telephoning & Virtual Calls", "filename": "lesson_03.html", "duration": "55 minutes", "difficulty": "professional" }
+      ]
+    },
+    {
+      "id": "module-2",
+      "title": "Meetings & Interpersonal Skills",
+      "description": "Working with people: meetings, networking, and diplomatic communication.",
+      "lessons": [
+        { "id": "lesson-2-1", "title": "Meetings — Participating & Chairing", "filename": "lesson_04.html", "duration": "60 minutes", "difficulty": "professional" },
+        { "id": "lesson-2-2", "title": "Small Talk, Networking & Building Rapport", "filename": "lesson_05.html", "duration": "55 minutes", "difficulty": "professional" },
+        { "id": "lesson-2-3", "title": "Diplomatic & Assertive Communication", "filename": "lesson_06.html", "duration": "55 minutes", "difficulty": "professional" }
+      ]
+    },
+    {
+      "id": "module-3",
+      "title": "Presenting, Negotiating & Persuading",
+      "description": "High-stakes communication: presentations, negotiations, and pitching.",
+      "lessons": [
+        { "id": "lesson-3-1", "title": "Presentations — Structure & Delivery", "filename": "lesson_07.html", "duration": "60 minutes", "difficulty": "professional" },
+        { "id": "lesson-3-2", "title": "Negotiations — Language & Strategy", "filename": "lesson_08.html", "duration": "60 minutes", "difficulty": "professional" },
+        { "id": "lesson-3-3", "title": "Pitching, Persuasion & Handling Objections", "filename": "lesson_09.html", "duration": "55 minutes", "difficulty": "professional" }
+      ]
+    },
+    {
+      "id": "module-4",
+      "title": "Business Writing & Career",
+      "description": "Formal documents, your career materials, and a final integrated project.",
+      "lessons": [
+        { "id": "lesson-4-1", "title": "Reports, Proposals & Business Documents", "filename": "lesson_10.html", "duration": "60 minutes", "difficulty": "professional" },
+        { "id": "lesson-4-2", "title": "CVs, Cover Letters & Job Interviews", "filename": "lesson_11.html", "duration": "60 minutes", "difficulty": "professional" },
+        { "id": "lesson-4-3", "title": "Review Project — The Complete Business Communicator", "filename": "lesson_12.html", "duration": "65 minutes", "difficulty": "professional" }
+      ]
+    }
+  ],
+
+  "features": {
+    "codeHighlighting": false,
+    "copyCodeButton": true,
+    "progressTracking": false,
+    "responsiveDesign": true,
+    "accessibility": true,
+    "printFriendly": true,
+    "searchEnabled": true,
+    "darkMode": true,
+    "mermaidDiagrams": true,
+    "svgDarkModeSupport": true
+  }
+}
