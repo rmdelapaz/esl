@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pragmatics for the near-native — implicature, inference, presupposition, and the meanings that live between the lines. Lesson 2.1 of the C2 Mastery English curriculum.">
+    <meta name="author" content="Ray de la Paz">
+    <title>Lesson 2.1: Implicature, Inference &amp; Reading Between the Lines - Mastery English (C2)</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        window.__mermaid = mermaid;
+        const isDark = localStorage.getItem('theme') === 'dark' ||
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: isDark ? 'dark' : 'default',
+            themeVariables: isDark
+                ? { primaryColor: '#334155', primaryTextColor: '#e2e8f0', primaryBorderColor: '#6366f1', lineColor: '#94a3b8', secondaryColor: '#1e293b', tertiaryColor: '#0f172a' }
+                : { primaryColor: '#eff6ff', primaryTextColor: '#1e293b', primaryBorderColor: '#3b82f6', lineColor: '#64748b', secondaryColor: '#f8fafc', tertiaryColor: '#f1f5f9' }
+        });
+    </script>
+</head>
+<body>
+    <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Mastery English (C2)</a>
+            <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-expanded="false" aria-controls="nav-links">☰</button>
+            <div class="nav-links" id="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#modules">All Lessons</a>
+                <span class="nav-divider"></span>
+                <a href="/">ESL Hub</a>
+                <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+                <button id="theme-toggle" aria-label="Toggle dark/light mode">🌙</button>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <div class="container">
+            <header>
+                <h1>🕵️ Lesson 2.1: Implicature, Inference &amp; Reading Between the Lines</h1>
+                <p class="lead">Welcome to pragmatics — the study of meaning as it lives in context, beyond the reach of any dictionary. At C2 you already grasp what sentences <em>say</em>; the mastery now is hearing what speakers <em>mean</em> — the request folded inside a remark, the accusation smuggled into a question, the verdict delivered by a single warm word withheld. This lesson trains you to read, and to write, between the lines.</p>
+
+                <div class="card card-info">
+                    <h2>📚 What You'll Learn</h2>
+                    <p>By the end of this lesson, you will be able to:</p>
+                    <ul>
+                        <li>Distinguish what is <strong>said</strong> from what is <strong>meant</strong> — literal meaning versus <strong>speaker meaning</strong></li>
+                        <li>Infer <strong>conversational implicature</strong> from context and from how something is phrased (Grice's cooperative principle, kept practical)</li>
+                        <li>Recognise <strong>presupposition</strong> and the traps of loaded, complex questions</li>
+                        <li>Produce and interpret <strong>indirectness</strong> — hinting, understatement, and diplomatic evasion that convey face-threatening meaning "off the record"</li>
+                    </ul>
+                    <p><strong>⏱️ Estimated Time:</strong> ~60 minutes</p>
+                    <p><strong>🎯 Project:</strong> Analyse a "loaded" dialogue for its implicatures and presuppositions, then perform an exchange that communicates a difficult message <em>entirely by implication</em> — without ever stating it.</p>
+                </div>
+            </header>
+
+            <details class="card toc-card" open>
+                <summary aria-label="Toggle table of contents">
+                    <span class="toc-icon" aria-hidden="true">📑</span>
+                    <span class="toc-label">In This Lesson</span>
+                    <span class="toc-chevron" aria-hidden="true">▾</span>
+                </summary>
+                <nav aria-label="Table of Contents">
+                    <ol>
+                        <li><a href="#said-meant" class="toc-link">What Is Said vs What Is Meant</a></li>
+                        <li><a href="#implicature" class="toc-link">Conversational Implicature</a></li>
+                        <li><a href="#presupposition" class="toc-link">Presupposition &amp; Loaded Questions</a></li>
+                        <li><a href="#indirectness" class="toc-link">Indirectness — The Master's Toolkit</a></li>
+                        <li><a href="#between-lines" class="toc-link">Reading Between the Lines in Text</a></li>
+                        <li><a href="#practice" class="toc-link">Practice &amp; Project</a></li>
+                        <li><a href="#tips" class="toc-link">Tips &amp; Common Pitfalls</a></li>
+                        <li><a href="#journal" class="toc-link">Learning Journal</a></li>
+                        <li><a href="#summary" class="toc-link">Summary</a></li>
+                    </ol>
+                </nav>
+            </details>
+
+            <section id="said-meant" class="lesson-section">
+                <h2>What Is Said vs What Is Meant</h2>
+                <p>Consider the flattest of remarks: <em>"It's cold in here."</em> Semantically — that is, by its <strong>literal</strong> or dictionary meaning — it reports a temperature. Yet spoken by a guest eyeing an open window, it is plainly a <strong>request</strong>: <em>please close it.</em> Nobody utters the word "close," and nobody needs to. The gap between the sentence's literal content and what the speaker actually intends to convey is the whole territory of <strong>pragmatics</strong>.</p>
+                <p>We can name the two layers cleanly:</p>
+                <ul class="wordlist">
+                    <li><strong>Sentence / semantic meaning</strong> — what the words mean in the abstract, context-free</li>
+                    <li><strong>Speaker meaning</strong> — what <em>this</em> speaker, <em>here</em>, intends you to understand and act on</li>
+                </ul>
+                <p>Near-native fluency is precisely the ability to travel from the first to the second instantly, without a stumble — and, going the other way, to <em>pack</em> speaker meaning into words that never state it outright. That double skill, decoding and encoding the unsaid, is what this lesson builds.</p>
+
+                <div class="card card-accent">
+                    <h4>🧠 Mindset</h4>
+                    <p>At C2 the plateau feels real: you rarely learn a "new" thing so much as grow more <em>alert</em>. Pragmatics rewards that alertness like nothing else. The literal meaning of a conversation is the tip of an iceberg; fluency in a language is 10% words and 90% inference. Native speakers infer this freight effortlessly and unconsciously — and they judge, quietly, whoever cannot. Learning to hear the submerged 90% is not an add-on to mastery; it <em>is</em> mastery. 🌱</p>
+                </div>
+            </section>
+
+            <section id="implicature" class="lesson-section">
+                <h2>Conversational Implicature</h2>
+                <p>How does <em>"It's cold in here"</em> reliably become a request? The philosopher <strong>H. P. Grice</strong> gave the practical answer, and we can keep it entirely un-academic. We assume, by default, that a speaker is being <strong>cooperative</strong> — trying to communicate helpfully, in good faith. So when what they say <em>seems</em> to fall short — too little, too much, off-topic, or oddly phrased — we don't conclude they've malfunctioned. We infer that they mean something <em>more</em>, and we work out what. That inferred surplus is a <strong>conversational implicature</strong>.</p>
+                <p>Grice sorted the cooperative default into four rough expectations, the <strong>maxims</strong>. You need not memorise them as doctrine; treat them as the four ways a speaker can <em>seem</em> to be uncooperative on the surface while communicating richly underneath. Deliberately, visibly breaking a maxim — <strong>flouting</strong> it — is the engine of implied meaning.</p>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>Maxim (the expectation)</th><th>Flout (the surface breach)</th><th>Example → implied meaning</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Quantity</strong><br><small>Say as much as needed — no more, no less</small></td>
+                                <td>Say conspicuously too <em>little</em></td>
+                                <td>Reference: "Is she good at her job?" — "She's very punctual." → <em>Implicature: she has no better quality worth citing; faint praise damns.</em></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Quality</strong><br><small>Be truthful; don't say what you believe false</small></td>
+                                <td>Say something patently untrue</td>
+                                <td>Drenched, after the picnic: "Well, <em>that</em> was a lovely day out." → <em>Implicature (irony): it was a disaster.</em></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Relation / Relevance</strong><br><small>Be relevant; stay on point</small></td>
+                                <td>Reply with something apparently irrelevant</td>
+                                <td>"What did you think of my presentation?" — "Shall we get coffee?" → <em>Implicature: I'd rather not say — read that as poorly.</em></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Manner</strong><br><small>Be clear, brief, orderly; avoid obscurity</small></td>
+                                <td>Be conspicuously long-winded or oblique</td>
+                                <td>"Did they sing?" — "They produced a series of sounds corresponding to the score." → <em>Implicature: it was barely singing.</em></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>The classic case is <strong>damning with faint praise</strong> — a flout of Quantity. Asked to comment on a dismal meal, a diner replies: <em>"Well… the plates were warm."</em> Everything relevant has been withheld; the one trivial merit offered <em>implies</em> the absence of any real one. The verdict is devastating and never stated. Note the crucial property of implicature: it is <strong>deniable</strong>. Challenged, the diner can retreat — <em>"I only meant the plates were warm!"</em> — with perfect literal innocence. This deniability is why implicature is the natural medium of tact, of insinuation, and of everything a speaker wants understood but not on record.</p>
+
+                <div class="card card-info">
+                    <h4>💡 Inference works in both directions</h4>
+                    <p>You <em>decode</em> implicature as a listener, but the greater art is to <em>encode</em> it as a speaker — to choose the under-informative or oblique phrasing that lets your hearer draw the conclusion themselves. A meaning the listener arrives at feels truer, lands softer, and cannot be quoted back at you. Much of adult social life runs on exactly this.</p>
+                </div>
+            </section>
+
+            <section id="presupposition" class="lesson-section">
+                <h2>Presupposition &amp; Loaded Questions</h2>
+                <p>Implicature is meaning a speaker <em>implies</em>; <strong>presupposition</strong> is something a sentence quietly <em>takes for granted</em> as already true — smuggled in as settled background rather than asserted. The test is elegant: a presupposition survives <strong>negation</strong>. "Have you stopped cutting corners?" and "You haven't stopped cutting corners" both take for granted that you <em>were</em> cutting corners. The presupposition rides underneath either way — which is exactly what makes it so hard to challenge in the moment.</p>
+                <p>Certain words are reliable <strong>presupposition triggers</strong>. Learn to spot them; they are the working parts of every loaded question and every quietly slanted sentence.</p>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>Trigger</th><th>Example</th><th>What it presupposes (takes as given)</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>stop / start / keep</strong></td><td>"Have you <em>stopped</em> cutting corners?"</td><td>You <em>were</em> cutting corners.</td></tr>
+                            <tr><td><strong>again</strong></td><td>"Are you late <em>again</em>?"</td><td>You have been late before.</td></tr>
+                            <tr><td><strong>even</strong></td><td>"<em>Even</em> Tom passed."</td><td>Tom was among the least likely to pass.</td></tr>
+                            <tr><td><strong>only</strong></td><td>"She got <em>only</em> a B."</td><td>A B was less than expected of her.</td></tr>
+                            <tr><td><strong>the / possessive</strong><br><small>(definite reference)</small></td><td>"<em>The</em> mistake in your figures…"; "<em>his</em> drinking"</td><td>There <em>is</em> such a mistake; he does drink.</td></tr>
+                            <tr><td><strong>factive verbs</strong><br><small>regret, realise, know, admit</small></td><td>"Do you <em>regret</em> misleading them?"</td><td>You <em>did</em> mislead them.</td></tr>
+                            <tr><td><strong>manage to</strong></td><td>"Did you <em>manage to</em> finish?"</td><td>Finishing was difficult / in doubt.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>The <strong>loaded (or complex) question</strong> weaponises presupposition. Its ancestor is the courtroom trap <em>"Have you stopped beating your wife?"</em> — a question that jails you whichever way you answer, because both yes and no <strong>concede the presupposition</strong> that beating occurred. Journalists, cross-examiners, and skilled arguers use gentler versions daily: <em>"Why is your department still so disorganised?"</em> quietly installs "your department is disorganised" as agreed fact before the debate has begun.</p>
+
+                <div class="card card-warning">
+                    <h4>⚠️ The trap of the loaded question</h4>
+                    <p>You cannot escape a loaded question by <em>answering</em> it — any answer accepts its buried premise. You must <strong>refuse the presupposition explicitly</strong> first: <em>"That question assumes I was cutting corners, which I reject — let me address that."</em> Recognising the trigger in real time, before you reflexively answer, is the C2 skill. The instant you say "yes" or "no," the smuggled premise is signed for.</p>
+                </div>
+            </section>
+
+            <section id="indirectness" class="lesson-section">
+                <h2>Indirectness — The Master's Toolkit</h2>
+                <p>Why do we so rarely just <em>say the thing</em>? Because much of what needs conveying is <strong>face-threatening</strong> — a criticism, a refusal, an unwelcome truth — and stating it baldly damages the relationship or our own standing. Indirectness lets us deliver such meaning <strong>"off the record"</strong>: the hearer gets it, yet nothing quotable was said. (This builds directly on the hedging and diplomatic language of C1 — here we sharpen it into deliberate strategy.)</p>
+                <p>The toolkit has four principal moves:</p>
+                <ul class="wordlist">
+                    <li><strong>Hinting</strong> — gesture at the meaning; let the hearer complete it ("The bins are rather full…")</li>
+                    <li><strong>Understatement</strong> — deliberately under-scale it, trusting the gap to speak ("a slight setback" for a catastrophe)</li>
+                    <li><strong>Strategic vagueness</strong> — stay unpindownable ("We'll see," "Let's circle back on that")</li>
+                    <li><strong>Polite indirection</strong> — frame the face-threat as a suggestion, an observation, or a concession</li>
+                </ul>
+
+                <div class="phrase-bank">
+                    <p><strong>Phrase bank — indirect &amp; implying moves:</strong></p>
+                    <span class="phrase">I couldn't help noticing…</span>
+                    <span class="phrase">You might want to…</span>
+                    <span class="phrase">It's not really my place, but…</span>
+                    <span class="phrase">That's one way of doing it.</span>
+                    <span class="phrase">I'm sure you had your reasons.</span>
+                    <span class="phrase">With the greatest respect…</span>
+                    <span class="phrase">It's certainly… bold.</span>
+                    <span class="phrase">I'll be honest — it's not quite what I expected.</span>
+                    <span class="phrase">Have you had a chance to…?</span>
+                    <span class="phrase">Some might say…</span>
+                    <span class="phrase">I wonder whether…</span>
+                    <span class="phrase">Let's just say it wasn't a triumph.</span>
+                </div>
+
+                <p>Each of these is a scalpel. <em>"That's one way of doing it"</em> implies, unmistakably yet undeniably, <em>that is the wrong way.</em> <em>"With the greatest respect"</em> famously heralds the opposite. <em>"It's certainly bold"</em> praises nothing while sounding as though it might. The listener decodes the real message and — crucially — cannot pin it on you.</p>
+
+                <div class="card card-info">
+                    <h4>💡 A brief note on culture</h4>
+                    <p>The <em>degree</em> of indirectness a culture expects varies enormously. Broadly, some communicative cultures prize high-context indirection — meaning is carried by hint, silence, and shared understanding — while others prize low-context directness, where saying it plainly is read as honest rather than rude. British English in particular is famous for elaborate understatement ("not bad at all" = excellent; "I'm a bit disappointed" = furious). A master reads the room's expectations and calibrates: the same hint that lands as tactful in one setting reads as evasive in another.</p>
+                </div>
+
+                <p>Here is the whole apparatus at work. Read the surface, then the annotation of what is <em>actually</em> being transacted:</p>
+
+                <div class="dialogue">
+                    <p class="line a"><span class="speaker">Manager:</span> Ah — you're here. I didn't want to <em>interrupt</em> whatever's been keeping you so occupied.</p>
+                    <p class="line b"><span class="speaker">Employee:</span> Sorry, the traffic was —</p>
+                    <p class="line a"><span class="speaker">Manager:</span> No, no. I'm sure it was unavoidable. <em>Again.</em> Anyway — the client asked whether the report might be ready this <em>century</em>. I said I'd <em>look into it.</em></p>
+                    <p class="line b"><span class="speaker">Employee:</span> It's almost done. I just want it to be right.</p>
+                    <p class="line a"><span class="speaker">Manager:</span> Of course. Take all the time you need. We've only lost the account <em>once</em> this way.</p>
+                </div>
+
+                <div class="model">
+                    <p><strong>What is really being said:</strong></p>
+                    <p><em>"I didn't want to interrupt…"</em> — irony (flouts Quality): you have been idle, not busy. <em>"Again"</em> — presupposition trigger: your lateness is an established pattern, not a one-off. <em>"ready this century"</em> — hyperbole implying the work is grotesquely overdue. <em>"I said I'd look into it"</em> — strategic vagueness that shields the manager while pressuring the employee. <em>"Take all the time you need… only lost the account once this way"</em> — the closing move: an apparent concession whose second clause detonates it, turning permission into a threat. Not one criticism is stated outright; every one lands.</p>
+                </div>
+            </section>
+
+            <section id="between-lines" class="lesson-section">
+                <h2>Reading Between the Lines in Text</h2>
+                <p>Everything above operates in writing too, where the author cannot rely on tone of voice and must imply stance through the words alone. Four levers do most of the work:</p>
+                <ul class="wordlist">
+                    <li><strong>Word choice (diction)</strong> — "the regime <em>claims</em>" vs "the government <em>states</em>" tilts the reader before an argument is made</li>
+                    <li><strong>What is omitted</strong> — the fact left unmentioned, the quote not sought, the context withheld</li>
+                    <li><strong>Juxtaposition</strong> — placing two facts side by side so the reader draws the damning link the author never asserts</li>
+                    <li><strong>Distancing markers</strong> — <em>reportedly, allegedly, so-called, apparently, insists</em> — which quietly signal the author's doubt</li>
+                </ul>
+                <p>Journalism is where this slant is most visible once you know to look. The pointed <em>"reportedly"</em>, the loaded <em>"so-called reforms"</em>, the single unflattering detail admitted as if in passing — each lets a writer imply a verdict while claiming mere neutrality. Read the annotated extract below; nothing in it is factually false, yet its stance is unmistakable.</p>
+
+                <div class="model">
+                    <p><strong>Extract:</strong> "The minister, who <em>reportedly</em> arrived forty minutes late, <em>insisted</em> the scheme was a success. He declined to take questions. Outside, a <em>modest</em> crowd of <em>some two hundred</em> supporters had gathered; the <em>official</em> figure was rather higher."</p>
+                    <p><small><strong>The slant, decoded:</strong> <em>"reportedly"</em> — distances the author from the lateness while airing it. <em>"insisted"</em> (not "said") — implies protesting against contrary evidence. <em>"declined to take questions"</em> — a factual omission left to imply evasion. <em>"modest crowd… some two hundred"</em> — the diminishing word plus a precise-sounding low number undercuts the event. <em>"the official figure was rather higher"</em> — juxtaposition inviting the reader to infer the official figure is inflated, without the author ever saying so. A verdict delivered entirely between the lines.</small></p>
+                </div>
+
+                <p>The C2 reader holds two questions open at once: <em>what does this text state?</em> and <em>what does it want me to conclude that it never states?</em> The distance between those two answers is where an author's real argument — and sometimes their bad faith — resides.</p>
+            </section>
+
+            <section id="practice" class="lesson-section">
+                <h2>Practice &amp; Project</h2>
+
+                <div class="card card-info">
+                    <h3>🏋️ Exercise 1: State the implicature</h3>
+                    <p><strong>Objective:</strong> Each reply is under-informative or seemingly irrelevant. State what it <em>implies</em>, and name the flouted maxim.</p>
+                    <ol>
+                        <li>"How was the new recruit's first week?" — "Well, he's very <em>enthusiastic</em>."</li>
+                        <li>"Did you like my novel — be honest?" — "The cover's gorgeous."</li>
+                        <li>"Can you recommend the restaurant?" — "The parking's easy."</li>
+                    </ol>
+                    <details>
+                        <summary>✅ Answer (models)</summary>
+                        <p>1. Implicature: he is <em>not</em> good at the actual work — enthusiasm is the only merit offered, so it's the only one there (faint praise; flouts <strong>Quantity</strong>). 2. Implicature: the writing is not good — praising the one irrelevant feature avoids the question asked (flouts <strong>Relevance</strong>, and Quantity). 3. Implicature: the food/experience isn't worth recommending — only a trivial virtue is cited (flouts <strong>Quantity/Relevance</strong>). Judge answers by whether they identify the withheld verdict, not by exact wording.</p>
+                    </details>
+                </div>
+
+                <div class="card card-info">
+                    <h3>🏋️ Exercise 2: Identify the presupposition</h3>
+                    <p><strong>Objective:</strong> State what each sentence takes for granted, and underline the trigger.</p>
+                    <ol>
+                        <li>"When did you realise the project was doomed?"</li>
+                        <li>"Even the accountants enjoyed it."</li>
+                        <li>"Has the leak in your account of events been fixed?"</li>
+                        <li>"Did she manage to keep her temper this time?"</li>
+                    </ol>
+                    <details>
+                        <summary>✅ Answer</summary>
+                        <p>1. Trigger <em>realise</em> (factive): presupposes the project <em>was</em> doomed. 2. Trigger <em>even</em>: presupposes accountants were the least likely to enjoy it. 3. Triggers <em>the leak</em> (definite reference) + <em>this time</em>/perfect: presupposes there <em>is</em> a leak (a flaw) in your account. 4. Triggers <em>manage to</em> + <em>this time</em>: presupposes keeping her temper is difficult for her, and that she has failed to before. Each is a small loaded question in miniature.</p>
+                    </details>
+                </div>
+
+                <div class="card card-info">
+                    <h3>🏋️ Exercise 3: Rewrite to imply, not state</h3>
+                    <p><strong>Objective:</strong> Rewrite each blunt line so it communicates the same message <em>entirely by implication</em> — deniable, off the record, no bald statement.</p>
+                    <ol>
+                        <li>(To a colleague) "Your proposal is badly thought through."</li>
+                        <li>(To a host) "The food was terrible."</li>
+                        <li>(To a friend) "I don't want to lend you money again."</li>
+                    </ol>
+                    <details>
+                        <summary>✅ Answer (models — judge by tact &amp; deniability)</summary>
+                        <p>1. "It's certainly ambitious — I wonder whether we've fully stress-tested a couple of the assumptions." (understatement + hedged hint). 2. "Well — it was certainly an <em>experience</em>. So kind of you to have us." (irony via faint praise; the warmth of the second clause covers the retreat). 3. "Things are a bit tight for me at the moment, so I've had to become rather strict with myself about that sort of thing." (strategic vagueness; refuses without the word "no"). Any answer counts if a listener would infer the message yet you could plausibly disown it.</p>
+                    </details>
+                </div>
+
+                <div class="card card-info">
+                    <h3>🎯 Your Project: Say It Without Saying It</h3>
+                    <p>A two-part project — one of analysis, one of performance.</p>
+                    <ol>
+                        <li><strong>(8 min) Analyse.</strong> Take a short "loaded" text — the dialogue in this lesson, a scene from a play or novel, a politician's non-answer, or a slanted news paragraph. Annotate it: mark every <strong>implicature</strong> (and the maxim flouted), every <strong>presupposition</strong> (and its trigger), and every move of <strong>indirection</strong>. Write, in one line, the real message the surface never states.</li>
+                        <li><strong>(10 min) Perform.</strong> Choose a genuinely difficult message — a refusal, a criticism, an unwelcome verdict. Script (and, solo, record; or with a partner, improvise) an exchange that <strong>communicates it entirely by implication</strong>: no bald statement of the message anywhere. Use at least one implicature, one presupposition, and one indirect phrase from the bank.</li>
+                        <li><strong>(4 min) Test &amp; edit.</strong> Play it back — or have your partner tell you what they inferred. Did the meaning land <em>without</em> being stated? Then edit <em>ruthlessly</em>: cut any line that says the quiet part out loud. The finest version leaves not a single sentence you couldn't innocently defend.</li>
+                    </ol>
+                    <div class="card card-success">
+                        <h4>✅ Project Completion Checklist</h4>
+                        <ul>
+                            <li>☐ I annotated a loaded text for implicature, presupposition, and indirection</li>
+                            <li>☐ I wrote the one-line "real message" the surface never states</li>
+                            <li>☐ My performed exchange conveys a hard message with <strong>zero</strong> bald statements of it</li>
+                            <li>☐ It uses at least one implicature, one presupposition, and one indirect phrase</li>
+                            <li>☐ A listener correctly inferred the message — and I could still deny it</li>
+                            <li>☐ I cut every line that "said the quiet part out loud"</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card quiz-container">
+                    <h3>🎯 Quick Quiz</h3>
+                    <div class="quiz-question">
+                        <p><strong>Question 1:</strong> "Did you enjoy the concert?" — "The programme notes were beautifully printed." What is the implicature, and how is it produced?</p>
+                        <div class="quiz-options">
+                            <button class="quiz-option" data-correct="true" data-explanation="Correct — offering only a trivial, irrelevant merit withholds the requested verdict; by flouting Quantity/Relevance the speaker implies the concert itself was disappointing.">A) The concert was disappointing — implied by praising only a trivial detail (flouting Quantity/Relevance)</button>
+                            <button class="quiz-option" data-correct="false" data-hint="Take it literally and there's no answer to the question at all — which is exactly the point. The speaker means more than the words state.">B) The speaker literally only cared about the printing</button>
+                            <button class="quiz-option" data-correct="false" data-hint="Presupposition is a premise taken for granted; here the meaning is implied by what's withheld, not presupposed.">C) It presupposes the concert was cancelled</button>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    <div class="quiz-question">
+                        <p><strong>Question 2:</strong> Which sentence contains a presupposition trigger that takes a damaging premise for granted?</p>
+                        <div class="quiz-options">
+                            <button class="quiz-option" data-correct="true" data-explanation="Correct — the factive 'admit' presupposes that the falsified data is a fact; the question smuggles guilt in as settled background, so any answer concedes it.">A) "When will you admit the data was falsified?"</button>
+                            <button class="quiz-option" data-correct="false" data-hint="This is a neutral, open question — it takes nothing controversial for granted.">B) "What did the committee decide about the data?"</button>
+                            <button class="quiz-option" data-correct="false" data-hint="This asks about a genuinely open possibility; it presupposes nothing damaging.">C) "Do you think the data might be reviewed?"</button>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="tips" class="lesson-section">
+                <h2>Tips &amp; Common Pitfalls</h2>
+
+                <h3>✅ Do's</h3>
+                <ul>
+                    <li>Hold two readings of every utterance at once — <strong>what it says</strong> and <strong>what the speaker means by saying it here</strong>.</li>
+                    <li>When a reply seems too thin, too much, off-topic, or oddly worded, don't take it flat — ask what the <strong>flout</strong> implies.</li>
+                    <li>Scan questions for <strong>triggers</strong> (<em>stop, again, even, only, the, regret, manage to</em>) before you answer; refuse a smuggled premise <em>explicitly</em>.</li>
+                    <li>To deliver a hard message, choose the <strong>deniable</strong> phrasing that lets the hearer draw the conclusion themselves.</li>
+                </ul>
+
+                <h3>❌ Common Pitfalls</h3>
+                <div class="card card-warning">
+                    <h4>⚠️ Watch Out</h4>
+                    <ul>
+                        <li><strong>Answering the loaded question:</strong> reply "yes" or "no" and you've signed for the buried premise. Reject the presupposition first.</li>
+                        <li><strong>Taking the literal:</strong> a fluent speaker who hears "It's cold in here" as a weather report, or misses the irony in "lovely day," sounds oddly deaf — the tell of not-quite-native pragmatics.</li>
+                        <li><strong>Over-hinting:</strong> indirection so buried the hearer misses it isn't tact, it's failed communication. Calibrate to how much the listener will infer.</li>
+                        <li><strong>Mistaking deniability for immunity:</strong> implicature can be denied <em>literally</em>, but a hearer still <em>knows</em> what you meant. Off the record is not consequence-free.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="journal" class="lesson-section">
+                <h2>📓 Learning Journal</h2>
+                <div class="card card-info">
+                    <p>Keep your learning journal going. After this lesson, note:</p>
+                    <ul>
+                        <li><strong>Key concepts</strong> you learned</li>
+                        <li><strong>Distinctions that clicked</strong> for you</li>
+                        <li><strong>Questions or uncertainties</strong> to revisit</li>
+                        <li><strong>Implied meanings you caught</strong> in real conversation this week</li>
+                        <li><strong>Your progress and feelings</strong> about working at C2</li>
+                    </ul>
+                    <p><strong>✍️ This lesson's prompt:</strong> Recall a recent conversation in which someone meant considerably more — or considerably less — than they said. Reconstruct the exchange, then annotate it: which maxim was flouted, what was presupposed, what was left off the record? Then ask the harder question: did <em>you</em> read it correctly in the moment — and how would you have replied to disarm it?</p>
+                </div>
+            </section>
+
+            <section id="summary" class="lesson-section">
+                <h2>📝 Lesson Summary</h2>
+
+                <div class="card card-success">
+                    <h3>🎓 Key Takeaways</h3>
+                    <ul>
+                        <li><strong>Speaker meaning</strong> routinely outruns <strong>literal meaning</strong> — "It's cold in here" can be a request. Pragmatics is the study of that gap.</li>
+                        <li><strong>Conversational implicature</strong> arises when a cooperative speaker visibly <strong>flouts</strong> a maxim (Quantity, Quality, Relevance, Manner); the classic is <em>damning with faint praise</em>. Implicature is <strong>deniable</strong>.</li>
+                        <li><strong>Presupposition</strong> is what a sentence takes for granted — spotted via triggers (<em>stop, again, even, only, the, regret, manage to</em>) and survives negation; <strong>loaded questions</strong> weaponise it, so refuse the premise before answering.</li>
+                        <li><strong>Indirectness</strong> — hinting, understatement, strategic vagueness, polite indirection — conveys face-threatening meaning <strong>off the record</strong>; in text, diction, omission, juxtaposition, and distancing markers do the same.</li>
+                    </ul>
+                </div>
+
+                <h3>🎉 What You've Accomplished</h3>
+                <p>You've learned to hear a conversation in two registers at once — the words and the freight they carry — and to read a text for the verdict it delivers without ever stating. Just as importantly, you can now <em>encode</em> the unsaid: to criticise, refuse, or reveal by implication, leaving your hearer to arrive at a meaning you never spoke. This is the machinery beneath tact, diplomacy, persuasion, and much of literature. 🎉</p>
+
+                <h3>❓ Common Questions at This Stage</h3>
+                <details>
+                    <summary>What's the real difference between implicature and presupposition?</summary>
+                    <p>Implicature is meaning the <em>speaker</em> conveys beyond the words, and it depends on context — it can be cancelled or denied. Presupposition is baked into the <em>sentence</em> itself by its triggers, holds as background even under negation, and is far harder to disown. Rough rule: implicature is <em>implied</em> by a speaker; presupposition is <em>assumed</em> by a sentence.</p>
+                </details>
+                <details>
+                    <summary>Isn't all this indirectness just a polite way of being dishonest?</summary>
+                    <p>Not quite. Indirection typically conveys a true message by a softer route — the hearer <em>gets</em> it — while protecting face on both sides. It becomes dishonest only when the aim is to make someone infer something false, or to deny a meaning you fully intended. The line is intention: tact communicates truth gently; manipulation exploits inference to mislead.</p>
+                </details>
+                <details>
+                    <summary>How do I get faster at catching this in the moment, not just on the page?</summary>
+                    <p>Through deliberate, low-stakes noticing. After conversations, replay a line or two and ask what was really transacted. Watch how skilled interviewers and characters in good drama plant and dodge presuppositions. Over weeks the analysis compresses into instinct — you begin to feel the flout and the trigger as they happen, which is precisely what native listeners do without knowing they do it.</p>
+                </details>
+
+                <h3>🔭 Looking Ahead</h3>
+                <p>Implicature is the machinery; irony and humour are its most dazzling products. In <strong>Lesson 2.2 — Irony, Humour &amp; Wordplay</strong>, we build on the flouting of Quality you met here to master sarcasm, understatement for comic effect, the pun, and the delicate timing that separates wit from mere cleverness. If this lesson taught you to hear the unsaid, the next teaches you to make it <em>sparkle</em>.</p>
+
+                <h3>✅ Before the Next Lesson</h3>
+                <ul>
+                    <li>For three days, catch one implicature a day in real conversation and note the flout that produced it.</li>
+                    <li>Collect two loaded questions from the news or public life; write how you'd disarm each.</li>
+                    <li>Complete the "Say It Without Saying It" project, and write your Learning Journal entry.</li>
+                </ul>
+
+                <div class="card card-accent" style="text-align: center; padding: 2rem;">
+                    <h3>🌟 Encouragement for the Journey</h3>
+                    <p>You have just stepped behind the curtain of ordinary talk. Most speakers use implicature and presupposition all day without ever noticing the machinery; you can now see it working — and work it yourself. That double vision, hearing the words <em>and</em> the meaning, is one of the truest marks of a master. The unsaid is where language does its finest work; welcome to its workshop. 👋</p>
+                </div>
+            </section>
+
+            <nav class="lesson-nav" aria-label="Lesson Navigation">
+                <a href="lesson_03.html" class="prev-lesson">← Previous: Fixed Expressions, Binomials &amp; Advanced Collocation</a>
+                <a href="index.html" class="home-link">🏠 Course Home</a>
+                <a href="lesson_05.html" class="next-lesson">Next: Irony, Humour &amp; Wordplay →</a>
+            </nav>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Ray de la Paz. Mastery English (C2 Proficiency). All rights reserved.</p>
+        <div class="footer-links">
+            <a href="/">ESL Hub</a>
+            <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+            <a href="https://rays-home.netlify.app/contact">Contact</a>
+            <a href="#" id="print-button">Print Page</a>
+        </div>
+        <p><small>Press <kbd>?</kbd> for keyboard shortcuts</small></p>
+    </footer>
+
+    <script src="js/clipboard.js"></script>
+    <script src="js/course-enhancements.js"></script>
+</body>
+</html>

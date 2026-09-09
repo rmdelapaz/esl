@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Building cohesion and coherence across paragraphs and whole texts — thematic progression, lexical chains, and the architecture of extended discourse. Lesson 3.2 of the C2 Mastery English curriculum.">
+    <meta name="author" content="Ray de la Paz">
+    <title>Lesson 3.2: Cohesion &amp; Coherence Across Long Texts - Mastery English (C2)</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        window.__mermaid = mermaid;
+        const isDark = localStorage.getItem('theme') === 'dark' ||
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: isDark ? 'dark' : 'default',
+            themeVariables: isDark
+                ? { primaryColor: '#334155', primaryTextColor: '#e2e8f0', primaryBorderColor: '#6366f1', lineColor: '#94a3b8', secondaryColor: '#1e293b', tertiaryColor: '#0f172a' }
+                : { primaryColor: '#eff6ff', primaryTextColor: '#1e293b', primaryBorderColor: '#3b82f6', lineColor: '#64748b', secondaryColor: '#f8fafc', tertiaryColor: '#f1f5f9' }
+        });
+    </script>
+</head>
+<body>
+    <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Mastery English (C2)</a>
+            <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-expanded="false" aria-controls="nav-links">☰</button>
+            <div class="nav-links" id="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#modules">All Lessons</a>
+                <span class="nav-divider"></span>
+                <a href="/">ESL Hub</a>
+                <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+                <button id="theme-toggle" aria-label="Toggle dark/light mode">🌙</button>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <div class="container">
+            <header>
+                <h1>🕸️ Lesson 3.2: Cohesion &amp; Coherence Across Long Texts</h1>
+                <p class="lead">A paragraph can be flawless and a text still fall apart. At C2 the craft is <em>architecture</em> — making a whole essay, chapter, or report read as a single connected line of thought. This lesson lifts the surface links you already command up to the level of the <strong>text</strong>: how information flows, how meaning threads through, and how a reader is carried, sentence by sentence and paragraph by paragraph, from first premise to final period.</p>
+
+                <div class="card card-info">
+                    <h2>📚 What You'll Learn</h2>
+                    <p>By the end of this lesson, you will be able to:</p>
+                    <ul>
+                        <li>Distinguish <strong>cohesion</strong> (surface links) from <strong>coherence</strong> (underlying logical unity) — and diagnose a text that has one without the other</li>
+                        <li>Control information flow with <strong>theme/rheme</strong> and <strong>given-before-new</strong> progression</li>
+                        <li>Build <strong>lexical chains</strong> and vary elegantly without losing the reader in "elegant variation"</li>
+                        <li>Structure paragraphs and whole texts — topic sentences, signposting, and a governing <strong>through-line</strong></li>
+                    </ul>
+                    <p><strong>⏱️ Estimated Time:</strong> 55–65 minutes</p>
+                    <p><strong>🎯 Project:</strong> Take a disjointed multi-paragraph text (or draft one) and re-engineer it for cohesion and coherence — fixing information flow, adding lexical chains and signposting, reordering ideas — then read the before/after aloud.</p>
+                </div>
+            </header>
+
+            <details class="card toc-card" open>
+                <summary aria-label="Toggle table of contents">
+                    <span class="toc-icon" aria-hidden="true">📑</span>
+                    <span class="toc-label">In This Lesson</span>
+                    <span class="toc-chevron" aria-hidden="true">▾</span>
+                </summary>
+                <nav aria-label="Table of Contents">
+                    <ol>
+                        <li><a href="#intro" class="toc-link">Two Different Virtues</a></li>
+                        <li><a href="#distinction" class="toc-link">Cohesion vs Coherence</a></li>
+                        <li><a href="#flow" class="toc-link">Theme/Rheme &amp; Information Flow</a></li>
+                        <li><a href="#lexical" class="toc-link">Lexical Cohesion &amp; Chains</a></li>
+                        <li><a href="#signposting" class="toc-link">Signposting &amp; Meta-Discourse</a></li>
+                        <li><a href="#macro" class="toc-link">Paragraphing &amp; Macro-Structure</a></li>
+                        <li><a href="#practice" class="toc-link">Practice &amp; Project</a></li>
+                        <li><a href="#tips" class="toc-link">Tips &amp; Common Pitfalls</a></li>
+                        <li><a href="#journal" class="toc-link">Learning Journal</a></li>
+                        <li><a href="#summary" class="toc-link">Summary</a></li>
+                    </ol>
+                </nav>
+            </details>
+
+            <section id="intro" class="lesson-section">
+                <h2>Two Different Virtues</h2>
+                <p>You have, by now, long since mastered the sentence-level devices that stitch prose together — <strong>reference</strong> ("<em>it</em>," "<em>this problem</em>"), <strong>substitution</strong> and <strong>ellipsis</strong> ("mine does <em>too</em>," "she can if she <em>wants to</em>"), and the workhorse conjunctions. This lesson assumes all of that as a given. The frontier now is larger and harder to see: the <strong>text as a whole</strong>. What makes twelve competent paragraphs feel like <em>one</em> argument rather than twelve? Why does a report full of tidy connectives still leave a reader vaguely lost?</p>
+                <p>The answer lives in two distinct virtues that are easy to confuse. A text can be knitted with connectives yet lead nowhere; another can march with iron logic yet feel choppy and cold. Mastery means supplying <em>both</em> — and knowing which one is missing when something reads badly.</p>
+
+                <div class="card card-accent">
+                    <h4>🧠 Mindset</h4>
+                    <p>At C2 the plateau is real: the gains here are structural and often invisible on a first read. A reader rarely praises your "information flow" — they simply find your writing <em>easy to follow</em> and don't know why. That anonymity is the point. Coherence is the craft the reader never notices, precisely because you did the work so they wouldn't have to. Refinement, not leaps: you are learning to engineer an experience of effortlessness. 🌱</p>
+                </div>
+            </section>
+
+            <section id="distinction" class="lesson-section">
+                <h2>Cohesion vs Coherence</h2>
+                <p>The single most useful distinction in this lesson:</p>
+                <ul>
+                    <li><strong>Cohesion</strong> is the network of <em>surface signals</em> that tie a text together — reference, conjunction, and lexical links. It is on the page; you can point to it.</li>
+                    <li><strong>Coherence</strong> is whether the text <em>actually makes sense</em> as a connected whole — logical order, relevance, and a discernible line of thought. It lives in the reader's mind; you infer it.</li>
+                </ul>
+                <p>Crucially, the two can come apart. A text can be <strong>cohesive yet incoherent</strong>, and it can be <strong>coherent yet under-cohesive</strong>.</p>
+
+                <div class="model">
+                    <p><strong>Cohesive but incoherent</strong> (every link is present; nothing adds up):</p>
+                    <p><em>"The committee approved the budget. However, the budget is a document. Documents are printed on paper. Moreover, paper comes from trees. Therefore, the committee met on Tuesday."</em></p>
+                    <p><small>Look at the connectives — <em>however, moreover, therefore</em> — all correctly placed, all lying. The pronoun chains and lexical repetition ("budget… document… paper") are impeccable. Yet there is no thought here: the sentences are glued, not reasoned. This is cohesion masquerading as coherence.</small></p>
+                </div>
+
+                <div class="model">
+                    <p><strong>Coherent but under-cohesive</strong> (the logic is sound; the surface is bare):</p>
+                    <p><em>"The scheme failed. Nobody had been consulted. People resent decisions imposed from above. Attendance collapsed within a month."</em></p>
+                    <p><small>There is a clear, valid line of thought — cause, principle, consequence — but almost no connective tissue. A reader can reconstruct it, yet has to do the work. Add a little cohesion and the same logic becomes effortless: <em>"The scheme failed <strong>because</strong> nobody had been consulted. <strong>Since</strong> people resent decisions imposed from above, attendance collapsed within a month."</em></small></p>
+                </div>
+
+                <div class="card card-info">
+                    <h4>💡 The diagnostic question</h4>
+                    <p>When a text reads badly, ask: <strong>is the wiring missing, or is the thought missing?</strong> If the ideas are sound but the joins are bare, add cohesion — connectives, reference chains, repeated key terms. If the joins are everywhere but the ideas don't accumulate, no amount of "however" will save you: the fault is coherence, and the fix is <em>rethinking the order and relevance</em> of what you're saying. Confusing the two is why so much "editing" polishes a text that needed rebuilding.</p>
+                </div>
+            </section>
+
+            <section id="flow" class="lesson-section">
+                <h2>Theme/Rheme &amp; Information Flow</h2>
+                <p>Within each sentence, information is not distributed neutrally. The <strong>theme</strong> is the point of departure — typically what comes first, and usually <strong>given</strong> (already known). The <strong>rheme</strong> is what follows — the part that carries the <strong>new</strong> information, the focus, the news. English readers expect a steady rhythm: <strong>given before new</strong>, with each sentence launching from ground the previous one has already prepared.</p>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>Sentence</th><th>Theme (departure / given)</th><th>Rheme (focus / new)</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>The lecture introduced a new theory.</td><td>The lecture</td><td>introduced a new theory</td></tr>
+                            <tr><td>This theory challenges the standard model.</td><td>This theory</td><td>challenges the standard model</td></tr>
+                            <tr><td>The standard model had gone unquestioned for decades.</td><td>The standard model</td><td>had gone unquestioned for decades</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>Notice how each theme reaches back to the prior rheme: <em>a new theory</em> → <em>This theory</em>; <em>the standard model</em> → <em>The standard model</em>. This hand-off is what makes a paragraph feel like a chain rather than a list. There are two classic patterns:</p>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>Progression pattern</th><th>How it moves</th><th>Best for</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Linear / "staircase"</strong></td><td>The rheme of one sentence becomes the theme of the next (A→B, B→C, C→D)</td><td>Developing an argument, tracing a chain of cause and effect</td></tr>
+                            <tr><td><strong>Constant theme</strong></td><td>The same theme recurs across sentences; only the rhemes change (A→B, A→C, A→D)</td><td>Describing one subject from several angles; portraits, characterisation</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="model">
+                    <p><strong>Poor flow</strong> (new information keeps landing at the <em>start</em>, forcing the reader to hold it in suspense):</p>
+                    <p><em>"A sharp fall in productivity was the first sign. Poor morale, which management had ignored for months, was the underlying cause. A wave of resignations was the eventual result."</em></p>
+                    <p><strong>Improved flow</strong> (given-before-new; each theme picks up the previous rheme — see Lesson 1's principle of <strong>end-weight</strong>, that the heaviest, newest element belongs last):</p>
+                    <p><em>"The first sign was a sharp fall in productivity. This decline stemmed from poor morale, which management had ignored for months. The neglect, in turn, triggered a wave of resignations."</em></p>
+                    <p><small>The rewrite lets each sentence <em>end</em> on its news, then hands that news forward as the next sentence's starting point: <em>a sharp fall</em> → <em>This decline</em>; <em>ignored… morale</em> → <em>The neglect</em>. The reader is never asked to hold new information in the air.</small></p>
+                </div>
+
+                <div class="card card-warning">
+                    <h4>⚠️ The dangling first mention</h4>
+                    <p>The commonest flow fault is introducing something <em>brand new in the theme position</em> — the very slot the reader expects to be familiar ground. "A man nobody recognised walked in" is fine at the <em>opening</em> of a text (nothing is given yet), but mid-paragraph a sudden new theme jolts. Where you can, lead with the known and let the unknown arrive at the end, where the reader's attention naturally rests.</p>
+                </div>
+            </section>
+
+            <section id="lexical" class="lesson-section">
+                <h2>Lexical Cohesion &amp; Chains</h2>
+                <p>Beyond grammar, texts are held together by <strong>vocabulary that relates back to itself</strong>. This lexical cohesion comes in several forms, and a <strong>lexical chain</strong> — a thread of related words running the length of a text — is one of the strongest signals that a piece is <em>about</em> something.</p>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>Device</th><th>What it does</th><th>Example thread</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Repetition</strong></td><td>Repeats the key term exactly — clearest, sometimes heavy</td><td>the <em>drought</em>… the <em>drought</em>… the <em>drought</em></td></tr>
+                            <tr><td><strong>Synonym / near-synonym</strong></td><td>Varies wording while holding the sense</td><td>the <em>drought</em>… the <em>dry spell</em>… the <em>water shortage</em></td></tr>
+                            <tr><td><strong>Superordinate</strong></td><td>Names the category the thing belongs to</td><td>the <em>spaniel</em>… the <em>dog</em>… the <em>animal</em></td></tr>
+                            <tr><td><strong>General word</strong></td><td>A vague catch-all standing in for the specific</td><td>the <em>crisis</em>… the whole <em>business</em>… the <em>thing</em></td></tr>
+                            <tr><td><strong>Collocation / association</strong></td><td>Words from the same semantic field, evoking a topic</td><td><em>rain, reservoir, ration, parched, harvest</em></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>A well-built chain does two things at once: it <em>binds</em> the text (the reader keeps meeting the topic in new guises) and it <em>develops</em> it (each new term can add a shade of meaning the last one lacked). Moving from <em>the spaniel</em> to <em>the dog</em> to <em>the animal</em> is not mere avoidance of repetition — it can zoom the reader's lens from the particular to the general exactly when the argument needs it.</p>
+
+                <div class="card card-warning">
+                    <h4>⚠️ The "elegant variation" trap</h4>
+                    <p>Fowler's old warning still bites. Terrified of repeating a word, weak writers rename the same thing so relentlessly that the reader loses track of what is what. In a match report, one player becomes "the Frenchman," then "the 24-year-old," then "the former Lyon man," then "the <span class="pron">/mɪdˈfiːldər/</span> midfielder" — until nobody can tell how many people are on the pitch. <strong>Vary to avoid monotony, never at the cost of clarity.</strong> When a term is the anchor of your argument, <em>repeat it</em> — repetition of a key concept is a cohesive virtue, not a stylistic sin. Elegant variation is elegant only while the reader still knows who's who.</p>
+                </div>
+
+                <div class="model">
+                    <p><strong>Variation gone feral:</strong> "The <em>novel</em> divided critics. The <em>book</em> sold well, though the <em>work</em> baffled some; the <em>volume</em>'s admirers, meanwhile, hailed the <em>tome</em> as a landmark."</p>
+                    <p><strong>Disciplined:</strong> "The <em>novel</em> divided critics. It sold well but baffled some; its admirers, meanwhile, hailed it as a landmark."</p>
+                    <p><small>The fix leans on plain <em>reference</em> ("it," "its") and one confident repetition of the anchor word — cohesive, unfussy, instantly clear. Five synonyms for "novel" bought nothing but confusion.</small></p>
+                </div>
+            </section>
+
+            <section id="signposting" class="lesson-section">
+                <h2>Signposting &amp; Meta-Discourse</h2>
+                <p>Extended texts need the writer to occasionally step outside the content and <em>talk about the text itself</em> — orienting the reader to where they are and where they are headed. This <strong>meta-discourse</strong> is the scaffolding of long-form writing. It works at the level of the whole text, not just between clauses (that was <strong>Lesson 3.1</strong>, on discourse markers and stance — the two operate hand in hand).</p>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>Move</th><th>Function</th><th>Typical wording</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Previewing / framing</strong></td><td>Tells the reader the plan up front</td><td>This essay will argue that…; I begin by…; three factors are considered below</td></tr>
+                            <tr><td><strong>Topic sentence</strong></td><td>Announces a paragraph's point in its first line</td><td>A second objection is more serious.</td></tr>
+                            <tr><td><strong>Internal summary</strong></td><td>Consolidates before moving on</td><td>So far, then, the evidence suggests…; To recap the argument so far…</td></tr>
+                            <tr><td><strong>Transition / connective</strong></td><td>Marks the relation between paragraphs</td><td>Against this backdrop…; A very different picture emerges when…</td></tr>
+                            <tr><td><strong>Pointing forward / back</strong></td><td>Cross-references other parts</td><td>as we shall see; for the reasons given above; returning to our first example</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="phrase-bank">
+                    <p><strong>Phrase bank — inter-paragraph connectives &amp; signposts:</strong></p>
+                    <span class="phrase">Having established that…, we can now turn to…</span>
+                    <span class="phrase">This raises a further question:</span>
+                    <span class="phrase">A more compelling explanation lies elsewhere.</span>
+                    <span class="phrase">None of this, however, addresses the central difficulty.</span>
+                    <span class="phrase">Consider, by contrast, …</span>
+                    <span class="phrase">The picture so far is incomplete.</span>
+                    <span class="phrase">There is, admittedly, a rival account.</span>
+                    <span class="phrase">Two threads now converge.</span>
+                    <span class="phrase">It is worth pausing here to…</span>
+                    <span class="phrase">All of which brings us to the heart of the matter.</span>
+                </div>
+
+                <div class="card card-warning">
+                    <h4>⚠️ Over-signposting clutters</h4>
+                    <p>Meta-discourse is seasoning, not the meal. A text that announces every micro-move — "Firstly… Secondly… Now I will… Having said that… In this next part…" — reads like a bureaucrat reading out a table of contents. Trust the reader; signpost the <em>turns</em> and the <em>structure</em>, not every step. The best transitions often carry no explicit marker at all: the theme of the new paragraph simply picks up the thread of the last, and the join is felt rather than flagged.</p>
+                </div>
+            </section>
+
+            <section id="macro" class="lesson-section">
+                <h2>Paragraphing &amp; Macro-Structure</h2>
+                <p>Zoom out one final level. A coherent text is a sequence of coherent <em>paragraphs</em>, and each well-made paragraph has a shape: a <strong>topic sentence</strong> that states its point, a body that <strong>develops</strong> it (with evidence, example, or reasoning), and a closing <strong>link</strong> that hands on to the next. Above the paragraph sits the <strong>through-line</strong> — the single argument or purpose that every paragraph serves, and that gives the whole its coherence.</p>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>Ordering principle</th><th>How it organises the text</th><th>Natural home</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Chronological</strong></td><td>Events in the order they happened</td><td>Narrative, case history, method</td></tr>
+                            <tr><td><strong>General → specific</strong></td><td>Broad claim, then narrowing detail</td><td>Exposition, explanation</td></tr>
+                            <tr><td><strong>Specific → general</strong></td><td>Instances first, then the principle they yield</td><td>Inductive argument, the "reveal"</td></tr>
+                            <tr><td><strong>Problem → solution</strong></td><td>Situation, problem, response, evaluation</td><td>Reports, proposals, op-eds</td></tr>
+                            <tr><td><strong>Claim → evidence</strong></td><td>Assertion, then support and warrant</td><td>Academic and persuasive writing</td></tr>
+                            <tr><td><strong>Compare → contrast</strong></td><td>Two things weighed point by point, or block by block</td><td>Analysis, reviews, evaluation</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>Coherence at this scale is largely a question of <em>order</em> and <em>relevance</em>: does each paragraph belong, does it sit in the right place, and does the reader always know why it is here? A paragraph that is beautifully written but tangential wounds coherence more than a clumsy sentence ever could. The ruthless test is the one below.</p>
+
+                <div class="card card-success">
+                    <h4>✅ The one-sentence-per-paragraph test</h4>
+                    <p>Reduce each paragraph to a single sentence capturing its point, and read those sentences in order, as a list. If that skeleton reads as a coherent argument — each step following from the last, none redundant, none missing — the text is sound at the macro level. If the skeleton stutters, jumps, or repeats, no amount of sentence-polishing will rescue it: the <em>structure</em> is the problem, and the structure is what you must fix.</p>
+                </div>
+
+                <div class="model">
+                    <p><strong>Disjointed</strong> (correct sentences, no architecture — random order, bare joins, a topic-less muddle):</p>
+                    <p><em>"Cycling to work has grown popular. Cars cause congestion. The new bike lanes cost the council two million pounds. Many people are healthier now. Air quality is a concern in cities. Some drivers are annoyed by the reduced road space."</em></p>
+                    <p><strong>Re-engineered</strong> (a through-line, a topic sentence, a lexical chain, ordered claim→evidence→qualification):</p>
+                    <p><em>"The council's two-million-pound investment in cycle lanes is beginning to pay off. Since the lanes opened, commuting by bike has grown markedly popular, and with it a measurable improvement in both residents' health and the city's air quality — no small gain in an era of urban congestion. The scheme has not pleased everyone: some drivers resent the road space surrendered to cyclists. On balance, though, the shift from car to saddle looks like money well spent."</em></p>
+                    <p><small>What changed: a <strong>topic sentence</strong> ("beginning to pay off") gives the paragraph a claim to serve; a <strong>lexical chain</strong> ("cycle lanes… by bike… cyclists… saddle") threads the topic through; the ordering runs <strong>claim → evidence → concession → verdict</strong>; and given-before-new flow ("Since the lanes opened…") links each sentence to the last. Same facts, wholly different coherence.</small></p>
+                </div>
+            </section>
+
+            <section id="practice" class="lesson-section">
+                <h2>Practice &amp; Project</h2>
+
+                <div class="card card-info">
+                    <h3>🏋️ Exercise 1: Reorder for coherence</h3>
+                    <p><strong>Objective:</strong> The sentences below are scrambled. Put them in a coherent order and name the ordering principle you used.</p>
+                    <ol>
+                        <li>(a) The result was a treaty that satisfied nobody.</li>
+                        <li>(b) In 1919, the victorious powers gathered at Versailles.</li>
+                        <li>(c) Each arrived with incompatible aims: security, reparations, and self-determination.</li>
+                        <li>(d) Within two decades, the grievances it left unresolved had helped ignite a second war.</li>
+                    </ol>
+                    <details>
+                        <summary>✅ Answer</summary>
+                        <p>Order: <strong>b → c → a → d</strong>. Principle: <strong>chronological</strong>, reinforced by <strong>cause-and-effect</strong> (gathering → clashing aims → flawed treaty → later consequence). Note the theme/rheme hand-off: <em>Versailles</em> → <em>Each</em> (the powers) → <em>The result</em> (a treaty) → <em>it</em> (the treaty). The chain of reference is what makes the order feel inevitable rather than merely possible.</p>
+                    </details>
+                </div>
+
+                <div class="card card-info">
+                    <h3>🏋️ Exercise 2: Improve the information flow</h3>
+                    <p><strong>Objective:</strong> This paragraph is logically sound but clumsy: new information keeps landing in the theme position. Rewrite it so that each sentence ends on its news and hands that news to the next.</p>
+                    <p><em>"A leak in the roof was the origin of the trouble. Damage to the archive's oldest manuscripts was the consequence of the leak. A complete overhaul of the building's drainage was the board's eventual response to the damage."</em></p>
+                    <details>
+                        <summary>✅ Answer (model)</summary>
+                        <p>One strong version: <em>"The trouble began with a leak in the roof. The leak damaged the archive's oldest manuscripts, and that damage finally prompted the board to order a complete overhaul of the building's drainage."</em> Each sentence now opens on the given (the trouble → the leak → that damage) and closes on the new. Several orderings work; judge by whether the reader is ever made to hold fresh information in suspense. Compare with Lesson 1's <strong>end-weight</strong> principle.</p>
+                    </details>
+                </div>
+
+                <div class="card card-info">
+                    <h3>🏋️ Exercise 3: Cohesion without coherence — and an elegant-variation muddle</h3>
+                    <p><strong>Objective:</strong> Diagnose the fault in each passage and say how you would fix it.</p>
+                    <p><strong>(A)</strong> <em>"The gallery reopened in March. Similarly, the café serves excellent coffee. Consequently, the exhibition features Dutch masters. Furthermore, tickets are timed."</em></p>
+                    <p><strong>(B)</strong> <em>"The <em>sonata</em> is demanding. The <em>piece</em> tests any pianist; indeed, few tackle the <em>composition</em> in public, and the <em>work</em>'s finale defeats all but the finest — the <em>opus</em> is, quite simply, a peak."</em></p>
+                    <details>
+                        <summary>✅ Answer</summary>
+                        <p><strong>(A)</strong> is <strong>cohesive but incoherent</strong>: the connectives (<em>similarly, consequently, furthermore</em>) assert relations that don't exist — the café's coffee is not "similar" to the reopening, and the Dutch masters are not a "consequence" of anything. The fix is not better connectives but a <em>real</em> line of thought: either group genuinely related facts and connect them truthfully, or cut the false links entirely. Surface glue cannot manufacture logic.</p>
+                        <p><strong>(B)</strong> is an <strong>elegant-variation muddle</strong>: five names for one thing (<em>sonata, piece, composition, work, opus</em>) — variation for its own sake, which forces the reader to keep confirming these are all the same object. The fix: anchor on one term and lean on plain reference — <em>"The sonata is demanding. It tests any pianist; indeed, few tackle it in public, and its finale defeats all but the finest. The piece is, quite simply, a peak."</em> One repetition and a chain of pronouns beat five synonyms.</p>
+                    </details>
+                </div>
+
+                <div class="card card-info">
+                    <h3>🎯 Your Project: Re-Engineer a Text</h3>
+                    <p>Take a genuinely disjointed multi-paragraph text — a rambling email you've received, a first-draft essay, a stitched-together report, or one you deliberately draft badly for the purpose (four to six paragraphs is ideal).</p>
+                    <ol>
+                        <li><strong>(4 min)</strong> <strong>Diagnose.</strong> Read it and mark, in the margin, whether each fault is <em>cohesion</em> (missing joins) or <em>coherence</em> (wrong order, irrelevance, no through-line). Apply the one-sentence-per-paragraph test to expose the skeleton.</li>
+                        <li><strong>(5 min)</strong> <strong>Re-order.</strong> Choose an ordering principle (claim→evidence, problem→solution, general→specific…) and rearrange paragraphs and sentences to serve a single through-line. Cut anything tangential, however well written.</li>
+                        <li><strong>(5 min)</strong> <strong>Re-wire.</strong> Fix information flow (given-before-new), build one deliberate lexical chain through the whole text, add topic sentences, and place a few — <em>only a few</em> — inter-paragraph signposts.</li>
+                        <li><strong>(3 min)</strong> <strong>Read both aloud.</strong> Listen for the moment the reader would have stumbled in the original and no longer does in the revision. Then prune any signpost or synonym that now shows off rather than serves.</li>
+                    </ol>
+                    <p><strong>Partner / group option:</strong> Swap your <em>before</em> version with a partner. Each re-engineers the other's text without discussion, then compare solutions. Where you ordered differently, argue for your through-line — you'll often find two coherent structures serving different emphases, which is itself a C2 insight.</p>
+                    <div class="card card-success">
+                        <h4>✅ Project Completion Checklist</h4>
+                        <ul>
+                            <li>☐ I labelled each fault as cohesion or coherence before touching a word</li>
+                            <li>☐ I reordered to a single, nameable through-line and cut what didn't serve it</li>
+                            <li>☐ I fixed information flow so no sentence opens on brand-new information mid-text</li>
+                            <li>☐ I ran one deliberate lexical chain through the whole piece — without an elegant-variation muddle</li>
+                            <li>☐ I added topic sentences and signposted the structure, not every step</li>
+                            <li>☐ I read before/after aloud and pruned anything that now shows off rather than serves</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card quiz-container">
+                    <h3>🎯 Quick Quiz</h3>
+                    <div class="quiz-question">
+                        <p><strong>Question 1:</strong> A report is full of connectives — <em>however, therefore, moreover</em> — yet the reader finishes it unable to say what it argued. What is most likely missing?</p>
+                        <div class="quiz-options">
+                            <button class="quiz-option" data-correct="false" data-hint="It clearly has abundant cohesion — the connectives are all there.">A) Cohesion</button>
+                            <button class="quiz-option" data-correct="true" data-explanation="Correct — the surface links are present (cohesion), but there's no discernible line of thought. That's a coherence failure: the fix is rethinking order and relevance, not adding more connectives.">B) Coherence</button>
+                            <button class="quiz-option" data-correct="false" data-hint="Reference (pronouns, 'this') is a form of cohesion; the text isn't short of surface links.">C) Reference</button>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    <div class="quiz-question">
+                        <p><strong>Question 2:</strong> Which sentence pair shows the best information flow (given-before-new, theme picking up the prior rheme)?</p>
+                        <div class="quiz-options">
+                            <button class="quiz-option" data-correct="true" data-explanation="Yes — the first sentence ends on the news ('a radical proposal'), and the second opens on it ('This proposal…'), handing given information forward before adding new.">A) The minister unveiled a radical proposal. This proposal alarmed her own party.</button>
+                            <button class="quiz-option" data-correct="false" data-hint="The second sentence opens on brand-new information ('Alarm among her own party') in the theme slot, forcing the reader to hold it in suspense.">B) The minister unveiled a radical proposal. Alarm among her own party was the immediate reaction.</button>
+                            <button class="quiz-option" data-correct="false" data-hint="Grammatical, but the link between the two sentences is left for the reader to infer — the theme doesn't pick up the prior rheme.">C) The minister unveiled a radical proposal. Question time is on Wednesdays.</button>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="tips" class="lesson-section">
+                <h2>Tips &amp; Common Pitfalls</h2>
+
+                <h3>✅ Do's</h3>
+                <ul>
+                    <li>Before editing prose, <strong>diagnose the layer</strong>: is the wiring missing (cohesion) or the thought (coherence)? Fix the right one.</li>
+                    <li>Let each sentence <strong>end on its news</strong> and open on the known — then hand that news forward as the next theme.</li>
+                    <li>Run a <strong>deliberate lexical chain</strong> through a text; repeat an anchor term confidently rather than reaching for a fifth synonym.</li>
+                    <li>Test structure with the <strong>one-sentence-per-paragraph skeleton</strong> before polishing any sentence.</li>
+                </ul>
+
+                <h3>❌ Common Pitfalls</h3>
+                <div class="card card-warning">
+                    <h4>⚠️ Watch Out</h4>
+                    <ul>
+                        <li><strong>Connective theatre:</strong> sprinkling <em>however / therefore / moreover</em> to <em>simulate</em> logic. False links are worse than none — they promise a reasoning that isn't there.</li>
+                        <li><strong>Elegant variation:</strong> renaming one thing so often the reader loses the thread. Vary for rhythm, never at the cost of clarity; the anchor of an argument should be repeated, not disguised.</li>
+                        <li><strong>New information in the theme slot:</strong> opening a mid-text sentence on the unfamiliar. Lead with the given; save the new for the end, where attention rests.</li>
+                        <li><strong>Over-signposting:</strong> narrating every micro-move until the text reads like its own table of contents. Signpost the turns, not the steps.</li>
+                        <li><strong>Polishing a text that needs rebuilding:</strong> the deepest trap — sanding sentences when the <em>order</em> is the fault. Coherence problems are never solved at the word level.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="journal" class="lesson-section">
+                <h2>📓 Learning Journal</h2>
+                <div class="card card-info">
+                    <p>Keep your learning journal going. After this lesson, note:</p>
+                    <ul>
+                        <li><strong>Key concepts</strong> you learned</li>
+                        <li><strong>Distinctions that clicked</strong> for you</li>
+                        <li><strong>Questions or uncertainties</strong> to revisit</li>
+                        <li><strong>Structural habits you want to start using deliberately</strong></li>
+                        <li><strong>Your progress and feelings</strong> about working at C2</li>
+                    </ul>
+                    <p><strong>✍️ This lesson's prompt:</strong> Find a piece of your own writing longer than three paragraphs. Apply the one-sentence-per-paragraph test and write out the resulting skeleton. Does it read as a coherent argument on its own? Where it stutters, describe — in a sentence or two — whether the fault is order, relevance, or a missing through-line, and how you would rebuild rather than merely re-word it.</p>
+                </div>
+            </section>
+
+            <section id="summary" class="lesson-section">
+                <h2>📝 Lesson Summary</h2>
+
+                <div class="card card-success">
+                    <h3>🎓 Key Takeaways</h3>
+                    <ul>
+                        <li><strong>Cohesion</strong> is the surface network of links; <strong>coherence</strong> is whether the whole makes sense. A text can have either without the other — diagnose which is missing before you edit.</li>
+                        <li><strong>Theme/rheme</strong> governs flow: lead with the <strong>given</strong>, close on the <strong>new</strong>, and let each theme pick up the previous rheme (linear or constant-theme progression).</li>
+                        <li><strong>Lexical chains</strong> bind and develop a topic; repetition of an anchor term is a virtue, and <strong>elegant variation</strong> is a trap once it costs clarity.</li>
+                        <li>Macro-structure — topic sentences, a nameable ordering principle, a governing <strong>through-line</strong>, and restrained signposting — is what makes many paragraphs read as one argument.</li>
+                    </ul>
+                </div>
+
+                <h3>🎉 What You've Accomplished</h3>
+                <p>You've moved from writing good sentences to engineering good <em>texts</em> — controlling the reader's experience of flow, threading meaning through vocabulary, and building an architecture the reader never has to see. This is the craft behind every essay that feels effortless to follow: the effort was all yours, invisibly spent so the reader's would not be. 🎉</p>
+
+                <h3>❓ Common Questions at This Stage</h3>
+                <details>
+                    <summary>If a text is coherent, do I really need cohesion too?</summary>
+                    <p>You need enough. A coherent text with too few surface links makes the reader reconstruct your logic unaided — tiring, and easy to get wrong. A little cohesion (a well-placed connective, a repeated key term, a clean reference chain) turns a logic the reader <em>could</em> follow into one they follow without noticing. The aim is not maximum cohesion but sufficient cohesion to carry sound coherence effortlessly.</p>
+                </details>
+                <details>
+                    <summary>How is this different from the discourse markers I studied last lesson?</summary>
+                    <p>Lesson 3.1 worked at the seam between clauses and sentences — the markers and stance that signal <em>local</em> relations. This lesson operates one storey up, on the <em>whole text</em>: how information flows across sentences, how vocabulary threads through paragraphs, and how the macro-order creates a single argument. Markers are one tool of cohesion; here they serve a larger architecture. The two are complementary, not competing.</p>
+                </details>
+                <details>
+                    <summary>Isn't repeating a key word just bad style?</summary>
+                    <p>No — that's the elegant-variation myth. Repeating the <em>anchor</em> of your argument is a deliberate cohesive device: it keeps the reader oriented and signals what the text is about. What reads as clumsy is <em>incidental</em> repetition (the same filler word three times in a line), not the purposeful recurrence of a central term. When in doubt, repeat the concept and vary the incidentals around it.</p>
+                </details>
+
+                <h3>🔭 Looking Ahead</h3>
+                <p>Having learned to build a text that coheres, we turn to compressing and recombining <em>other people's</em>. In <strong>Lesson 3.3</strong>, you'll master <strong>summarising, paraphrasing, and synthesis</strong> — distilling a source without distorting it, recasting it in your own idiom, and weaving several sources into one coherent line of argument, all skills that rest squarely on the cohesion and coherence you've just built.</p>
+
+                <h3>✅ Before the Next Lesson</h3>
+                <ul>
+                    <li>Re-engineer one short text a day for a week; keep every before/after pair.</li>
+                    <li>Read a well-argued essay or long-form article and trace one lexical chain from start to finish.</li>
+                    <li>Write your Learning Journal entry for this lesson.</li>
+                </ul>
+
+                <div class="card card-accent" style="text-align: center; padding: 2rem;">
+                    <h3>🌟 Encouragement for the Journey</h3>
+                    <p>Architecture is the quietest of the writing arts and one of the most powerful. Readers rarely thank you for a well-ordered text — they simply glide through it and remember what you said. That effortless clarity is not a gift; it is engineering, and you now hold the tools. Build something that carries a reader from first word to last without a single stumble. That is mastery you can feel. 👋</p>
+                </div>
+            </section>
+
+            <nav class="lesson-nav" aria-label="Lesson Navigation">
+                <a href="lesson_07.html" class="prev-lesson">← Previous: Discourse Markers &amp; Stance</a>
+                <a href="index.html" class="home-link">🏠 Course Home</a>
+                <a href="lesson_09.html" class="next-lesson">Next: Summarising, Paraphrasing &amp; Synthesis →</a>
+            </nav>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Ray de la Paz. Mastery English (C2 Proficiency). All rights reserved.</p>
+        <div class="footer-links">
+            <a href="/">ESL Hub</a>
+            <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+            <a href="https://rays-home.netlify.app/contact">Contact</a>
+            <a href="#" id="print-button">Print Page</a>
+        </div>
+        <p><small>Press <kbd>?</kbd> for keyboard shortcuts</small></p>
+    </footer>
+
+    <script src="js/clipboard.js"></script>
+    <script src="js/course-enhancements.js"></script>
+</body>
+</html>
