@@ -1,0 +1,98 @@
+{
+  "course": {
+    "title": "IELTS Academic Preparation",
+    "subtitle": "A complete self-paced IELTS Academic exam-prep course",
+    "description": "Twelve skills-and-strategy lessons covering all four IELTS Academic sections — Listening, Reading, Writing, Speaking — plus every major question type, the band descriptors, annotated model answers, and test-day strategy.",
+    "author": {
+      "name": "Ray de la Paz",
+      "email": "contact via website",
+      "website": "https://rays-home.netlify.app/",
+      "bio": "Technical trainer and course developer."
+    },
+    "version": "1.0.0",
+    "lastUpdated": "2026-09-09",
+    "language": "en",
+    "difficulty": "exam-prep",
+    "cefr": "B1-C2 (exam skills)",
+    "estimatedHours": 14,
+    "tags": ["esl", "english", "ielts", "academic", "exam", "test-prep", "curriculum"]
+  },
+
+  "branding": {
+    "primaryColor": "#3b82f6",
+    "secondaryColor": "#f8fafc",
+    "accentColor": "#6366f1",
+    "fontFamily": "Segoe UI, system-ui, -apple-system, sans-serif",
+    "favicon": "favicon.png"
+  },
+
+  "navigation": {
+    "showBreadcrumbs": false,
+    "showProgressBar": false,
+    "showLessonNav": true,
+    "showSearch": true,
+    "showThemeToggle": true,
+    "keyboardShortcuts": true,
+    "externalLinks": [
+      { "label": "ESL Hub", "url": "/" },
+      { "label": "Ray's House of Fun", "url": "https://rays-home.netlify.app/" },
+      { "label": "Contact", "url": "https://rays-home.netlify.app/contact" }
+    ]
+  },
+
+  "modules": [
+    {
+      "id": "module-1",
+      "title": "The Test & Foundations",
+      "description": "The format, the scoring, and the language that underpins every section.",
+      "lessons": [
+        { "id": "lesson-1-1", "title": "IELTS Overview — Format, Bands & Strategy", "filename": "lesson_01.html", "duration": "50 minutes", "difficulty": "exam-prep" },
+        { "id": "lesson-1-2", "title": "Academic Vocabulary & Paraphrasing", "filename": "lesson_02.html", "duration": "55 minutes", "difficulty": "exam-prep" },
+        { "id": "lesson-1-3", "title": "Grammar for a High Band", "filename": "lesson_03.html", "duration": "55 minutes", "difficulty": "exam-prep" }
+      ]
+    },
+    {
+      "id": "module-2",
+      "title": "Listening & Reading",
+      "description": "Strategies and question-type techniques for the two receptive skills.",
+      "lessons": [
+        { "id": "lesson-2-1", "title": "IELTS Listening — Strategies & Question Types", "filename": "lesson_04.html", "duration": "60 minutes", "difficulty": "exam-prep" },
+        { "id": "lesson-2-2", "title": "IELTS Reading — Skimming, Scanning & Question Types", "filename": "lesson_05.html", "duration": "60 minutes", "difficulty": "exam-prep" },
+        { "id": "lesson-2-3", "title": "True/False/Not Given & Matching — The Tricky Types", "filename": "lesson_06.html", "duration": "55 minutes", "difficulty": "exam-prep" }
+      ]
+    },
+    {
+      "id": "module-3",
+      "title": "Academic Writing",
+      "description": "Both writing tasks, and the band descriptors examiners mark against.",
+      "lessons": [
+        { "id": "lesson-3-1", "title": "Writing Task 1 — Describing Data", "filename": "lesson_07.html", "duration": "60 minutes", "difficulty": "exam-prep" },
+        { "id": "lesson-3-2", "title": "Writing Task 2 — Essay Structure & Argument", "filename": "lesson_08.html", "duration": "65 minutes", "difficulty": "exam-prep" },
+        { "id": "lesson-3-3", "title": "Writing — Coherence, Cohesion & Band Descriptors", "filename": "lesson_09.html", "duration": "55 minutes", "difficulty": "exam-prep" }
+      ]
+    },
+    {
+      "id": "module-4",
+      "title": "Speaking & Test Mastery",
+      "description": "The speaking interview, its criteria, and a full test-day game plan.",
+      "lessons": [
+        { "id": "lesson-4-1", "title": "IELTS Speaking Parts 1-3 — Fluency & Strategy", "filename": "lesson_10.html", "duration": "60 minutes", "difficulty": "exam-prep" },
+        { "id": "lesson-4-2", "title": "Speaking — Pronunciation, Lexical Range & Band Descriptors", "filename": "lesson_11.html", "duration": "55 minutes", "difficulty": "exam-prep" },
+        { "id": "lesson-4-3", "title": "Full Practice & Test-Day Strategy", "filename": "lesson_12.html", "duration": "70 minutes", "difficulty": "exam-prep" }
+      ]
+    }
+  ],
+
+  "features": {
+    "codeHighlighting": false,
+    "copyCodeButton": true,
+    "progressTracking": false,
+    "responsiveDesign": true,
+    "accessibility": true,
+    "printFriendly": true,
+    "searchEnabled": true,
+    "darkMode": true,
+    "mermaidDiagrams": true,
+    "svgDarkModeSupport": true
+  }
+}

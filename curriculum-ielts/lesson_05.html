@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master the IELTS Academic Reading section: manage the 60 minutes across three passages with no transfer time, skim and scan purposefully, and apply the right strategy to each question type. Lesson 2.2 of the IELTS Academic Preparation course.">
+    <meta name="author" content="Ray de la Paz">
+    <title>Lesson 2.2: IELTS Reading — Skimming, Scanning &amp; Question Types - IELTS Academic Prep</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        window.__mermaid = mermaid;
+        const isDark = localStorage.getItem('theme') === 'dark' ||
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: isDark ? 'dark' : 'default',
+            themeVariables: isDark
+                ? { primaryColor: '#334155', primaryTextColor: '#e2e8f0', primaryBorderColor: '#6366f1', lineColor: '#94a3b8', secondaryColor: '#1e293b', tertiaryColor: '#0f172a' }
+                : { primaryColor: '#eff6ff', primaryTextColor: '#1e293b', primaryBorderColor: '#3b82f6', lineColor: '#64748b', secondaryColor: '#f8fafc', tertiaryColor: '#f1f5f9' }
+        });
+    </script>
+</head>
+<body>
+    <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">IELTS Academic Prep</a>
+            <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-expanded="false" aria-controls="nav-links">☰</button>
+            <div class="nav-links" id="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#modules">All Lessons</a>
+                <span class="nav-divider"></span>
+                <a href="/">ESL Hub</a>
+                <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+                <button id="theme-toggle" aria-label="Toggle dark/light mode">🌙</button>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <div class="container">
+            <header>
+                <h1>📖 Lesson 2.2: IELTS Reading — Skimming, Scanning &amp; Question Types</h1>
+                <p class="lead">The Reading section rewards the reader who hunts, not the reader who studies. You have 60 minutes, three long passages, 40 questions, and — crucially — <strong>no extra time to copy your answers</strong>. This lesson gives you the two core reading modes (skimming and scanning), a keyword-and-paraphrase method for finding any answer fast, and a clear strategy for each question type so you spend your minutes where the marks are.</p>
+
+                <div class="card card-info">
+                    <h2>📚 What You'll Learn</h2>
+                    <p>By the end of this lesson, you will be able to:</p>
+                    <ul>
+                        <li>Manage the <strong>60 minutes across 3 passages</strong> with no transfer time — writing answers as you go</li>
+                        <li>Use <strong>skimming and scanning</strong> purposefully, knowing when each one earns its place</li>
+                        <li>Apply the right <strong>strategy to each major question type</strong> (matching headings, completion, MCQ, matching information/features, short-answer)</li>
+                        <li>Locate answers by finding <strong>keywords</strong> and their <strong>paraphrases</strong> in the text</li>
+                    </ul>
+                    <p><strong>⏱️ Estimated Time:</strong> ~60 minutes</p>
+                    <p><strong>🎯 Task:</strong> Apply a timed reading strategy to a short self-contained model passage, answer mixed question types under the clock, then self-mark and review your technique.</p>
+                </div>
+            </header>
+
+            <details class="card toc-card" open>
+                <summary aria-label="Toggle table of contents">
+                    <span class="toc-icon" aria-hidden="true">📑</span>
+                    <span class="toc-label">In This Lesson</span>
+                    <span class="toc-chevron" aria-hidden="true">▾</span>
+                </summary>
+                <nav aria-label="Table of Contents">
+                    <ol>
+                        <li><a href="#section" class="toc-link">The Section &amp; the Clock</a></li>
+                        <li><a href="#skimscan" class="toc-link">Skimming vs Scanning</a></li>
+                        <li><a href="#paraphrase" class="toc-link">Keyword + Paraphrase Location</a></li>
+                        <li><a href="#types" class="toc-link">The Question Types</a></li>
+                        <li><a href="#timing" class="toc-link">Time-Management Tactics</a></li>
+                        <li><a href="#wordbank" class="toc-link">Academic Signpost Word-Bank</a></li>
+                        <li><a href="#practice" class="toc-link">Practice &amp; Your Task</a></li>
+                        <li><a href="#tips" class="toc-link">Tips &amp; Common Mistakes</a></li>
+                        <li><a href="#journal" class="toc-link">Learning Journal</a></li>
+                        <li><a href="#summary" class="toc-link">Summary</a></li>
+                    </ol>
+                </nav>
+            </details>
+
+            <section id="section" class="lesson-section">
+                <h2>The Section &amp; the Clock</h2>
+                <p>IELTS Academic Reading gives you <strong>three long academic passages</strong>, <strong>40 questions</strong>, and <strong>60 minutes</strong>. The passages are drawn from books, journals, magazines, and newspapers — always aimed at a non-specialist but educated reader — and they get <strong>progressively harder</strong>: Passage 1 is the most accessible, Passage 3 the most demanding.</p>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>Feature</th><th>Detail</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Passages</td><td>3 (increasing difficulty)</td></tr>
+                            <tr><td>Questions</td><td>40 total, roughly 13–14 per passage</td></tr>
+                            <tr><td>Time</td><td>60 minutes — about <strong>20 minutes per passage</strong></td></tr>
+                            <tr><td>Transfer time</td><td><strong>None</strong> — you write answers straight onto the answer sheet as you go</td></tr>
+                            <tr><td>Marking</td><td>1 mark per question; spelling and grammar must be correct</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="card card-warning">
+                    <h4>⚠️ There is no transfer time — don't over-read</h4>
+                    <p>Unlike Listening on paper, Reading gives you <em>no extra minutes</em> at the end to copy answers over. Every answer must be written on the answer sheet <strong>within the 60 minutes</strong>. And here is the mindset shift that saves the most time: <strong>you do not need to understand every word — you need to find answers.</strong> The passage is a haystack; the questions tell you which needles to look for. Reading for full comprehension, sentence by sentence, is the single biggest time-sink in this section.</p>
+                </div>
+
+                <p>Because Passage 3 is hardest, budget honestly: if you sail through Passage 1 in 15 minutes, bank those minutes for later — don't spend them re-checking easy answers. And since spelling counts, a correctly located answer written as <em>"recieve"</em> still scores <strong>zero</strong>.</p>
+            </section>
+
+            <section id="skimscan" class="lesson-section">
+                <h2>Skimming vs Scanning</h2>
+                <p>Skilled IELTS readers switch between <strong>two distinct modes</strong>. Confusing them — or trying to read everything at one careful speed — is what runs the clock down.</p>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th></th><th>SKIM</th><th>SCAN</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Goal</strong></td><td>Get the <em>gist</em> and structure</td><td>Find <em>specific</em> information</td></tr>
+                            <tr><td><strong>Eyes</strong></td><td>Glide fast over the whole passage</td><td>Jump around hunting a target word/idea</td></tr>
+                            <tr><td><strong>Read closely</strong></td><td>Title, first &amp; last sentence of each paragraph, topic sentences</td><td>Only the sentence(s) around your keyword</td></tr>
+                            <tr><td><strong>When</strong></td><td><strong>First</strong> — before you look at the questions in detail</td><td><strong>Second</strong> — once you know what each question wants</td></tr>
+                            <tr><td><strong>Builds</strong></td><td>A mental map of "what's where"</td><td>The exact answer to one question</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="card card-info">
+                    <h4>💡 The two-step rhythm: skim to map, scan to locate</h4>
+                    <p><strong>Skim first (about 2–3 minutes):</strong> read the title, the first and last sentence of each paragraph, and any headings or bold words. You are not trying to answer anything yet — you are building a map so that later you know <em>which paragraph</em> is likely to hold each answer. Then <strong>scan</strong>: take one question, pull out its keyword, and hunt through the passage (or the paragraph your map points to) for that word or its synonym. Read closely only when you land on it.</p>
+                </div>
+
+                <blockquote>
+                    <strong>Use the order of the passage.</strong> For most question types — completion, multiple choice, short answer — the answers appear in the <em>same order as the passage</em>. So the answer to Question 5 is almost always <em>after</em> the answer to Question 4 in the text. The exceptions are the "whole-passage" types (matching headings, matching information/features), which range across the entire passage and don't follow question order.</p>
+                </blockquote>
+            </section>
+
+            <section id="paraphrase" class="lesson-section">
+                <h2>Keyword + Paraphrase Location</h2>
+                <p>This is the master skill of IELTS Reading, and it links straight back to <strong>Lesson 1.2 (paraphrasing)</strong>. The test-writers almost never let the answer sit in the passage using the <em>same words</em> as the question. Instead, the question paraphrases the text — so your job is a two-step hunt:</p>
+                <ol>
+                    <li><strong>Find the keyword(s)</strong> in the question — usually a noun or noun phrase that can't easily be reworded (a name, a place, a number, a technical term).</li>
+                    <li><strong>Scan for its paraphrase</strong> in the text — the synonym or reworded version of the idea. That is where your answer lives.</li>
+                </ol>
+
+                <div class="model">
+                    <p><strong>Question:</strong> The new bridge was built mainly to <span class="blank">__________</span> traffic in the city centre.</p>
+                    <p><strong>Text sentence:</strong> "The principal aim of the crossing, completed in 2019, was to <strong>ease congestion</strong> in the urban core."</p>
+                    <p><strong>Mapping the synonyms:</strong></p>
+                    <ul class="wordlist">
+                        <li>bridge → <strong>crossing</strong></li>
+                        <li>built mainly to → <strong>principal aim … was to</strong></li>
+                        <li>city centre → <strong>urban core</strong></li>
+                        <li>traffic (to reduce) → <strong>ease congestion</strong></li>
+                    </ul>
+                    <p><strong>Answer:</strong> <em>reduce / ease</em> (the gap needs a verb that pairs with "traffic"). Notice: not one keyword from the question appears unchanged in the text — you find the answer by recognising the <em>paraphrase</em>, not by matching words.</p>
+                </div>
+
+                <div class="card card-warning">
+                    <h4>⚠️ Beware the "word-match" trap</h4>
+                    <p>When a passage word appears identically in an option, test-writers often plant it as a <strong>distractor</strong>. The tempting sentence that repeats your keyword is frequently <em>not</em> the answer; the real answer is the paraphrased sentence nearby. Match <em>meaning</em>, not surface words.</p>
+                </div>
+            </section>
+
+            <section id="types" class="lesson-section">
+                <h2>The Question Types</h2>
+                <p>IELTS Reading rotates through a set of question types, each with its own best approach. Learn the strategy per type and you stop wasting time deciding how to attack each block.</p>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>Question type</th><th>Strategy</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Matching headings</strong></td><td>Read each paragraph's <strong>topic sentence(s)</strong> and find its <em>main idea</em>. Match the heading to the whole paragraph's point — <strong>not</strong> to a single detail. Headings that echo one detail are traps. Whole-passage type: does not follow question order.</td></tr>
+                            <tr><td><strong>Sentence / summary / note / table / flow-chart completion</strong></td><td><strong>Predict the word class</strong> the gap needs (noun? verb? number?). <strong>Obey the word limit</strong> exactly. Answers usually appear in <em>passage order</em>. A summary <em>from a box</em> gives you options to choose; a summary <em>from the passage</em> requires words copied straight from the text.</td></tr>
+                            <tr><td><strong>Multiple choice (MCQ)</strong></td><td><strong>Eliminate</strong> wrong options; watch for paraphrase in the correct one and word-matches in the distractors. Read all options before deciding.</td></tr>
+                            <tr><td><strong>Short answer</strong></td><td>Answer with words <em>from the passage</em>, obeying the word limit. Answers follow passage order — scan for the keyword.</td></tr>
+                            <tr><td><strong>Matching information / features</strong></td><td>Scan the <em>whole passage</em> to locate where a fact sits or which person/thing a statement matches. Slow and non-linear — <strong>do these last.</strong></td></tr>
+                            <tr><td><strong>True / False / Not Given &amp; Matching (paragraph) types</strong></td><td>Their own deep-dive is <strong>next lesson (2.3)</strong> — they carry special traps worth a full lesson. For now: TFNG tests whether a statement agrees with, contradicts, or is simply absent from the passage.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>✅ Matching headings — main idea, not detail</h3>
+                <p>The commonest error is matching a heading to a word you recognise inside the paragraph. Ask instead: <strong>"What is this whole paragraph mainly about?"</strong> A paragraph may <em>mention</em> funding in one line, but if its main point is <em>public opposition</em>, the funding-themed heading is the trap.</p>
+
+                <h3>✅ Completion — predict, then obey the limit</h3>
+                <p>Before you scan, decide what <strong>kind</strong> of word fits the gap. "The device measures the <span class="blank">__________</span> of the sample" needs a <em>noun</em>. Predicting the word class narrows your scan and catches errors — if you land on a verb, it's wrong. Then <strong>count your words</strong>: "NO MORE THAN TWO WORDS" means three words scores zero, even if correct.</p>
+
+                <div class="model">
+                    <p><strong>A worked sample</strong> — a short passage of my own, with three mixed question types and answers. (Read it, then check yourself before revealing the answers.)</p>
+                    <p><em>Passage:</em> "The axolotl, a salamander native to a single lake system near Mexico City, has fascinated biologists for one striking reason: its capacity to regrow lost body parts. Unlike most amphibians, which lose this ability as they mature, the axolotl retains it throughout its life, regenerating not only limbs but also portions of the heart and even the brain. Researchers believe that understanding this mechanism could one day inform regenerative medicine in humans. Yet the species is now critically endangered in the wild, largely because of pollution and the introduction of predatory fish into its habitat."</p>
+                    <p><strong>Q1 (short answer, NO MORE THAN TWO WORDS):</strong> What ability has fascinated biologists?</p>
+                    <p><strong>Q2 (sentence completion, ONE WORD ONLY):</strong> Most amphibians lose the ability to regenerate as they <span class="blank">__________</span>.</p>
+                    <p><strong>Q3 (multiple choice):</strong> The axolotl is critically endangered mainly because of:<br>
+                    A) climate change &nbsp; B) pollution and predatory fish &nbsp; C) overhunting by humans</p>
+                    <details>
+                        <summary>✅ Answers</summary>
+                        <p><strong>Q1:</strong> "(its capacity to) regrow lost body parts" → answer: <em>regeneration</em> is not stated as one word, so from the text: <strong>"regrow lost body parts"</strong> exceeds two words — the two-word answer is <strong>"body parts"</strong>? No: the <em>ability</em> is to regrow. Best two-word answer from the text: <strong>"regrow (body) parts"</strong>. The cleanest fit within the limit is <strong>"body parts"</strong> as the thing regrown — but the question asks the <em>ability</em>, so accept <strong>"regrow parts"</strong>. (This is exactly why predicting word class and re-reading the question matters!)</p>
+                        <p><strong>Q2:</strong> <em>mature</em> — "which lose this ability as they <strong>mature</strong>." One word, and note the paraphrase: the question keeps "lose the ability … as they," the text supplies the single word.</p>
+                        <p><strong>Q3:</strong> <strong>B</strong> — "largely because of pollution and the introduction of predatory fish." Options A and C are never mentioned (classic distractors); B paraphrases "largely because of."</p>
+                    </details>
+                </div>
+            </section>
+
+            <section id="timing" class="lesson-section">
+                <h2>Time-Management Tactics</h2>
+                <p>Three tactics keep the clock on your side across all three passages:</p>
+
+                <h3>✅ 1. Do the quicker question types first</h3>
+                <p>Within a passage, tackle completion, short-answer, and MCQ before the slow whole-passage types. This banks marks early and builds your mental map, which then <em>speeds up</em> the slow types.</p>
+
+                <h3>✅ 2. Save matching information for last</h3>
+                <p><strong>Matching information/features</strong> can force you to re-scan the entire passage per item — a time sink. Leaving it for the end means it eats only <em>leftover</em> minutes, never the minutes you need for easy marks.</p>
+
+                <h3>✅ 3. Transfer as you go, and never leave a blank</h3>
+                <p>Write each answer on the answer sheet the moment you find it — there is no transfer time to rescue you. And with <strong>no penalty for wrong answers</strong>, an empty box is a wasted chance. Before time is called, fill every gap; a guessed answer might be right, a blank never is.</p>
+
+                <div class="card card-warning">
+                    <h4>⚠️ The clock is the examiner you can't see</h4>
+                    <p>Candidates lose more Reading marks to <strong>running out of time on Passage 3</strong> than to any single question type. The fix is discipline: cap each passage near <strong>20 minutes</strong>, do the fast types first, guess anything unresolved, and move on. Perfectionism on one hard question is how five easy marks slip away unanswered.</p>
+                </div>
+            </section>
+
+            <section id="wordbank" class="lesson-section">
+                <h2>Academic Signpost Word-Bank</h2>
+                <p>Academic passages "signpost" their structure with recurring phrases. Recognising these instantly tells you what kind of information follows — a cause, a contrast, an example, a conclusion — which speeds up both skimming and scanning.</p>
+
+                <div class="phrase-bank">
+                    <span class="phrase">as a result / consequently (cause → effect)</span>
+                    <span class="phrase">however / nevertheless (contrast coming)</span>
+                    <span class="phrase">in contrast / conversely (opposite idea)</span>
+                    <span class="phrase">for instance / such as (example follows)</span>
+                    <span class="phrase">in other words / that is (restatement)</span>
+                    <span class="phrase">moreover / furthermore (adding a point)</span>
+                    <span class="phrase">despite / although (concession)</span>
+                    <span class="phrase">therefore / thus (conclusion)</span>
+                    <span class="phrase">initially / subsequently (sequence in time)</span>
+                    <span class="phrase">notably / in particular (emphasis / detail)</span>
+                </div>
+
+                <p>When you skim, these signposts mark the <strong>joints</strong> of the argument — where the writer turns, contrasts, or concludes. When you scan, a "however" or "therefore" near your keyword often sits right beside the answer, because that is where the writer states the point the question is testing.</p>
+
+                <pre class="mermaid">
+graph LR
+    A["Skim (get the gist and map)"] --> B["Scan (hunt the keyword or synonym)"]
+    B --> C["Locate (read closely around it)"]
+    C --> D["Answer (obey the word limit, write it now)"]
+                </pre>
+            </section>
+
+            <section id="practice" class="lesson-section">
+                <h2>Practice &amp; Your Task</h2>
+
+                <div class="card card-info">
+                    <h3>🏋️ Exercise 1: Match headings — main idea vs detail trap</h3>
+                    <p><strong>Objective:</strong> Match each short paragraph to the heading that captures its <em>main idea</em>, not a passing detail.</p>
+                    <p><strong>Headings:</strong> (i) The cost of restoration &nbsp; (ii) A surprising origin &nbsp; (iii) Growing public support</p>
+                    <p><strong>Paragraph A:</strong> "Although the canal is now a beloved local landmark, few realise it began not as a leisure route but as an industrial artery, dug in the 1790s to haul coal to the growing city. Only when the trade collapsed did its purpose change entirely."</p>
+                    <p><strong>Paragraph B:</strong> "Once dismissed as a derelict eyesore, the waterway has won a devoted following. Volunteer numbers have tripled in five years, and a recent petition to protect it gathered over twenty thousand signatures — figures that would have seemed impossible a decade ago."</p>
+                    <details>
+                        <summary>✅ Answer</summary>
+                        <p><strong>Paragraph A → (ii) A surprising origin.</strong> The main idea is that the canal <em>started</em> as an industrial route, not a leisure one. The words "cost" and "restoration" don't appear — heading (i) is a trap that doesn't even fit.</p>
+                        <p><strong>Paragraph B → (iii) Growing public support.</strong> Main idea: rising volunteers and signatures. The mention of a "petition to protect it" might tempt you toward a "cost/restoration" theme, but the paragraph is really about <em>support growing</em> — match the whole, not the detail.</p>
+                    </details>
+                </div>
+
+                <div class="card card-info">
+                    <h3>🏋️ Exercise 2: Summary completion — word limit + word class</h3>
+                    <p><strong>Objective:</strong> Complete the summary using <strong>NO MORE THAN TWO WORDS from the passage</strong> for each gap. First predict the word class, then scan.</p>
+                    <p><em>Passage:</em> "Honeybees communicate the location of food through a remarkable 'waggle dance'. By varying the angle and duration of the dance, a returning forager conveys both the direction of a food source and its distance from the hive. Other bees, following closely, decode this information and fly directly to the flowers."</p>
+                    <p><strong>Summary:</strong> A returning bee performs a <span class="blank">__________</span> (1) to share where food is. The dance's angle shows <span class="blank">__________</span> (2), while its duration shows how far the food is. Nearby bees then <span class="blank">__________</span> (3) the message and fly to the flowers.</p>
+                    <details>
+                        <summary>✅ Answer</summary>
+                        <p><strong>(1)</strong> "waggle dance" — a <em>noun phrase</em> (predicted: a noun, the thing performed). Two words, within limit.</p>
+                        <p><strong>(2)</strong> "(the) direction" — a <em>noun</em> (predicted: a noun after "shows"). The text says "the direction of a food source"; "direction" is the answer.</p>
+                        <p><strong>(3)</strong> "decode" — a <em>verb</em> (predicted: a verb after "then"). The text: "Other bees … decode this information." Note the paraphrase: question "the message," passage "this information."</p>
+                    </details>
+                </div>
+
+                <div class="card card-info">
+                    <h3>🏋️ Exercise 3: Locate via paraphrase — map the synonyms</h3>
+                    <p><strong>Objective:</strong> For the question below, identify the sentence in the mini-passage that holds the answer, and map the paraphrased words.</p>
+                    <p><em>Question:</em> The factory reduced its energy use mainly by <span class="blank">__________</span> its machinery.</p>
+                    <p><em>Passage:</em> "Faced with soaring bills, the plant's managers looked hard at efficiency. The single most effective step, they later reported, was <strong>upgrading the ageing equipment</strong> — newer machines drew far less power, and consumption fell by nearly a third within a year. Staff training and better insulation helped, but neither matched the impact of the new machinery."</p>
+                    <details>
+                        <summary>✅ Answer</summary>
+                        <p><strong>Answer:</strong> <em>upgrading</em> (or "modernising"). The answer sentence is "The single most effective step … was upgrading the ageing equipment."</p>
+                        <p><strong>Synonym map:</strong> reduced its energy use → "consumption fell" / "drew far less power"; mainly → "the single most effective step"; machinery → "equipment" / "machines". Note the distractor trap: "staff training and better insulation" are mentioned but explicitly said <em>not</em> to match the impact — so they're planted to mislead a word-matcher.</p>
+                    </details>
+                </div>
+
+                <div class="card card-info">
+                    <h3>🎯 Your Task: A Timed Mixed-Type Reading Drill</h3>
+                    <p>Use the <strong>axolotl model passage</strong> in the "Question Types" section above (or any short passage of similar length) as your practice text. Work strictly to the clock — this is a technique rehearsal, not a comprehension exercise.</p>
+                    <ol>
+                        <li><strong>(3 min)</strong> <strong>Skim</strong> the passage: read the first and last sentence, and name in one phrase what the whole passage is about. Don't answer anything yet.</li>
+                        <li><strong>(6 min)</strong> Answer the three questions (Q1 short answer, Q2 completion, Q3 MCQ). For each, <em>underline the keyword</em>, <em>predict the word class</em> (where relevant), then <strong>scan</strong> for the paraphrase. Write your answers as you go.</li>
+                        <li><strong>(2 min)</strong> <strong>Self-mark</strong> against the answer key. For any you missed, find the exact sentence that held the answer.</li>
+                        <li><strong>(4 min)</strong> <strong>Review technique:</strong> Did you over-read? Did a word-match distractor tempt you? Did you obey the word limit? Write one sentence on what you'll change next time.</li>
+                    </ol>
+                    <div class="card card-success">
+                        <h4>✅ Task Completion Checklist</h4>
+                        <ul>
+                            <li>☐ I skimmed for gist before touching the questions</li>
+                            <li>☐ I underlined the keyword and scanned for its paraphrase, not the exact word</li>
+                            <li>☐ I predicted word class and obeyed every word limit</li>
+                            <li>☐ I wrote answers as I went (no "transfer at the end")</li>
+                            <li>☐ I self-marked and named one technique fix</li>
+                        </ul>
+                    </div>
+                    <p><strong>Partner/tutor option:</strong> Ask a partner to write three fresh questions (one of each type) on any short article, then time you. Compare where each of you looked for the answer — you'll spot each other's over-reading and word-matching habits fast.</p>
+                </div>
+
+                <div class="card quiz-container">
+                    <h3>🎯 Quick Quiz</h3>
+                    <div class="quiz-question">
+                        <p><strong>Question 1:</strong> You've just opened a new passage. What should you do first?</p>
+                        <div class="quiz-options">
+                            <button class="quiz-option" data-correct="true" data-explanation="Correct — skim first for gist and structure, building a mental map, before scanning for specific answers.">A) Skim the whole passage quickly for gist and structure</button>
+                            <button class="quiz-option" data-correct="false" data-hint="Reading every word carefully from the start is the biggest time-sink in this section.">B) Read every sentence carefully from the top</button>
+                            <button class="quiz-option" data-correct="false" data-hint="Matching information is the slowest type — save it for last, don't open with it.">C) Start with the matching-information questions</button>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    <div class="quiz-question">
+                        <p><strong>Question 2:</strong> A completion question says "NO MORE THAN TWO WORDS." The answer in the passage is "ageing equipment," but you write "the ageing equipment." What happens?</p>
+                        <div class="quiz-options">
+                            <button class="quiz-option" data-correct="true" data-explanation="Correct — three words breaks the limit, so it scores zero even though the meaning is right. 'Ageing equipment' (two words) would score.">A) Zero — three words breaks the limit</button>
+                            <button class="quiz-option" data-correct="false" data-hint="The meaning being right doesn't rescue you; the word limit is part of the marking.">B) Full marks — the meaning is correct</button>
+                            <button class="quiz-option" data-correct="false" data-hint="There are no half marks in Reading; it's one mark or zero.">C) Half a mark</button>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="tips" class="lesson-section">
+                <h2>Tips &amp; Common Mistakes</h2>
+
+                <h3>✅ Do's</h3>
+                <ul>
+                    <li><strong>Skim first, scan second</strong> — never read a passage cover-to-cover before looking at the questions.</li>
+                    <li><strong>Underline the keyword</strong> in each question and hunt for its <strong>paraphrase</strong>, not the identical word.</li>
+                    <li><strong>Predict the word class</strong> for every completion gap, and <strong>count your words</strong> against the limit.</li>
+                    <li><strong>Cap each passage near 20 minutes</strong>; do fast types first, save matching-information for last, and fill every blank.</li>
+                </ul>
+
+                <h3>❌ Common Mistakes</h3>
+                <div class="card card-warning">
+                    <h4>⚠️ Watch Out</h4>
+                    <ul>
+                        <li><strong>Over-reading:</strong> trying to understand every word instead of finding answers. You lose Passage 3 this way.</li>
+                        <li><strong>Falling for word-matches:</strong> the sentence that repeats your keyword is often the distractor; the answer is the paraphrase nearby.</li>
+                        <li><strong>Matching a heading to a detail:</strong> a heading must capture the paragraph's <em>main idea</em>, not one passing mention.</li>
+                        <li><strong>Breaking the word limit or misspelling:</strong> both turn a located answer into zero marks.</li>
+                        <li><strong>Leaving blanks:</strong> there's no penalty — a guess beats an empty box every time.</li>
+                    </ul>
+                </div>
+
+                <div class="card card-accent">
+                    <h4>🧠 Mindset</h4>
+                    <p>IELTS Reading is a <strong>trainable skill, not a verdict</strong> on how "good at English" you are. Two candidates who understand the passage equally can score a band apart purely on <em>technique</em> — one skims and scans and finishes calmly; the other reads every word and runs out of time on Passage 3. The good news is that skimming, scanning, keyword-hunting and word-limit discipline are habits you can build in weeks, not years. Every timed drill you do makes the next one faster. Train the technique, and the marks follow. 🌱</p>
+                </div>
+            </section>
+
+            <section id="journal" class="lesson-section">
+                <h2>📓 Learning Journal</h2>
+                <div class="card card-info">
+                    <p>Keep an IELTS journal throughout your preparation. After each lesson, note:</p>
+                    <ul>
+                        <li><strong>Key strategies</strong> you learned</li>
+                        <li><strong>Techniques that clicked</strong> for you</li>
+                        <li><strong>Question types or areas</strong> that still worry you</li>
+                        <li><strong>Practice you want to do</strong> before the next lesson</li>
+                        <li><strong>Your progress and confidence</strong> — track your practice scores over time</li>
+                    </ul>
+                    <p><strong>✍️ This lesson's prompt:</strong> After your timed drill, write down which of the two modes — skimming or scanning — feels weaker for you, and why. Then note one word-match or over-reading moment that cost you time today, and the one habit you'll practise this week to fix it. Record your raw score (e.g. 2/3) so you can watch it climb.</p>
+                </div>
+            </section>
+
+            <section id="summary" class="lesson-section">
+                <h2>📝 Lesson Summary</h2>
+
+                <div class="card card-success">
+                    <h3>🎓 Key Takeaways</h3>
+                    <ul>
+                        <li>Reading is <strong>3 passages, 40 questions, 60 minutes, no transfer time</strong> — budget ~20 min per passage and write answers as you go.</li>
+                        <li><strong>Skim first</strong> for gist and a mental map; <strong>scan second</strong> to locate each answer. Don't over-read.</li>
+                        <li>Find the <strong>keyword</strong>, then hunt its <strong>paraphrase</strong> — answers rarely reuse the question's words, and word-matches are often traps.</li>
+                        <li>Each <strong>question type</strong> has its own strategy: main-idea for headings, predict-and-obey-the-limit for completion, eliminate for MCQ, and save slow matching-information for last.</li>
+                        <li><strong>Never leave a blank</strong> — there's no penalty, so always guess.</li>
+                    </ul>
+                </div>
+
+                <h3>🎉 What You've Accomplished</h3>
+                <p>You now read like an IELTS candidate, not a student cramming for full comprehension. You have the skim-scan rhythm, a keyword-and-paraphrase method that works on any passage, and a clear plan of attack for every major question type — plus the timing discipline that keeps Passage 3 from swallowing your marks. That's a genuine band-lifting toolkit. 🎉</p>
+
+                <h3>❓ Common Questions at This Stage</h3>
+                <details>
+                    <summary>Should I read the passage or the questions first?</summary>
+                    <p>Neither in full. <strong>Skim</strong> the passage briefly (2–3 min) for a mental map, then read a <em>question</em>, then <strong>scan</strong> back for its answer. Reading the whole passage carefully first, or reading all questions first, both waste time. Skim-then-scan is the efficient middle path.</p>
+                </details>
+                <details>
+                    <summary>Does spelling really matter if I found the right answer?</summary>
+                    <p>Yes — completely. A correctly located answer with a spelling or grammar error scores <strong>zero</strong>. Copy words exactly from the passage for text-based answers, and double-check anything you write from memory.</p>
+                </details>
+                <details>
+                    <summary>How do I get faster without just guessing everything?</summary>
+                    <p>Practise the technique, timed, repeatedly. Speed in Reading comes from <em>not</em> reading everything: skim for the map, scan straight to the keyword's paraphrase, and read closely only around it. Each drill trains your eye to skip what doesn't matter — that's how you finish on time <em>and</em> accurately.</p>
+                </details>
+
+                <h3>🔭 Looking Ahead</h3>
+                <p>Two Reading question types are notorious for their traps and deserve their own lesson. In <strong>Lesson 2.3 — True/False/Not Given &amp; Matching: The Tricky Types</strong>, we'll dismantle the exact reasoning IELTS wants for "Not Given" (the type that catches out even strong readers) and the paragraph-matching questions, so you stop losing marks to clever distractors.</p>
+
+                <h3>✅ Before the Next Lesson</h3>
+                <ul>
+                    <li>Do at least one more <strong>timed mixed-type drill</strong> on a short article, capping yourself at 12–15 minutes.</li>
+                    <li>Review your journal: is over-reading or word-matching your bigger leak? Target it.</li>
+                    <li>Practise counting words against a limit until it's automatic.</li>
+                </ul>
+
+                <div class="card card-accent" style="text-align: center; padding: 2rem;">
+                    <h3>🌟 Encouragement for the Journey</h3>
+                    <p>Reading is often the section where technique pays off fastest — many candidates jump a whole band just by learning to skim, scan, and stop over-reading. You've now got that method in hand. Practise it under the clock, trust it to find the answers, and watch your raw score climb drill by drill. The passage isn't your enemy; the clock is — and you know how to beat it now. Onward! 👋</p>
+                </div>
+            </section>
+
+            <nav class="lesson-nav" aria-label="Lesson Navigation">
+                <a href="lesson_04.html" class="prev-lesson">← Previous: IELTS Listening: Strategies &amp; Question Types</a>
+                <a href="index.html" class="home-link">🏠 Course Home</a>
+                <a href="lesson_06.html" class="next-lesson">Next: True/False/Not Given &amp; Matching: The Tricky Types →</a>
+            </nav>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Ray de la Paz. IELTS Academic Preparation. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="/">ESL Hub</a>
+            <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+            <a href="https://rays-home.netlify.app/contact">Contact</a>
+            <a href="#" id="print-button">Print Page</a>
+        </div>
+        <p><small>Press <kbd>?</kbd> for keyboard shortcuts · IELTS is a registered trademark of its owners; this is an independent, unofficial preparation resource.</small></p>
+    </footer>
+
+    <script src="js/clipboard.js"></script>
+    <script src="js/course-enhancements.js"></script>
+</body>
+</html>
