@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mastering multi-word verbs — the four types, the grammar of separability, literal vs idiomatic meanings, and register. Choose phrasal verbs or their single-word synonyms with precision. Lesson 4.1 of the C1 Advanced English curriculum.">
+    <meta name="author" content="Ray de la Paz">
+    <title>Lesson 4.1: Phrasal Verbs &amp; Multi-word Verbs - Advanced English (C1)</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        window.__mermaid = mermaid;
+        const isDark = localStorage.getItem('theme') === 'dark' ||
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: isDark ? 'dark' : 'default',
+            themeVariables: isDark
+                ? { primaryColor: '#334155', primaryTextColor: '#e2e8f0', primaryBorderColor: '#6366f1', lineColor: '#94a3b8', secondaryColor: '#1e293b', tertiaryColor: '#0f172a' }
+                : { primaryColor: '#eff6ff', primaryTextColor: '#1e293b', primaryBorderColor: '#3b82f6', lineColor: '#64748b', secondaryColor: '#f8fafc', tertiaryColor: '#f1f5f9' }
+        });
+    </script>
+</head>
+<body>
+    <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Advanced English (C1)</a>
+            <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-expanded="false" aria-controls="nav-links">☰</button>
+            <div class="nav-links" id="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#modules">All Lessons</a>
+                <span class="nav-divider"></span>
+                <a href="/">ESL Hub</a>
+                <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+                <button id="theme-toggle" aria-label="Toggle dark/light mode">🌙</button>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <div class="container">
+            <header>
+                <h1>🧩 Lesson 4.1: Phrasal Verbs &amp; Multi-word Verbs</h1>
+                <p class="lead">Few features of English separate the confident C1 speaker from the merely fluent as sharply as multi-word verbs. They are everywhere in natural speech — <em>set off, take off, put up with, come across</em> — yet they trip learners on two fronts at once: <strong>grammar</strong> (where does the object go?) and <strong>meaning</strong> (why does <em>take off</em> mean five different things?). In this lesson you'll master the four types, the separability rules that govern them, the leap from literal to idiomatic, and — crucially at C1 — how to choose between a phrasal verb and its more formal single-word synonym.</p>
+
+                <div class="card card-info">
+                    <h2>📚 What You'll Learn</h2>
+                    <p>By the end of this lesson, you will be able to:</p>
+                    <ul>
+                        <li>Distinguish the <strong>four types</strong> of multi-word verb and describe the grammar of each</li>
+                        <li>Apply the <strong>separability rules</strong>, including the pronoun-placement rule that catches most learners</li>
+                        <li>Interpret <strong>literal vs idiomatic</strong> meanings and cope with polysemous phrasal verbs that carry many senses</li>
+                        <li>Choose between a <strong>phrasal verb and its single-word synonym</strong> to match register precisely</li>
+                    </ul>
+                    <p><strong>⏱️ Estimated Time:</strong> ~60 minutes</p>
+                    <p><strong>🎯 Project:</strong> Narrate a process or story (a project, a trip, a career move) rich in phrasal verbs — then produce a formal version, swapping in single-word synonyms where the register calls for it.</p>
+                </div>
+            </header>
+
+            <details class="card toc-card" open>
+                <summary aria-label="Toggle table of contents">
+                    <span class="toc-icon" aria-hidden="true">📑</span>
+                    <span class="toc-label">In This Lesson</span>
+                    <span class="toc-chevron" aria-hidden="true">▾</span>
+                </summary>
+                <nav aria-label="Table of Contents">
+                    <ol>
+                        <li><a href="#intro" class="toc-link">What Counts as a Multi-word Verb</a></li>
+                        <li><a href="#types" class="toc-link">The Four Types (and Their Grammar)</a></li>
+                        <li><a href="#separability" class="toc-link">The Separability Rule</a></li>
+                        <li><a href="#meaning" class="toc-link">Literal, Idiomatic &amp; Polysemous</a></li>
+                        <li><a href="#register" class="toc-link">Register: Phrasal vs Single-word</a></li>
+                        <li><a href="#nominal" class="toc-link">Nominalised Forms</a></li>
+                        <li><a href="#bank" class="toc-link">Phrase Bank &amp; Dialogue</a></li>
+                        <li><a href="#practice" class="toc-link">Practice &amp; Project</a></li>
+                        <li><a href="#tips" class="toc-link">Tips &amp; Common Mistakes</a></li>
+                        <li><a href="#journal" class="toc-link">Learning Journal</a></li>
+                        <li><a href="#summary" class="toc-link">Summary</a></li>
+                    </ol>
+                </nav>
+            </details>
+
+            <section id="intro" class="lesson-section">
+                <h2>What Counts as a Multi-word Verb</h2>
+                <p>A <strong>multi-word verb</strong> is a verb combined with one or two small words — a <strong>particle</strong> — that together behave as a single lexical unit with a meaning often unpredictable from its parts. That particle may function as an <strong>adverb</strong> (<em>off, up, out, away, back</em>) or a <strong>preposition</strong> (<em>after, with, for, into</em>), and this distinction quietly governs everything about how the verb behaves in a sentence.</p>
+                <p>The term <em>phrasal verb</em> is often used loosely for the whole family. Precisely speaking, grammarians separate them, but for a learner the useful move is to recognise the <strong>four types</strong> below, because the type tells you the two things you most need to know: <strong>can it take an object?</strong> and <strong>where does that object go?</strong></p>
+
+                <div class="card card-accent">
+                    <h4>🧠 Mindset</h4>
+                    <p>Phrasal verbs have a reputation as the "impossible" corner of English — thousands of them, each with a fistful of meanings, learned (badly) as endless lists. Reframe it: you already <em>understand</em> hundreds from years of input; what remains is <strong>refining production</strong> — getting the grammar right and choosing the register-appropriate option. That's a C1 polish task, not a memorisation marathon. Learn them in context, notice them in what you read, and they'll settle into place far faster than a vocabulary list ever managed. 🌱</p>
+                </div>
+            </section>
+
+            <section id="types" class="lesson-section">
+                <h2>The Four Types (and Their Grammar)</h2>
+                <p>Sort every multi-word verb into one of these four boxes and its grammar becomes predictable. The distinguishing questions are whether it takes an object and whether the object may sit between the verb and the particle.</p>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>Type</th><th>Structure &amp; rule</th><th>Examples</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>1. Intransitive phrasal verb</strong></td>
+                                <td>verb + particle, <strong>no object</strong>. Nothing can be inserted.</td>
+                                <td>The car <strong>broke down</strong>. · We <strong>set off</strong> at dawn. · She <strong>grew up</strong> in Lima.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>2. Transitive — separable</strong></td>
+                                <td>verb + particle + object; the object <strong>can</strong> go between the verb and particle. <em>(A pronoun object <strong>must</strong> — see the rule below.)</em></td>
+                                <td><strong>turn off</strong> the light / <strong>turn</strong> the light <strong>off</strong> · <strong>throw away</strong> the mail / <strong>throw</strong> it <strong>away</strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong>3. Transitive — inseparable</strong> (prepositional verb)</td>
+                                <td>verb + preposition + object; the object <strong>always</strong> follows the particle. Never split.</td>
+                                <td><strong>look after</strong> the kids · <strong>deal with</strong> a complaint · <strong>cope with</strong> stress · <strong>rely on</strong> a friend</td>
+                            </tr>
+                            <tr>
+                                <td><strong>4. Three-part</strong> (verb + adverb + preposition)</td>
+                                <td>verb + two particles + object; always <strong>inseparable</strong>. The object follows both particles.</td>
+                                <td><strong>look forward to</strong> the trip · <strong>put up with</strong> the noise · <strong>get on with</strong> a colleague · <strong>run out of</strong> time</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>Notice that types 2 and 3 both take a single object, yet behave in opposite ways: you can say <em>turn the light off</em> but never <em>look the kids after</em>. That is why the particle's identity (adverb vs preposition) matters — and why the safest habit is to learn each verb <strong>together with a sample object</strong>, so the pattern is stored, not guessed.</p>
+
+                <pre class="mermaid">
+graph TD
+    A["Multi-word verb"] --> B{"Takes an object?"}
+    B -->|No| C["Type 1: Intransitive (break down, set off)"]
+    B -->|Yes| D{"Can the object go between?"}
+    D -->|Yes| E["Type 2: Separable (turn off / turn it off)"]
+    D -->|No| F{"One particle or two?"}
+    F -->|One| G["Type 3: Inseparable (look after, deal with)"]
+    F -->|Two| H["Type 4: Three-part (put up with, run out of)"]
+                </pre>
+            </section>
+
+            <section id="separability" class="lesson-section">
+                <h2>The Separability Rule</h2>
+                <p>This is the single most error-prone point in the whole topic, so it earns its own card. For a <strong>separable</strong> (Type 2) verb, a <em>noun</em> object may sit in either position, but a <strong>pronoun</strong> object has no choice.</p>
+
+                <div class="card card-warning">
+                    <h4>⚠️ THE PRONOUN RULE — memorise this</h4>
+                    <p>With a <strong>separable</strong> phrasal verb, if the object is a <strong>pronoun</strong> (<em>it, them, him, her, us, you</em>), it <strong>MUST</strong> go between the verb and the particle:</p>
+                    <ul>
+                        <li>Turn <strong>it</strong> off. ✅ &nbsp;&nbsp; Turn off <strong>it</strong>. ❌</li>
+                        <li>Throw <strong>them</strong> away. ✅ &nbsp;&nbsp; Throw away <strong>them</strong>. ❌</li>
+                        <li>Pick <strong>her</strong> up at six. ✅ &nbsp;&nbsp; Pick up <strong>her</strong> at six. ❌</li>
+                    </ul>
+                    <p>A <strong>noun</strong> object is flexible (<em>turn off the light</em> / <em>turn the light off</em>), but a pronoun is not. And beware the trap: <strong>inseparable</strong> verbs do the reverse — the pronoun stays <em>after</em> the particle: <em>look after <strong>them</strong></em> ✅, not <em>look them after</em> ❌. Pronoun placement is the classic tell of a non-native speaker; getting it right is a quick, high-value win.</p>
+                </div>
+
+                <p>A practical corollary: when the object is <strong>long or heavy</strong> (a whole clause or a long noun phrase), speakers naturally push it to the end, keeping verb and particle together — <em>She turned off <strong>every light in the house before she left</strong></em> sounds far better than splitting the particle from its verb across a long stretch of words. So the pattern is: <strong>short/pronoun object → split; long object → keep together.</strong></p>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>Object</th><th>Separable verb</th><th>Inseparable verb</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Noun</td><td>fill in the form / fill the form in ✅ (both)</td><td>deal with the form ✅ / <s>deal the form with</s> ❌</td></tr>
+                            <tr><td>Pronoun</td><td>fill it in ✅ / <s>fill in it</s> ❌</td><td>deal with it ✅ / <s>deal it with</s> ❌</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="meaning" class="lesson-section">
+                <h2>Literal, Idiomatic &amp; Polysemous</h2>
+                <p>Many multi-word verbs began literally and drifted toward idiom. The particle sometimes keeps its plain directional sense (<em>sit <strong>down</strong>, stand <strong>up</strong>, go <strong>out</strong></em>), but just as often the whole unit means something you could never assemble from the parts.</p>
+
+                <div class="model">
+                    <p>Literal-ish: "The plane <strong>took off</strong> on time." <em>(rose from the ground)</em></p>
+                    <p>Idiomatic: "The business really <strong>took off</strong> last year." <em>(suddenly succeeded / grew fast)</em></p>
+                </div>
+
+                <p>The second challenge is <strong>polysemy</strong>: one phrasal verb, many meanings. <em>Take off</em>, <em>put on</em>, <em>make out</em>, and <em>pick up</em> each carry a surprising range, and only context (and collocation) tells you which is meant.</p>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>Phrasal verb</th><th>Sense</th><th>Example</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td rowspan="3"><strong>take off</strong></td><td>leave the ground (literal)</td><td>The flight <strong>took off</strong> late.</td></tr>
+                            <tr><td>become successful (idiomatic)</td><td>Sales <strong>took off</strong> after the launch.</td></tr>
+                            <tr><td>remove (clothing) / deduct</td><td>She <strong>took off</strong> her coat. · They <strong>took</strong> 10% <strong>off</strong> the price.</td></tr>
+                            <tr><td rowspan="3"><strong>pick up</strong></td><td>lift / collect a person or thing</td><td>I'll <strong>pick you up</strong> at eight.</td></tr>
+                            <tr><td>learn informally / acquire</td><td>He <strong>picked up</strong> Portuguese while travelling.</td></tr>
+                            <tr><td>improve / resume</td><td>Business is <strong>picking up</strong>. · Let's <strong>pick up</strong> where we left off.</td></tr>
+                            <tr><td rowspan="2"><strong>make out</strong></td><td>manage to see/hear/understand</td><td>I could just <strong>make out</strong> a signature.</td></tr>
+                            <tr><td>claim / imply (often dubiously)</td><td>He <strong>made out</strong> that he'd done all the work.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="card card-info">
+                    <h4>💡 Learn them in context, not in lists</h4>
+                    <p>Because a bare phrasal verb can mean half a dozen things, an isolated list ("take off = succeed") teaches you one narrow slice and none of the crucial <strong>collocation</strong>. Store them in phrases you've actually met — <em>the business took off, pick up a language, put up with the noise</em> — and the right sense comes bundled with the words it lives among. This mirrors the collocation work coming in <strong>Lesson 4.2</strong>.</p>
+                </div>
+            </section>
+
+            <section id="register" class="lesson-section">
+                <h2>Register: Phrasal vs Single-word</h2>
+                <p>Here is the distinction that most defines phrasal verbs at C1. As a broad rule, <strong>phrasal verbs are more informal and characteristic of speech</strong>, while their <strong>single-word synonyms — very often of Latin or French origin — are more formal and characteristic of writing.</strong> Neither is "better"; the skill is choosing by register.</p>
+
+                <div class="card card-success">
+                    <h4>💡 The register pairs — a C1 key point</h4>
+                    <p>In a chat you'd naturally <em>put off</em> a meeting; in a formal email you might <em>postpone</em> it. Same meaning, different register. Keep this table where you can revisit it — the left column belongs to conversation and informal writing, the right to reports, essays, and formal correspondence.</p>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr><th>Phrasal (informal / spoken)</th><th>Single-word (formal / written)</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>put off</td><td>postpone</td></tr>
+                                <tr><td>find out</td><td>discover</td></tr>
+                                <tr><td>look into</td><td>investigate</td></tr>
+                                <tr><td>go up</td><td>increase, rise</td></tr>
+                                <tr><td>set up</td><td>establish</td></tr>
+                                <tr><td>give up</td><td>abandon, relinquish</td></tr>
+                                <tr><td>put up with</td><td>tolerate</td></tr>
+                                <tr><td>carry out</td><td>conduct, perform</td></tr>
+                                <tr><td>get rid of</td><td>eliminate, remove</td></tr>
+                                <tr><td>come across</td><td>encounter</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card card-warning">
+                    <h4>⚠️ Don't over-correct</h4>
+                    <p>The lesson is <em>not</em> "phrasal = bad, Latinate = sophisticated." A report stuffed with <em>relinquish</em> and <em>eliminate</em> where <em>give up</em> and <em>get rid of</em> would do reads as stiff and pompous. Equally, an academic essay peppered with <em>find out</em> and <em>go up</em> reads as under-dressed. Real command means reading the situation and picking the register the moment calls for — sometimes the phrasal verb <em>is</em> the more natural, precise choice, even in fairly formal speech.</p>
+                </div>
+            </section>
+
+            <section id="nominal" class="lesson-section">
+                <h2>Nominalised Forms</h2>
+                <p>A neat bonus: many phrasal verbs have spun off <strong>nouns</strong>. The two parts fuse (often into one word, sometimes hyphenated) and, tellingly, the <strong>stress shifts to the first syllable</strong> — a hallmark of the noun form.</p>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>Verb (stress on particle)</th><th>Noun (stress on first part)</th><th>Example</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>break down</td><td>a <strong>breakdown</strong></td><td>a nervous <strong>breakdown</strong>; a <strong>breakdown</strong> of the figures</td></tr>
+                            <tr><td>break out</td><td>an <strong>outbreak</strong> <em>(note the flip)</em></td><td>an <strong>outbreak</strong> of flu</td></tr>
+                            <tr><td>take over</td><td>a <strong>takeover</strong></td><td>a hostile <strong>takeover</strong></td></tr>
+                            <tr><td>come out / turn out</td><td>an <strong>outcome</strong></td><td>a positive <strong>outcome</strong></td></tr>
+                            <tr><td>put in</td><td><strong>input</strong></td><td>Thanks for your <strong>input</strong>.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>These nominalisations are highly useful in formal and academic writing, where turning an action into a <em>thing</em> lets you build denser, more abstract sentences — the very move you practised in <strong>Lesson 3.1</strong> on nominalisation. Note the spelling: most are written as one word (<em>breakdown, takeover, outcome, input</em>), a few take a hyphen, and — a common trap — the noun is often <em>not</em> spaced like the verb (<em>to break down</em> the verb, but <em>a breakdown</em> the noun).</p>
+            </section>
+
+            <section id="bank" class="lesson-section">
+                <h2>Phrase Bank &amp; Dialogue</h2>
+                <p>A working store of high-frequency phrasal verbs, grouped by theme so the collocations travel together:</p>
+
+                <div class="phrase-bank">
+                    <span class="phrase">set off (start a journey)</span>
+                    <span class="phrase">get away (escape / holiday)</span>
+                    <span class="phrase">check in / check out</span>
+                    <span class="phrase">put up (accommodate)</span>
+                    <span class="phrase">stop over</span>
+                    <span class="phrase">take on (a task/staff)</span>
+                    <span class="phrase">carry out (a plan)</span>
+                    <span class="phrase">set up (a business)</span>
+                    <span class="phrase">follow up</span>
+                    <span class="phrase">lay off (staff)</span>
+                    <span class="phrase">get on with (a person)</span>
+                    <span class="phrase">fall out (with someone)</span>
+                    <span class="phrase">make up (reconcile)</span>
+                    <span class="phrase">put up with</span>
+                    <span class="phrase">look up to (admire)</span>
+                    <span class="phrase">work out (exercise / solve)</span>
+                    <span class="phrase">cut down on</span>
+                    <span class="phrase">give up (quit)</span>
+                    <span class="phrase">come down with (an illness)</span>
+                    <span class="phrase">get over (recover)</span>
+                    <span class="phrase">look into</span>
+                    <span class="phrase">find out</span>
+                    <span class="phrase">point out</span>
+                    <span class="phrase">bring up (a topic)</span>
+                    <span class="phrase">sum up</span>
+                </div>
+
+                <p>Now hear them at work. Below, two colleagues speak naturally — dense with phrasal verbs — followed by the same content rewritten as a formal written update.</p>
+
+                <div class="dialogue">
+                    <p class="line a"><span class="speaker">A:</span> So how did the launch go? I heard it nearly fell through.</p>
+                    <p class="line b"><span class="speaker">B:</span> It almost did. Two suppliers pulled out at the last minute, so we had to put it off by a week and set up new contracts from scratch.</p>
+                    <p class="line a"><span class="speaker">A:</span> Ouch. How did the team hold up?</p>
+                    <p class="line b"><span class="speaker">B:</span> Honestly, they put up with a lot. A couple of them nearly burned out, but once things picked up, morale came back. Sales have taken off since.</p>
+                    <p class="line a"><span class="speaker">A:</span> Nice. Did you ever find out why the suppliers backed out?</p>
+                    <p class="line b"><span class="speaker">B:</span> We looked into it. Turns out a competitor had taken them over. We've since cut down on single-source deals to avoid getting caught out again.</p>
+                </div>
+
+                <div class="model">
+                    <p><strong>Formal written version:</strong> The launch was nearly abandoned. Two suppliers withdrew at short notice, obliging us to postpone it by a week and establish new contracts from scratch. The team tolerated considerable pressure — several members approached exhaustion — but as performance recovered, morale returned, and sales have since increased sharply. On investigating why the suppliers withdrew, we discovered that a competitor had acquired them; we have consequently reduced our reliance on single-source agreements to avoid a recurrence.</p>
+                </div>
+
+                <p>Read them back to back and the register shift is unmistakable: the spoken version is warm, immediate, and idiomatic; the written version is measured and impersonal. Both are "correct" — each simply belongs to its own context.</p>
+            </section>
+
+            <section id="practice" class="lesson-section">
+                <h2>Practice &amp; Project</h2>
+
+                <div class="card card-info">
+                    <h3>🏋️ Exercise 1: Place the object correctly</h3>
+                    <p><strong>Objective:</strong> Apply the separability and pronoun rules. Rewrite each sentence in every position that is grammatical; mark any impossible version with ❌.</p>
+                    <ol>
+                        <li>(separable) <em>turn down</em> + <em>the offer</em> / + <em>it</em></li>
+                        <li>(inseparable) <em>look after</em> + <em>the baby</em> / + <em>her</em></li>
+                        <li>(separable) <em>throw away</em> + <em>these old receipts</em> / + <em>them</em></li>
+                        <li>(three-part) <em>put up with</em> + <em>the delays</em> / + <em>them</em></li>
+                    </ol>
+                    <details>
+                        <summary>✅ Answer</summary>
+                        <p>1. <em>turn down the offer</em> / <em>turn the offer down</em> (both ✅); pronoun must split: <em>turn it down</em> ✅ (<s>turn down it</s> ❌).<br>
+                        2. Inseparable — object always after: <em>look after the baby</em> ✅, <em>look after her</em> ✅; <s>look the baby after</s> / <s>look her after</s> ❌.<br>
+                        3. <em>throw away these old receipts</em> / <em>throw these old receipts away</em> (both ✅); <em>throw them away</em> ✅ (<s>throw away them</s> ❌).<br>
+                        4. Three-part, inseparable: <em>put up with the delays</em> ✅, <em>put up with them</em> ✅; you can never split it (<s>put the delays up with</s> ❌).</p>
+                    </details>
+                </div>
+
+                <div class="card card-info">
+                    <h3>🏋️ Exercise 2: Match to the formal single-word synonym</h3>
+                    <p><strong>Objective:</strong> Pair each phrasal verb with its more formal equivalent — the choice you'd make in a report.</p>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Phrasal</th><th>Options</th></tr></thead>
+                            <tbody>
+                                <tr><td>1. carry out</td><td rowspan="6">a. tolerate &nbsp; b. investigate &nbsp; c. establish &nbsp; d. conduct &nbsp; e. eliminate &nbsp; f. postpone</td></tr>
+                                <tr><td>2. put off</td></tr>
+                                <tr><td>3. look into</td></tr>
+                                <tr><td>4. set up</td></tr>
+                                <tr><td>5. put up with</td></tr>
+                                <tr><td>6. get rid of</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <details>
+                        <summary>✅ Answer</summary>
+                        <p>1 → d (conduct) · 2 → f (postpone) · 3 → b (investigate) · 4 → c (establish) · 5 → a (tolerate) · 6 → e (eliminate). In each pair, the left belongs to speech and informal writing; the right to formal, written English.</p>
+                    </details>
+                </div>
+
+                <div class="card card-info">
+                    <h3>🏋️ Exercise 3: Literal, idiomatic, or the right verb for the context</h3>
+                    <p><strong>Objective:</strong> Decide the meaning, or fill the gap with a phrasal verb from the bank.</p>
+                    <ol>
+                        <li>Mark each <em>take off</em> as <strong>literal</strong> or <strong>idiomatic</strong>: (a) "The rocket took off." (b) "Her podcast took off overnight." (c) "Take off your muddy boots."</li>
+                        <li>Fill the gap: "I came <span class="blank"></span> a fascinating old letter while clearing the attic." <em>(= encountered by chance)</em></li>
+                        <li>Fill the gap: "He grew up bilingual and later <span class="blank"></span> a third language just by living abroad." <em>(= acquired informally)</em></li>
+                        <li>Choose the more <strong>formal</strong> option for a written report: "Prices <span class="blank"></span> by 4% last quarter." (<em>went up</em> / <em>rose</em>)</li>
+                    </ol>
+                    <details>
+                        <summary>✅ Answer</summary>
+                        <p>1. (a) literal — leave the ground; (b) idiomatic — became successful; (c) idiomatic-ish — remove (the "off" sense of removal, not flight).<br>
+                        2. came <strong>across</strong> a fascinating old letter.<br>
+                        3. later <strong>picked up</strong> a third language.<br>
+                        4. <strong>rose</strong> — the single-word verb suits the formal register of a written report (<em>went up</em> would be fine in speech).</p>
+                    </details>
+                </div>
+
+                <div class="card card-info">
+                    <h3>🎯 Your Project: Narrate, Then Formalise</h3>
+                    <p>Tell a story or describe a process twice — once naturally, once formally — and watch your register control in action.</p>
+                    <ol>
+                        <li><strong>(4 min)</strong> Choose a narrative with movement and change: launching a project, a memorable trip, a career move, or how you took up a skill. Jot down 12–15 phrasal verbs you could use (raid the phrase bank).</li>
+                        <li><strong>(6 min)</strong> <strong>Version A — spoken/informal.</strong> Tell the story aloud (to a partner or into a recorder), deliberately rich in phrasal verbs: <em>set off, take on, run into, put up with, sort out, take off…</em>. Keep it natural and warm.</li>
+                        <li><strong>(6 min)</strong> <strong>Version B — formal/written.</strong> Rewrite the same events as a formal account (a report, a biography entry). Swap in single-word synonyms <em>where register calls for it</em> — but consciously <strong>keep</strong> any phrasal verb that is genuinely the more natural choice, and note why.</li>
+                        <li><strong>(3 min)</strong> Compare. For three of your swaps, articulate the register reason. Check every pronoun object sits in the right place.</li>
+                    </ol>
+                    <p><strong>Solo option:</strong> record both versions and listen back, marking each phrasal verb and its formal counterpart. <strong>Partner/group option:</strong> tell Version A to a partner, then have them flag two phrasal verbs they'd formalise for a written report — and two they'd deliberately leave alone.</p>
+                    <div class="card card-success">
+                        <h4>✅ Project Completion Checklist</h4>
+                        <ul>
+                            <li>☐ Version A uses at least ten phrasal verbs naturally</li>
+                            <li>☐ I used verbs from at least two of the four types</li>
+                            <li>☐ Every pronoun object is correctly placed (split for separable, after the particle for inseparable)</li>
+                            <li>☐ Version B swaps in single-word synonyms where the register calls for it</li>
+                            <li>☐ I kept at least one phrasal verb in Version B on purpose — and can say why</li>
+                            <li>☐ I can justify three of my register choices out loud</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card quiz-container">
+                    <h3>🎯 Quick Quiz</h3>
+                    <div class="quiz-question">
+                        <p><strong>Question 1:</strong> The light is still on. Which is correct?</p>
+                        <div class="quiz-options">
+                            <button class="quiz-option" data-correct="true" data-explanation="Correct — 'turn off' is separable, and a pronoun object MUST go between the verb and the particle: turn it off.">A) Could you turn it off?</button>
+                            <button class="quiz-option" data-correct="false" data-hint="With a separable phrasal verb, a pronoun can't follow the particle. 'Turn off it' breaks the pronoun rule.">B) Could you turn off it?</button>
+                            <button class="quiz-option" data-correct="false" data-hint="'Turn it off from' adds a stray preposition — 'turn off' is a two-part separable verb, not three-part.">C) Could you turn it off from?</button>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    <div class="quiz-question">
+                        <p><strong>Question 2:</strong> In a formal written report, which best replaces "we'll <em>look into</em> the complaint"?</p>
+                        <div class="quiz-options">
+                            <button class="quiz-option" data-correct="true" data-explanation="Yes — 'investigate' is the formal single-word synonym of 'look into', suited to written register.">A) we will investigate the complaint</button>
+                            <button class="quiz-option" data-correct="false" data-hint="'look up' means consult a reference or search for information — a different meaning, and still informal.">B) we will look up the complaint</button>
+                            <button class="quiz-option" data-correct="false" data-hint="'put up with' means tolerate — that changes the meaning entirely.">C) we will put up with the complaint</button>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="tips" class="lesson-section">
+                <h2>Tips &amp; Common Mistakes</h2>
+
+                <h3>✅ Do's</h3>
+                <ul>
+                    <li>Store each verb <strong>with a sample object</strong> so its type and typical collocation come bundled in — <em>put up with the noise</em>, not a bare "put up with."</li>
+                    <li>Let <strong>context</strong> disambiguate polysemous verbs; don't panic when <em>make out</em> or <em>pick up</em> appears — the surrounding words point to the sense.</li>
+                    <li>Choose register on purpose: phrasal for warmth and speech, single-word for formal writing — and be able to say <em>why</em> you chose it.</li>
+                </ul>
+
+                <h3>❌ Common Mistakes</h3>
+                <div class="card card-warning">
+                    <h4>⚠️ Watch Out</h4>
+                    <ul>
+                        <li><strong>Pronoun after the particle (separable):</strong> "switch on it" ❌ → "switch <strong>it</strong> on" ✅.</li>
+                        <li><strong>Splitting an inseparable verb:</strong> "look the children after" ❌ → "look after the children" ✅.</li>
+                        <li><strong>Over-formalising speech:</strong> "I shall relinquish caffeine" for casual chat sounds absurd — "I'm giving up caffeine" ✅.</li>
+                        <li><strong>Confusing verb and noun forms:</strong> "a break down" (noun) ❌ → "a <strong>breakdown</strong>" ✅; the noun fuses and shifts its stress forward.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="journal" class="lesson-section">
+                <h2>📓 Learning Journal</h2>
+                <div class="card card-info">
+                    <p>Keep your learning journal going. After this lesson, take a few minutes to note:</p>
+                    <ul>
+                        <li><strong>Key concepts</strong> you learned</li>
+                        <li><strong>Things that clicked</strong> for you</li>
+                        <li><strong>Questions or confusion points</strong> to revisit</li>
+                        <li><strong>Ideas you want to try</strong></li>
+                        <li><strong>Your progress and feelings</strong> about working at C1</li>
+                    </ul>
+                    <p><strong>✍️ This lesson's prompt:</strong> Collect five phrasal verbs from something you read or watched this week. For each, write the full sentence it appeared in, identify its type (1–4), give its single-word synonym, and note which register — spoken or written — you'd reach for it in. Then write one pair of your own: the same idea said informally with a phrasal verb and formally with its synonym. Articulating the choice is how register becomes instinct.</p>
+                </div>
+            </section>
+
+            <section id="summary" class="lesson-section">
+                <h2>📝 Lesson Summary</h2>
+
+                <div class="card card-success">
+                    <h3>🎓 Key Takeaways</h3>
+                    <ul>
+                        <li><strong>Four types:</strong> intransitive (no object), transitive separable, transitive inseparable, and three-part (inseparable) — the type tells you where the object goes.</li>
+                        <li><strong>The pronoun rule:</strong> with a separable verb a pronoun object <em>must</em> split (<em>turn it off</em>); with an inseparable verb it stays after the particle (<em>look after them</em>).</li>
+                        <li><strong>Meaning:</strong> phrasal verbs run from literal to idiomatic and are often <strong>polysemous</strong> — learn them in context and collocation, not as isolated lists.</li>
+                        <li><strong>Register:</strong> phrasal verbs lean informal/spoken; their single-word (often Latinate) synonyms lean formal/written — the C1 skill is choosing by register, not defaulting to either.</li>
+                        <li><strong>Nominalisation:</strong> many phrasal verbs yield nouns (<em>breakdown, outbreak, takeover, outcome, input</em>) with fused spelling and forward stress.</li>
+                    </ul>
+                </div>
+
+                <h3>🎉 What You've Accomplished</h3>
+                <p>You've turned the "impossible" corner of English into a system: four predictable grammar patterns, one high-value pronoun rule, a strategy for polysemy, and — most valuable of all — the register judgement to choose the phrasal verb or its single-word synonym on purpose. That last skill is quietly what advanced writing and speaking are made of. 🎉</p>
+
+                <h3>❓ Common Questions at This Stage</h3>
+                <details>
+                    <summary>How do I know whether a verb is separable or inseparable?</summary>
+                    <p>There's no perfect rule, but two habits help. First, learn each verb with a sample object so the pattern is stored, not guessed. Second, test with a pronoun: if <em>turn it off</em> sounds right, it's separable; if only <em>look after it</em> works, it's inseparable. Three-part verbs (<em>put up with</em>) are always inseparable. A good dictionary marks the pattern explicitly — worth checking when in doubt.</p>
+                </details>
+                <details>
+                    <summary>Are phrasal verbs really "informal"? I see them in serious writing too.</summary>
+                    <p>"Informal" is a tendency, not a law. Many phrasal verbs (<em>carry out, point out, set up, bring about</em>) appear happily in formal and academic prose, and sometimes the phrasal verb is simply the most natural, precise option. The reliable point is the <em>pairs</em>: where a phrasal verb has a Latinate single-word synonym (<em>put off / postpone</em>), the synonym is usually the more formal of the two. Judge each case rather than applying a blanket rule.</p>
+                </details>
+                <details>
+                    <summary>How can I possibly remember so many meanings for one verb?</summary>
+                    <p>You don't memorise a definition list — you meet each sense inside a phrase and let collocation do the work. <em>Take off</em> as "succeed" arrives bundled with <em>sales/the business took off</em>; as "remove" with <em>take off your coat</em>. Over enough encounters, context selects the sense automatically, exactly as it does in your first language.</p>
+                </details>
+
+                <h3>🔭 Looking Ahead</h3>
+                <p>Multi-word verbs are one face of a bigger truth: English meaning lives in <em>combinations</em>, not just single words. In <strong>Lesson 4.2</strong>, you'll widen the lens to <strong>collocation, idiom, and connotation</strong> — which words habitually keep company, how fixed expressions carry meaning whole, and how a word's emotional colouring shifts your message even when its dictionary meaning stays put.</p>
+
+                <h3>✅ Before the Next Lesson</h3>
+                <ul>
+                    <li>Note ten phrasal verbs you meet in the wild, tagged by type and register.</li>
+                    <li>Rewrite a formal paragraph you've written, swapping in phrasal verbs to make it sound spoken — then reverse the exercise.</li>
+                    <li>Write your Learning Journal entry for this lesson.</li>
+                </ul>
+
+                <div class="card card-accent" style="text-align: center; padding: 2rem;">
+                    <h3>🌟 Encouragement for the Journey</h3>
+                    <p>The moment phrasal verbs stop feeling like a threat and start feeling like a <em>choice</em> is the moment you've genuinely arrived at advanced English. You now have both the grammar and the register instinct to wield them with control — to sound like a native in conversation and command the formal register in writing, and to move deliberately between the two. That range is real mastery. Keep noticing them everywhere; they're the texture of the language. 👋</p>
+                </div>
+            </section>
+
+            <nav class="lesson-nav" aria-label="Lesson Navigation">
+                <a href="lesson_09.html" class="prev-lesson">← Previous: Hedging, Vague Language &amp; Diplomatic English</a>
+                <a href="index.html" class="home-link">🏠 Course Home</a>
+                <a href="lesson_11.html" class="next-lesson">Next: Collocation, Idiom &amp; Connotation →</a>
+            </nav>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Ray de la Paz. Advanced English (C1 Advanced). All rights reserved.</p>
+        <div class="footer-links">
+            <a href="/">ESL Hub</a>
+            <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+            <a href="https://rays-home.netlify.app/contact">Contact</a>
+            <a href="#" id="print-button">Print Page</a>
+        </div>
+        <p><small>Press <kbd>?</kbd> for keyboard shortcuts</small></p>
+    </footer>
+
+    <script src="js/clipboard.js"></script>
+    <script src="js/course-enhancements.js"></script>
+</body>
+</html>
