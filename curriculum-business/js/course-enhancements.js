@@ -519,8 +519,11 @@ function initSpeech() {
     document.querySelectorAll('.wordlist > li').forEach(el => attach(el, cleanText(el)));
 
     // 4) Pronunciation / alphabet tables: any cell carrying IPA.
+    //    Skip cells with an explicit data-say (handled above) — that lets a
+    //    cell display a human spelling ("ay") but speak the real letter ("A"),
+    //    since TTS mis-reads ad-hoc spellings (e.g. "ef" -> "E F", "ay" -> "eye").
     document.querySelectorAll('td').forEach(td => {
-        if (td.querySelector('.pron')) attach(td, cleanText(td));
+        if (td.querySelector('.pron') && !td.hasAttribute('data-say')) attach(td, cleanText(td));
     });
 
     // 5) Dialogues: per line + a "Play conversation" control.
