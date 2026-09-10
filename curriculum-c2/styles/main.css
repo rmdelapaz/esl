@@ -1376,6 +1376,41 @@ svg .svg-bg { fill: var(--card-bg); }
 .tts-caret { display: inline-block; margin-left: .35rem; font-size: .8em; transition: transform .15s; }
 
 /* ============================================================
+   Auto-checked exercises (gap-fill / matching)
+   ============================================================ */
+.exercise-check .gap {
+    font: inherit;
+    color: var(--text-color);
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: .2rem .45rem;
+}
+.exercise-check input.gap { width: 5.5rem; text-align: center; }
+.exercise-check .gap:focus-visible { outline: 2px solid var(--primary-color); outline-offset: 1px; }
+.exercise-check .gap.correct { border-color: var(--success-border); background: var(--success-bg); }
+.exercise-check .gap.incorrect { border-color: var(--danger-border); background: var(--danger-bg); }
+.match-list { list-style: none; padding-left: 0; display: grid; gap: .55rem; margin: 1rem 0; }
+.match-list li { display: flex; align-items: center; gap: .6rem; }
+.match-list .match-term { min-width: 6rem; font-weight: 600; }
+.exercise-actions { display: flex; gap: .6rem; flex-wrap: wrap; margin-top: .9rem; }
+.check-btn, .reveal-btn {
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 6px;
+    padding: .4rem .85rem;
+    border: 1px solid var(--border-color);
+}
+.check-btn { background: var(--primary-color); color: #fff; border-color: var(--primary-color); }
+.check-btn:hover { background: var(--primary-hover); }
+.reveal-btn { background: transparent; color: var(--primary-color); }
+.reveal-btn:hover { background: var(--primary-light); }
+.check-feedback { margin-top: .6rem; font-weight: 600; min-height: 1.2em; }
+.check-feedback.correct { color: var(--success-border); }
+.check-feedback.incorrect { color: var(--danger-border); }
+
+/* ============================================================
    Learning Journal editor (autosaved to this device)
    ============================================================ */
 .journal-editor { margin-top: 1.25rem; }
