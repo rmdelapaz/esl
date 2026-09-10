@@ -122,6 +122,7 @@
       <button class="nav-toggle" aria-label="Menu">&#9776;</button>
       <div class="nav-links">
         <a href="/">Home</a>
+        <a href="/curriculum/learning-tools.html">🌍 Free Tools</a>
         <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
         <a href="https://rays-home.netlify.app/contact">Contact</a>
         <button class="theme-btn" aria-label="Toggle theme">
