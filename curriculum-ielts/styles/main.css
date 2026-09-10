@@ -1371,6 +1371,9 @@ svg .svg-bg { fill: var(--card-bg); }
 .tts-row input[type="range"] { width: 100%; accent-color: var(--primary-color); }
 .tts-rate-val { color: var(--primary-color); font-weight: 700; }
 .tts-panel .tts-test { align-self: flex-start; margin-left: 0; }
+/* Collapse the panel when hidden — beats the .tts-panel display:flex above. */
+.tts-panel[hidden] { display: none; }
+.tts-caret { display: inline-block; margin-left: .35rem; font-size: .8em; transition: transform .15s; }
 
 /* ============================================================
    Learning Journal editor (autosaved to this device)

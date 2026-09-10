@@ -552,7 +552,7 @@ function initSpeech() {
         const panel = document.createElement('div');
         panel.className = 'tts-settings';
         panel.innerHTML =
-            '<button type="button" class="tts-toggle" aria-expanded="false" aria-controls="tts-panel" title="Listening settings">🎧 Audio</button>' +
+            '<button type="button" class="tts-toggle" aria-expanded="false" aria-controls="tts-panel" title="Listening settings">🎧 Audio <span class="tts-caret" aria-hidden="true">▸</span></button>' +
             '<div class="tts-panel" id="tts-panel" hidden>' +
                 '<div class="tts-row"><label for="tts-voice">Voice</label>' +
                     '<select id="tts-voice"></select></div>' +
@@ -572,6 +572,8 @@ function initSpeech() {
             const willOpen = body.hidden;
             body.hidden = !willOpen;
             toggle.setAttribute('aria-expanded', String(willOpen));
+            const caret = toggle.querySelector('.tts-caret');
+            if (caret) caret.textContent = willOpen ? '▾' : '▸';
         });
 
         function populate() {
