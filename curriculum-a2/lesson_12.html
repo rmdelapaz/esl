@@ -278,15 +278,17 @@ graph LR
                     </details>
                 </div>
 
-                <div class="card card-info">
+                <div class="card card-info exercise-check" data-exercise="gapfill">
                     <h3>🏋️ Exercise 2: Choose the right tense</h3>
                     <p><strong>Objective:</strong> Put the verb in the correct form for a travel story.</p>
                     <ol>
-                        <li>Last summer we <span class="blank"></span> (go) to Portugal.</li>
-                        <li>The beach <span class="blank"></span> (be) beautiful, and there <span class="blank"></span> (be) a lot of little shops.</li>
-                        <li>I <span class="blank"></span> (never / try) surfing before that trip.</li>
-                        <li>Next year I'm <span class="blank"></span> (visit) Greece.</li>
+                        <li>Last summer we <input class="gap" data-answer="went" autocomplete="off" autocapitalize="off" aria-label="gap 1"> (go) to Portugal.</li>
+                        <li>The beach <input class="gap" data-answer="was" autocomplete="off" autocapitalize="off" aria-label="gap 2"> (be) beautiful, and there <input class="gap" data-answer="were" autocomplete="off" autocapitalize="off" aria-label="gap 3"> (be) a lot of little shops.</li>
+                        <li>I <input class="gap" data-answer="had never tried" autocomplete="off" autocapitalize="off" aria-label="gap 4"> (never / try) surfing before that trip.</li>
+                        <li>Next year I'm <input class="gap" data-answer="going to visit" autocomplete="off" autocapitalize="off" aria-label="gap 5"> (visit) Greece.</li>
                     </ol>
+                    <div class="exercise-actions"><button type="button" class="check-btn">Check my answers</button> <button type="button" class="reveal-btn">Show answers</button></div>
+                    <div class="check-feedback" aria-live="polite"></div>
                     <details>
                         <summary>✅ Answer</summary>
                         <p>1. went · 2. was / were · 3. had never tried (I had never tried surfing before that trip) · 4. going to visit</p>

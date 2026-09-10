@@ -310,17 +310,22 @@
                     </details>
                 </div>
 
-                <div class="card card-info">
+                <div class="card card-info exercise-check" data-exercise="gapfill">
                     <h3>🏋️ Exercise 2: Complete the introduction</h3>
                     <p><strong>Objective:</strong> Fill each gap to finish a friendly first meeting.</p>
                     <div class="dialogue">
-                        <p class="line a"><span class="speaker">A:</span> Hi! <span class="blank">__________</span> your name?</p>
-                        <p class="line b"><span class="speaker">B:</span> <span class="blank">__________</span> Ana. What's your name?</p>
-                        <p class="line a"><span class="speaker">A:</span> My <span class="blank">__________</span> is Ben. Nice to meet you.</p>
-                        <p class="line b"><span class="speaker">B:</span> Nice to meet you, <span class="blank">__________</span>. How are you?</p>
-                        <p class="line a"><span class="speaker">A:</span> I'm fine, thanks. <span class="blank">__________</span> you?</p>
-                        <p class="line b"><span class="speaker">B:</span> I'm good! See you <span class="blank">__________</span>.</p>
+                        <p class="line a"><span class="speaker">A:</span> Hi! <input class="gap" data-answer="What's" autocomplete="off" autocapitalize="off" aria-label="gap 1"> your name?</p>
+                        <p class="line b"><span class="speaker">B:</span> <input class="gap" data-answer="I'm" autocomplete="off" autocapitalize="off" aria-label="gap 2"> Ana. What's your name?</p>
+                        <p class="line a"><span class="speaker">A:</span> My <input class="gap" data-answer="name" autocomplete="off" autocapitalize="off" aria-label="gap 3"> is Ben. Nice to meet you.</p>
+                        <p class="line b"><span class="speaker">B:</span> Nice to meet you, <input class="gap" data-answer="too" autocomplete="off" autocapitalize="off" aria-label="gap 4">. How are you?</p>
+                        <p class="line a"><span class="speaker">A:</span> I'm fine, thanks. <input class="gap" data-answer="And" autocomplete="off" autocapitalize="off" aria-label="gap 5"> you?</p>
+                        <p class="line b"><span class="speaker">B:</span> I'm good! See you <input class="gap" data-answer="later|tomorrow" autocomplete="off" autocapitalize="off" aria-label="gap 6">.</p>
                     </div>
+                    <div class="exercise-actions">
+                        <button type="button" class="check-btn">Check my answers</button>
+                        <button type="button" class="reveal-btn">Show answers</button>
+                    </div>
+                    <div class="check-feedback" aria-live="polite"></div>
                     <details>
                         <summary>✅ Answer</summary>
                         <p>1. <strong>What's</strong> · 2. <strong>I'm</strong> · 3. <strong>name</strong> · 4. <strong>too</strong> · 5. <strong>And</strong> · 6. <strong>later</strong> (or "tomorrow")</p>

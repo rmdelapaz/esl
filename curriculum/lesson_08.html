@@ -370,17 +370,22 @@
                     </details>
                 </div>
 
-                <div class="card card-info">
+                <div class="card card-info exercise-check" data-exercise="gapfill">
                     <h3>🏋️ Exercise 3: Fill in at / on / in</h3>
                     <p><strong>Objective:</strong> Choose the right preposition of time.</p>
                     <ol>
-                        <li>She starts work <span class="blank">____</span> 9 o'clock.</li>
-                        <li>He doesn't work <span class="blank">____</span> Sunday.</li>
-                        <li>I read <span class="blank">____</span> the evening.</li>
-                        <li>My birthday is <span class="blank">____</span> July.</li>
-                        <li>We relax <span class="blank">____</span> the weekend.</li>
-                        <li>The cat sleeps <span class="blank">____</span> night.</li>
+                        <li>She starts work <input class="gap" data-answer="at" autocomplete="off" autocapitalize="off" aria-label="gap 1"> 9 o'clock.</li>
+                        <li>He doesn't work <input class="gap" data-answer="on" autocomplete="off" autocapitalize="off" aria-label="gap 2"> Sunday.</li>
+                        <li>I read <input class="gap" data-answer="in" autocomplete="off" autocapitalize="off" aria-label="gap 3"> the evening.</li>
+                        <li>My birthday is <input class="gap" data-answer="in" autocomplete="off" autocapitalize="off" aria-label="gap 4"> July.</li>
+                        <li>We relax <input class="gap" data-answer="at|on" autocomplete="off" autocapitalize="off" aria-label="gap 5"> the weekend.</li>
+                        <li>The cat sleeps <input class="gap" data-answer="at" autocomplete="off" autocapitalize="off" aria-label="gap 6"> night.</li>
                     </ol>
+                    <div class="exercise-actions">
+                        <button type="button" class="check-btn">Check my answers</button>
+                        <button type="button" class="reveal-btn">Show answers</button>
+                    </div>
+                    <div class="check-feedback" aria-live="polite"></div>
                     <details>
                         <summary>✅ Answer</summary>
                         <ul>

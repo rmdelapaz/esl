@@ -297,15 +297,17 @@ graph LR
                     </details>
                 </div>
 
-                <div class="card card-info">
+                <div class="card card-info exercise-check" data-exercise="gapfill">
                     <h3>🏋️ Exercise 3: Choose the right tense</h3>
                     <p><strong>Objective:</strong> Match tense to the task context.</p>
                     <ol>
-                        <li>Task 1, a chart labelled <strong>1980–2010</strong>: "Car ownership ___ (rise) steadily over the period."</li>
-                        <li>Task 1, a diagram of <strong>how paper is made</strong>: "First, the wood ___ (chop) into small chips."</li>
-                        <li>Task 2, a general opinion: "Education ___ (be) the key to reducing poverty."</li>
-                        <li>Task 2, a hypothetical: "If public transport ___ (be) free, fewer people ___ (drive)."</li>
+                        <li>Task 1, a chart labelled <strong>1980–2010</strong>: "Car ownership <input class="gap" data-answer="rose" autocomplete="off" autocapitalize="off" aria-label="gap 1"> (rise) steadily over the period."</li>
+                        <li>Task 1, a diagram of <strong>how paper is made</strong>: "First, the wood <input class="gap" data-answer="is chopped" autocomplete="off" autocapitalize="off" aria-label="gap 2"> (chop) into small chips."</li>
+                        <li>Task 2, a general opinion: "Education <input class="gap" data-answer="is" autocomplete="off" autocapitalize="off" aria-label="gap 3"> (be) the key to reducing poverty."</li>
+                        <li>Task 2, a hypothetical: "If public transport <input class="gap" data-answer="were" autocomplete="off" autocapitalize="off" aria-label="gap 4"> (be) free, fewer people <input class="gap" data-answer="would drive" autocomplete="off" autocapitalize="off" aria-label="gap 5"> (drive)."</li>
                     </ol>
+                    <div class="exercise-actions"><button type="button" class="check-btn">Check my answers</button> <button type="button" class="reveal-btn">Show answers</button></div>
+                    <div class="check-feedback" aria-live="polite"></div>
                     <details>
                         <summary>✅ Answer</summary>
                         <p>1. <strong>rose</strong> (past simple — the period has ended).<br>

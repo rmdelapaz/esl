@@ -314,17 +314,19 @@ flowchart LR
             <section id="practice" class="lesson-section">
                 <h2>Practice &amp; Task</h2>
 
-                <div class="card card-info">
+                <div class="card card-info exercise-check" data-exercise="match">
                     <h3>🏋️ Exercise 1: Safe or risky?</h3>
                     <p><strong>Objective:</strong> You've just met someone at an industry event. Sort these topics into <strong>Safe</strong> or <strong>Risky</strong>.</p>
-                    <ol>
-                        <li>Who they voted for in the last election</li>
-                        <li>What sessions they're looking forward to</li>
-                        <li>How much their company pays</li>
-                        <li>Whether they've tried the café next door</li>
-                        <li>Their plans for the weekend</li>
-                        <li>Their views on a controversial news story</li>
-                    </ol>
+                    <ul class="match-list">
+                        <li><span class="match-term">Who they voted for in the last election</span> <select class="gap" data-answer="Risky" aria-label="answer for Who they voted for in the last election"><option value="">— choose —</option><option>Risky</option><option>Safe</option></select></li>
+                        <li><span class="match-term">What sessions they're looking forward to</span> <select class="gap" data-answer="Safe" aria-label="answer for What sessions they're looking forward to"><option value="">— choose —</option><option>Risky</option><option>Safe</option></select></li>
+                        <li><span class="match-term">How much their company pays</span> <select class="gap" data-answer="Risky" aria-label="answer for How much their company pays"><option value="">— choose —</option><option>Risky</option><option>Safe</option></select></li>
+                        <li><span class="match-term">Whether they've tried the café next door</span> <select class="gap" data-answer="Safe" aria-label="answer for Whether they've tried the café next door"><option value="">— choose —</option><option>Risky</option><option>Safe</option></select></li>
+                        <li><span class="match-term">Their plans for the weekend</span> <select class="gap" data-answer="Safe" aria-label="answer for Their plans for the weekend"><option value="">— choose —</option><option>Risky</option><option>Safe</option></select></li>
+                        <li><span class="match-term">Their views on a controversial news story</span> <select class="gap" data-answer="Risky" aria-label="answer for Their views on a controversial news story"><option value="">— choose —</option><option>Risky</option><option>Safe</option></select></li>
+                    </ul>
+                    <div class="exercise-actions"><button type="button" class="check-btn">Check my answers</button> <button type="button" class="reveal-btn">Show answers</button></div>
+                    <div class="check-feedback" aria-live="polite"></div>
                     <details>
                         <summary>✅ Answer</summary>
                         <p><strong>Safe:</strong> 2 (event), 4 (food), 5 (weekend plans). <strong>Risky:</strong> 1 (politics), 3 (money/salary), 6 (controversial opinion). With people you don't know, keep it neutral and let the relationship earn the deeper topics.</p>

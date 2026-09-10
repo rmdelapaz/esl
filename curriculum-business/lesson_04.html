@@ -333,16 +333,18 @@ flowchart LR
             <section id="practice" class="lesson-section">
                 <h2>Practice &amp; Task</h2>
 
-                <div class="card card-info">
+                <div class="card card-info exercise-check" data-exercise="match">
                     <h3>🏋️ Exercise 1: Match the phrase to its function</h3>
                     <p><strong>Objective:</strong> Label each phrase — <em>opinion</em>, <em>agree</em>, <em>interrupt</em>, <em>clarify</em>, or <em>chair</em>.</p>
-                    <ol>
-                        <li>"Sorry to interrupt, but can I just come in here?"</li>
-                        <li>"Let's move on to the next item."</li>
-                        <li>"It seems to me that we should wait."</li>
-                        <li>"Could you clarify what you mean by 'soon'?"</li>
-                        <li>"Absolutely — I'm with you on that."</li>
-                    </ol>
+                    <ul class="match-list">
+                        <li><span class="match-term">"Sorry to interrupt, but can I just come in here?"</span> <select class="gap" data-answer="Interrupt" aria-label="answer for Sorry to interrupt, but can I just come in here?"><option value="">— choose —</option><option>Agree</option><option>Chair</option><option>Clarify</option><option>Interrupt</option><option>Opinion</option></select></li>
+                        <li><span class="match-term">"Let's move on to the next item."</span> <select class="gap" data-answer="Chair" aria-label="answer for Let's move on to the next item."><option value="">— choose —</option><option>Agree</option><option>Chair</option><option>Clarify</option><option>Interrupt</option><option>Opinion</option></select></li>
+                        <li><span class="match-term">"It seems to me that we should wait."</span> <select class="gap" data-answer="Opinion" aria-label="answer for It seems to me that we should wait."><option value="">— choose —</option><option>Agree</option><option>Chair</option><option>Clarify</option><option>Interrupt</option><option>Opinion</option></select></li>
+                        <li><span class="match-term">"Could you clarify what you mean by 'soon'?"</span> <select class="gap" data-answer="Clarify" aria-label="answer for Could you clarify what you mean by soon?"><option value="">— choose —</option><option>Agree</option><option>Chair</option><option>Clarify</option><option>Interrupt</option><option>Opinion</option></select></li>
+                        <li><span class="match-term">"Absolutely — I'm with you on that."</span> <select class="gap" data-answer="Agree" aria-label="answer for Absolutely — I'm with you on that."><option value="">— choose —</option><option>Agree</option><option>Chair</option><option>Clarify</option><option>Interrupt</option><option>Opinion</option></select></li>
+                    </ul>
+                    <div class="exercise-actions"><button type="button" class="check-btn">Check my answers</button> <button type="button" class="reveal-btn">Show answers</button></div>
+                    <div class="check-feedback" aria-live="polite"></div>
                     <details>
                         <summary>✅ Answer</summary>
                         <p>1. <strong>Interrupt</strong> · 2. <strong>Chair</strong> (following the agenda) · 3. <strong>Opinion</strong> · 4. <strong>Clarify</strong> · 5. <strong>Agree</strong>.</p>

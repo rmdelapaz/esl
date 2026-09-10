@@ -302,16 +302,18 @@
                     <span class="phrase">one day</span>
                 </div>
 
-                <div class="card card-info">
+                <div class="card card-info exercise-check" data-exercise="gapfill">
                     <h3>🏋️ Exercise 1: will or won't?</h3>
                     <p><strong>Objective:</strong> Fill the gap with <em>will</em> or <em>won't</em> to match the meaning.</p>
                     <ol>
-                        <li>Don't worry, I <span class="blank"></span> forget your birthday. (promise — I'm sure I won't)</li>
-                        <li>I think our team <span class="blank"></span> win — they're the best! (positive prediction)</li>
-                        <li>It's very cold, so I'm sure it <span class="blank"></span> be sunny tomorrow. (negative prediction)</li>
-                        <li>That's heavy — I <span class="blank"></span> carry it for you. (offer)</li>
-                        <li>He's always late, so he probably <span class="blank"></span> be on time. (negative prediction)</li>
+                        <li>Don't worry, I <input class="gap" data-answer="won't" autocomplete="off" autocapitalize="off" aria-label="gap 1"> forget your birthday. (promise — I'm sure I won't)</li>
+                        <li>I think our team <input class="gap" data-answer="will" autocomplete="off" autocapitalize="off" aria-label="gap 2"> win — they're the best! (positive prediction)</li>
+                        <li>It's very cold, so I'm sure it <input class="gap" data-answer="won't" autocomplete="off" autocapitalize="off" aria-label="gap 3"> be sunny tomorrow. (negative prediction)</li>
+                        <li>That's heavy — I <input class="gap" data-answer="will" autocomplete="off" autocapitalize="off" aria-label="gap 4"> carry it for you. (offer)</li>
+                        <li>He's always late, so he probably <input class="gap" data-answer="won't" autocomplete="off" autocapitalize="off" aria-label="gap 5"> be on time. (negative prediction)</li>
                     </ol>
+                    <div class="exercise-actions"><button type="button" class="check-btn">Check my answers</button> <button type="button" class="reveal-btn">Show answers</button></div>
+                    <div class="check-feedback" aria-live="polite"></div>
                     <details>
                         <summary>✅ Answer</summary>
                         <p>1. won't · 2. will · 3. won't · 4. will · 5. won't</p>

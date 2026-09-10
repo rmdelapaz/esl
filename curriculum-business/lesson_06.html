@@ -309,14 +309,16 @@
             <section id="practice" class="lesson-section">
                 <h2>Practice &amp; Task</h2>
 
-                <div class="card card-info">
+                <div class="card card-info exercise-check" data-exercise="match">
                     <h3>🏋️ Exercise 1: Passive, aggressive, or assertive?</h3>
                     <p><strong>Objective:</strong> Label each line <strong>passive</strong>, <strong>aggressive</strong>, or <strong>assertive</strong> — then fix the two poor ones.</p>
-                    <ol>
-                        <li>"Fine, I'll just do it myself, don't worry about it."</li>
-                        <li>"I hear you, but I have some concerns about the timeline — can we talk them through?"</li>
-                        <li>"You always leave this to the last minute."</li>
-                    </ol>
+                    <ul class="match-list">
+                        <li><span class="match-term">"Fine, I'll just do it myself, don't worry about it."</span> <select class="gap" data-answer="passive" aria-label="answer for Fine, I'll just do it myself, don't worry about it."><option value="">— choose —</option><option>aggressive</option><option>assertive</option><option>passive</option></select></li>
+                        <li><span class="match-term">"I hear you, but I have some concerns about the timeline — can we talk them through?"</span> <select class="gap" data-answer="assertive" aria-label="answer for I hear you, but I have some concerns about the timeline"><option value="">— choose —</option><option>aggressive</option><option>assertive</option><option>passive</option></select></li>
+                        <li><span class="match-term">"You always leave this to the last minute."</span> <select class="gap" data-answer="aggressive" aria-label="answer for You always leave this to the last minute."><option value="">— choose —</option><option>aggressive</option><option>assertive</option><option>passive</option></select></li>
+                    </ul>
+                    <div class="exercise-actions"><button type="button" class="check-btn">Check my answers</button> <button type="button" class="reveal-btn">Show answers</button></div>
+                    <div class="check-feedback" aria-live="polite"></div>
                     <details>
                         <summary>✅ Answer</summary>
                         <p><strong>1 = passive</strong> (says yes while signalling resentment — no real request). <strong>2 = assertive</strong> (firm concern, respectful delivery, invites discussion — leave it). <strong>3 = aggressive</strong> ("always" + blaming the person).</p>

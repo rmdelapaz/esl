@@ -316,17 +316,19 @@ graph LR
                     </details>
                 </div>
 
-                <div class="card card-info">
+                <div class="card card-info exercise-check" data-exercise="gapfill">
                     <h3>🏋️ Exercise 2: Say or tell?</h3>
                     <p><strong>Objective:</strong> Complete each gap with the correct form of <strong>say</strong> or <strong>tell</strong>.</p>
                     <ol>
-                        <li>She <span class="blank"></span> me that she was leaving.</li>
-                        <li>He <span class="blank"></span> that the shop was closed.</li>
-                        <li>They <span class="blank"></span> us the good news.</li>
-                        <li>My teacher <span class="blank"></span> that the test was easy.</li>
-                        <li>Did you <span class="blank"></span> him about the party?</li>
-                        <li>The message <span class="blank"></span> the train was late.</li>
+                        <li>She <input class="gap" data-answer="told" autocomplete="off" autocapitalize="off" aria-label="gap 1"> me that she was leaving.</li>
+                        <li>He <input class="gap" data-answer="said" autocomplete="off" autocapitalize="off" aria-label="gap 2"> that the shop was closed.</li>
+                        <li>They <input class="gap" data-answer="told" autocomplete="off" autocapitalize="off" aria-label="gap 3"> us the good news.</li>
+                        <li>My teacher <input class="gap" data-answer="said" autocomplete="off" autocapitalize="off" aria-label="gap 4"> that the test was easy.</li>
+                        <li>Did you <input class="gap" data-answer="tell" autocomplete="off" autocapitalize="off" aria-label="gap 5"> him about the party?</li>
+                        <li>The message <input class="gap" data-answer="said" autocomplete="off" autocapitalize="off" aria-label="gap 6"> the train was late.</li>
                     </ol>
+                    <div class="exercise-actions"><button type="button" class="check-btn">Check my answers</button> <button type="button" class="reveal-btn">Show answers</button></div>
+                    <div class="check-feedback" aria-live="polite"></div>
                     <details>
                         <summary>✅ Answer</summary>
                         <p>1. <strong>told</strong> (person: me) · 2. <strong>said</strong> · 3. <strong>told</strong> (person: us) · 4. <strong>said</strong> · 5. <strong>tell</strong> (person: him) · 6. <strong>said</strong></p>

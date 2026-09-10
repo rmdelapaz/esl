@@ -313,15 +313,17 @@ graph LR
                     </details>
                 </div>
 
-                <div class="card card-info">
+                <div class="card card-info exercise-check" data-exercise="gapfill">
                     <h3>🏋️ Exercise 3: Choose the nuance</h3>
                     <p><strong>Objective:</strong> Fill each gap with <em>may well</em>, <em>may as well</em>, <em>must</em>, or <em>can't</em>.</p>
                     <ol>
-                        <li>Nobody else has volunteered, so I <span class="blank"></span> do it myself.</li>
-                        <li>She's been studying medicine for six years — she <span class="blank"></span> know a fair bit by now.</li>
-                        <li>Given how the market's moving, interest rates <span class="blank"></span> rise again.</li>
-                        <li>You <span class="blank"></span> be hungry — you had an enormous lunch an hour ago.</li>
+                        <li>Nobody else has volunteered, so I <input class="gap" data-answer="may as well" autocomplete="off" autocapitalize="off" aria-label="gap 1"> do it myself.</li>
+                        <li>She's been studying medicine for six years — she <input class="gap" data-answer="must" autocomplete="off" autocapitalize="off" aria-label="gap 2"> know a fair bit by now.</li>
+                        <li>Given how the market's moving, interest rates <input class="gap" data-answer="may well" autocomplete="off" autocapitalize="off" aria-label="gap 3"> rise again.</li>
+                        <li>You <input class="gap" data-answer="can't" autocomplete="off" autocapitalize="off" aria-label="gap 4"> be hungry — you had an enormous lunch an hour ago.</li>
                     </ol>
+                    <div class="exercise-actions"><button type="button" class="check-btn">Check my answers</button> <button type="button" class="reveal-btn">Show answers</button></div>
+                    <div class="check-feedback" aria-live="polite"></div>
                     <details>
                         <summary>✅ Answer</summary>
                         <p>1. <strong>may as well</strong> (no reason not to / best option left). · 2. <strong>must</strong> (near-certain deduction). · 3. <strong>may well</strong> (quite likely). · 4. <strong>can't</strong> (ruled out on the evidence).</p>

@@ -293,18 +293,23 @@
             <section id="practice" class="lesson-section">
                 <h2>Practice &amp; Project</h2>
 
-                <div class="card card-info">
+                <div class="card card-info exercise-check" data-exercise="gapfill">
                     <h3>🏋️ Exercise 1: Choose the right possessive adjective</h3>
                     <p><strong>Objective:</strong> Pick <em>my, your, his, her, its, our, their</em> to match the owner.</p>
                     <p>Choose the right word for each gap.</p>
                     <ol>
-                        <li>Tom is happy. <span class="blank">______</span> sister is here. (his / her)</li>
-                        <li>Anna loves <span class="blank">______</span> brother. (his / her)</li>
-                        <li>We live with <span class="blank">______</span> grandparents. (our / their)</li>
-                        <li>My friends are here. <span class="blank">______</span> children are outside. (Our / Their)</li>
-                        <li>Look at the dog — <span class="blank">______</span> name is Rex. (it's / its)</li>
-                        <li>Excuse me, is this <span class="blank">______</span> phone? (your / you're)</li>
+                        <li>Tom is happy. <input class="gap" data-answer="His" autocomplete="off" autocapitalize="off" aria-label="gap 1"> sister is here. (his / her)</li>
+                        <li>Anna loves <input class="gap" data-answer="her" autocomplete="off" autocapitalize="off" aria-label="gap 2"> brother. (his / her)</li>
+                        <li>We live with <input class="gap" data-answer="our" autocomplete="off" autocapitalize="off" aria-label="gap 3"> grandparents. (our / their)</li>
+                        <li>My friends are here. <input class="gap" data-answer="Their" autocomplete="off" autocapitalize="off" aria-label="gap 4"> children are outside. (Our / Their)</li>
+                        <li>Look at the dog — <input class="gap" data-answer="its" autocomplete="off" autocapitalize="off" aria-label="gap 5"> name is Rex. (it's / its)</li>
+                        <li>Excuse me, is this <input class="gap" data-answer="your" autocomplete="off" autocapitalize="off" aria-label="gap 6"> phone? (your / you're)</li>
                     </ol>
+                    <div class="exercise-actions">
+                        <button type="button" class="check-btn">Check my answers</button>
+                        <button type="button" class="reveal-btn">Show answers</button>
+                    </div>
+                    <div class="check-feedback" aria-live="polite"></div>
                     <details>
                         <summary>✅ Answer</summary>
                         <p>1. <strong>His</strong> sister (Tom is a man). · 2. <strong>her</strong> brother (Anna is a woman). · 3. <strong>our</strong> grandparents. · 4. <strong>Their</strong> children. · 5. <strong>its</strong> name (belonging → <em>its</em>). · 6. <strong>your</strong> phone (belonging → <em>your</em>).</p>
@@ -327,17 +332,22 @@
                     </details>
                 </div>
 
-                <div class="card card-info">
+                <div class="card card-info exercise-check" data-exercise="gapfill">
                     <h3>🏋️ Exercise 3: Family logic</h3>
                     <p><strong>Objective:</strong> Find the right family word.</p>
                     <p>Fill in the missing family word.</p>
                     <ol>
-                        <li>My mother's mother is my <span class="blank">____________</span>.</li>
-                        <li>My father's brother is my <span class="blank">____________</span>.</li>
-                        <li>My aunt's daughter is my <span class="blank">____________</span>.</li>
-                        <li>My parents' son (not me) is my <span class="blank">____________</span>.</li>
-                        <li>My sister's daughter — I am her aunt or uncle, and she is my <span class="blank">____________</span>. (niece)</li>
+                        <li>My mother's mother is my <input class="gap" data-answer="grandmother|grandma" autocomplete="off" autocapitalize="off" aria-label="gap 1">.</li>
+                        <li>My father's brother is my <input class="gap" data-answer="uncle" autocomplete="off" autocapitalize="off" aria-label="gap 2">.</li>
+                        <li>My aunt's daughter is my <input class="gap" data-answer="cousin" autocomplete="off" autocapitalize="off" aria-label="gap 3">.</li>
+                        <li>My parents' son (not me) is my <input class="gap" data-answer="brother" autocomplete="off" autocapitalize="off" aria-label="gap 4">.</li>
+                        <li>My sister's daughter — I am her aunt or uncle, and she is my <input class="gap" data-answer="niece" autocomplete="off" autocapitalize="off" aria-label="gap 5">. (niece)</li>
                     </ol>
+                    <div class="exercise-actions">
+                        <button type="button" class="check-btn">Check my answers</button>
+                        <button type="button" class="reveal-btn">Show answers</button>
+                    </div>
+                    <div class="check-feedback" aria-live="polite"></div>
                     <details>
                         <summary>✅ Answer</summary>
                         <p>1. <strong>grandmother</strong> (grandma). · 2. <strong>uncle</strong>. · 3. <strong>cousin</strong>. · 4. <strong>brother</strong>. · 5. <strong>niece</strong> (a bonus word: your sister's daughter). </p>

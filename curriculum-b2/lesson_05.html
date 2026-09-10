@@ -279,16 +279,17 @@ graph TD
             <section id="practice" class="lesson-section">
                 <h2>Practice &amp; Project</h2>
 
-                <div class="card card-info">
+                <div class="card card-info exercise-check" data-exercise="gapfill">
                     <h3>🏋️ Exercise 1: Read the clue, choose the deduction</h3>
                     <p><strong>Objective:</strong> For each clue, pick <em>must have</em>, <em>can't have</em>, or <em>might have</em> and complete the sentence.</p>
                     <ol>
-                        <li>Her English is flawless. She <span class="blank"></span> (live) in an English-speaking country.</li>
-                        <li>The exam only finished ten minutes ago — he <span class="blank"></span> (mark) all 200 papers yet!</li>
-                        <li>There's no answer. He <span class="blank"></span> (go) out, or he <span class="blank"></span> (fall) asleep — I'm not sure.</li>
-                        <li>All the food is gone and the plates are dirty. The guests <span class="blank"></span> (enjoy) the meal.</li>
-                        <li>She passed the test without studying? She <span class="blank"></span> (be) very lucky, or very clever.</li>
+                        <li>Her English is flawless. She <input class="gap" data-answer="must have lived" autocomplete="off" autocapitalize="off" aria-label="gap 1"> (live) in an English-speaking country.</li>
+                        <li>The exam only finished ten minutes ago — he <input class="gap" data-answer="can't have marked|couldn't have marked" autocomplete="off" autocapitalize="off" aria-label="gap 2"> (mark) all 200 papers yet!</li>
+                        <li>There's no answer. He <input class="gap" data-answer="might have gone" autocomplete="off" autocapitalize="off" aria-label="gap 3"> (go) out, or he <input class="gap" data-answer="might have fallen" autocomplete="off" autocapitalize="off" aria-label="gap 4"> (fall) asleep — I'm not sure.</li>
+                        <li>All the food is gone and the plates are dirty. The guests <input class="gap" data-answer="must have enjoyed" autocomplete="off" autocapitalize="off" aria-label="gap 5"> (enjoy) the meal.</li>
+                        <li>She passed the test without studying? She <input class="gap" data-answer="must have been" autocomplete="off" autocapitalize="off" aria-label="gap 6"> (be) very lucky, or very clever.</li>
                     </ol>
+                    <div class="exercise-actions"><button type="button" class="check-btn">Check my answers</button> <button type="button" class="reveal-btn">Show answers</button></div><div class="check-feedback" aria-live="polite"></div>
                     <details>
                         <summary>✅ Answer</summary>
                         <p>1. must have lived · 2. can't have marked (couldn't have marked) · 3. might have gone … might have fallen · 4. must have enjoyed · 5. must have been</p>

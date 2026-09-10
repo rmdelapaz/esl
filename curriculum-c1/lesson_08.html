@@ -293,16 +293,18 @@
             <section id="practice" class="lesson-section">
                 <h2>Practice &amp; Project</h2>
 
-                <div class="card card-info">
+                <div class="card card-info exercise-check" data-exercise="gapfill">
                     <h3>🏋️ Exercise 1: Replace the repetition</h3>
                     <p><strong>Objective:</strong> Rewrite each, replacing the underlined repeated element with a reference or substitution word from the brackets.</p>
                     <ol>
-                        <li>"Do you want the big suitcase or the small suitcase?" → "…or the small <span class="blank"></span>?" <em>(one/ones)</em></li>
-                        <li>"You should apologise. If you don't apologise, she'll never forgive you." → "…If you fail to <span class="blank"></span>, she'll never forgive you." <em>(do so)</em></li>
-                        <li>"Is the deal going ahead?" — "I believe <span class="blank"></span>." <em>(so/not)</em></li>
-                        <li>"He insulted a guest in public. That kind of behaviour is unacceptable." → "<span class="blank"></span> behaviour is unacceptable." <em>(such)</em></li>
-                        <li>"We considered London and Tokyo; we chose Tokyo." → "…we chose <span class="blank"></span>." <em>(the former/the latter)</em></li>
+                        <li>"Do you want the big suitcase or the small suitcase?" → "…or the small <input class="gap" data-answer="one" autocomplete="off" autocapitalize="off" aria-label="gap 1">?" <em>(one/ones)</em></li>
+                        <li>"You should apologise. If you don't apologise, she'll never forgive you." → "…If you fail to <input class="gap" data-answer="do so" autocomplete="off" autocapitalize="off" aria-label="gap 2">, she'll never forgive you." <em>(do so)</em></li>
+                        <li>"Is the deal going ahead?" — "I believe <input class="gap" data-answer="so" autocomplete="off" autocapitalize="off" aria-label="gap 3">." <em>(so/not)</em></li>
+                        <li>"He insulted a guest in public. That kind of behaviour is unacceptable." → "<input class="gap" data-answer="Such" autocomplete="off" autocapitalize="off" aria-label="gap 4"> behaviour is unacceptable." <em>(such)</em></li>
+                        <li>"We considered London and Tokyo; we chose Tokyo." → "…we chose <input class="gap" data-answer="the latter" autocomplete="off" autocapitalize="off" aria-label="gap 5">." <em>(the former/the latter)</em></li>
                     </ol>
+                    <div class="exercise-actions"><button type="button" class="check-btn">Check my answers</button> <button type="button" class="reveal-btn">Show answers</button></div>
+                    <div class="check-feedback" aria-live="polite"></div>
                     <details>
                         <summary>✅ Answer</summary>
                         <p>1. …the small <strong>one</strong>? · 2. If you fail to <strong>do so</strong>, … · 3. I believe <strong>so</strong>. · 4. <strong>Such</strong> behaviour is unacceptable. · 5. …we chose <strong>the latter</strong>.</p>

@@ -358,16 +358,18 @@ flowchart TD
                     </details>
                 </div>
 
-                <div class="card card-info">
+                <div class="card card-info exercise-check" data-exercise="match">
                     <h3>🏋️ Exercise 2: Match the phrase to its function</h3>
                     <p><strong>Objective:</strong> Label each phrase — <em>Purpose</em>, <em>Findings</em>, or <em>Recommend</em>.</p>
-                    <ol>
-                        <li>"It is recommended that the process be automated."</li>
-                        <li>"The aim of this report is to evaluate supplier performance."</li>
-                        <li>"The data indicates a 20% drop in returns."</li>
-                        <li>"The best course of action would be to renegotiate the contract."</li>
-                        <li>"Notably, satisfaction rose fastest among new customers."</li>
-                    </ol>
+                    <ul class="match-list">
+                        <li><span class="match-term">"It is recommended that the process be automated."</span> <select class="gap" data-answer="Recommend" aria-label="answer for It is recommended that the process be automated."><option value="">— choose —</option><option>Findings</option><option>Purpose</option><option>Recommend</option></select></li>
+                        <li><span class="match-term">"The aim of this report is to evaluate supplier performance."</span> <select class="gap" data-answer="Purpose" aria-label="answer for The aim of this report is to evaluate supplier performance."><option value="">— choose —</option><option>Findings</option><option>Purpose</option><option>Recommend</option></select></li>
+                        <li><span class="match-term">"The data indicates a 20% drop in returns."</span> <select class="gap" data-answer="Findings" aria-label="answer for The data indicates a 20% drop in returns."><option value="">— choose —</option><option>Findings</option><option>Purpose</option><option>Recommend</option></select></li>
+                        <li><span class="match-term">"The best course of action would be to renegotiate the contract."</span> <select class="gap" data-answer="Recommend" aria-label="answer for The best course of action would be to renegotiate the contract."><option value="">— choose —</option><option>Findings</option><option>Purpose</option><option>Recommend</option></select></li>
+                        <li><span class="match-term">"Notably, satisfaction rose fastest among new customers."</span> <select class="gap" data-answer="Findings" aria-label="answer for Notably, satisfaction rose fastest among new customers."><option value="">— choose —</option><option>Findings</option><option>Purpose</option><option>Recommend</option></select></li>
+                    </ul>
+                    <div class="exercise-actions"><button type="button" class="check-btn">Check my answers</button> <button type="button" class="reveal-btn">Show answers</button></div>
+                    <div class="check-feedback" aria-live="polite"></div>
                     <details>
                         <summary>✅ Answer</summary>
                         <p>1. <strong>Recommend</strong> · 2. <strong>Purpose</strong> · 3. <strong>Findings</strong> · 4. <strong>Recommend</strong> · 5. <strong>Findings</strong>. Notice how the recommend-phrases point to a future action, the purpose-phrase states why the document exists, and the findings-phrases report evidence objectively.</p>

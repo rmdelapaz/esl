@@ -272,16 +272,18 @@ graph LR
             <section id="practice" class="lesson-section">
                 <h2>Practice &amp; Project</h2>
 
-                <div class="card card-info">
+                <div class="card card-info exercise-check" data-exercise="gapfill">
                     <h3>🏋️ Exercise 1: must, can't or might?</h3>
                     <p><strong>Objective:</strong> Read the clue and choose the modal that matches your certainty. (Sure it's true → <em>must</em>; sure it's false → <em>can't</em>; unsure → <em>might</em>.)</p>
                     <ol>
-                        <li>Her office light is off and her car's gone. She <span class="blank"></span> be at work.</li>
-                        <li>The ground is wet and people have umbrellas. It <span class="blank"></span> be raining.</li>
-                        <li>I'm not sure who's knocking — it <span class="blank"></span> be the postman.</li>
-                        <li>He's wearing a thick coat and gloves. It <span class="blank"></span> be cold outside.</li>
-                        <li>They've only known each other a day, so they <span class="blank"></span> be old friends.</li>
+                        <li>Her office light is off and her car's gone. She <input class="gap" data-answer="can't" autocomplete="off" autocapitalize="off" aria-label="gap 1"> be at work.</li>
+                        <li>The ground is wet and people have umbrellas. It <input class="gap" data-answer="must" autocomplete="off" autocapitalize="off" aria-label="gap 2"> be raining.</li>
+                        <li>I'm not sure who's knocking — it <input class="gap" data-answer="might|could|may" autocomplete="off" autocapitalize="off" aria-label="gap 3"> be the postman.</li>
+                        <li>He's wearing a thick coat and gloves. It <input class="gap" data-answer="must" autocomplete="off" autocapitalize="off" aria-label="gap 4"> be cold outside.</li>
+                        <li>They've only known each other a day, so they <input class="gap" data-answer="can't" autocomplete="off" autocapitalize="off" aria-label="gap 5"> be old friends.</li>
                     </ol>
+                    <div class="exercise-actions"><button type="button" class="check-btn">Check my answers</button> <button type="button" class="reveal-btn">Show answers</button></div>
+                    <div class="check-feedback" aria-live="polite"></div>
                     <details>
                         <summary>✅ Answer</summary>
                         <p>1. can't · 2. must · 3. might (or could/may) · 4. must · 5. can't</p>
@@ -307,15 +309,17 @@ graph LR
                     </details>
                 </div>
 
-                <div class="card card-info">
+                <div class="card card-info exercise-check" data-exercise="gapfill">
                     <h3>🏋️ Exercise 3: obligation review gap-fill</h3>
                     <p><strong>Objective:</strong> Complete each gap with <strong>have to</strong>, <strong>don't have to</strong>, <strong>mustn't</strong> or <strong>should</strong>.</p>
                     <ol>
-                        <li>The museum is free, so you <span class="blank"></span> pay to get in.</li>
-                        <li>You <span class="blank"></span> touch the paintings — it's strictly forbidden.</li>
-                        <li>You look exhausted. You <span class="blank"></span> get an early night.</li>
-                        <li>I <span class="blank"></span> renew my passport before we travel; it's expired.</li>
+                        <li>The museum is free, so you <input class="gap" data-answer="don't have to" autocomplete="off" autocapitalize="off" aria-label="gap 1"> pay to get in.</li>
+                        <li>You <input class="gap" data-answer="mustn't" autocomplete="off" autocapitalize="off" aria-label="gap 2"> touch the paintings — it's strictly forbidden.</li>
+                        <li>You look exhausted. You <input class="gap" data-answer="should" autocomplete="off" autocapitalize="off" aria-label="gap 3"> get an early night.</li>
+                        <li>I <input class="gap" data-answer="have to" autocomplete="off" autocapitalize="off" aria-label="gap 4"> renew my passport before we travel; it's expired.</li>
                     </ol>
+                    <div class="exercise-actions"><button type="button" class="check-btn">Check my answers</button> <button type="button" class="reveal-btn">Show answers</button></div>
+                    <div class="check-feedback" aria-live="polite"></div>
                     <details>
                         <summary>✅ Answer</summary>
                         <p>1. don't have to (it isn't necessary) · 2. mustn't (prohibited) · 3. should (advice) · 4. have to (necessary)</p>

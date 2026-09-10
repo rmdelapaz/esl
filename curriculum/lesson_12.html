@@ -302,32 +302,42 @@
             <section id="practice" class="lesson-section">
                 <h2>Practice &amp; Capstone Project</h2>
 
-                <div class="card card-info">
+                <div class="card card-info exercise-check" data-exercise="gapfill">
                     <h3>🏋️ Exercise 1: One thing or many? (is it / are they)</h3>
                     <p><strong>Objective:</strong> Choose the right price question.</p>
                     <p>Fill each gap with <em>is it</em> or <em>are they</em>.</p>
                     <ul>
-                        <li>This apple — How much <span class="blank">______</span>?</li>
-                        <li>These shoes — How much <span class="blank">______</span>?</li>
-                        <li>That coffee — How much <span class="blank">______</span>?</li>
-                        <li>Those bags — How much <span class="blank">______</span>?</li>
+                        <li>This apple — How much <input class="gap" data-answer="is it" autocomplete="off" autocapitalize="off" aria-label="gap 1">?</li>
+                        <li>These shoes — How much <input class="gap" data-answer="are they" autocomplete="off" autocapitalize="off" aria-label="gap 2">?</li>
+                        <li>That coffee — How much <input class="gap" data-answer="is it" autocomplete="off" autocapitalize="off" aria-label="gap 3">?</li>
+                        <li>Those bags — How much <input class="gap" data-answer="are they" autocomplete="off" autocapitalize="off" aria-label="gap 4">?</li>
                     </ul>
+                    <div class="exercise-actions">
+                        <button type="button" class="check-btn">Check my answers</button>
+                        <button type="button" class="reveal-btn">Show answers</button>
+                    </div>
+                    <div class="check-feedback" aria-live="polite"></div>
                     <details>
                         <summary>✅ Answer</summary>
                         <p>1. How much <strong>is it</strong>? (one apple) · 2. How much <strong>are they</strong>? (shoes = plural) · 3. How much <strong>is it</strong>? (one coffee) · 4. How much <strong>are they</strong>? (bags = plural)</p>
                     </details>
                 </div>
 
-                <div class="card card-info">
+                <div class="card card-info exercise-check" data-exercise="gapfill">
                     <h3>🏋️ Exercise 2: Follow the directions</h3>
                     <p><strong>Objective:</strong> Understand a set of directions.</p>
                     <p>Read the directions and answer: where is the café?</p>
                     <p><em>"Go straight on. Take the first right. Go past the bank. The café is on your left, opposite the school."</em></p>
                     <ul>
-                        <li>Do you turn left or right first? <span class="blank">______</span></li>
-                        <li>What do you go past? <span class="blank">______</span></li>
-                        <li>What is opposite the café? <span class="blank">______</span></li>
+                        <li>Do you turn left or right first? <input class="gap" data-answer="right" autocomplete="off" autocapitalize="off" aria-label="gap 1"></li>
+                        <li>What do you go past? <input class="gap" data-answer="bank" autocomplete="off" autocapitalize="off" aria-label="gap 2"></li>
+                        <li>What is opposite the café? <input class="gap" data-answer="school" autocomplete="off" autocapitalize="off" aria-label="gap 3"></li>
                     </ul>
+                    <div class="exercise-actions">
+                        <button type="button" class="check-btn">Check my answers</button>
+                        <button type="button" class="reveal-btn">Show answers</button>
+                    </div>
+                    <div class="check-feedback" aria-live="polite"></div>
                     <details>
                         <summary>✅ Answer</summary>
                         <p>You take the first <strong>right</strong>. · You go past the <strong>bank</strong>. · The <strong>school</strong> is opposite the café.</p>

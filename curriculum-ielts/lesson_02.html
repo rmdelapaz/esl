@@ -282,21 +282,16 @@ graph LR
             <section id="practice" class="lesson-section">
                 <h2>Practice &amp; Task</h2>
 
-                <div class="card card-info">
+                <div class="card card-info exercise-check" data-exercise="match">
                     <h3>🏋️ Exercise 1: Match the question to its paraphrased answer</h3>
-                    <p><strong>Objective:</strong> Train paraphrase-recognition for Reading/Listening. Match each question (1–3) to the text sentence (A–C) that answers it.</p>
-                    <p><strong>Questions:</strong></p>
-                    <ol>
-                        <li>The new policy <strong>reduced traffic</strong> in the city centre.</li>
-                        <li>Most staff <strong>welcomed</strong> the change.</li>
-                        <li>The scheme was <strong>expensive to run</strong>.</li>
-                    </ol>
-                    <p><strong>Text sentences:</strong></p>
-                    <ul>
-                        <li><strong>A.</strong> "The initiative proved costly to maintain."</li>
-                        <li><strong>B.</strong> "After the measure was introduced, the number of vehicles downtown dropped sharply."</li>
-                        <li><strong>C.</strong> "The majority of employees responded to the reform with enthusiasm."</li>
+                    <p><strong>Objective:</strong> Train paraphrase-recognition for Reading/Listening. Match each question (1–3) to the text sentence that answers it.</p>
+                    <ul class="match-list">
+                        <li><span class="match-term">The new policy <strong>reduced traffic</strong> in the city centre.</span> <select class="gap" data-answer="After the measure was introduced, the number of vehicles downtown dropped sharply." aria-label="answer for: the new policy reduced traffic in the city centre"><option value="">— choose —</option><option>After the measure was introduced, the number of vehicles downtown dropped sharply.</option><option>The initiative proved costly to maintain.</option><option>The majority of employees responded to the reform with enthusiasm.</option></select></li>
+                        <li><span class="match-term">Most staff <strong>welcomed</strong> the change.</span> <select class="gap" data-answer="The majority of employees responded to the reform with enthusiasm." aria-label="answer for: most staff welcomed the change"><option value="">— choose —</option><option>After the measure was introduced, the number of vehicles downtown dropped sharply.</option><option>The initiative proved costly to maintain.</option><option>The majority of employees responded to the reform with enthusiasm.</option></select></li>
+                        <li><span class="match-term">The scheme was <strong>expensive to run</strong>.</span> <select class="gap" data-answer="The initiative proved costly to maintain." aria-label="answer for: the scheme was expensive to run"><option value="">— choose —</option><option>After the measure was introduced, the number of vehicles downtown dropped sharply.</option><option>The initiative proved costly to maintain.</option><option>The majority of employees responded to the reform with enthusiasm.</option></select></li>
                     </ul>
+                    <div class="exercise-actions"><button type="button" class="check-btn">Check my answers</button> <button type="button" class="reveal-btn">Show answers</button></div>
+                    <div class="check-feedback" aria-live="polite"></div>
                     <details>
                         <summary>✅ Answer</summary>
                         <p><strong>1 → B</strong> ("reduced traffic" ↔ "number of vehicles… dropped"; "policy" ↔ "measure"). <strong>2 → C</strong> ("most staff" ↔ "the majority of employees"; "welcomed" ↔ "responded… with enthusiasm"). <strong>3 → A</strong> ("expensive to run" ↔ "costly to maintain"; "scheme" ↔ "initiative"). Notice not a single key word was repeated — each answer is pure paraphrase.</p>

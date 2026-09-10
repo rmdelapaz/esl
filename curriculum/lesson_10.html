@@ -328,17 +328,22 @@
             <section id="practice" class="lesson-section">
                 <h2>Practice &amp; Project</h2>
 
-                <div class="card card-info">
+                <div class="card card-info exercise-check" data-exercise="gapfill">
                     <h3>🏋️ Exercise 1: can / can't</h3>
                     <p><strong>Objective:</strong> Choose the right word for a person's abilities.</p>
                     <p>Read about Sam. Fill each gap with <strong>can</strong> or <strong>can't</strong>. Use the ✅ and ❌ clues.</p>
                     <ul>
-                        <li>Sam ______ swim. ✅</li>
-                        <li>Sam ______ drive. ❌</li>
-                        <li>Sam ______ cook Italian food. ✅</li>
-                        <li>Sam ______ play the guitar. ❌</li>
-                        <li>Sam ______ speak English and Spanish. ✅</li>
+                        <li>Sam <input class="gap" data-answer="can" autocomplete="off" autocapitalize="off" aria-label="gap 1"> swim. ✅</li>
+                        <li>Sam <input class="gap" data-answer="can't" autocomplete="off" autocapitalize="off" aria-label="gap 2"> drive. ❌</li>
+                        <li>Sam <input class="gap" data-answer="can" autocomplete="off" autocapitalize="off" aria-label="gap 3"> cook Italian food. ✅</li>
+                        <li>Sam <input class="gap" data-answer="can't" autocomplete="off" autocapitalize="off" aria-label="gap 4"> play the guitar. ❌</li>
+                        <li>Sam <input class="gap" data-answer="can" autocomplete="off" autocapitalize="off" aria-label="gap 5"> speak English and Spanish. ✅</li>
                     </ul>
+                    <div class="exercise-actions">
+                        <button type="button" class="check-btn">Check my answers</button>
+                        <button type="button" class="reveal-btn">Show answers</button>
+                    </div>
+                    <div class="check-feedback" aria-live="polite"></div>
                     <details>
                         <summary>✅ Answer</summary>
                         <p>Sam <strong>can</strong> swim. · Sam <strong>can't</strong> drive. · Sam <strong>can</strong> cook Italian food. · Sam <strong>can't</strong> play the guitar. · Sam <strong>can</strong> speak English and Spanish.</p>

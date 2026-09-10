@@ -347,12 +347,18 @@
                     </details>
                 </div>
 
-                <div class="card card-info">
+                <div class="card card-info exercise-check" data-exercise="match">
                     <h3>🏋️ Exercise 3: Map / plan labelling from a route</h3>
                     <p><strong>Objective:</strong> Follow directions to place labels.</p>
                     <p>A guide describes a museum floor. You enter at the bottom; a corridor runs straight ahead (north). Label rooms <strong>P, Q, R</strong> with: <em>gift shop, gallery, cloakroom.</em></p>
                     <p><em>Transcript:</em> "As you come in, the <strong>cloakroom</strong> is the first door on your right. Carry on down the corridor, and the main <strong>gallery</strong> is at the far end straight ahead. The <strong>gift shop</strong> is on your left, opposite the cloakroom."</p>
-                    <p>Positions: <strong>P</strong> = first door on the right · <strong>Q</strong> = first door on the left · <strong>R</strong> = far end, straight ahead.</p>
+                    <ul class="match-list">
+                        <li><span class="match-term"><strong>P</strong> = first door on the right</span> <select class="gap" data-answer="cloakroom" aria-label="answer for P"><option value="">— choose —</option><option>cloakroom</option><option>gallery</option><option>gift shop</option></select></li>
+                        <li><span class="match-term"><strong>Q</strong> = first door on the left</span> <select class="gap" data-answer="gift shop" aria-label="answer for Q"><option value="">— choose —</option><option>cloakroom</option><option>gallery</option><option>gift shop</option></select></li>
+                        <li><span class="match-term"><strong>R</strong> = far end, straight ahead</span> <select class="gap" data-answer="gallery" aria-label="answer for R"><option value="">— choose —</option><option>cloakroom</option><option>gallery</option><option>gift shop</option></select></li>
+                    </ul>
+                    <div class="exercise-actions"><button type="button" class="check-btn">Check my answers</button> <button type="button" class="reveal-btn">Show answers</button></div>
+                    <div class="check-feedback" aria-live="polite"></div>
                     <details>
                         <summary>✅ Answer</summary>
                         <p>P = <strong>cloakroom</strong> (first door, right) · Q = <strong>gift shop</strong> ("on your left, opposite the cloakroom") · R = <strong>gallery</strong> ("at the far end straight ahead"). Fixing orientation first — enter at bottom, corridor goes up — makes "right / left / far end" unambiguous.</p>

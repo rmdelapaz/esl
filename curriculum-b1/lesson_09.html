@@ -319,16 +319,18 @@ graph TD
             <section id="practice" class="lesson-section">
                 <h2>Practice &amp; Project</h2>
 
-                <div class="card card-info">
+                <div class="card card-info exercise-check" data-exercise="gapfill">
                     <h3>🏋️ Exercise 1: Choose the right relative pronoun</h3>
                     <p><strong>Objective:</strong> Fill each gap with who, which, where, when, or whose.</p>
                     <ol>
-                        <li>That's the teacher <span class="blank"></span> gave us so much homework.</li>
-                        <li>This is the restaurant <span class="blank"></span> we had our first date.</li>
-                        <li>I met a woman <span class="blank"></span> brother is a famous actor.</li>
-                        <li>The laptop <span class="blank"></span> I bought last week is already broken.</li>
-                        <li>I'll never forget the summer <span class="blank"></span> we drove across the country.</li>
+                        <li>That's the teacher <input class="gap" data-answer="who" autocomplete="off" autocapitalize="off" aria-label="gap 1"> gave us so much homework.</li>
+                        <li>This is the restaurant <input class="gap" data-answer="where" autocomplete="off" autocapitalize="off" aria-label="gap 2"> we had our first date.</li>
+                        <li>I met a woman <input class="gap" data-answer="whose" autocomplete="off" autocapitalize="off" aria-label="gap 3"> brother is a famous actor.</li>
+                        <li>The laptop <input class="gap" data-answer="which|that" autocomplete="off" autocapitalize="off" aria-label="gap 4"> I bought last week is already broken.</li>
+                        <li>I'll never forget the summer <input class="gap" data-answer="when" autocomplete="off" autocapitalize="off" aria-label="gap 5"> we drove across the country.</li>
                     </ol>
+                    <div class="exercise-actions"><button type="button" class="check-btn">Check my answers</button> <button type="button" class="reveal-btn">Show answers</button></div>
+                    <div class="check-feedback" aria-live="polite"></div>
                     <details>
                         <summary>✅ Answer</summary>
                         <p>1. who <em>(person, subject)</em> · 2. where <em>(place)</em> · 3. whose <em>(possession)</em> · 4. which <em>(thing; or "that", or dropped)</em> · 5. when <em>(time)</em></p>
