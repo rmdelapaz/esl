@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initQuizInteractivity();
     initSpeech();             // 🔊 text-to-speech "Listen" buttons (Web Speech API)
     initJournal();            // 📓 autosaved in-page learning journal
+    initExerciseChecks();     // ✍️ auto-checked gap-fill / matching exercises
     initMobileMenu();
     initAccessibilityFeatures();
     initPrintStyles();
@@ -223,7 +224,7 @@ function initSearchFunctionality() {
 
 function initKeyboardShortcuts() {
     document.addEventListener('keydown', e => {
-        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+        if (['INPUT', 'TEXTAREA', 'SELECT'].includes(e.target.tagName)) return;
 
         switch (e.key) {
             case '/': {
@@ -701,6 +702,68 @@ function exportJournal() {
     a.click();
     a.remove();
     setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+/* ===========================
+   Auto-checked exercises (gap-fill / matching)
+   ---------------------------
+   Any `.exercise-check` container is scanned for answer fields — text
+   `<input>`s and `<select>`s carrying `data-answer`. "Check" marks each
+   field right/wrong and shows a score; "Show answers" fills them in.
+   data-answer may list accepted alternatives separated by "|". Answers are
+   compared case-insensitively, trimmed, with trailing punctuation ignored.
+   Progressive enhancement: the static <details> answer key still works
+   with no JS.
+   =========================== */
+
+function initExerciseChecks() {
+    const norm = s => (s || '').trim().toLowerCase().replace(/[.!?,;:]+$/, '').replace(/\s+/g, ' ');
+
+    document.querySelectorAll('.exercise-check').forEach(box => {
+        const fields = Array.from(box.querySelectorAll('[data-answer]'));
+        if (!fields.length) return;
+        const feedback = box.querySelector('.check-feedback');
+
+        const accepted = f => f.getAttribute('data-answer').split('|').map(norm);
+
+        function evaluate() {
+            let correct = 0;
+            fields.forEach(f => {
+                const ok = f.value.trim() !== '' && accepted(f).includes(norm(f.value));
+                f.classList.remove('correct', 'incorrect');
+                f.classList.add(ok ? 'correct' : 'incorrect');
+                if (ok) correct++;
+            });
+            if (feedback) {
+                const all = correct === fields.length;
+                feedback.textContent = correct + ' / ' + fields.length + ' correct'
+                    + (all ? ' — great job! 🎉' : ' — try the ones in red again.');
+                feedback.className = 'check-feedback ' + (all ? 'correct' : 'incorrect');
+            }
+        }
+
+        function reveal() {
+            fields.forEach(f => {
+                f.value = f.getAttribute('data-answer').split('|')[0];
+                f.classList.remove('incorrect');
+                f.classList.add('correct');
+            });
+            if (feedback) { feedback.textContent = 'Answers shown.'; feedback.className = 'check-feedback'; }
+        }
+
+        box.querySelector('.check-btn')?.addEventListener('click', evaluate);
+        box.querySelector('.reveal-btn')?.addEventListener('click', reveal);
+
+        fields.forEach(f => {
+            // Clear the right/wrong mark once the learner changes an answer.
+            const clear = () => f.classList.remove('correct', 'incorrect');
+            f.addEventListener('input', clear);
+            f.addEventListener('change', clear);
+            if (f.tagName === 'INPUT') {
+                f.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); evaluate(); } });
+            }
+        });
+    });
 }
 
 /* ===========================

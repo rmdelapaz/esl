@@ -334,17 +334,22 @@ graph LR
             <section id="practice" class="lesson-section">
                 <h2>Practice &amp; Project</h2>
 
-                <div class="card card-info">
+                <div class="card card-info exercise-check" data-exercise="gapfill">
                     <h3>🏋️ Exercise 1: Fill the gap with am / is / are</h3>
-                    <p><strong>Objective:</strong> Choose the correct form of "to be."</p>
+                    <p><strong>Objective:</strong> Choose the correct form of "to be." Type your answer in each box, then press <strong>Check my answers</strong>.</p>
                     <ol>
-                        <li>I <span class="blank">____</span> from Brazil.</li>
-                        <li>She <span class="blank">____</span> a teacher.</li>
-                        <li>They <span class="blank">____</span> from Korea.</li>
-                        <li>We <span class="blank">____</span> happy.</li>
-                        <li>He <span class="blank">____</span> Egyptian.</li>
-                        <li><span class="blank">____</span> you from India?</li>
+                        <li>I <input class="gap" data-answer="am" aria-label="gap 1" autocomplete="off" autocapitalize="off"> from Brazil.</li>
+                        <li>She <input class="gap" data-answer="is" aria-label="gap 2" autocomplete="off" autocapitalize="off"> a teacher.</li>
+                        <li>They <input class="gap" data-answer="are" aria-label="gap 3" autocomplete="off" autocapitalize="off"> from Korea.</li>
+                        <li>We <input class="gap" data-answer="are" aria-label="gap 4" autocomplete="off" autocapitalize="off"> happy.</li>
+                        <li>He <input class="gap" data-answer="is" aria-label="gap 5" autocomplete="off" autocapitalize="off"> Egyptian.</li>
+                        <li><input class="gap" data-answer="are" aria-label="gap 6" autocomplete="off" autocapitalize="off"> you from India?</li>
                     </ol>
+                    <div class="exercise-actions">
+                        <button type="button" class="check-btn">Check my answers</button>
+                        <button type="button" class="reveal-btn">Show answers</button>
+                    </div>
+                    <div class="check-feedback" aria-live="polite"></div>
                     <details>
                         <summary>✅ Answer</summary>
                         <p>1. <strong>am</strong> · 2. <strong>is</strong> · 3. <strong>are</strong> · 4. <strong>are</strong> · 5. <strong>is</strong> · 6. <strong>Are</strong></p>
@@ -368,26 +373,44 @@ graph LR
                     </details>
                 </div>
 
-                <div class="card card-info">
+                <div class="card card-info exercise-check" data-exercise="match">
                     <h3>🏋️ Exercise 3: Match country to nationality</h3>
-                    <p><strong>Objective:</strong> Match each country on the left with its nationality on the right.</p>
-                    <div class="table-wrap">
-                        <table>
-                            <thead>
-                                <tr><th>Country</th><th>Nationality</th></tr>
-                            </thead>
-                            <tbody>
-                                <tr><td>1. China</td><td>a. German</td></tr>
-                                <tr><td>2. Spain</td><td>b. Chinese</td></tr>
-                                <tr><td>3. Germany</td><td>c. British</td></tr>
-                                <tr><td>4. the UK</td><td>d. Italian</td></tr>
-                                <tr><td>5. Italy</td><td>e. Spanish</td></tr>
-                            </tbody>
-                        </table>
+                    <p><strong>Objective:</strong> Choose the correct nationality for each country, then press <strong>Check my answers</strong>.</p>
+                    <ul class="match-list">
+                        <li><span class="match-term">China</span>
+                            <select class="gap" data-answer="Chinese" aria-label="nationality for China">
+                                <option value="">— choose —</option>
+                                <option>British</option><option>Chinese</option><option>German</option><option>Italian</option><option>Spanish</option>
+                            </select></li>
+                        <li><span class="match-term">Spain</span>
+                            <select class="gap" data-answer="Spanish" aria-label="nationality for Spain">
+                                <option value="">— choose —</option>
+                                <option>British</option><option>Chinese</option><option>German</option><option>Italian</option><option>Spanish</option>
+                            </select></li>
+                        <li><span class="match-term">Germany</span>
+                            <select class="gap" data-answer="German" aria-label="nationality for Germany">
+                                <option value="">— choose —</option>
+                                <option>British</option><option>Chinese</option><option>German</option><option>Italian</option><option>Spanish</option>
+                            </select></li>
+                        <li><span class="match-term">the UK</span>
+                            <select class="gap" data-answer="British" aria-label="nationality for the UK">
+                                <option value="">— choose —</option>
+                                <option>British</option><option>Chinese</option><option>German</option><option>Italian</option><option>Spanish</option>
+                            </select></li>
+                        <li><span class="match-term">Italy</span>
+                            <select class="gap" data-answer="Italian" aria-label="nationality for Italy">
+                                <option value="">— choose —</option>
+                                <option>British</option><option>Chinese</option><option>German</option><option>Italian</option><option>Spanish</option>
+                            </select></li>
+                    </ul>
+                    <div class="exercise-actions">
+                        <button type="button" class="check-btn">Check my answers</button>
+                        <button type="button" class="reveal-btn">Show answers</button>
                     </div>
+                    <div class="check-feedback" aria-live="polite"></div>
                     <details>
                         <summary>✅ Answer</summary>
-                        <p>1 → b (Chinese) · 2 → e (Spanish) · 3 → a (German) · 4 → c (British) · 5 → d (Italian)</p>
+                        <p>China → Chinese · Spain → Spanish · Germany → German · the UK → British · Italy → Italian</p>
                     </details>
                 </div>
 
