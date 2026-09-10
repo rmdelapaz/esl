@@ -34,38 +34,46 @@
         }
         .cultural-iceberg {
             width: 100%;
-            height: 400px;
             margin: 20px 0;
             position: relative;
             background: linear-gradient(to bottom, #87ceeb 0%, #87ceeb 30%, #4682b4 30%, #4682b4 100%);
             border-radius: 15px;
             overflow: hidden;
-        }
-        .iceberg-tip {
-            position: absolute;
-            top: 50px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 200px;
-            height: 80px;
-            background: white;
-            clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+            box-sizing: border-box;
+            padding: 16px;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            color: #333;
+            gap: 14px;
         }
+        /* Waterline caption — sits above the tip, not clipped. */
+        .iceberg-caption {
+            align-self: flex-start;
+            color: #fff;
+            font-weight: bold;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, .45);
+        }
+        /* The visible tip keeps its iceberg trapezoid, but is sized so the
+           label fits inside the shape instead of being clipped by the edges. */
+        .iceberg-tip {
+            width: min(260px, 82%);
+            background: #fff;
+            color: #333;
+            text-align: center;
+            font-weight: bold;
+            padding: 12px 18px;
+            box-sizing: border-box;
+            clip-path: polygon(12% 0%, 88% 0%, 100% 100%, 0% 100%);
+        }
+        /* The submerged mass: no text-clipping polygon — a rounded block that
+           grows with its content, so the deep-culture lists never get cut off.
+           Responsive width keeps it inside the frame on small screens. */
         .iceberg-hidden {
-            position: absolute;
-            top: 130px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 400px;
-            height: 250px;
-            background: rgba(255, 255, 255, 0.9);
-            clip-path: polygon(30% 0%, 70% 0%, 90% 100%, 10% 100%);
-            padding: 20px;
+            width: min(460px, 100%);
+            background: rgba(255, 255, 255, .92);
+            color: #1f2937;
+            border-radius: 8px 8px 14px 14px;
+            padding: 16px 18px;
             box-sizing: border-box;
         }
         .cultural-bridge {
@@ -390,19 +398,19 @@
             </div>
 
             <div class="cultural-iceberg">
+                <div class="iceberg-caption">Surface: Food, Music, Festivals, Clothing</div>
+
                 <div class="iceberg-tip">
-                    <div>
-                        <strong>SURFACE CULTURE</strong><br>
-                        <small>10% Visible</small>
-                    </div>
+                    <strong>SURFACE CULTURE</strong><br>
+                    <small>10% Visible</small>
                 </div>
-                
+
                 <div class="iceberg-hidden">
-                    <h4 style="color: #333; margin-top: 0;">DEEP CULTURE - 90% Hidden</h4>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 12px; color: #333;">
+                    <h4 style="margin-top: 0;">DEEP CULTURE - 90% Hidden</h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px 16px; font-size: 12px;">
                         <div>
-                            <strong>Values & Beliefs:</strong>
-                            <ul style="margin: 5px 0; padding-left: 15px;">
+                            <strong>Values &amp; Beliefs:</strong>
+                            <ul style="margin: 5px 0; padding-left: 18px;">
                                 <li>Individual vs. collective identity</li>
                                 <li>Direct vs. indirect communication</li>
                                 <li>Hierarchy vs. equality</li>
@@ -411,7 +419,7 @@
                         </div>
                         <div>
                             <strong>Assumptions:</strong>
-                            <ul style="margin: 5px 0; padding-left: 15px;">
+                            <ul style="margin: 5px 0; padding-left: 18px;">
                                 <li>Personal space boundaries</li>
                                 <li>Eye contact norms</li>
                                 <li>Silence interpretation</li>
@@ -419,10 +427,6 @@
                             </ul>
                         </div>
                     </div>
-                </div>
-                
-                <div style="position: absolute; top: 10px; left: 10px; color: white; font-weight: bold;">
-                    Surface: Food, Music, Festivals, Clothing
                 </div>
             </div>
 

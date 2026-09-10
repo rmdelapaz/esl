@@ -73,6 +73,10 @@ sub { font-size: .75em; vertical-align: sub; }
 a { color: var(--link); text-decoration: none; transition: color .2s; }
 a:hover { color: var(--link-hover); text-decoration: underline; }
 img { max-width: 100%; height: auto; border-radius: 6px; }
+/* Canvas diagrams carry intrinsic pixel dimensions (width/height attributes)
+   and would otherwise overflow narrow screens. Scale them down to fit while
+   preserving aspect ratio. */
+canvas { max-width: 100%; height: auto; }
 
 /* === LAYOUT CONTAINER === */
 main, body > section, body > .content {
@@ -106,6 +110,15 @@ p { margin: .75rem 0; }
   font-size: 1.15rem;
   max-width: 700px;
   margin: .25rem auto 1.25rem;
+}
+/* Header meta line (e.g. "Estimated Time … | Level …") — a plain paragraph,
+   not a subtitle. Pull it into the content column so it lines up with the
+   left margin of the main content instead of hugging the page edge. */
+header > p:not(.subtitle) {
+  max-width: 900px;
+  margin: .5rem auto 1.25rem;
+  padding: 0 1.25rem;
+  text-align: left;
 }
 blockquote {
   margin: 1rem 0;
@@ -149,6 +162,11 @@ tr:nth-child(even) { background: var(--table-stripe); }
 
 /* === SVG / MERMAID === */
 svg { display: block; margin: 1rem auto; max-width: 100%; height: auto; }
+/* Diagram labels drawn directly on the transparent SVG canvas (no coloured
+   shape behind them) default to black, which vanishes on the dark page.
+   Opt in with class="svg-label" so they follow the theme. Labels painted on
+   a coloured pie wedge / bar keep their own fill and must NOT get this class. */
+svg text.svg-label { fill: var(--text-strong); }
 .mermaid_container, .mermaid-diagram, .mermaid {
   margin: 1.5rem auto;
   padding: 1rem;
@@ -358,6 +376,31 @@ svg { display: block; margin: 1rem auto; max-width: 100%; height: auto; }
   .hero h1 { font-size: 1.6rem; }
   .card-grid { grid-template-columns: 1fr; }
   table { font-size: .85rem; }
+}
+
+/* Lesson diagram grids that were authored with a fixed number of columns
+   (or an auto-fit floor wider than a phone) overflow or crowd on small
+   screens. The AI-course pages already collapse their own grids in a media
+   query; these selectors cover the remaining lessons. Stack to one column on
+   phones. !important is needed because each lesson's own <style> block loads
+   after this file. Add a class here rather than editing every lesson if more
+   turn up. */
+@media (max-width: 600px) {
+  /* class-based grids (per-lesson <style> blocks) */
+  .before_after, .collaboration_matrix, .ai_tool_grid,
+  .challenge-solution-grid, .scenario-grid, .cultural-adaptation,
+  .communication-styles, .celebration-vs-appropriation, .grammar-comparison,
+  .meaning-form-use, .vowel-chart, .text-types, .authentic-vs-artificial,
+  .assessment-matrix, .budget-tiers, .fluency-accuracy, .resource-grid,
+  /* inline grids (substring-matched): fixed columns, and auto-fit grids whose
+     minmax floor (≥300px) is wider than a phone and would overflow. */
+  [style*="grid-template-columns: 1fr 1fr"],
+  [style*="grid-template-columns: repeat(3, 1fr)"],
+  [style*="grid-template-columns: repeat(2, 1fr)"],
+  [style*="minmax(400px"],
+  [style*="minmax(300px"] {
+    grid-template-columns: 1fr !important;
+  }
 }
 
 /* === FOOTER === */
