@@ -13,6 +13,8 @@ document.addEventListener('DOMContentLoaded', function() {
     initKeyboardShortcuts();
     // initLessonProgress();
     initQuizInteractivity();
+    initSpeech();             // 🔊 text-to-speech "Listen" buttons (Web Speech API)
+    initJournal();            // 📓 autosaved in-page learning journal
     initMobileMenu();
     initAccessibilityFeatures();
     initPrintStyles();
@@ -384,6 +386,316 @@ function initAnalytics() {
     a.push({ page: location.pathname, ts: new Date().toISOString() });
     if (a.length > 100) a = a.slice(-100);
     localStorage.setItem('courseAnalytics', JSON.stringify(a));
+}
+
+/* ===========================
+   Text-to-Speech ("Listen" buttons)
+   ---------------------------
+   Progressive enhancement via the Web Speech API — no audio files, no
+   backend, works offline. If the browser has no speechSynthesis, nothing
+   is added and the page is unchanged.
+
+   Speakable content is discovered automatically so it works on every
+   lesson without editing lesson bodies:
+     • [data-say="text"]  — explicit convention for authored content
+     • .phrase            — phrase-bank chips
+     • .wordlist > li     — vocabulary items
+     • table cells with .pron — the alphabet / pronunciation tables
+     • .dialogue .line    — per-line + a "Play conversation" control
+   =========================== */
+
+function initSpeech() {
+    const synth = window.speechSynthesis;
+    if (!synth) return;                 // graceful: unsupported → no buttons
+
+    const LANG = 'en-US';
+    const RATE_KEY = 'eslTTSRate', VOICE_KEY = 'eslTTSVoice';
+    let voice = null;
+    let rate = 0.9;                     // a touch slow for beginners (default)
+    try { const r = parseFloat(localStorage.getItem(RATE_KEY)); if (r >= 0.5 && r <= 1.25) rate = r; } catch (_) {}
+    let refreshVoiceUI = function () {};
+
+    function englishVoices() {
+        return synth.getVoices().filter(v => /^en/i.test(v.lang));
+    }
+
+    function pickVoice() {
+        const voices = synth.getVoices();
+        let saved = null;
+        try { saved = localStorage.getItem(VOICE_KEY); } catch (_) {}
+        voice = (saved && voices.find(v => v.voiceURI === saved))
+             || voices.find(v => /en[-_]US/i.test(v.lang))
+             || voices.find(v => /^en/i.test(v.lang))
+             || null;
+    }
+    pickVoice();
+    // Voices often load asynchronously; re-pick and refresh the picker when they arrive.
+    if ('onvoiceschanged' in synth) synth.addEventListener('voiceschanged', () => { pickVoice(); refreshVoiceUI(); });
+
+    // Some browsers (notably Linux Chromium with no speech engine) expose
+    // speechSynthesis but have no voices, so speak() fails silently. Tell the
+    // learner once instead of leaving them clicking a dead button.
+    let audioNotified = false;
+    function notifyNoAudio() {
+        if (audioNotified) return;
+        audioNotified = true;
+        const bar = document.createElement('div');
+        bar.className = 'audio-unavailable';
+        bar.innerHTML = '🔇 <strong>Audio isn\'t available in this browser.</strong> ' +
+            'The Listen buttons use your device\'s built-in voices, and none were found here. ' +
+            'They work on most phones and on Windows, macOS &amp; Chromebooks. ' +
+            '<button type="button" class="audio-dismiss" aria-label="Dismiss">&times;</button>';
+        document.body.appendChild(bar);
+        bar.querySelector('.audio-dismiss').addEventListener('click', () => bar.remove());
+    }
+
+    function utter(text) {
+        const u = new SpeechSynthesisUtterance(text);
+        u.lang = LANG;
+        u.rate = rate;
+        if (voice) u.voice = voice;
+        u.onerror = e => { if (e && /unavailable|failed/.test(e.error || '')) notifyNoAudio(); };
+        return u;
+    }
+
+    function speak(text, btn) {
+        if (!text) return;
+        // Only cancel if something is actually playing — an unconditional
+        // cancel() right before speak() drops the utterance on some browsers.
+        try { if (synth.speaking || synth.pending) synth.cancel(); } catch (_) {}
+        const u = utter(text);
+        let started = false;
+        u.onstart = () => { started = true; if (btn) btn.classList.add('speaking'); };
+        u.onend = () => { if (btn) btn.classList.remove('speaking'); };
+        const prevErr = u.onerror;
+        u.onerror = e => { if (btn) btn.classList.remove('speaking'); prevErr(e); };
+        synth.speak(u);
+        // Nothing started and no voices exist → almost certainly unavailable.
+        setTimeout(() => {
+            if (!started && !synth.speaking && !synth.getVoices().length) notifyNoAudio();
+        }, 1200);
+    }
+
+    function speakSequence(texts) {
+        try { if (synth.speaking || synth.pending) synth.cancel(); } catch (_) {}
+        texts.filter(Boolean).forEach(t => synth.speak(utter(t))); // queued back-to-back
+    }
+
+    // Text of an element with IPA / speaker labels / existing buttons stripped.
+    function cleanText(el) {
+        const clone = el.cloneNode(true);
+        clone.querySelectorAll('.pron, .speaker, .say-btn, .speak-toolbar').forEach(n => n.remove());
+        return clone.textContent.replace(/\s+/g, ' ').trim();
+    }
+
+    function makeBtn(text, label, extraClass) {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'say-btn' + (extraClass ? ' ' + extraClass : '');
+        b.textContent = '🔊';
+        b.setAttribute('aria-label', label || ('Listen: ' + text));
+        b.title = 'Listen';
+        b.addEventListener('click', e => {
+            e.preventDefault();
+            e.stopPropagation();
+            speak(text, b);
+        });
+        return b;
+    }
+
+    function attach(el, text) {
+        if (!text) return;
+        el.appendChild(document.createTextNode(' '));
+        el.appendChild(makeBtn(text));
+    }
+
+    // 1) Explicit convention for authored content.
+    document.querySelectorAll('[data-say]').forEach(el => attach(el, el.getAttribute('data-say')));
+
+    // 2) Phrase-bank chips.
+    document.querySelectorAll('.phrase').forEach(el => attach(el, cleanText(el)));
+
+    // 3) Vocabulary word lists.
+    document.querySelectorAll('.wordlist > li').forEach(el => attach(el, cleanText(el)));
+
+    // 4) Pronunciation / alphabet tables: any cell carrying IPA.
+    document.querySelectorAll('td').forEach(td => {
+        if (td.querySelector('.pron')) attach(td, cleanText(td));
+    });
+
+    // 5) Dialogues: per line + a "Play conversation" control.
+    document.querySelectorAll('.dialogue').forEach(box => {
+        const lines = Array.from(box.querySelectorAll('.line'));
+        if (!lines.length) return;
+        lines.forEach(line => attach(line, cleanText(line)));
+
+        const bar = document.createElement('div');
+        bar.className = 'speak-toolbar';
+        const play = makeBtn('', 'Play the whole conversation', 'say-all');
+        play.textContent = '▶ Play conversation';
+        play.addEventListener('click', e => {
+            e.preventDefault();
+            speakSequence(lines.map(cleanText));
+        });
+        bar.appendChild(play);
+        box.insertBefore(bar, box.firstChild);
+    });
+
+    buildSettingsUI();
+
+    /* Collapsible "🎧 Audio" control: voice picker + speed slider,
+       both remembered per device and applied to every Listen button. */
+    function buildSettingsUI() {
+        const panel = document.createElement('div');
+        panel.className = 'tts-settings';
+        panel.innerHTML =
+            '<button type="button" class="tts-toggle" aria-expanded="false" aria-controls="tts-panel" title="Listening settings">🎧 Audio</button>' +
+            '<div class="tts-panel" id="tts-panel" hidden>' +
+                '<div class="tts-row"><label for="tts-voice">Voice</label>' +
+                    '<select id="tts-voice"></select></div>' +
+                '<div class="tts-row"><label for="tts-rate">Speed <span class="tts-rate-val"></span></label>' +
+                    '<input type="range" id="tts-rate" min="0.5" max="1.25" step="0.05"></div>' +
+                '<button type="button" class="tts-test say-btn say-all">▶ Test voice</button>' +
+            '</div>';
+        document.body.appendChild(panel);
+
+        const toggle = panel.querySelector('.tts-toggle');
+        const body = panel.querySelector('.tts-panel');
+        const sel = panel.querySelector('#tts-voice');
+        const range = panel.querySelector('#tts-rate');
+        const rateVal = panel.querySelector('.tts-rate-val');
+
+        toggle.addEventListener('click', () => {
+            const willOpen = body.hidden;
+            body.hidden = !willOpen;
+            toggle.setAttribute('aria-expanded', String(willOpen));
+        });
+
+        function populate() {
+            const eng = englishVoices();
+            const list = eng.length ? eng : synth.getVoices();
+            sel.innerHTML = '';
+            if (!list.length) {
+                const o = document.createElement('option');
+                o.textContent = 'No voices found on this device';
+                o.disabled = o.selected = true;
+                sel.appendChild(o);
+                sel.disabled = true;
+                return;
+            }
+            sel.disabled = false;
+            list.forEach(v => {
+                const o = document.createElement('option');
+                o.value = v.voiceURI;
+                o.textContent = v.name + ' — ' + v.lang;
+                if (voice && v.voiceURI === voice.voiceURI) o.selected = true;
+                sel.appendChild(o);
+            });
+        }
+        populate();
+        refreshVoiceUI = populate;   // called when voices load asynchronously
+
+        sel.addEventListener('change', () => {
+            const chosen = synth.getVoices().find(v => v.voiceURI === sel.value);
+            if (chosen) { voice = chosen; try { localStorage.setItem(VOICE_KEY, chosen.voiceURI); } catch (_) {} }
+        });
+
+        range.value = rate;
+        rateVal.textContent = rate.toFixed(2) + '×';
+        range.addEventListener('input', () => {
+            rate = parseFloat(range.value);
+            rateVal.textContent = rate.toFixed(2) + '×';
+            try { localStorage.setItem(RATE_KEY, String(rate)); } catch (_) {}
+        });
+
+        panel.querySelector('.tts-test').addEventListener('click',
+            () => speak('The quick brown fox jumps over the lazy dog.'));
+    }
+}
+
+/* ===========================
+   Learning Journal (in-page, autosaved)
+   ---------------------------
+   Turns the static "start a journal" prompt into a real, autosaving text
+   area kept in localStorage per lesson, plus a one-click Markdown export
+   of every entry across the course. Per-device only; never leaves the
+   browser.
+   =========================== */
+
+function initJournal() {
+    const section = document.getElementById('journal');
+    if (!section) return;
+    const host = section.querySelector('.card') || section;
+
+    const page = (location.pathname.split('/').pop() || 'index').replace('.html', '');
+    const key = 'eslJournal:' + page;
+
+    const fmt = ts => { try { return new Date(ts).toLocaleString(); } catch (_) { return ''; } };
+
+    const wrap = document.createElement('div');
+    wrap.className = 'journal-editor';
+    wrap.innerHTML = `
+        <label class="journal-label" for="journal-text">✍️ Your journal entry <span class="journal-note">(saved on this device)</span></label>
+        <textarea id="journal-text" class="journal-textarea" rows="7"
+            placeholder="Write your thoughts here… Key concepts · what clicked · questions to revisit · ideas to try · how you feel about your progress."></textarea>
+        <div class="journal-meta">
+            <span class="journal-status" aria-live="polite"></span>
+            <button type="button" class="journal-export">⬇ Export all my entries</button>
+        </div>`;
+    host.appendChild(wrap);
+
+    const ta = wrap.querySelector('.journal-textarea');
+    const status = wrap.querySelector('.journal-status');
+
+    // Restore
+    try {
+        const saved = JSON.parse(localStorage.getItem(key) || 'null');
+        if (saved && saved.text) {
+            ta.value = saved.text;
+            status.textContent = 'Last saved ' + fmt(saved.ts);
+        }
+    } catch (_) { /* storage blocked / corrupt — start blank */ }
+
+    const save = debounce(() => {
+        try {
+            localStorage.setItem(key, JSON.stringify({ text: ta.value, ts: Date.now() }));
+            status.textContent = 'Saved ✓ ' + fmt(Date.now());
+        } catch (_) {
+            status.textContent = '⚠️ Could not save (browser storage is blocked).';
+        }
+    }, 500);
+
+    ta.addEventListener('input', () => { status.textContent = 'Saving…'; save(); });
+
+    wrap.querySelector('.journal-export').addEventListener('click', exportJournal);
+}
+
+function exportJournal() {
+    const entries = [];
+    for (let i = 0; i < localStorage.length; i++) {
+        const k = localStorage.key(i);
+        if (!k || k.indexOf('eslJournal:') !== 0) continue;
+        try {
+            const v = JSON.parse(localStorage.getItem(k));
+            if (v && v.text && v.text.trim()) entries.push({ page: k.slice('eslJournal:'.length), text: v.text, ts: v.ts });
+        } catch (_) { /* skip unreadable entry */ }
+    }
+    entries.sort((a, b) => a.page.localeCompare(b.page));
+
+    const md = entries.length
+        ? '# My English Learning Journal\n\n' + entries.map(e =>
+            `## ${e.page}\n_saved ${new Date(e.ts).toLocaleString()}_\n\n${e.text}\n`).join('\n---\n\n')
+        : 'No journal entries saved yet.';
+
+    const blob = new Blob([md], { type: 'text/markdown' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'my-english-journal.md';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
 /* ===========================

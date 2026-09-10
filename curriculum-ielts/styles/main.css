@@ -1252,6 +1252,172 @@ svg .svg-bg { fill: var(--card-bg); }
     margin: 1rem 0;
 }
 
+/* ============================================================
+   Text-to-speech "Listen" controls (progressive enhancement)
+   ============================================================ */
+.say-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .3rem;
+    min-width: 1.9rem;
+    height: 1.9rem;
+    margin-left: .4rem;
+    padding: 0 .55rem;
+    font-size: .95rem;
+    line-height: 1;
+    color: var(--primary-color);
+    background: var(--primary-light);
+    border: 1px solid var(--border-color);
+    border-radius: 999px;
+    cursor: pointer;
+    vertical-align: middle;
+    transition: background .15s, color .15s, transform .15s;
+}
+.say-btn:hover { background: var(--primary-color); color: #fff; }
+.say-btn:focus-visible { outline: 2px solid var(--primary-color); outline-offset: 2px; }
+.say-btn.say-all {
+    height: auto;
+    padding: .35rem .8rem;
+    font-size: .85rem;
+    font-weight: 600;
+    margin-left: 0;
+}
+.say-btn.speaking {
+    background: var(--primary-color);
+    color: #fff;
+    animation: sayPulse 1s ease-in-out infinite;
+}
+@keyframes sayPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.08); } }
+.speak-toolbar { margin-bottom: .6rem; }
+.dialogue .line .say-btn { margin-left: .3rem; }
+@media (prefers-reduced-motion: reduce) { .say-btn.speaking { animation: none; } }
+
+/* Shown once if the browser has no text-to-speech voices */
+.audio-unavailable {
+    position: fixed;
+    left: 50%;
+    bottom: 1rem;
+    transform: translateX(-50%);
+    max-width: min(38rem, calc(100vw - 2rem));
+    z-index: 1000;
+    background: var(--warning-bg);
+    color: var(--text-color);
+    border: 1px solid var(--warning-border);
+    border-radius: 10px;
+    box-shadow: var(--shadow-lg);
+    padding: .7rem 2.4rem .7rem 1rem;
+    font-size: .9rem;
+    line-height: 1.5;
+}
+.audio-dismiss {
+    position: absolute;
+    top: .35rem;
+    right: .5rem;
+    font-size: 1.1rem;
+    line-height: 1;
+    background: transparent;
+    border: none;
+    color: var(--text-light);
+    cursor: pointer;
+}
+
+/* Listening-settings control: voice picker + speed slider */
+.tts-settings {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 900;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: .5rem;
+}
+.tts-toggle {
+    font-size: .85rem;
+    font-weight: 600;
+    color: #fff;
+    background: var(--primary-color);
+    border: none;
+    border-radius: 999px;
+    padding: .5rem .9rem;
+    cursor: pointer;
+    box-shadow: var(--shadow-md);
+}
+.tts-toggle:hover { background: var(--primary-hover); }
+.tts-toggle:focus-visible { outline: 2px solid var(--primary-color); outline-offset: 2px; }
+.tts-panel {
+    width: min(20rem, calc(100vw - 2rem));
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: var(--shadow-lg);
+    padding: .9rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: .8rem;
+}
+.tts-row { display: flex; flex-direction: column; gap: .3rem; }
+.tts-row label { font-size: .85rem; font-weight: 600; color: var(--text-light); }
+.tts-row select {
+    width: 100%;
+    font-size: .9rem;
+    color: var(--text-color);
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: .4rem .5rem;
+}
+.tts-row input[type="range"] { width: 100%; accent-color: var(--primary-color); }
+.tts-rate-val { color: var(--primary-color); font-weight: 700; }
+.tts-panel .tts-test { align-self: flex-start; margin-left: 0; }
+
+/* ============================================================
+   Learning Journal editor (autosaved to this device)
+   ============================================================ */
+.journal-editor { margin-top: 1.25rem; }
+.journal-label { display: block; font-weight: 600; margin-bottom: .45rem; }
+.journal-note { font-weight: 400; color: var(--text-light); font-size: .9em; }
+.journal-textarea {
+    width: 100%;
+    box-sizing: border-box;
+    font-family: var(--font-family-base);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-color);
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: .75rem .9rem;
+    resize: vertical;
+    min-height: 8rem;
+}
+.journal-textarea:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 1px;
+    border-color: var(--primary-color);
+}
+.journal-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-top: .5rem;
+    flex-wrap: wrap;
+}
+.journal-status { font-size: .85rem; color: var(--text-light); }
+.journal-export {
+    font-size: .85rem;
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--primary-color);
+    background: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: .35rem .7rem;
+}
+.journal-export:hover { background: var(--primary-light); }
+
 /* Word list grid */
 .wordlist {
     display: grid;
