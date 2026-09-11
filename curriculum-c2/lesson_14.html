@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Reading and interpreting demanding texts at C2 — theme and authorial purpose, narrative voice, dense syntax, allusion, imagery, and irony across a whole text. Lesson 5.2 of the C2 Mastery English curriculum.">
+    <meta name="author" content="Ray de la Paz">
+    <title>Lesson 5.2: Reading Literature &amp; Complex Texts - Mastery English (C2)</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        window.__mermaid = mermaid;
+        const isDark = localStorage.getItem('theme') === 'dark' ||
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: isDark ? 'dark' : 'default',
+            themeVariables: isDark
+                ? { primaryColor: '#334155', primaryTextColor: '#e2e8f0', primaryBorderColor: '#6366f1', lineColor: '#94a3b8', secondaryColor: '#1e293b', tertiaryColor: '#0f172a' }
+                : { primaryColor: '#eff6ff', primaryTextColor: '#1e293b', primaryBorderColor: '#3b82f6', lineColor: '#64748b', secondaryColor: '#f8fafc', tertiaryColor: '#f1f5f9' }
+        });
+    </script>
+</head>
+<body>
+    <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Mastery English (C2)</a>
+            <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-expanded="false" aria-controls="nav-links">☰</button>
+            <div class="nav-links" id="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#modules">All Lessons</a>
+                <span class="nav-divider"></span>
+                <a href="/">ESL Hub</a>
+                <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+                <button id="theme-toggle" aria-label="Toggle dark/light mode">🌙</button>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <div class="container">
+            <header>
+                <h1>📚 Lesson 5.2: Reading Literature &amp; Complex Texts</h1>
+                <p class="lead">At C2, reading is no longer about decoding words — you can do that effortlessly. The new frontier is <em>interpretation</em>: reading a demanding text for what it means beneath its surface, hearing the voice behind the sentences, and drawing sense from allusion, image, and irony that no dictionary can supply. This lesson trains the close, unhurried reading that literature and dense non-fiction demand — and rewards.</p>
+
+                <div class="card card-info">
+                    <h2>📚 What You'll Learn</h2>
+                    <p>By the end of this lesson, you will be able to:</p>
+                    <ul>
+                        <li>Read for <strong>theme and authorial purpose</strong> — the deeper concern a text circles, and why it was written</li>
+                        <li>Recognise <strong>narrative voice and point of view</strong>, including irony and the unreliable narrator</li>
+                        <li>Unpick <strong>dense, archaic, or complex syntax</strong> and read <strong>allusion, imagery, and symbolism</strong></li>
+                        <li>Derive meaning you can't get from a dictionary — through <strong>context, etymology, and reading on</strong></li>
+                    </ul>
+                    <p><strong>⏱️ Estimated Time:</strong> ~70 minutes</p>
+                    <p><strong>🎯 Project:</strong> Close-read a short poem or prose passage (your own choice, or the one provided) and write a short interpretation — of its theme, its voice, and one or two techniques and their effect — defending your reading with evidence from the text.</p>
+                </div>
+            </header>
+
+            <details class="card toc-card" open>
+                <summary aria-label="Toggle table of contents">
+                    <span class="toc-icon" aria-hidden="true">📑</span>
+                    <span class="toc-label">In This Lesson</span>
+                    <span class="toc-chevron" aria-hidden="true">▾</span>
+                </summary>
+                <nav aria-label="Table of Contents">
+                    <ol>
+                        <li><a href="#intro" class="toc-link">From Decoding to Interpreting</a></li>
+                        <li><a href="#theme" class="toc-link">Theme &amp; Authorial Purpose</a></li>
+                        <li><a href="#voice" class="toc-link">Narrative Voice &amp; Point of View</a></li>
+                        <li><a href="#syntax" class="toc-link">Unpicking Difficult Syntax</a></li>
+                        <li><a href="#techniques" class="toc-link">Allusion, Imagery &amp; Irony</a></li>
+                        <li><a href="#closeread" class="toc-link">A Guided Close Reading</a></li>
+                        <li><a href="#say-aloud" class="toc-link">Hear It &amp; Repeat</a></li>
+                        <li><a href="#practice" class="toc-link">Practice &amp; Project</a></li>
+                        <li><a href="#tips" class="toc-link">Tips &amp; Common Mistakes</a></li>
+                        <li><a href="#journal" class="toc-link">Learning Journal</a></li>
+                        <li><a href="#summary" class="toc-link">Summary</a></li>
+                    </ol>
+                </nav>
+            </details>
+
+            <section id="intro" class="lesson-section">
+                <h2>From Decoding to Interpreting</h2>
+                <p>You reached this course able to read for information — to extract the facts a text carries and move on. Literary and complex texts ask something different. They do not merely <em>state</em>; they <em>enact</em>, <em>imply</em>, and <em>withhold</em>. Their meaning lives partly in what is said and partly in <em>how</em> — in the choice of one image over another, in a narrator we come to distrust, in a sentence that coils back on itself, in a word that carries the ghost of an older meaning. To read such texts well is to slow down and attend to the making as much as the matter.</p>
+                <p>This is <strong>close reading</strong>: the discipline of interrogating a short passage word by word, asking not only "what does this say?" but "why <em>this</em> word, this order, this image — and what does the whole thing add up to?" It is a skill that repays literature, but also the densest non-fiction — a philosopher's argument, a critic's essay, a poet's compression. At C2, it is the reading that separates the fluent from the truly cultivated.</p>
+
+                <div class="card card-accent">
+                    <h4>🧠 Mindset</h4>
+                    <p>Give up the reflex to understand every word before moving on. A difficult text is not a wall to be scaled brick by brick but a landscape to be walked — you can grasp the shape of the whole while a few features stay hazy, and the haze often clears as you go. Tolerate uncertainty; read on; let later lines illuminate earlier ones. The confident reader is not the one who knows every word but the one who is unafraid <em>not</em> to, and reads for the drift until the detail resolves. 🌱</p>
+                </div>
+            </section>
+
+            <section id="theme" class="lesson-section">
+                <h2>Theme &amp; Authorial Purpose</h2>
+                <p>A <strong>theme</strong> is not the same as a subject or a plot. The subject of a story might be a fishing trip; its theme might be grief, or the failure of language between a father and son. The theme is the <em>underlying idea or concern</em> the text keeps returning to — the question it worries at rather than the events it narrates. Naming it well is an act of synthesis: you gather the recurring images, the weighted moments, the pattern beneath the incidents, and ask what they are collectively <em>about</em>.</p>
+                <p>Closely related is <strong>authorial purpose</strong>: <em>why</em> the text was made, and what it wants to do to you. Is it trying to move you, persuade you, unsettle you, make you laugh, make you complicit? Purpose is inferred, not stated — from tone, from what the text lingers on and what it hurries past, from the feeling it leaves behind. A satirist and an elegist may describe the same funeral; their purposes could not be more different, and the difference is legible in every choice.</p>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>Reading for…</th><th>The question to ask</th><th>Where to find the answer</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Subject</strong></td><td>What literally happens / is described?</td><td>on the surface — the events, the scene</td></tr>
+                            <tr><td><strong>Theme</strong></td><td>What is it really <em>about</em>?</td><td>recurring images, weighted moments, patterns</td></tr>
+                            <tr><td><strong>Purpose</strong></td><td>Why was it written / what does it want?</td><td>tone, emphasis, the feeling it leaves</td></tr>
+                            <tr><td><strong>Tone</strong></td><td>What is the author's attitude?</td><td>word choice, irony, register</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="card card-info">
+                    <h4>💡 Theme is a claim you can defend, not a moral you attach</h4>
+                    <p>A good statement of theme is specific and arguable — "the poem treats memory as something that both preserves and distorts" — not a bland moral ("it's about love"). Test any theme you propose by asking: <em>can I point to lines that support it, and could a thoughtful reader reasonably disagree?</em> If yes to both, you have a real interpretation rather than a platitude.</p>
+                </div>
+            </section>
+
+            <section id="voice" class="lesson-section">
+                <h2>Narrative Voice &amp; Point of View</h2>
+                <p>Every text is spoken by <em>someone</em> — and that someone is rarely the author in a simple sense. The <strong>narrative voice</strong> is the constructed personality doing the telling: its diction, its assumptions, its blind spots. Learning to hear it is central to interpretation, because the voice frames everything you're told.</p>
+                <p>Point of view sorts into familiar kinds — first person (<em>I</em>), second person (<em>you</em>), third-person limited (following one character's inner world), and third-person omniscient (knowing all). But the subtle art is hearing the voice's <em>reliability</em>. An <strong>unreliable narrator</strong> tells us things we come to doubt — through naivety, self-deception, or design — and the gap between what they say and what we infer <em>is</em> the meaning. When a narrator protests too much, misreads a scene we understand better than they do, or reveals a bias they don't notice, the author is speaking to us over the narrator's shoulder.</p>
+
+                <div class="model">
+                    <p><strong>Reliable:</strong> "I was frightened, and I said so."</p>
+                    <p><strong>Unreliable:</strong> "I was perfectly calm — anyone would have done as I did, and only a coward would say otherwise."</p>
+                    <p><small>The second narrator's insistence is the tell. The vehemence, the pre-emptive defence, the sneer at "cowards" — all leak an anxiety the narrator won't admit. We read <em>past</em> the words to the fear beneath, and the distance between the two is where the author has hidden the truth.</small></p>
+                </div>
+
+                <div class="card card-warning">
+                    <h4>⚠️ Don't confuse the narrator with the author</h4>
+                    <p>A repellent, deluded, or bigoted narrator does not mean a repellent author — often the reverse: the author has built the voice precisely so we can see through it. Attributing a narrator's views directly to the writer is one of the most common misreadings. Always ask: <em>does the text endorse this voice, or invite me to judge it?</em> The framing — irony, contradiction, the reactions of other characters — usually tells you which.</p>
+                </div>
+            </section>
+
+            <section id="syntax" class="lesson-section">
+                <h2>Unpicking Difficult Syntax</h2>
+                <p>Complex texts often stretch the sentence far beyond conversational shape — long periodic sentences that suspend their main verb to the end, inversions, nested subordinate clauses, archaic constructions, deliberate ambiguity. Faced with a sentence that seems to swim, the practised reader does not panic; they <strong>parse</strong>.</p>
+                <ul class="wordlist">
+                    <li><strong>Find the main clause.</strong> Strip away the subordinate matter and locate the core subject and verb: <em>who does what?</em> Everything else modifies that spine.</li>
+                    <li><strong>Bracket the interruptions.</strong> Long sentences bury their skeleton under parenthetical asides, appositives, and relative clauses. Mentally set them aside, read the spine, then restore them one by one.</li>
+                    <li><strong>Track the pronouns.</strong> In dense prose, <em>it</em>, <em>this</em>, <em>which</em>, and <em>they</em> can point a long way back. Pin each to its referent before moving on.</li>
+                    <li><strong>Read for the rhythm.</strong> A periodic sentence delays its resolution to build tension; hearing that shape — the long approach, the landing — helps you feel the meaning, not just decode it.</li>
+                    <li><strong>Handle archaism from context.</strong> An old word (<em>whither</em>, <em>ere</em>, <em>betwixt</em>) or an old construction usually yields to context and to a guess informed by its modern relatives.</li>
+                </ul>
+
+                <div class="card card-info">
+                    <h4>💡 The one-sentence drill</h4>
+                    <p>When a sentence defeats you, reduce it to a single plain sentence in your own words: <em>strip, spine, restore, paraphrase</em>. If you can render its core in ordinary language, you've understood it — and you can then admire the elaboration for its effect rather than being lost in it. Complexity of form need not mean obscurity of sense; it usually rewards the patient unpicking.</p>
+                </div>
+            </section>
+
+            <section id="techniques" class="lesson-section">
+                <h2>Allusion, Imagery &amp; Irony</h2>
+                <p>Building on the figurative language you met earlier, literary texts weave several techniques that carry meaning obliquely. Recognising them — and, crucially, naming their <em>effect</em> — is the substance of interpretation.</p>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>Technique</th><th>What it is</th><th>Its typical effect</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Allusion</strong></td><td>a glancing reference to another text / myth / event</td><td>borrows its weight; enriches by association</td></tr>
+                            <tr><td><strong>Imagery</strong></td><td>sensory detail — sight, sound, touch</td><td>makes abstract feeling concrete and felt</td></tr>
+                            <tr><td><strong>Symbolism</strong></td><td>an object standing for a larger idea</td><td>lets one thing carry a whole theme</td></tr>
+                            <tr><td><strong>Irony</strong></td><td>a gap between what is said and what is meant</td><td>signals judgement; invites the reader's complicity</td></tr>
+                            <tr><td><strong>Juxtaposition</strong></td><td>placing two things side by side</td><td>throws a contrast into relief</td></tr>
+                            <tr><td><strong>Foreshadowing</strong></td><td>an early hint of what is to come</td><td>builds unease; rewards rereading</td></tr>
+                            <tr><td><strong>Motif</strong></td><td>a recurring image or idea</td><td>threads the text; accretes meaning</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p><strong>Allusion</strong> deserves special care for a non-native reader, because it assumes shared cultural knowledge — a nod to Greek myth, the Bible, Shakespeare, a historical moment. When a phrase seems to carry more weight than its plain sense warrants, suspect an allusion, and let context or a quick search unlock it. <strong>Intertextuality</strong> is the broader web: texts talking to other texts, quoting, parodying, answering. You need not catch every reference, but sensing that one is present — and that the meaning thickens there — is itself the skill.</p>
+
+                <p>The reader's key move is to translate technique into <em>effect</em>. It is not enough to say "there is imagery of cold." The interpretation lies in: <em>the imagery of cold — the "iron light," the "brittle air" — makes the reunion feel not joyful but sepulchral, and so foreshadows the estrangement that follows.</em> Notice the shape of that sentence: <em>the text does X, which creates effect Y, which serves theme Z.</em> That is the engine of literary discussion.</p>
+
+                <div class="phrase-bank">
+                    <span class="phrase">the passage evokes…</span>
+                    <span class="phrase">the imagery juxtaposes…</span>
+                    <span class="phrase">this detail foreshadows…</span>
+                    <span class="phrase">the narrator's unreliability</span>
+                    <span class="phrase">the tone shifts from… to…</span>
+                    <span class="phrase">an allusion to…</span>
+                    <span class="phrase">the symbol suggests…</span>
+                    <span class="phrase">the effect is to…</span>
+                    <span class="phrase">it is heavy with irony</span>
+                    <span class="phrase">the motif of…</span>
+                </div>
+
+                <pre class="mermaid">graph LR
+    A[Technique noticed] --> B[Its effect on the reader]
+    B --> C[How it serves the theme]
+    C --> D[An interpretation you can defend]</pre>
+            </section>
+
+            <section id="closeread" class="lesson-section">
+                <h2>A Guided Close Reading</h2>
+                <p>Here is an original short passage — read it slowly, then follow the guided reading beneath it. (The passage is written for this lesson; no copyrighted work is quoted.)</p>
+
+                <div class="card">
+                    <h4>📖 The Passage</h4>
+                    <blockquote>
+                        The house had learned to do without her. Dust settled where her hands had once been quick; the clock in the hall, which she had wound each night as faithfully as prayer, now kept a slower, indifferent time. He moved through the rooms like a guest in a museum of his own life, touching nothing, naming everything under his breath — <em>her chair, her window, the stair she never trusted</em> — as if the words might summon what the walls had already forgotten.
+                    </blockquote>
+                </div>
+
+                <div class="card card-info">
+                    <h4>🔍 Reading it closely</h4>
+                    <ul>
+                        <li><strong>Subject vs theme.</strong> On the surface: a man alone in a house after a woman's absence (her death, we infer). The theme is <em>grief and the failure of memory to hold a person</em> — the tension between remembering and being forgotten.</li>
+                        <li><strong>Personification / narrative framing.</strong> "The house had learned to do without her" opens by giving the house agency — and quietly displaces the man's own struggle onto the building. It is really <em>he</em> who must learn to do without her; the house is a mirror.</li>
+                        <li><strong>Imagery and its effect.</strong> "Dust settled," the clock keeping "slower, indifferent time" — images of stilling and neglect make the abstract loss physical. The clock she wound "as faithfully as prayer" now runs down: the simile ties her devotion to something sacred, so its slowing reads as a small desecration.</li>
+                        <li><strong>Simile of estrangement.</strong> "like a guest in a museum of his own life" — the juxtaposition of <em>guest</em> and <em>his own life</em> captures alienation: the familiar has turned strange, and he is exiled inside his own home.</li>
+                        <li><strong>The ending's irony.</strong> He names things "as if the words might summon what the walls had already forgotten." The naming is an act of hope; the phrase "already forgotten" undercuts it. The reader feels the futility he cannot admit — meaning that lives in the gap between his gesture and its uselessness.</li>
+                        <li><strong>Authorial purpose.</strong> Not to narrate a death but to make us <em>feel</em> the particular loneliness of the bereaved — the way absence rewrites a familiar space. The purpose is elegiac: to move, and to dignify grief by attending to its small textures.</li>
+                    </ul>
+                </div>
+
+                <p>Notice that not one of these readings is available from a dictionary. They come from attending to word choice, image, and structure — and from asking, at each turn, <em>what is the effect, and what does it serve?</em> That is close reading, and it is entirely learnable.</p>
+            </section>
+
+            <section id="say-aloud" class="lesson-section">
+                <h2>🔊 Hear It &amp; Repeat — Model Sentences</h2>
+                <p>Listen to each model sentence, then say it back. Use the 🎧 <strong>Audio</strong> control (bottom-right) to choose a UK or US voice and slow the speed down. Each sentence is a piece of the language of literary discussion — the phrasing you'll use to defend a reading.</p>
+                <div class="card card-accent">
+                    <ul>
+                        <li data-say="The passage evokes grief not by naming it but through images of dust, stillness, and a slowing clock.">The passage evokes grief not by naming it but through images of dust, stillness, and a slowing clock.</li>
+                        <li data-say="The narrator's insistence that he was calm is precisely what reveals his fear; his unreliability is the point.">The narrator's insistence that he was calm is precisely what reveals his fear; his unreliability is the point.</li>
+                        <li data-say="The simile juxtaposes guest and his own life, and the effect is to make the familiar feel strange.">The simile juxtaposes guest and his own life, and the effect is to make the familiar feel strange.</li>
+                        <li data-say="I cannot look up this meaning; I have to infer it from context, tone, and what the whole text is doing.">I cannot look up this meaning; I have to infer it from context, tone, and what the whole text is doing.</li>
+                        <li data-say="The theme is not the subject: the story is about a fishing trip, but its theme is the silence between father and son.">The theme is not the subject: the story is about a fishing trip, but its theme is the silence between father and son.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="practice" class="lesson-section">
+                <h2>Practice &amp; Project</h2>
+
+                <div class="card card-info exercise-check" data-exercise="gapfill">
+                    <h3>🏋️ Exercise 1: Match the technique to its effect</h3>
+                    <p><strong>Objective:</strong> Fill each gap with the technique named by its effect — choose from: <em>allusion</em>, <em>foreshadowing</em>, <em>symbolism</em>, <em>irony</em>, <em>juxtaposition</em>.</p>
+                    <ol>
+                        <li>An early hint that quietly prepares the reader for what is to come is <input class="gap" data-answer="foreshadowing" autocomplete="off" autocapitalize="off" aria-label="gap 1">.</li>
+                        <li>A gap between what is said and what is actually meant is <input class="gap" data-answer="irony" autocomplete="off" autocapitalize="off" aria-label="gap 2">.</li>
+                        <li>Placing two contrasting things side by side to throw the difference into relief is <input class="gap" data-answer="juxtaposition" autocomplete="off" autocapitalize="off" aria-label="gap 3">.</li>
+                        <li>A glancing reference to another text or myth that borrows its weight is <input class="gap" data-answer="allusion" autocomplete="off" autocapitalize="off" aria-label="gap 4">.</li>
+                        <li>An object made to stand for a larger idea is <input class="gap" data-answer="symbolism" autocomplete="off" autocapitalize="off" aria-label="gap 5">.</li>
+                    </ol>
+                    <div class="exercise-actions"><button type="button" class="check-btn">Check my answers</button> <button type="button" class="reveal-btn">Show answers</button></div>
+                    <div class="check-feedback" aria-live="polite"></div>
+                    <details>
+                        <summary>✅ Answer</summary>
+                        <p>1. foreshadowing · 2. irony · 3. juxtaposition · 4. allusion · 5. symbolism. Remember that naming the technique is only half the work — the interpretation lies in stating its <em>effect</em> and how it serves the theme.</p>
+                    </details>
+                </div>
+
+                <div class="card card-info exercise-check" data-exercise="gapfill">
+                    <h3>🏋️ Exercise 2: Interpret the implied meaning</h3>
+                    <p><strong>Objective:</strong> Read each short line, then complete the interpretation with the single best word.</p>
+                    <ol>
+                        <li>"I was perfectly calm — only a coward would say otherwise." The narrator's over-insistence makes them <input class="gap" data-answer="unreliable" autocomplete="off" autocapitalize="off" aria-label="gap 1">.</li>
+                        <li>"The clock she had wound as faithfully as prayer now kept a slower time." Tying her habit to prayer makes its slowing feel like a small act of <input class="gap" data-answer="desecration" autocomplete="off" autocapitalize="off" aria-label="gap 2">.</li>
+                        <li>"He moved like a guest in a museum of his own life." The word <em>guest</em> beside <em>his own life</em> conveys his <input class="gap" data-answer="alienation" autocomplete="off" autocapitalize="off" aria-label="gap 3"> from the familiar.</li>
+                        <li>"As if the words might summon what the walls had already forgotten." The phrase <em>already forgotten</em> makes his naming feel <input class="gap" data-answer="futile" autocomplete="off" autocapitalize="off" aria-label="gap 4">.</li>
+                    </ol>
+                    <div class="exercise-actions"><button type="button" class="check-btn">Check my answers</button> <button type="button" class="reveal-btn">Show answers</button></div>
+                    <div class="check-feedback" aria-live="polite"></div>
+                    <details>
+                        <summary>✅ Answer</summary>
+                        <p>1. unreliable · 2. desecration · 3. alienation · 4. futile. Each answer names the <em>effect</em> of a specific choice — the interpretive move of reading past the surface to what the language is quietly doing.</p>
+                    </details>
+                </div>
+
+                <div class="card card-info">
+                    <h3>🎯 Your Project: A Close Reading</h3>
+                    <p>Choose a short text — a poem, or a prose passage of roughly a paragraph or two. You may use the passage provided above (<em>"The house had learned to do without her…"</em>) or, better, one you find yourself. Then write a short interpretation (150–250 words).</p>
+                    <ol>
+                        <li><strong>(8 min)</strong> Read the text three times: once for the surface (what happens), once slowly for word choice and image, once aloud for rhythm and tone.</li>
+                        <li><strong>(5 min)</strong> State the <strong>theme</strong> in one arguable sentence — what the text is really <em>about</em> — and the <strong>authorial purpose</strong> (to move, unsettle, satirise, mourn?).</li>
+                        <li><strong>(5 min)</strong> Identify the <strong>narrative voice</strong> and point of view. Is it reliable? What does the voice reveal that it doesn't state?</li>
+                        <li><strong>(7 min)</strong> Pick <strong>one or two techniques</strong> (an image, a symbol, an instance of irony) and, for each, write the <em>effect → theme</em> chain: <em>the text does X, which creates Y, which serves Z.</em></li>
+                        <li><strong>(5 min)</strong> Draft your interpretation, quoting or pointing to specific words as evidence. Use the language of literary discussion (<em>the passage evokes… juxtaposes… foreshadows…</em>).</li>
+                    </ol>
+                    <div class="card card-success">
+                        <h4>✅ Project Completion Checklist</h4>
+                        <ul>
+                            <li>☐ I read the text at least three times, for surface, detail, and sound</li>
+                            <li>☐ I stated the theme as a specific, arguable claim — not a bland moral</li>
+                            <li>☐ I identified the narrative voice and considered its reliability</li>
+                            <li>☐ I traced at least one <em>technique → effect → theme</em> chain</li>
+                            <li>☐ I supported every claim with evidence from the words themselves</li>
+                            <li>☐ I used the vocabulary of literary discussion accurately</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card quiz-container">
+                    <h3>🎯 Quick Quiz</h3>
+                    <div class="quiz-question">
+                        <p><strong>Question 1:</strong> A story's <em>subject</em> is a family dinner; it keeps returning to unspoken resentment and the things no one will say. What is its <em>theme</em>?</p>
+                        <div class="quiz-options">
+                            <button class="quiz-option" data-correct="true" data-explanation="Correct — the theme is the underlying concern the text circles, here the silence and buried resentment, not the literal event.">A) The failure of communication within a family</button>
+                            <button class="quiz-option" data-correct="false" data-hint="That's the subject — what literally happens — not the deeper idea the text is about.">B) A family eating dinner together</button>
+                            <button class="quiz-option" data-correct="false" data-hint="A bland moral isn't a theme; a theme is specific and arguable, grounded in the text.">C) Families should always be kind</button>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    <div class="quiz-question">
+                        <p><strong>Question 2:</strong> A first-person narrator repeatedly insists on his own honesty while the events he describes suggest otherwise. This is best described as…</p>
+                        <div class="quiz-options">
+                            <button class="quiz-option" data-correct="true" data-explanation="Yes — the gap between what the narrator claims and what we infer marks him as an unreliable narrator, and that gap carries the meaning.">A) An unreliable narrator</button>
+                            <button class="quiz-option" data-correct="false" data-hint="Omniscience is about knowing all characters' thoughts, not about a narrator we come to distrust.">B) An omniscient narrator</button>
+                            <button class="quiz-option" data-correct="false" data-hint="An allusion is a reference to another text — a different device entirely.">C) An allusion</button>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="tips" class="lesson-section">
+                <h2>Tips &amp; Common Mistakes</h2>
+
+                <h3>✅ Do's</h3>
+                <ul>
+                    <li><strong>Read a hard text more than once</strong> — for surface, for detail, and aloud for rhythm. Meaning accretes across readings.</li>
+                    <li><strong>Translate technique into effect</strong>: never stop at "there is imagery" — say what the imagery <em>does</em> and how it serves the theme.</li>
+                    <li><strong>Parse a difficult sentence</strong> by finding the main clause, bracketing the interruptions, and paraphrasing the spine in plain words.</li>
+                    <li><strong>Tolerate uncertainty</strong> — read on when a word or line resists you, and let later text illuminate it. You needn't understand every word to grasp the whole.</li>
+                </ul>
+
+                <h3>❌ Common Mistakes</h3>
+                <div class="card card-warning">
+                    <h4>⚠️ Watch Out</h4>
+                    <ul>
+                        <li><strong>Confusing subject with theme:</strong> saying a poem is "about the sea" when the sea is only the subject and the theme is, say, mortality or longing.</li>
+                        <li><strong>Confusing narrator with author:</strong> attributing an unreliable or repellent narrator's views to the writer, when the text may be inviting you to judge that voice.</li>
+                        <li><strong>Technique-spotting without interpretation:</strong> listing devices ("here's a metaphor, here's alliteration") without saying what any of them <em>achieves</em>. Effect is the whole point.</li>
+                        <li><strong>Reaching for the dictionary too soon:</strong> stopping dead at every unknown word instead of inferring from context and reading on — which breaks the flow and rarely helps with implied meaning.</li>
+                        <li><strong>The unsupported claim:</strong> asserting an interpretation with no evidence from the text. Every reading must point to specific words.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="journal" class="lesson-section">
+                <h2>📓 Learning Journal</h2>
+                <div class="card card-info">
+                    <p>Keep your learning journal going. After this lesson, note:</p>
+                    <ul>
+                        <li><strong>Key concepts</strong> you learned</li>
+                        <li><strong>Distinctions that clicked</strong> for you</li>
+                        <li><strong>Questions or uncertainties</strong> to revisit</li>
+                        <li><strong>Techniques you want to look for as you read</strong></li>
+                        <li><strong>Your progress and feelings</strong> about working at C2</li>
+                    </ul>
+                    <p><strong>✍️ This lesson's prompt:</strong> Find a short passage — from a novel, a poem, or a piece of demanding non-fiction — that you found difficult or striking. Write about <em>why</em> it resisted an easy reading: was it the syntax, an allusion you didn't catch, a voice you couldn't place, a meaning that hovered just out of reach? Then try a close reading of a few lines and record what opened up. What does the discipline of slowing down give you that fast reading cannot?</p>
+                </div>
+            </section>
+
+            <section id="summary" class="lesson-section">
+                <h2>📝 Lesson Summary</h2>
+
+                <div class="card card-success">
+                    <h3>🎓 Key Takeaways</h3>
+                    <ul>
+                        <li>At C2, reading becomes <strong>interpretation</strong> — attending to <em>how</em> a text means, not only <em>what</em> it says.</li>
+                        <li><strong>Theme</strong> is the underlying, arguable concern (distinct from subject); <strong>authorial purpose</strong> is the inferred <em>why</em>, read from tone and emphasis.</li>
+                        <li><strong>Narrative voice</strong> frames everything; hearing an <strong>unreliable narrator</strong> — the gap between what's said and what's true — is central, and the narrator is not the author.</li>
+                        <li><strong>Difficult syntax</strong> yields to parsing: find the main clause, bracket the interruptions, track the pronouns, paraphrase the spine.</li>
+                        <li><strong>Allusion, imagery, symbolism, and irony</strong> carry meaning obliquely; the interpretive move is to translate each <em>technique into effect</em> and effect into theme — using context, not just a dictionary.</li>
+                    </ul>
+                </div>
+
+                <h3>🎉 What You've Accomplished</h3>
+                <p>You've moved from reading for information to reading for meaning — the slow, attentive interrogation that literature and dense non-fiction reward. You can now name a theme as a defensible claim, hear a narrator's reliability, unpick a sentence that once would have defeated you, and turn a noticed technique into a genuine interpretation supported by the words on the page. Above all, you've learned to read on through uncertainty, trusting that meaning accretes. That patient, interpretive eye is one of the deepest pleasures literacy can offer — and it is now yours. 🎉</p>
+
+                <h3>❓ Common Questions at This Stage</h3>
+                <details>
+                    <summary>Is there a single "correct" interpretation of a text?</summary>
+                    <p>Rarely — but that doesn't make all readings equal. A good interpretation is one that accounts for the most of the text and is supported by its actual words; a weak one ignores evidence or contradicts it. Two well-supported readings can genuinely coexist, and part of the richness of literature is that it sustains more than one. What's not permitted is a reading with no evidence, or one the text plainly rules out. Interpret freely, but always be answerable to the words.</p>
+                </details>
+                <details>
+                    <summary>What should I do when I can't understand a whole passage?</summary>
+                    <p>Zoom out before you zoom in. Read the whole thing once for its general drift without stopping — then return to the hard parts, now armed with a sense of the whole. Parse the toughest sentence with the strip-spine-restore method, and infer unknown words from context. If a phrase seems to carry unexplained weight, suspect an allusion and check it. Most of all, don't demand total mastery on the first pass; understanding a difficult text is layered, and each reading adds a stratum.</p>
+                </details>
+                <details>
+                    <summary>Do I need to know the "right" literary terms to read well?</summary>
+                    <p>The terms are useful shorthand — <em>irony</em>, <em>motif</em>, <em>foreshadowing</em> let you name what you notice quickly — but they are servants, not masters. A precise observation about effect ("the cold imagery makes the reunion feel like a funeral") is worth more than a term dropped without insight ("there is imagery here"). Learn the vocabulary because it sharpens your seeing, not to decorate an essay. The seeing comes first.</p>
+                </details>
+
+                <h3>🔭 Looking Ahead</h3>
+                <p>Having learned to read the most demanding written texts, we turn to the fast, unscripted, culturally-loaded English of real media. In <strong>Lesson 5.3 — Decoding Authentic Media: Slang, Cultural Reference &amp; Fast Speech</strong>, you'll build the skills to follow films, comedy, podcasts, and social media: current slang, cultural allusion, connected fast speech, and the humour and sarcasm that scripted textbooks never prepare you for.</p>
+
+                <h3>✅ Before the Next Lesson</h3>
+                <ul>
+                    <li>Close-read one short poem or passage and write a paragraph of interpretation.</li>
+                    <li>Find and decode one allusion in something you read this week.</li>
+                    <li>Write your Learning Journal entry for this lesson.</li>
+                </ul>
+
+                <div class="card card-accent" style="text-align: center; padding: 2rem;">
+                    <h3>🌟 Encouragement for the Journey</h3>
+                    <p>The deepest reward of mastering a language is not the ability to order a meal or close a deal — it is the door it opens onto its literature, and through that, onto the whole recorded reach of human feeling. You can now read not just the words but the mind behind them, the design beneath the surface, the meaning that hides in a single well-chosen image. That is a lifelong pleasure, and you have just picked up the key. Read slowly, read deeply, and let the great texts speak to you as they do to any native reader. 📚</p>
+                </div>
+            </section>
+
+            <nav class="lesson-nav" aria-label="Lesson Navigation">
+                <a href="lesson_13.html" class="prev-lesson">← Previous: Varieties of English — Accents, Dialects &amp; Global Englishes</a>
+                <a href="index.html" class="home-link">🏠 Course Home</a>
+                <a href="lesson_15.html" class="next-lesson">Next: Decoding Authentic Media — Slang &amp; Cultural Reference →</a>
+            </nav>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Ray de la Paz. Mastery English (C2 Proficiency). All rights reserved.</p>
+        <div class="footer-links">
+            <a href="/">ESL Hub</a>
+            <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+            <a href="https://rays-home.netlify.app/contact">Contact</a>
+            <a href="#" id="print-button">Print Page</a>
+        </div>
+        <p><small>Press <kbd>?</kbd> for keyboard shortcuts</small></p>
+    </footer>
+
+    <script src="js/clipboard.js"></script>
+    <script src="js/course-enhancements.js"></script>
+</body>
+</html>
