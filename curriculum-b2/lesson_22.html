@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Understanding natural speech — how to decode fast, connected English through weak forms, linking, elision, assimilation, and common casual reductions (gonna, wanna, kinda). Lesson 8.1 of the B2 Confident English curriculum.">
+    <meta name="author" content="Ray de la Paz">
+    <title>Lesson 8.1: Understanding Natural Speech — Connected Speech &amp; Weak Forms - Confident English (B2)</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        window.__mermaid = mermaid;
+        const isDark = localStorage.getItem('theme') === 'dark' ||
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: isDark ? 'dark' : 'default',
+            themeVariables: isDark
+                ? { primaryColor: '#334155', primaryTextColor: '#e2e8f0', primaryBorderColor: '#6366f1', lineColor: '#94a3b8', secondaryColor: '#1e293b', tertiaryColor: '#0f172a' }
+                : { primaryColor: '#eff6ff', primaryTextColor: '#1e293b', primaryBorderColor: '#3b82f6', lineColor: '#64748b', secondaryColor: '#f8fafc', tertiaryColor: '#f1f5f9' }
+        });
+    </script>
+</head>
+<body>
+    <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Confident English (B2)</a>
+            <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-expanded="false" aria-controls="nav-links">☰</button>
+            <div class="nav-links" id="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#modules">All Lessons</a>
+                <span class="nav-divider"></span>
+                <a href="/">ESL Hub</a>
+                <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+                <button id="theme-toggle" aria-label="Toggle dark/light mode">🌙</button>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <div class="container">
+            <header>
+                <h1>👂 Lesson 8.1: Understanding Natural Speech — Connected Speech &amp; Weak Forms</h1>
+                <p class="lead">You've probably had this experience: you can read English comfortably, but when a native speaker talks at full speed, the words seem to melt into each other and disappear. That's not a gap in your vocabulary — it's <strong>connected speech</strong>. Real spoken English doesn't sound like words read one at a time; it squeezes, links, and drops sounds. In this lesson you'll learn exactly <em>how</em> that happens, so your ears can start catching what was there all along.</p>
+
+                <div class="card card-info">
+                    <h2>📚 What You'll Learn</h2>
+                    <p>By the end of this lesson, you will be able to:</p>
+                    <ul>
+                        <li>Recognise <strong>weak forms</strong> — how little grammar words (to, of, and, can, was) shrink to a schwa in fast speech</li>
+                        <li>Hear <strong>linking</strong> — how words run together, especially consonant-to-vowel ("an apple" → "anapple")</li>
+                        <li>Spot <strong>elision</strong> and <strong>assimilation</strong> — dropped and blended sounds ("nex(t) day", "san(d)wich")</li>
+                        <li>Decode common casual <strong>reductions</strong> (gonna, wanna, gotta, kinda, d'you, whatcha) and write them back as full forms</li>
+                    </ul>
+                    <p><strong>⏱️ Estimated Time:</strong> 55–70 minutes</p>
+                    <p><strong>🎯 Project:</strong> Listen to a short clip of natural English, transcribe what you hear, then check it and note where connected speech tricked your ear.</p>
+                </div>
+            </header>
+
+            <details class="card toc-card" open>
+                <summary aria-label="Toggle table of contents">
+                    <span class="toc-icon" aria-hidden="true">📑</span>
+                    <span class="toc-label">In This Lesson</span>
+                    <span class="toc-chevron" aria-hidden="true">▾</span>
+                </summary>
+                <nav aria-label="Table of Contents">
+                    <ol>
+                        <li><a href="#intro" class="toc-link">Why Fast English Is Hard to Catch</a></li>
+                        <li><a href="#weak" class="toc-link">Weak Forms &amp; the Schwa</a></li>
+                        <li><a href="#linking" class="toc-link">Linking: Words That Run Together</a></li>
+                        <li><a href="#elision" class="toc-link">Elision &amp; Assimilation: Lost &amp; Blended Sounds</a></li>
+                        <li><a href="#reductions" class="toc-link">Casual Reductions: gonna, wanna, kinda</a></li>
+                        <li><a href="#dialogue" class="toc-link">Natural Speech in Action</a></li>
+                        <li><a href="#say-aloud" class="toc-link">Hear It &amp; Repeat</a></li>
+                        <li><a href="#practice" class="toc-link">Practice &amp; Project</a></li>
+                        <li><a href="#tips" class="toc-link">Tips &amp; Common Mistakes</a></li>
+                        <li><a href="#journal" class="toc-link">Learning Journal</a></li>
+                        <li><a href="#summary" class="toc-link">Summary</a></li>
+                    </ol>
+                </nav>
+            </details>
+
+            <section id="intro" class="lesson-section">
+                <h2>Why Fast English Is Hard to Catch</h2>
+                <p>When you learned words one at a time, you learned their <strong>full, careful pronunciation</strong> — the way a dictionary says them. But nobody speaks that way at natural speed. English is a <strong>stress-timed</strong> language: the important, meaning-carrying words (nouns, main verbs, adjectives) get the stress and the clear sound, while the little grammar words in between get squashed to fit the rhythm.</p>
+                <p>So the sentence <em>"I was going to call you"</em> doesn't arrive in your ear as six neat words. It arrives more like <span class="pron">"I wz gonna call ya"</span> — three of those words have shrivelled almost to nothing. The information is still there; it's just wearing a disguise. Your job at B2 is to learn the disguises.</p>
+                <div class="model">
+                    <p><strong>Careful (dictionary):</strong> "What are you going to do?" — five clear words.</p>
+                    <p><strong>Natural (fast):</strong> <span class="pron">"Whatcha gonna do?"</span> — the same meaning, half the sounds.</p>
+                </div>
+                <p>Notice the crucial point: none of this is "lazy" or "wrong" English. It's how <em>everyone</em> speaks, including newsreaders and professors, once they stop dictating. Recognising it is a listening skill — and it's completely separate from how you should <strong>write</strong>, where you always use the full forms.</p>
+
+                <div class="card card-accent">
+                    <h4>🧠 Mindset</h4>
+                    <p>If you've ever thought "my listening just isn't good enough," reframe it. You almost certainly know these words already — you simply hadn't been shown how they compress in real speech. This lesson isn't asking you to learn new vocabulary; it's tuning your ears to hear the vocabulary you already own. That's a fast, satisfying kind of progress. 🌱</p>
+                </div>
+            </section>
+
+            <section id="weak" class="lesson-section">
+                <h2>Weak Forms &amp; the Schwa</h2>
+                <p>The single most useful thing to understand is the <strong>weak form</strong>. Most small grammar words — articles, prepositions, auxiliaries, conjunctions, pronouns — have <strong>two</strong> pronunciations: a strong one (used when the word is stressed or said alone) and a weak one (used the rest of the time, which is most of the time).</p>
+                <p>In the weak form, the vowel usually collapses into a <strong>schwa</strong> — the small, neutral "uh" sound (written /ə/) that is the most common sound in English. Listen for it and a whole layer of speech opens up.</p>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>Word</th><th>Strong form</th><th>Weak form (what you hear)</th><th>Example</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>to</strong></td><td>/tuː/</td><td><span class="pron">/tə/</span></td><td>I want <span class="pron">tə</span> go.</td></tr>
+                            <tr><td><strong>of</strong></td><td>/ɒv/</td><td><span class="pron">/əv/</span></td><td>a cup <span class="pron">əv</span> tea → "a cuppa tea"</td></tr>
+                            <tr><td><strong>and</strong></td><td>/ænd/</td><td><span class="pron">/ən/</span></td><td>fish <span class="pron">'n'</span> chips</td></tr>
+                            <tr><td><strong>for</strong></td><td>/fɔː/</td><td><span class="pron">/fə/</span></td><td>It's <span class="pron">fə</span> you.</td></tr>
+                            <tr><td><strong>can</strong></td><td>/kæn/</td><td><span class="pron">/kən/</span></td><td>I <span class="pron">kən</span> go.</td></tr>
+                            <tr><td><strong>was</strong></td><td>/wɒz/</td><td><span class="pron">/wəz/</span></td><td>She <span class="pron">wəz</span> late.</td></tr>
+                            <tr><td><strong>are</strong></td><td>/ɑː/</td><td><span class="pron">/ə/</span></td><td>They <span class="pron">ə</span> ready.</td></tr>
+                            <tr><td><strong>them</strong></td><td>/ðem/</td><td><span class="pron">/ðəm/</span> or "'em"</td><td>Tell <span class="pron">'em</span>.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="card card-warning">
+                    <h4>⚠️💡 can vs can't — the famous trap</h4>
+                    <p>Here's why weak forms matter for meaning, not just sound. In "I <strong>can</strong> go," the <em>can</em> is weak: <span class="pron">/kən/</span>, quick and quiet. In "I <strong>can't</strong> go," the <em>can't</em> is strong and stressed: <span class="pron">/kɑːnt/</span> (UK) or <span class="pron">/kænt/</span> (US), longer and clearer. Learners often mishear these as opposites. The trick: if the word is <strong>quick and unstressed</strong>, it's almost always <em>can</em>; if it's <strong>long and stressed</strong>, it's <em>can't</em>.</p>
+                </div>
+
+                <p>Once you know that <em>to, of, and, for, was, can, are, at, some, than, that</em> and their friends nearly always arrive as a schwa, you stop waiting to hear them clearly — and you stop panicking when they vanish. You expect the disappearance.</p>
+            </section>
+
+            <section id="linking" class="lesson-section">
+                <h2>Linking: Words That Run Together</h2>
+                <p>English doesn't leave neat gaps between words. When one word ends and the next begins, they <strong>link</strong> — the end of one flows straight into the start of the next. That's why "an apple" sounds like one word, <span class="pron">"anapple."</span></p>
+
+                <h3>Consonant → vowel linking (the big one)</h3>
+                <p>When a word ends in a <strong>consonant sound</strong> and the next starts with a <strong>vowel sound</strong>, the consonant jumps across to join the vowel. This is the most common linking of all.</p>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>Written</th><th>What you hear</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>an apple</td><td><span class="pron">a-napple</span></td></tr>
+                            <tr><td>turn it off</td><td><span class="pron">tur-ni-toff</span></td></tr>
+                            <tr><td>pick it up</td><td><span class="pron">pi-ki-tup</span></td></tr>
+                            <tr><td>far away</td><td><span class="pron">fa-raway</span></td></tr>
+                            <tr><td>this evening</td><td><span class="pron">thi-sevening</span></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Vowel → vowel linking (a little /w/ or /j/)</h3>
+                <p>When one word ends in a vowel and the next begins with a vowel, speakers slip a tiny <strong>/w/</strong> or <strong>/j/ (y)</strong> sound between them to glide across: "go on" → <span class="pron">"go-won,"</span> "I agree" → <span class="pron">"I-yagree,"</span> "the end" → <span class="pron">"thee-yend."</span> You don't need to produce these deliberately; just know that the little glide you hear is <em>not</em> an extra word.</p>
+
+                <div class="card card-info">
+                    <h4>💡 Why this matters for listening</h4>
+                    <p>Linking is the number-one reason learners can't find "where one word stops." The fix is a mental shift: stop listening for gaps between words and start listening for <strong>stressed syllables</strong>. The stressed beats are your anchors; the linked, unstressed stuff flows between them. Once you anchor on the stresses, the linking stops being frightening.</p>
+                </div>
+            </section>
+
+            <section id="elision" class="lesson-section">
+                <h2>Elision &amp; Assimilation: Lost &amp; Blended Sounds</h2>
+                <p>Two more processes finish the picture. In fast speech, sounds don't just link — some <strong>disappear</strong> (elision) and others <strong>change to match a neighbour</strong> (assimilation).</p>
+
+                <h3>Elision — a sound goes missing</h3>
+                <p>To save effort, speakers routinely drop a sound — most often a <strong>/t/ or /d/ caught between two consonants</strong>. It's still spelled; it just isn't said.</p>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>Written</th><th>What you hear</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>next day</td><td><span class="pron">"nex(t) day"</span></td></tr>
+                            <tr><td>sandwich</td><td><span class="pron">"san(d)wich"</span></td></tr>
+                            <tr><td>friendship</td><td><span class="pron">"frien(d)ship"</span></td></tr>
+                            <tr><td>most people</td><td><span class="pron">"mos(t) people"</span></td></tr>
+                            <tr><td>I don't know</td><td><span class="pron">"I dunno"</span></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Assimilation — a sound changes to fit</h3>
+                <p>Sometimes a sound shifts to blend more smoothly with the one after it. "Ten pounds" drifts toward <span class="pron">"tem pounds"</span> (the /n/ leans toward the /p/); "good boy" toward <span class="pron">"gub boy"</span>; "don't you" toward <span class="pron">"doncha"</span>; "did you" toward <span class="pron">"dijou / didja."</span> You don't have to master producing these — but recognising them stops you hunting for a word that was never said clearly.</p>
+
+                <div class="card card-warning">
+                    <h4>⚠️ These are for listening — write the full forms</h4>
+                    <p>Everything in this lesson describes how words <strong>sound</strong>, not how they're <strong>written</strong>. In your own writing you always use the full, standard forms: <em>next day</em>, <em>sandwich</em>, <em>going to</em>, <em>a cup of tea</em>. The relaxed spellings here (gonna, dunno, 'n') exist only to <em>show</em> the sound. Never write "I'm gonna" in an email or essay.</p>
+                </div>
+            </section>
+
+            <section id="reductions" class="lesson-section">
+                <h2>Casual Reductions: gonna, wanna, kinda</h2>
+                <p>Some very common word combinations are reduced so consistently that they've earned their own informal spellings. You will hear these constantly in films, songs, podcasts, and everyday chat. Learn to <strong>expand</strong> each one back to its full form instantly.</p>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>Relaxed form</th><th>Full form</th><th>Example</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>gonna</strong></td><td>going to</td><td>I'm <span class="pron">gonna</span> call her. = I'm going to call her.</td></tr>
+                            <tr><td><strong>wanna</strong></td><td>want to</td><td>Do you <span class="pron">wanna</span> come? = Do you want to come?</td></tr>
+                            <tr><td><strong>gotta</strong></td><td>have got to / got to</td><td>I <span class="pron">gotta</span> go. = I have got to go.</td></tr>
+                            <tr><td><strong>gotta</strong> (a)</td><td>got a</td><td>I've <span class="pron">gotta</span> minute. = I've got a minute.</td></tr>
+                            <tr><td><strong>kinda</strong></td><td>kind of</td><td>It's <span class="pron">kinda</span> cold. = It's kind of cold.</td></tr>
+                            <tr><td><strong>sorta</strong></td><td>sort of</td><td>I <span class="pron">sorta</span> agree. = I sort of agree.</td></tr>
+                            <tr><td><strong>d'you</strong></td><td>do you</td><td><span class="pron">D'you</span> know him? = Do you know him?</td></tr>
+                            <tr><td><strong>whatcha</strong></td><td>what are you / what do you</td><td><span class="pron">Whatcha</span> doing? = What are you doing?</td></tr>
+                            <tr><td><strong>lemme</strong></td><td>let me</td><td><span class="pron">Lemme</span> see. = Let me see.</td></tr>
+                            <tr><td><strong>gimme</strong></td><td>give me</td><td><span class="pron">Gimme</span> a second. = Give me a second.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>Here's the whole system in one picture — full, careful words on one side, and everything speech does to them on the way to your ear on the other:</p>
+                <pre class="mermaid">
+graph LR
+    A["Full careful words"] --> B["Weak forms / schwa"]
+    A --> C["Linking words together"]
+    A --> D["Elision / dropped sounds"]
+    A --> E["Reductions / gonna / wanna"]
+    B --> F["What you actually hear"]
+    C --> F
+    D --> F
+    E --> F
+                </pre>
+
+                <div class="card card-info">
+                    <h4>💡 Use your tools to slow speech down</h4>
+                    <p>The 🎧 <strong>Audio</strong> control (bottom-right) and the 🔊 <strong>Listen</strong> buttons on this page let you play model sentences slowly and repeatedly. Slowing speech down is one of the best ways to train your ear: hear it slow, notice the weak form or the linking, then speed it up again. Your ear learns the pattern once and keeps it.</p>
+                </div>
+            </section>
+
+            <section id="dialogue" class="lesson-section">
+                <h2>Natural Speech in Action</h2>
+                <p>Read this casual exchange, then imagine it spoken at full speed. The <span class="pron">relaxed pronunciations</span> show what your ear would actually receive. Notice how much shrinks — and how you can still recover every full word.</p>
+
+                <div class="dialogue">
+                    <p class="line a"><span class="speaker">Sam:</span> <span class="pron">Whatcha</span> doing this weekend? <span class="pron">D'you</span> <span class="pron">wanna</span> grab a coffee?</p>
+                    <p class="line b"><span class="speaker">Jo:</span> I'd love to, but I've <span class="pron">gotta</span> finish this report. It's <span class="pron">kinda</span> due Monday.</p>
+                    <p class="line a"><span class="speaker">Sam:</span> Ah, no worries. <span class="pron">Lemme</span> know when you're free — I'm <span class="pron">gonna</span> be around all week.</p>
+                    <p class="line b"><span class="speaker">Jo:</span> Will do. <span class="pron">Fish 'n' chips</span> on Friday? My treat.</p>
+                    <p class="line a"><span class="speaker">Sam:</span> <span class="pron">Sounds</span> great. <span class="pron">See ya</span> then!</p>
+                </div>
+
+                <blockquote>
+                    <strong>👂 What to listen for:</strong> the disappearing <em>to</em> in "gonna / wanna / gotta", the <em>of</em> hidden inside "kinda", the linked "grab a coffee" (<span class="pron">gra-ba-coffee</span>), and the whole "and" reduced to a tiny <span class="pron">'n'</span> in "fish 'n' chips." Every full word is still recoverable — you just have to expect the shrinkage.
+                </blockquote>
+
+                <p>Keep a few of the most frequent expansions on the tip of your tongue — the moment you hear the relaxed form, snap it back to the full form and the meaning is instantly clear:</p>
+                <div class="phrase-bank">
+                    <span class="phrase">gonna = going to</span>
+                    <span class="phrase">wanna = want to</span>
+                    <span class="phrase">gotta = (have) got to</span>
+                    <span class="phrase">kinda / sorta = kind of / sort of</span>
+                    <span class="phrase">d'you = do you</span>
+                    <span class="phrase">whatcha = what are/do you</span>
+                    <span class="phrase">'em = them</span>
+                    <span class="phrase">'n' = and</span>
+                </div>
+            </section>
+
+            <section id="say-aloud" class="lesson-section">
+                <h2>🔊 Hear It &amp; Repeat — Model Sentences</h2>
+                <p>Listen to each model sentence, then say it back. Use the 🎧 <strong>Audio</strong> control (bottom-right) to choose a UK or US voice and slow the speed down. Listen for the weak forms, the linking, and the dropped sounds — then try to match the natural rhythm yourself.</p>
+                <div class="card card-accent">
+                    <ul>
+                        <li data-say="I was going to call you, but I ran out of time.">I was going to call you, but I ran out of time.</li>
+                        <li data-say="Do you want a cup of tea, or would you rather have coffee?">Do you want a cup of tea, or would you rather have coffee?</li>
+                        <li data-say="I can meet you next day, but I can't stay for very long.">I can meet you next day, but I can't stay for very long.</li>
+                        <li data-say="What are you going to do about the report that's due on Monday?">What are you going to do about the report that's due on Monday?</li>
+                        <li data-say="Let me know if you kind of change your mind about the whole plan.">Let me know if you kind of change your mind about the whole plan.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="practice" class="lesson-section">
+                <h2>Practice &amp; Project</h2>
+
+                <div class="card card-info exercise-check" data-exercise="gapfill">
+                    <h3>🏋️ Exercise 1: Expand the relaxed form</h3>
+                    <p><strong>Objective:</strong> Write the full, standard form of each relaxed pronunciation you'd hear in fast speech.</p>
+                    <ol>
+                        <li>gonna → <input class="gap" data-answer="going to" autocomplete="off" autocapitalize="off" aria-label="gap 1"></li>
+                        <li>wanna → <input class="gap" data-answer="want to" autocomplete="off" autocapitalize="off" aria-label="gap 2"></li>
+                        <li>kinda → <input class="gap" data-answer="kind of" autocomplete="off" autocapitalize="off" aria-label="gap 3"></li>
+                        <li>d'you → <input class="gap" data-answer="do you" autocomplete="off" autocapitalize="off" aria-label="gap 4"></li>
+                        <li>'n' (as in "fish 'n' chips") → <input class="gap" data-answer="and" autocomplete="off" autocapitalize="off" aria-label="gap 5"></li>
+                        <li>whatcha (as in "whatcha doing?") → <input class="gap" data-answer="what are you" autocomplete="off" autocapitalize="off" aria-label="gap 6"></li>
+                    </ol>
+                    <div class="exercise-actions"><button type="button" class="check-btn">Check my answers</button> <button type="button" class="reveal-btn">Show answers</button></div><div class="check-feedback" aria-live="polite"></div>
+                    <details>
+                        <summary>✅ Answer</summary>
+                        <p>1. going to · 2. want to · 3. kind of · 4. do you · 5. and · 6. what are you</p>
+                    </details>
+                </div>
+
+                <div class="card card-info exercise-check" data-exercise="gapfill">
+                    <h3>🏋️ Exercise 2: What's the hidden word?</h3>
+                    <p><strong>Objective:</strong> Each fast-speech phrase hides one weak-form or dropped word. Write the full sentence's missing grammar word.</p>
+                    <ol>
+                        <li>"a cup <input class="gap" data-answer="of" autocomplete="off" autocapitalize="off" aria-label="gap 1"> tea" — the weak word you barely hear is…</li>
+                        <li>"I want <input class="gap" data-answer="to" autocomplete="off" autocapitalize="off" aria-label="gap 2"> go" — the schwa word is…</li>
+                        <li>"She <input class="gap" data-answer="was" autocomplete="off" autocapitalize="off" aria-label="gap 3"> late" — the reduced auxiliary is… <em>(past of "is")</em></li>
+                        <li>"I <input class="gap" data-answer="can" autocomplete="off" autocapitalize="off" aria-label="gap 4"> go" — the quick, unstressed modal (the positive one) is…</li>
+                        <li>"fish and chips" is heard as "fish 'n' chips," so the tiny linking word is <input class="gap" data-answer="and" autocomplete="off" autocapitalize="off" aria-label="gap 5"></li>
+                        <li>"next day" is heard as "nex(t) day" — the dropped consonant is the letter <input class="gap" data-answer="t" autocomplete="off" autocapitalize="off" aria-label="gap 6"></li>
+                    </ol>
+                    <div class="exercise-actions"><button type="button" class="check-btn">Check my answers</button> <button type="button" class="reveal-btn">Show answers</button></div><div class="check-feedback" aria-live="polite"></div>
+                    <details>
+                        <summary>✅ Answer</summary>
+                        <p>1. of · 2. to · 3. was · 4. can · 5. and · 6. t &nbsp;(These are all weak forms or elided sounds — clear on the page, nearly invisible to the ear.)</p>
+                    </details>
+                </div>
+
+                <div class="card card-info">
+                    <h3>🎯 Your Project: Transcribe &amp; Decode</h3>
+                    <p>The best way to train your ear is to write down exactly what you hear, then check it. This project turns any short clip into a listening workout.</p>
+                    <ol>
+                        <li><strong>(2 min)</strong> Choose a <strong>short clip</strong> (15–30 seconds) of natural English with a script or subtitles available — a film scene, a song verse, a podcast segment, a YouTube clip with accurate captions.</li>
+                        <li><strong>(6 min)</strong> Play it in short chunks (use the 🎧 slow-down and replay). Write down <strong>what you actually hear</strong>, word for word — leave a gap or a "?" where a word vanishes.</li>
+                        <li><strong>(3 min)</strong> Now reveal the real transcript/subtitles and compare. Mark every place your ear missed something.</li>
+                        <li><strong>(4 min)</strong> For each miss, name the cause: was it a <em>weak form</em> (of/to/was), <em>linking</em>, <em>elision</em> (dropped /t/ /d/), or a <em>reduction</em> (gonna/wanna)? Write the full form beside it.</li>
+                        <li><strong>(2 min)</strong> Play the clip once more, now that you know what's there. Notice how much clearer it sounds — that's your ear updating.</li>
+                    </ol>
+                    <div class="card card-success">
+                        <h4>✅ Project Completion Checklist</h4>
+                        <ul>
+                            <li>☐ I transcribed a short clip of natural speech by ear</li>
+                            <li>☐ I compared my transcription to the real text</li>
+                            <li>☐ I identified at least three connected-speech features that tricked me</li>
+                            <li>☐ I wrote the correct full form beside each one</li>
+                            <li>☐ I re-listened and heard the clip more clearly the second time</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card quiz-container">
+                    <h3>🎯 Quick Quiz</h3>
+                    <div class="quiz-question">
+                        <p><strong>Question 1:</strong> You hear <span class="pron">"I wz gonna call ya."</span> What is the full, standard sentence?</p>
+                        <div class="quiz-options">
+                            <button class="quiz-option" data-correct="true" data-explanation="Correct — 'wz' = was, 'gonna' = going to, 'ya' = you. Full: I was going to call you.">A) I was going to call you.</button>
+                            <button class="quiz-option" data-correct="false" data-hint="'gonna' is always 'going to', never 'want to' — that's 'wanna'.">B) I want to call you.</button>
+                            <button class="quiz-option" data-correct="false" data-hint="'wz' is the weak form of 'was', not 'will'. There's no future 'will' here.">C) I will call you.</button>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    <div class="quiz-question">
+                        <p><strong>Question 2:</strong> A speaker says a quick, unstressed <span class="pron">/kən/</span> before "help." Which is most likely?</p>
+                        <div class="quiz-options">
+                            <button class="quiz-option" data-correct="true" data-explanation="Yes — a quick, unstressed /kən/ is the weak form of 'can'. 'Can't' would be longer and stressed.">A) "I can help" — a weak, unstressed 'can'.</button>
+                            <button class="quiz-option" data-correct="false" data-hint="'Can't' is stressed and longer (/kɑːnt/ or /kænt/) — not quick and unstressed.">B) "I can't help" — the negative.</button>
+                            <button class="quiz-option" data-correct="false" data-hint="There's no such reduction; the schwa word here is simply the weak form of 'can'.">C) "I could help" — a reduced 'could'.</button>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="tips" class="lesson-section">
+                <h2>Tips &amp; Common Mistakes</h2>
+
+                <h3>✅ Do's</h3>
+                <ul>
+                    <li><strong>Anchor on stressed words.</strong> Catch the loud, clear content words first; let the linked, weak stuff flow between them.</li>
+                    <li><strong>Expect the disappearance.</strong> Assume <em>to, of, and, was, can, are</em> will arrive as a schwa — then you won't panic when they do.</li>
+                    <li><strong>Slow it down, then speed it up.</strong> Use the 🎧 control and 🔊 buttons to hear a phrase slowly, spot the feature, then re-hear it at speed.</li>
+                    <li><strong>Keep a mental expansion list</strong> — gonna → going to, wanna → want to, 'em → them — so you decode reductions instantly.</li>
+                </ul>
+
+                <h3>❌ Common Mistakes</h3>
+                <div class="card card-warning">
+                    <h4>⚠️ Watch Out</h4>
+                    <ul>
+                        <li><strong>Confusing can / can't:</strong> quick and unstressed = <em>can</em>; long and stressed = <em>can't</em>. Listen to the length and stress, not just the ending.</li>
+                        <li><strong>Hunting for gaps between words:</strong> there aren't any. Listen for stressed beats instead of clean word boundaries.</li>
+                        <li><strong>Writing the relaxed spellings:</strong> "gonna", "kinda", "dunno" are for showing sound only — never in formal writing.</li>
+                        <li><strong>Thinking fast speech is "bad" English:</strong> it isn't. Educated native speakers use every feature here — it's the norm, not a lapse.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="journal" class="lesson-section">
+                <h2>📓 Learning Journal</h2>
+                <div class="card card-info">
+                    <p>Keep your learning journal going. After this lesson, take a few minutes to write down:</p>
+                    <ul>
+                        <li><strong>Key concepts</strong> you learned</li>
+                        <li><strong>Things that clicked</strong> for you</li>
+                        <li><strong>Questions or confusion points</strong> to revisit</li>
+                        <li><strong>Ideas you want to try</strong></li>
+                        <li><strong>Your progress and feelings</strong> about reaching B2</li>
+                    </ul>
+                    <p><strong>✍️ This lesson's prompt:</strong> Watch or listen to two minutes of natural English (a video, a song, a podcast). Write down three moments where a word "disappeared" and you had to decode it — then note which feature caused it (weak form, linking, elision, or reduction) and what the full words were. Which one trips you up most? Notice it on purpose over the next week, and it will start to become automatic.</p>
+                </div>
+            </section>
+
+            <section id="summary" class="lesson-section">
+                <h2>📝 Lesson Summary</h2>
+
+                <div class="card card-success">
+                    <h3>🎓 Key Takeaways</h3>
+                    <ul>
+                        <li>English is <strong>stress-timed</strong>: content words stay clear, while little grammar words get squashed to a <strong>schwa</strong> (weak forms).</li>
+                        <li><strong>Weak forms</strong> mean <em>to, of, and, for, was, can, are</em> and friends nearly always shrink — expect it, and note the <em>can</em> vs <em>can't</em> stress trap.</li>
+                        <li><strong>Linking</strong> runs words together, especially consonant → vowel ("an apple" → "anapple") — listen for stressed beats, not gaps.</li>
+                        <li><strong>Elision</strong> drops sounds ("nex(t) day", "san(d)wich") and <strong>assimilation</strong> blends them ("don't you" → "doncha").</li>
+                        <li><strong>Reductions</strong> (gonna, wanna, gotta, kinda, d'you, whatcha) are for <em>recognising</em> in speech — always write the full forms.</li>
+                    </ul>
+                </div>
+
+                <h3>🎉 What You've Accomplished</h3>
+                <p>You've stopped treating fast English as an impossible blur and started seeing the machinery behind it. Now that you can name weak forms, linking, elision, and reductions, every one of them becomes a solvable puzzle rather than a wall. This is the exact skill that turns "I only understand when they speak slowly" into "I can follow a real conversation." 🎉</p>
+
+                <h3>❓ Common Questions at This Stage</h3>
+                <details>
+                    <summary>If I can't hear these sounds, is my listening just weak?</summary>
+                    <p>No — it usually means nobody taught you the disguises. You already know the words; you were listening for their careful, one-at-a-time pronunciation, which almost never occurs in real speech. Learning the connected-speech patterns is a fast fix precisely because the vocabulary is already yours.</p>
+                </details>
+                <details>
+                    <summary>Should I try to speak like this — dropping sounds and saying "gonna"?</summary>
+                    <p>A little, naturally, over time — but don't force it. The priority at B2 is <strong>understanding</strong> these features, not producing them. If you speak clearly with full forms, you'll be understood everywhere. The reductions will creep into your speech on their own as you hear more.</p>
+                </details>
+                <details>
+                    <summary>Do British and American speakers do the same things?</summary>
+                    <p>The processes — weak forms, linking, elision, reductions — are the same in both. The details differ (US speakers often turn /t/ into a soft /d/-like flap, as in "water"; UK speakers may drop /r/ at the end of words). Learn the general patterns first; the accent-specific quirks come with exposure to each variety.</p>
+                </details>
+
+                <h3>🔭 Looking Ahead</h3>
+                <p>You've been decoding how fluent speakers <em>compress</em> their words. Next we look at how they deliberately <em>loosen</em> their meaning. In <strong>Lesson 8.2</strong>, you'll explore <strong>vague language</strong> — words like <em>about, -ish, stuff, sort of, or something</em> — and discover why being approximate is often more natural, and more polite, than being over-precise.</p>
+
+                <h3>✅ Before the Next Lesson</h3>
+                <ul>
+                    <li>Listen to one short clip a day this week and jot down one "disappearing word" each time.</li>
+                    <li>Practise expanding five reductions out loud: gonna, wanna, gotta, kinda, whatcha.</li>
+                    <li>Write your Learning Journal entry for this lesson.</li>
+                </ul>
+
+                <div class="card card-accent" style="text-align: center; padding: 2rem;">
+                    <h3>🌟 Encouragement for the Journey</h3>
+                    <p>The first time you catch a "gonna" or a hidden weak form in a fast conversation and understand it effortlessly, you'll feel your listening level jump. That moment is coming — and it comes faster now that you know what to listen for. Trust your ears; they're better trained than you think. Onward to Lesson 8.2! 👋</p>
+                </div>
+            </section>
+
+            <nav class="lesson-nav" aria-label="Lesson Navigation">
+                <a href="lesson_21.html" class="prev-lesson">← Previous: Making a Case — Presentations &amp; Persuasion</a>
+                <a href="index.html" class="home-link">🏠 Course Home</a>
+                <a href="lesson_23.html" class="next-lesson">Next: Vague Language &amp; Being Approximate →</a>
+            </nav>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Ray de la Paz. Confident English (B2 Upper-Intermediate). All rights reserved.</p>
+        <div class="footer-links">
+            <a href="/">ESL Hub</a>
+            <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+            <a href="https://rays-home.netlify.app/contact">Contact</a>
+            <a href="#" id="print-button">Print Page</a>
+        </div>
+        <p><small>Press <kbd>?</kbd> for keyboard shortcuts</small></p>
+    </footer>
+
+    <script src="js/clipboard.js"></script>
+    <script src="js/course-enhancements.js"></script>
+</body>
+</html>
