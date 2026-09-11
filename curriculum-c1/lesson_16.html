@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Critical reading at C1 — separating fact from opinion and claim from evidence, reading an author's purpose, stance and tone, spotting bias and loaded language, and evaluating an argument's structure and weaknesses. Lesson 6.1 of the C1 Advanced English curriculum.">
+    <meta name="author" content="Ray de la Paz">
+    <title>Lesson 6.1: Critical Reading — Evaluating Arguments &amp; Bias - Advanced English (C1)</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        window.__mermaid = mermaid;
+        const isDark = localStorage.getItem('theme') === 'dark' ||
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: isDark ? 'dark' : 'default',
+            themeVariables: isDark
+                ? { primaryColor: '#334155', primaryTextColor: '#e2e8f0', primaryBorderColor: '#6366f1', lineColor: '#94a3b8', secondaryColor: '#1e293b', tertiaryColor: '#0f172a' }
+                : { primaryColor: '#eff6ff', primaryTextColor: '#1e293b', primaryBorderColor: '#3b82f6', lineColor: '#64748b', secondaryColor: '#f8fafc', tertiaryColor: '#f1f5f9' }
+        });
+    </script>
+</head>
+<body>
+    <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Advanced English (C1)</a>
+            <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-expanded="false" aria-controls="nav-links">☰</button>
+            <div class="nav-links" id="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#modules">All Lessons</a>
+                <span class="nav-divider"></span>
+                <a href="/">ESL Hub</a>
+                <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+                <button id="theme-toggle" aria-label="Toggle dark/light mode">🌙</button>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <div class="container">
+            <header>
+                <h1>🔍 Lesson 6.1: Critical Reading — Evaluating Arguments &amp; Bias</h1>
+                <p class="lead">At B2, comprehension meant understanding what a text <em>says</em>. At C1, reading means interrogating what a text is <em>doing</em>: what the writer wants you to believe, how hard they are working to persuade you, and whether the case actually holds up. A critical reader does not swallow prose whole — they weigh it. In this lesson you'll build the toolkit for that weighing: telling fact from opinion, tracing an argument's skeleton, hearing bias in the word choice, and reading the meaning that lives between the lines.</p>
+
+                <div class="card card-info">
+                    <h2>📚 What You'll Learn</h2>
+                    <p>By the end of this lesson, you will be able to:</p>
+                    <ul>
+                        <li>Distinguish <strong>fact from opinion</strong> and separate a writer's <strong>claim</strong> from the <strong>evidence</strong> that supports it</li>
+                        <li>Identify an author's <strong>purpose, stance and tone</strong>, and recognise <strong>bias</strong> and loaded, emotive language</li>
+                        <li>Map an argument's <strong>structure</strong> (claim → evidence → warrant) and name its common <strong>weaknesses</strong> — unsupported generalisation, false cause, cherry-picking</li>
+                        <li>Read <strong>between the lines</strong> — draw inferences and detect implication — and talk about texts with precise evaluative verbs (<em>the author asserts / concedes / downplays</em>)</li>
+                    </ul>
+                    <p><strong>⏱️ Estimated Time:</strong> 60–70 minutes</p>
+                    <p><strong>🎯 Project:</strong> Read a short opinion article of your choice and write a brief critical evaluation — its central claim, the quality of its evidence, any bias, and your verdict.</p>
+                </div>
+            </header>
+
+            <details class="card toc-card" open>
+                <summary aria-label="Toggle table of contents">
+                    <span class="toc-icon" aria-hidden="true">📑</span>
+                    <span class="toc-label">In This Lesson</span>
+                    <span class="toc-chevron" aria-hidden="true">▾</span>
+                </summary>
+                <nav aria-label="Table of Contents">
+                    <ol>
+                        <li><a href="#intro" class="toc-link">What Critical Reading Is</a></li>
+                        <li><a href="#factopinion" class="toc-link">Fact, Opinion, Claim &amp; Evidence</a></li>
+                        <li><a href="#stance" class="toc-link">Purpose, Stance &amp; Tone</a></li>
+                        <li><a href="#bias" class="toc-link">Bias &amp; Loaded Language</a></li>
+                        <li><a href="#structure" class="toc-link">Argument Structure &amp; Its Weaknesses</a></li>
+                        <li><a href="#sample" class="toc-link">A Text Under the Microscope</a></li>
+                        <li><a href="#say-aloud" class="toc-link">🔊 Hear It &amp; Repeat</a></li>
+                        <li><a href="#practice" class="toc-link">Practice &amp; Project</a></li>
+                        <li><a href="#tips" class="toc-link">Tips &amp; Common Mistakes</a></li>
+                        <li><a href="#journal" class="toc-link">Learning Journal</a></li>
+                        <li><a href="#summary" class="toc-link">Summary</a></li>
+                    </ol>
+                </nav>
+            </details>
+
+            <section id="intro" class="lesson-section">
+                <h2>What Critical Reading Is</h2>
+                <p><strong>Critical reading</strong> is not fault-finding, and it is not cynicism. It is the disciplined habit of reading a text as an <em>argument made by a person with a purpose</em> — and then asking whether that argument earns your agreement. Where a passive reader absorbs, a critical reader evaluates: <em>What exactly is being claimed? On what grounds? Whose interests does this serve? What is left unsaid?</em></p>
+
+                <p>This matters far beyond the classroom. The opinion columns, product reviews, policy briefs, and social-media threads you read every day are all trying to move you toward a conclusion. Reading them critically is how you keep your own judgement rather than borrowing theirs.</p>
+
+                <div class="card card-accent">
+                    <h4>🧠 Mindset</h4>
+                    <p>Being critical is an act of respect, not hostility. Taking a text seriously enough to test it — rather than agreeing or dismissing on a first impression — is precisely how thoughtful readers behave. You will find that your first, gut reaction to a piece is often about <em>tone</em> rather than <em>substance</em>; the skill you're building here is the pause between reacting and judging. That pause is the whole of critical reading, and it gets faster with practice. 🌱</p>
+                </div>
+            </section>
+
+            <section id="factopinion" class="lesson-section">
+                <h2>Fact, Opinion, Claim &amp; Evidence</h2>
+                <p>The first cut a critical reader makes is between what can be <strong>verified</strong> and what is being <strong>asserted</strong>. A <strong>fact</strong> is a statement that can, in principle, be checked against evidence and found true or false. An <strong>opinion</strong> is a judgement, preference, or interpretation — it can be reasonable or unreasonable, but it is not simply "true." The trap is that skilled writers dress opinions in the grammar of fact.</p>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>Statement</th><th>Fact or opinion?</th><th>Why</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>"The city's population grew by 12% between 2010 and 2020."</td><td><strong>Fact</strong></td><td>Verifiable against census data</td></tr>
+                            <tr><td>"The city has grown far too quickly."</td><td><strong>Opinion</strong></td><td>"too quickly" is a judgement, not a measurement</td></tr>
+                            <tr><td>"Remote work reduces commuting time."</td><td><strong>Fact</strong> (checkable)</td><td>Can be measured and confirmed</td></tr>
+                            <tr><td>"Remote work is destroying company culture."</td><td><strong>Opinion</strong></td><td>An interpretation stated as if self-evident</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>Once you can spot an opinion, the next move is to separate the writer's <strong>claim</strong> (the point they want you to accept) from the <strong>evidence</strong> (the facts, examples, data, or testimony offered to support it). A claim without evidence is merely an assertion; evidence without a clear claim is just information. Good arguments join the two — and part of critical reading is checking whether the join actually holds.</p>
+
+                <div class="card card-info">
+                    <h4>💡 The three questions that never fail</h4>
+                    <p>Facing any persuasive paragraph, ask: <strong>(1) What is the claim?</strong> — the sentence the writer would defend if challenged. <strong>(2) What is the evidence?</strong> — what they offer to back it. <strong>(3) Does the evidence actually support <em>this</em> claim?</strong> — or a smaller, different, or unrelated one? The third question is where most weak arguments quietly fall apart.</p>
+                </div>
+            </section>
+
+            <section id="stance" class="lesson-section">
+                <h2>Purpose, Stance &amp; Tone</h2>
+                <p>Behind every text is a writer who wants something. <strong>Purpose</strong> is the goal — to inform, persuade, entertain, warn, sell, provoke, or reassure. <strong>Stance</strong> is the writer's position on the issue — for, against, sceptical, enthusiastic, ambivalent. <strong>Tone</strong> is the emotional colouring of the language — measured, indignant, ironic, alarmed, dismissive. Reading these three well tells you how to weight everything else.</p>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>Dimension</th><th>Question to ask</th><th>Clues in the text</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Purpose</strong></td><td>Why was this written? What does the writer want me to do or think?</td><td>Genre, headline, call to action, where it was published</td></tr>
+                            <tr><td><strong>Stance</strong></td><td>Where does the writer stand on the issue?</td><td>Which side gets more space; which is dismissed; the conclusion</td></tr>
+                            <tr><td><strong>Tone</strong></td><td>What is the writer's attitude, and how do they feel about it?</td><td>Adjectives, adverbs, punctuation, irony, rhetorical questions</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>Tone is often carried by tiny signals. A writer who calls a policy "so-called reform" has told you their stance in two words. Scare quotes, an incredulous rhetorical question, a sarcastic aside — these leak attitude even when the sentence pretends to be neutral. Learning to notice them is half the battle.</p>
+
+                <div class="card card-info">
+                    <h4>💡 Language for describing what a writer does</h4>
+                    <p>C1 readers need precise verbs to <em>talk</em> about texts, not just react to them. A writer may <strong>assert</strong> (state firmly, without proof), <strong>argue / contend</strong> (make a reasoned case), <strong>imply / suggest</strong> (hint without stating), <strong>concede / acknowledge</strong> (admit a point against their own side), <strong>downplay / dismiss</strong> (minimise something inconvenient), <strong>exaggerate / overstate</strong> (inflate for effect), or <strong>refute / rebut</strong> (argue against). Naming the move sharpens the reading.</p>
+                </div>
+            </section>
+
+            <section id="bias" class="lesson-section">
+                <h2>Bias &amp; Loaded Language</h2>
+                <p><strong>Bias</strong> is a systematic leaning that shapes what a writer includes, omits, and emphasises. It is not always dishonest — everyone writes from somewhere — but an undeclared bias can quietly steer you. The most common vehicle is <strong>loaded</strong> or <strong>emotive language</strong>: word choices that carry a judgement smuggled inside them.</p>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>Neutral wording</th><th>Loaded / emotive wording</th><th>What the loading does</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>a group of protesters</td><td>a <strong>mob</strong> of protesters</td><td>casts them as violent and irrational</td></tr>
+                            <tr><td>the government's spending plan</td><td>the government's <strong>reckless spending spree</strong></td><td>condemns before any argument is made</td></tr>
+                            <tr><td>the company reduced its workforce</td><td>the company <strong>slashed</strong> jobs</td><td>dramatises and assigns blame</td></tr>
+                            <tr><td>people who disagree</td><td><strong>so-called experts</strong> who disagree</td><td>undermines credibility by innuendo</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>Watch, too, for what is <em>missing</em>. Bias hides not only in the words chosen but in the facts left out, the counter-argument never mentioned, the source conveniently unnamed. Ask whose voice is absent and whose interests the framing serves. A piece that presents only one side, however elegantly, is arguing — not reporting.</p>
+
+                <div class="card card-warning">
+                    <h4>⚠️ Emotive language is a signal, not a verdict</h4>
+                    <p>Spotting loaded language tells you the writer is <em>trying to move you</em> — it does not by itself prove them wrong. A passionate, clearly biased piece can still be correct; a coolly neutral one can still be misleading. Use tone as a flag that says "check the evidence more carefully here," not as a reason to accept or reject the claim outright. The point is to separate <em>how</em> something is said from <em>whether</em> it is true.</p>
+                </div>
+            </section>
+
+            <section id="structure" class="lesson-section">
+                <h2>Argument Structure &amp; Its Weaknesses</h2>
+                <p>Most arguments, stripped down, share a skeleton: a <strong>claim</strong> (the conclusion), the <strong>evidence</strong> (the grounds), and a usually-unstated <strong>warrant</strong> — the assumption that links the evidence to the claim. Making the warrant visible is a powerful critical move, because a shaky warrant sinks an argument even when the facts are true.</p>
+
+                <div class="model">
+                    <p><strong>Claim:</strong> "The new cycle lanes should be removed."</p>
+                    <p><strong>Evidence:</strong> "Traffic congestion has risen since they were installed."</p>
+                    <p><strong>Warrant (unstated):</strong> "The cycle lanes are the cause of the congestion, and reducing congestion outweighs any benefit of the lanes."</p>
+                    <p>The evidence may be perfectly accurate — yet the whole case rests on that hidden warrant, which is exactly where it can be challenged.</p>
+                </div>
+
+                <pre class="mermaid">
+graph LR
+    A["Evidence (the grounds / data)"] -->|"warrant (linking assumption)"| B["Claim (the conclusion)"]
+    B -->|"critical reader asks"| C["Is the warrant sound / is the evidence enough"]
+                </pre>
+
+                <p>Once you can see the parts, you can name the classic weaknesses that recur again and again:</p>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>Weakness</th><th>What it is</th><th>Example</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Unsupported generalisation</strong></td><td>a sweeping claim from little or no evidence</td><td>"Young people today simply won't work hard."</td></tr>
+                            <tr><td><strong>False cause</strong></td><td>assuming that because B followed A, A caused B</td><td>"Sales fell after the rebrand, so the rebrand ruined sales."</td></tr>
+                            <tr><td><strong>Cherry-picking</strong></td><td>citing only the data that fits, ignoring the rest</td><td>quoting the one good year and skipping five bad ones</td></tr>
+                            <tr><td><strong>False dilemma</strong></td><td>presenting two options as if no others exist</td><td>"Either we cut taxes or the economy collapses."</td></tr>
+                            <tr><td><strong>Appeal to emotion</strong></td><td>substituting feeling for evidence</td><td>"Think of the children" in place of an argument</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>Finally, remember that arguments also work by <strong>implication</strong> — meaning the writer wants you to infer without committing to in print. <strong>Reading between the lines</strong> means drawing the reasonable conclusion the text points toward. "The minister was, of course, unavailable for comment" states a fact; it <em>implies</em> evasion. Naming that gap between what is said and what is meant is advanced reading at its sharpest.</p>
+            </section>
+
+            <section id="sample" class="lesson-section">
+                <h2>A Text Under the Microscope</h2>
+                <p>Let's put the whole toolkit to work on a short opinion excerpt. Read it once for sense, then read it again with the questions from this lesson in hand.</p>
+
+                <div class="card">
+                    <h4>📰 Sample opinion excerpt</h4>
+                    <blockquote>
+                        <p>"Every sensible person can see that these so-called 'smart' parking meters are a disaster. Since they were installed downtown, shopkeepers have complained bitterly, and footfall has plainly collapsed. The council, predictably, refuses to admit its blunder. If we truly cared about local business, we would rip the machines out tomorrow. The choice could not be clearer: save our high street, or let the bureaucrats finish killing it."</p>
+                    </blockquote>
+                </div>
+
+                <div class="card card-info">
+                    <h4>🔎 Guided questions — try these before reading the analysis</h4>
+                    <ul>
+                        <li>What is the writer's <strong>central claim</strong>, and where is it stated most directly?</li>
+                        <li>Which phrases are <strong>loaded or emotive</strong>? What judgement does each smuggle in?</li>
+                        <li>What <strong>evidence</strong> is actually offered — and how strong is it?</li>
+                        <li>Where does the writer commit a <strong>false cause</strong> or a <strong>false dilemma</strong>?</li>
+                        <li>What is the <strong>tone</strong>, and how does it try to position anyone who disagrees?</li>
+                    </ul>
+                </div>
+
+                <div class="card card-success">
+                    <h4>✅ A critical reading of the excerpt</h4>
+                    <p><strong>Claim:</strong> the parking meters should be removed. <strong>Loaded language</strong> does most of the work: "so-called 'smart'" and "disaster" condemn before any case is made; "predictably" and "bureaucrats" paint the council as arrogant and out-of-touch. <strong>Evidence</strong> is thin — shopkeepers "complained" (testimony, not data) and footfall "plainly collapsed" (asserted, not measured). The writer commits a <strong>false cause</strong> (footfall fell <em>after</em> the meters, so the meters caused it — ignoring the economy, weather, online shopping) and closes on a stark <strong>false dilemma</strong> ("save our high street, or let the bureaucrats finish killing it"), as if no middle option exists. The <strong>tone</strong> is indignant and recruits the reader with "every sensible person," implying that disagreement is foolish. The claim <em>might</em> be right — but this passage argues by feeling, not by proof.</p>
+                </div>
+            </section>
+
+            <section id="say-aloud" class="lesson-section">
+                <h2>🔊 Hear It &amp; Repeat — Model Sentences</h2>
+                <p>Listen to each model sentence, then say it back. Use the 🎧 <strong>Audio</strong> control (bottom-right) to choose a UK or US voice and slow the speed down. These five sentences are the critical-reading questions you can ask of any text — bank them and use them as you read.</p>
+                <div class="card card-accent">
+                    <ul>
+                        <li data-say="What exactly is the writer claiming, and what evidence do they offer for it?">What exactly is the writer claiming, and what evidence do they offer for it?</li>
+                        <li data-say="Is this a statement of fact that could be checked, or an opinion dressed up as one?">Is this a statement of fact that could be checked, or an opinion dressed up as one?</li>
+                        <li data-say="The author concedes one small point but downplays the evidence against their case.">The author concedes one small point but downplays the evidence against their case.</li>
+                        <li data-say="Notice the loaded language here — it tells us how the writer wants us to feel.">Notice the loaded language here — it tells us how the writer wants us to feel.</li>
+                        <li data-say="The evidence suggests a correlation, but the writer treats it as proof of cause.">The evidence suggests a correlation, but the writer treats it as proof of cause.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="practice" class="lesson-section">
+                <h2>Practice &amp; Project</h2>
+
+                <div class="card card-info exercise-check" data-exercise="gapfill">
+                    <h3>🏋️ Exercise 1: Fact or opinion?</h3>
+                    <p><strong>Objective:</strong> For each statement, type <strong>fact</strong> or <strong>opinion</strong>. Remember: a fact can, in principle, be checked; an opinion is a judgement.</p>
+                    <ol>
+                        <li>"The report was published in March 2023." → <input class="gap" data-answer="fact" autocomplete="off" autocapitalize="off" aria-label="gap 1"></li>
+                        <li>"This is the most important report of the decade." → <input class="gap" data-answer="opinion" autocomplete="off" autocapitalize="off" aria-label="gap 2"></li>
+                        <li>"Unemployment fell by two percentage points last year." → <input class="gap" data-answer="fact" autocomplete="off" autocapitalize="off" aria-label="gap 3"></li>
+                        <li>"The government has clearly mishandled the economy." → <input class="gap" data-answer="opinion" autocomplete="off" autocapitalize="off" aria-label="gap 4"></li>
+                        <li>"Three of the five committee members resigned." → <input class="gap" data-answer="fact" autocomplete="off" autocapitalize="off" aria-label="gap 5"></li>
+                        <li>"Frankly, the whole scheme is a waste of money." → <input class="gap" data-answer="opinion" autocomplete="off" autocapitalize="off" aria-label="gap 6"></li>
+                    </ol>
+                    <div class="exercise-actions"><button type="button" class="check-btn">Check my answers</button> <button type="button" class="reveal-btn">Show answers</button></div>
+                    <div class="check-feedback" aria-live="polite"></div>
+                    <details>
+                        <summary>✅ Answer</summary>
+                        <p>1. fact · 2. opinion · 3. fact · 4. opinion <em>("clearly" and "mishandled" are judgements)</em> · 5. fact · 6. opinion <em>("Frankly… a waste" signals a value judgement)</em></p>
+                    </details>
+                </div>
+
+                <div class="card card-info exercise-check" data-exercise="gapfill">
+                    <h3>🏋️ Exercise 2: Name the technique</h3>
+                    <p><strong>Objective:</strong> Identify the weakness or device in each sentence. Choose from: <em>false cause</em>, <em>cherry-picking</em>, <em>false dilemma</em>, <em>loaded language</em>, <em>unsupported generalisation</em>.</p>
+                    <ol>
+                        <li>"Crime rose after the new mayor took office, so her policies caused it." → <input class="gap" data-answer="false cause" autocomplete="off" autocapitalize="off" aria-label="gap 1"></li>
+                        <li>"Either you support the bill, or you don't care about safety." → <input class="gap" data-answer="false dilemma" autocomplete="off" autocapitalize="off" aria-label="gap 2"></li>
+                        <li>"The company's greedy bosses trampled on their loyal staff." → <input class="gap" data-answer="loaded language" autocomplete="off" autocapitalize="off" aria-label="gap 3"></li>
+                        <li>"Everyone knows that students these days can't concentrate." → <input class="gap" data-answer="unsupported generalisation" autocomplete="off" autocapitalize="off" aria-label="gap 4"></li>
+                        <li>"The diet works — just look at these three success stories." → <input class="gap" data-answer="cherry-picking" autocomplete="off" autocapitalize="off" aria-label="gap 5"></li>
+                    </ol>
+                    <div class="exercise-actions"><button type="button" class="check-btn">Check my answers</button> <button type="button" class="reveal-btn">Show answers</button></div>
+                    <div class="check-feedback" aria-live="polite"></div>
+                    <details>
+                        <summary>✅ Answer</summary>
+                        <p>1. false cause · 2. false dilemma · 3. loaded language · 4. unsupported generalisation · 5. cherry-picking</p>
+                    </details>
+                </div>
+
+                <div class="card card-info">
+                    <h3>🏋️ Exercise 3: Match the evaluative verb to its meaning</h3>
+                    <p><strong>Objective:</strong> Pair each verb we use to describe writers' moves with its definition.</p>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr><th>Verb</th><th>Meaning (match the letter)</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>1. assert</td><td>A. admit a point that works against your own side</td></tr>
+                                <tr><td>2. concede</td><td>B. state firmly, without offering proof</td></tr>
+                                <tr><td>3. downplay</td><td>C. hint at something without stating it directly</td></tr>
+                                <tr><td>4. imply</td><td>D. argue against a claim to show it is wrong</td></tr>
+                                <tr><td>5. refute</td><td>E. make something seem less important than it is</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <details>
+                        <summary>✅ Answer</summary>
+                        <p>1 → B (assert) · 2 → A (concede) · 3 → E (downplay) · 4 → C (imply) · 5 → D (refute)</p>
+                    </details>
+                </div>
+
+                <div class="card card-info">
+                    <h3>🎯 Your Project: A Critical Evaluation</h3>
+                    <p>Read a short <strong>opinion article</strong> of your choice — a newspaper column, a blog post, an editorial, a product or film review (roughly 400–800 words) — and write a brief critical evaluation of it (150–250 words).</p>
+                    <ol>
+                        <li><strong>(10 min)</strong> Read the article twice: once for sense, once with a pen. Underline the <strong>central claim</strong> and mark each piece of <strong>evidence</strong>.</li>
+                        <li><strong>(5 min)</strong> Note the writer's <strong>purpose, stance and tone</strong>, and circle any <strong>loaded or emotive language</strong>.</li>
+                        <li><strong>(5 min)</strong> Test the argument: is the evidence strong and relevant? Do you spot a <strong>false cause, cherry-picking, generalisation, or false dilemma</strong>? What has been left out?</li>
+                        <li><strong>(10 min)</strong> Write your evaluation in four short moves: (a) state the claim, (b) assess the evidence, (c) identify any bias or weakness, using precise verbs (<em>the author asserts / concedes / downplays</em>), and (d) give your <strong>verdict</strong> — is the case persuasive, and why?</li>
+                    </ol>
+                    <div class="card card-success">
+                        <h4>✅ Project Completion Checklist</h4>
+                        <ul>
+                            <li>☐ I identified the article's central claim in one sentence</li>
+                            <li>☐ I distinguished the evidence from the claim and judged its strength</li>
+                            <li>☐ I named the writer's purpose, stance and tone</li>
+                            <li>☐ I pointed to at least one instance of bias, loaded language, or a specific weakness</li>
+                            <li>☐ I used precise evaluative verbs to describe the writer's moves</li>
+                            <li>☐ I gave a clear, reasoned verdict rather than just agreeing or disagreeing</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card quiz-container">
+                    <h3>🎯 Quick Quiz</h3>
+                    <div class="quiz-question">
+                        <p><strong>Question 1:</strong> A writer says: "Since the ban came in, accidents have fallen — so the ban clearly works." Even if the numbers are accurate, what should a critical reader most suspect?</p>
+                        <div class="quiz-options">
+                            <button class="quiz-option" data-correct="true" data-explanation="Correct — the ban preceding the fall doesn't prove it caused the fall; other factors could explain it. That's the false-cause pattern.">A) A false cause — that the ban preceded the fall doesn't prove it caused it</button>
+                            <button class="quiz-option" data-correct="false" data-hint="The statistic itself isn't the issue here; the leap from correlation to cause is. Look at the reasoning, not the number.">B) That the accident figures must have been invented</button>
+                            <button class="quiz-option" data-correct="false" data-hint="Loaded language means emotive word choice; this sentence is fairly plain. The flaw is in the causal reasoning.">C) That the sentence uses loaded language</button>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    <div class="quiz-question">
+                        <p><strong>Question 2:</strong> "The council's <em>reckless</em> plan will <em>devastate</em> our neighbourhood." What does the word choice tell a critical reader?</p>
+                        <div class="quiz-options">
+                            <button class="quiz-option" data-correct="true" data-explanation="Right — 'reckless' and 'devastate' are loaded, emotive words that pass a judgement before any argument is made; they flag the writer's bias.">A) The language is loaded — it signals the writer's stance before any evidence is given</button>
+                            <button class="quiz-option" data-correct="false" data-hint="Emotive language flags a strong stance; it doesn't by itself prove the claim true. Check the evidence separately.">B) The plan is definitely dangerous, because the writer says so</button>
+                            <button class="quiz-option" data-correct="false" data-hint="These are clearly judgement words, not neutral description — that's exactly the point to notice.">C) The sentence is neutral and factual</button>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="tips" class="lesson-section">
+                <h2>Tips &amp; Common Mistakes</h2>
+
+                <h3>✅ Do's</h3>
+                <ul>
+                    <li>Separate the <strong>claim</strong> from the <strong>evidence</strong> first — then test whether the evidence really supports <em>that</em> claim.</li>
+                    <li>Read the <strong>word choice</strong>, not just the content: loaded adjectives, scare quotes, and rhetorical questions leak the writer's stance.</li>
+                    <li>Make the <strong>hidden warrant</strong> visible — the unstated assumption linking evidence to claim is often the weakest link.</li>
+                    <li>Ask what is <strong>missing</strong>: the absent counter-argument, the unnamed source, the data that didn't make the cut.</li>
+                    <li>Use precise <strong>evaluative verbs</strong> (<em>asserts, concedes, implies, downplays, refutes</em>) to describe — and think about — what a text is doing.</li>
+                </ul>
+
+                <h3>❌ Common Mistakes</h3>
+                <div class="card card-warning">
+                    <h4>⚠️ Watch Out</h4>
+                    <ul>
+                        <li><strong>Confusing tone with truth:</strong> a passionate, biased piece can still be right; a calm one can still mislead. Loaded language is a flag to check evidence, not a verdict.</li>
+                        <li><strong>Treating any confident sentence as fact:</strong> "It is obvious that…" and "Everyone knows…" are opinion markers, not proof.</li>
+                        <li><strong>Agreeing because you already agree:</strong> we scrutinise arguments we dislike and wave through the ones we like. Apply the same tests to both.</li>
+                        <li><strong>Stopping at "I disagree":</strong> a critical reading names <em>why</em> — which claim, which weak evidence, which flawed step — not just a reaction.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="journal" class="lesson-section">
+                <h2>📓 Learning Journal</h2>
+                <div class="card card-info">
+                    <p>Keep your learning journal going. After this lesson, take a few minutes to note:</p>
+                    <ul>
+                        <li><strong>Key concepts</strong> you learned</li>
+                        <li><strong>Things that clicked</strong> for you</li>
+                        <li><strong>Questions or confusion points</strong> to revisit</li>
+                        <li><strong>Ideas you want to try</strong></li>
+                        <li><strong>Your progress and feelings</strong> about working at C1</li>
+                    </ul>
+                    <p><strong>✍️ This lesson's prompt:</strong> Find one short opinion piece you happen to <em>agree</em> with. Read it as critically as you would one you oppose: name its central claim, weigh its evidence, and hunt for loaded language or a shaky step. Then write a sentence on how it felt to scrutinise a view you share. Learning to test the arguments you like is the hardest — and most valuable — part of critical reading.</p>
+                </div>
+            </section>
+
+            <section id="summary" class="lesson-section">
+                <h2>📝 Lesson Summary</h2>
+
+                <div class="card card-success">
+                    <h3>🎓 Key Takeaways</h3>
+                    <ul>
+                        <li><strong>Fact vs opinion:</strong> a fact can be checked; an opinion is a judgement — and skilled writers dress opinions in the grammar of fact.</li>
+                        <li>Separate the <strong>claim</strong> (the point) from the <strong>evidence</strong> (the support), then ask whether the evidence truly supports that claim.</li>
+                        <li>Read a text's <strong>purpose, stance and tone</strong>, and spot <strong>bias</strong> through <strong>loaded / emotive language</strong> and what is left unsaid.</li>
+                        <li>Arguments run <strong>evidence → warrant → claim</strong>; common weaknesses are <strong>unsupported generalisation, false cause, cherry-picking, false dilemma</strong>, and appeals to emotion.</li>
+                        <li>Read <strong>between the lines</strong> — draw inferences from implication — and describe texts with precise verbs (<em>asserts, concedes, downplays, refutes</em>).</li>
+                    </ul>
+                </div>
+
+                <h3>🎉 What You've Accomplished</h3>
+                <p>You've moved from reading for information to reading for <em>evaluation</em> — the ability to take any persuasive text apart, see its machinery, and decide for yourself whether it earns your agreement. That is the reading half of advanced literacy, and it protects your judgement in a world full of confident, well-crafted persuasion. 🎉</p>
+
+                <h3>❓ Common Questions at This Stage</h3>
+                <details>
+                    <summary>Isn't it exhausting to read everything this critically?</summary>
+                    <p>You don't have to — and shouldn't. Critical reading is a gear you shift into when the stakes matter: a decision, a purchase, a claim that will shape what you believe. For a novel or a friend's message, read for pleasure and connection. The skill is knowing <em>when</em> to switch the gear on. With practice, the basic checks become almost automatic and cost you very little time.</p>
+                </details>
+                <details>
+                    <summary>If a writer is clearly biased, can I just dismiss what they say?</summary>
+                    <p>No. Bias tells you to check the evidence more carefully, not to reject the conclusion. Even a strongly one-sided piece can contain true facts and a sound point. Separate <em>how</em> the case is argued from <em>whether</em> it's correct — that separation is the whole discipline.</p>
+                </details>
+                <details>
+                    <summary>How is a "warrant" different from evidence?</summary>
+                    <p>Evidence is the material offered — the data, the example, the quotation. The warrant is the usually-unstated assumption that connects that evidence to the conclusion. "Sales fell (evidence), so the rebrand failed (claim)" relies on the warrant "the rebrand, and nothing else, caused the fall." Naming that hidden bridge is often how you locate an argument's real weak point.</p>
+                </details>
+
+                <h3>🔭 Looking Ahead</h3>
+                <p>You can now take an argument apart — next, you'll learn to build one. In <strong>Lesson 6.2</strong>, "Academic &amp; Argument Writing — Structuring an Essay," you'll turn a critical reader's eye onto your own writing: crafting a sharp thesis, building body paragraphs that move from point to evidence to explanation, handling counter-arguments fairly, and landing a conclusion that synthesises rather than repeats. The evaluation skills from this lesson are exactly what make an essay convincing to <em>its</em> critical readers.</p>
+
+                <h3>✅ Before the Next Lesson</h3>
+                <ul>
+                    <li>Pick one news story and read two pieces on it from different outlets; note how tone and framing differ.</li>
+                    <li>Collect five examples of loaded language from things you read this week, with a neutral rewrite of each.</li>
+                    <li>Practise stating the central claim of anything you read in a single sentence.</li>
+                    <li>Write your Learning Journal entry for this lesson.</li>
+                </ul>
+
+                <div class="card card-accent" style="text-align: center; padding: 2rem;">
+                    <h3>🌟 Encouragement for the Journey</h3>
+                    <p>The ability to read closely, weigh a case, and hold your own judgement against a persuasive voice is one of the most valuable things any advanced learner can carry out of a language course — and out into their life. You are no longer just understanding English; you are thinking <em>in</em> it, and thinking <em>about</em> what you read. That is real power. Keep questioning. 👋</p>
+                </div>
+            </section>
+
+            <nav class="lesson-nav" aria-label="Lesson Navigation">
+                <a href="lesson_15.html" class="prev-lesson">← Previous: Academic &amp; Formal Vocabulary</a>
+                <a href="index.html" class="home-link">🏠 Course Home</a>
+                <a href="lesson_17.html" class="next-lesson">Next: Academic &amp; Argument Writing — Structuring an Essay →</a>
+            </nav>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Ray de la Paz. Advanced English (C1 Advanced). All rights reserved.</p>
+        <div class="footer-links">
+            <a href="/">ESL Hub</a>
+            <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+            <a href="https://rays-home.netlify.app/contact">Contact</a>
+            <a href="#" id="print-button">Print Page</a>
+        </div>
+        <p><small>Press <kbd>?</kbd> for keyboard shortcuts</small></p>
+    </footer>
+
+    <script src="js/clipboard.js"></script>
+    <script src="js/course-enhancements.js"></script>
+</body>
+</html>

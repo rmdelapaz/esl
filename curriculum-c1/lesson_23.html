@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Editing your own English for clarity and concision — cutting redundancy, removing empty intensifiers, preferring strong verbs, and adopting the redraft mindset. Lesson 8.2 of the C1 Advanced English curriculum.">
+    <meta name="author" content="Ray de la Paz">
+    <title>Lesson 8.2: Precision &amp; Concision — Editing Your English - Advanced English (C1)</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        window.__mermaid = mermaid;
+        const isDark = localStorage.getItem('theme') === 'dark' ||
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: isDark ? 'dark' : 'default',
+            themeVariables: isDark
+                ? { primaryColor: '#334155', primaryTextColor: '#e2e8f0', primaryBorderColor: '#6366f1', lineColor: '#94a3b8', secondaryColor: '#1e293b', tertiaryColor: '#0f172a' }
+                : { primaryColor: '#eff6ff', primaryTextColor: '#1e293b', primaryBorderColor: '#3b82f6', lineColor: '#64748b', secondaryColor: '#f8fafc', tertiaryColor: '#f1f5f9' }
+        });
+    </script>
+</head>
+<body>
+    <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Advanced English (C1)</a>
+            <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-expanded="false" aria-controls="nav-links">☰</button>
+            <div class="nav-links" id="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#modules">All Lessons</a>
+                <span class="nav-divider"></span>
+                <a href="/">ESL Hub</a>
+                <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+                <button id="theme-toggle" aria-label="Toggle dark/light mode">🌙</button>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <div class="container">
+            <header>
+                <h1>✂️ Lesson 8.2: Precision &amp; Concision — Editing Your English</h1>
+                <p class="lead">"I didn't have time to write a short letter, so I wrote a long one." The joke lands because everyone knows the truth in it: <em>concise</em> writing is harder than long-winded writing, and it almost never comes out right on the first try. At C1 you can already produce fluent, correct English. The next craft is <strong>editing</strong> it — going back over your own words to cut the padding, drop the empty intensifiers, and let strong verbs carry the weight, so that what you say is clearer and lands harder. This is a process skill, a habit of revision, and it is one of the most valuable you'll ever build.</p>
+
+                <div class="card card-info">
+                    <h2>📚 What You'll Learn</h2>
+                    <p>By the end of this lesson, you will be able to:</p>
+                    <ul>
+                        <li><strong>Cut redundancy and wordiness</strong> — replace bloated phrases (<em>in order to → to</em>, <em>due to the fact that → because</em>) with lean ones</li>
+                        <li>Remove <strong>empty intensifiers and qualifiers</strong> (<em>very, really, quite, actually</em>) where they weaken rather than strengthen</li>
+                        <li>Prefer <strong>strong verbs</strong> over noun-plus-weak-verb strings (<em>make a decision → decide</em>) — the reverse move to nominalisation</li>
+                        <li>Adopt the <strong>redraft mindset</strong>: write freely, then edit deliberately — "write, then cut ten percent"</li>
+                    </ul>
+                    <p><strong>⏱️ Estimated Time:</strong> 55–70 minutes</p>
+                    <p><strong>🎯 Project:</strong> Take a paragraph of your own writing and edit it down by about 25% without losing any meaning.</p>
+                </div>
+            </header>
+
+            <details class="card toc-card" open>
+                <summary aria-label="Toggle table of contents">
+                    <span class="toc-icon" aria-hidden="true">📑</span>
+                    <span class="toc-label">In This Lesson</span>
+                    <span class="toc-chevron" aria-hidden="true">▾</span>
+                </summary>
+                <nav aria-label="Table of Contents">
+                    <ol>
+                        <li><a href="#why" class="toc-link">Why Edit at All?</a></li>
+                        <li><a href="#redundancy" class="toc-link">Cutting Redundancy &amp; Wordiness</a></li>
+                        <li><a href="#intensifiers" class="toc-link">Removing Empty Intensifiers</a></li>
+                        <li><a href="#verbs" class="toc-link">Strong Verbs Over Weak Nouns</a></li>
+                        <li><a href="#clarity" class="toc-link">Double Negatives &amp; Tangled Clauses</a></li>
+                        <li><a href="#mindset" class="toc-link">The Redraft Mindset</a></li>
+                        <li><a href="#dialogue" class="toc-link">In the Editing Room</a></li>
+                        <li><a href="#say-aloud" class="toc-link">Hear It &amp; Repeat</a></li>
+                        <li><a href="#practice" class="toc-link">Practice &amp; Project</a></li>
+                        <li><a href="#tips" class="toc-link">Tips &amp; Common Mistakes</a></li>
+                        <li><a href="#journal" class="toc-link">Learning Journal</a></li>
+                        <li><a href="#summary" class="toc-link">Summary</a></li>
+                    </ol>
+                </nav>
+            </details>
+
+            <section id="why" class="lesson-section">
+                <h2>Why Edit at All?</h2>
+                <p>First drafts are almost always too long. When we write — and even more when we speak — we reach for the first phrasing that comes, and the first phrasing is padded: we hedge, we repeat, we spell out what the reader already grasps. That's normal and fine. The mark of an advanced writer is not producing a perfect first draft but <strong>knowing how to trim the draft you have</strong>. Editing for concision is a distinct craft, separate from choosing the right word for its shade of meaning — here the target is <em>clarity</em>, achieved by removing what doesn't earn its place.</p>
+
+                <p>See what a single editing pass does:</p>
+                <div class="model">
+                    <p><strong>First draft (39 words):</strong> "Due to the fact that we did not have a sufficient amount of time, we made the decision to postpone the meeting until a later date in order to be able to prepare more fully."</p>
+                    <p><strong>Edited (17 words):</strong> "Because we lacked time, we decided to postpone the meeting so we could prepare more fully."</p>
+                </div>
+                <p>More than half the words are gone, and not one idea is lost. In fact the edited version is <em>clearer</em>: the reader gets the point faster and with less effort. Concision is a courtesy to your reader and a signal of control. That's the promise of this lesson — say the same thing in fewer, stronger words.</p>
+
+                <div class="card card-accent">
+                    <h4>🧠 Mindset</h4>
+                    <p>Editing your own writing can feel like an admission that the first attempt wasn't good enough. Reframe it: <strong>the first draft's job is to exist; the second draft's job is to shine.</strong> Every professional writer redrafts, often many times, and cutting your own words is a sign of skill, not failure. It's also strangely satisfying — few things feel as clean as deleting a phrase and watching the sentence get sharper. Learn to enjoy the cut. 🌱</p>
+                </div>
+            </section>
+
+            <section id="redundancy" class="lesson-section">
+                <h2>Cutting Redundancy &amp; Wordiness</h2>
+                <p>English is full of stock phrases that use several words to do the work of one. They feel formal and safe, so they slip into writing unnoticed — but they add bulk without adding meaning. The fastest win in any edit is to swap these bloated phrases for their lean equivalents.</p>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>Wordy (cut this)</th><th>Concise (use this)</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>in order to</td><td><strong>to</strong></td></tr>
+                            <tr><td>due to the fact that / owing to the fact that</td><td><strong>because</strong> / <strong>since</strong></td></tr>
+                            <tr><td>at this point in time / at the present time</td><td><strong>now</strong> / <strong>currently</strong></td></tr>
+                            <tr><td>in the event that</td><td><strong>if</strong></td></tr>
+                            <tr><td>a large number of / a great deal of</td><td><strong>many</strong> / <strong>much</strong></td></tr>
+                            <tr><td>in spite of the fact that</td><td><strong>although</strong></td></tr>
+                            <tr><td>has the ability to</td><td><strong>can</strong></td></tr>
+                            <tr><td>in the near future</td><td><strong>soon</strong></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>A related trap is the <strong>redundant pair</strong> — two words that mean the same thing, where one is doing all the work: <em>completely eliminate</em> (elimination is already complete → <strong>eliminate</strong>), <em>end result</em> (→ <strong>result</strong>), <em>free gift</em> (→ <strong>gift</strong>), <em>past history</em> (→ <strong>history</strong>), <em>advance planning</em> (→ <strong>planning</strong>), <em>each and every</em> (→ <strong>each</strong> or <strong>every</strong>). The extra word doesn't intensify; it just repeats.</p>
+
+                <div class="card card-warning">
+                    <h4>⚠️ Redundancy in slow motion — a before → after</h4>
+                    <p><strong>Before (wordy, 24 words):</strong> "In order to completely eliminate the problem, we will, in the near future, make a number of changes to each and every process."</p>
+                    <p><strong>After (concise, 13 words):</strong> "To eliminate the problem, we will soon change every process."</p>
+                    <p>Four wordy phrases fell away — <em>in order to → to</em>, <em>completely eliminate → eliminate</em>, <em>in the near future → soon</em>, <em>each and every → every</em> — and the sentence lost nothing but weight.</p>
+                </div>
+            </section>
+
+            <section id="intensifiers" class="lesson-section">
+                <h2>Removing Empty Intensifiers</h2>
+                <p>We reach for <em>very, really, quite, so, actually, just, basically</em> to add force — but they usually <strong>drain</strong> it. An intensifier propped in front of a weak word is a confession that the word isn't strong enough. "Very tired" is limp; "exhausted" is vivid. "Really important" pleads; "crucial" states. The concise move is often to <strong>delete the intensifier and upgrade the word</strong>.</p>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>Weak: intensifier + adjective</th><th>Strong: one precise word</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>very tired</td><td><strong>exhausted</strong></td></tr>
+                            <tr><td>very big / really large</td><td><strong>huge</strong> / <strong>vast</strong></td></tr>
+                            <tr><td>really important</td><td><strong>crucial</strong> / <strong>vital</strong></td></tr>
+                            <tr><td>very good</td><td><strong>excellent</strong> / <strong>superb</strong></td></tr>
+                            <tr><td>very bad</td><td><strong>terrible</strong> / <strong>dire</strong></td></tr>
+                            <tr><td>very surprised</td><td><strong>astonished</strong></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>Some qualifiers add nothing at all and can simply go. <em>Actually, basically, really, just, quite, in a sense</em> often survive from speech into writing as filler. Read the sentence with the word removed: if the meaning is unchanged, the word was dead weight. "It's basically just a really simple idea, actually" says no more than "It's a simple idea" — and the shorter version sounds far more confident.</p>
+
+                <div class="card card-info">
+                    <h4>💡 Not every intensifier is empty</h4>
+                    <p>Concision is a tool, not a ban. Sometimes an intensifier earns its place — for genuine emphasis ("I'm <em>absolutely</em> certain") or for a precise degree ("<em>slightly</em> undercooked", "<em>remarkably</em> calm"). The target is the <strong>reflexive, meaningless</strong> intensifier that props up a weak word, not the deliberate one that adds real force or precision. Cut the crutches; keep the choices.</p>
+                </div>
+            </section>
+
+            <section id="verbs" class="lesson-section">
+                <h2>Strong Verbs Over Weak Nouns</h2>
+                <p>One of the biggest sources of wordiness is turning a perfectly good verb into a noun and then propping it up with an empty "light" verb. <em>Decide</em> becomes <em>make a decision</em>; <em>conclude</em> becomes <em>reach a conclusion</em>; <em>discuss</em> becomes <em>have a discussion about</em>. The verb has been buried inside a noun, and a hollow verb (<em>make, reach, have, give, carry out</em>) is doing the grammar. For concision and punch, <strong>dig the verb back out</strong>.</p>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>Noun + weak verb (wordy)</th><th>Strong verb (concise)</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>make a decision</td><td><strong>decide</strong></td></tr>
+                            <tr><td>reach a conclusion</td><td><strong>conclude</strong></td></tr>
+                            <tr><td>carry out an investigation of</td><td><strong>investigate</strong></td></tr>
+                            <tr><td>give consideration to</td><td><strong>consider</strong></td></tr>
+                            <tr><td>have a discussion about</td><td><strong>discuss</strong></td></tr>
+                            <tr><td>provide assistance to</td><td><strong>help</strong> / <strong>assist</strong></td></tr>
+                            <tr><td>make an improvement to</td><td><strong>improve</strong></td></tr>
+                            <tr><td>take into consideration</td><td><strong>consider</strong></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="card card-info">
+                    <h4>💡 This is the reverse of nominalisation — and that's the point</h4>
+                    <p>In Lesson 3.1 you learned <strong>nominalisation</strong>: turning verbs into nouns for a dense, formal, academic register (<em>decide → the decision</em>). Here you're moving the other way, un-nominalising for clarity and force. Neither is "correct" in the abstract — <strong>match the tool to the goal</strong>. Reach for nominalisation when you want formal, impersonal density (a research report, a legal clause); reach for the strong verb when you want clear, direct, energetic prose (an email, a summary, a persuasive argument). Concision serves clarity; nominalisation serves formal abstraction. An advanced writer chooses knowingly between them.</p>
+                </div>
+
+                <div class="model">
+                    <p><strong>Noun-heavy:</strong> "The committee will carry out a review of the proposal and make a recommendation."</p>
+                    <p><strong>Verb-driven:</strong> "The committee will review the proposal and recommend."</p>
+                    <p><em>Eleven words become eight, and the sentence gains momentum.</em></p>
+                </div>
+            </section>
+
+            <section id="clarity" class="lesson-section">
+                <h2>Double Negatives &amp; Tangled Clauses</h2>
+                <p>Concision isn't only about word count — it's about the <strong>reader's effort</strong>. Two constructions quietly force a reader to work harder than they should: buried double negatives and long tangled clauses. Untangling them is a core editing move.</p>
+
+                <p><strong>Double negatives</strong> (of the "not un-" kind) make the reader flip two switches to reach a simple meaning. "It is not uncommon" means "it is common"; "not without merit" means "has some merit." These have their place for deliberate understatement, but as a default they slow the reader down for no gain.</p>
+
+                <div class="model">
+                    <p><strong>Tangled (double negative):</strong> "It is not impossible that the results were not entirely inaccurate."</p>
+                    <p><strong>Clear:</strong> "The results may be roughly accurate."</p>
+                </div>
+
+                <p><strong>Tangled clauses</strong> pile subordinate ideas on top of each other until the main point is lost. The cure is often to <em>break one long sentence into two</em>, or to move the main idea to the front. If you can't say a sentence aloud in one breath and still remember how it started, it's a candidate for splitting.</p>
+
+                <div class="model">
+                    <p><strong>Overloaded (one 34-word sentence):</strong> "The report, which was written by the team that had been assembled in order to look into the matter that had been raised at the previous meeting, was well received."</p>
+                    <p><strong>Untangled (two clean sentences):</strong> "A team was assembled to look into the matter raised at the last meeting. Its report was well received."</p>
+                </div>
+
+                <pre class="mermaid">
+graph LR
+    A["First draft: wordy / tangled"] -->|"cut redundancy"| B["Leaner"]
+    B -->|"drop empty intensifiers"| C["Sharper"]
+    C -->|"strong verbs / untangle"| D["Clear and concise"]
+                </pre>
+            </section>
+
+            <section id="mindset" class="lesson-section">
+                <h2>The Redraft Mindset</h2>
+                <p>All of the above depends on one habit: treating writing as a <strong>two-stage process</strong>. Stage one, you <em>draft</em> — get the ideas down without judging the wording. Stage two, you <em>edit</em> — go back cold and cut. Trying to do both at once is what makes writing painful and slow; separating them is what makes it good. A famous rule of thumb captures it: <strong>"Write, then cut ten percent."</strong> Whatever length you produce, you can almost always lose a tenth of it and improve the whole.</p>
+
+                <blockquote>
+                    <p>Editing is not about deleting your ideas — it's about deleting everything that gets between your ideas and your reader.</p>
+                </blockquote>
+
+                <p>A practical editing routine for any piece — an email, an essay, a report:</p>
+                <div class="phrase-bank">
+                    <p><strong>Phrase bank — the editor's checklist (say these to yourself)</strong></p>
+                    <span class="phrase">"Can I say this in fewer words?"</span>
+                    <span class="phrase">"Which phrase is padding?"</span>
+                    <span class="phrase">"Is this intensifier earning its place?"</span>
+                    <span class="phrase">"Is there a verb hiding in that noun?"</span>
+                    <span class="phrase">"Would a full stop be clearer than this comma?"</span>
+                    <span class="phrase">"What can I cut and lose nothing?"</span>
+                    <span class="phrase">"Does the reader already know this?"</span>
+                    <span class="phrase">"Read it aloud — where do I run out of breath?"</span>
+                </div>
+
+                <p>Reading your work <strong>aloud</strong> is the single best editing test. Padding, tangles, and empty intensifiers reveal themselves the moment you have to speak them — you'll stumble exactly where the reader would.</p>
+            </section>
+
+            <section id="dialogue" class="lesson-section">
+                <h2>In the Editing Room</h2>
+                <p>Two colleagues tighten a draft together. Notice how each cut is named — redundancy, intensifier, buried verb, tangle — and how the sentence sharpens with every pass.</p>
+
+                <div class="dialogue">
+                    <p class="line a"><span class="speaker">Editor:</span> Read me your opening line as it stands.</p>
+                    <p class="line b"><span class="speaker">Writer:</span> "Due to the fact that we are currently at a point where costs are very high, we have made the decision to carry out a review of our spending."</p>
+                    <p class="line a"><span class="speaker">Editor:</span> Right. First, "due to the fact that" is just "because". And "at a point where" — cut it.</p>
+                    <p class="line b"><span class="speaker">Writer:</span> So: "Because costs are very high, we have made the decision to carry out a review of our spending."</p>
+                    <p class="line a"><span class="speaker">Editor:</span> Better. Now, "very high" — is there one word for that? And there are two buried verbs in there.</p>
+                    <p class="line b"><span class="speaker">Writer:</span> "Very high" could be "soaring". And "made the decision to" is just "decided", "carry out a review of" is "review".</p>
+                    <p class="line a"><span class="speaker">Editor:</span> Say the whole thing now.</p>
+                    <p class="line b"><span class="speaker">Writer:</span> "Because costs are soaring, we have decided to review our spending." Twelve words instead of twenty-four — and it actually hits harder.</p>
+                    <p class="line a"><span class="speaker">Editor:</span> That's the craft. You didn't lose a single idea; you lost the padding around them.</p>
+                </div>
+
+                <p>Every cut was deliberate and named. That's what editing is — not vague "tidying", but a series of specific, learnable moves you can run down like a checklist.</p>
+            </section>
+
+            <section id="say-aloud" class="lesson-section">
+                <h2>🔊 Hear It &amp; Repeat — Model Sentences</h2>
+                <p>Listen to each model sentence, then say it back. Use the 🎧 <strong>Audio</strong> control (bottom-right) to choose a UK or US voice and slow the speed down. Each of these is the <em>edited</em>, concise version — feel how clean it sounds spoken aloud.</p>
+                <div class="card card-accent">
+                    <ul>
+                        <li data-say="Because we lacked time, we decided to postpone the meeting.">Because we lacked time, we decided to postpone the meeting.</li>
+                        <li data-say="The plan is crucial, so we will review it now.">The plan is crucial, so we will review it now.</li>
+                        <li data-say="To eliminate the problem, we will soon change every process.">To eliminate the problem, we will soon change every process.</li>
+                        <li data-say="The committee will review the proposal and recommend a course of action.">The committee will review the proposal and recommend a course of action.</li>
+                        <li data-say="Write freely first, then go back and cut ten percent.">Write freely first, then go back and cut ten percent.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="practice" class="lesson-section">
+                <h2>Practice &amp; Project</h2>
+
+                <div class="card card-info exercise-check" data-exercise="gapfill">
+                    <h3>🏋️ Exercise 1: Tighten the wordy phrase</h3>
+                    <p><strong>Objective:</strong> Replace each wordy phrase with its concise equivalent — one word each unless noted.</p>
+                    <ol>
+                        <li>in order to → <input class="gap" data-answer="to" autocomplete="off" autocapitalize="off" aria-label="gap 1"></li>
+                        <li>due to the fact that → <input class="gap" data-answer="because" autocomplete="off" autocapitalize="off" aria-label="gap 2"></li>
+                        <li>at this point in time → <input class="gap" data-answer="now" autocomplete="off" autocapitalize="off" aria-label="gap 3"></li>
+                        <li>completely eliminate → <input class="gap" data-answer="eliminate" autocomplete="off" autocapitalize="off" aria-label="gap 4"></li>
+                        <li>make a decision → <input class="gap" data-answer="decide" autocomplete="off" autocapitalize="off" aria-label="gap 5"></li>
+                        <li>has the ability to → <input class="gap" data-answer="can" autocomplete="off" autocapitalize="off" aria-label="gap 6"></li>
+                        <li>very important → <input class="gap" data-answer="crucial" autocomplete="off" autocapitalize="off" aria-label="gap 7"> <em>(one strong adjective)</em></li>
+                        <li>reach a conclusion → <input class="gap" data-answer="conclude" autocomplete="off" autocapitalize="off" aria-label="gap 8"></li>
+                    </ol>
+                    <div class="exercise-actions"><button type="button" class="check-btn">Check my answers</button> <button type="button" class="reveal-btn">Show answers</button></div>
+                    <div class="check-feedback" aria-live="polite"></div>
+                    <details>
+                        <summary>✅ Answer</summary>
+                        <p>1. to · 2. because · 3. now · 4. eliminate · 5. decide · 6. can · 7. crucial <em>(or vital / essential)</em> · 8. conclude</p>
+                    </details>
+                </div>
+
+                <div class="card card-info exercise-check" data-exercise="gapfill">
+                    <h3>🏋️ Exercise 2: Cut the redundant word</h3>
+                    <p><strong>Objective:</strong> Each phrase has one unnecessary word. Type the phrase without it (keep the word that carries the meaning).</p>
+                    <ol>
+                        <li>free gift → <input class="gap" data-answer="gift" autocomplete="off" autocapitalize="off" aria-label="gap 1"></li>
+                        <li>end result → <input class="gap" data-answer="result" autocomplete="off" autocapitalize="off" aria-label="gap 2"></li>
+                        <li>past history → <input class="gap" data-answer="history" autocomplete="off" autocapitalize="off" aria-label="gap 3"></li>
+                        <li>advance planning → <input class="gap" data-answer="planning" autocomplete="off" autocapitalize="off" aria-label="gap 4"></li>
+                    </ol>
+                    <div class="exercise-actions"><button type="button" class="check-btn">Check my answers</button> <button type="button" class="reveal-btn">Show answers</button></div>
+                    <div class="check-feedback" aria-live="polite"></div>
+                    <details>
+                        <summary>✅ Answer</summary>
+                        <p>1. gift <em>(a gift is already free)</em> · 2. result <em>(a result is already the end)</em> · 3. history <em>(history is already past)</em> · 4. planning <em>(planning is already in advance)</em></p>
+                    </details>
+                </div>
+
+                <div class="card card-info">
+                    <h3>🏋️ Exercise 3: Choose the cleaner sentence</h3>
+                    <p><strong>Objective:</strong> For each pair, decide which version is clearer and more concise — and be ready to say <em>why</em>.</p>
+                    <ol>
+                        <li>(a) "It is not uncommon for delays to occur in the event that staff are absent." vs (b) "Delays are common when staff are absent."</li>
+                        <li>(a) "We will give consideration to your proposal." vs (b) "We will consider your proposal."</li>
+                        <li>(a) "Basically, it's just a really simple change, actually." vs (b) "It's a simple change."</li>
+                    </ol>
+                    <details>
+                        <summary>✅ Answer</summary>
+                        <p>In every pair, <strong>(b)</strong> is cleaner. 1(b) removes a double negative ("not uncommon" → "common") and "in the event that" → "when". 2(b) digs the verb out of "give consideration to" → "consider". 3(b) deletes three empty qualifiers ("basically", "just", "really", "actually") that add nothing. Same meaning, far more confidence.</p>
+                    </details>
+                </div>
+
+                <div class="card card-info">
+                    <h3>🎯 Your Project: Cut It by 25%</h3>
+                    <p>The editor's core workout: take a chunk of your <em>own</em> writing and edit it down by roughly a quarter, losing no meaning at all.</p>
+                    <ol>
+                        <li><strong>(2 min)</strong> Find a paragraph you wrote recently — an email, an essay section, a report, a forum post — of about 120–180 words. Count the words and note the target: cut about 25% (so ~150 words → ~112).</li>
+                        <li><strong>(5 min)</strong> Run the checklist: swap wordy phrases for lean ones (<em>in order to → to</em>), cut redundant pairs, delete empty intensifiers and upgrade weak adjectives, and dig verbs out of nouns (<em>make a decision → decide</em>).</li>
+                        <li><strong>(3 min)</strong> Untangle any overloaded sentence — split it in two, or front the main idea. Read the whole thing <strong>aloud</strong> and cut wherever you stumble.</li>
+                        <li><strong>(2 min)</strong> Count again. Did you hit ~25%? Reread the trimmed version against the original: confirm that <em>every</em> idea survived. If something got lost, restore just enough to carry it.</li>
+                        <li><strong>(3 min)</strong> Write one line reflecting: which single cut improved the paragraph most, and which type of padding you use most often?</li>
+                    </ol>
+                    <div class="card card-success">
+                        <h4>✅ Project Completion Checklist</h4>
+                        <ul>
+                            <li>☐ I cut the paragraph by roughly 25% (I counted before and after)</li>
+                            <li>☐ I replaced at least three wordy phrases with concise ones</li>
+                            <li>☐ I removed at least two empty intensifiers or qualifiers</li>
+                            <li>☐ I turned at least one noun-plus-weak-verb into a strong verb</li>
+                            <li>☐ I untangled or split at least one overloaded sentence</li>
+                            <li>☐ I confirmed no meaning was lost, reading the edited version aloud</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card quiz-container">
+                    <h3>🎯 Quick Quiz</h3>
+                    <div class="quiz-question">
+                        <p><strong>Question 1:</strong> Which is the most concise rewrite of "We will make a decision at this point in time"?</p>
+                        <div class="quiz-options">
+                            <button class="quiz-option" data-correct="true" data-explanation="Correct — 'make a decision' → 'decide' digs out the strong verb, and 'at this point in time' → 'now'.">A) We will decide now.</button>
+                            <button class="quiz-option" data-correct="false" data-hint="This keeps the buried verb 'make a decision' and the padded 'at the present time' — barely shorter.">B) We will make a decision at the present time.</button>
+                            <button class="quiz-option" data-correct="false" data-hint="Adding 'in order to arrive at' makes it longer and more tangled, not more concise.">C) We will proceed in order to arrive at a decision now.</button>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    <div class="quiz-question">
+                        <p><strong>Question 2:</strong> You're writing a formal legal clause that needs impersonal, abstract density. When is turning verbs into nouns (nominalisation) the <em>right</em> move rather than digging out strong verbs?</p>
+                        <div class="quiz-options">
+                            <button class="quiz-option" data-correct="true" data-explanation="Right — match the tool to the goal: concision and strong verbs serve clarity and directness; nominalisation serves formal, impersonal density where the genre calls for it.">A) When the genre calls for formal, impersonal abstraction — match the tool to the goal</button>
+                            <button class="quiz-option" data-correct="false" data-hint="Concision isn't 'always better' in the abstract — a legal clause may legitimately want nominal density. The choice depends on purpose.">B) Never — strong verbs are always better than nouns</button>
+                            <button class="quiz-option" data-correct="false" data-hint="Neither tool is 'more correct' regardless of context; the whole point is choosing knowingly by purpose and genre.">C) Always — nominalisation is more correct than plain verbs</button>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="tips" class="lesson-section">
+                <h2>Tips &amp; Common Mistakes</h2>
+
+                <h3>✅ Do's</h3>
+                <ul>
+                    <li><strong>Draft first, edit second</strong> — get the ideas down, then go back cold to cut. Never try to do both at once.</li>
+                    <li>Swap <strong>wordy stock phrases</strong> for lean ones on sight (<em>due to the fact that → because</em>, <em>in order to → to</em>).</li>
+                    <li>Delete a weak intensifier and <strong>upgrade the word</strong> (<em>very tired → exhausted</em>) rather than propping it up.</li>
+                    <li>Dig the <strong>verb out of the noun</strong> when you want clarity and force (<em>make a decision → decide</em>).</li>
+                    <li><strong>Read it aloud</strong> and apply "cut ten percent" — you'll hear the padding and the tangles instantly.</li>
+                </ul>
+
+                <h3>❌ Common Mistakes</h3>
+                <div class="card card-warning">
+                    <h4>⚠️ Watch Out</h4>
+                    <ul>
+                        <li><strong>Cutting so hard you lose meaning:</strong> concision serves clarity, not word-count for its own sake. If a cut removes an idea, restore it.</li>
+                        <li><strong>Treating nominalisation as an error:</strong> it isn't — it's the right tool for formal, dense, impersonal genres. Match the tool to the goal.</li>
+                        <li><strong>Editing while drafting:</strong> stopping to polish every sentence as you write kills flow and rarely produces the best cut anyway.</li>
+                        <li><strong>Keeping every intensifier:</strong> "very, really, quite, just, basically, actually" stacked together sap authority. Question each one.</li>
+                        <li><strong>Marathon sentences:</strong> if you can't say it in one breath, split it. Clarity beats a clever, tangled structure every time.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="journal" class="lesson-section">
+                <h2>📓 Learning Journal</h2>
+                <div class="card card-info">
+                    <p>Keep your learning journal going. After this lesson, take a few minutes to note:</p>
+                    <ul>
+                        <li><strong>Key concepts</strong> you learned</li>
+                        <li><strong>Things that clicked</strong> for you</li>
+                        <li><strong>Questions or confusion points</strong> to revisit</li>
+                        <li><strong>Ideas you want to try</strong></li>
+                        <li><strong>Your progress and feelings</strong> about working at C1</li>
+                    </ul>
+                    <p><strong>✍️ This lesson's prompt:</strong> Take one sentence you wrote this week and rewrite it three ways: (1) as concise as you can make it, (2) in a formal nominalised style, and (3) somewhere in between. Then note, in a line, which version fits which situation — and which kind of padding (wordy phrases, empty intensifiers, or buried verbs) you personally overuse. Naming your habit is the first step to editing it out automatically.</p>
+                </div>
+            </section>
+
+            <section id="summary" class="lesson-section">
+                <h2>📝 Lesson Summary</h2>
+
+                <div class="card card-success">
+                    <h3>🎓 Key Takeaways</h3>
+                    <ul>
+                        <li><strong>Editing is a craft</strong> distinct from word choice: the target is clarity, reached by removing what doesn't earn its place.</li>
+                        <li><strong>Cut redundancy:</strong> swap wordy phrases (<em>due to the fact that → because</em>, <em>in order to → to</em>) and drop redundant pairs (<em>completely eliminate → eliminate</em>).</li>
+                        <li><strong>Remove empty intensifiers</strong> (<em>very, really, quite, actually</em>) — delete them and upgrade the word (<em>very tired → exhausted</em>).</li>
+                        <li><strong>Prefer strong verbs</strong> over noun-plus-weak-verb (<em>make a decision → decide</em>) — the reverse of nominalisation, used when clarity beats formality.</li>
+                        <li><strong>Match the tool to the goal:</strong> concision for clarity and directness; nominalisation for formal, impersonal density. And <strong>write, then cut ten percent.</strong></li>
+                    </ul>
+                </div>
+
+                <h3>🎉 What You've Accomplished</h3>
+                <p>You've added the editor's eye to the writer's hand. You can now look at your own English and see the padding — the bloated phrases, the propped-up adjectives, the verbs buried in nouns, the tangled clauses — and cut it away without losing a single idea. Just as importantly, you know that concision is a <em>choice</em>, weighed against formality and register, not a blanket rule. That judgement is exactly the polish that separates competent writing from writing that lands. 🎉</p>
+
+                <h3>❓ Common Questions at This Stage</h3>
+                <details>
+                    <summary>Isn't shorter always better?</summary>
+                    <p>No. Concision serves clarity, and clarity is the real goal. Sometimes a longer phrasing is clearer, gentler, or more precise, and sometimes a formal, nominalised style is exactly right for the genre. The skill is cutting what <em>doesn't earn its place</em> — not slashing word count for its own sake.</p>
+                </details>
+                <details>
+                    <summary>This contradicts Lesson 3.1 on nominalisation — which one is right?</summary>
+                    <p>Both — they're tools for different jobs. Nominalisation gives you formal, dense, impersonal prose (reports, legal writing, academic abstraction). Digging out strong verbs gives you clear, direct, energetic prose (emails, summaries, persuasion). An advanced writer owns both dials and turns the right one for the audience and purpose. That conscious choice <em>is</em> the C1 skill.</p>
+                </details>
+                <details>
+                    <summary>How do I edit my own writing when I can't see its faults?</summary>
+                    <p>Two reliable tricks: leave a gap (edit after a break, even ten minutes, so you read it fresher and colder), and read it <strong>aloud</strong>. Speaking the sentences exposes padding and tangles instantly — you'll stumble exactly where a reader would. Running a fixed checklist ("any wordy phrase? any empty intensifier? any buried verb?") also catches faults you'd otherwise skim past.</p>
+                </details>
+
+                <h3>🔭 Looking Ahead</h3>
+                <p>You can now speak fluently under pressure (Lesson 8.1) and refine your English for clarity and force (this lesson). Next comes the moment to put <em>everything</em> together. In <strong>Lesson 8.3</strong>, the <strong>C1 Capstone</strong>, you'll write a concise, well-argued <em>position paper</em> and then present and defend it aloud — drawing on the grammar, vocabulary, reading, writing, and speaking skills of the whole level in one integrated academic task. Concision and precision will be right at the heart of it.</p>
+
+                <h3>✅ Before the Next Lesson</h3>
+                <ul>
+                    <li>Edit one more paragraph of your own writing down by 20–25% using the checklist.</li>
+                    <li>Collect five wordy phrases you catch yourself using and note their lean equivalents.</li>
+                    <li>Rewrite three "make a decision"-style noun phrases as strong single verbs.</li>
+                    <li>Write your Learning Journal entry for this lesson.</li>
+                </ul>
+
+                <div class="card card-accent" style="text-align: center; padding: 2rem;">
+                    <h3>🌟 Encouragement for the Journey</h3>
+                    <p>There's a quiet confidence in prose that says exactly what it means and not one word more. You now know how to find it — to draft freely and then cut with a steady hand, trusting that fewer, stronger words carry more, not less. That restraint is the mark of a writer in full command. Keep drafting, keep cutting, and keep enjoying how clean the language gets. 👋</p>
+                </div>
+            </section>
+
+            <nav class="lesson-nav" aria-label="Lesson Navigation">
+                <a href="lesson_22.html" class="prev-lesson">← Previous: Fluency &amp; Spontaneity — Speaking Strategies</a>
+                <a href="index.html" class="home-link">🏠 Course Home</a>
+                <a href="lesson_24.html" class="next-lesson">Next: Review Project — A Position Paper &amp; Its Defence →</a>
+            </nav>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Ray de la Paz. Advanced English (C1 Advanced). All rights reserved.</p>
+        <div class="footer-links">
+            <a href="/">ESL Hub</a>
+            <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+            <a href="https://rays-home.netlify.app/contact">Contact</a>
+            <a href="#" id="print-button">Print Page</a>
+        </div>
+        <p><small>Press <kbd>?</kbd> for keyboard shortcuts</small></p>
+    </footer>
+
+    <script src="js/clipboard.js"></script>
+    <script src="js/course-enhancements.js"></script>
+</body>
+</html>

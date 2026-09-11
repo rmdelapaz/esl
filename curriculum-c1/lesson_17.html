@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Structuring a formal argument essay at C1 — the thesis statement, an introduction that moves from hook to context to thesis, body paragraphs built on topic sentences, cohesion and signposting, handling counter-arguments, and a conclusion that synthesises. Lesson 6.2 of the C1 Advanced English curriculum.">
+    <meta name="author" content="Ray de la Paz">
+    <title>Lesson 6.2: Academic &amp; Argument Writing — Structuring an Essay - Advanced English (C1)</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        window.__mermaid = mermaid;
+        const isDark = localStorage.getItem('theme') === 'dark' ||
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: isDark ? 'dark' : 'default',
+            themeVariables: isDark
+                ? { primaryColor: '#334155', primaryTextColor: '#e2e8f0', primaryBorderColor: '#6366f1', lineColor: '#94a3b8', secondaryColor: '#1e293b', tertiaryColor: '#0f172a' }
+                : { primaryColor: '#eff6ff', primaryTextColor: '#1e293b', primaryBorderColor: '#3b82f6', lineColor: '#64748b', secondaryColor: '#f8fafc', tertiaryColor: '#f1f5f9' }
+        });
+    </script>
+</head>
+<body>
+    <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Advanced English (C1)</a>
+            <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-expanded="false" aria-controls="nav-links">☰</button>
+            <div class="nav-links" id="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#modules">All Lessons</a>
+                <span class="nav-divider"></span>
+                <a href="/">ESL Hub</a>
+                <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+                <button id="theme-toggle" aria-label="Toggle dark/light mode">🌙</button>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <div class="container">
+            <header>
+                <h1>📝 Lesson 6.2: Academic &amp; Argument Writing — Structuring an Essay</h1>
+                <p class="lead">A strong argument essay is not a pile of good sentences — it is an <em>architecture</em>. A reader should be able to feel the shape of your case before they've finished: here is the claim, here is the ground it stands on, here is the objection handled, here is the payoff. In the last lesson you learned to take an argument apart as a critical reader. Now you'll build one that could withstand that same scrutiny — a clear thesis, disciplined paragraphs, and the connective tissue that makes prose flow as a single, purposeful whole.</p>
+
+                <div class="card card-info">
+                    <h2>📚 What You'll Learn</h2>
+                    <p>By the end of this lesson, you will be able to:</p>
+                    <ul>
+                        <li>Write a precise, arguable <strong>thesis statement</strong> and an <strong>introduction</strong> that moves from hook to context to thesis</li>
+                        <li>Build <strong>body paragraphs</strong> on strong topic sentences, following the point → evidence → explanation → link pattern</li>
+                        <li>Achieve <strong>coherence and cohesion</strong> across paragraphs with referencing back and signposting connectors (<em>Furthermore, Nevertheless, Consequently, By contrast</em>)</li>
+                        <li>Acknowledge and <strong>rebut counter-arguments</strong>, and write a <strong>conclusion</strong> that restates, synthesises, and points to an implication — without introducing new points</li>
+                    </ul>
+                    <p><strong>⏱️ Estimated Time:</strong> 60–70 minutes</p>
+                    <p><strong>🎯 Project:</strong> Plan and begin drafting a four-to-five-paragraph argument essay on a given question — producing at minimum a full outline and a complete introduction.</p>
+                </div>
+            </header>
+
+            <details class="card toc-card" open>
+                <summary aria-label="Toggle table of contents">
+                    <span class="toc-icon" aria-hidden="true">📑</span>
+                    <span class="toc-label">In This Lesson</span>
+                    <span class="toc-chevron" aria-hidden="true">▾</span>
+                </summary>
+                <nav aria-label="Table of Contents">
+                    <ol>
+                        <li><a href="#intro" class="toc-link">The Shape of an Argument Essay</a></li>
+                        <li><a href="#thesis" class="toc-link">The Thesis Statement</a></li>
+                        <li><a href="#introduction" class="toc-link">The Introduction</a></li>
+                        <li><a href="#body" class="toc-link">Body Paragraphs: The PEEL Move</a></li>
+                        <li><a href="#cohesion" class="toc-link">Cohesion &amp; Signposting</a></li>
+                        <li><a href="#counter" class="toc-link">Counter-Arguments &amp; Rebuttal</a></li>
+                        <li><a href="#conclusion" class="toc-link">The Conclusion</a></li>
+                        <li><a href="#say-aloud" class="toc-link">🔊 Hear It &amp; Repeat</a></li>
+                        <li><a href="#practice" class="toc-link">Practice &amp; Project</a></li>
+                        <li><a href="#tips" class="toc-link">Tips &amp; Common Mistakes</a></li>
+                        <li><a href="#journal" class="toc-link">Learning Journal</a></li>
+                        <li><a href="#summary" class="toc-link">Summary</a></li>
+                    </ol>
+                </nav>
+            </details>
+
+            <section id="intro" class="lesson-section">
+                <h2>The Shape of an Argument Essay</h2>
+                <p>A formal argument essay does one job: it advances and defends a <strong>position</strong> in response to a question. Everything in it serves that position. The classic shape has three movements — an <strong>introduction</strong> that states the case, a <strong>body</strong> of paragraphs that build it, and a <strong>conclusion</strong> that consolidates it. Within that frame, two broad essay <strong>types</strong> recur:</p>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>Essay type</th><th>What it does</th><th>Typical thesis shape</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>For-and-against (discursive)</strong></td><td>weighs both sides of an issue before reaching a balanced judgement</td><td>"While X has clear merits, the case for Y is ultimately stronger."</td></tr>
+                            <tr><td><strong>Opinion / persuasive</strong></td><td>argues for one position and defends it throughout</td><td>"This essay will argue that X should be adopted, for three reasons."</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>Both types are argued, not merely described — even the balanced for-and-against essay reaches a <em>verdict</em>. The difference is how much space the opposing view gets and where your commitment sits. Read the question carefully: "To what extent do you agree?" invites a nuanced, weighing answer; "Argue that…" asks for a committed one.</p>
+
+                <div class="card card-accent">
+                    <h4>🧠 Mindset</h4>
+                    <p>At C1 you already have the vocabulary and grammar to say sophisticated things. What an essay tests is something else — your ability to <em>organise</em> thought so a reader can follow it effortlessly. This can feel oddly mechanical at first, as though structure were a cage around your ideas. It isn't: structure is what lets a reader receive your ideas at full strength. A brilliant point buried in a shapeless paragraph lands as a mumble. Give your thinking an architecture and it becomes an argument. 🌱</p>
+                </div>
+            </section>
+
+            <section id="thesis" class="lesson-section">
+                <h2>The Thesis Statement</h2>
+                <p>The <strong>thesis statement</strong> is the single sentence (occasionally two) that states your position and, often, previews your reasoning. It is the spine of the essay: every paragraph should connect back to it. A weak thesis is vague, obvious, or merely announces a topic; a strong thesis is <strong>specific, arguable, and defensible</strong>.</p>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>Weak thesis</th><th>Why it fails</th><th>Stronger thesis</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>"This essay is about remote work."</td><td>announces a topic, takes no position</td><td>"Remote work benefits employers as much as employees, and should become the default rather than the exception."</td></tr>
+                            <tr><td>"Pollution is bad."</td><td>obvious; nobody would argue the reverse</td><td>"Tackling urban pollution requires restricting private cars, not merely improving them."</td></tr>
+                            <tr><td>"There are many views on tourism."</td><td>describes debate but commits to nothing</td><td>"Although mass tourism strains local communities, well-regulated tourism remains a net benefit for developing regions."</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="model">
+                    <p><strong>A model thesis (for-and-against type):</strong> "While social media has undeniably widened access to information, its unregulated design does more to erode public discourse than to enrich it — and the case for stronger oversight is now compelling."</p>
+                    <p>Notice the moves: it <em>concedes</em> a genuine strength ("undeniably widened access"), states a clear <em>position</em> ("erode… more than… enrich"), and hints at the <em>direction</em> of the argument ("the case for stronger oversight"). A reader knows exactly where this essay is going.</p>
+                </div>
+
+                <div class="card card-info">
+                    <h4>💡 The test of a good thesis</h4>
+                    <p>Ask: <strong>could a reasonable person disagree with this?</strong> If not, it isn't a thesis — it's a fact or a truism. And ask: <strong>does it answer the actual question asked?</strong> A dazzling thesis on the wrong question earns nothing. Draft the thesis <em>early</em>, but be willing to sharpen it once your body paragraphs reveal what you really think.</p>
+                </div>
+            </section>
+
+            <section id="introduction" class="lesson-section">
+                <h2>The Introduction</h2>
+                <p>An effective introduction funnels the reader from the wide world into your precise claim. The reliable pattern is three moves: <strong>hook → context → thesis</strong>.</p>
+
+                <pre class="mermaid">
+graph LR
+    A["Hook (engage / orient the reader)"] --> B["Context (background / narrow the topic)"]
+    B --> C["Thesis (your specific arguable claim)"]
+                </pre>
+
+                <ul>
+                    <li><strong>Hook</strong> — a striking fact, a pointed question, or a crisp statement of the problem that earns the reader's attention. Avoid the throat-clearing opener ("Since the dawn of time, humans have…").</li>
+                    <li><strong>Context</strong> — the minimum background the reader needs, and a narrowing toward your specific angle. Define any key term you'll rely on.</li>
+                    <li><strong>Thesis</strong> — your position, usually the last sentence of the paragraph, where it lands with the most force.</li>
+                </ul>
+
+                <div class="card">
+                    <h4>📄 Model introduction</h4>
+                    <p>"Every year, the average smartphone user unlocks their device more than a thousand times a week. <em>(hook)</em> As screens have colonised commutes, meals, and even bedtimes, educators and psychologists have begun to ask whether constant connectivity is quietly reshaping our capacity for sustained attention. <em>(context)</em> While digital tools offer genuine gains in access and flexibility, the evidence increasingly suggests that unmanaged smartphone use erodes deep concentration — and that schools, not just individuals, must take deliberate steps to protect it. <em>(thesis)</em>"</p>
+                </div>
+
+                <p>See how the paragraph tightens: a vivid statistic, a bridging sentence that frames the debate, and a thesis that both concedes ("genuine gains") and commits ("erodes deep concentration… schools must take steps"). By the end of one paragraph, the reader knows the subject, the stakes, and your position.</p>
+            </section>
+
+            <section id="body" class="lesson-section">
+                <h2>Body Paragraphs: The PEEL Move</h2>
+                <p>Each body paragraph should defend <em>one</em> idea that supports the thesis, and it should do so in a predictable, reader-friendly rhythm. A useful pattern is <strong>PEEL — Point, Evidence, Explanation, Link</strong>.</p>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>Stage</th><th>What it does</th><th>Signalling language</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Point</strong> (topic sentence)</td><td>states the paragraph's single claim up front</td><td>"One clear advantage is…" / "A more serious concern is…"</td></tr>
+                            <tr><td><strong>Evidence</strong></td><td>supports it with data, example, research, or authority</td><td>"For instance…" / "A recent study found…" / "According to…"</td></tr>
+                            <tr><td><strong>Explanation</strong></td><td>interprets the evidence — <em>why</em> it supports the point</td><td>"This suggests that…" / "The implication is…"</td></tr>
+                            <tr><td><strong>Link</strong></td><td>ties back to the thesis and eases into the next paragraph</td><td>"This strengthens the case that…" / "It follows that…"</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>The <strong>topic sentence</strong> is the load-bearing element. A reader should be able to skim only the first sentence of each body paragraph and still grasp your whole argument. If your topic sentences don't add up to your thesis, the structure is off — no amount of good detail will rescue it.</p>
+
+                <div class="card">
+                    <h4>📄 Model body paragraph (PEEL)</h4>
+                    <p>"<em>(Point)</em> The most immediate cost of constant connectivity is fragmented attention. <em>(Evidence)</em> Studies of workplace behaviour have found that office workers switch tasks every few minutes when notifications are enabled, and that returning to a complex task after an interruption can take over twenty minutes. <em>(Explanation)</em> This matters because deep, uninterrupted focus is precisely what demanding intellectual work requires; a mind pulled away every few minutes never reaches the sustained engagement that produces genuine understanding. <em>(Link)</em> If even brief interruptions carry such a heavy cognitive toll, the case for deliberately protecting periods of undistracted work becomes difficult to dismiss."</p>
+                </div>
+
+                <div class="card card-info">
+                    <h4>💡 This is where Module 3 and 5 pay off</h4>
+                    <p>Argument writing is where the <strong>nominalisation</strong> and <strong>academic vocabulary</strong> you built earlier in the course come into their own. Notice the model's abstract, noun-based phrasing — "fragmented attention," "the sustained engagement that produces genuine understanding," "such a heavy cognitive toll." That impersonal, concept-focused register is exactly what formal writing rewards. Reach for it deliberately; just don't let it tip into the airless over-nominalisation you learned to catch in Lesson 3.1.</p>
+                </div>
+            </section>
+
+            <section id="cohesion" class="lesson-section">
+                <h2>Cohesion &amp; Signposting</h2>
+                <p>An essay must be <strong>coherent</strong> (the ideas hang together logically) and <strong>cohesive</strong> (the sentences and paragraphs are stitched together with visible links). Two devices do most of the work: <strong>referencing back</strong> to earlier ideas, and <strong>signposting connectors</strong> that tell the reader what kind of move comes next.</p>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>Relationship</th><th>Signposting connectors</th><th>What they tell the reader</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Adding</strong></td><td>Furthermore, Moreover, In addition, What is more</td><td>"here is another point on the same side"</td></tr>
+                            <tr><td><strong>Contrasting</strong></td><td>However, Nevertheless, By contrast, On the other hand</td><td>"expect a turn against what I just said"</td></tr>
+                            <tr><td><strong>Result</strong></td><td>Consequently, Therefore, As a result, Thus</td><td>"here is what follows from that"</td></tr>
+                            <tr><td><strong>Conceding</strong></td><td>Admittedly, Granted, It is true that</td><td>"I accept this point, but wait"</td></tr>
+                            <tr><td><strong>Exemplifying</strong></td><td>For instance, To illustrate, A case in point</td><td>"here is the evidence for it"</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p><strong>Referencing back</strong> keeps a text feeling like one continuous argument: pronouns (<em>this, these, such</em>), summarising nouns (<em>this tension, that assumption, such measures</em>), and short recaps ("Having established that…") all point the reader to what came before. Used well, they weave your paragraphs into a fabric rather than a list.</p>
+
+                <div class="card card-warning">
+                    <h4>⚠️ Signposting is seasoning, not the meal</h4>
+                    <p>Connectors guide the reader, but a paragraph that opens every sentence with "Moreover… Furthermore… In addition…" reads like a checklist and buries the actual thinking. Use a connector when the logical relationship genuinely needs marking — a real contrast, a real consequence — and let clear sentence order carry the rest. And match the connector to the logic: "Consequently" must introduce a genuine result, "Nevertheless" a genuine concession. A mismatched connector confuses more than no connector at all.</p>
+                </div>
+            </section>
+
+            <section id="counter" class="lesson-section">
+                <h2>Counter-Arguments &amp; Rebuttal</h2>
+                <p>Here is the mark of a mature argument: it takes the opposing view seriously. Acknowledging a <strong>counter-argument</strong> and then <strong>rebutting</strong> it makes your case stronger, not weaker — it shows you have considered the objections and still hold your ground. Ignoring them looks like you either missed them or feared them.</p>
+
+                <p>The reliable pattern is <strong>concede → rebut</strong>: state the opposing point fairly, then explain why your position survives it.</p>
+
+                <div class="model">
+                    <p><strong>Concede:</strong> "Admittedly, critics argue that restricting phones in schools simply pushes the problem out of sight, teaching avoidance rather than self-regulation."</p>
+                    <p><strong>Rebut:</strong> "Yet this objection underestimates the value of protected space: self-regulation is a skill built through practice, and pupils cannot practise focus in an environment engineered to fragment it. Removing the distraction is not avoidance but the precondition for learning the skill at all."</p>
+                </div>
+
+                <p>The language of concession and rebuttal is a small, high-value phrase set: <em>Admittedly / It might be argued that / Critics contend that</em> to open the concession, and <em>Yet / However / This overlooks / Such a view fails to account for</em> to pivot into the rebuttal. Handled with genuine fairness — not a straw-man version of the other side — this is where an essay earns a reader's trust.</p>
+
+                <div class="phrase-bank">
+                    <p><strong>Phrase bank — building and defending an argument</strong></p>
+                    <span class="phrase">This essay will argue that…</span>
+                    <span class="phrase">There are three main reasons for this.</span>
+                    <span class="phrase">One clear advantage is…</span>
+                    <span class="phrase">A more serious concern, however, is…</span>
+                    <span class="phrase">The evidence strongly suggests that…</span>
+                    <span class="phrase">It might be argued that… Yet…</span>
+                    <span class="phrase">Admittedly, … Nevertheless, …</span>
+                    <span class="phrase">This overlooks the fact that…</span>
+                    <span class="phrase">Taken together, these points indicate…</span>
+                    <span class="phrase">On balance, the stronger case is that…</span>
+                    <span class="phrase">In conclusion, the weight of evidence favours…</span>
+                    <span class="phrase">The wider implication is that…</span>
+                </div>
+            </section>
+
+            <section id="conclusion" class="lesson-section">
+                <h2>The Conclusion</h2>
+                <p>A conclusion consolidates; it does not continue. Its job is to leave the reader with your argument settled in their mind. The dependable pattern is <strong>restate → synthesise → implication</strong>.</p>
+
+                <ul>
+                    <li><strong>Restate</strong> the thesis in fresh words — not a copy-paste of the introduction, but the same position, now earned.</li>
+                    <li><strong>Synthesise</strong> the main threads — draw the body's points together into a single, weighted judgement rather than listing them again.</li>
+                    <li><strong>Implication</strong> — end on the "so what": a consequence, a recommendation, or a broader significance that gives the essay resonance.</li>
+                </ul>
+
+                <div class="card">
+                    <h4>📄 Model conclusion</h4>
+                    <p>"<em>(Restate)</em> The convenience of constant connectivity, then, comes at a measurable cost to the sustained attention that serious learning demands. <em>(Synthesise)</em> The fragmentation of focus, the difficulty of recovering it, and the failure of purely individual willpower to resist a technology engineered to interrupt all point the same way: the problem is structural, not merely personal. <em>(Implication)</em> If schools are serious about equipping young people to think deeply, protecting undistracted time cannot be left to chance — it must become a deliberate part of how education is designed."</p>
+                </div>
+
+                <div class="card card-warning">
+                    <h4>⚠️ The cardinal rule: no new points</h4>
+                    <p>A conclusion is not the place for a fresh argument, a new piece of evidence, or a surprise twist. Introducing something new there leaves the reader with a loose thread just as you wanted them to feel resolution. If a point is worth making, it belongs in a body paragraph where it can be properly defended. The conclusion's only job is to gather what you have already argued and give it a sense of arrival.</p>
+                </div>
+            </section>
+
+            <section id="say-aloud" class="lesson-section">
+                <h2>🔊 Hear It &amp; Repeat — Model Sentences</h2>
+                <p>Listen to each model sentence, then say it back. Use the 🎧 <strong>Audio</strong> control (bottom-right) to choose a UK or US voice and slow the speed down. These five sentences are ready-made frames for the key moves of an argument essay — a thesis, a topic sentence, a concession, a rebuttal, and a conclusion.</p>
+                <div class="card card-accent">
+                    <ul>
+                        <li data-say="This essay will argue that stronger regulation, rather than individual restraint, offers the more realistic solution.">This essay will argue that stronger regulation, rather than individual restraint, offers the more realistic solution.</li>
+                        <li data-say="One of the most compelling arguments in favour of this view is its impact on long-term wellbeing.">One of the most compelling arguments in favour of this view is its impact on long-term wellbeing.</li>
+                        <li data-say="Admittedly, critics contend that such measures are difficult to enforce in practice.">Admittedly, critics contend that such measures are difficult to enforce in practice.</li>
+                        <li data-say="However, this objection overlooks the very real gains that even partial reform would deliver.">However, this objection overlooks the very real gains that even partial reform would deliver.</li>
+                        <li data-say="Taken together, these points indicate that the weight of evidence favours change.">Taken together, these points indicate that the weight of evidence favours change.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="practice" class="lesson-section">
+                <h2>Practice &amp; Project</h2>
+
+                <div class="card card-info exercise-check" data-exercise="gapfill">
+                    <h3>🏋️ Exercise 1: Order the parts of an essay</h3>
+                    <p><strong>Objective:</strong> Number these components from <strong>1</strong> (comes first) to <strong>6</strong> (comes last) in a well-structured argument essay. Type the number in each box.</p>
+                    <ol>
+                        <li>Conclusion (restate, synthesise, implication) → <input class="gap" data-answer="6" autocomplete="off" autocapitalize="off" aria-label="gap 1"></li>
+                        <li>Hook that opens the introduction → <input class="gap" data-answer="1" autocomplete="off" autocapitalize="off" aria-label="gap 2"></li>
+                        <li>Thesis statement → <input class="gap" data-answer="3" autocomplete="off" autocapitalize="off" aria-label="gap 3"></li>
+                        <li>Counter-argument and rebuttal paragraph → <input class="gap" data-answer="5" autocomplete="off" autocapitalize="off" aria-label="gap 4"></li>
+                        <li>Context / background in the introduction → <input class="gap" data-answer="2" autocomplete="off" autocapitalize="off" aria-label="gap 5"></li>
+                        <li>Body paragraphs supporting the thesis → <input class="gap" data-answer="4" autocomplete="off" autocapitalize="off" aria-label="gap 6"></li>
+                    </ol>
+                    <div class="exercise-actions"><button type="button" class="check-btn">Check my answers</button> <button type="button" class="reveal-btn">Show answers</button></div>
+                    <div class="check-feedback" aria-live="polite"></div>
+                    <details>
+                        <summary>✅ Answer</summary>
+                        <p>Hook (1) → Context (2) → Thesis (3) → Body paragraphs (4) → Counter-argument + rebuttal (5) → Conclusion (6). The introduction funnels hook → context → thesis; the counter-argument sits late in the body, just before the conclusion consolidates.</p>
+                    </details>
+                </div>
+
+                <div class="card card-info exercise-check" data-exercise="gapfill">
+                    <h3>🏋️ Exercise 2: Choose the signposting connector</h3>
+                    <p><strong>Objective:</strong> Type the connector that fits the logic. Choose from: <em>Furthermore</em>, <em>Nevertheless</em>, <em>Consequently</em>, <em>By contrast</em>, <em>Admittedly</em>.</p>
+                    <ol>
+                        <li>"The scheme raised costs sharply. <input class="gap" data-answer="Consequently" autocomplete="off" autocapitalize="off" aria-label="gap 1">, several branches were forced to close." <em>(result)</em></li>
+                        <li>"Rail travel is efficient in dense cities. <input class="gap" data-answer="By contrast" autocomplete="off" autocapitalize="off" aria-label="gap 2">, in rural regions it is often impractical." <em>(contrast between two things)</em></li>
+                        <li>"The policy is expensive. <input class="gap" data-answer="Nevertheless" autocomplete="off" autocapitalize="off" aria-label="gap 3">, its long-term benefits justify the cost." <em>(concession then a turn)</em></li>
+                        <li>"Remote work cuts commuting time. <input class="gap" data-answer="Furthermore" autocomplete="off" autocapitalize="off" aria-label="gap 4">, it widens the pool of available talent." <em>(adding a point on the same side)</em></li>
+                        <li>"<input class="gap" data-answer="Admittedly" autocomplete="off" autocapitalize="off" aria-label="gap 5">, some employees struggle to focus at home — yet most report higher productivity overall." <em>(opening a concession)</em></li>
+                    </ol>
+                    <div class="exercise-actions"><button type="button" class="check-btn">Check my answers</button> <button type="button" class="reveal-btn">Show answers</button></div>
+                    <div class="check-feedback" aria-live="polite"></div>
+                    <details>
+                        <summary>✅ Answer</summary>
+                        <p>1. Consequently <em>(result)</em> · 2. By contrast <em>(contrast)</em> · 3. Nevertheless <em>(concede then turn)</em> · 4. Furthermore <em>(add)</em> · 5. Admittedly <em>(open a concession)</em></p>
+                    </details>
+                </div>
+
+                <div class="card card-info">
+                    <h3>🏋️ Exercise 3: Complete a thesis frame</h3>
+                    <p><strong>Objective:</strong> Using the model frames below, write a specific, arguable thesis for the question: <em>"Should governments invest more in public libraries in the digital age?"</em> Draft one of each type.</p>
+                    <ol>
+                        <li><strong>For-and-against frame:</strong> "While ______________, ______________ ; on balance, ______________."</li>
+                        <li><strong>Opinion frame:</strong> "This essay will argue that ______________, for ______________ reasons."</li>
+                    </ol>
+                    <details>
+                        <summary>✅ Answer</summary>
+                        <p>Model answers (yours will differ in wording):</p>
+                        <p>1. <em>"While much information has migrated online, public libraries remain vital community and learning spaces; on balance, continued public investment is not only justified but urgent."</em></p>
+                        <p>2. <em>"This essay will argue that governments should increase library funding, for three reasons: libraries reduce the digital divide, support lifelong learning, and anchor local communities."</em></p>
+                        <p>Each takes a clear, arguable position and previews the reasoning — exactly what a thesis must do.</p>
+                    </details>
+                </div>
+
+                <div class="card card-info">
+                    <h3>🎯 Your Project: Plan and Draft an Argument Essay</h3>
+                    <p>Choose <strong>one</strong> of these questions (or a comparable one that interests you):</p>
+                    <ul>
+                        <li>"To what extent should university education be free for all?"</li>
+                        <li>"Do the benefits of remote working outweigh its drawbacks?"</li>
+                        <li>"Should governments ban single-use plastics outright?"</li>
+                    </ul>
+                    <p>Then plan and begin drafting a <strong>four-to-five-paragraph essay</strong>. At minimum, produce a full outline and a complete introduction.</p>
+                    <ol>
+                        <li><strong>(5 min)</strong> Decide your position and write a specific, arguable <strong>thesis statement</strong>.</li>
+                        <li><strong>(10 min)</strong> Build an <strong>outline</strong>: a topic sentence for each body paragraph (two or three), a note of the evidence each will use, and a planned counter-argument with your rebuttal.</li>
+                        <li><strong>(10 min)</strong> Write a full <strong>introduction</strong> using hook → context → thesis.</li>
+                        <li><strong>(10 min, optional but encouraged)</strong> Draft one full body paragraph using the <strong>PEEL</strong> pattern, and sketch your conclusion's restate → synthesise → implication in note form.</li>
+                        <li><strong>(3 min)</strong> Reread: do your topic sentences, read alone, add up to your thesis? Have you signposted only where the logic needs it?</li>
+                    </ol>
+                    <div class="card card-success">
+                        <h4>✅ Project Completion Checklist</h4>
+                        <ul>
+                            <li>☐ My thesis is specific, arguable, and answers the actual question</li>
+                            <li>☐ My introduction moves clearly from hook to context to thesis</li>
+                            <li>☐ Each body paragraph has a strong topic sentence stating one point</li>
+                            <li>☐ My outline includes a counter-argument and my rebuttal to it</li>
+                            <li>☐ I used signposting connectors purposefully, matched to the logic</li>
+                            <li>☐ My planned conclusion synthesises without introducing new points</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card quiz-container">
+                    <h3>🎯 Quick Quiz</h3>
+                    <div class="quiz-question">
+                        <p><strong>Question 1:</strong> Which of these is the strongest thesis statement for an argument essay?</p>
+                        <div class="quiz-options">
+                            <button class="quiz-option" data-correct="true" data-explanation="Correct — it takes a specific, arguable position (a reasonable person could disagree) and previews the reasoning.">A) "Although electric cars are costly upfront, their long-term savings and lower emissions make them the better choice for most drivers."</button>
+                            <button class="quiz-option" data-correct="false" data-hint="This just announces a topic and commits to no position — it isn't arguable, so it isn't a thesis.">B) "This essay will discuss electric cars and their advantages and disadvantages."</button>
+                            <button class="quiz-option" data-correct="false" data-hint="Nobody would argue the reverse — a truism can't anchor an argument essay.">C) "Electric cars are a type of vehicle that runs on electricity."</button>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    <div class="quiz-question">
+                        <p><strong>Question 2:</strong> You are writing your conclusion and think of a strong new piece of evidence. What should you do?</p>
+                        <div class="quiz-options">
+                            <button class="quiz-option" data-correct="true" data-explanation="Right — a conclusion consolidates; new evidence belongs in a body paragraph where it can be properly developed and defended.">A) Move it into a body paragraph, where it can be developed — the conclusion introduces no new points</button>
+                            <button class="quiz-option" data-correct="false" data-hint="Dropping fresh evidence into the conclusion leaves the reader with an undefended loose thread just as you want resolution.">B) Add it to the conclusion for a strong finish</button>
+                            <button class="quiz-option" data-correct="false" data-hint="Discarding a good point isn't necessary — it simply belongs earlier, where it can be supported.">C) Leave it out entirely, since the essay is nearly done</button>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="tips" class="lesson-section">
+                <h2>Tips &amp; Common Mistakes</h2>
+
+                <h3>✅ Do's</h3>
+                <ul>
+                    <li>Draft your <strong>thesis first</strong>, then check that every paragraph earns its place by connecting back to it.</li>
+                    <li>Open each body paragraph with a <strong>topic sentence</strong> so strong that the essay's argument survives a skim of first lines alone.</li>
+                    <li>Follow <strong>PEEL</strong> — don't stop at evidence; the <em>explanation</em> that says why it matters is where marks and persuasion live.</li>
+                    <li><strong>Concede and rebut</strong> a genuine counter-argument; engaging the strongest opposing point builds trust.</li>
+                    <li>Signpost <strong>purposefully</strong>, matching each connector to a real logical relationship.</li>
+                </ul>
+
+                <h3>❌ Common Mistakes</h3>
+                <div class="card card-warning">
+                    <h4>⚠️ Watch Out</h4>
+                    <ul>
+                        <li><strong>Thesis-free essays:</strong> describing a topic instead of arguing a position. If a reasonable person can't disagree, it isn't a thesis.</li>
+                        <li><strong>Evidence without explanation:</strong> dropping a fact or quotation and moving on. Always say <em>why</em> it supports your point.</li>
+                        <li><strong>Connector overload:</strong> "Moreover… Furthermore… In addition…" opening every sentence buries the thinking. Season, don't drown.</li>
+                        <li><strong>Straw-man rebuttals:</strong> knocking down a weak, distorted version of the other side fools no critical reader. Rebut the real objection.</li>
+                        <li><strong>New points in the conclusion:</strong> a fresh argument at the end leaves a loose thread. Consolidate only.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="journal" class="lesson-section">
+                <h2>📓 Learning Journal</h2>
+                <div class="card card-info">
+                    <p>Keep your learning journal going. After this lesson, take a few minutes to note:</p>
+                    <ul>
+                        <li><strong>Key concepts</strong> you learned</li>
+                        <li><strong>Things that clicked</strong> for you</li>
+                        <li><strong>Questions or confusion points</strong> to revisit</li>
+                        <li><strong>Ideas you want to try</strong></li>
+                        <li><strong>Your progress and feelings</strong> about working at C1</li>
+                    </ul>
+                    <p><strong>✍️ This lesson's prompt:</strong> Take a strong opinion you hold and write it as a one-sentence thesis. Then write the single best counter-argument against it — as fairly and forcefully as you can, as if you believed it — followed by your rebuttal. Note in a line whether writing the opposing case out loud changed, sharpened, or softened your own view. Steelmanning the other side is how an argument becomes genuinely persuasive.</p>
+                </div>
+            </section>
+
+            <section id="summary" class="lesson-section">
+                <h2>📝 Lesson Summary</h2>
+
+                <div class="card card-success">
+                    <h3>🎓 Key Takeaways</h3>
+                    <ul>
+                        <li>An argument essay <strong>advances and defends a position</strong>; the two broad types are <strong>for-and-against</strong> (weigh, then judge) and <strong>opinion/persuasive</strong> (commit throughout).</li>
+                        <li>The <strong>thesis</strong> is a specific, arguable claim; the <strong>introduction</strong> funnels hook → context → thesis.</li>
+                        <li>Body paragraphs follow <strong>PEEL</strong> — Point (topic sentence) → Evidence → Explanation → Link — with one idea each.</li>
+                        <li><strong>Cohesion</strong> comes from referencing back and purposeful signposting (<em>Furthermore, Nevertheless, Consequently, By contrast</em>); <strong>concede → rebut</strong> handles counter-arguments.</li>
+                        <li>The <strong>conclusion</strong> restates, synthesises, and points to an implication — and introduces <strong>no new points</strong>.</li>
+                    </ul>
+                </div>
+
+                <h3>🎉 What You've Accomplished</h3>
+                <p>You now have a repeatable architecture for formal argument — a way to turn a position into a piece of writing a reader can follow effortlessly and finds hard to dismiss. Combined with the critical-reading eye from the last lesson, you can both build a case and test one. That two-way command of argument is the heart of academic and professional literacy. 🎉</p>
+
+                <h3>❓ Common Questions at This Stage</h3>
+                <details>
+                    <summary>Do I always have to include a counter-argument?</summary>
+                    <p>In a genuine argument essay, almost always — engaging the opposing view is what separates a persuasive case from a one-sided assertion. The exception is a very short piece or a purely expository task. Even then, a single sentence acknowledging the other side ("Although some maintain that…, …") usually strengthens your writing. When in doubt, concede and rebut.</p>
+                </details>
+                <details>
+                    <summary>How long should each part be?</summary>
+                    <p>As a rough guide for a five-paragraph essay: introduction and conclusion each about 10–15% of the total, and the body paragraphs sharing the remaining 70–80% roughly equally. The body is where the argument is made, so it deserves the bulk of your words. But let the argument, not a formula, set the exact proportions — a complex counter-argument may earn extra space.</p>
+                </details>
+                <details>
+                    <summary>Can I use "I" in a formal argument essay?</summary>
+                    <p>It depends on the register and the task. Traditional academic writing often prefers impersonal phrasing ("This essay argues…," "The evidence suggests…") over "I think." A persuasive opinion piece or a task that explicitly asks for your view can use "I" more freely. When unsure, lean impersonal — it reads as more objective — and follow any style guidance you've been given.</p>
+                </details>
+
+                <h3>🔭 Looking Ahead</h3>
+                <p>You've mastered the essay — the flagship of academic writing. In <strong>Lesson 6.3</strong>, "Professional &amp; Formal Writing — Reports, Emails &amp; Applications," you'll carry this discipline of structure and register into the workplace: purpose-first emails, objective reports that move from findings to recommendations, and cover letters that match you to a role with confidence. The clarity and reader-focus you've built here transfer directly.</p>
+
+                <h3>✅ Before the Next Lesson</h3>
+                <ul>
+                    <li>Finish drafting the essay you began in the project — aim for all four or five paragraphs.</li>
+                    <li>Reverse-outline an article you admire: write down each paragraph's topic sentence and see how they build.</li>
+                    <li>Collect five signposting connectors from formal texts and note the exact logical move each marks.</li>
+                    <li>Write your Learning Journal entry for this lesson.</li>
+                </ul>
+
+                <div class="card card-accent" style="text-align: center; padding: 2rem;">
+                    <h3>🌟 Encouragement for the Journey</h3>
+                    <p>Learning to structure an argument is learning to make your thinking visible — to hand another mind your reasoning in a shape it can hold. That is a genuinely powerful skill, and it will serve you in exams, at work, and anywhere you need to be taken seriously. You are no longer just writing in English; you are <em>arguing</em> in it, with control and design. Keep building. 👋</p>
+                </div>
+            </section>
+
+            <nav class="lesson-nav" aria-label="Lesson Navigation">
+                <a href="lesson_16.html" class="prev-lesson">← Previous: Critical Reading — Evaluating Arguments &amp; Bias</a>
+                <a href="index.html" class="home-link">🏠 Course Home</a>
+                <a href="lesson_18.html" class="next-lesson">Next: Professional &amp; Formal Writing — Reports, Emails &amp; Applications →</a>
+            </nav>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Ray de la Paz. Advanced English (C1 Advanced). All rights reserved.</p>
+        <div class="footer-links">
+            <a href="/">ESL Hub</a>
+            <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+            <a href="https://rays-home.netlify.app/contact">Contact</a>
+            <a href="#" id="print-button">Print Page</a>
+        </div>
+        <p><small>Press <kbd>?</kbd> for keyboard shortcuts</small></p>
+    </footer>
+
+    <script src="js/clipboard.js"></script>
+    <script src="js/course-enhancements.js"></script>
+</body>
+</html>
