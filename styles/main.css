@@ -15,10 +15,10 @@ blockquote:before,blockquote:after,q:before,q:after{content:"";content:none}
   --bg-alt: #ffffff;
   --text: #334155;
   --text-strong: #111827;
-  --heading-bg: #3b82f6;
+  --heading-bg: #2563eb;
   --heading-text: #ffffff;
-  --link: #3b82f6;
-  --link-hover: #2563eb;
+  --link: #2563eb;
+  --link-hover: #1d4ed8;
   --border: #e2e8f0;
   --code-bg: #f1f5f9;
   --code-color: #16a34a;
@@ -27,9 +27,9 @@ blockquote:before,blockquote:after,q:before,q:after{content:"";content:none}
   --card-shadow: 0 1px 3px rgba(0,0,0,.1);
   --nav-bg: #1e293b;
   --nav-text: #f1f5f9;
-  --nav-hover: #3b82f6;
+  --nav-hover: #60a5fa;
   --page-nav-bg: #f1f5f9;
-  --page-nav-hover: #3b82f6;
+  --page-nav-hover: #2563eb;
   --table-border: #cbd5e1;
   --table-stripe: #f8fafc;
 }
