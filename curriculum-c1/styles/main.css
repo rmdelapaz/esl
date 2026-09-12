@@ -825,8 +825,10 @@ label { display: block; margin-bottom: var(--spacing-xs); font-weight: 600; }
 }
 
 .toc-link {
+    display: inline-block;
     color: var(--text-color);
     text-decoration: none;
+    padding: 0.3rem 0.25rem;
     transition: color 0.2s;
 }
 .toc-link:hover { color: var(--link-color); }
