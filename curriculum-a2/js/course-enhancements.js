@@ -657,7 +657,12 @@ var VOCAB_SLUGS = [
     'blue','red','green','black','white','yellow','orange','pink','brown',
     'hungry','full','cold','expensive','tall',
     // Tier-1 reuse additions (copied from existing Spanish/Tagalog pool art)
-    'spring','summer','winter','t-shirt','big','small','beautiful','sunny','hot'
+    'spring','summer','winter','t-shirt','big','small','beautiful','sunny','hot',
+    // more pool reuse: salt (maalat shaker), hotel (habitacion-doble room)
+    'salt','hotel',
+    // Tier-2 generated — Food & drink (egg/juice/meat pending regen after image rate limit)
+    'bread','milk','cheese','banana','tea','cake','sandwich','salad',
+    'sugar','butter','pasta','fruit','muffin'
 ];
 
 // Extra English spellings/synonyms -> slug (in addition to each slug's own phrase).
@@ -680,7 +685,9 @@ var VOCAB_ALIASES = {
     // gerund / plural forms of images we already have
     'cooking':'cook','reading':'read','dancing':'dance','hiking':'hike','vegetables':'vegetable',
     // t-shirt spelling variants (base slug key is "t shirt")
-    't-shirt':'t-shirt','tshirt':'t-shirt'
+    't-shirt':'t-shirt','tshirt':'t-shirt',
+    // snow reuses the cold snowflake
+    'snow':'cold'
 };
 
 function initVocabImages() {
