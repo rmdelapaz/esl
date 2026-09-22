@@ -1494,3 +1494,42 @@ svg .svg-bg { fill: var(--card-bg); }
     min-width: 4rem;
     border-bottom: 2px solid var(--primary-color);
 }
+
+/* ===========================
+   Vocabulary Illustrations (reused manga art)
+   Small thumbnail injected beside a matching headword by
+   course-enhancements.js (initVocabImages). Progressive enhancement —
+   only appears where an image exists; guards the TTS 🔊 button layout.
+   =========================== */
+.vocab-img {
+    width: 52px;
+    height: 52px;
+    border-radius: 8px;
+    object-fit: cover;
+    background: #FFF3E0;                 /* matches the art's cream backdrop */
+    border: 1px solid var(--border-color);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .12);
+}
+/* Word-list grid cards: image + wrapping text column (keeps whole words). */
+.wordlist > li.has-vocab-img {
+    display: flex;
+    align-items: flex-start;
+    gap: .55rem;
+    flex-wrap: wrap;
+    list-style: none;
+}
+.wordlist > li.has-vocab-img .vocab-img { flex: 0 0 auto; }
+/* "New Words" glossary rows: float so the definition wraps neatly beside. */
+#new-words li.has-vocab-img {
+    list-style: none;
+    overflow: hidden;                    /* contain the float */
+    min-height: 52px;
+    margin: .3rem 0;
+}
+#new-words li.has-vocab-img .vocab-img {
+    float: left;
+    margin-right: .55rem;
+    vertical-align: middle;
+}
+/* Keep the injected image out of print / at a sensible size on small screens */
+@media print { .vocab-img { display: none; } }

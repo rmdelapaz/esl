@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // initLessonProgress();
     initQuizInteractivity();
     initSpeech();             // 🔊 text-to-speech "Listen" buttons (Web Speech API)
+    initVocabImages();        // 🖼️ reuse manga vocab illustrations beside matching words
     initJournal();            // 📓 autosaved in-page learning journal
     initExerciseChecks();     // ✍️ auto-checked gap-fill / matching exercises
     initMobileMenu();
@@ -617,6 +618,119 @@ function initSpeech() {
         panel.querySelector('.tts-test').addEventListener('click',
             () => speak('The quick brown fox jumps over the lazy dog.'));
     }
+}
+
+/* ===========================
+   Vocabulary Illustrations (reuse existing manga art)
+   ---------------------------
+   Progressive enhancement: where a lesson's vocabulary word matches a known
+   concept, a small illustration (shared /images/vocab/<slug>.webp, copied from
+   the Spanish/Tagalog manga art sets — English concepts match directly) is
+   injected beside it. Words with no matching image are left untouched.
+   Scans only headword lists — the "New Words" glossary and `.wordlist`
+   items — never phrases, sentences or `data-say` model lines.
+   =========================== */
+
+var VOCAB_IMG_VER = 1;   // cache-bust: bump when images change
+
+// Every image that exists in /images/vocab/. Slug == the English word
+// (lowercase, spaces -> hyphens); the natural phrase is derived at runtime.
+var VOCAB_SLUGS = [
+    'father','mother','son','daughter','brother','sister','grandfather','grandmother','uncle','aunt',
+    'older-brother','older-sister','family','friend','child',
+    'teacher','doctor','engineer','programmer','waiter','student',
+    'head','eye','ear','nose','mouth','hand','leg','foot','stomach','throat',
+    'fever','cough','medicine','pill','prescription','pharmacy','hospital',
+    'house','kitchen','bedroom','bathroom','living-room','bed','table','fridge','light',
+    'breakfast','lunch','dinner','chicken','fish','rice','vegetable','apple','mango','water','coffee',
+    'chocolate','menu','bill','tip','market',
+    'shirt','trousers','dress','shoes','socks','skirt','hat','clothes',
+    'bus','subway','taxi','ticket','bus-stop','airport','left','right','straight-ahead',
+    'flight','passport','luggage','boarding-pass','hotel-room','take-photos',
+    'office','meeting','salary','money','schedule','university','school','math','book',
+    'mobile-phone','computer','screen','charger','password','website','email','video-call',
+    'sun','rain','sea','mountain','beach','tree','flower','storm',
+    'dog','cat','bear',
+    'read','cook','sing','dance','win','swim','hike','play-the-guitar','wash-the-dishes',
+    'take-out-the-trash','drink','football',
+    'happy','sad','angry','nervous','worried','excited','in-love',
+    'blue','red','green','black','white','yellow','orange','pink','brown',
+    'hungry','full','cold','expensive','tall'
+];
+
+// Extra English spellings/synonyms -> slug (in addition to each slug's own phrase).
+var VOCAB_ALIASES = {
+    'pants':'trousers','trouser':'trousers',
+    'maths':'math','mathematics':'math',
+    'swimming':'swim',
+    'phone':'mobile-phone','mobile':'mobile-phone','mobile phone':'mobile-phone',
+    'cell phone':'mobile-phone','cellphone':'mobile-phone','smartphone':'mobile-phone',
+    'play football':'football','soccer':'football',
+    'mum':'mother','mom':'mother','mummy':'mother','mommy':'mother',
+    'dad':'father','daddy':'father',
+    'grandma':'grandmother','grandpa':'grandfather',
+    'refrigerator':'fridge',
+    'e-mail':'email',
+    'metro':'subway','underground':'subway',
+    'physician':'doctor',
+    'kid':'child','kids':'child',
+    'take a photo':'take-photos','take photos':'take-photos','take pictures':'take-photos'
+};
+
+function initVocabImages() {
+    // word/phrase -> slug
+    var MAP = {};
+    VOCAB_SLUGS.forEach(function (slug) { MAP[slug.replace(/-/g, ' ')] = slug; });
+    Object.keys(VOCAB_ALIASES).forEach(function (k) { MAP[k] = VOCAB_ALIASES[k]; });
+
+    function keyOf(raw) {
+        return (raw || '').toLowerCase()
+            .replace(/\(.*?\)/g, ' ')        // drop parentheticals: "mum (UK)"
+            .replace(/[.!?,;:]+$/, '')
+            .replace(/\s+/g, ' ').trim();
+    }
+    function slugFor(raw) {
+        // Exact whole-headword match only. We deliberately do NOT split on "/",
+        // because slash items are usually lists of different things
+        // ("blue / brown / green eyes"), not synonyms — splitting would attach a
+        // single-concept image to a multi-concept item.
+        var k = keyOf(raw);
+        return MAP[k] || null;
+    }
+    function addImg(li, slug) {
+        if (li.dataset.vimg) return;         // one image per item
+        li.dataset.vimg = slug;
+        li.classList.add('has-vocab-img');
+        var img = document.createElement('img');
+        img.className = 'vocab-img';
+        img.src = '/images/vocab/' + slug + '.webp?v=' + VOCAB_IMG_VER;
+        img.alt = '';                        // decorative — the word is right beside it
+        img.setAttribute('aria-hidden', 'true');
+        img.loading = 'lazy';
+        img.width = 56; img.height = 56;
+        li.insertBefore(img, li.firstChild);
+    }
+
+    // Headword lists only: the "New Words" glossary + any .wordlist.
+    var lists = [];
+    document.querySelectorAll('#new-words li').forEach(function (li) { lists.push(li); });
+    document.querySelectorAll('.wordlist > li').forEach(function (li) { lists.push(li); });
+
+    lists.forEach(function (li) {
+        var strong = li.querySelector('strong');   // the headword
+        if (!strong) return;
+        // Prefer the authoritative data-say word (the "New Words" glossary uses
+        // it). Otherwise read the text with any injected 🔊 button removed —
+        // initSpeech may have already appended one inside the <strong>.
+        var word = strong.getAttribute('data-say');
+        if (!word) {
+            var clone = strong.cloneNode(true);
+            clone.querySelectorAll('.say-btn').forEach(function (n) { n.remove(); });
+            word = clone.textContent;
+        }
+        var slug = slugFor(word);
+        if (slug) addImg(li, slug);
+    });
 }
 
 /* ===========================
