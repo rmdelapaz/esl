@@ -771,13 +771,38 @@ function initVocabImages() {
    browser.
    =========================== */
 
+/* The directory a page lives in, used to scope per-lesson storage to one
+   course. Pages at the site root belong to the root-level course. */
+function journalCourse() {
+    const path = location.pathname;
+    const parts = path.split('/').filter(Boolean);
+    if (!path.endsWith('/')) parts.pop();   // drop the filename, if there is one
+    return parts.join('/') || 'main';
+}
+
 function initJournal() {
     const section = document.getElementById('journal');
     if (!section) return;
     const host = section.querySelector('.card') || section;
 
     const page = (location.pathname.split('/').pop() || 'index').replace('.html', '');
-    const key = 'eslJournal:' + page;
+    const key = 'eslJournal:' + journalCourse() + '/' + page;
+
+    /* Entries used to be keyed on the bare filename, so every course on this
+       origin shared one entry per lesson number (a journal written in one
+       course appeared in another, and editing it overwrote the original).
+       Keys are now course-scoped. Adopt a legacy entry into this course if
+       this course has none, then drop the legacy copy so exactly one course
+       claims it. */
+    try {
+        if (localStorage.getItem(key) === null) {
+            const legacy = localStorage.getItem('eslJournal:' + page);
+            if (legacy !== null) {
+                localStorage.setItem(key, legacy);
+                if (localStorage.getItem(key) === legacy) localStorage.removeItem('eslJournal:' + page);
+            }
+        }
+    } catch (_) { /* storage blocked — carry on with an empty editor */ }
 
     const fmt = ts => { try { return new Date(ts).toLocaleString(); } catch (_) { return ''; } };
 
@@ -826,7 +851,10 @@ function exportJournal() {
         if (!k || k.indexOf('eslJournal:') !== 0) continue;
         try {
             const v = JSON.parse(localStorage.getItem(k));
-            if (v && v.text && v.text.trim()) entries.push({ page: k.slice('eslJournal:'.length), text: v.text, ts: v.ts });
+            /* Course-scoped keys read "<course>/<page>"; a bare "<page>" is a
+               legacy entry no course has claimed yet. Include both. */
+            const id = k.slice('eslJournal:'.length);
+            if (v && v.text && v.text.trim()) entries.push({ page: id, text: v.text, ts: v.ts });
         } catch (_) { /* skip unreadable entry */ }
     }
     entries.sort((a, b) => a.page.localeCompare(b.page));
