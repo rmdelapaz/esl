@@ -655,7 +655,9 @@ var VOCAB_SLUGS = [
     'take-out-the-trash','drink','football',
     'happy','sad','angry','nervous','worried','excited','in-love',
     'blue','red','green','black','white','yellow','orange','pink','brown',
-    'hungry','full','cold','expensive','tall'
+    'hungry','full','cold','expensive','tall',
+    // Tier-1 reuse additions (copied from existing Spanish/Tagalog pool art)
+    'spring','summer','winter','t-shirt','big','small','beautiful','sunny','hot'
 ];
 
 // Extra English spellings/synonyms -> slug (in addition to each slug's own phrase).
@@ -674,10 +676,20 @@ var VOCAB_ALIASES = {
     'metro':'subway','underground':'subway',
     'physician':'doctor',
     'kid':'child','kids':'child',
-    'take a photo':'take-photos','take photos':'take-photos','take pictures':'take-photos'
+    'take a photo':'take-photos','take photos':'take-photos','take pictures':'take-photos',
+    // gerund / plural forms of images we already have
+    'cooking':'cook','reading':'read','dancing':'dance','hiking':'hike','vegetables':'vegetable',
+    // t-shirt spelling variants (base slug key is "t shirt")
+    't-shirt':'t-shirt','tshirt':'t-shirt'
 };
 
 function initVocabImages() {
+    // Concrete vocabulary illustrations only fit the beginner tiers (A1/A2).
+    // Higher courses are abstract and risk false matches — e.g. Business L8
+    // lists "Small" as a negotiation-strategy label, not the physical size —
+    // so scope rendering to A1 (/curriculum/) and A2 (/curriculum-a2/).
+    if (!/\/curriculum(-a2)?\//.test(location.pathname)) return;
+
     // word/phrase -> slug
     var MAP = {};
     VOCAB_SLUGS.forEach(function (slug) { MAP[slug.replace(/-/g, ' ')] = slug; });
@@ -689,13 +701,20 @@ function initVocabImages() {
             .replace(/[.!?,;:]+$/, '')
             .replace(/\s+/g, ' ').trim();
     }
+    // Article+word combos that mean something OTHER than the bare word's image.
+    var BLOCKED = { 'a cold': 1 };   // the illness, not the "cold" temperature (snowflake)
+
     function slugFor(raw) {
-        // Exact whole-headword match only. We deliberately do NOT split on "/",
-        // because slash items are usually lists of different things
-        // ("blue / brown / green eyes"), not synonyms — splitting would attach a
-        // single-concept image to a multi-concept item.
+        // Whole-headword match. We deliberately do NOT split on "/", because
+        // slash items are usually lists of different things
+        // ("blue / brown / green eyes"), not synonyms.
         var k = keyOf(raw);
-        return MAP[k] || null;
+        if (BLOCKED[k]) return null;
+        if (MAP[k]) return MAP[k];
+        // Many lessons list vocab with an article ("a dress", "the menu").
+        var k2 = k.replace(/^(a|an|the)\s+/, '');
+        if (k2 !== k && MAP[k2]) return MAP[k2];
+        return null;
     }
     function addImg(li, slug) {
         if (li.dataset.vimg) return;         // one image per item
