@@ -283,21 +283,29 @@ function showShortcutsModal() {
    =========================== */
 
 /*
+   Currently disabled (the call in init() is commented out too). Kept because
+   the entries are course-scoped via courseScope(): every course on this origin
+   serves the same lesson_NN.html filenames, so a bare page name would make one
+   course's progress and scroll position apply to all of them — the collision
+   the journal used to have. Keep the scope if this is ever switched on.
+*/
+/*
 function initLessonProgress() {
     const page = window.location.pathname.split('/').pop().replace('.html', '') || 'index';
+    const id = courseScope() + '/' + page;
     const progress = JSON.parse(localStorage.getItem('lessonProgress') || '{}');
 
-    progress[page] = { visited: true, lastVisited: new Date().toISOString(), scrollPosition: 0 };
+    progress[id] = { visited: true, lastVisited: new Date().toISOString(), scrollPosition: 0 };
     localStorage.setItem('lessonProgress', JSON.stringify(progress));
 
     // Save scroll on leave
     window.addEventListener('beforeunload', () => {
-        progress[page].scrollPosition = window.scrollY;
+        progress[id].scrollPosition = window.scrollY;
         localStorage.setItem('lessonProgress', JSON.stringify(progress));
     });
 
     // Restore scroll
-    const saved = progress[page]?.scrollPosition;
+    const saved = progress[id]?.scrollPosition;
     if (saved > 0) setTimeout(() => window.scrollTo(0, saved), 100);
 }
 */
@@ -773,7 +781,7 @@ function initVocabImages() {
 
 /* The directory a page lives in, used to scope per-lesson storage to one
    course. Pages at the site root belong to the root-level course. */
-function journalCourse() {
+function courseScope() {
     const path = location.pathname;
     const parts = path.split('/').filter(Boolean);
     if (!path.endsWith('/')) parts.pop();   // drop the filename, if there is one
@@ -786,7 +794,7 @@ function initJournal() {
     const host = section.querySelector('.card') || section;
 
     const page = (location.pathname.split('/').pop() || 'index').replace('.html', '');
-    const key = 'eslJournal:' + journalCourse() + '/' + page;
+    const key = 'eslJournal:' + courseScope() + '/' + page;
 
     /* Entries used to be keyed on the bare filename, so every course on this
        origin shared one entry per lesson number (a journal written in one
