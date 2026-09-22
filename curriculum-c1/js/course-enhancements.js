@@ -660,9 +660,12 @@ var VOCAB_SLUGS = [
     'spring','summer','winter','t-shirt','big','small','beautiful','sunny','hot',
     // more pool reuse: salt (maalat shaker), hotel (habitacion-doble room)
     'salt','hotel',
-    // Tier-2 generated — Food & drink (egg/juice/meat pending regen after image rate limit)
-    'bread','milk','cheese','banana','tea','cake','sandwich','salad',
-    'sugar','butter','pasta','fruit','muffin'
+    // Tier-2 generated — Food & drink
+    'bread','milk','cheese','egg','juice','meat','banana','tea','cake','sandwich','salad',
+    'sugar','butter','pasta','fruit','muffin',
+    // Tier-2 generated — Home & furniture (partial; pen/pencil/notebook/key/box/garden/garage pending)
+    'chair','door','window','sofa','desk','lamp','wardrobe','mirror','sink','shower','tv','cup',
+    'bag','umbrella','drawer','armchair','remote','shelf'
 ];
 
 // Extra English spellings/synonyms -> slug (in addition to each slug's own phrase).
