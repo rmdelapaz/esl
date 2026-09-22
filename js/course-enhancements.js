@@ -671,9 +671,16 @@ var VOCAB_SLUGS = [
     // Tier-2 generated — Food & drink
     'bread','milk','cheese','egg','juice','meat','banana','tea','cake','sandwich','salad',
     'sugar','butter','pasta','fruit','muffin',
-    // Tier-2 generated — Home & furniture (partial; pen/pencil/notebook/key/box/garden/garage pending)
+    // Tier-2 generated — Home & furniture
     'chair','door','window','sofa','desk','lamp','wardrobe','mirror','sink','shower','tv','cup',
-    'bag','umbrella','drawer','armchair','remote','shelf'
+    'bag','umbrella','drawer','armchair','remote','shelf','pen','pencil','notebook','key','box',
+    'garden','garage',
+    // Tier-2 generated — Clothing
+    'jacket','coat','jeans','boots','scarf','gloves',
+    // Tier-2 generated — Jobs
+    'nurse','driver','chef','mechanic','cleaner','shop-assistant',
+    // Tier-2 generated — Places
+    'restaurant','bank','station','park','supermarket','shop','post-office'
 ];
 
 // Extra English spellings/synonyms -> slug (in addition to each slug's own phrase).
