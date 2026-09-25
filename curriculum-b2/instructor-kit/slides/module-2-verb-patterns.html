@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slides — Module 2</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root{--bg:#0b1220;--ink:#edf2fb;--ink2:#a8b6cf;--accent:#7fb2ff;--accent2:#2563eb;--lab:#34d3bd;--warn:#fbbf24;--line:#233252;--code:#101a2e;color-scheme:dark}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;overflow:hidden}
+  .deck{height:100%;width:100%;position:relative}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:6vh 8vw;gap:20px}
+  .slide.on{display:flex}
+  h1,h2,h3{font-family:"Archivo",sans-serif;line-height:1.1;text-wrap:balance}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  .slide h1{font-size:clamp(2rem,6vw,4rem);font-weight:800;letter-spacing:-.02em}
+  .slide h2{font-size:clamp(1.5rem,4.2vw,2.8rem);font-weight:800;letter-spacing:-.01em}
+  .slide p.lead{font-size:clamp(1.05rem,2.4vw,1.5rem);color:var(--ink2);max-width:26ch}
+  ul{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:6px}
+  ul li{position:relative;padding-left:34px;font-size:clamp(1.05rem,2.3vw,1.6rem)}
+  ul li::before{content:"";position:absolute;left:0;top:.55em;width:12px;height:12px;border-radius:3px;background:var(--accent);transform:rotate(45deg)}
+  ul.lab li::before{background:var(--lab)}
+  code.k{font-family:"JetBrains Mono",monospace;color:#cfe0ff;font-size:.92em}
+  pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:22px 26px;font-family:"JetBrains Mono",monospace;font-size:clamp(.85rem,1.9vw,1.3rem);line-height:1.55;overflow:auto;max-width:100%}
+  pre .k{color:#7dd3fc} pre .s{color:#86efac} pre .c{color:#7183a3;font-style:italic}
+  .tag{display:inline-flex;align-items:center;gap:10px;font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);color:var(--ink2)}
+  .tag .pill{background:var(--accent2);color:#fff;font-weight:700;border-radius:999px;padding:3px 12px;letter-spacing:.06em}
+  .tag .pill.lab{background:var(--lab);color:#062b26} .tag .pill.warn{background:var(--warn);color:#3a2a05}
+  .section{background:linear-gradient(135deg,#132a52,#0b1220)}
+  .section .big{font-size:clamp(3rem,12vw,8rem);font-family:"Archivo";font-weight:800;color:var(--accent2);line-height:.9}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+  @media (max-width:760px){.two{grid-template-columns:1fr}}
+  .bar{position:fixed;left:0;top:0;height:4px;background:var(--accent2);width:0;transition:width .25s;z-index:5}
+  .count{position:fixed;right:16px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink2);z-index:5}
+  .nav{position:fixed;inset:auto 0 0 0;display:flex;justify-content:space-between;pointer-events:none;z-index:4}
+  .nav button{pointer-events:auto;background:transparent;border:none;color:transparent;width:22vw;height:100vh;cursor:pointer}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+  /* ESL extras (picture vocab, grammar tables, dialogue, clocks) */
+  .pics{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,1.6vw,18px)}
+  .pics.six{grid-template-columns:repeat(6,1fr)}
+  .pic{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center}
+  .pic img{width:100%;max-width:150px;aspect-ratio:1;object-fit:cover;border-radius:10px;background:#FFF3E0;display:block;margin:0 auto}
+  .pic .emo{font-size:clamp(2.6rem,7vw,5rem);line-height:1;aspect-ratio:1;max-width:150px;margin:0 auto;display:flex;align-items:center;justify-content:center}
+  .pic .w{font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(.9rem,2vw,1.35rem);margin-top:6px}
+  @media (max-width:760px){.pics,.pics.six{grid-template-columns:repeat(3,1fr)}}
+  table.g{border-collapse:collapse;font-size:clamp(.95rem,2.1vw,1.45rem);width:100%;max-width:1000px}
+  table.g th,table.g td{border:1px solid var(--line);padding:10px 16px;text-align:left}
+  table.g th{background:var(--code);color:var(--accent);font-family:"JetBrains Mono",monospace;font-size:.8em;letter-spacing:.04em}
+  table.g b{color:#ffd166}
+  .dlg{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:18px 24px;display:flex;flex-direction:column;gap:8px;font-size:clamp(1rem,2.2vw,1.45rem);max-width:1000px}
+  .dlg .sp{display:inline-block;min-width:3.6em;font-weight:700;color:var(--accent)}
+  .dlg .b .sp{color:#c4a1ff}
+  .ccq{font-size:clamp(1rem,2.2vw,1.45rem);border:1px dashed var(--line);border-radius:12px;padding:12px 18px;background:var(--code)}
+  .ccq i{color:var(--ink2)}
+  .clocks{display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,34px);align-items:flex-start}
+  .clocks figure{text-align:center}
+  .clocks svg{width:clamp(96px,14vw,170px);height:auto}
+  .clocks figcaption{font-size:clamp(.95rem,2vw,1.3rem);margin-top:6px}
+  .clocks figcaption small{display:block;color:var(--ink2);font-size:.8em}
+  .snd{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .snd div{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:clamp(1rem,2.2vw,1.5rem)}
+  .snd div b{display:block;font-family:"Archivo";font-size:1.5em;color:var(--accent)}
+  .snd div small{color:var(--ink2)}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="deck" id="deck">
+
+  <!-- 1 -->
+  <section class="slide on section">
+    <div class="eyebrow">Confident English (B2) · Instructor Kit</div>
+    <h1>Module 2<br>Verb Patterns &amp; Modality</h1>
+    <p class="lead">Small words, big differences. Say exactly what you mean.</p>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide">
+    <div class="eyebrow">Classes C4–C6 · the map</div>
+    <h2>Precision, three ways</h2>
+    <ul>
+      <li><b>2.1</b> Verb patterns: <i>I stopped to buy coffee.</i> ≠ <i>I stopped buying coffee.</i></li>
+      <li><b>2.2</b> How sure about the past? <i>They must have left. · They can't have eaten it. · She might have forgotten.</i></li>
+      <li><b>2.3</b> Past, now, changing: <i>I used to… · I'm used to… · I'm getting used to…</i></li>
+    </ul>
+    <div class="tag"><span class="pill">NOTE</span> Your real life, a new identity card, or something invented: all are OK. You can say "Pass."</div>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide">
+    <div class="eyebrow">2.1 · Test first · pairs · 8 min</div>
+    <h2>🔎 Error Hunt: 8 of these 12 are wrong</h2>
+    <div class="two">
+      <table class="g">
+        <tr><td>1 I'm looking forward to see you.</td></tr>
+        <tr><td>2 She suggested to take a taxi.</td></tr>
+        <tr><td>3 We went out for buying bread.</td></tr>
+        <tr><td>4 My manager let me leave early.</td></tr>
+        <tr><td>5 To learn a language takes time.</td></tr>
+        <tr><td>6 He's thinking about changing jobs.</td></tr>
+      </table>
+      <table class="g">
+        <tr><td>7 They made us to wait.</td></tr>
+        <tr><td>8 I want that you call me.</td></tr>
+        <tr><td>9 I can't afford to eat out.</td></tr>
+        <tr><td>10 She's good in cooking.</td></tr>
+        <tr><td>11 I don't mind to work Saturdays.</td></tr>
+        <tr><td>12 Would you like to join us?</td></tr>
+      </table>
+    </div>
+    <div class="tag"><span class="pill warn">NO HELP YET</span> Tick ✓ or fix ✗ · Workbook 2.1, Exercise 4</div>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide">
+    <div class="eyebrow">2.1 · Two ways to follow a verb</div>
+    <h2>-ing or to?</h2>
+    <table class="g">
+      <tr><th>-ing (gerund)</th><th>to + verb (infinitive)</th></tr>
+      <tr><td>enjoy, avoid, finish, mind, suggest, consider, keep, miss, can't stand<br><i>We're considering <b>moving</b>.</i></td><td>want, decide, hope, promise, agree, offer, refuse, manage, afford<br><i>We can't afford <b>to wait</b>.</i></td></tr>
+      <tr><td>after <b>any preposition</b><br><i>He left without <b>saying</b> goodbye.</i></td><td>after an <b>adjective</b><br><i>It's difficult <b>to explain</b>.</i></td></tr>
+      <tr><td>as the <b>subject</b><br><i><b>Getting up</b> early is hard.</i></td><td>for <b>purpose</b> (why?)<br><i>I went out <b>to buy</b> milk.</i></td></tr>
+    </table>
+    <div class="tag"><span class="pill lab">FEEL</span> -ing = the activity as a thing · to = an arrow toward the future</div>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide">
+    <div class="eyebrow">2.1 · Traps · check the meaning</div>
+    <h2>The little word <i>to</i></h2>
+    <div class="two">
+      <table class="g">
+        <tr><td>I look forward <b>to the weekend</b>. (noun ✔)</td></tr>
+        <tr><td>→ I look forward to <b>seeing</b> you.</td></tr>
+        <tr><td>I went out <b>to buy</b> milk. · <s>for buying</s></td></tr>
+        <tr><td>She encouraged <b>him to</b> apply.</td></tr>
+        <tr><td><b>Let</b> me help. · They <b>made</b> him wait. (no <i>to</i>)</td></tr>
+      </table>
+      <div class="ccq">Can a noun follow <i>to</i> in "look forward to"? <i>(Yes, so it's a preposition → -ing.)</i><br>"I want to the weekend"? <i>(No, so "want to go.")</i><br>"This knife is for cutting bread." OK? <i>(Yes: its function, not the purpose of an action.)</i></div>
+    </div>
+    <div class="tag"><span class="pill warn">WATCH</span> look forward to see ❌ · for buying (purpose) ❌ · made him to wait ❌ · I want that you… ❌</div>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide">
+    <div class="eyebrow">2.1 · Same verb, different meaning</div>
+    <h2>⬅️ -ing looks back · to looks forward ➡️</h2>
+    <table class="g">
+      <tr><th>verb</th><th>⬅️ + -ing</th><th>+ to ➡️</th></tr>
+      <tr><td>remember</td><td>I remember <b>locking</b> it. (memory)</td><td>Remember <b>to lock</b> it. (duty)</td></tr>
+      <tr><td>forget</td><td>I'll never forget <b>meeting</b> her.</td><td>Don't forget <b>to call</b>.</td></tr>
+      <tr><td>stop</td><td>He stopped <b>smoking</b>. (quit)</td><td>He stopped <b>to smoke</b>. (paused)</td></tr>
+      <tr><td>try</td><td>Try <b>adding</b> salt. (experiment)</td><td>I tried <b>to open</b> it. (attempt)</td></tr>
+      <tr><td>regret · go on · mean</td><td>regret <b>saying</b> · went on <b>talking</b> · means <b>traveling</b></td><td>regret <b>to tell</b> you · went on <b>to talk</b> about… · meant <b>to call</b></td></tr>
+    </table>
+    <div class="ccq">"He stopped to smoke." Does he smoke? <i>(Yes!)</i> · "I remember locking the door." Did I lock it? <i>(Yes, a memory.)</i> · "I tried to open the jar." Easy? <i>(No, an attempt.)</i></div>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide">
+    <div class="eyebrow">2.1 · Board game · groups of 3–4 · 15 min</div>
+    <h2>🎲 Pattern Path</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>Heads = move 1 · tails = move 2</li>
+        <li><b>Complete</b> · <b>Meaning</b> (explain the difference) · <b>Error Hunt</b> (find + fix) · <b>Talk</b> (20 seconds)</li>
+        <li>The <b>referee</b> (on your right) checks the sheet, then passes it left</li>
+        <li>Wrong? Go back to where you were</li>
+      </ul>
+      <div class="ccq">Error Hunt: find it only? <i>(No, fix it too.)</i><br>Who checks? <i>(The referee, on my right.)</i><br>The sheet moves…? <i>(Left, after every turn.)</i><br>Wrong answer? <i>(Go back.)</i></div>
+    </div>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide">
+    <div class="eyebrow">2.1 · Pairs · 10 min</div>
+    <h2>🗣️ Two minutes about me</h2>
+    <div class="pics">
+      <div class="pic"><img src="../assets/vocab/cook.jpg" alt=""><div class="w">I enjoy…</div></div>
+      <div class="pic"><img src="../assets/vocab/swim.jpg" alt=""><div class="w">I've stopped…</div></div>
+      <div class="pic"><img src="../assets/vocab/hike.jpg" alt=""><div class="w">I'm hoping to…</div></div>
+      <div class="pic"><img src="../assets/vocab/play-the-guitar.jpg" alt=""><div class="w">I'm learning to…</div></div>
+    </div>
+    <div class="ccq">How long? <i>(Two minutes.)</i> · Read a script? <i>(No, key words.)</i> · Partner does what? <i>(Ticks the patterns, then asks two questions.)</i> · Your real life only? <i>(No: new identity or invented is fine.)</i></div>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide">
+    <div class="eyebrow">2.2 · From present hunches to past verdicts</div>
+    <h2>modal + <i>have</i> + past participle</h2>
+    <table class="g">
+      <tr><th>About NOW</th><th>About the PAST</th></tr>
+      <tr><td>He must <b>be</b> tired.</td><td>He must <b>have been</b> tired.</td></tr>
+      <tr><td>She can't <b>be</b> serious.</td><td>She can't <b>have been</b> serious.</td></tr>
+      <tr><td>They might <b>know</b>.</td><td>They might <b>have known</b>.</td></tr>
+      <tr><td>It could <b>be</b> a mistake.</td><td>It could <b>have been</b> a mistake.</td></tr>
+    </table>
+    <div class="tag"><span class="pill lab">SAY IT</span> must've /ˈmʌstəv/ · might've · could've · should've &nbsp;·&nbsp; <span class="pill warn">WRITE IT</span> have, never "of"</div>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide">
+    <div class="eyebrow">2.2 · The certainty scale · check the meaning</div>
+    <h2>How sure are you, and which way?</h2>
+    <table class="g">
+      <tr><th>~95% ✔</th><td><b>must have</b> + pp</td><td>The ground's wet. It <b>must have rained</b>.</td></tr>
+      <tr><th>~50%</th><td><b>might / may / could have</b> + pp</td><td>She <b>might have missed</b> the bus.</td></tr>
+      <tr><th>maybe not</th><td><b>might not / may not have</b> + pp</td><td>Ben <b>may not have gone</b>. He was sick.</td></tr>
+      <tr><th>~95% ✘</th><td><b>can't / couldn't have</b> + pp</td><td>He <b>can't have finished</b> already.</td></tr>
+    </table>
+    <div class="ccq">"She mustn't have seen us"? <i>(No! "She can't have seen us." mustn't = not allowed.)</i> · "It must have rained." Did I see the rain? <i>(No, I see the evidence.)</i></div>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide">
+    <div class="eyebrow">2.2 · Judging past choices</div>
+    <h2>should have · could have</h2>
+    <table class="g">
+      <tr><th>should have + pp</th><td>right thing, didn't happen</td><td>You <b>should have called</b> me.</td></tr>
+      <tr><th>shouldn't have + pp</th><td>wrong thing, did happen</td><td>I <b>shouldn't have eaten</b> that.</td></tr>
+      <tr><th>could have ①</th><td>a possibility</td><td>Where's Sam? He <b>could have gone</b> home.</td></tr>
+      <tr><th>could have ②</th><td>a missed chance</td><td>I <b>could have gone</b>, but I stayed home.</td></tr>
+    </table>
+    <div class="ccq">"You should have called me." Did you call? <i>(No.)</i> Good idea? <i>(No, a mistake.)</i> · "You could have warned me!" Did you warn me? <i>(No.)</i> Am I annoyed? <i>(A little!)</i></div>
+  </section>
+
+  <!-- 12 -->
+  <section class="slide">
+    <div class="eyebrow">2.2 · Model · an office mystery</div>
+    <h2>"Who took the cake?"</h2>
+    <div class="dlg">
+      <p><span class="sp">Mia:</span> The cake's gone, and there are crumbs on Dan's desk. He <b>must have eaten</b> it.</p>
+      <p class="b"><span class="sp">Theo:</span> Dan left at four for the dentist. He <b>can't have taken</b> it.</p>
+      <p><span class="sp">Mia:</span> So someone else <b>might have left</b> those crumbs.</p>
+      <p class="b"><span class="sp">Theo:</span> Priya's allergic to chocolate. She <b>couldn't have eaten</b> it. We <b>shouldn't have left</b> it in a shared fridge.</p>
+      <p><span class="sp">Mia:</span> The cleaner! He <b>must have thought</b> it was leftovers and <b>thrown</b> it out.</p>
+    </div>
+    <div class="tag"><span class="pill lab">FIND</span> one "sure yes" · one "sure no" · one "maybe" · one judgment</div>
+  </section>
+
+  <!-- 13 -->
+  <section class="slide">
+    <div class="eyebrow">2.2 · Groups of 4 · information gap · 20 min</div>
+    <h2>🔍 The Mystery of Room 12</h2>
+    <p class="lead" style="max-width:48ch">Saturday, 9:15 a.m. You arrive early for your 9:30 class in Room 12. The door is open. Nobody is there. Something strange has happened.</p>
+    <div class="pics six">
+      <div class="pic"><img src="../assets/vocab/coffee.jpg" alt=""><div class="w">still warm</div></div>
+      <div class="pic"><img src="../assets/vocab/cake.jpg" alt=""><div class="w">a receipt</div></div>
+      <div class="pic"><img src="../assets/vocab/umbrella.jpg" alt=""><div class="w">wet</div></div>
+      <div class="pic"><img src="../assets/vocab/key.jpg" alt=""><div class="w">on the floor</div></div>
+      <div class="pic"><img src="../assets/vocab/mobile-phone.jpg" alt=""><div class="w">a charger</div></div>
+      <div class="pic"><img src="../assets/vocab/park.jpg" alt=""><div class="w">Plan B?</div></div>
+    </div>
+    <div class="ccq">Show your card? <i>(No! Read it aloud.)</i> · How many deductions? <i>(At least six.)</i> · "They left" OK? <i>(No: "They must have left.")</i> · The skeptic says…? <i>("Are you sure?")</i> · A crime? <i>(No! Something happy.)</i></div>
+  </section>
+
+  <!-- 14 -->
+  <section class="slide">
+    <div class="eyebrow">2.3 · One word, three meanings</div>
+    <h2>Past · now · changing</h2>
+    <table class="g">
+      <tr><th>PAST (gone)</th><td>I <b>used to</b> take the bus.</td><td>I don't now.</td></tr>
+      <tr><th>NOW (a state)</th><td>I'<b>m used to</b> the hills.</td><td>They're normal for me.</td></tr>
+      <tr><th>CHANGING (a process)</th><td>I'<b>m getting used to</b> the rain.</td><td>It's getting easier.</td></tr>
+    </table>
+    <div class="ccq">"I used to take the bus." Do I take it now? <i>(No.)</i> · "I'm used to the hills." Hard for me now? <i>(No, normal.)</i> · "I'm getting used to the rain." Normal yet? <i>(Not yet, still changing.)</i></div>
+  </section>
+
+  <!-- 15 -->
+  <section class="slide">
+    <div class="eyebrow">2.3 · The key contrast</div>
+    <h2>Base verb, or noun / -ing?</h2>
+    <table class="g">
+      <tr><th>used to</th><td>+ <b>base verb</b></td><td>past only</td><td>I used to <b>swim</b> every day.</td></tr>
+      <tr><th>be used to</th><td>+ <b>noun / -ing</b></td><td>any tense</td><td>I'm used to <b>swimming</b> in cold water.</td></tr>
+      <tr><th>get used to</th><td>+ <b>noun / -ing</b></td><td>any tense</td><td>I'm getting used to <b>swimming</b> at dawn.</td></tr>
+    </table>
+    <div class="tag"><span class="pill lab">"IT" TEST</span> I'm used to <b>it</b> ✔ → preposition → -ing · I used to <s>it</s> ✘ → base verb</div>
+    <div class="tag"><span class="pill warn">WATCH</span> I'm used to work ❌ · I didn't used to ❌ · I use to jog (now) ❌ → I usually jog · US: I've <b>gotten</b> used to it</div>
+  </section>
+
+  <!-- 16 -->
+  <section class="slide">
+    <div class="eyebrow">2.3 · Model · a new job</div>
+    <h2>"Are you used to it yet?"</h2>
+    <div class="dlg">
+      <p><span class="sp">Grace:</span> How's the new job at the warehouse?</p>
+      <p class="b"><span class="sp">Luis:</span> I <b>used to work</b> in an office, so I <b>used to sit</b> all day. Now I'm on my feet for eight hours!</p>
+      <p><span class="sp">Grace:</span> Are you <b>used to it</b> yet?</p>
+      <p class="b"><span class="sp">Luis:</span> I'm <b>getting used to it</b>. But I'm still not <b>used to getting up</b> at four-thirty.</p>
+      <p><span class="sp">Grace:</span> You'll <b>get used to it</b>. I <b>used to stay up</b> until one. Now I'm <b>used to being</b> in bed by nine!</p>
+    </div>
+    <div class="tag"><span class="pill lab">SORT</span> past · now · changing &nbsp;·&nbsp; say it: used to = /ˈjuːstə/</div>
+  </section>
+
+  <!-- 17 -->
+  <section class="slide">
+    <div class="eyebrow">2.3 · Mingle · 10 min</div>
+    <h2>🙋 Find someone who…</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>…<b>is used to</b> getting up before six → "Are you used to…?"</li>
+        <li>…<b>used to</b> play an instrument → "Did you use to…?"</li>
+        <li>…<b>is getting used to</b> a new phone or app → "Are you getting used to…?"</li>
+        <li>One name per line + one detail</li>
+      </ul>
+      <div class="ccq">Say "Find someone who…"? <i>(No, make a question.)</i><br>How many names per line? <i>(One.)</i><br>"Pass" OK? <i>(Yes.)</i><br>Write…? <i>(A name and one detail.)</i></div>
+    </div>
+  </section>
+
+  <!-- 18 -->
+  <section class="slide">
+    <div class="eyebrow">2.3 · Groups of 3 · 18 min</div>
+    <h2>🔁 Adjusting to something new</h2>
+    <div class="pics six">
+      <div class="pic"><div class="emo">💼</div><div class="w">a new job</div></div>
+      <div class="pic"><div class="emo">⏰</div><div class="w">a new schedule</div></div>
+      <div class="pic"><img src="../assets/vocab/mobile-phone.jpg" alt=""><div class="w">new technology</div></div>
+      <div class="pic"><img src="../assets/vocab/bus.jpg" alt=""><div class="w">a new commute</div></div>
+      <div class="pic"><div class="emo">🏘️</div><div class="w">a new neighborhood</div></div>
+      <div class="pic"><img src="../assets/vocab/hike.jpg" alt=""><div class="w">a new hobby</div></div>
+    </div>
+    <div class="ccq">Real life only? <i>(No: a card, a new identity, or invented.)</i> · Who talks? <i>(Only the person with the pen.)</i> · Listeners do what? <i>(Ask a question, give advice: "You'll get used to…")</i> · "Still changing" = ? <i>(getting used to)</i></div>
+  </section>
+
+  <!-- 19 -->
+  <section class="slide section">
+    <div class="eyebrow">You can now say exactly what you mean</div>
+    <h2>Module 2 done 🎉</h2>
+    <ul class="lab">
+      <li>🔁 I stopped <b>to buy</b> coffee ≠ I stopped <b>buying</b> coffee · I'm looking forward to <b>seeing</b> you.</li>
+      <li>🔎 They <b>must have</b> left · They <b>can't have</b> eaten it · She <b>might have</b> forgotten · We <b>should have</b> checked.</li>
+      <li>⏳ I <b>used to</b> work in an office · I'm <b>used to</b> the early start · I'm <b>getting used to</b> the new app.</li>
+    </ul>
+    <p class="lead" style="margin-top:10px;max-width:40ch">Homework: online lessons 2.1–2.3 with 🔊. Next: Module 3, <i>It is believed that…</i></p>
+  </section>
+
+
+</div>
+
+<div class="count" id="count">1 / 19</div>
+<div class="nav"><button id="prev" aria-label="Previous slide"></button><button id="next" aria-label="Next slide"></button></div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const bar=document.getElementById('bar'), count=document.getElementById('count');
+  let i=0;
+  function show(n){ i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+    bar.style.width=((i+1)/slides.length*100)+'%'; count.textContent=(i+1)+' / '+slides.length; }
+  document.getElementById('next').onclick=()=>show(i+1);
+  document.getElementById('prev').onclick=()=>show(i-1);
+  addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}
+    else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+  });
+  show(0);
+</script>
+</body>
+</html>

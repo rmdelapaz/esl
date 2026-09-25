@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slides — Module 7</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root{--bg:#0b1220;--ink:#edf2fb;--ink2:#a8b6cf;--accent:#7fb2ff;--accent2:#2563eb;--lab:#34d3bd;--warn:#fbbf24;--line:#233252;--code:#101a2e;color-scheme:dark}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;overflow:hidden}
+  .deck{height:100%;width:100%;position:relative}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:6vh 8vw;gap:20px}
+  .slide.on{display:flex}
+  h1,h2,h3{font-family:"Archivo",sans-serif;line-height:1.1;text-wrap:balance}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  .slide h1{font-size:clamp(2rem,6vw,4rem);font-weight:800;letter-spacing:-.02em}
+  .slide h2{font-size:clamp(1.5rem,4.2vw,2.8rem);font-weight:800;letter-spacing:-.01em}
+  .slide p.lead{font-size:clamp(1.05rem,2.4vw,1.5rem);color:var(--ink2);max-width:26ch}
+  ul{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:6px}
+  ul li{position:relative;padding-left:34px;font-size:clamp(1.05rem,2.3vw,1.6rem)}
+  ul li::before{content:"";position:absolute;left:0;top:.55em;width:12px;height:12px;border-radius:3px;background:var(--accent);transform:rotate(45deg)}
+  ul.lab li::before{background:var(--lab)}
+  code.k{font-family:"JetBrains Mono",monospace;color:#cfe0ff;font-size:.92em}
+  pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:22px 26px;font-family:"JetBrains Mono",monospace;font-size:clamp(.85rem,1.9vw,1.3rem);line-height:1.55;overflow:auto;max-width:100%}
+  pre .k{color:#7dd3fc} pre .s{color:#86efac} pre .c{color:#7183a3;font-style:italic}
+  .tag{display:inline-flex;align-items:center;gap:10px;font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);color:var(--ink2)}
+  .tag .pill{background:var(--accent2);color:#fff;font-weight:700;border-radius:999px;padding:3px 12px;letter-spacing:.06em}
+  .tag .pill.lab{background:var(--lab);color:#062b26} .tag .pill.warn{background:var(--warn);color:#3a2a05}
+  .section{background:linear-gradient(135deg,#132a52,#0b1220)}
+  .section .big{font-size:clamp(3rem,12vw,8rem);font-family:"Archivo";font-weight:800;color:var(--accent2);line-height:.9}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+  @media (max-width:760px){.two{grid-template-columns:1fr}}
+  .bar{position:fixed;left:0;top:0;height:4px;background:var(--accent2);width:0;transition:width .25s;z-index:5}
+  .count{position:fixed;right:16px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink2);z-index:5}
+  .nav{position:fixed;inset:auto 0 0 0;display:flex;justify-content:space-between;pointer-events:none;z-index:4}
+  .nav button{pointer-events:auto;background:transparent;border:none;color:transparent;width:22vw;height:100vh;cursor:pointer}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+  /* ESL extras (picture vocab, grammar tables, dialogue, clocks) */
+  .pics{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,1.6vw,18px)}
+  .pics.six{grid-template-columns:repeat(6,1fr)}
+  .pic{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center}
+  .pic img{width:100%;max-width:150px;aspect-ratio:1;object-fit:cover;border-radius:10px;background:#FFF3E0;display:block;margin:0 auto}
+  .pic .emo{font-size:clamp(2.6rem,7vw,5rem);line-height:1;aspect-ratio:1;max-width:150px;margin:0 auto;display:flex;align-items:center;justify-content:center}
+  .pic .w{font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(.9rem,2vw,1.35rem);margin-top:6px}
+  @media (max-width:760px){.pics,.pics.six{grid-template-columns:repeat(3,1fr)}}
+  table.g{border-collapse:collapse;font-size:clamp(.95rem,2.1vw,1.45rem);width:100%;max-width:1000px}
+  table.g th,table.g td{border:1px solid var(--line);padding:10px 16px;text-align:left}
+  table.g th{background:var(--code);color:var(--accent);font-family:"JetBrains Mono",monospace;font-size:.8em;letter-spacing:.04em}
+  table.g b{color:#ffd166}
+  .dlg{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:18px 24px;display:flex;flex-direction:column;gap:8px;font-size:clamp(1rem,2.2vw,1.45rem);max-width:1000px}
+  .dlg .sp{display:inline-block;min-width:3.6em;font-weight:700;color:var(--accent)}
+  .dlg .b .sp{color:#c4a1ff}
+  .ccq{font-size:clamp(1rem,2.2vw,1.45rem);border:1px dashed var(--line);border-radius:12px;padding:12px 18px;background:var(--code)}
+  .ccq i{color:var(--ink2)}
+  .clocks{display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,34px);align-items:flex-start}
+  .clocks figure{text-align:center}
+  .clocks svg{width:clamp(96px,14vw,170px);height:auto}
+  .clocks figcaption{font-size:clamp(.95rem,2vw,1.3rem);margin-top:6px}
+  .clocks figcaption small{display:block;color:var(--ink2);font-size:.8em}
+  .snd{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .snd div{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:clamp(1rem,2.2vw,1.5rem)}
+  .snd div b{display:block;font-family:"Archivo";font-size:1.5em;color:var(--accent)}
+  .snd div small{color:var(--ink2)}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="deck" id="deck">
+
+  <!-- 1 -->
+  <section class="slide on section">
+    <div class="eyebrow">Confident English (B2) · Instructor Kit</div>
+    <h1>Module 7<br>Communicating with Style</h1>
+    <p class="lead">Fit the reader. Hold the listener. Move the audience.</p>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide">
+    <div class="eyebrow">Classes C20–C22 · the map</div>
+    <h2>Not just what you say, but how</h2>
+    <ul>
+      <li><b>7.1</b> Register: <i>Can you get back to me? → I would be grateful if you could reply.</i> One message, three readers.</li>
+      <li><b>7.2</b> Anecdotes: <i>You'll never guess what happened… just as… and he goes, "…" In the end…</i></li>
+      <li><b>7.3</b> Persuasion: <i>Today I'll cover… The main advantage is… Admittedly… That said… That's a good question.</i></li>
+    </ul>
+    <div class="tag"><span class="pill">NOTE</span> A true story, a card, or something invented: all are OK. Nobody asks "Is it true?" You can say "Pass."</div>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide">
+    <div class="eyebrow">7.1 · Register is a dial, not a switch</div>
+    <h2>One message · three readers</h2>
+    <div class="pics">
+      <div class="pic"><img src="../assets/vocab/mobile-phone.jpg" alt=""><div class="w">informal</div></div>
+      <div class="pic"><img src="../assets/vocab/email.jpg" alt=""><div class="w">neutral</div></div>
+      <div class="pic"><img src="../assets/vocab/pen.jpg" alt=""><div class="w">formal</div></div>
+      <div class="pic"><div class="emo">🎚️</div><div class="w">choose!</div></div>
+    </div>
+    <table class="g">
+      <tr><th>To a friend</th><td>Can you get back to me soon?</td></tr>
+      <tr><th>To a coworker</th><td>Could you let me know when you have a moment?</td></tr>
+      <tr><th>To an organization</th><td>I <b>would be grateful</b> if you could reply <b>at your earliest convenience</b>.</td></tr>
+    </table>
+    <div class="ccq">Which one is wrong? <i>(None!)</i> · The formal one to your best friend? <i>(Cold, maybe sarcastic.)</i> · The text to a bank? <i>(Too casual; they won't take you seriously.)</i></div>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide">
+    <div class="eyebrow">7.1 · The four features that shift</div>
+    <h2>Turn the dial up ⇄ down</h2>
+    <table class="g">
+      <tr><th>Feature</th><th>Informal</th><th>Formal</th></tr>
+      <tr><td>1 Words</td><td>ask for · put off · find out · need · tell · but · so</td><td><b>request · postpone · discover · require · inform · however · therefore</b></td></tr>
+      <tr><td>2 Contractions</td><td>I'm · haven't · won't</td><td><b>I am · have not · will not</b></td></tr>
+      <tr><td>3 Sentences</td><td>The heater's broken. It's really cold.</td><td><b>As</b> the heating is no longer working, the apartment has become extremely cold.</td></tr>
+      <tr><td>4 Set phrases</td><td>Hi Sam, · Just wondering… · Let me know.</td><td><b>Dear Mr. Clarke: · I am writing to inquire about… · I look forward to hearing from you.</b></td></tr>
+    </table>
+    <div class="tag"><span class="pill lab">SAY IT</span> I would be <b>grate</b>ful · in<b>quire</b> · I was <b>won</b>dering whether it might be <b>poss</b>ible… ↘↗</div>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide">
+    <div class="eyebrow">7.1 · Register sort · check · 4 min</div>
+    <h2>Informal · neutral · formal?</h2>
+    <table class="g">
+      <tr><th>📱 Informal</th><th>📧 Neutral</th><th>📄 Formal</th></tr>
+      <tr><td>Hey! · Gimme a shout.</td><td>Hi Ms. Reyes, · Could you let me know?</td><td>Dear Sir or Madam, · I would be grateful if you could inform me…</td></tr>
+      <tr><td>Can't make it. · Cheers!</td><td>I'm afraid I can't make it. · Thanks for your help.</td><td>I regret that I will be unable to attend. · Thank you for your assistance.</td></tr>
+      <tr><td>Lemme know. · Sorry, my bad!</td><td>Talk to you soon. · Sorry for the delay.</td><td>I look forward to hearing from you. · Please accept my apologies for the delay.</td></tr>
+    </table>
+    <div class="ccq">"find out" in a formal letter: wrong? <i>(Not wrong, but choose "discover.")</i> · "Dear Sir or Madam … Cheers!" <i>(Mixed registers!)</i> · Contractions when you <b>speak</b> politely? <i>(Fine.)</i></div>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide">
+    <div class="eyebrow">7.1 · Spoken register · two voices, same request</div>
+    <h2>Distance = politeness</h2>
+    <div class="two">
+      <div class="dlg">
+        <p><span class="sp">Ana:</span> Hey Sam, got a sec? Any chance you could swap shifts with me on Saturday?</p>
+        <p class="b"><span class="sp">Sam:</span> Yeah, no problem.</p>
+        <p><span class="sp">Ana:</span> You're a lifesaver!</p>
+      </div>
+      <div class="dlg">
+        <p><span class="sp">Ana:</span> Excuse me, Mr. Patel. Do you have a moment?</p>
+        <p class="b"><span class="sp">Mr. P:</span> Of course. What can I do for you?</p>
+        <p><span class="sp">Ana:</span> <b>I was wondering whether it might be possible</b> to swap my Saturday shift with Sam.</p>
+      </div>
+    </div>
+    <div class="ccq">"I was wondering…": is Ana talking about the past? <i>(No, now. It's softer.)</i> · Is she sure the answer is yes? <i>(No: "might," "possible" leave room for no.)</i> · Say it to Sam? <i>(Too stiff!)</i></div>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide">
+    <div class="eyebrow">7.1 · The formal email · five parts</div>
+    <h2>Greeting → reason → detail → request → sign-off</h2>
+    <table class="g">
+      <tr><td>① Greeting</td><td>Dear Customer Service Team, · Dear Mr. Lee:</td></tr>
+      <tr><td>② Reason</td><td><b>I am writing to</b> complain about / inquire about / request…</td></tr>
+      <tr><td>③ Detail</td><td>On May 3, I purchased… · <b>Unfortunately,</b> the item…</td></tr>
+      <tr><td>④ Request</td><td><b>I would be grateful if you could</b>… · I would therefore request…</td></tr>
+      <tr><td>⑤ Sign-off</td><td>I look forward to hearing from you. · 🇺🇸 <b>Sincerely,</b> · 🇬🇧 Dear Sir or Madam → Yours faithfully · Dear Mr Lee → Yours sincerely</td></tr>
+    </table>
+    <div class="tag"><span class="pill warn">RULE</span> One register per message · the purpose in the first line · calm, not angry</div>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide">
+    <div class="eyebrow">7.1 · Register Switch Workshop · groups of 3 · 22 min</div>
+    <h2>Same message · three versions</h2>
+    <ul class="lab">
+      <li><b>A</b> a text to a friend · <b>B</b> an email to a manager · <b>C</b> a formal letter to an organization (7 min)</li>
+      <li>Pass it on: check the four features and <b>upgrade one line</b> (4 min)</li>
+      <li>Read all three aloud in random order. Class: <b>who's the reader? Which feature told you?</b> (8 min)</li>
+      <li>Turn one version <b>down</b> the dial (3 min)</li>
+    </ul>
+    <div class="ccq">How many versions? <i>(Three.)</i> · Does the text need "Dear"? <i>(No!)</i> · Checking: rewrite everything? <i>(No, one line.)</i> · Say which is which? <i>(No, the class guesses.)</i> · Real boss's name? <i>(No, use the card.)</i></div>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide">
+    <div class="eyebrow">7.2 · Flat vs shaped · the arc</div>
+    <h2>Same events · a different story</h2>
+    <table class="g">
+      <tr><th>Flat</th><td>I went to a bakery. It was closed. And then I went home.</td></tr>
+      <tr><th>Shaped</th><td><b>You'll never guess</b> what happened. I <b>was walking</b> across town, absolutely starving… <b>just as</b> I got to the door, the owner <b>goes</b>, "Sorry, we're closed!" <b>And that's why</b> I always call first now.</td></tr>
+    </table>
+    <table class="g">
+      <tr><th>OPEN</th><th>BUILD</th><th>CLIMAX</th><th>LAND</th></tr>
+      <tr><td>a hook</td><td>scene, then events</td><td>the big moment</td><td>the point or punchline</td></tr>
+    </table>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide">
+    <div class="eyebrow">7.2 · Open &amp; set the scene · check the meaning</div>
+    <h2>Hook them · then paint the scene</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>Hook</th><th>When?</th></tr>
+        <tr><td>You'll never guess what happened…</td><td>something surprising</td></tr>
+        <tr><td>So the other day…</td><td>relaxed start</td></tr>
+        <tr><td>This reminds me of the time…</td><td>linking to the chat</td></tr>
+        <tr><td>Did I ever tell you about…?</td><td>inviting "Go on!"</td></tr>
+      </table>
+      <div class="ccq"><b>"I was waiting for the bus when a dog ran off with my sandwich."</b><br>The background? <i>(Waiting: past continuous.)</i><br>The sudden event? <i>(The dog ran: past simple.)</i><br>"I'd just bought it." Before or after? <i>(Before: past perfect.)</i></div>
+    </div>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide">
+    <div class="eyebrow">7.2 · Build · control the pace</div>
+    <h2>Not "and then… and then… and then…"</h2>
+    <table class="g">
+      <tr><th>Connector</th><th>Effect</th></tr>
+      <tr><td>At first… · Then… · After that…</td><td>calm, step by step</td></tr>
+      <tr><td>A few minutes later…</td><td>a jump in time</td></tr>
+      <tr><td><b>Just as</b> I opened the door, …</td><td>two things at the same instant</td></tr>
+      <tr><td><b>All of a sudden</b>, …</td><td>a sharp, surprising turn</td></tr>
+      <tr><td><b>Before I knew it</b>, …</td><td>faster than expected</td></tr>
+      <tr><td>In the end… · To cut a long story short… · And that's why…</td><td>land it, then stop</td></tr>
+    </table>
+    <div class="tag"><span class="pill lab">SAY IT</span> slow for the scene · fast at "all of a sudden" · pause… before the punchline</div>
+  </section>
+
+  <!-- 12 -->
+  <section class="slide">
+    <div class="eyebrow">7.2 · Keep it alive · absolutely!</div>
+    <h2>So I'm standing there, absolutely soaked…</h2>
+    <div class="pics six">
+      <div class="pic"><img src="../assets/vocab/angry.jpg" alt=""><div class="w">furious</div></div>
+      <div class="pic"><img src="../assets/vocab/excited.jpg" alt=""><div class="w">thrilled</div></div>
+      <div class="pic"><img src="../assets/vocab/cold.jpg" alt=""><div class="w">freezing</div></div>
+      <div class="pic"><img src="../assets/vocab/hot.jpg" alt=""><div class="w">boiling</div></div>
+      <div class="pic"><img src="../assets/vocab/nervous.jpg" alt=""><div class="w">terrified</div></div>
+      <div class="pic"><div class="emo">😴</div><div class="w">exhausted</div></div>
+    </div>
+    <div class="ccq"><b>Historic present:</b> "So he walks up and <b>goes</b>, 'Is this your car?'" Happening now? <i>(No, a past story. It pulls you in.)</i> "goes" = ? <i>(says, informal.)</i> In a report to your manager? <i>(No!)</i> · <b>"very furious"?</b> <i>(No: absolutely furious. very angry.)</i></div>
+  </section>
+
+  <!-- 13 -->
+  <section class="slide">
+    <div class="eyebrow">7.2 · Listen &amp; react · Anecdote Circle · 22 min</div>
+    <h2>Stories are a two-person game</h2>
+    <div class="dlg">
+      <p><span class="sp">Priya:</span> All of a sudden I'm absolutely soaked, head to toe. And this old man just looks at me and goes, "Lovely weather for it!"</p>
+      <p class="b"><span class="sp">Tom:</span> No way! What did you do?</p>
+      <p><span class="sp">Priya:</span> To cut a long story short, I got the job. And that's why I always carry an umbrella now.</p>
+    </div>
+    <ul class="lab">
+      <li>Plan (key words): hook · scene · events · "…" · ending. <b>2 min</b> each, token = your turn.</li>
+      <li>Listeners: <b>two reactions</b> + <b>one follow-up question</b>. 😮 No way! · 😬 Oh no! · ➡️ Then what?</li>
+    </ul>
+    <div class="ccq">Must it be true? <i>(No: true, card, or invented.)</i> · Full sentences on the planner? <i>(No.)</i> · Ask "Is that true?" <i>(Never!)</i></div>
+  </section>
+
+  <!-- 14 -->
+  <section class="slide">
+    <div class="eyebrow">7.3 · Weak vs strong · the pitch shape</div>
+    <h2>Structure beats charisma</h2>
+    <table class="g">
+      <tr><th>Weak</th><td>Um, I think remote work is good because it's, like, more flexible and stuff.</td></tr>
+      <tr><th>Strong</th><td><b>Today I'll make the case</b> for remote work. <b>There are two main reasons.</b> First, flexibility. <b>Research suggests</b> flexible workers are more productive. <b>Admittedly</b>, it isn't right for every role; <b>that said</b>, for most office work the evidence is clear.</td></tr>
+    </table>
+    <table class="g">
+      <tr><th>SIGNPOST</th><th>ARGUE</th><th>PERSUADE</th><th>CLOSE</th></tr>
+      <tr><td>tell them the plan</td><td>problem → solution · claim + reasons + evidence</td><td>techniques · concede → counter</td><td>sum up + call to action</td></tr>
+    </table>
+  </section>
+
+  <!-- 15 -->
+  <section class="slide">
+    <div class="eyebrow">7.3 · Signposts &amp; argument · check the meaning</div>
+    <h2>A listener can't scroll back</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>Signpost</th><th>Argue</th></tr>
+        <tr><td>Today I'll cover…</td><td>The main advantage is…</td></tr>
+        <tr><td>First, let's look at…</td><td>There are two reasons for this…</td></tr>
+        <tr><td>Moving on to…</td><td>Research suggests… / The figures show…</td></tr>
+        <tr><td>For instance… / Take, for example,…</td><td>As a result,…</td></tr>
+        <tr><td>To sum up…</td><td>So we're asking you to…</td></tr>
+      </table>
+      <div class="ccq">"Bike parking is better." Opinion or argument? <i>(Opinion only.)</i><br>"…because 12 of us cycle and two bikes were stolen." <i>(Argument: claim + reason + evidence.)</i><br>After a signpost? <i>(Pause for a beat.)</i></div>
+    </div>
+  </section>
+
+  <!-- 16 -->
+  <section class="slide">
+    <div class="eyebrow">7.3 · Four persuasive techniques · Persuasion Bingo demo</div>
+    <h2>Make them think, remember and agree</h2>
+    <table class="g">
+      <tr><td>❓ Rhetorical question</td><td>Wouldn't it be great to arrive at work already awake? ↘</td></tr>
+      <tr><td>3️⃣ Tripling</td><td>It's healthier ↗, cheaper ↗ and greener ↘.</td></tr>
+      <tr><td>⚖️ Contrast</td><td>It's not a <b>cost</b>; it's an <b>in</b>vestment.</td></tr>
+      <tr><td>🫵 Appeal</td><td>Think about your own commute. Together, we can…</td></tr>
+    </table>
+    <div class="ccq">Does the speaker want an answer to the question? <i>(No!)</i> · Why three items? <i>(Rhythm; easy to remember.)</i> · "It's not a problem; it's an opportunity." Which technique? <i>(Contrast.)</i></div>
+  </section>
+
+  <!-- 17 -->
+  <section class="slide">
+    <div class="eyebrow">7.3 · Concede → counter · handling questions</div>
+    <h2>Admit it, then beat it</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>Concede</th><th>Counter</th></tr>
+        <tr><td>Admittedly, it costs more at first…</td><td>…however, it pays for itself within a year.</td></tr>
+        <tr><td>While it's true that there are risks,…</td><td>…the benefits clearly outweigh them.</td></tr>
+        <tr><td>Of course, no plan is perfect;…</td><td>…nevertheless, this is the best option.</td></tr>
+      </table>
+      <div class="ccq"><b>Q&amp;A buttons</b><br>That's a good question.<br>If I understand you correctly, you're asking…<br>Let me come back to that.<br>I don't have the exact figure, but I'll follow up.<br>Does that answer your question?</div>
+    </div>
+    <div class="tag"><span class="pill warn">ONE CONNECTOR</span> ❌ Although it's expensive, but… ✅ Although it's expensive, it…</div>
+  </section>
+
+  <!-- 18 -->
+  <section class="slide">
+    <div class="eyebrow">7.3 · The Pitch Panel · teams of 3 · 22 min</div>
+    <h2>Pitch for 2 minutes · answer for 2</h2>
+    <ul class="lab">
+      <li><b>S1</b> signpost + the problem · <b>S2</b> solution + evidence + a technique · <b>S3</b> concede–counter + close + call to action</li>
+      <li><b>Panel:</b> ask from your <b>objection cards</b>, tick <b>Persuasion Bingo</b>, and vote (not for your own team!)</li>
+      <li>Every answer starts calmly: "That's a good question."</li>
+    </ul>
+    <div class="ccq">How long? <i>(Two minutes.)</i> · Everyone speaks? <i>(Yes, one part each.)</i> · Read a script? <i>(No, key words.)</i> · Where do the panel's questions come from? <i>(The cards.)</i> · "Bingo!" when? <i>(At the end.)</i></div>
+  </section>
+
+  <!-- 19 -->
+  <section class="slide section">
+    <div class="eyebrow">You can now communicate with style</div>
+    <h2>Module 7 done 🎉</h2>
+    <ul class="lab">
+      <li>🎚️ <b>Fit the reader:</b> Can you…? → I would be grateful if you could… · one register per message</li>
+      <li>📖 <b>Hold the listener:</b> You'll never guess… · I was ___ing when… · just as… · he goes, "…" · And that's why…</li>
+      <li>📣 <b>Move the audience:</b> Today I'll cover… · Research suggests… · Admittedly… That said… · That's a good question.</li>
+    </ul>
+    <p class="lead" style="margin-top:10px;max-width:40ch">Homework: online lessons 7.1–7.3 with 🔊. Next: Module 8, understanding natural speech, and the final debate.</p>
+  </section>
+
+
+</div>
+
+<div class="count" id="count">1 / 19</div>
+<div class="nav"><button id="prev" aria-label="Previous slide"></button><button id="next" aria-label="Next slide"></button></div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const bar=document.getElementById('bar'), count=document.getElementById('count');
+  let i=0;
+  function show(n){ i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+    bar.style.width=((i+1)/slides.length*100)+'%'; count.textContent=(i+1)+' / '+slides.length; }
+  document.getElementById('next').onclick=()=>show(i+1);
+  document.getElementById('prev').onclick=()=>show(i-1);
+  addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}
+    else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+  });
+  show(0);
+</script>
+</body>
+</html>

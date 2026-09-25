@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slides — Module 3</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root{--bg:#0b1220;--ink:#edf2fb;--ink2:#a8b6cf;--accent:#7fb2ff;--accent2:#2563eb;--lab:#34d3bd;--warn:#fbbf24;--line:#233252;--code:#101a2e;color-scheme:dark}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;overflow:hidden}
+  .deck{height:100%;width:100%;position:relative}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:6vh 8vw;gap:20px}
+  .slide.on{display:flex}
+  h1,h2,h3{font-family:"Archivo",sans-serif;line-height:1.1;text-wrap:balance}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  .slide h1{font-size:clamp(2rem,6vw,4rem);font-weight:800;letter-spacing:-.02em}
+  .slide h2{font-size:clamp(1.5rem,4.2vw,2.8rem);font-weight:800;letter-spacing:-.01em}
+  .slide p.lead{font-size:clamp(1.05rem,2.4vw,1.5rem);color:var(--ink2);max-width:26ch}
+  ul{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:6px}
+  ul li{position:relative;padding-left:34px;font-size:clamp(1.05rem,2.3vw,1.6rem)}
+  ul li::before{content:"";position:absolute;left:0;top:.55em;width:12px;height:12px;border-radius:3px;background:var(--accent);transform:rotate(45deg)}
+  ul.lab li::before{background:var(--lab)}
+  code.k{font-family:"JetBrains Mono",monospace;color:#cfe0ff;font-size:.92em}
+  pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:22px 26px;font-family:"JetBrains Mono",monospace;font-size:clamp(.85rem,1.9vw,1.3rem);line-height:1.55;overflow:auto;max-width:100%}
+  pre .k{color:#7dd3fc} pre .s{color:#86efac} pre .c{color:#7183a3;font-style:italic}
+  .tag{display:inline-flex;align-items:center;gap:10px;font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);color:var(--ink2)}
+  .tag .pill{background:var(--accent2);color:#fff;font-weight:700;border-radius:999px;padding:3px 12px;letter-spacing:.06em}
+  .tag .pill.lab{background:var(--lab);color:#062b26} .tag .pill.warn{background:var(--warn);color:#3a2a05}
+  .section{background:linear-gradient(135deg,#132a52,#0b1220)}
+  .section .big{font-size:clamp(3rem,12vw,8rem);font-family:"Archivo";font-weight:800;color:var(--accent2);line-height:.9}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+  @media (max-width:760px){.two{grid-template-columns:1fr}}
+  .bar{position:fixed;left:0;top:0;height:4px;background:var(--accent2);width:0;transition:width .25s;z-index:5}
+  .count{position:fixed;right:16px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink2);z-index:5}
+  .nav{position:fixed;inset:auto 0 0 0;display:flex;justify-content:space-between;pointer-events:none;z-index:4}
+  .nav button{pointer-events:auto;background:transparent;border:none;color:transparent;width:22vw;height:100vh;cursor:pointer}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+  /* ESL extras (picture vocab, grammar tables, dialogue, clocks) */
+  .pics{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,1.6vw,18px)}
+  .pics.six{grid-template-columns:repeat(6,1fr)}
+  .pic{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center}
+  .pic img{width:100%;max-width:150px;aspect-ratio:1;object-fit:cover;border-radius:10px;background:#FFF3E0;display:block;margin:0 auto}
+  .pic .emo{font-size:clamp(2.6rem,7vw,5rem);line-height:1;aspect-ratio:1;max-width:150px;margin:0 auto;display:flex;align-items:center;justify-content:center}
+  .pic .w{font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(.9rem,2vw,1.35rem);margin-top:6px}
+  @media (max-width:760px){.pics,.pics.six{grid-template-columns:repeat(3,1fr)}}
+  table.g{border-collapse:collapse;font-size:clamp(.95rem,2.1vw,1.45rem);width:100%;max-width:1000px}
+  table.g th,table.g td{border:1px solid var(--line);padding:10px 16px;text-align:left}
+  table.g th{background:var(--code);color:var(--accent);font-family:"JetBrains Mono",monospace;font-size:.8em;letter-spacing:.04em}
+  table.g b{color:#ffd166}
+  .dlg{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:18px 24px;display:flex;flex-direction:column;gap:8px;font-size:clamp(1rem,2.2vw,1.45rem);max-width:1000px}
+  .dlg .sp{display:inline-block;min-width:3.6em;font-weight:700;color:var(--accent)}
+  .dlg .b .sp{color:#c4a1ff}
+  .ccq{font-size:clamp(1rem,2.2vw,1.45rem);border:1px dashed var(--line);border-radius:12px;padding:12px 18px;background:var(--code)}
+  .ccq i{color:var(--ink2)}
+  .clocks{display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,34px);align-items:flex-start}
+  .clocks figure{text-align:center}
+  .clocks svg{width:clamp(96px,14vw,170px);height:auto}
+  .clocks figcaption{font-size:clamp(.95rem,2vw,1.3rem);margin-top:6px}
+  .clocks figcaption small{display:block;color:var(--ink2);font-size:.8em}
+  .snd{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .snd div{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:clamp(1rem,2.2vw,1.5rem)}
+  .snd div b{display:block;font-family:"Archivo";font-size:1.5em;color:var(--accent)}
+  .snd div small{color:var(--ink2)}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="deck" id="deck">
+
+  <!-- 1 -->
+  <section class="slide on section">
+    <div class="eyebrow">Confident English (B2) · Instructor Kit</div>
+    <h1>Module 3<br>Advanced Structures</h1>
+    <p class="lead">Shift the focus. Cut the words. Name the act.</p>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide">
+    <div class="eyebrow">Classes C7–C9 · the map</div>
+    <h2>Say more with less</h2>
+    <ul>
+      <li><b>3.1</b> The passive, advanced &amp; impersonal: <i>It is said that… · The tortoise is thought to be 120.</i></li>
+      <li><b>3.2</b> Relative &amp; participle clauses: <i>the man standing there · Having finished, she left.</i></li>
+      <li><b>3.3</b> Reporting verbs &amp; patterns: <i>She refused to sign. He denied taking it.</i></li>
+    </ul>
+    <div class="tag"><span class="pill">NOTE</span> Your real life, a new identity card, or something invented: all are OK. In role-plays, play the card.</div>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide">
+    <div class="eyebrow">3.1 · The passive ladder · only BE moves</div>
+    <h2>be + past participle, in any tense</h2>
+    <table class="g">
+      <tr><th>Tense / modal</th><th>Passive</th><th>Tense / modal</th><th>Passive</th></tr>
+      <tr><td>present</td><td>it <b>is done</b></td><td>present perfect</td><td>it <b>has been done</b></td></tr>
+      <tr><td>present continuous</td><td>it <b>is being done</b></td><td>future</td><td>it <b>will be done</b></td></tr>
+      <tr><td>past</td><td>it <b>was done</b></td><td>modal</td><td>it <b>must be done</b></td></tr>
+      <tr><td>past continuous</td><td>it <b>was being done</b></td><td>modal perfect</td><td>it <b>should have been done</b></td></tr>
+    </table>
+    <div class="ccq">"The form should have been sent yesterday." Was it sent? <i>(No.)</i> Past or future? <i>(Past.)</i> Is it a criticism? <i>(Yes, a mild one.)</i></div>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide">
+    <div class="eyebrow">3.1 · Impersonal reporting passives</div>
+    <h2>Report a belief without saying who</h2>
+    <table class="g">
+      <tr><th>Active</th><td>People say (that) he is very rich.</td></tr>
+      <tr><th>Pattern A</th><td><b>It is said that</b> he is very rich.</td></tr>
+      <tr><th>Pattern B</th><td>He <b>is said to be</b> very rich.</td></tr>
+      <tr><th>More verbs</th><td>believe · think · know · report · expect · consider · understand</td></tr>
+    </table>
+    <div class="tag"><span class="pill warn">WATCH</span> It is said <s>him to be</s> ❌ · He is said <s>that he is</s> ❌ · <s>Is said that</s> ❌ (English needs <b>It</b>)</div>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide">
+    <div class="eyebrow">3.1 · Pattern B · timing · check the meaning</div>
+    <h2>Now, in progress, or earlier?</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>Timing</th><th>Infinitive</th></tr>
+        <tr><td>same time</td><td>He is thought <b>to be</b> rich.</td></tr>
+        <tr><td>in progress</td><td>She is thought <b>to be living</b> in Florida.</td></tr>
+        <tr><td>earlier</td><td>He is thought <b>to have left</b> the country.</td></tr>
+        <tr><td>earlier + passive</td><td>The piano is believed <b>to have been left</b> by a musician.</td></tr>
+      </table>
+      <div class="ccq">"The tortoise is thought to be 120." Who thinks so? <i>(We don't say.)</i> Fact or belief? <i>(Belief.)</i><br>"He is said to have been rich." Rich now? <i>(No, before.)</i><br>"to have been left": did the piano leave? <i>(No! Someone left it.)</i></div>
+    </div>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide">
+    <div class="eyebrow">3.1 · The causative · a first look (more in Lesson 5.2)</div>
+    <h2>I didn't do it. I <i>had it done</i>.</h2>
+    <div class="pics">
+      <div class="pic"><img src="../assets/vocab/mechanic.jpg" alt=""><div class="w">had my car repaired</div></div>
+      <div class="pic"><img src="../assets/vocab/key.jpg" alt=""><div class="w">had a key cut</div></div>
+      <div class="pic"><img src="../assets/vocab/shoes.jpg" alt=""><div class="w">got my shoes repaired</div></div>
+      <div class="pic"><img src="../assets/vocab/passport.jpg" alt=""><div class="w">had my passport renewed</div></div>
+    </div>
+    <div class="ccq">have / get + <b>object</b> + past participle · "I had my hair cut." Did I cut it? <i>(No, a hairdresser did.)</i> · "I had cut my hair." <i>(I did it myself: different meaning!)</i></div>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide">
+    <div class="eyebrow">3.1 · Freer task · 16 min</div>
+    <h2>📻 News Report Rewrite</h2>
+    <div class="two">
+      <ul class="lab">
+        <li><b>A</b>: what people are saying (rumors) · <b>B</b>: the official facts</li>
+        <li>Tell your half. Don't show the card</li>
+        <li>Write a 6-sentence bulletin: 2 impersonal passives, 1 modal passive, 1 other tense</li>
+        <li>Go <b>on air</b>: one sentence each, newsreader voice</li>
+      </ul>
+      <div class="ccq">Show your card? <i>(No, tell it.)</i><br>How many sentences? <i>(Six.)</i><br>Rumors: which structure? <i>("is said to…" / "It is said that…")</i><br>Real stories? <i>(No, invented.)</i></div>
+    </div>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide">
+    <div class="eyebrow">3.2 · Relative clauses · cut them down</div>
+    <h2>Does it, or receives it?</h2>
+    <table class="g">
+      <tr><th>Full clause</th><th>Reduced</th><th>Why</th></tr>
+      <tr><td>The man <b>who is standing</b> there</td><td>The man <b>standing</b> there</td><td>he stands → <b>-ing</b></td></tr>
+      <tr><td>The train <b>that leaves</b> at noon</td><td>The train <b>leaving</b> at noon</td><td>it leaves → <b>-ing</b></td></tr>
+      <tr><td>The letter <b>which was written</b> by John</td><td>The letter <b>written</b> by John</td><td>someone wrote it → <b>pp</b></td></tr>
+      <tr><td>Products <b>that are made</b> locally</td><td>Products <b>made</b> locally</td><td>someone makes them → <b>pp</b></td></tr>
+    </table>
+    <div class="tag"><span class="pill warn">DON'T</span> the books <s>selling</s> <b>sold</b> here · the man <s>calling</s> <b>who called</b> me yesterday (one finished action) · keep commas + <i>who / which</i> in careful writing</div>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide">
+    <div class="eyebrow">3.2 · Guess the place · reduced clues</div>
+    <h2>A place full of people waiting…</h2>
+    <div class="pics">
+      <div class="pic"><img src="../assets/vocab/station.jpg" alt=""><div class="w">station</div></div>
+      <div class="pic"><img src="../assets/vocab/market.jpg" alt=""><div class="w">market</div></div>
+      <div class="pic"><img src="../assets/vocab/airport.jpg" alt=""><div class="w">airport</div></div>
+      <div class="pic"><img src="../assets/vocab/garage.jpg" alt=""><div class="w">garage</div></div>
+    </div>
+    <div class="ccq">"a place full of people <b>waiting</b> for trains" · "a place <b>filled</b> with stalls <b>selling</b> fruit" · "a place full of people <b>pulling</b> suitcases" · "a place full of cars <b>being repaired</b>" · Your turn: give a clue!</div>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide">
+    <div class="eyebrow">3.2 · Participle clauses · time, reason, sequence</div>
+    <h2>Two sentences → one</h2>
+    <table class="g">
+      <tr><th>Meaning</th><th>Two sentences</th><th>One sentence</th></tr>
+      <tr><td>time</td><td>I was walking home. I saw an accident.</td><td><b>Walking</b> home, I saw an accident.</td></tr>
+      <tr><td>reason</td><td>He felt tired. He went to bed.</td><td><b>Feeling</b> tired, he went to bed.</td></tr>
+      <tr><td>reason (–)</td><td>We didn't know the way. We got lost.</td><td><b>Not knowing</b> the way, we got lost.</td></tr>
+      <tr><td>sequence</td><td>She had finished work. She went home.</td><td><b>Having finished</b> work, she went home.</td></tr>
+    </table>
+    <div class="tag"><span class="pill lab">SAY IT</span> <b>Feel</b>ing tired ↗ | he went to <b>bed</b> ↘ — pause at the comma</div>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide">
+    <div class="eyebrow">3.2 · The subject rule · check the meaning</div>
+    <h2>Who is walking? 🌧️</h2>
+    <div class="two">
+      <div class="ccq"><b>"Walking home, the rain started."</b><br>Who is walking, grammatically? <i>(The rain!)</i><br>Can rain walk? <i>(No: a dangling participle.)</i><br>Fix it? <i>("Walking home, I got caught in the rain.")</i></div>
+      <div class="ccq"><b>"Reading the letter, tears filled her eyes."</b><br>Who is reading? <i>(The tears!)</i><br>Fix 1: change the subject. <i>("…, she began to cry.")</i><br>Fix 2: a full clause. <i>("While she was reading the letter, tears…")</i></div>
+    </div>
+    <div class="tag"><span class="pill warn">CHECK</span> the first noun after the comma = the one doing the -ing</div>
+  </section>
+
+  <!-- 12 -->
+  <section class="slide">
+    <div class="eyebrow">3.2 · Freer task · 20 min</div>
+    <h2>✂️ Sentence Compression Workshop</h2>
+    <div class="two">
+      <ul class="lab">
+        <li><b>Round 1</b> · strips: 2–3 sentences → one. Say it, then write it</li>
+        <li><b>Round 2</b> · Editor's Desk: ~100 words → <b>60 or fewer</b></li>
+        <li>Every fact stays · 4+ participle clauses · no danglers</li>
+        <li><b>Round 3</b> · read it aloud · vote for the <b>clearest</b></li>
+      </ul>
+      <div class="ccq">Maximum words? <i>(Sixty.)</i><br>Can you delete a fact? <i>(No!)</i><br>Who counts? <i>(The word-counter.)</i><br>Shortest wins? <i>(No, the clearest.)</i></div>
+    </div>
+  </section>
+
+  <!-- 13 -->
+  <section class="slide">
+    <div class="eyebrow">3.3 · Model · the conversation, then two reports</div>
+    <h2>What was she <i>doing</i> with her words?</h2>
+    <div class="dlg">
+      <p><span class="sp">Dana:</span> I'm really sorry. I forgot to send the report yesterday.</p>
+      <p class="b"><span class="sp">Marco:</span> Why don't you set a reminder on your phone?</p>
+      <p><span class="sp">Dana:</span> Good idea. I'll finish it tonight, I give you my word.</p>
+    </div>
+    <div class="two">
+      <div class="ccq"><b>Vague:</b> She said she was sorry. He said she could set a reminder. She said she'd finish it.</div>
+      <div class="ccq"><b>Precise:</b> Dana <b>apologized for forgetting</b> the report. Marco <b>suggested setting</b> a reminder. Dana <b>promised to finish</b> it that night.</div>
+    </div>
+  </section>
+
+  <!-- 14 -->
+  <section class="slide">
+    <div class="eyebrow">3.3 · Five patterns · learn the verb + pattern together</div>
+    <h2>Which pattern follows?</h2>
+    <table class="g">
+      <tr><th>① + to</th><td>agree, offer, promise, refuse</td><td>She <b>refused to sign</b>.</td></tr>
+      <tr><th>② + person + to</th><td>advise, warn, remind, persuade</td><td>He <b>reminded us to lock</b> it.</td></tr>
+      <tr><th>③ + (that)</th><td>admit, explain, claim, insist</td><td>She <b>admitted (that) she had forgotten</b>.</td></tr>
+      <tr><th>④ + -ing</th><td>deny, admit, suggest, recommend</td><td>He <b>denied taking</b> the key.</td></tr>
+      <tr><th>⑤ + prep + -ing</th><td>apologize for, accuse sb of, insist on</td><td>He <b>insisted on paying</b>.</td></tr>
+    </table>
+  </section>
+
+  <!-- 15 -->
+  <section class="slide">
+    <div class="eyebrow">3.3 · The meeting six · check the meaning</div>
+    <h2>suggest · insist · deny · admit · agree · refuse</h2>
+    <div class="two">
+      <table class="g">
+        <tr><td>suggested <b>going</b> / (that) we <b>go</b></td></tr>
+        <tr><td>insisted <b>on paying</b> / (that) she <b>had paid</b></td></tr>
+        <tr><td>denied <b>taking</b> it · admitted <b>forgetting</b></td></tr>
+        <tr><td>agreed <b>to help</b> · refused <b>to sign</b></td></tr>
+      </table>
+      <div class="ccq">"I didn't take the key." Past or future? <i>(Past → denied taking.)</i><br>"I won't give you the key." <i>(Future → refused to give.)</i><br>"She was agree"? <i>(No! She agreed.)</i></div>
+    </div>
+    <div class="tag"><span class="pill warn">NEVER</span> suggested <s>me to</s> go ❌ · recommended <s>me to</s> ❌ · apologized <s>to be</s> late ❌</div>
+  </section>
+
+  <!-- 16 -->
+  <section class="slide">
+    <div class="eyebrow">3.3 · Model · a meeting becomes minutes</div>
+    <h2>The laundry room meeting</h2>
+    <div class="dlg">
+      <p><span class="sp">Park:</span> Why don't we make a schedule, so each floor has its own day?</p>
+      <p class="b"><span class="sp">Diaz:</span> I didn't take down the sign! It fell off.</p>
+      <p><span class="sp">Tom:</span> Actually, I left my clothes in the dryer all weekend. Sorry.</p>
+      <p class="b"><span class="sp">Diaz:</span> I won't buy a new machine until the owner approves it.</p>
+    </div>
+    <div class="ccq"><b>Minutes:</b> Ms. Park <b>suggested making</b> a schedule. Mr. Diaz <b>denied taking</b> down the sign. Tom <b>admitted leaving</b> his clothes in the dryer. Mr. Diaz <b>refused to buy</b> a new machine until the owner approved it.</div>
+  </section>
+
+  <!-- 17 -->
+  <section class="slide">
+    <div class="eyebrow">3.3 · Freer task · 12 + 10 min</div>
+    <h2>🗂️ The Meeting &amp; the Minutes</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>Groups of 4 · one meeting · one role card each</li>
+        <li>Make your 3 moves naturally. Play the <b>card</b>, not yourself</li>
+        <li>The chair opens, keeps turns fair, closes with a decision</li>
+        <li>Then write the minutes: 6+ different verbs · no <i>said / told</i></li>
+      </ul>
+      <div class="ccq">Yourself or the card? <i>(The card.)</i><br>Speak twice before everyone speaks once? <i>(No.)</i><br>"said" in the minutes? <i>(No!)</i><br>How many verbs? <i>(At least six.)</i></div>
+    </div>
+  </section>
+
+  <!-- 18 -->
+  <section class="slide section">
+    <div class="eyebrow">You can now shift, cut and name</div>
+    <h2>Module 3 done 🎉</h2>
+    <ul class="lab">
+      <li>📻 <b>It is said that</b> the theater is haunted. The piano <b>is believed to have been left</b> by a musician.</li>
+      <li>✂️ the man <b>standing</b> there · the bridge <b>built</b> in 1890 · <b>Having finished</b>, she went home.</li>
+      <li>🗂️ She <b>refused to sign</b>. He <b>denied taking</b> it. They <b>suggested meeting</b> on Friday.</li>
+    </ul>
+    <p class="lead" style="margin-top:10px;max-width:40ch">Homework: online lessons 3.1–3.3 with 🔊. Next: Module 4, <i>despite, whereas, therefore</i>.</p>
+  </section>
+
+
+</div>
+
+<div class="count" id="count">1 / 18</div>
+<div class="nav"><button id="prev" aria-label="Previous slide"></button><button id="next" aria-label="Next slide"></button></div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const bar=document.getElementById('bar'), count=document.getElementById('count');
+  let i=0;
+  function show(n){ i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+    bar.style.width=((i+1)/slides.length*100)+'%'; count.textContent=(i+1)+' / '+slides.length; }
+  document.getElementById('next').onclick=()=>show(i+1);
+  document.getElementById('prev').onclick=()=>show(i-1);
+  addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}
+    else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+  });
+  show(0);
+</script>
+</body>
+</html>

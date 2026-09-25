@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Progress Test 1 — Modules 1–4</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../kit.css">
+<style>
+  /* ── Test-paper components (shared with final-test.html) ── */
+  .pagebreak{break-before:page}
+  .teacher-only{font-family:"JetBrains Mono",monospace;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+    color:#fff;background:var(--warn);border-radius:999px;padding:3px 11px;display:inline-block;margin-bottom:8px;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .paper{font-size:17px;line-height:1.5}
+  .paper-head{display:grid;grid-template-columns:2fr 1fr 1fr;gap:14px;margin:6px 0 14px;font-size:1.05rem}
+  .paper-head div{border-bottom:1.5px solid var(--ink-2);padding:6px 2px 4px}
+  .paper-head b{font-weight:700}
+  .key-icons{display:flex;flex-wrap:wrap;gap:8px 16px;margin:10px 0 4px;font-size:1rem;color:var(--ink-2)}
+  .key-icons span{border:1px solid var(--line);border-radius:999px;padding:3px 12px;background:var(--surface-2)}
+  .part-h{display:flex;align-items:center;gap:12px;margin:30px 0 6px;padding:10px 14px;background:var(--accent-soft);
+    border-radius:10px;break-after:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .part-h .ic{font-size:1.8rem;line-height:1}
+  .part-h h2{font-size:1.3rem;font-weight:800;flex:1}
+  .part-h .score{font-family:"JetBrains Mono",monospace;font-size:.95rem;font-weight:600;border:1.5px solid var(--ink-2);
+    border-radius:8px;padding:4px 10px;background:var(--surface);white-space:nowrap}
+  .inst{display:flex;gap:10px;align-items:baseline;font-size:1.12rem;font-weight:600;margin:16px 0 8px;break-after:avoid}
+  .inst .ic{font-size:1.35rem}
+  .inst .sub{font-weight:400;color:var(--ink-2);font-size:.95rem}
+  .item{display:flex;gap:12px;align-items:baseline;margin:10px 0;font-size:1.08rem;break-inside:avoid}
+  .item .n{font-family:"JetBrains Mono",monospace;font-weight:600;color:var(--accent);min-width:1.6em}
+  .item.ex{color:var(--ink-2)}
+  .item.ex .n::after{content:" e.g.";font-size:.7rem;color:var(--ink-3)}
+  .ch{display:inline-flex;flex-wrap:wrap;gap:10px}
+  .ch span{border:1.5px solid var(--line-strong);border-radius:999px;padding:2px 14px;background:var(--surface)}
+  .ch span.circled{border:2.5px solid var(--ink);font-weight:700}
+  .tbox{display:inline-block;width:24px;height:24px;border:2px solid var(--ink-2);border-radius:5px;vertical-align:middle;text-align:center;line-height:20px;font-weight:700}
+  .bank{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px;padding:10px 12px;border:2px dashed var(--line-strong);border-radius:10px;font-size:1.1rem;font-weight:600}
+  .bank span{padding:2px 10px}
+  .text{border:1px solid var(--line);border-radius:10px;padding:14px 18px;background:var(--surface-2);font-size:1.06rem;line-height:1.7;margin:10px 0;break-inside:avoid}
+  .text p{margin:0 0 10px}
+  .text p:last-child{margin-bottom:0}
+  .text .ttl{font-family:"Archivo",sans-serif;font-weight:800;font-size:1.2rem;margin-bottom:6px}
+  .tfrow{display:grid;grid-template-columns:2em 1fr auto;gap:12px;align-items:center;padding:7px 0;border-bottom:1px solid var(--line);font-size:1.06rem;break-inside:avoid}
+  .tfrow .n{font-family:"JetBrains Mono",monospace;font-weight:600;color:var(--accent)}
+  .tfrow .tf{display:flex;gap:10px}
+  .tfrow .tf span{border:1.5px solid var(--line-strong);border-radius:8px;padding:1px 10px;font-weight:600}
+  .tfrow .tf span.circled{border:2.5px solid var(--ink)}
+  .wline{border-bottom:1.5px solid var(--ink-2);height:2.1em}
+  .rw{display:grid;grid-template-columns:2em 1fr;gap:4px 12px;margin:12px 0;font-size:1.06rem;break-inside:avoid}
+  .rw .n{font-family:"JetBrains Mono",monospace;font-weight:600;color:var(--accent)}
+  .rw .from{color:var(--ink-2)}
+  .rw .to{grid-column:2;display:flex;gap:8px;align-items:baseline}
+  .rw .to .wline{flex:1}
+  .letters{display:grid;grid-template-columns:1fr 1fr;gap:4px 18px;margin:8px 0 12px;padding:10px 14px;border:2px dashed var(--line-strong);border-radius:10px;font-size:1.02rem}
+  table.grid{width:100%;border-collapse:collapse;margin:10px 0;font-size:.9rem}
+  table.grid th,table.grid td{border:1px solid var(--line-strong);padding:8px 10px;text-align:left;vertical-align:top}
+  table.grid thead th{background:var(--surface-2);font-family:"JetBrains Mono",monospace;font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+  table.grid td.sc{width:17%;text-align:center;font-family:"JetBrains Mono",monospace;color:var(--ink-3)}
+  .done{margin-top:26px;text-align:center;font-size:1.2rem;font-weight:700}
+  @media (max-width:680px){
+    .paper-head{grid-template-columns:1fr}
+    .letters{grid-template-columns:1fr}
+    table.grid{display:block;overflow-x:auto}
+    .tfrow{grid-template-columns:2em 1fr}
+    .tfrow .tf{grid-column:2}
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="lbl">Test pack —</span>
+  <button type="button" onclick="window.print()">🖨 Print / Save as PDF</button>
+  <span class="hint">teacher notes · learner paper · scripts &amp; speaking (teacher only)</span>
+</div>
+
+<div class="sheet">
+
+  <header class="mast">
+    <div class="kit-eyebrow">Confident English (B2) · Assessment · Class 13</div>
+    <h1>Progress Test 1 — Modules 1–4</h1>
+    <p class="sub">A friendly halfway check after Lesson 4.3. It covers the narrative tenses (past perfect and past perfect continuous), third and mixed conditionals, <i>wish / if only</i>, <i>would rather</i> and <i>it's (high) time</i>, gerunds and infinitives (including <i>remember / stop / try</i>), past modals of deduction, <i>used to / be used to / get used to</i>, advanced and impersonal passives, participle clauses, reporting verbs, linkers of contrast, cause and result, cleft sentences and negative inversion, and the language of argument. It tells you <b>what to recycle</b> in Weeks 7–13. It does not rank anyone.</p>
+    <div class="meta-row">
+      <span class="chip">⏱ <b>~52 min</b> written</span>
+      <span class="chip">+ <b>7 min</b> pair speaking</span>
+      <span class="chip">Written <b>/55</b> · Speaking <b>/15</b></span>
+      <span class="chip">CEFR <b>B2</b></span>
+    </div>
+  </header>
+
+  <div class="note">
+    <div class="t">Why a progress test, and how to frame it</div>
+    <p>B2 learners have usually taken several English tests already, and many are sitting this one with a job, a family, or a professional license riding on their English. Some still find written tests stressful, especially if English tests have been part of hiring or official interviews. Say it plainly: <b>"This is a check, not an exam. It tells me what to teach in the second half, and it shows you how far you've come since Class 1."</b> The texts are longer than at B1, so tell the class to <b>skim the questions before they read or listen</b>. Do every <i>example</i> item together, and remind them they can ask you to clarify an instruction at any time. Read the listening at a natural pace, with natural contractions and weak forms (<i>I'd have, must've, had been</i>): hearing them is part of B2 listening, so don't over-articulate.</p>
+  </div>
+
+  <div class="sec"><h2>Running Class 13 (90 min)</h2><span class="rule"></span></div>
+  <table class="timing">
+    <thead><tr><th>Stage</th><th>Time</th><th>Interaction</th><th>Procedure</th></tr></thead>
+    <tbody>
+      <tr><td>Warmer &amp; set-up</td><td class="t">5 min</td><td>S–S · T–S</td><td>A 3-minute "turning points" mingle with two partners: <i>"If I hadn't…, I wouldn't…"</i>. It warms up the conditionals without giving anything away. Go through the paper's instruction words on the board: <i>circle, complete, rewrite, Yes / No / Doesn't say</i>. Hand out the paper <b>face down</b>; learners write their names.</td></tr>
+      <tr><td>Part 1 · Listening</td><td class="t">12 min</td><td>T–S</td><td>The whole class together. Give 30 seconds to read each section's questions first. Read each script on the teacher pages <b>twice</b>, with about 10 seconds between readings. Do example item 0 together first.</td></tr>
+      <tr><td>Parts 2–5 · written</td><td class="t">40 min</td><td>S</td><td>Words &amp; phrases, Grammar, Reading, and Writing, done individually. Suggest a pace on the board: <b>Parts 2–3 about 13 minutes, Part 4 about 10, Part 5 about 17.</b> Walk around and clarify instructions for anyone who asks, but don't help with answers. Early finishers check their work, then read a news article of their choice or set up the catch-up stations. They don't help classmates with the test.</td></tr>
+      <tr><td>Break</td><td class="t">5 min</td><td>—</td><td>Collect papers.</td></tr>
+      <tr><td>Speaking + catch-up stations</td><td class="t">28 min</td><td>S–S · T–S</td><td>Call learners to a quiet corner <b>in pairs</b> for the 7-minute speaking task (cards on the teacher pages) and score with the grid. Everyone else rotates through <b>catch-up stations</b>: ① a "Rewrite it three ways" card game from Modules 3–4 (active → impersonal passive → cleft), ② the online lessons on a phone (🔊 Listen, then shadow the model sentences, especially Lessons 1.2 and 2.2), ③ workbook review pages for Modules 1–2. About 4 pairs fit in 28 minutes. With more learners, finish the speaking in the Class 14 warmer or ask a volunteer to run the stations.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="grid2">
+    <div class="blk"><div class="h">You need</div>
+      <ul class="tick">
+        <li>One learner paper per person (the middle section of this pack). Print it at 100% so the writing lines stay usable</li>
+        <li>The teacher pages: listening scripts, speaking cards (cut A/B and the discussion card), and one scoring grid per pair</li>
+        <li>Pencils and erasers, and a clock the class can see</li>
+        <li>The answer key and rubrics: <code class="inline">assessment/assessment-key.html</code></li>
+      </ul>
+    </div>
+    <div class="blk"><div class="h">What each part checks</div>
+      <ul class="tick">
+        <li><b>Listening /12</b>: hearing tense and modal forms in connected speech, a short story about a career change, and who thinks what in a workplace discussion</li>
+        <li><b>Words &amp; phrases /10</b>: linkers and the grammar that follows them, and what a speaker is doing (offering, denying, warning, conceding…)</li>
+        <li><b>Grammar /15</b>: 10 circle items + 5 rewrites covering the grammar lessons of Modules 1–4 (linkers from 4.1 are tested in Part 2A)</li>
+        <li><b>Reading /8</b>: a personal essay, "Starting Over at Forty-Two"</li>
+        <li><b>Writing /10</b>: a message reporting a meeting + an argumentative paragraph (120–150 words)</li>
+        <li><b>Speaking /15</b>: turning points and change, then a short debate (pairs)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="note lab">
+    <div class="t">Literacy-adapted version (learners still building reading and writing)</div>
+    <p>Some B2 learners speak far better than they read and write, for example people who learned English mostly by ear at work, or who had limited schooling in any language. Use the <b>same paper</b> and change how it is done, not what it tests. <b>Read every instruction and item aloud</b>, one at a time, and enlarge the paper if you can. In <b>Parts 2–3</b>, read the choices aloud and accept a spoken answer; for the rewrites (11–15), let the learner <b>say</b> the new sentence and score what they say. Do <b>Part 4</b> orally: read the essay aloud twice and ask the questions. In <b>Part 5</b>, the learner may <b>say</b> the message and the paragraph while you scribe; score the content, organization, and language they produce, not the handwriting. Give extra time, or split the paper over two sittings. Write <b>"Adapted"</b> at the top and note what changed. Report these learners' <b>listening and speaking</b> as the main evidence. Low literacy is not low ability. It points to a literacy-support need, and the key says how to act on it.</p>
+  </div>
+
+  <div class="note warn">
+    <div class="t">Personal information and opinions are always optional</div>
+    <p>The speaking task asks about turning points, regrets, and change; the writing asks for an argument. Learners can answer with a <b>"new identity"</b> (the cards on the teacher pages) or an invented story, and in the debate and the paragraph they may argue an <b>assigned side</b> that isn't their own view. Say this before the test starts: <b>"Real or imagined, your side or the other side: no problem. I'm scoring the English, not your life or your opinions."</b> Never ask follow-up questions about home country, family members who are absent, or immigration status.</p>
+  </div>
+
+  <!-- ═════════════════════ LEARNER PAPER ═════════════════════ -->
+  <div class="pagebreak"></div>
+  <div class="paper">
+    <header class="mast">
+      <div class="kit-eyebrow">Confident English (B2) · Progress Test 1</div>
+      <h1>My Halfway Check ✅</h1>
+      <div class="paper-head">
+        <div><b>Name:</b></div>
+        <div><b>Date:</b></div>
+        <div><b>Class:</b></div>
+      </div>
+      <div class="key-icons">
+        <span>👂 Listen</span><span>📖 Read</span><span>⭕ Circle</span><span>✏️ Write</span><span>🔁 Rewrite</span><span>🗣️ Speak</span>
+      </div>
+      <p style="font-size:1.05rem;margin-top:10px">Skim the questions <b>before</b> you listen or read, and look at each example first. If an instruction isn't clear, just ask: <b>"Could you clarify what we need to do here?"</b> 🙂</p>
+    </header>
+
+    <!-- PART 1 -->
+    <div class="part-h"><span class="ic">👂</span><h2>Part 1 · Listening</h2><span class="score">___ / 12</span></div>
+
+    <div class="inst"><span class="ic">👂⭕</span><span>A. Listen. Circle the sentence you hear.</span></div>
+    <div class="item ex"><span class="n">0</span><span class="ch"><span class="circled">I'd been waiting for an hour.</span><span>I've been waiting for an hour.</span></span></div>
+    <div class="item"><span class="n">1</span><span class="ch"><span>When I got there, the meeting started.</span><span>When I got there, the meeting had started.</span></span></div>
+    <div class="item"><span class="n">2</span><span class="ch"><span>If I'd known, I'd have told you.</span><span>If I knew, I'd tell you.</span></span></div>
+    <div class="item"><span class="n">3</span><span class="ch"><span>She might have forgotten.</span><span>She must have forgotten.</span></span></div>
+    <div class="item"><span class="n">4</span><span class="ch"><span>I used to work nights.</span><span>I'm used to working nights.</span></span></div>
+
+    <div class="inst"><span class="ic">👂⭕</span><span>B. Listen to Daniel talking about a turning point in his career. Circle the correct answer.</span></div>
+    <div class="item"><span class="n">5</span><span>When Daniel met the woman, he had been a delivery driver for about … &nbsp;<span class="ch"><span>two years</span><span>six years</span><span>ten years</span></span></span></div>
+    <div class="item"><span class="n">6</span><span>They met … &nbsp;<span class="ch"><span>at a loading dock</span><span>on a training course</span><span>at a job interview</span></span></span></div>
+    <div class="item"><span class="n">7</span><span>The person who suggested applying for the trainer job was … &nbsp;<span class="ch"><span>his manager</span><span>the woman who ran the training program</span><span>a new driver</span></span></span></div>
+    <div class="item"><span class="n">8</span><span>Daniel wishes he had … earlier. &nbsp;<span class="ch"><span>applied for the job</span><span>taken a computer course</span><span>met the woman</span></span></span></div>
+
+    <div class="inst"><span class="ic">👂⭕</span><span>C. Listen to two coworkers, Priya and Marco, discussing a proposal. Circle <b>Priya</b>, <b>Marco</b>, or <b>Both</b>.</span></div>
+    <div class="item"><span class="n">9</span><span>Who is worried about when the whole team will meet? &nbsp;<span class="ch"><span>Priya</span><span>Marco</span><span>Both</span></span></span></div>
+    <div class="item"><span class="n">10</span><span>Who thinks the team has too many meetings? &nbsp;<span class="ch"><span>Priya</span><span>Marco</span><span>Both</span></span></span></div>
+    <div class="item"><span class="n">11</span><span>Who thinks it's time to try something new? &nbsp;<span class="ch"><span>Priya</span><span>Marco</span><span>Both</span></span></span></div>
+    <div class="item"><span class="n">12</span><span>Marco suggests holding meetings … &nbsp;<span class="ch"><span>before ten</span><span>between ten and three</span><span>after three</span></span></span></div>
+
+    <!-- PART 2 -->
+    <div class="part-h pagebreak"><span class="ic">✏️</span><h2>Part 2 · Words &amp; Phrases</h2><span class="score">___ / 10</span></div>
+    <div class="inst"><span class="ic">📖✏️</span><span>A. Complete each sentence with a word from the box. <span class="sub">Use each word once. There is 1 extra word.</span></span></div>
+    <div class="bank"><span>although</span><span>despite</span><span>due to</span><span>such</span><span>therefore</span><span>whereas</span></div>
+    <div class="item ex"><span class="n">0</span><span>I had <b>just</b> sat down when the phone rang.</span></div>
+    <div class="item"><span class="n">1</span><span><span class="blank"></span> the delay, we arrived in time for the main presentation.</span></div>
+    <div class="item"><span class="n">2</span><span>The office is quiet in the mornings, <span class="blank"></span> the afternoons are chaotic.</span></div>
+    <div class="item"><span class="n">3</span><span>The workshop was canceled <span class="blank"></span> a lack of interest.</span></div>
+    <div class="item"><span class="n">4</span><span>It was <span class="blank"></span> a useful course that I've signed up for the next one.</span></div>
+    <div class="item"><span class="n">5</span><span><span class="blank"></span> she had very little experience, she got the job.</span></div>
+
+    <div class="inst"><span class="ic">📖✏️</span><span>B. What is the speaker doing? Write the letter. <span class="sub">There is 1 extra letter.</span></span></div>
+    <div class="letters">
+      <span><b>a</b> apologizing</span><span><b>b</b> denying</span>
+      <span><b>c</b> warning</span><span><b>d</b> offering</span>
+      <span><b>e</b> conceding a point, then disagreeing</span><span><b>f</b> suggesting</span>
+    </div>
+    <div class="item"><span class="n">6</span><span><span class="tbox"></span> &nbsp;"I'll give you a ride to the station if you like."</span></div>
+    <div class="item"><span class="n">7</span><span><span class="tbox"></span> &nbsp;"I didn't touch your files. Honestly, I didn't."</span></div>
+    <div class="item"><span class="n">8</span><span><span class="tbox"></span> &nbsp;"Why don't we move the meeting to Friday?"</span></div>
+    <div class="item"><span class="n">9</span><span><span class="tbox"></span> &nbsp;"That's a fair point; however, the cost is still too high."</span></div>
+    <div class="item"><span class="n">10</span><span><span class="tbox"></span> &nbsp;"Be careful. The kitchen floor is still wet."</span></div>
+
+    <!-- PART 3 -->
+    <div class="part-h pagebreak"><span class="ic">⭕</span><h2>Part 3 · Grammar</h2><span class="score">___ / 15</span></div>
+    <div class="inst"><span class="ic">📖⭕</span><span>A. Circle the correct word or words.</span></div>
+    <div class="item ex"><span class="n">0</span><span>I was tired because I <span class="ch"><span>have worked</span><span class="circled">had been working</span></span> all night.</span></div>
+    <div class="item"><span class="n">1</span><span>By the time we got to the theater, the play <span class="ch"><span>already started</span><span>had already started</span><span>has already started</span></span>.</span></div>
+    <div class="item"><span class="n">2</span><span>If I <span class="ch"><span>left</span><span>had left</span><span>would have left</span></span> earlier, I wouldn't have missed the train.</span></div>
+    <div class="item"><span class="n">3</span><span>If I had taken that job in Chicago, I <span class="ch"><span>would live</span><span>would have lived</span><span>will live</span></span> there now.</span></div>
+    <div class="item"><span class="n">4</span><span>I wish I <span class="ch"><span>didn't say</span><span>hadn't said</span><span>wouldn't say</span></span> that to my manager yesterday.</span></div>
+    <div class="item"><span class="n">5</span><span>It's high time we <span class="ch"><span>leave</span><span>left</span><span>will leave</span></span>. The last bus is at eleven.</span></div>
+    <div class="item"><span class="n">6</span><span>I'd rather you <span class="ch"><span>don't mention</span><span>didn't mention</span><span>not mention</span></span> this to anyone yet.</span></div>
+    <div class="item"><span class="n">7</span><span>Would you mind <span class="ch"><span>to close</span><span>closing</span><span>close</span></span> the door?</span></div>
+    <div class="item"><span class="n">8</span><span>On the way home, I stopped <span class="ch"><span>to buy</span><span>buying</span><span>for buying</span></span> some milk. <span class="sub" style="color:var(--ink-3);font-size:.9rem">(I paused my trip so I could buy it.)</span></span></div>
+    <div class="item"><span class="n">9</span><span>He walked right past us without saying hello. He <span class="ch"><span>must have</span><span>can't have</span><span>should have</span></span> seen us.</span></div>
+    <div class="item"><span class="n">10</span><span>After six months in Minnesota, I'm finally getting used to <span class="ch"><span>drive</span><span>driving</span><span>drove</span></span> in the snow.</span></div>
+
+    <div class="inst"><span class="ic">🔁✏️</span><span>B. Rewrite each sentence. Keep the same meaning.</span></div>
+    <div class="rw"><span class="n">11</span><span class="from">People believe that the company is planning a merger.</span><span class="to">The company is believed <span class="wline"></span></span></div>
+    <div class="rw"><span class="n">12</span><span class="from">Reporters said that the manager had resigned.</span><span class="to">The manager was said <span class="wline"></span></span></div>
+    <div class="rw"><span class="n">13</span><span class="from">The man who is standing by the door is my new supervisor.</span><span class="to">The man <span class="wline"></span></span></div>
+    <div class="rw"><span class="n">14</span><span class="from">"I'm sorry I missed the meeting," said Tom.</span><span class="to">Tom apologized <span class="wline"></span></span></div>
+    <div class="rw"><span class="n">15</span><span class="from">I have never seen such a mess.</span><span class="to">Never <span class="wline"></span></span></div>
+
+    <!-- PART 4 -->
+    <div class="part-h pagebreak"><span class="ic">📖</span><h2>Part 4 · Reading</h2><span class="score">___ / 8</span></div>
+    <div class="inst"><span class="ic">📖</span><span>Skim the questions first. Then read Marisol's essay.</span></div>
+    <div class="text">
+      <div class="ttl">Starting Over at Forty-Two</div>
+      <p>Three years ago, I was sitting in my car outside a community college, trying to find the courage to go in. I had been working in the same warehouse for fifteen years, and although the pay was steady, I had stopped learning anything new a long time before. My supervisor, who had always encouraged me, had suggested applying for the evening nursing-assistant program. I had laughed at the idea. Surely, I told myself, it was too late.</p>
+      <p>What changed my mind was a conversation with my daughter. She asked me why I always told her to follow her dreams if I wasn't following mine. I had no answer. The following week, I enrolled.</p>
+      <p>The first semester was hard. I wasn't used to sitting in a classroom, and I had never written an essay in English. Having spent the whole day on my feet, I often fell asleep over my books, and more than once I seriously considered quitting. Not only was I the oldest student in the class, but I was also the slowest typist. However, my classmates, most of whom were half my age, turned out to be incredibly supportive. It was a twenty-year-old called Dev who showed me how to use the online learning system.</p>
+      <p>Today I work at a local clinic, and I'm still getting used to wearing scrubs instead of a safety vest. People sometimes ask whether I regret waiting so long. Honestly? I wish I had started earlier. But if I hadn't spent those years in the warehouse, I wouldn't be as organized as I am now. It is often said that it's never too late to learn. I used to think that was just a nice phrase. Now I know it's true.</p>
+    </div>
+    <div class="inst"><span class="ic">⭕</span><span>A. Circle <b>Yes</b>, <b>No</b>, or <b>Doesn't say</b>.</span></div>
+    <div class="tfrow" style="color:var(--ink-2)"><span class="n">0</span><span>Marisol used to work in a warehouse.</span><span class="tf"><span class="circled">Yes</span><span>No</span><span>Doesn't say</span></span></div>
+    <div class="tfrow"><span class="n">1</span><span>Marisol had worked at the warehouse for more than ten years before she enrolled.</span><span class="tf"><span>Yes</span><span>No</span><span>Doesn't say</span></span></div>
+    <div class="tfrow"><span class="n">2</span><span>Her supervisor thought the nursing-assistant program was a bad idea.</span><span class="tf"><span>Yes</span><span>No</span><span>Doesn't say</span></span></div>
+    <div class="tfrow"><span class="n">3</span><span>Marisol's daughter is also studying at the community college.</span><span class="tf"><span>Yes</span><span>No</span><span>Doesn't say</span></span></div>
+    <div class="tfrow"><span class="n">4</span><span>In her first semester, Marisol was already used to studying in a classroom.</span><span class="tf"><span>Yes</span><span>No</span><span>Doesn't say</span></span></div>
+    <div class="tfrow"><span class="n">5</span><span>A younger classmate showed her how to use the online system.</span><span class="tf"><span>Yes</span><span>No</span><span>Doesn't say</span></span></div>
+    <div class="tfrow"><span class="n">6</span><span>Marisol earns more money now than she did at the warehouse.</span><span class="tf"><span>Yes</span><span>No</span><span>Doesn't say</span></span></div>
+    <div class="inst"><span class="ic">✏️</span><span>B. Answer the questions.</span></div>
+    <div class="item"><span class="n">7</span><span style="flex:1">Why did Marisol often fall asleep over her books? <div class="wline"></div></span></div>
+    <div class="item"><span class="n">8</span><span style="flex:1">According to Marisol, what good thing came from her years in the warehouse? <div class="wline"></div></span></div>
+
+    <!-- PART 5 -->
+    <div class="part-h pagebreak"><span class="ic">✏️</span><h2>Part 5 · Writing</h2><span class="score">___ / 10</span></div>
+    <div class="inst"><span class="ic">✏️</span><span>A. Your coworker Jordan missed today's team meeting. Write Jordan a short message reporting what people said. <span class="sub">(4–5 sentences. Use at least three different reporting verbs, not <i>say</i> or <i>tell</i>.)</span></span></div>
+    <div class="text" style="font-size:1rem">
+      <b>Sara:</b> "I'm sorry the report is late." &nbsp;·&nbsp; <b>Mike:</b> "Why don't we hire a temporary assistant?" &nbsp;·&nbsp; <b>The manager:</b> "Don't book any vacation in March." &nbsp;·&nbsp; <b>Everyone:</b> "OK, we'll all work one Saturday next month."
+    </div>
+    <div class="phrase-bank">
+      <span class="phrase">Hi Jordan, …</span><span class="phrase">… apologized for …</span><span class="phrase">… suggested …</span><span class="phrase">… warned us not to …</span><span class="phrase">… agreed to …</span><span class="phrase">See you tomorrow!</span>
+    </div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+
+    <div class="inst"><span class="ic">✏️</span><span>B. Write an argumentative paragraph. <span class="sub">(120–150 words)</span></span></div>
+    <p style="font-size:1.08rem;margin:0 0 6px"><b>"Employers should let staff choose their own start and finish times."</b> Do you agree or disagree? Give your position, <b>two reasons</b> with support, <b>one point from the other side</b> (concede it, then counter it), and a short conclusion. <span style="color:var(--ink-2)">You may argue either side. It doesn't have to be your personal view.</span></p>
+    <div class="phrase-bank">
+      <span class="phrase">I'd like to argue that …</span>
+      <span class="phrase">Firstly, … / A further point is that …</span>
+      <span class="phrase">Although … / Despite …</span>
+      <span class="phrase">It could be argued that …</span>
+      <span class="phrase">That's a fair point; however, …</span>
+      <span class="phrase">What really matters is …</span>
+      <span class="phrase">To sum up, …</span>
+    </div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+
+    <p class="done">Finished! Well done. 🎉 Now check your answers. ✔️</p>
+
+    <table class="grid" style="margin-top:22px">
+      <thead><tr><th>For the teacher</th><th>1 Listening</th><th>2 Words</th><th>3 Grammar</th><th>4 Reading</th><th>5 Writing</th><th>Written</th><th>Speaking</th></tr></thead>
+      <tbody><tr><td>Score</td><td>/12</td><td>/10</td><td>/15</td><td>/8</td><td>/10</td><td>/55</td><td>/15</td></tr></tbody>
+    </table>
+  </div>
+
+  <!-- ═════════════════════ TEACHER PAGES ═════════════════════ -->
+  <div class="pagebreak"></div>
+  <span class="teacher-only">Teacher only · do not copy for learners</span>
+  <div class="sec" style="margin-top:6px"><h2>Part 1 · Listening Scripts</h2><span class="rule"></span></div>
+  <p>Give 30 seconds to read the questions for each section. Read each script <b>twice</b> at a natural pace, with a pause of about 10 seconds between readings. Say the item number first ("Number one"). Don't mouth the answer or point. In Part A, say the sentence <b>once per reading</b>, with natural weak forms and contractions (<i>I'd've, must've</i>): the contrast is the test. For Part C, change your voice or position for each speaker, or read it with a colleague.</p>
+
+  <div class="blk"><div class="h">A · Circle the sentence you hear</div>
+    <div class="script">Example, number zero: <b>I'd been waiting for an hour.</b> (Show the circle on "I'd been waiting for an hour.")<br>
+    Number 1: <b>When I got there, the meeting had started.</b><br>
+    Number 2: <b>If I'd known, I'd have told you.</b><br>
+    Number 3: <b>She must have forgotten.</b><br>
+    Number 4: <b>I'm used to working nights.</b></div>
+  </div>
+  <div class="blk"><div class="h">B · Daniel (read the whole text twice, then give 1 minute to circle)</div>
+    <div class="script">So, a turning point… A few years ago, I was working as a delivery driver, and I'd been doing it for about <b>six years</b>. One morning, while I was waiting at a <b>loading dock</b>, I got talking to a woman who ran the warehouse's training program. She'd noticed that I was always helping the new drivers, and <b>she suggested applying for a trainer position</b>. To be honest, I nearly didn't. I'd never taught anyone anything formally, and I was worried I'd be terrible at it. But I applied, and I got it. If I hadn't been waiting at that dock that morning, I would never have met her, and I wouldn't be doing a job I love now. My only regret? I wish I'd <b>taken a computer course</b> earlier, because the first few months of writing training materials were really tough. I'm getting used to it now, though.</div>
+  </div>
+  <div class="blk"><div class="h">C · Priya and Marco (read the whole dialogue twice, then give 1 minute)</div>
+    <div class="dialogue">
+      <p class="line a"><span class="speaker">Priya:</span> Have you seen the email? Management is proposing flexible start times: any time between seven and ten.</p>
+      <p class="line b"><span class="speaker">Marco:</span> I have. Honestly, I think it's a great idea. Despite the extra planning, people would be far less stressed about traffic.</p>
+      <p class="line a"><span class="speaker">Priya:</span> That's a fair point, but what worries me is meetings. If half the team starts at ten, when do we all meet?</p>
+      <p class="line b"><span class="speaker">Marco:</span> Well, it could be argued that we have too many meetings anyway. We could hold them <b>between ten and three</b>.</p>
+      <p class="line a"><span class="speaker">Priya:</span> I suppose so. Although I like the idea, I'm not sure it would work for customer service. Customers expect someone to answer the phone at eight.</p>
+      <p class="line b"><span class="speaker">Marco:</span> True. They'd need a schedule, so that at least one person is always in early.</p>
+      <p class="line a"><span class="speaker">Priya:</span> Then I'd support it. It's high time we tried something new, actually.</p>
+      <p class="line b"><span class="speaker">Marco:</span> I couldn't agree more.</p>
+    </div>
+  </div>
+
+  <div class="sec"><h2>Pair Speaking Task · 7 minutes</h2><span class="rule"></span></div>
+  <p>Two learners sit with you. Give Card A to one and Card B to the other. Give them <b>one minute</b> to read the cards silently, then check the instructions:</p>
+  <div class="say">In Part 1, do you just answer, or do you ask follow-up questions too? (Both.) Short answers or developed answers? (Developed: reasons, examples, what happened next.) In Part 2, do you have to argue your real opinion? (No. You can take the side on the card.) Real life or imagined? (Either is fine.)</div>
+  <p><b>Part 1</b> (about 3 minutes): they ask and answer the card questions, which cover turning points, change, regrets, and preferences. Encourage one follow-up question each. <b>Part 2</b> (about 3 minutes): give them the <b>debate card</b>. They discuss the proposal, each giving reasons, conceding at least one point and countering it. If a pair doesn't want to choose sides, assign them: Student A argues <i>for</i>, Student B <i>against</i>. <b>Part 3</b> (about 1 minute): ask each learner, <b>"What did your partner argue or suggest?"</b> Listen for reporting verbs with the right pattern (<i>She suggested trying…, He admitted that…, She insisted on…</i>). Step in only to restart a stuck pair ("Now ask your next question"). Don't correct during the task. Score each learner on the grid, using the rubric in the key. <b>Mixed-level pairs:</b> score each person on what <i>they</i> did, not on the pair's result.</p>
+
+  <div class="cards">
+    <div class="card-cut">
+      <div class="ct">Card A · Student A</div>
+      <h4>👥 Part 1 · Ask your partner</h4>
+      <ol class="steps">
+        <li><b>Tell me about a turning point in your life or work.</b> → <b>What would have happened if it had gone differently?</b></li>
+        <li><b>What's something you've had to get used to in the last few years? How long did it take?</b></li>
+        <li><b>Is there anything you wish you had done differently when you were younger?</b></li>
+        <li><b>What do you enjoy doing after work, and what do you try to avoid doing?</b></li>
+        <li>Answer your partner's questions. Develop each answer with a reason or an example.</li>
+      </ol>
+    </div>
+    <div class="card-cut b">
+      <div class="ct">Card B · Student B</div>
+      <h4>👥 Part 1 · Ask your partner</h4>
+      <ol class="steps">
+        <li><b>How is your daily life different from how it used to be ten years ago?</b></li>
+        <li><b>What's a decision you're glad you made?</b> → <b>How would your life be different now if you hadn't made it?</b></li>
+        <li><b>Is there anything you'd rather your coworkers or family did differently?</b></li>
+        <li><b>Think of a time something strange happened (a lost item, a surprise). What do you think must have happened?</b></li>
+        <li>Answer your partner's questions. Develop each answer with a reason or an example.</li>
+      </ol>
+    </div>
+    <div class="card-cut">
+      <div class="ct">Debate card · both students</div>
+      <h4>💬 Part 2 · The proposal</h4>
+      <p><b>"All workplace meetings should be limited to 30 minutes."</b> Discuss it for about 3 minutes.</p>
+      <ul class="tick">
+        <li>Give at least <b>two reasons</b> for your side, with an example.</li>
+        <li><b>Concede</b> one of your partner's points, then <b>counter</b> it: <i>That's a fair point, but… · I take your point; however, …</i></li>
+        <li>Try to <b>agree on a compromise</b> at the end.</li>
+        <li>No preference? Student A argues <b>for</b>, Student B argues <b>against</b>.</li>
+      </ul>
+    </div>
+    <div class="card-cut b">
+      <div class="ct">New identity cards (optional)</div>
+      <h4>🪪 Alex Moreno</h4>
+      <p>Turning point: left a bank job to train as an electrician · Had to get used to: early starts, working outdoors · Wishes: had learned to drive earlier · Enjoys: cooking; avoids: shopping malls · Glad about: moving to a smaller town</p>
+      <h4>🪪 Hana Sato</h4>
+      <p>Ten years ago: lived with parents, took the bus everywhere · Now: runs a small bakery, used to 4 a.m. starts · Would rather: her coworkers answered emails faster · Strange event: her keys appeared in the fridge (her son must have put them there!)</p>
+    </div>
+  </div>
+  <p style="font-size:.88rem;color:var(--ink-2)"><b>Stretch</b> (for a pair who finishes early): "Some people say meetings are the most expensive thing a company does. Do you agree?" Listen for emphasis structures (<i>What really matters is…, Not only… but also…</i>). <b>Support</b>: a learner may read the question from the card, which is fine. Score the <i>answers</i> and the discussion as normal. <b>Dominant speaker?</b> Turn to the quieter learner: "And what's your take on that?" If it continues, say "Let's hear from [name] first this time" and note it under Interaction. Don't lower the quieter learner's score because they got fewer chances.</p>
+
+  <div class="sec"><h2>Speaking Scoring Grid</h2><span class="rule"></span></div>
+  <p style="font-size:.9rem;color:var(--ink-2)">Score each criterion <b>0–3</b>: 0 = no response · 1 = Not yet B2 · 2 = B2 · 3 = B2+ (strong). The descriptors are in the assessment key. Total /15.</p>
+  <p style="font-size:.95rem">Learner A: ______________________ &nbsp; Learner B: ______________________ &nbsp; Date: __________</p>
+  <table class="grid">
+    <thead><tr><th>Criterion</th><th>What to listen for</th><th>A (0–3)</th><th>B (0–3)</th></tr></thead>
+    <tbody>
+      <tr><td><b>Task &amp; coherence</b></td><td>Developed answers with reasons and examples; a turning point told in layers (background, earlier events, result); a clear position in the debate with support; reports the partner's argument</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td></tr>
+      <tr><td><b>Range &amp; register</b></td><td>Enough language to talk about work, change, and choices without much searching; argument phrases (<i>It could be argued that…, What really matters is…</i>); reporting verbs; paraphrases a missing word smoothly</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td></tr>
+      <tr><td><b>Accuracy</b></td><td>Narrative tenses; third and mixed conditionals; <i>I wish I had…</i>; <i>used to</i> vs <i>be/get used to + -ing</i>; <i>must/can't have + past participle</i>; reporting-verb patterns; linkers followed by the right grammar</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td></tr>
+      <tr><td><b>Interaction</b></td><td>Asks the card questions and a real follow-up; concedes a point before countering; invites the partner's view; works toward a compromise</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td></tr>
+      <tr><td><b>Pronunciation &amp; fluency</b></td><td>Fairly even tempo with few long pauses; weak forms and contractions (<i>I'd have, must've</i>); stress used to highlight the key point</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td></tr>
+      <tr><td colspan="2"><b>Total /15</b> · one thing that went well · one next step</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td></tr>
+    </tbody>
+  </table>
+
+  <div class="note lab">
+    <div class="t">After the test: close the loop in Week 7</div>
+    <p>Score the papers before Class 14 with the key. Add up each <b>section</b> across the class, because the weakest section tells you what to recycle. Warmers in Classes 14–19 are a good place for it: for example, a 5-minute "Rewrite it" relay (active → impersonal passive) if rewrites 11–12 were weak, or a "What must have happened?" picture-clue game if item 9 was weak. Both link naturally to Module 5 (the causative and future perfect). Give each learner their paper back with <b>one thing they did well and one thing to practice</b>, plus the online lesson that practices it. The key has a class analysis and feedback phrases.</p>
+  </div>
+
+  <div class="foot">
+    <div class="who"><b>Ray de la Paz</b><span class="bio">© 2026 Ray de la Paz · Confident English (B2 Upper-Intermediate)</span></div>
+    <div class="ver">Assessment · Progress Test 1 · v1.0</div>
+  </div>
+
+</div>
+</body>
+</html>

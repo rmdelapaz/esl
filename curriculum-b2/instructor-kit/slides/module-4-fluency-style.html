@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slides — Module 4</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root{--bg:#0b1220;--ink:#edf2fb;--ink2:#a8b6cf;--accent:#7fb2ff;--accent2:#2563eb;--lab:#34d3bd;--warn:#fbbf24;--line:#233252;--code:#101a2e;color-scheme:dark}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;overflow:hidden}
+  .deck{height:100%;width:100%;position:relative}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:6vh 8vw;gap:20px}
+  .slide.on{display:flex}
+  h1,h2,h3{font-family:"Archivo",sans-serif;line-height:1.1;text-wrap:balance}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  .slide h1{font-size:clamp(2rem,6vw,4rem);font-weight:800;letter-spacing:-.02em}
+  .slide h2{font-size:clamp(1.5rem,4.2vw,2.8rem);font-weight:800;letter-spacing:-.01em}
+  .slide p.lead{font-size:clamp(1.05rem,2.4vw,1.5rem);color:var(--ink2);max-width:26ch}
+  ul{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:6px}
+  ul li{position:relative;padding-left:34px;font-size:clamp(1.05rem,2.3vw,1.6rem)}
+  ul li::before{content:"";position:absolute;left:0;top:.55em;width:12px;height:12px;border-radius:3px;background:var(--accent);transform:rotate(45deg)}
+  ul.lab li::before{background:var(--lab)}
+  code.k{font-family:"JetBrains Mono",monospace;color:#cfe0ff;font-size:.92em}
+  pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:22px 26px;font-family:"JetBrains Mono",monospace;font-size:clamp(.85rem,1.9vw,1.3rem);line-height:1.55;overflow:auto;max-width:100%}
+  pre .k{color:#7dd3fc} pre .s{color:#86efac} pre .c{color:#7183a3;font-style:italic}
+  .tag{display:inline-flex;align-items:center;gap:10px;font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);color:var(--ink2)}
+  .tag .pill{background:var(--accent2);color:#fff;font-weight:700;border-radius:999px;padding:3px 12px;letter-spacing:.06em}
+  .tag .pill.lab{background:var(--lab);color:#062b26} .tag .pill.warn{background:var(--warn);color:#3a2a05}
+  .section{background:linear-gradient(135deg,#132a52,#0b1220)}
+  .section .big{font-size:clamp(3rem,12vw,8rem);font-family:"Archivo";font-weight:800;color:var(--accent2);line-height:.9}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+  @media (max-width:760px){.two{grid-template-columns:1fr}}
+  .bar{position:fixed;left:0;top:0;height:4px;background:var(--accent2);width:0;transition:width .25s;z-index:5}
+  .count{position:fixed;right:16px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink2);z-index:5}
+  .nav{position:fixed;inset:auto 0 0 0;display:flex;justify-content:space-between;pointer-events:none;z-index:4}
+  .nav button{pointer-events:auto;background:transparent;border:none;color:transparent;width:22vw;height:100vh;cursor:pointer}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+  /* ESL extras (picture vocab, grammar tables, dialogue, clocks) */
+  .pics{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,1.6vw,18px)}
+  .pics.six{grid-template-columns:repeat(6,1fr)}
+  .pic{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center}
+  .pic img{width:100%;max-width:150px;aspect-ratio:1;object-fit:cover;border-radius:10px;background:#FFF3E0;display:block;margin:0 auto}
+  .pic .emo{font-size:clamp(2.6rem,7vw,5rem);line-height:1;aspect-ratio:1;max-width:150px;margin:0 auto;display:flex;align-items:center;justify-content:center}
+  .pic .w{font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(.9rem,2vw,1.35rem);margin-top:6px}
+  @media (max-width:760px){.pics,.pics.six{grid-template-columns:repeat(3,1fr)}}
+  table.g{border-collapse:collapse;font-size:clamp(.95rem,2.1vw,1.45rem);width:100%;max-width:1000px}
+  table.g th,table.g td{border:1px solid var(--line);padding:10px 16px;text-align:left}
+  table.g th{background:var(--code);color:var(--accent);font-family:"JetBrains Mono",monospace;font-size:.8em;letter-spacing:.04em}
+  table.g b{color:#ffd166}
+  .dlg{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:18px 24px;display:flex;flex-direction:column;gap:8px;font-size:clamp(1rem,2.2vw,1.45rem);max-width:1000px}
+  .dlg .sp{display:inline-block;min-width:3.6em;font-weight:700;color:var(--accent)}
+  .dlg .b .sp{color:#c4a1ff}
+  .ccq{font-size:clamp(1rem,2.2vw,1.45rem);border:1px dashed var(--line);border-radius:12px;padding:12px 18px;background:var(--code)}
+  .ccq i{color:var(--ink2)}
+  .clocks{display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,34px);align-items:flex-start}
+  .clocks figure{text-align:center}
+  .clocks svg{width:clamp(96px,14vw,170px);height:auto}
+  .clocks figcaption{font-size:clamp(.95rem,2vw,1.3rem);margin-top:6px}
+  .clocks figcaption small{display:block;color:var(--ink2);font-size:.8em}
+  .snd{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .snd div{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:clamp(1rem,2.2vw,1.5rem)}
+  .snd div b{display:block;font-family:"Archivo";font-size:1.5em;color:var(--accent)}
+  .snd div small{color:var(--ink2)}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="deck" id="deck">
+
+  <!-- 1 -->
+  <section class="slide on section">
+    <div class="eyebrow">Confident English (B2) · Instructor Kit</div>
+    <h1>Module 4<br>Fluency &amp; Style</h1>
+    <p class="lead">Connect it. Stress it. Use it all.</p>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide">
+    <div class="eyebrow">Classes C10–C12 · the map</div>
+    <h2>Three classes, one halfway point</h2>
+    <ul>
+      <li><b>4.1</b> Linking ideas: <i>Although it's cheap, it's far. Despite the rain, we went. It was so cold that…</i></li>
+      <li><b>4.2</b> Emphasis: <i>It was Maria who booked it. What I need is time. Never have I seen…</i></li>
+      <li><b>4.3</b> Review project: a short talk + a group discussion with Modules 1–4</li>
+    </ul>
+    <div class="tag"><span class="pill">NOTE</span> You argue your card, not your life. Any side is fine. You can always say "Pass."</div>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide">
+    <div class="eyebrow">4.1 · Everyday trade-offs</div>
+    <h2>Every choice has two sides</h2>
+    <div class="pics">
+      <div class="pic"><img src="../assets/vocab/desk.jpg" alt=""><div class="w">working from home</div></div>
+      <div class="pic"><img src="../assets/vocab/bus.jpg" alt=""><div class="w">the daily commute</div></div>
+      <div class="pic"><img src="../assets/vocab/garden.jpg" alt=""><div class="w">country life</div></div>
+      <div class="pic"><img src="../assets/vocab/mobile-phone.jpg" alt=""><div class="w">social media</div></div>
+    </div>
+    <div class="dlg">
+      <div>😐 Remote work is convenient. It can feel lonely. Companies save money. Some people get less done.</div>
+      <div class="b">🙂 <b>Although</b> remote work is convenient, it can feel lonely. Companies save money <b>because</b> they need less space; <b>however</b>, some people get less done <b>as a result</b>.</div>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide">
+    <div class="eyebrow">4.1 · Contrast · what comes next?</div>
+    <h2>Clause, noun, or new sentence?</h2>
+    <table class="g">
+      <tr><th>+ CLAUSE</th><td><b>Although</b> it was raining, we went out. · He likes tea, <b>whereas</b> she prefers coffee.</td></tr>
+      <tr><th>+ NOUN / -ING</th><td><b>Despite</b> the rain, we went out. · <b>In spite of</b> being tired, she finished.</td></tr>
+      <tr><th>THE BRIDGE</th><td><b>Despite the fact that</b> it was raining, we went out.</td></tr>
+      <tr><th>NEW SENTENCE</th><td>It was expensive. <b>However,</b> we bought it. · <b>Nevertheless,</b> · <b>On the other hand,</b></td></tr>
+    </table>
+    <div class="tag"><span class="pill warn">WATCH</span> Despite <s>it was raining</s> ✘ · Although <s>the rain</s> ✘ · <s>However it was late</s>, we stayed ✘</div>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide">
+    <div class="eyebrow">4.1 · Check the meaning</div>
+    <h2>Concept check</h2>
+    <div class="ccq">"Although it was raining, we went out."<br>Was it raining? <i>(Yes.)</i> Did we go out? <i>(Yes.)</i> Surprising? <i>(A little.)</i></div>
+    <div class="ccq">"Despite ___, we went out." Can I say "it was raining"? <i>(No: a noun or -ing.)</i><br>What can I say? <i>(the rain · being wet · the fact that it was raining)</i></div>
+    <div class="ccq">"It was late. However, we stayed." How many sentences? <i>(Two.)</i> What comes after <i>However</i>? <i>(A comma.)</i></div>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide">
+    <div class="eyebrow">4.1 · Cause &amp; result</div>
+    <h2>Why? · So what happened?</h2>
+    <table class="g">
+      <tr><th>CAUSE + CLAUSE</th><td>We stayed in <b>because</b> it was raining. · <b>Since / As</b> you're here, let's start.</td></tr>
+      <tr><th>CAUSE + NOUN</th><td>We stayed in <b>because of</b> the rain. · The flight was delayed <b>due to</b> fog.</td></tr>
+      <tr><th>SO + ADJ + THAT</th><td>It was <b>so</b> cold <b>that</b> the lake froze.</td></tr>
+      <tr><th>SUCH + NOUN + THAT</th><td>It was <b>such a</b> cold day <b>that</b> we stayed in.</td></tr>
+      <tr><th>NEW SENTENCE</th><td>Sales fell. <b>Therefore,</b> the shop closed. · <b>Consequently,</b> · <b>As a result,</b></td></tr>
+      <tr><th>PURPOSE</th><td>She left early <b>in order to / so as to</b> catch the train.</td></tr>
+    </table>
+    <div class="tag"><span class="pill lab">QUICK TEST</span> a noun follows? → <b>such</b> · only an adjective or adverb? → <b>so</b></div>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide">
+    <div class="eyebrow">4.1 · Register &amp; punctuation</div>
+    <h2>Chat or talk?</h2>
+    <table class="g">
+      <tr><th>FUNCTION</th><th>TALK / WRITING</th><th>CHAT</th></tr>
+      <tr><td>Contrast</td><td>nevertheless · however · whereas</td><td>but · though · on the other hand</td></tr>
+      <tr><td>Cause</td><td>owing to · due to · as</td><td>because · because of · since</td></tr>
+      <tr><td>Result</td><td>therefore · consequently</td><td>so · that's why</td></tr>
+    </table>
+    <div class="ccq">It was late<b>.</b> However<b>,</b> we stayed. · It was late<b>;</b> however<b>,</b> we stayed. · <b>Although</b> it was late<b>,</b> we stayed.</div>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide section">
+    <div class="eyebrow">4.1 · Your turn · groups of 3</div>
+    <h2>The Argument Builder</h2>
+    <div class="two">
+      <ul class="lab">
+        <li><b>Round 1:</b> A argues FOR, B argues AGAINST (1 min each). Play a linker card when you use it correctly.</li>
+        <li>C listens, checks the grammar, gives a verdict.</li>
+        <li><b>Round 2:</b> a balanced 2-minute talk: hook → side 1 → <b>pivot</b> → side 2 → conclusion</li>
+      </ul>
+      <div class="ccq">Your real opinion? <i>(No, your side's cards.)</i><br>When do you play a card? <i>(When the grammar after it is right.)</i><br>What does C do? <i>(Checks, tallies, gives a verdict.)</i><br>Where's the contrast linker? <i>(The pivot.)</i></div>
+    </div>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide">
+    <div class="eyebrow">4.2 · It-clefts · the spotlight</div>
+    <h2>It + be + <span style="color:#ffd166">SPOTLIGHT</span> + who / that…</h2>
+    <table class="g">
+      <tr><th>PLAIN</th><td>John broke the window yesterday.</td></tr>
+      <tr><th>THE PERSON</th><td>It was <b>John</b> who broke the window yesterday. <i>(…not Sam)</i></td></tr>
+      <tr><th>THE THING</th><td>It was <b>the window</b> that John broke yesterday. <i>(…not the door)</i></td></tr>
+      <tr><th>THE TIME</th><td>It was <b>yesterday</b> that John broke the window. <i>(…not last week)</i></td></tr>
+    </table>
+    <div class="dlg"><div>"So you booked the hotel?"</div><div class="b">"Actually, it was <b>MA</b>ria who booked it, not me."</div></div>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide">
+    <div class="eyebrow">4.2 · What-clefts &amp; frames · save the best for last</div>
+    <h2>What I need is… <span style="color:#ffd166">a vacation</span></h2>
+    <table class="g">
+      <tr><th>WHAT-CLEFT</th><td>I need a vacation. → <b>What I need is</b> a vacation.</td></tr>
+      <tr><th>AN ACTION</th><td>He ignored me. → <b>What he did was</b> (to) ignore me.</td></tr>
+      <tr><th>THE THING</th><td><b>The thing that</b> worries me <b>is</b> the cost.</td></tr>
+      <tr><th>THE REASON</th><td><b>The reason</b> I called <b>is</b> to say thank you.</td></tr>
+      <tr><th>ALL</th><td><b>All I want is</b> a quiet weekend. <i>(nothing more)</i></td></tr>
+    </table>
+    <div class="tag"><span class="pill lab">SAY IT</span> What I <b>need</b> ↗ | is a va<b>CA</b>tion ↘</div>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide">
+    <div class="eyebrow">4.2 · Negative inversion · the dramatic one</div>
+    <h2>Never <span style="color:#ffd166">have I</span> seen such a mess.</h2>
+    <table class="g">
+      <tr><th>NEVER</th><td>Never <b>have I</b> felt so welcome.</td></tr>
+      <tr><th>NOT ONLY</th><td>Not only <b>did she</b> win, but she also broke the record.</td></tr>
+      <tr><th>NO SOONER… THAN</th><td>No sooner <b>had we</b> left <b>than</b> it started to rain.</td></tr>
+      <tr><th>HARDLY… WHEN</th><td>Hardly <b>had I</b> sat down <b>when</b> the phone rang.</td></tr>
+      <tr><th>RARELY · LITTLE · ONLY THEN</th><td>Rarely <b>does</b> she complain. · Little <b>did</b> they know. · Only then <b>did</b> I understand.</td></tr>
+    </table>
+    <div class="tag"><span class="pill warn">RULE</span> question word order · no auxiliary? add do / does / did · formal: use it like a spice</div>
+  </section>
+
+  <!-- 12 -->
+  <section class="slide">
+    <div class="eyebrow">4.2 · Model dialogue</div>
+    <h2>Listen for the spotlight</h2>
+    <div class="dlg">
+      <div><span class="sp">Kai:</span> So you finally finished the marketing plan? Well done.</div>
+      <div class="b"><span class="sp">Lena:</span> Actually, <b>it was Priya who</b> finished it. I only wrote the introduction.</div>
+      <div><span class="sp">Kai:</span> Oh! Still, it looks great. What's the next step?</div>
+      <div class="b"><span class="sp">Lena:</span> Honestly? <b>What we really need is</b> more time. <b>Not only did</b> the deadline move, but we <b>also</b> lost two people.</div>
+      <div><span class="sp">Kai:</span> That's rough.</div>
+      <div class="b"><span class="sp">Lena:</span> <b>Never have I</b> worked on a project with so many changes. But <b>the reason I'm still optimistic is</b> the team.</div>
+    </div>
+  </section>
+
+  <!-- 13 -->
+  <section class="slide section">
+    <div class="eyebrow">4.2 · Your turn · pairs → trios</div>
+    <h2>Make It Emphatic</h2>
+    <div class="two">
+      <ul class="lab">
+        <li><b>Set the Record Straight:</b> A has the facts wrong. B corrects: "Actually, it was… who…"</li>
+        <li><b>Plain → Dramatic:</b> draw a card, say it two ways</li>
+        <li><b>Emphatic opinion</b> (60–90 sec): a frame, a correction, a build-up, one optional inversion to close</li>
+      </ul>
+      <div class="ccq">Who has the true facts? <i>(B.)</i><br>How many versions per card? <i>(Two.)</i><br>How many inversions must you use? <i>(Zero or one.)</i><br>Listeners hear a cleft: they…? <i>(Raise a hand, silently.)</i></div>
+    </div>
+  </section>
+
+  <!-- 14 -->
+  <section class="slide">
+    <div class="eyebrow">4.3 · Signposting · give them a map</div>
+    <h2>The talk map</h2>
+    <table class="g">
+      <tr><th>① OPEN</th><td>I'd like to talk about… · I'd like to argue that…</td></tr>
+      <tr><th>② PREVIEW</th><td>I'll cover three points: …, … and …</td></tr>
+      <tr><th>③ POINTS</th><td>Let me start by… · Firstly, · <b>Moving on to…</b> · Turning now to… · Finally,</td></tr>
+      <tr><th>EACH POINT</th><td>claim + reason + example / evidence (<i>The evidence suggests… · One key advantage is…</i>)</td></tr>
+      <tr><th>④ CLOSE</th><td>To sum up, … · So, to bring it all together…</td></tr>
+    </table>
+    <div class="tag"><span class="pill lab">SAY IT</span> <b>Mov</b>ing on to | the <b>cost</b>. (pause after every signpost)</div>
+  </section>
+
+  <!-- 15 -->
+  <section class="slide">
+    <div class="eyebrow">4.3 · Discussion moves</div>
+    <h2>Concede, then counter</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>🤝 CONCEDE → COUNTER</th></tr>
+        <tr><td>That's a fair point, <b>but</b>…</td></tr>
+        <tr><td>I take your point; <b>however</b>,…</td></tr>
+        <tr><td>You're right to an extent, <b>though</b>…</td></tr>
+        <tr><td>Granted, <b>but</b> we shouldn't forget that…</td></tr>
+      </table>
+      <table class="g">
+        <tr><th>🎯 PERSUADE · 🌫️ HEDGE</th></tr>
+        <tr><td>The fact is,… · The bottom line is…</td></tr>
+        <tr><td>What we can't ignore is…</td></tr>
+        <tr><td>arguably · to some extent · up to a point</td></tr>
+        <tr><td>It seems to me that…</td></tr>
+      </table>
+    </div>
+    <div class="tag"><span class="pill warn">TONE</span> push the idea, never the person · save "The fact is…" for your best point</div>
+  </section>
+
+  <!-- 16 -->
+  <section class="slide section">
+    <div class="eyebrow">4.3 · Task 1 · groups of 4</div>
+    <h2>Present: 2 minutes + questions</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>Notes, not a script. Open → preview → 2–3 points → close</li>
+        <li>Use Modules 1–4: a conditional, a passive, a linker, a cleft…</li>
+        <li>Listeners: one question or challenge each</li>
+        <li>Answer: <b>concede, then counter</b></li>
+      </ul>
+      <div class="ccq">How long? <i>(Up to two minutes.)</i><br>Read your notes? <i>(Only a quick look.)</i><br>A challenge? <i>("That's a fair point, but…")</i><br>Must you present to the group? <i>(No: the teacher only is OK.)</i></div>
+    </div>
+  </section>
+
+  <!-- 17 -->
+  <section class="slide section">
+    <div class="eyebrow">4.3 · Task 2 · groups of 4</div>
+    <h2>Discuss: argue your card</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>Side cards: <b>For</b> · <b>Against</b> · <b>Devil's advocate</b> · <b>Chair</b></li>
+        <li>Round 1: 45 seconds each, in order</li>
+        <li>Round 2: open, with 3 <b>talking tokens</b>. Respond to the last speaker first.</li>
+        <li>Round 3: the chair sums up both sides fairly</li>
+      </ul>
+      <div class="ccq">Your real opinion? <i>(No, your card's.)</i><br>Devil's advocate? <i>(Argues the losing side.)</i><br>Start each turn by…? <i>(Responding to the last speaker.)</i><br>A token = ? <i>(One turn.)</i></div>
+    </div>
+    <div class="tag"><span class="pill">I LISTEN FOR</span> task &amp; organization · range (Modules 1–4) · accuracy · interaction · fluency</div>
+  </section>
+
+  <!-- 18 -->
+  <section class="slide section">
+    <div class="eyebrow">You're halfway through B2</div>
+    <h2>Module 4 done 🎉</h2>
+    <ul class="lab">
+      <li>🔗 Although… · Despite… · However, · because of… · such a… that · Therefore,</li>
+      <li>🔦 It was Maria who… · What I need is… · Never have I… · Not only did…, but also…</li>
+      <li>🎤 I'd like to talk about… · Moving on to… · To sum up… · That's a fair point, but…</li>
+    </ul>
+    <p class="lead" style="margin-top:10px;max-width:40ch">Homework: online lessons 4.1–4.3 with 🔊. Next class: a friendly check of Modules 1–4.</p>
+  </section>
+
+</div>
+
+<div class="count" id="count">1 / 18</div>
+<div class="nav"><button id="prev" aria-label="Previous slide"></button><button id="next" aria-label="Next slide"></button></div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const bar=document.getElementById('bar'), count=document.getElementById('count');
+  let i=0;
+  function show(n){ i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+    bar.style.width=((i+1)/slides.length*100)+'%'; count.textContent=(i+1)+' / '+slides.length; }
+  document.getElementById('next').onclick=()=>show(i+1);
+  document.getElementById('prev').onclick=()=>show(i-1);
+  addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}
+    else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+  });
+  show(0);
+</script>
+</body>
+</html>

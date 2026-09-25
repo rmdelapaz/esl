@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Classroom Materials — Module 4</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../../kit.css">
+<style>
+  /* Module 4 print extras (this sheet only) */
+  .flashcard .emo{font-size:3.6rem;line-height:1}
+  .flashcard .sub{font-size:.9rem;color:var(--ink-2)}
+  .card-cut p{font-size:.88rem;margin:.25rem 0}
+  .card-cut ul{margin:.2rem 0;padding-left:1.1rem;font-size:.88rem}
+  .qd{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:10px 0}
+  .qd.two{grid-template-columns:repeat(2,1fr)}
+  .qd.four{grid-template-columns:repeat(4,1fr)}
+  .qd .c{border:1.5px dashed var(--line-strong);padding:10px;text-align:center;break-inside:avoid;min-height:1.4in;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px}
+  .qd .c .emo{font-size:2.2rem;line-height:1.1}
+  .qd .c .s{font-family:"Archivo",sans-serif;font-weight:700;font-size:1rem}
+  .qd .c .o{font-size:.9rem}
+  .qd .c .h{font-size:.74rem;color:var(--ink-3)}
+  .qd .c .n{font-family:"JetBrains Mono",monospace;font-size:.66rem;color:var(--accent);letter-spacing:.1em}
+  .qd .c.for{background:var(--accent-soft);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  table.chk{width:100%;border-collapse:collapse;margin:10px 0;font-size:.84rem}
+  table.chk th,table.chk td{border:1px solid var(--line-strong);padding:6px 7px;text-align:left;vertical-align:top}
+  table.chk th{background:var(--surface-2);font-size:.78rem}
+  table.chk td.sc{width:6%;text-align:center}
+  table.chk td.mk{width:4%;text-align:center;color:var(--ink-3)}
+  table.chk.grid td{height:1.9em}
+  .slips{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:10px 0}
+  .slips .slip{border:1.5px dashed var(--line-strong);padding:10px 12px;font-size:.84rem;break-inside:avoid}
+  .slips .slip p{margin:.25rem 0}
+  .race{display:grid;grid-template-columns:repeat(6,1fr);gap:0;margin:10px 0;border:2px solid var(--line-strong)}
+  .race .sq{border:1px solid var(--line-strong);min-height:1.15in;padding:6px;font-size:.78rem;line-height:1.25;position:relative;break-inside:avoid}
+  .race .sq .num{display:block;font-family:"JetBrains Mono",monospace;font-size:.7rem;color:var(--accent);font-weight:600}
+  .race .sq.end{background:var(--accent-soft);font-weight:700;font-size:.95rem;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .tokens{display:grid;grid-template-columns:repeat(8,1fr);gap:0;margin:8px 0}
+  .tokens div{border:1.5px dashed var(--line-strong);aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:1.6rem}
+  .pb{break-before:page}
+  @media (max-width:680px){.flashcards{grid-template-columns:1fr 1fr}.qd,.qd.four{grid-template-columns:1fr 1fr}.cards{grid-template-columns:1fr}.slips{grid-template-columns:1fr}.race{grid-template-columns:repeat(3,1fr)}.tokens{grid-template-columns:repeat(4,1fr)}table.chk{display:block;overflow-x:auto}}
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="lbl">Classroom materials —</span>
+  <button type="button" onclick="window.print()">🖨 Print / Save as PDF</button>
+  <span class="hint">print on card stock · cut on the dashed lines</span>
+</div>
+
+<div class="sheet">
+
+  <header class="mast">
+    <div class="kit-eyebrow">Confident English · Module 4 Materials</div>
+    <h1>Fluency &amp; Style — Classroom Materials</h1>
+    <p class="sub">Everything to print for Classes C10–C12: linker, emphasis and topic flashcards, the linker sort, the <b>Argument Builder</b> kit, the <b>Plain → Dramatic</b> rewrite cards, the <b>Set the Record Straight</b> A/B cards, emphatic-opinion prompts, the C12 presentation topics with side, persona and question cards, the <b>C12 speaking checklist</b> (feeds C13), the Module 1–4 Review Race board game, and the teacher's listening scripts.</p>
+    <div class="meta-row">
+      <span class="chip">Lessons <b>4.1–4.3</b></span>
+      <span class="chip">Classes <b>C10–C12</b></span>
+      <span class="chip"><b>10</b> print sets</span>
+      <span class="chip">CEFR <b>B2</b></span>
+    </div>
+  </header>
+
+  <div class="sec"><h2>What to Print</h2><span class="rule"></span></div>
+  <table class="timing">
+    <thead><tr><th>Set</th><th>What</th><th>How many</th><th>Used in</th></tr></thead>
+    <tbody>
+      <tr><td class="t">A</td><td>Flashcards: linkers, emphasis frames, trade-off topic pictures</td><td>1 set for the board</td><td>C10, C11, C12</td></tr>
+      <tr><td class="t">B</td><td>Linker sort cards (18 linkers + 3 column headings)</td><td>1 set per pair</td><td>C10 (sort), C11 warmer (linker tennis), C13 station</td></tr>
+      <tr><td class="t">C</td><td>Argument Builder: 6 topic cards, 36 point cards, 12 linker play cards, listener tally</td><td>1 kit per group of 3 (1 topic + its points + 12 linker cards + 1 tally)</td><td>C10</td></tr>
+      <tr><td class="t">D</td><td>Plain → Dramatic rewrite cards (12)</td><td>1 set per pair</td><td>C11 (and C13 station)</td></tr>
+      <tr><td class="t">E</td><td>Set the Record Straight A/B cards (4 pairs)</td><td>1 pair of cards per pair of learners</td><td>C11</td></tr>
+      <tr><td class="t">F</td><td>Emphatic-opinion prompts (8)</td><td>1–2 sets on a side table</td><td>C11</td></tr>
+      <tr><td class="t">G</td><td>Presentation &amp; discussion: 10 topic cards, side cards, persona cards, question starters, talking tokens</td><td>Topics on a side table · 1 set of side cards + tokens per group of 4</td><td>C11 homework, C12</td></tr>
+      <tr><td class="t">H</td><td>C12 speaking checklist: descriptors, class grid, score slips</td><td>1 grid for you · 1 slip per learner</td><td>C12 → C13</td></tr>
+      <tr><td class="t">I</td><td>Module 1–4 Review Race (board game)</td><td>1 board per group of 3–4 + a die + counters</td><td>C12 warmer, C13 station</td></tr>
+      <tr><td class="t">J</td><td>Listening &amp; dictation scripts</td><td>Teacher only</td><td>C10, C11, C12</td></tr>
+    </tbody>
+  </table>
+
+  <!-- ===================== A ===================== -->
+  <div class="sec pb"><h2>A · Flashcards — Linkers (4.1)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">Stick each linker in the right column of the board plan: <b>+ clause</b> · <b>+ noun / -ing</b> · <b>new sentence</b>. The small line tells learners what comes next. Tip: print the three groups on three colors of card so the grammar is visible from the back of the room.</p>
+  <div class="flashcards">
+    <div class="flashcard word-only"><div class="emo">↔️</div><div class="w">although</div><div class="sub">+ clause</div></div>
+    <div class="flashcard word-only"><div class="emo">↔️</div><div class="w">even though</div><div class="sub">+ clause (stronger)</div></div>
+    <div class="flashcard word-only"><div class="emo">↔️</div><div class="w">whereas / while</div><div class="sub">+ clause (compare)</div></div>
+    <div class="flashcard word-only"><div class="emo">🧱</div><div class="w">despite</div><div class="sub">+ noun / -ing</div></div>
+    <div class="flashcard word-only"><div class="emo">🧱</div><div class="w">in spite of</div><div class="sub">+ noun / -ing</div></div>
+    <div class="flashcard word-only"><div class="emo">🌉</div><div class="w">… the fact that</div><div class="sub">despite + the fact that + clause</div></div>
+    <div class="flashcard word-only"><div class="emo">⏹️</div><div class="w">However,</div><div class="sub">new sentence + comma</div></div>
+    <div class="flashcard word-only"><div class="emo">⏹️</div><div class="w">Nevertheless,</div><div class="sub">new sentence (formal)</div></div>
+    <div class="flashcard word-only"><div class="emo">❓</div><div class="w">because · since · as</div><div class="sub">+ clause</div></div>
+    <div class="flashcard word-only"><div class="emo">❓</div><div class="w">because of · due to</div><div class="sub">+ noun</div></div>
+    <div class="flashcard word-only"><div class="emo">➡️</div><div class="w">so … that</div><div class="sub">so + adjective / adverb + that</div></div>
+    <div class="flashcard word-only"><div class="emo">➡️</div><div class="w">such … that</div><div class="sub">such + (a / an) + noun + that</div></div>
+    <div class="flashcard word-only"><div class="emo">⏹️</div><div class="w">Therefore,</div><div class="sub">new sentence + comma</div></div>
+    <div class="flashcard word-only"><div class="emo">⏹️</div><div class="w">Consequently,</div><div class="sub">new sentence (formal)</div></div>
+    <div class="flashcard word-only"><div class="emo">🎯</div><div class="w">in order to</div><div class="sub">+ base verb (purpose)</div></div>
+    <div class="flashcard word-only"><div class="emo">🎯</div><div class="w">so as to</div><div class="sub">+ base verb (purpose)</div></div>
+  </div>
+
+  <div class="sec pb"><h2>A · Flashcards — Emphasis Frames (4.2)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">Hold up a frame and say a plain sentence; learners reshape it. The inversion cards go in a separate row labeled "formal / dramatic." Literacy-support learners can keep the first three cards on the desk as a model.</p>
+  <div class="flashcards">
+    <div class="flashcard word-only"><div class="emo">🔦</div><div class="w">It was … who …</div><div class="sub">spotlight a person</div></div>
+    <div class="flashcard word-only"><div class="emo">🔦</div><div class="w">It was … that …</div><div class="sub">a thing, time or place</div></div>
+    <div class="flashcard word-only"><div class="emo">⏳</div><div class="w">What I need is …</div><div class="sub">the key idea comes last</div></div>
+    <div class="flashcard word-only"><div class="emo">⏳</div><div class="w">What he did was …</div><div class="sub">+ (to) base verb</div></div>
+    <div class="flashcard word-only"><div class="emo">🧩</div><div class="w">The thing that … is …</div></div>
+    <div class="flashcard word-only"><div class="emo">🧩</div><div class="w">The reason … is …</div></div>
+    <div class="flashcard word-only"><div class="emo">🧩</div><div class="w">All I want is …</div><div class="sub">nothing more</div></div>
+    <div class="flashcard word-only"><div class="emo">🎭</div><div class="w">Never have I …</div><div class="sub">formal / dramatic</div></div>
+    <div class="flashcard word-only"><div class="emo">🎭</div><div class="w">Not only did … but also …</div><div class="sub">formal / dramatic</div></div>
+    <div class="flashcard word-only"><div class="emo">🎭</div><div class="w">No sooner had … than …</div><div class="sub">than, not when</div></div>
+    <div class="flashcard word-only"><div class="emo">🎭</div><div class="w">Hardly had … when …</div><div class="sub">when, not than</div></div>
+    <div class="flashcard word-only"><div class="emo">🎭</div><div class="w">Rarely does …</div><div class="sub">add do / does / did</div></div>
+  </div>
+
+  <div class="sec pb"><h2>A · Flashcards — Trade-off Topics (4.1, 4.3)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">Put the topic pictures on the board during the Argument Builder and the C12 planning, so groups can see the choices. They also work as a quick warmer: hold one up; learners give one advantage and one drawback, linked.</p>
+  <div class="flashcards">
+    <div class="flashcard"><img src="../../assets/vocab/desk.jpg" alt=""><div class="w">working from home</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/bus.jpg" alt=""><div class="w">the commute</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/garden.jpg" alt=""><div class="w">country life</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/mobile-phone.jpg" alt=""><div class="w">social media</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/bank.jpg" alt=""><div class="w">cash or card?</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/supermarket.jpg" alt=""><div class="w">self-checkout</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/school.jpg" alt=""><div class="w">homework</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/notebook.jpg" alt=""><div class="w">online or in class?</div></div>
+  </div>
+
+  <!-- ===================== B ===================== -->
+  <div class="sec pb"><h2>B · Linker Sort Cards (4.1 · C11 warmer)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem"><b>C10 sort:</b> pairs put the three heading cards in a row and sort the 18 linkers underneath, then say one quick sentence for each card. <b>C11 linker tennis:</b> cards face down; A says a clause, B turns a card and continues with the right grammar. Keep one set per pair in an envelope. (The key is in the Answer Key, 4.1.)</p>
+  <div class="qd">
+    <div class="c for"><div class="n">HEADING</div><div class="s">+ CLAUSE</div><div class="h">subject + verb</div></div>
+    <div class="c for"><div class="n">HEADING</div><div class="s">+ NOUN / -ING</div><div class="h">the rain · being tired</div></div>
+    <div class="c for"><div class="n">HEADING</div><div class="s">NEW SENTENCE + COMMA</div><div class="h">. However, …</div></div>
+    <div class="c"><div class="s">although</div></div>
+    <div class="c"><div class="s">though</div></div>
+    <div class="c"><div class="s">even though</div></div>
+    <div class="c"><div class="s">whereas</div></div>
+    <div class="c"><div class="s">while</div></div>
+    <div class="c"><div class="s">because</div></div>
+    <div class="c"><div class="s">since</div></div>
+    <div class="c"><div class="s">as</div></div>
+    <div class="c"><div class="s">despite</div></div>
+    <div class="c"><div class="s">in spite of</div></div>
+    <div class="c"><div class="s">because of</div></div>
+    <div class="c"><div class="s">due to</div></div>
+    <div class="c"><div class="s">owing to</div></div>
+    <div class="c"><div class="s">However,</div></div>
+    <div class="c"><div class="s">Nevertheless,</div></div>
+    <div class="c"><div class="s">On the other hand,</div></div>
+    <div class="c"><div class="s">Therefore,</div></div>
+    <div class="c"><div class="s">Consequently,</div></div>
+  </div>
+
+  <!-- ===================== C ===================== -->
+  <div class="sec pb"><h2>C · The Argument Builder — Topic &amp; Point Cards (4.1)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">One topic per group of 3. Cut each topic's six point cards; the shaded ones are FOR, the white ones AGAINST. In Round 1, A takes the FOR cards and B the AGAINST cards; nobody argues their own opinion. The notes are deliberately short: learners turn them into linked sentences. Topics avoid politics, religion and immigration on purpose; please keep it that way if you add your own.</p>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">Topic 1 · Working from home is better than working in an office.</h3>
+  <div class="qd">
+    <div class="c for"><div class="n">FOR</div><div class="o">no commute → more free time and money</div></div>
+    <div class="c for"><div class="n">FOR</div><div class="o">quiet at home → easier to focus</div></div>
+    <div class="c for"><div class="n">FOR</div><div class="o">flexible hours → family, appointments</div></div>
+    <div class="c"><div class="n">AGAINST</div><div class="o">no coworkers around → isolating, motivation drops</div></div>
+    <div class="c"><div class="n">AGAINST</div><div class="o">online meetings → misunderstandings</div></div>
+    <div class="c"><div class="n">AGAINST</div><div class="o">work and home mix → hard to switch off</div></div>
+  </div>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">Topic 2 · Life in the city is better than life in the countryside.</h3>
+  <div class="qd">
+    <div class="c for"><div class="n">FOR</div><div class="o">more jobs, doctors, schools</div></div>
+    <div class="c for"><div class="n">FOR</div><div class="o">public transportation → no car needed</div></div>
+    <div class="c for"><div class="n">FOR</div><div class="o">restaurants, events, culture</div></div>
+    <div class="c"><div class="n">AGAINST</div><div class="o">high rent → share an apartment for years</div></div>
+    <div class="c"><div class="n">AGAINST</div><div class="o">noise, traffic, pollution</div></div>
+    <div class="c"><div class="n">AGAINST</div><div class="o">fast, stressful pace of life</div></div>
+  </div>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">Topic 3 · Social media does more good than harm.</h3>
+  <div class="qd">
+    <div class="c for"><div class="n">FOR</div><div class="o">family far away → stay in touch</div></div>
+    <div class="c for"><div class="n">FOR</div><div class="o">local groups → help, news, events</div></div>
+    <div class="c for"><div class="n">FOR</div><div class="o">small businesses → find customers</div></div>
+    <div class="c"><div class="n">AGAINST</div><div class="o">endless scrolling → less sleep, less focus</div></div>
+    <div class="c"><div class="n">AGAINST</div><div class="o">comparing lives → people feel worse</div></div>
+    <div class="c"><div class="n">AGAINST</div><div class="o">false information → spreads fast</div></div>
+  </div>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">Topic 4 · Shops should stop accepting cash.</h3>
+  <div class="qd">
+    <div class="c for"><div class="n">FOR</div><div class="o">card payments → shorter lines</div></div>
+    <div class="c for"><div class="n">FOR</div><div class="o">no cash in the store → safer for staff</div></div>
+    <div class="c for"><div class="n">FOR</div><div class="o">easier accounting at the end of the day</div></div>
+    <div class="c"><div class="n">AGAINST</div><div class="o">some people have no bank card</div></div>
+    <div class="c"><div class="n">AGAINST</div><div class="o">many older customers prefer cash</div></div>
+    <div class="c"><div class="n">AGAINST</div><div class="o">system down → no sales at all</div></div>
+  </div>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">Topic 5 · Children in elementary school shouldn't get homework.</h3>
+  <div class="qd">
+    <div class="c for"><div class="n">FOR</div><div class="o">more time to play and rest</div></div>
+    <div class="c for"><div class="n">FOR</div><div class="o">more family time in the evening</div></div>
+    <div class="c for"><div class="n">FOR</div><div class="o">less stress for busy parents</div></div>
+    <div class="c"><div class="n">AGAINST</div><div class="o">builds good habits → responsibility</div></div>
+    <div class="c"><div class="n">AGAINST</div><div class="o">practice at home → remember more</div></div>
+    <div class="c"><div class="n">AGAINST</div><div class="o">parents see what children are learning</div></div>
+  </div>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">Topic 6 · Learning online is as good as learning in a classroom.</h3>
+  <div class="qd">
+    <div class="c for"><div class="n">FOR</div><div class="o">study anytime, anywhere</div></div>
+    <div class="c for"><div class="n">FOR</div><div class="o">no travel → cheaper, saves time</div></div>
+    <div class="c for"><div class="n">FOR</div><div class="o">replay lessons → learn at your own speed</div></div>
+    <div class="c"><div class="n">AGAINST</div><div class="o">less speaking practice</div></div>
+    <div class="c"><div class="n">AGAINST</div><div class="o">no one checking → easy to give up</div></div>
+    <div class="c"><div class="n">AGAINST</div><div class="o">no classmates → lonely</div></div>
+  </div>
+
+  <div class="sec pb"><h2>C · The Argument Builder — Linker Play Cards &amp; Listener Tally (4.1)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">12 cards per group. Deal 4 to each speaker at random (the listener gets none in Round 1). A speaker puts a card down when they use that linker <b>with the right grammar after it</b>. The listener decides: "✔" or "Check the grammar!"</p>
+  <div class="qd four">
+    <div class="c"><div class="emo">↔️</div><div class="s">although</div><div class="h">+ clause</div></div>
+    <div class="c"><div class="emo">↔️</div><div class="s">even though</div><div class="h">+ clause</div></div>
+    <div class="c"><div class="emo">🧱</div><div class="s">despite / in spite of</div><div class="h">+ noun / -ing</div></div>
+    <div class="c"><div class="emo">↔️</div><div class="s">whereas</div><div class="h">+ clause (compare)</div></div>
+    <div class="c"><div class="emo">⏹️</div><div class="s">However,</div><div class="h">new sentence</div></div>
+    <div class="c"><div class="emo">❓</div><div class="s">because</div><div class="h">+ clause</div></div>
+    <div class="c"><div class="emo">❓</div><div class="s">since / as</div><div class="h">+ clause</div></div>
+    <div class="c"><div class="emo">❓</div><div class="s">because of / due to</div><div class="h">+ noun</div></div>
+    <div class="c"><div class="emo">➡️</div><div class="s">so</div><div class="h">+ clause</div></div>
+    <div class="c"><div class="emo">➡️</div><div class="s">so … that / such … that</div><div class="h">so + adj · such + noun</div></div>
+    <div class="c"><div class="emo">⏹️</div><div class="s">Therefore, / As a result,</div><div class="h">new sentence</div></div>
+    <div class="c"><div class="emo">🎯</div><div class="s">in order to / so as to</div><div class="h">+ base verb</div></div>
+  </div>
+  <h3 style="font-size:1rem;margin:14px 0 4px">Listener tally <span style="font-weight:500;color:var(--ink-3)">(1 per group; the listener fills it in)</span></h3>
+  <table class="chk">
+    <thead><tr><th>Speaker</th><th>Contrast linkers ✔</th><th>Cause linkers ✔</th><th>Result linkers ✔</th><th>"Check the grammar!"</th><th>Best sentence I heard</th></tr></thead>
+    <tbody>
+      <tr><td style="height:2.2em"></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td style="height:2.2em"></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td style="height:2.2em"></td><td></td><td></td><td></td><td></td><td></td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:.9rem"><b>My verdict (Round 1):</b> "Although ___ made a good point about ___, ___ convinced me more because ___."</p>
+
+  <!-- ===================== D ===================== -->
+  <div class="sec pb"><h2>D · Plain → Dramatic Rewrite Cards (4.2)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">Pairs, cards face down. Draw a card and say <b>two</b> versions aloud: the one on the hint, and a cleft of your choice. The partner says "✔" or "Say the question first!" (for inversions). Model answers are in the Answer Key, 4.2.</p>
+  <div class="qd">
+    <div class="c"><div class="n">1</div><div class="s">My neighbor fixed my bike on Sunday.</div><div class="h">It was… (the person)</div></div>
+    <div class="c"><div class="n">2</div><div class="s">I need a long vacation.</div><div class="h">What…</div></div>
+    <div class="c"><div class="n">3</div><div class="s">I have never tasted such good coffee.</div><div class="h">Never…</div></div>
+    <div class="c"><div class="n">4</div><div class="s">The bus was late. It was also full.</div><div class="h">Not only…</div></div>
+    <div class="c"><div class="n">5</div><div class="s">We had just arrived when the power went out.</div><div class="h">No sooner… / Hardly…</div></div>
+    <div class="c"><div class="n">6</div><div class="s">The noise from the street bothers me.</div><div class="h">What…</div></div>
+    <div class="c"><div class="n">7</div><div class="s">She rarely complains.</div><div class="h">Rarely…</div></div>
+    <div class="c"><div class="n">8</div><div class="s">I understood the problem only after the meeting.</div><div class="h">Only after…</div></div>
+    <div class="c"><div class="n">9</div><div class="s">They didn't know the boss was listening.</div><div class="h">Little…</div></div>
+    <div class="c"><div class="n">10</div><div class="s">The instructions confused everyone.</div><div class="h">It was…</div></div>
+    <div class="c"><div class="n">11</div><div class="s">I called to say thank you.</div><div class="h">The reason…</div></div>
+    <div class="c"><div class="n">12</div><div class="s">I want a quiet weekend, nothing more.</div><div class="h">All…</div></div>
+  </div>
+
+  <!-- ===================== E ===================== -->
+  <div class="sec pb"><h2>E · Set the Record Straight — A/B Cards (4.2)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">Pairs. A reads the wrong "facts" as confident questions. B corrects each one with an <i>it</i>-cleft, then adds the <i>what</i>-cleft on the card. Swap roles with a new pair of cards. All situations are invented.</p>
+  <div class="cards">
+    <div class="card-cut"><div class="ct">Card A · 1 · The office party</div><h4>You think…</h4><ul><li>Sam organized the party.</li><li>It was on Saturday.</li><li>The pizza was the problem.</li></ul><p>Ask: "So <b>Sam</b> organized the party, right?"</p></div>
+    <div class="card-cut b"><div class="ct">Card B · 1 · The office party</div><h4>The facts</h4><ul><li><b>Nadia</b> organized it.</li><li>It was on <b>Friday</b>.</li><li>The <b>music</b> was the problem.</li></ul><p>Add: "What Sam did was bring the music!"</p></div>
+    <div class="card-cut"><div class="ct">Card A · 2 · The broken machine</div><h4>You think…</h4><ul><li>The washing machine broke.</li><li>Your partner called the repair person.</li><li>It was fixed on Monday.</li></ul><p>Ask: "So the <b>washing machine</b> broke?"</p></div>
+    <div class="card-cut b"><div class="ct">Card B · 2 · The broken machine</div><h4>The facts</h4><ul><li>The <b>dryer</b> broke.</li><li>The <b>upstairs neighbor</b> called the repair person.</li><li>It was fixed on <b>Tuesday</b>.</li></ul><p>Add: "What I did was hang everything outside to dry."</p></div>
+    <div class="card-cut"><div class="ct">Card A · 3 · The family trip</div><h4>You think…</h4><ul><li>Your partner's mom planned the trip.</li><li>They went by car.</li><li>Everyone loved the beach.</li></ul><p>Ask: "So your <b>mom</b> planned the trip?"</p></div>
+    <div class="card-cut b"><div class="ct">Card B · 3 · The family trip</div><h4>The facts</h4><ul><li>Your <b>brother</b> planned it.</li><li>You went by <b>train</b>.</li><li>Everyone loved the <b>museum</b>.</li></ul><p>Add: "What we didn't expect was the rain."</p></div>
+    <div class="card-cut"><div class="ct">Card A · 4 · The new manager</div><h4>You think…</h4><ul><li>Ms. Diaz got the manager job.</li><li>The new manager started in January.</li><li>The first thing they changed was the dress code.</li></ul><p>Ask: "So <b>Ms. Diaz</b> got the job?"</p></div>
+    <div class="card-cut b"><div class="ct">Card B · 4 · The new manager</div><h4>The facts</h4><ul><li><b>Mr. Park</b> got the job.</li><li>He started in <b>March</b>.</li><li>The first thing he changed was the <b>schedule</b>.</li></ul><p>Add: "What everyone likes is the new break room."</p></div>
+  </div>
+
+  <!-- ===================== F ===================== -->
+  <div class="sec pb"><h2>F · Emphatic-Opinion Prompts (4.2)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">Keep these on a side table. Learners may choose their own everyday topic instead. The shape is on each card: <b>frame → correct a common view → build up → (one inversion to close)</b>.</p>
+  <div class="cards">
+    <div class="card-cut"><div class="ct">Prompt · 1</div><h4>Something about public transportation that should change</h4><p style="color:var(--ink-3)">The thing that… · People think it's… but it's… that… · What we really need is… · Never have I…</p></div>
+    <div class="card-cut b"><div class="ct">Prompt · 2</div><h4>A movie or show everyone should watch</h4><p style="color:var(--ink-3)">The reason I love it is… · It's the… that makes it special · What surprised me was… · Not only… but also…</p></div>
+    <div class="card-cut"><div class="ct">Prompt · 3</div><h4>The most useful app on my phone</h4><p style="color:var(--ink-3)">All I need is… · It was my friend who… · What it does is… · Rarely do I…</p></div>
+    <div class="card-cut b"><div class="ct">Prompt · 4</div><h4>A small habit that makes a big difference</h4><p style="color:var(--ink-3)">The thing that changed my week was… · It's not… that matters, it's… · What I do now is…</p></div>
+    <div class="card-cut"><div class="ct">Prompt · 5</div><h4>The best advice I've ever received</h4><p style="color:var(--ink-3)">It was my… who told me… · What they said was… · Only later did I…</p></div>
+    <div class="card-cut b"><div class="ct">Prompt · 6</div><h4>An underrated place in this town</h4><p style="color:var(--ink-3)">The place where… is… · People think… but it's… that… · Never have I…</p></div>
+    <div class="card-cut"><div class="ct">Prompt · 7</div><h4>Something that should be free for everyone</h4><p style="color:var(--ink-3)">The reason… is… · What we can't forget is… · Not only would it…, but it would also…</p></div>
+    <div class="card-cut b"><div class="ct">Prompt · 8</div><h4>A change I'd love to see at work or school</h4><p style="color:var(--ink-3)">What really bothers me is… · It's the… that… · All I'm asking for is…</p></div>
+  </div>
+
+  <!-- ===================== G ===================== -->
+  <div class="sec pb"><h2>G · Presentation &amp; Discussion — Topics, Sides, Personas, Questions, Tokens (4.3)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">Put the topic cards on a side table at the end of C11 so learners can choose one for homework. In C12, each discussion group takes one topic's question. Presenters may argue either side; in the discussion, the <b>side card</b> decides.</p>
+  <div class="cards">
+    <div class="card-cut"><div class="ct">Topic · 1</div><h4>Our workplace should try a four-day week.</h4><p>Discuss: Would a four-day week work for every kind of job?</p></div>
+    <div class="card-cut b"><div class="ct">Topic · 2</div><h4>Phones should stay off the table during family meals.</h4><p>Discuss: Should there be phone-free times at home?</p></div>
+    <div class="card-cut"><div class="ct">Topic · 3</div><h4>Shops should be allowed to go cashless.</h4><p>Discuss: Who wins and who loses if cash disappears?</p></div>
+    <div class="card-cut b"><div class="ct">Topic · 4</div><h4>Elementary school children shouldn't get homework.</h4><p>Discuss: How much homework is the right amount?</p></div>
+    <div class="card-cut"><div class="ct">Topic · 5</div><h4>Self-checkout machines are better than cashiers.</h4><p>Discuss: Should supermarkets keep a cashier line?</p></div>
+    <div class="card-cut b"><div class="ct">Topic · 6</div><h4>Learning online is as good as learning in a classroom.</h4><p>Discuss: What can a classroom give you that an app can't?</p></div>
+    <div class="card-cut"><div class="ct">Topic · 7</div><h4>Every town should have free bikes to borrow.</h4><p>Discuss: Is it worth the cost?</p></div>
+    <div class="card-cut b"><div class="ct">Topic · 8</div><h4>Big stores should close on Sundays so staff can rest.</h4><p>Discuss: Is shopping on Sunday a need or a habit?</p></div>
+    <div class="card-cut"><div class="ct">Topic · 9</div><h4>It's better to rent a home than to buy one.</h4><p>Discuss: When does renting make more sense?</p></div>
+    <div class="card-cut b"><div class="ct">Topic · 10</div><h4>Everyone should learn to cook before they leave home.</h4><p>Discuss: Whose job is it to teach young people life skills?</p></div>
+  </div>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">Side cards <span style="font-weight:500;color:var(--ink-3)">(one set of 4 per group; deal face down)</span></h3>
+  <div class="qd four">
+    <div class="c"><div class="emo">👍</div><div class="s">FOR</div><div class="h">One key advantage is… · The evidence suggests…</div></div>
+    <div class="c"><div class="emo">👎</div><div class="s">AGAINST</div><div class="h">The main drawback is… · It could be argued that…</div></div>
+    <div class="c"><div class="emo">😈</div><div class="s">DEVIL'S ADVOCATE</div><div class="h">Argue whichever side is losing. Speak third in Round 1.</div></div>
+    <div class="c"><div class="emo">🎙️</div><div class="s">CHAIR (you speak too)</div><div class="h">Open · invite · keep time · sum up both sides fairly</div></div>
+  </div>
+  <div class="cards">
+    <div class="card-cut"><div class="ct">Chair card</div><h4>🎙️ You are the chair</h4>
+      <ul><li>Open: "Today's question is… Let's hear the first side. ___?"</li><li>Round 1: 45 seconds each, in order. Use a phone timer.</li><li>Round 2: "Building on that… ___, where do you stand?"</li><li>A long turn? "Thanks. Let's hear the other side."</li><li>Round 3: "On the one hand… on the other hand… Most of us felt…"</li></ul></div>
+    <div class="card-cut b"><div class="ct">Chair card</div><h4>🎙️ You are the chair</h4>
+      <ul><li>Open: "Today's question is… Let's hear the first side. ___?"</li><li>Round 1: 45 seconds each, in order. Use a phone timer.</li><li>Round 2: "Building on that… ___, where do you stand?"</li><li>A long turn? "Thanks. Let's hear the other side."</li><li>Round 3: "On the one hand… on the other hand… Most of us felt…"</li></ul></div>
+  </div>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">Persona cards <span style="font-weight:500;color:var(--ink-3)">(optional; take one to speak from a different point of view)</span></h3>
+  <div class="qd">
+    <div class="c"><div class="emo">🏥</div><div class="s">A night-shift nurse</div><div class="h">"As a nurse who works nights, I'd say…"</div></div>
+    <div class="c"><div class="emo">☕</div><div class="s">A small café owner</div><div class="h">"Running a café, what worries me is…"</div></div>
+    <div class="c"><div class="emo">🎓</div><div class="s">A college student</div><div class="h">"For students like me, the thing that matters is…"</div></div>
+    <div class="c"><div class="emo">👨‍👩‍👧‍👦</div><div class="s">A parent of three</div><div class="h">"With three kids, what I really need is…"</div></div>
+    <div class="c"><div class="emo">🚌</div><div class="s">A retired bus driver</div><div class="h">"Having driven a bus for 30 years, I…"</div></div>
+    <div class="c"><div class="emo">📦</div><div class="s">A delivery driver</div><div class="h">"On the road all day, I'm used to…"</div></div>
+  </div>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">Question starters for listeners <span style="font-weight:500;color:var(--ink-3)">(one per listener after each talk)</span></h3>
+  <div class="qd">
+    <div class="c"><div class="s">What about people who…?</div></div>
+    <div class="c"><div class="s">Isn't there a risk that…?</div></div>
+    <div class="c"><div class="s">How would that work for…?</div></div>
+    <div class="c"><div class="s">What worries me is… What would you say to that?</div></div>
+    <div class="c"><div class="s">You said… but surely…?</div></div>
+    <div class="c"><div class="s">If that had happened in…, would it have worked?</div></div>
+  </div>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">Talking tokens <span style="font-weight:500;color:var(--ink-3)">(3 per learner; coins or paper clips also work)</span></h3>
+  <p style="font-size:.9rem">Put one token in the middle every time you speak in Round 2. No tokens left? Listen until everyone has used theirs; then everyone takes 3 again.</p>
+  <div class="tokens">
+    <div>💬</div><div>💬</div><div>💬</div><div>💬</div><div>💬</div><div>💬</div><div>💬</div><div>💬</div>
+    <div>💬</div><div>💬</div><div>💬</div><div>💬</div><div>💬</div><div>💬</div><div>💬</div><div>💬</div>
+  </div>
+
+  <!-- ===================== H ===================== -->
+  <div class="sec pb"><h2>H · C12 Speaking Checklist — Present, Argue &amp; Discuss (feeds C13)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">Score each learner's <b>whole performance</b> across the presentation, the Q&amp;A and the discussion: five criteria, <b>0–3 points</b> each, <b>total /15</b>. 0 = no response · 1 = not yet B2 · 2 = B2 · 3 = strong B2 (moving toward C1). Score what a patient listener understands, not an accent. Tick <b>M1–M4</b> when you hear a structure from that module used correctly. Write one sentence you heard in the notes column; it makes the slip easy to write.</p>
+  <table class="chk">
+    <thead><tr><th>Criterion</th><th>3</th><th>2</th><th>1</th><th>0</th></tr></thead>
+    <tbody>
+      <tr><td><b>1 · Task &amp; organization</b></td><td>Opening + preview, 2–3 points each with a reason and an example / evidence, a real conclusion; signposts guide the listener. Discussion turns are relevant and developed</td><td>Clear structure but thin support, or signposts missing in places; discussion turns mostly relevant</td><td>A list of ideas with little structure; short, undeveloped turns</td><td>No talk or contribution yet</td></tr>
+      <tr><td><b>2 · Range (Modules 1–4)</b></td><td>Structures from 3–4 modules, used naturally and without prompting; varied linkers; a well-placed cleft or inversion</td><td>Structures from 2 modules; some variety in linkers</td><td>1 module; mostly B1 grammar (<i>because, but, I think</i>)</td><td>Single words, phrases</td></tr>
+      <tr><td><b>3 · Accuracy</b></td><td>Good control; occasional errors, rarely affect meaning, often self-corrected</td><td>Some errors in complex structures, meaning clear</td><td>Frequent errors; the listener must work hard</td><td>Meaning often lost</td></tr>
+      <tr><td><b>4 · Interaction &amp; discussion moves</b></td><td>Concedes before countering; hedges appropriately; responds to the last speaker; invites others; handles challenges calmly</td><td>Uses 2–3 discussion moves; responds when addressed</td><td>Agrees / disagrees bluntly or not at all; rarely responds to others</td><td>No interaction</td></tr>
+      <tr><td><b>5 · Fluency &amp; pronunciation</b></td><td>Even pace, natural pauses at signposts; stress highlights key and contrasting information</td><td>Some hesitation while searching for language; mostly clear</td><td>Many pauses; hard to follow</td><td>Can't continue without help</td></tr>
+    </tbody>
+  </table>
+  <table class="chk">
+    <thead><tr><th>Tick</th><th>What counts (correct use)</th></tr></thead>
+    <tbody>
+      <tr><td><b>M1</b></td><td>past perfect / past perfect continuous in a narrative · third and mixed conditionals (<i>If we had…, we wouldn't be…</i>) · <i>wish / if only / would rather / it's time</i></td></tr>
+      <tr><td><b>M2</b></td><td>gerund vs infinitive after verbs (<i>stop doing, afford to</i>) · past deduction (<i>must have / might have / can't have</i>) · <i>used to / be used to / get used to</i></td></tr>
+      <tr><td><b>M3</b></td><td>advanced &amp; impersonal passive (<i>It is widely believed that…, is said to…</i>) · relative &amp; participle clauses (<i>Having considered…</i>) · reporting verbs + pattern (<i>suggest doing, insist on, warn someone not to</i>)</td></tr>
+      <tr><td><b>M4</b></td><td>contrast / cause / result linkers with the right grammar · <i>it</i>- / <i>what</i>-clefts · negative inversion · signposting and concede-and-counter phrases</td></tr>
+    </tbody>
+  </table>
+  <div class="note"><div class="t">How the results feed Progress Test 1 (C13)</div>
+    <p>Copy each learner's total and module ticks to the class register. In C13, send each learner to the <b>catch-up station</b> for any module with no tick, or for their lowest criterion: <b>no M1</b> → narrative &amp; hypotheticals station · <b>no M2</b> → verb patterns &amp; modality station · <b>no M3</b> → passive, clauses &amp; reporting station · <b>no M4</b> → linkers &amp; emphasis station (Sets B and D of this pack) · <b>criterion 4 ≤ 1</b> → discussion-moves station (Workbook 4.3 Ex 1 and 5 + a 3-minute concede-and-counter round) · <b>criterion 5 ≤ 1</b> → shadowing station (the 🔊 model sentences in online lessons 4.1–4.3) or the Review Race (Set I). Learners you didn't hear in C12 present to you at a station in C13.</p>
+  </div>
+
+  <h3 style="font-size:1rem;margin:16px 0 4px">Class grid</h3>
+  <table class="chk grid">
+    <thead><tr><th>Name</th><th>1 Task</th><th>2 Range</th><th>3 Accur.</th><th>4 Inter.</th><th>5 Fluency</th><th>/15</th><th>M1</th><th>M2</th><th>M3</th><th>M4</th><th>C13 station</th><th>Notes (a sentence I heard)</th></tr></thead>
+    <tbody>
+      <tr><td></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td></td><td></td></tr>
+      <tr><td></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td></td><td></td></tr>
+      <tr><td></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td></td><td></td></tr>
+      <tr><td></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td></td><td></td></tr>
+      <tr><td></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td></td><td></td></tr>
+      <tr><td></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td></td><td></td></tr>
+      <tr><td></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td></td><td></td></tr>
+      <tr><td></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td></td><td></td></tr>
+      <tr><td></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td></td><td></td></tr>
+      <tr><td></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td></td><td></td></tr>
+      <tr><td></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td></td><td></td></tr>
+      <tr><td></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td></td><td></td></tr>
+      <tr><td></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td></td><td></td></tr>
+      <tr><td></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td></td><td></td></tr>
+      <tr><td></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td></td><td></td></tr>
+      <tr><td></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td></td><td></td></tr>
+    </tbody>
+  </table>
+
+  <h3 style="font-size:1rem;margin:16px 0 4px">Learner score slips <span style="font-weight:500;color:var(--ink-3)">(cut; give one to each learner in C13)</span></h3>
+  <div class="slips">
+    <div class="slip"><p><b>My B2 Speaking Check (C12)</b> · Name: ______________</p><p>Task ☐ · Range ☐ · Accuracy ☐ · Interaction ☐ · Fluency ☐ &nbsp; Total: ____ /15</p><p>Grammar I used: M1 ☐ · M2 ☐ · M3 ☐ · M4 ☐</p><p>⭐ Well done: ___________________________</p><p>➡️ My next step: ________________________</p></div>
+    <div class="slip"><p><b>My B2 Speaking Check (C12)</b> · Name: ______________</p><p>Task ☐ · Range ☐ · Accuracy ☐ · Interaction ☐ · Fluency ☐ &nbsp; Total: ____ /15</p><p>Grammar I used: M1 ☐ · M2 ☐ · M3 ☐ · M4 ☐</p><p>⭐ Well done: ___________________________</p><p>➡️ My next step: ________________________</p></div>
+    <div class="slip"><p><b>My B2 Speaking Check (C12)</b> · Name: ______________</p><p>Task ☐ · Range ☐ · Accuracy ☐ · Interaction ☐ · Fluency ☐ &nbsp; Total: ____ /15</p><p>Grammar I used: M1 ☐ · M2 ☐ · M3 ☐ · M4 ☐</p><p>⭐ Well done: ___________________________</p><p>➡️ My next step: ________________________</p></div>
+    <div class="slip"><p><b>My B2 Speaking Check (C12)</b> · Name: ______________</p><p>Task ☐ · Range ☐ · Accuracy ☐ · Interaction ☐ · Fluency ☐ &nbsp; Total: ____ /15</p><p>Grammar I used: M1 ☐ · M2 ☐ · M3 ☐ · M4 ☐</p><p>⭐ Well done: ___________________________</p><p>➡️ My next step: ________________________</p></div>
+    <div class="slip"><p><b>My B2 Speaking Check (C12)</b> · Name: ______________</p><p>Task ☐ · Range ☐ · Accuracy ☐ · Interaction ☐ · Fluency ☐ &nbsp; Total: ____ /15</p><p>Grammar I used: M1 ☐ · M2 ☐ · M3 ☐ · M4 ☐</p><p>⭐ Well done: ___________________________</p><p>➡️ My next step: ________________________</p></div>
+    <div class="slip"><p><b>My B2 Speaking Check (C12)</b> · Name: ______________</p><p>Task ☐ · Range ☐ · Accuracy ☐ · Interaction ☐ · Fluency ☐ &nbsp; Total: ____ /15</p><p>Grammar I used: M1 ☐ · M2 ☐ · M3 ☐ · M4 ☐</p><p>⭐ Well done: ___________________________</p><p>➡️ My next step: ________________________</p></div>
+  </div>
+  <p style="font-size:.86rem;color:var(--ink-2)">Write the "Well done" in the learner's own words from your notes ("You said: <i>Granted, but we shouldn't forget the cost of overtime.</i> A perfect concede-and-counter!"). Keep the "next step" to one small, doable thing ("After <i>despite</i>, use a noun: <i>despite the cost</i>." or "Try one <i>what</i>-cleft for your key point.").</p>
+
+  <!-- ===================== I ===================== -->
+  <div class="sec pb"><h2>I · Game — Module 1–4 Review Race (C12 warmer · C13 station)</h2><span class="rule"></span></div>
+  <div class="note lab"><div class="t">Rules</div>
+    <ol class="steps lab">
+      <li>Groups of 3–4, one board, one die, a counter for each player (a coin, an eraser). Start on square 1.</li>
+      <li>Roll and move. Follow the numbers: 1–6 left to right, 7–12 right to left, and so on.</li>
+      <li>Answer the square in <b>full sentences</b>. The group says "Good!" or helps you fix it. If the group helps, stay on the square this time.</li>
+      <li>Personal squares: answer about you, a persona card, or invent. Anyone can say "Pass!" and move back 1.</li>
+      <li>First to FINISH, or the player nearest to it when the teacher stops the game, wins.</li>
+    </ol>
+  </div>
+  <div class="race">
+    <div class="sq end"><span class="num">1</span>START 🚦</div>
+    <div class="sq"><span class="num">2</span>Something that had already happened when you arrived somewhere this week (past perfect)</div>
+    <div class="sq"><span class="num">3</span>What were you doing at 8 p.m. yesterday, and what happened next?</div>
+    <div class="sq"><span class="num">4</span>If you had been born 100 years ago, what would your life have been like?</div>
+    <div class="sq"><span class="num">5</span>⬅️ Go back 1</div>
+    <div class="sq"><span class="num">6</span>Finish two ways: "I wish I had…" / "If only I hadn't…"</div>
+    <div class="sq"><span class="num">12</span>"It's time we…" Finish it about this class.</div>
+    <div class="sq"><span class="num">11</span>➡️ Go forward 2</div>
+    <div class="sq"><span class="num">10</span>Something you can't stand doing and something you'd love to try</div>
+    <div class="sq"><span class="num">9</span>"The office lights were on all night." Make 2 deductions: must have / might have / can't have</div>
+    <div class="sq"><span class="num">8</span>Something you used to do but don't anymore</div>
+    <div class="sq"><span class="num">7</span>Something that was hard to get used to (a job, a home, a class)</div>
+    <div class="sq"><span class="num">13</span>Say one thing about this town with "It is said that…" or "…is believed to…"</div>
+    <div class="sq"><span class="num">14</span>Define a job with a relative clause: "a person who…"</div>
+    <div class="sq"><span class="num">15</span>Join with a participle clause: "I finished work. I went home."</div>
+    <div class="sq"><span class="num">16</span>Report it: "Why don't we meet on Friday?" he said. → He suggested…</div>
+    <div class="sq"><span class="num">17</span>⬅️ Go back 3</div>
+    <div class="sq"><span class="num">18</span>Something you've had done recently (a haircut, a repair…)</div>
+    <div class="sq"><span class="num">24</span>Join it with <b>despite</b>, then with <b>although</b>: "It was expensive. We bought it."</div>
+    <div class="sq"><span class="num">23</span>Describe a very busy day with so… that or such… that</div>
+    <div class="sq"><span class="num">22</span>"So you cooked dinner last night?" Correct it: "Actually, it was… who…"</div>
+    <div class="sq"><span class="num">21</span>Finish with emphasis: "What I really need right now is…"</div>
+    <div class="sq"><span class="num">20</span>One dramatic sentence: "Never have I…" or "Not only…"</div>
+    <div class="sq"><span class="num">19</span>➡️ Go forward 1</div>
+    <div class="sq"><span class="num">25</span>Concede, then counter: "Summer is the best season."</div>
+    <div class="sq"><span class="num">26</span>Open a talk on any topic: topic + preview (3 points)</div>
+    <div class="sq"><span class="num">27</span>Hedge it: "Cars are the biggest problem in cities."</div>
+    <div class="sq"><span class="num">28</span>Pets in apartments: claim + reason + example</div>
+    <div class="sq"><span class="num">29</span>A 30-second story with a past perfect and a regret</div>
+    <div class="sq end"><span class="num">30</span>FINISH 🏁</div>
+  </div>
+  <p style="font-size:.86rem;color:var(--ink-2)">Teacher: while groups play, note which squares cause trouble. Squares 2–4, 6, 12, 29 = Module 1 · 7–10 = Module 2 · 13–16, 18 = Module 3 · 20–24 = Module 4 linkers &amp; emphasis · 25–28 = Module 4 presenting &amp; discussion (4.3). Early evidence for the C13 stations.</p>
+
+  <!-- ===================== J ===================== -->
+  <div class="sec pb"><h2>J · Listening &amp; Dictation Scripts (teacher reads aloud)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">Read at a natural speed, with pauses at the punctuation. Read each script twice: once for the main idea, once for detail. At B2, keep the natural features learners meet outside class: contractions, weak forms (<i>that</i> /ðət/, <i>was</i> /wəz/) and the small pause after a sentence connector. For dialogues, change your voice or ask a confident learner to read one part. The 🔊 buttons in the online lessons give learners extra listening at home.</p>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">4.1-A · Two speakers <span style="font-weight:500;color:var(--ink-3)">(C10 lead-in: which one is easier to follow?)</span></h3>
+  <div class="script"><b>Speaker 1:</b> Remote work is convenient. It can feel lonely. Companies save money. Some people get less done. · <b>Speaker 2:</b> Although remote work is convenient, it can feel lonely. Companies save money because they need less office space; however, some people get less done as a result.</div>
+  <p style="font-size:.86rem;color:var(--ink-2)">Ask: "Same facts?" (Yes.) "Which speaker told you in advance what kind of idea was coming?" (Speaker 2: <i>although</i> = contrast, <i>because</i> = reason, <i>however</i> = contrast, <i>as a result</i> = result.)</p>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">4.1-B · City or countryside? <span style="font-weight:500;color:var(--ink-3)">(Workbook 4.1, Ex 1: write the ten linkers)</span></h3>
+  <div class="script">Today I'd like to weigh up life in the city and life in the countryside. A lot of people love the city <b>because</b> there's always something to do, and <b>since</b> public transportation is everywhere, you don't really need a car. <b>However</b>, city life has a price. Rents are <b>so</b> high that many young people share an apartment well into their thirties. In the countryside, life is slower and cheaper, <b>whereas</b> in the city everything moves fast. <b>Despite</b> the lower cost of living, people often leave rural areas <b>due to</b> the lack of jobs. My cousin moved back to her village last year. It was <b>such</b> a peaceful place that she started sleeping better within a week. <b>Even though</b> she earns less, she says she's happier. <b>Therefore</b>, I'd say the right choice depends on the stage of life you're in.</div>
+  <p style="font-size:.86rem;color:var(--ink-2)">Answers: 1 because · 2 since · 3 However · 4 so · 5 whereas · 6 Despite · 7 due to · 8 such · 9 Even though · 10 Therefore. Then ask: "What came after <i>Despite</i>? A clause or a noun?" (a noun: <i>the lower cost of living</i>).</p>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">4.1-C · Dictation <span style="font-weight:500;color:var(--ink-3)">(C10 end or C11 warmer; read each sentence 3 times)</span></h3>
+  <div class="script">1. Despite the heavy rain, the outdoor concert went ahead as planned. · 2. The flight was delayed because of a technical problem. · 3. It was such a long meeting that nobody remembered the first point. · 4. Sales fell sharply last quarter; therefore, the launch was postponed.</div>
+  <p style="font-size:.86rem;color:var(--ink-2)">Check punctuation too: the comma after <i>rain</i> in 1, and the semicolon + comma in 4. Then learners rewrite 1 with <i>Although</i> and 2 with <i>because</i> + clause.</p>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">4.2-A · The team lunch <span style="font-weight:500;color:var(--ink-3)">(Workbook 4.2, Ex 1: answer the questions)</span></h3>
+  <div class="script"><b>Ben:</b> So you're the one who organized the team lunch? It was great. · <b>Mia:</b> Thanks, but actually, it was Tomás who organized it. I only booked the table. · <b>Ben:</b> Oh! Well, you booked it on Friday, right? Very last minute. · <b>Mia:</b> No, it was on Monday that I booked it. It was the confirmation that came on Friday. · <b>Ben:</b> I see. So what did you think of the restaurant? · <b>Mia:</b> Honestly? What impressed me most was the service. Never have I seen waiters so calm with twenty people. · <b>Ben:</b> And the food? · <b>Mia:</b> The food was good, but the thing that surprised me was the price. Not only was it cheaper than we expected, but they also gave us free dessert. · <b>Ben:</b> Wow. · <b>Mia:</b> I know. No sooner had I sat down than I wanted to book it again!</div>
+  <p style="font-size:.86rem;color:var(--ink-2)">Answers: 1 Tomás · 2 on Monday · 3 the service · 4 the price · 5 Never have I seen… · Not only was it… · No sooner had I sat down than…. Follow-up: "Which two sentences correct Ben?" (the two <i>it</i>-clefts) "Where did your voice go up?" (on <i>Tomás</i> and <i>Monday</i>).</p>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">4.2-B · Dictation <span style="font-weight:500;color:var(--ink-3)">(C11 end or C12 warmer; read each sentence 3 times)</span></h3>
+  <div class="script">1. What I really need right now is a proper night's sleep. · 2. It was your support that got me through the hardest weeks. · 3. Not only did she apologize, but she also offered to fix the problem. · 4. Rarely does he complain about anything.</div>
+  <p style="font-size:.86rem;color:var(--ink-2)">Then ask: "Which ones are clefts? (1, 2) Which ones use question word order? (3, 4) Say 4 as a plain sentence." (He rarely complains about anything.)</p>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">4.3-A · Should we try a four-day week? <span style="font-weight:500;color:var(--ink-3)">(Workbook 4.3, Ex 2: signposts, structures, the objection)</span></h3>
+  <div class="script"><b>Presenter:</b> Good morning, everyone. Today I'd like to talk about the four-day work week, and I'd like to make the case that it's worth trying, at least as an experiment. I'll cover three points: the benefits for staff, the benefits for the company, and one common objection. Let me start with staff. It is widely believed that longer hours mean more work gets done, but the evidence suggests otherwise. Tired people make more mistakes. What most people need is not more time at their desks but more time to recover. Moving on to the company. One key advantage is that people are less likely to leave. Having spoken to several managers who tried it, I'm convinced it saves money on hiring. Finally, the objection. It could be argued that customers will suffer if the office is closed on Fridays. That's a fair point. However, staff can take turns, so the phones are always answered. To sum up, if we had tried this a year ago, we might already be seeing the results. Not only would it make people happier, but it would also make us more efficient. Thank you. I'm happy to take questions.<br><br><b>Dana:</b> I take your point about tired people, but surely some jobs just can't be done in four days? Nurses, for example? · <b>Presenter:</b> You're right to an extent. Hospitals would need a different model. Even so, I'd argue that most office jobs could make it work. · <b>Leo:</b> What worries me is the cost. Wouldn't the company have to hire more people? · <b>Presenter:</b> Granted, but we shouldn't forget that we're already paying for overtime. The bottom line is, a rested team costs less.</div>
+  <p style="font-size:.86rem;color:var(--ink-2)">Signposts in order: I'd like to talk about · I'll cover three points · Let me start with · Moving on to · Finally · To sum up. Structures heard: impersonal passive (<i>It is widely believed · It could be argued</i>), <i>what</i>-cleft, participle clause (<i>Having spoken…</i>), mixed conditional (<i>if we had tried… we might already be seeing</i>), inversion (<i>Not only would it…</i>). Not heard: <i>used to</i>, <i>must have</i>. Concede-and-counter moves: <i>That's a fair point. However… · You're right to an extent… Even so… · Granted, but we shouldn't forget…</i></p>
+
+  <div class="foot">
+    <div class="who"><b>Ray de la Paz</b><span class="bio">© 2026 Ray de la Paz · Confident English (B2 Upper-Intermediate)</span></div>
+    <div class="ver">Module 4 · Classroom Materials · v1.0</div>
+  </div>
+
+</div>
+</body>
+</html>

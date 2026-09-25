@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slides — Module 6</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root{--bg:#0b1220;--ink:#edf2fb;--ink2:#a8b6cf;--accent:#7fb2ff;--accent2:#2563eb;--lab:#34d3bd;--warn:#fbbf24;--line:#233252;--code:#101a2e;color-scheme:dark}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;overflow:hidden}
+  .deck{height:100%;width:100%;position:relative}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:6vh 8vw;gap:20px}
+  .slide.on{display:flex}
+  h1,h2,h3{font-family:"Archivo",sans-serif;line-height:1.1;text-wrap:balance}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  .slide h1{font-size:clamp(2rem,6vw,4rem);font-weight:800;letter-spacing:-.02em}
+  .slide h2{font-size:clamp(1.5rem,4.2vw,2.8rem);font-weight:800;letter-spacing:-.01em}
+  .slide p.lead{font-size:clamp(1.05rem,2.4vw,1.5rem);color:var(--ink2);max-width:26ch}
+  ul{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:6px}
+  ul li{position:relative;padding-left:34px;font-size:clamp(1.05rem,2.3vw,1.6rem)}
+  ul li::before{content:"";position:absolute;left:0;top:.55em;width:12px;height:12px;border-radius:3px;background:var(--accent);transform:rotate(45deg)}
+  ul.lab li::before{background:var(--lab)}
+  code.k{font-family:"JetBrains Mono",monospace;color:#cfe0ff;font-size:.92em}
+  pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:22px 26px;font-family:"JetBrains Mono",monospace;font-size:clamp(.85rem,1.9vw,1.3rem);line-height:1.55;overflow:auto;max-width:100%}
+  pre .k{color:#7dd3fc} pre .s{color:#86efac} pre .c{color:#7183a3;font-style:italic}
+  .tag{display:inline-flex;align-items:center;gap:10px;font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);color:var(--ink2)}
+  .tag .pill{background:var(--accent2);color:#fff;font-weight:700;border-radius:999px;padding:3px 12px;letter-spacing:.06em}
+  .tag .pill.lab{background:var(--lab);color:#062b26} .tag .pill.warn{background:var(--warn);color:#3a2a05}
+  .section{background:linear-gradient(135deg,#132a52,#0b1220)}
+  .section .big{font-size:clamp(3rem,12vw,8rem);font-family:"Archivo";font-weight:800;color:var(--accent2);line-height:.9}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+  @media (max-width:760px){.two{grid-template-columns:1fr}}
+  .bar{position:fixed;left:0;top:0;height:4px;background:var(--accent2);width:0;transition:width .25s;z-index:5}
+  .count{position:fixed;right:16px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink2);z-index:5}
+  .nav{position:fixed;inset:auto 0 0 0;display:flex;justify-content:space-between;pointer-events:none;z-index:4}
+  .nav button{pointer-events:auto;background:transparent;border:none;color:transparent;width:22vw;height:100vh;cursor:pointer}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+  /* ESL extras (picture vocab, grammar tables, dialogue, clocks) */
+  .pics{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,1.6vw,18px)}
+  .pics.six{grid-template-columns:repeat(6,1fr)}
+  .pic{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center}
+  .pic img{width:100%;max-width:150px;aspect-ratio:1;object-fit:cover;border-radius:10px;background:#FFF3E0;display:block;margin:0 auto}
+  .pic .emo{font-size:clamp(2.6rem,7vw,5rem);line-height:1;aspect-ratio:1;max-width:150px;margin:0 auto;display:flex;align-items:center;justify-content:center}
+  .pic .w{font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(.9rem,2vw,1.35rem);margin-top:6px}
+  @media (max-width:760px){.pics,.pics.six{grid-template-columns:repeat(3,1fr)}}
+  table.g{border-collapse:collapse;font-size:clamp(.95rem,2.1vw,1.45rem);width:100%;max-width:1000px}
+  table.g th,table.g td{border:1px solid var(--line);padding:10px 16px;text-align:left}
+  table.g th{background:var(--code);color:var(--accent);font-family:"JetBrains Mono",monospace;font-size:.8em;letter-spacing:.04em}
+  table.g b{color:#ffd166}
+  .dlg{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:18px 24px;display:flex;flex-direction:column;gap:8px;font-size:clamp(1rem,2.2vw,1.45rem);max-width:1000px}
+  .dlg .sp{display:inline-block;min-width:3.6em;font-weight:700;color:var(--accent)}
+  .dlg .b .sp{color:#c4a1ff}
+  .ccq{font-size:clamp(1rem,2.2vw,1.45rem);border:1px dashed var(--line);border-radius:12px;padding:12px 18px;background:var(--code)}
+  .ccq i{color:var(--ink2)}
+  .clocks{display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,34px);align-items:flex-start}
+  .clocks figure{text-align:center}
+  .clocks svg{width:clamp(96px,14vw,170px);height:auto}
+  .clocks figcaption{font-size:clamp(.95rem,2vw,1.3rem);margin-top:6px}
+  .clocks figcaption small{display:block;color:var(--ink2);font-size:.8em}
+  .snd{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .snd div{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:clamp(1rem,2.2vw,1.5rem)}
+  .snd div b{display:block;font-family:"Archivo";font-size:1.5em;color:var(--accent)}
+  .snd div small{color:var(--ink2)}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="deck" id="deck">
+
+  <!-- 1 -->
+  <section class="slide on section">
+    <div class="eyebrow">Confident English (B2) · Instructor Kit</div>
+    <h1>Module 6<br>Words &amp; Questions</h1>
+    <p class="lead">The right form. The right size. The right shape.</p>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide">
+    <div class="eyebrow">Classes C17–C19 · the map</div>
+    <h2>Precision in three steps</h2>
+    <ul>
+      <li><b>6.1</b> Word families: <i>decide → decision → decisive → decisively → indecisive</i></li>
+      <li><b>6.2</b> How big is the difference? <i>far cheaper · slightly heavier · nowhere near as good · the more…, the better</i></li>
+      <li><b>6.3</b> Asking skillfully: <i>Could you tell me where the station is? · Isn't it beautiful? · Who broke it?</i></li>
+    </ul>
+    <div class="tag"><span class="pill">NOTE</span> Your real life, a new identity card, or something invented: all are OK. You can say "Pass."</div>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide">
+    <div class="eyebrow">6.1 · Word families · one word becomes four</div>
+    <h2><b style="color:var(--accent)">un</b> + success + <b style="color:var(--accent)">ful</b> + <b style="color:var(--accent)">ly</b> = unsuccessfully</h2>
+    <table class="g">
+      <tr><th>Base</th><th>Noun</th><th>Verb</th><th>Adjective</th><th>Adverb</th></tr>
+      <tr><td>decide</td><td><b>decision</b></td><td>decide</td><td><b>decisive</b></td><td><b>decisively</b></td></tr>
+      <tr><td>success</td><td>success</td><td><b>succeed</b></td><td><b>successful</b></td><td><b>successfully</b></td></tr>
+      <tr><td>strength</td><td>strength</td><td><b>strengthen</b></td><td><b>strong</b></td><td><b>strongly</b></td></tr>
+      <tr><td>create</td><td><b>creation · creativity</b></td><td>create</td><td><b>creative</b></td><td><b>creatively</b></td></tr>
+    </table>
+    <div class="ccq">"She made a quick decision. She's decisive. She acted decisively." Same idea? <i>(Yes.)</i> What changed? <i>(Only the job: noun, adjective, adverb.)</i></div>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide">
+    <div class="eyebrow">6.1 · Suffixes · the ending tells you the job</div>
+    <h2>What job is the word doing?</h2>
+    <table class="g">
+      <tr><th>Noun</th><td>-tion · -ment · -ness · -ity · -er / -or</td><td>education · agreement · kindness · ability</td></tr>
+      <tr><th>Adjective</th><td>-ful · -less · -able · -ive · -ous · -al</td><td>careful · careless · reliable · creative</td></tr>
+      <tr><th>Adverb</th><td>-ly</td><td>quickly · carefully (two l's)</td></tr>
+      <tr><th>Verb</th><td>-ize · -en · -ify</td><td>modernize · strengthen · simplify</td></tr>
+    </table>
+    <div class="snd">
+      <div><b>PHO</b>tograph<small>base</small></div>
+      <div>pho<b>TO</b>graphy<small>-y after -graph</small></div>
+      <div>photo<b>GRAPH</b>ic<small>-ic pulls the stress</small></div>
+    </div>
+    <div class="tag"><span class="pill lab">SAY IT</span> -tion · -ic · -ity → stress the syllable just before · eCOnomy → ecoNOmic · creAtive → creaTIvity</div>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide">
+    <div class="eyebrow">6.1 · Prefixes · meaning, not job</div>
+    <h2>Flip it or shade it</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>Negative</th><th>Example</th></tr>
+        <tr><td>un- · in-</td><td>unfair · incorrect</td></tr>
+        <tr><td><b>im-</b> (m, p)</td><td>impossible · impatient</td></tr>
+        <tr><td><b>il-</b> (l)</td><td>illegal · illogical</td></tr>
+        <tr><td><b>ir-</b> (r)</td><td>irregular · irresponsible</td></tr>
+        <tr><td>dis- · non-</td><td>dishonest · non-smoker</td></tr>
+      </table>
+      <table class="g">
+        <tr><th>Other</th><th>Example</th></tr>
+        <tr><td>re- again</td><td>rewrite · rebuild</td></tr>
+        <tr><td>over- too much</td><td>overcook · overwork</td></tr>
+        <tr><td>under- too little</td><td>undercooked · underpaid</td></tr>
+        <tr><td>mis- wrongly</td><td>misunderstand · misspell</td></tr>
+        <tr><td>pre- before</td><td>preview · prehistoric</td></tr>
+      </table>
+    </div>
+    <div class="tag"><span class="pill warn">WATCH</span> invaluable = VERY valuable! · flammable = inflammable · unpossible ❌ · beautiless ❌</div>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide">
+    <div class="eyebrow">6.1 · Pairs, then teams · 11 + 11 min</div>
+    <h2>🧩 Word Family Grid · 🏁 Prefix/Suffix Race</h2>
+    <div class="two">
+      <ul class="lab">
+        <li><b>Grid:</b> ask and spell. "What's the adjective from <i>rely</i>?" "<i>Reliable</i>: R-E-L-I…"</li>
+        <li>Agree on the <b>negative</b> together</li>
+        <li><b>Race 1</b> Flip it · <b>2</b> Build it (real words only!) · <b>3</b> Fit it</li>
+      </ul>
+      <div class="ccq">Show your card? <i>(No.)</i><br>After you say the word…? <i>(Spell it.)</i><br>Invented words in the Race? <i>(Minus one!)</i><br>Round 3: what do you write? <i>(The form that fits.)</i></div>
+    </div>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide">
+    <div class="eyebrow">6.1 · Choose the form · then tell a story · 12 min</div>
+    <h2>What job does the slot need?</h2>
+    <table class="g">
+      <tr><td>It was a huge ___ . <i>(SUCCESS)</i></td><td>after <i>a huge</i> → noun</td><td><b>success</b></td></tr>
+      <tr><td>It was a ___ launch.</td><td>before a noun → adjective</td><td><b>successful</b></td></tr>
+      <tr><td>They finished it ___ .</td><td>how? → adverb</td><td><b>successfully</b></td></tr>
+      <tr><td>The first try was ___ .</td><td>it failed → negative</td><td><b>unsuccessful</b></td></tr>
+    </table>
+    <div class="ccq">🗣️ <b>Comeback Story:</b> something went wrong, then went right. Six forms or more. Listeners mark the bingo. "Bingo" <i>after</i> the story! Real, a card, or imagined.</div>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide">
+    <div class="eyebrow">6.2 · How big is the difference?</div>
+    <h2>Not just "cheaper": <i>how much</i> cheaper?</h2>
+    <table class="g">
+      <tr><th>Big</th><td><b>far · much · a lot · considerably · significantly</b> + comparative</td><td>far more powerful</td></tr>
+      <tr><th>Small</th><td><b>slightly · a bit · a little · marginally</b> + comparative</td><td>slightly heavier</td></tr>
+      <tr><th>Much less</th><td><b>not nearly as · nowhere near as</b> … as</td><td>nowhere near as good as</td></tr>
+      <tr><th>Almost</th><td><b>not quite as</b> … as</td><td>not quite as fast as</td></tr>
+    </table>
+    <div class="ccq">Nova S <b>$320</b> · Kestrel 8 <b>$640</b>. "Much more expensive?" <i>(Yes: twice as expensive.)</i> Battery 48 h vs 46 h: "far better"? <i>(No, slightly.)</i></div>
+    <div class="tag"><span class="pill warn">WATCH</span> very cheaper ❌ → <b>much</b> cheaper ✔ · more better ❌ · very expensive ✔ (no comparative)</div>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide">
+    <div class="eyebrow">6.2 · as… as · multiples · than or as?</div>
+    <h2>Equal, less, twice as…</h2>
+    <table class="g">
+      <tr><td>She's <b>as</b> tall <b>as</b> her brother.</td><td>equal</td></tr>
+      <tr><td>The sequel isn't <b>as</b> exciting <b>as</b> the original.</td><td>less</td></tr>
+      <tr><td>The Kestrel is <b>twice as</b> expensive <b>as</b> the Nova.</td><td>× 2</td></tr>
+      <tr><td>Rent in Riverton is <b>almost twice as</b> high <b>as</b> in Millbrook.</td><td>≈ × 2</td></tr>
+      <tr><td>The trip took <b>half as</b> long <b>as</b> we expected.</td><td>× ½</td></tr>
+      <tr><td>Your phone is <b>the same as</b> mine. · similar <b>to</b> · different <b>from</b></td><td>same</td></tr>
+    </table>
+    <div class="tag"><span class="pill lab">RULE</span> -er / more / less → <b>than</b> · as / the same → <b>as</b> · weak: as /əz/ · than /ðən/</div>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide">
+    <div class="eyebrow">6.2 · Two changes together · trends</div>
+    <h2>The more you practice, the better you get</h2>
+    <table class="g">
+      <tr><th>The + comparative… ↗</th><th>the + comparative ↘</th></tr>
+      <tr><td><b>The</b> earlier we leave,</td><td><b>the</b> less traffic we'll hit.</td></tr>
+      <tr><td><b>The</b> bigger the car,</td><td><b>the</b> more gas it uses.</td></tr>
+      <tr><td><b>The</b> sooner,</td><td><b>the</b> better!</td></tr>
+    </table>
+    <div class="ccq">Trends: Her English is getting <b>better and better</b>. · Rent is getting <b>more and more</b> expensive.<br>🔗 <b>Consequence Chain:</b> "The more you practice, the better you get." → "The better you get, the more…"</div>
+    <div class="tag"><span class="pill warn">WATCH</span> More you try, better it gets ❌ — two "the"s!</div>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide">
+    <div class="eyebrow">6.2 · Model · weighing two options</div>
+    <h2>"The highway or the coast road?"</h2>
+    <div class="dlg">
+      <p><span class="sp">A:</span> Which route do you recommend?</p>
+      <p class="b"><span class="sp">B:</span> The highway is <b>far quicker</b>, but it's <b>nowhere near as pretty</b>. The coast road is <b>twice as long</b>, though.</p>
+      <p><span class="sp">A:</span> Hmm. <b>The earlier</b> we leave, <b>the less</b> traffic we'll hit, right?</p>
+      <p class="b"><span class="sp">B:</span> Exactly. And it gets <b>more and more beautiful</b> the farther south you go. It's <b>slightly slower</b>, but worth it.</p>
+      <p><span class="sp">A:</span> OK. <b>The earlier we set off, the better!</b></p>
+    </div>
+  </section>
+
+  <!-- 12 -->
+  <section class="slide">
+    <div class="eyebrow">6.2 · Pairs · 18 min · don't show your sheet!</div>
+    <h2>⚖️ Compare &amp; Recommend</h2>
+    <div class="pics">
+      <div class="pic"><img src="../assets/vocab/mobile-phone.jpg" alt=""><div class="w">Nova S vs Kestrel 8</div></div>
+      <div class="pic"><img src="../assets/vocab/driver.jpg" alt=""><div class="w">delivery driver</div></div>
+      <div class="pic"><img src="../assets/vocab/box.jpg" alt=""><div class="w">warehouse lead</div></div>
+      <div class="pic"><img src="../assets/vocab/bus.jpg" alt=""><div class="w">Riverton vs Millbrook</div></div>
+    </div>
+    <div class="ccq">Show your sheet? <i>(No, tell your partner.)</i> · How many structures? <i>(Six: tick them.)</i> · The client card? <i>(Who we recommend for.)</i> · Last words? <i>("So overall, I'd recommend… because…")</i> · Our own salaries? <i>(No, only the card.)</i></div>
+  </section>
+
+  <!-- 13 -->
+  <section class="slide">
+    <div class="eyebrow">6.3 · Direct → indirect · the sandwich</div>
+    <h2>Could you tell me where the station <i>is</i>?</h2>
+    <table class="g">
+      <tr><th>Direct</th><th>Indirect: opener + statement order</th></tr>
+      <tr><td>Where <b>is</b> the station?</td><td>Could you tell me where the station <b>is</b>?</td></tr>
+      <tr><td>What time <b>does</b> it open?</td><td>Do you know what time it open<b>s</b>?</td></tr>
+      <tr><td>How much <b>did</b> it cost?</td><td>Could you tell me how much it cost?</td></tr>
+    </table>
+    <div class="ccq">Openers: Do you know…? · Could you tell me…? · Do you have any idea…? · Would you mind telling me…? · I was wondering if… · I'd like to know…</div>
+    <div class="tag"><span class="pill warn">WATCH</span> …where is the station? ❌ · …what time does it open? ❌</div>
+  </section>
+
+  <!-- 14 -->
+  <section class="slide">
+    <div class="eyebrow">6.3 · Yes/No → if / whether · sound polite</div>
+    <h2>No question word? Add <i>if</i> or <i>whether</i></h2>
+    <table class="g">
+      <tr><td><b>Are</b> they open on Sundays?</td><td>Do you know <b>if</b> they're open on Sundays?</td></tr>
+      <tr><td><b>Does</b> the bus stop here?</td><td>Could you tell me <b>whether</b> the bus stops here?</td></tr>
+      <tr><td><b>Has</b> the train left?</td><td>Do you know <b>if</b> the train has left?</td></tr>
+      <tr><td>…or not</td><td><b>whether or not</b> they're open · <b>if</b> they're open <b>or not</b></td></tr>
+    </table>
+    <div class="tag"><span class="pill lab">SAY IT</span> start high · use your whole voice · Could you tell me where the <b>STA</b>tion is? ↗ · I was wondering if you had any <b>OPE</b>nings ↘↗</div>
+  </section>
+
+  <!-- 15 -->
+  <section class="slide">
+    <div class="eyebrow">6.3 · Negative questions · what they really mean</div>
+    <h2>Isn't it…? · Didn't you…? · Don't you think…?</h2>
+    <table class="g">
+      <tr><td><b>Is</b>n't it beautiful? ↘</td><td>I think so: agree with me!</td></tr>
+      <tr><td><b>Did</b>n't you get my message? ↗</td><td>I'm surprised</td></tr>
+      <tr><td><b>Is</b>n't the office closed on Mondays? ↗</td><td>I think so: let me check</td></tr>
+      <tr><td><b>Don't</b> you think we should wait? ↘</td><td>a suggestion: I want to wait</td></tr>
+    </table>
+    <div class="ccq">"Didn't you get my message?" You got it. <i>(Yes, I did.)</i> You didn't. <i>(No, I didn't.)</i> · Yes = it's true / it happened.</div>
+  </section>
+
+  <!-- 16 -->
+  <section class="slide">
+    <div class="eyebrow">6.3 · Subject questions · the office mystery</div>
+    <h2>Is the question word the doer?</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>Doer → no auxiliary</th></tr>
+        <tr><td><b>Who</b> ate the cake?</td></tr>
+        <tr><td><b>Who</b> left the fridge open?</td></tr>
+        <tr><td><b>What</b> happened at twelve?</td></tr>
+      </table>
+      <table class="g">
+        <tr><th>Not the doer → do / does / did</th></tr>
+        <tr><td>What <b>did</b> the team buy?</td></tr>
+        <tr><td>Who <b>did</b> Ms. Tran call?</td></tr>
+        <tr><td>What <b>did</b> she find?</td></tr>
+      </table>
+    </div>
+    <div class="tag"><span class="pill lab">TEST</span> <b>Leo</b> opened it → Who opened it? · She bought <b>a cake</b> → What did she buy? · Who did break it? ❌</div>
+  </section>
+
+  <!-- 17 -->
+  <section class="slide">
+    <div class="eyebrow">6.3 · Groups of 3 · 22 min · rotate roles</div>
+    <h2>🛎️ Polite Enquiry: front desk &amp; job interview</h2>
+    <div class="two">
+      <ul class="lab">
+        <li><b>A</b> customer / candidate: 6 indirect questions + 1 negative question</li>
+        <li><b>B</b> staff / interviewer: answers + one "Don't you think…?"</li>
+        <li><b>C</b> observer: checklist → one great thing, one thing to fix</li>
+        <li>Interview: the candidate uses an <b>identity card</b></li>
+      </ul>
+      <div class="ccq">How many indirect questions? <i>(Six+.)</i><br><i>does / did</i> after the opener? <i>(Gone!)</i><br>Yes/no question? <i>(if / whether)</i><br>Observer says…? <i>(One great thing, one to fix.)</i><br>Your real life in the interview? <i>(No, the card.)</i></div>
+    </div>
+  </section>
+
+  <!-- 18 -->
+  <section class="slide section">
+    <div class="eyebrow">The right form · the right size · the right shape</div>
+    <h2>Module 6 done 🎉</h2>
+    <ul class="lab">
+      <li>🧩 decide → <b>decision</b> → <b>decisive</b> → <b>decisively</b> → <b>in</b>decisive · pho<b>TO</b>graphy</li>
+      <li>⚖️ <b>far</b> cheaper · <b>slightly</b> heavier · <b>nowhere near as</b> good · <b>twice as</b> big · <b>the more…, the better</b></li>
+      <li>❔ Could you tell me where it <b>is</b>? · <b>Isn't</b> it…? ↘ · <b>Didn't</b> you…? ↗ · <b>Who</b> broke it?</li>
+    </ul>
+    <p class="lead" style="margin-top:10px;max-width:40ch">Homework: online lessons 6.1–6.3 with 🔊. Next: Module 7, <i>put off</i> or <i>postpone</i>? Register.</p>
+  </section>
+
+
+</div>
+
+<div class="count" id="count">1 / 18</div>
+<div class="nav"><button id="prev" aria-label="Previous slide"></button><button id="next" aria-label="Next slide"></button></div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const bar=document.getElementById('bar'), count=document.getElementById('count');
+  let i=0;
+  function show(n){ i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+    bar.style.width=((i+1)/slides.length*100)+'%'; count.textContent=(i+1)+' / '+slides.length; }
+  document.getElementById('next').onclick=()=>show(i+1);
+  document.getElementById('prev').onclick=()=>show(i-1);
+  addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}
+    else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+  });
+  show(0);
+</script>
+</body>
+</html>

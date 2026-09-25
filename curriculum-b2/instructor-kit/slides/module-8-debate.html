@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slides — Module 8</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root{--bg:#0b1220;--ink:#edf2fb;--ink2:#a8b6cf;--accent:#7fb2ff;--accent2:#2563eb;--lab:#34d3bd;--warn:#fbbf24;--line:#233252;--code:#101a2e;color-scheme:dark}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;overflow:hidden}
+  .deck{height:100%;width:100%;position:relative}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:6vh 8vw;gap:20px}
+  .slide.on{display:flex}
+  h1,h2,h3{font-family:"Archivo",sans-serif;line-height:1.1;text-wrap:balance}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  .slide h1{font-size:clamp(2rem,6vw,4rem);font-weight:800;letter-spacing:-.02em}
+  .slide h2{font-size:clamp(1.5rem,4.2vw,2.8rem);font-weight:800;letter-spacing:-.01em}
+  .slide p.lead{font-size:clamp(1.05rem,2.4vw,1.5rem);color:var(--ink2);max-width:26ch}
+  ul{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:6px}
+  ul li{position:relative;padding-left:34px;font-size:clamp(1.05rem,2.3vw,1.6rem)}
+  ul li::before{content:"";position:absolute;left:0;top:.55em;width:12px;height:12px;border-radius:3px;background:var(--accent);transform:rotate(45deg)}
+  ul.lab li::before{background:var(--lab)}
+  code.k{font-family:"JetBrains Mono",monospace;color:#cfe0ff;font-size:.92em}
+  pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:22px 26px;font-family:"JetBrains Mono",monospace;font-size:clamp(.85rem,1.9vw,1.3rem);line-height:1.55;overflow:auto;max-width:100%}
+  pre .k{color:#7dd3fc} pre .s{color:#86efac} pre .c{color:#7183a3;font-style:italic}
+  .tag{display:inline-flex;align-items:center;gap:10px;font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);color:var(--ink2)}
+  .tag .pill{background:var(--accent2);color:#fff;font-weight:700;border-radius:999px;padding:3px 12px;letter-spacing:.06em}
+  .tag .pill.lab{background:var(--lab);color:#062b26} .tag .pill.warn{background:var(--warn);color:#3a2a05}
+  .section{background:linear-gradient(135deg,#132a52,#0b1220)}
+  .section .big{font-size:clamp(3rem,12vw,8rem);font-family:"Archivo";font-weight:800;color:var(--accent2);line-height:.9}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+  @media (max-width:760px){.two{grid-template-columns:1fr}}
+  .bar{position:fixed;left:0;top:0;height:4px;background:var(--accent2);width:0;transition:width .25s;z-index:5}
+  .count{position:fixed;right:16px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink2);z-index:5}
+  .nav{position:fixed;inset:auto 0 0 0;display:flex;justify-content:space-between;pointer-events:none;z-index:4}
+  .nav button{pointer-events:auto;background:transparent;border:none;color:transparent;width:22vw;height:100vh;cursor:pointer}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+  /* ESL extras (picture vocab, grammar tables, dialogue, clocks) */
+  .pics{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,1.6vw,18px)}
+  .pics.six{grid-template-columns:repeat(6,1fr)}
+  .pic{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center}
+  .pic img{width:100%;max-width:150px;aspect-ratio:1;object-fit:cover;border-radius:10px;background:#FFF3E0;display:block;margin:0 auto}
+  .pic .emo{font-size:clamp(2.6rem,7vw,5rem);line-height:1;aspect-ratio:1;max-width:150px;margin:0 auto;display:flex;align-items:center;justify-content:center}
+  .pic .w{font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(.9rem,2vw,1.35rem);margin-top:6px}
+  @media (max-width:760px){.pics,.pics.six{grid-template-columns:repeat(3,1fr)}}
+  table.g{border-collapse:collapse;font-size:clamp(.95rem,2.1vw,1.45rem);width:100%;max-width:1000px}
+  table.g th,table.g td{border:1px solid var(--line);padding:10px 16px;text-align:left}
+  table.g th{background:var(--code);color:var(--accent);font-family:"JetBrains Mono",monospace;font-size:.8em;letter-spacing:.04em}
+  table.g b{color:#ffd166}
+  .dlg{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:18px 24px;display:flex;flex-direction:column;gap:8px;font-size:clamp(1rem,2.2vw,1.45rem);max-width:1000px}
+  .dlg .sp{display:inline-block;min-width:3.6em;font-weight:700;color:var(--accent)}
+  .dlg .b .sp{color:#c4a1ff}
+  .ccq{font-size:clamp(1rem,2.2vw,1.45rem);border:1px dashed var(--line);border-radius:12px;padding:12px 18px;background:var(--code)}
+  .ccq i{color:var(--ink2)}
+  .clocks{display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,34px);align-items:flex-start}
+  .clocks figure{text-align:center}
+  .clocks svg{width:clamp(96px,14vw,170px);height:auto}
+  .clocks figcaption{font-size:clamp(.95rem,2vw,1.3rem);margin-top:6px}
+  .clocks figcaption small{display:block;color:var(--ink2);font-size:.8em}
+  .snd{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .snd div{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:clamp(1rem,2.2vw,1.5rem)}
+  .snd div b{display:block;font-family:"Archivo";font-size:1.5em;color:var(--accent)}
+  .snd div small{color:var(--ink2)}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="deck" id="deck">
+
+  <!-- 1 -->
+  <section class="slide on section">
+    <div class="eyebrow">Confident English (B2) · Instructor Kit</div>
+    <h1>Module 8<br>Fluency &amp; the Final Project</h1>
+    <p class="lead">Hear it. Loosen it. Argue it.</p>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide">
+    <div class="eyebrow">Classes C23–C25 · the map</div>
+    <h2>The last three classes of B2</h2>
+    <ul>
+      <li><b>8.1</b> Hear it: fast, natural English. <i>"I wz gonna callya" = I was going to call you.</i></li>
+      <li><b>8.2</b> Loosen it: <i>about thirty, give or take · pizza or something · a bit expensive</i>, and when to be exact.</li>
+      <li><b>8.3</b> Argue it: a formal debate. <i>Admittedly…, but… · On balance…</i></li>
+      <li><b>C26</b> Final assessment + celebration 🎉</li>
+    </ul>
+    <div class="tag"><span class="pill">NOTE</span> In the debate, your side is drawn from a card. It is not your opinion.</div>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide">
+    <div class="eyebrow">8.1 · Why fast English is hard to catch</div>
+    <h2>Careful vs natural</h2>
+    <table class="g">
+      <tr><th>Careful (dictionary)</th><th>Natural (real speed)</th></tr>
+      <tr><td>What are you going to do?</td><td><b>Whatcha gonna</b> do?</td></tr>
+      <tr><td>I was going to call you.</td><td>I <b>wz gonna</b> call<b>ya</b>.</td></tr>
+      <tr><td>Do you want to grab a coffee?</td><td><b>D'you wanna</b> gra-<b>ba</b> coffee?</td></tr>
+    </table>
+    <div class="ccq">Which words stay clear? <i>(The big words: do, call, grab, coffee.)</i> · Which disappear? <i>(The small ones: are, you, to, was.)</i> · Lazy English? <i>(No! Everyone speaks like this.)</i></div>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide">
+    <div class="eyebrow">8.1 · Disguise 1 · weak forms &amp; the schwa /ə/</div>
+    <h2>Big words clear · small words squeezed</h2>
+    <table class="g">
+      <tr><th>Word</th><th>Strong (US)</th><th>Weak</th><th>You hear…</th></tr>
+      <tr><td>to</td><td>/tu/</td><td><b>/tə/</b></td><td>I want <b>tə</b> go.</td></tr>
+      <tr><td>of</td><td>/ʌv/</td><td><b>/əv/, /ə/</b></td><td>a cup <b>ə</b> tea</td></tr>
+      <tr><td>and</td><td>/ænd/</td><td><b>/ən/, /n/</b></td><td>fish <b>'n'</b> chips</td></tr>
+      <tr><td>for · was · are</td><td>/fɔr/ · /wʌz/ · /ɑr/</td><td><b>/fər/ · /wəz/ · /ər/</b></td><td>It's <b>fər</b> you. She <b>wəz</b> late.</td></tr>
+    </table>
+    <div class="tag"><span class="pill lab">CLAP IT</span> I was <b>GO</b>ing to <b>CALL</b> you <b>LA</b>ter · 3 beats · the small words squeeze in between</div>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide">
+    <div class="eyebrow">8.1 · The famous trap · check the meaning</div>
+    <h2>can /kən/ ≠ CAN'T /kænt/</h2>
+    <div class="two">
+      <div class="ccq"><b>"I kən go."</b><br>Short or long? <i>(Short, quick, unstressed.)</i><br>Yes or no? <i>(Yes, I can.)</i></div>
+      <div class="ccq"><b>"I CAN'T go."</b><br>Short or long? <i>(Long and stressed.)</i><br>Do you hear the t? <i>(Often no!)</i><br>So listen for…? <i>(The vowel and the stress.)</i></div>
+    </div>
+    <div class="tag"><span class="pill lab">SHOW ME</span> 👍 can · 👎 can't</div>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide">
+    <div class="eyebrow">8.1 · Disguise 2 · linking</div>
+    <h2>No gaps between words</h2>
+    <table class="g">
+      <tr><th>Written</th><th>You hear</th></tr>
+      <tr><td>turn‿it‿off</td><td><b>tur-ni-toff</b></td></tr>
+      <tr><td>pick‿it‿up</td><td><b>pi-ki-tup</b></td></tr>
+      <tr><td>an‿apple · this‿evening</td><td><b>a-napple · thi-sevening</b></td></tr>
+      <tr><td>go on · I agree</td><td>go <b>(w)</b>on · I <b>(y)</b>agree</td></tr>
+    </table>
+    <div class="tag"><span class="pill warn">TIP</span> Don't listen for the gaps. Listen for the stressed beats.</div>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide">
+    <div class="eyebrow">8.1 · Disguise 3 · elision &amp; assimilation</div>
+    <h2>Lost sounds · blended sounds</h2>
+    <div class="pics">
+      <div class="pic"><img src="../assets/vocab/sandwich.jpg" alt=""><div class="w">san(d)wich</div></div>
+      <div class="pic"><img src="../assets/vocab/cup.jpg" alt=""><div class="w">a cuppa tea</div></div>
+      <div class="pic"><img src="../assets/vocab/fish.jpg" alt=""><div class="w">fish 'n' chips</div></div>
+      <div class="pic"><img src="../assets/vocab/coffee.jpg" alt=""><div class="w">gra-ba coffee</div></div>
+    </div>
+    <div class="ccq">"nex(t) day" · "mos(t) people" · "las(t) night": do we write "nex day"? <i>(Never!)</i> · "don't you" → "doncha" · "did you" → "didja": new words? <i>(No, two sounds blend.)</i></div>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide">
+    <div class="eyebrow">8.1 · Disguise 4 · reductions</div>
+    <h2>Hear it → write the full form</h2>
+    <table class="g">
+      <tr><td><b>gonna</b> = going to</td><td><b>wanna</b> = want to / want a</td><td><b>gotta</b> = (have) got to</td></tr>
+      <tr><td><b>kinda · sorta</b> = kind of · sort of</td><td><b>d'you · didja</b> = do you · did you</td><td><b>whatcha</b> = what are / do you</td></tr>
+      <tr><td><b>lemme · gimme</b> = let me · give me</td><td><b>dunno</b> = don't know</td><td><b>'em</b> = them</td></tr>
+    </table>
+    <div class="tag"><span class="pill warn">RULE</span> 👂 for listening only · ✏️ never "gonna" in an email · 🇺🇸 flap t: water → "wadder," got a → "godda"</div>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide">
+    <div class="eyebrow">8.1 · Listening lab · 20 min</div>
+    <h2>🎧 Dictogloss: Dana's voicemail</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>Listen <b>once</b>. Just listen.</li>
+        <li>Listen again: write the <b>big words</b> only</li>
+        <li>Pairs: share notes</li>
+        <li>Groups: rebuild it in <b>full, correct</b> English</li>
+        <li>Compare. Label misses: WF · L · E · R</li>
+      </ul>
+      <div class="ccq">First listening: write? <i>(No, just listen.)</i><br>Second: write what? <i>(Only stressed words.)</i><br>"gonna" in your text? <i>(No, full forms.)</i><br>Word for word? <i>(No, same meaning, every small word.)</i><br>Who writes? <i>(The writer. The checker only asks questions.)</i></div>
+    </div>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide">
+    <div class="eyebrow">8.2 · Robot or human?</div>
+    <h2>Being exact can sound cold</h2>
+    <div class="two">
+      <div class="ccq"><b>🤖</b> "The trip takes 34 minutes. I bought 6 items. It cost $12.50. There were 19 people in line."</div>
+      <div class="ccq"><b>🙂</b> "It takes <b>about</b> half an hour. I picked up <b>a few things</b>. It was twelve bucks <b>or so</b>. There were, I don't know, twenty<b>-ish</b> people in line."</div>
+    </div>
+    <ul class="lab">
+      <li>We often don't know the exact number, and that's honest</li>
+      <li>"…and that kind of thing" treats the listener as someone who gets it</li>
+      <li>"It's <b>a bit</b> expensive" is softer, more polite</li>
+    </ul>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide">
+    <div class="eyebrow">8.2 · Job 1 · approximate · where does it go?</div>
+    <h2>≈ about twenty · seven-ish · or so</h2>
+    <table class="g">
+      <tr><th>before the number</th><td><b>about · around · roughly</b> twenty</td><td><b>a couple of</b> minutes</td></tr>
+      <tr><th>after the number</th><td>ten minutes <b>or so</b></td><td>fifty, <b>give or take</b> · thirty<b>-odd</b></td></tr>
+      <tr><th>attached</th><td>seven<b>-ish</b> · forty<b>ish</b></td><td>blu<b>ish</b></td></tr>
+      <tr><th>almost</th><td colspan="2">It's <b>more or less</b> finished. (≠ "so-so")</td></tr>
+    </table>
+    <div class="ccq">"Thirty-odd people." Strange people? <i>(No! A bit more than 30.)</i> · "Seven-ish." Can I come at 8:30? <i>(No, too late.)</i> · "Fifty, give or take." Could it be 47? <i>(Yes.)</i> 90? <i>(No.)</i></div>
+  </section>
+
+  <!-- 12 -->
+  <section class="slide">
+    <div class="eyebrow">8.2 · Jobs 2 &amp; 3 · general nouns · hedges</div>
+    <h2>"I picked up a few things…"</h2>
+    <div class="pics six">
+      <div class="pic"><img src="../assets/vocab/milk.jpg" alt=""><div class="w">milk</div></div>
+      <div class="pic"><img src="../assets/vocab/bread.jpg" alt=""><div class="w">bread</div></div>
+      <div class="pic"><img src="../assets/vocab/egg.jpg" alt=""><div class="w">eggs</div></div>
+      <div class="pic"><img src="../assets/vocab/butter.jpg" alt=""><div class="w">butter</div></div>
+      <div class="pic"><img src="../assets/vocab/fruit.jpg" alt=""><div class="w">fruit</div></div>
+      <div class="pic"><div class="emo">🧺</div><div class="w">…that kind of thing</div></div>
+    </div>
+    <table class="g">
+      <tr><th>🧺 general nouns</th><td><b>stuff</b> (no "stuffs"!) · <b>things</b> · <b>and that kind of thing</b> · <b>and so on</b> · pizza <b>or something</b> · the <b>thingy</b></td></tr>
+      <tr><th>🪶 hedges</th><td><b>sort of · kind of</b> boring · <b>a bit</b> expensive · <b>In a way</b>, you're right. · <b>I guess</b> it's fine.</td></tr>
+    </table>
+  </section>
+
+  <!-- 13 -->
+  <section class="slide">
+    <div class="eyebrow">8.2 · Read the room · check the meaning</div>
+    <h2>Natural ✅ or sloppy ❌?</h2>
+    <table class="g">
+      <tr><th>😊 be vague</th><td>friends · small talk · casual estimates · friendly texts · softening an opinion</td></tr>
+      <tr><th>🎯 be precise</th><td>💊 dosages · 🔥 safety · 💼 deadlines &amp; reports · 📄 rent, contracts, prices</td></tr>
+    </table>
+    <div class="ccq">Medicine label: "Take two-ish tablets or so." OK? <i>(No! Dangerous.)</i> · To your manager: "Done-ish, sevenish." <i>(No: "nearly complete, by 7 p.m.")</i> · To a friend: "There around seven-ish!" <i>(Perfect.)</i> · "I put the stuff with the thingy near the whatsit." <i>(Sloppy: too many placeholders.)</i></div>
+  </section>
+
+  <!-- 14 -->
+  <section class="slide">
+    <div class="eyebrow">8.2 · Pairs · A/B cards · 12 min</div>
+    <h2>🔀 Register Switch</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>Same facts, told <b>twice</b></li>
+        <li>1 · to a <b>friend</b>: relaxed, vague, warm</li>
+        <li>2 · to a <b>manager / doctor / landlord / teacher</b>: clear, exact</li>
+        <li>Your partner plays both listeners and asks one question each</li>
+      </ul>
+      <div class="ccq">How many times do you tell it? <i>(Twice.)</i><br>First listener? <i>(A friend.)</i><br>Second? <i>(The person on the card.)</i><br>Different facts? <i>(No, the same facts, different language.)</i><br>Your own life? <i>(Only if you want: the card is fine.)</i></div>
+    </div>
+  </section>
+
+  <!-- 15 -->
+  <section class="slide">
+    <div class="eyebrow">8.3 · The format · about 17 minutes</div>
+    <h2>🎤 A structured debate</h2>
+    <table class="g">
+      <tr><th>🪑 Chair</th><td>opens · motion · secret vote 1</td><th>⏱ Timekeeper</th><td>1 MIN · 15 SEC · TIME</td></tr>
+      <tr><th>🟦 Proposer</th><td>opening · 2 min</td><th>🟥 Opposer</th><td>opening · 2 min</td></tr>
+      <tr><th>⏸ Huddle</th><td>1 min</td><th>🔁 Rebuttals</th><td>🟦 1½ · 🟥 1½</td></tr>
+      <tr><th>🙋 The floor</th><td>questions · 4 min</td><th>🏁 Summaries</th><td>🟥 1 · then 🟦 1</td></tr>
+      <tr><th>🗳 Vote 2</th><td colspan="3">"Which team made the stronger case?" · the chair closes</td></tr>
+    </table>
+    <div class="tag"><span class="pill warn">RULE</span> Your side = your card, not your opinion · attack ideas, never people</div>
+  </section>
+
+  <!-- 16 -->
+  <section class="slide">
+    <div class="eyebrow">8.3 · Concede → counter</div>
+    <h2>Admittedly… That said…</h2>
+    <div class="dlg">
+      <p><span class="sp">Maya:</span> It is widely accepted that car emissions damage our lungs, and if centers were car-free, air quality would improve dramatically.</p>
+      <p class="b"><span class="sp">Tom:</span> <b>Admittedly</b>, cleaner air is a real benefit. <b>That said</b>, a total ban would hit the people who can least afford it.</p>
+      <p><span class="sp">Maya:</span> <b>That's a fair point</b>, and it's true that access matters. <b>However</b>, most plans don't ban everyone.</p>
+    </div>
+    <table class="g">
+      <tr><th>concede</th><td>Admittedly… · It's true that… · That may be so… · While I accept that…</td></tr>
+      <tr><th>counter</th><td>…but… · However,… · That said,… · …I still believe… · Even so,…</td></tr>
+    </table>
+  </section>
+
+  <!-- 17 -->
+  <section class="slide">
+    <div class="eyebrow">8.3 · The task · two debates</div>
+    <h2>🗳 Debate time</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>Key words only: no full scripts</li>
+        <li>Rebuttal: answer what they <b>actually said</b></li>
+        <li>Floor: one short question to a named team</li>
+        <li>Plant the toolkit: <i>If…were…, …would · It is widely believed · by far · What really matters is · Not only does… · sort of · on balance</i></li>
+      </ul>
+      <div class="ccq">Who chose your side? <i>(Nobody, we drew it.)</i><br>Opening: how long? <i>(2 min.)</i> Rebuttal? <i>(1½.)</i> Summary? <i>(1, no new arguments.)</i><br>Questions each? <i>(One.)</i><br>The vote asks? <i>(Which team argued better.)</i><br>TIME card? <i>(Finish your sentence and stop.)</i></div>
+    </div>
+  </section>
+
+  <!-- 18 -->
+  <section class="slide section">
+    <div class="eyebrow">You can now hear it, loosen it and argue it</div>
+    <h2>Module 8 done. B2 done! 🎉</h2>
+    <ul class="lab">
+      <li>👂 "I wz gonna callya" → <b>I was going to call you</b></li>
+      <li>≈ about thirty, give or take (to a friend) · 🎯 exactly 31 (to the fire marshal)</li>
+      <li>🎤 <b>Admittedly</b>…, but… · <b>On balance</b>, I'd argue…</li>
+    </ul>
+    <p class="lead" style="margin-top:10px;max-width:46ch">Next class (C26): an individual speaking interview (about 8–10 minutes) plus short listening, reading and writing tasks. Then we celebrate! Next course: <i>Advanced English (C1)</i>.</p>
+  </section>
+
+
+</div>
+
+<div class="count" id="count">1 / 18</div>
+<div class="nav"><button id="prev" aria-label="Previous slide"></button><button id="next" aria-label="Next slide"></button></div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const bar=document.getElementById('bar'), count=document.getElementById('count');
+  let i=0;
+  function show(n){ i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+    bar.style.width=((i+1)/slides.length*100)+'%'; count.textContent=(i+1)+' / '+slides.length; }
+  document.getElementById('next').onclick=()=>show(i+1);
+  document.getElementById('prev').onclick=()=>show(i-1);
+  addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}
+    else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+  });
+  show(0);
+</script>
+</body>
+</html>

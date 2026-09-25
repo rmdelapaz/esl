@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slides — Module 5</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root{--bg:#0b1220;--ink:#edf2fb;--ink2:#a8b6cf;--accent:#7fb2ff;--accent2:#2563eb;--lab:#34d3bd;--warn:#fbbf24;--line:#233252;--code:#101a2e;color-scheme:dark}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;overflow:hidden}
+  .deck{height:100%;width:100%;position:relative}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:6vh 8vw;gap:20px}
+  .slide.on{display:flex}
+  h1,h2,h3{font-family:"Archivo",sans-serif;line-height:1.1;text-wrap:balance}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  .slide h1{font-size:clamp(2rem,6vw,4rem);font-weight:800;letter-spacing:-.02em}
+  .slide h2{font-size:clamp(1.5rem,4.2vw,2.8rem);font-weight:800;letter-spacing:-.01em}
+  .slide p.lead{font-size:clamp(1.05rem,2.4vw,1.5rem);color:var(--ink2);max-width:26ch}
+  ul{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:6px}
+  ul li{position:relative;padding-left:34px;font-size:clamp(1.05rem,2.3vw,1.6rem)}
+  ul li::before{content:"";position:absolute;left:0;top:.55em;width:12px;height:12px;border-radius:3px;background:var(--accent);transform:rotate(45deg)}
+  ul.lab li::before{background:var(--lab)}
+  code.k{font-family:"JetBrains Mono",monospace;color:#cfe0ff;font-size:.92em}
+  pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:22px 26px;font-family:"JetBrains Mono",monospace;font-size:clamp(.85rem,1.9vw,1.3rem);line-height:1.55;overflow:auto;max-width:100%}
+  pre .k{color:#7dd3fc} pre .s{color:#86efac} pre .c{color:#7183a3;font-style:italic}
+  .tag{display:inline-flex;align-items:center;gap:10px;font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);color:var(--ink2)}
+  .tag .pill{background:var(--accent2);color:#fff;font-weight:700;border-radius:999px;padding:3px 12px;letter-spacing:.06em}
+  .tag .pill.lab{background:var(--lab);color:#062b26} .tag .pill.warn{background:var(--warn);color:#3a2a05}
+  .section{background:linear-gradient(135deg,#132a52,#0b1220)}
+  .section .big{font-size:clamp(3rem,12vw,8rem);font-family:"Archivo";font-weight:800;color:var(--accent2);line-height:.9}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+  @media (max-width:760px){.two{grid-template-columns:1fr}}
+  .bar{position:fixed;left:0;top:0;height:4px;background:var(--accent2);width:0;transition:width .25s;z-index:5}
+  .count{position:fixed;right:16px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink2);z-index:5}
+  .nav{position:fixed;inset:auto 0 0 0;display:flex;justify-content:space-between;pointer-events:none;z-index:4}
+  .nav button{pointer-events:auto;background:transparent;border:none;color:transparent;width:22vw;height:100vh;cursor:pointer}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+  /* ESL extras (picture vocab, grammar tables, dialogue, clocks) */
+  .pics{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,1.6vw,18px)}
+  .pics.six{grid-template-columns:repeat(6,1fr)}
+  .pic{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center}
+  .pic img{width:100%;max-width:150px;aspect-ratio:1;object-fit:cover;border-radius:10px;background:#FFF3E0;display:block;margin:0 auto}
+  .pic .emo{font-size:clamp(2.6rem,7vw,5rem);line-height:1;aspect-ratio:1;max-width:150px;margin:0 auto;display:flex;align-items:center;justify-content:center}
+  .pic .w{font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(.9rem,2vw,1.35rem);margin-top:6px}
+  @media (max-width:760px){.pics,.pics.six{grid-template-columns:repeat(3,1fr)}}
+  table.g{border-collapse:collapse;font-size:clamp(.95rem,2.1vw,1.45rem);width:100%;max-width:1000px}
+  table.g th,table.g td{border:1px solid var(--line);padding:10px 16px;text-align:left}
+  table.g th{background:var(--code);color:var(--accent);font-family:"JetBrains Mono",monospace;font-size:.8em;letter-spacing:.04em}
+  table.g b{color:#ffd166}
+  .dlg{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:18px 24px;display:flex;flex-direction:column;gap:8px;font-size:clamp(1rem,2.2vw,1.45rem);max-width:1000px}
+  .dlg .sp{display:inline-block;min-width:3.6em;font-weight:700;color:var(--accent)}
+  .dlg .b .sp{color:#c4a1ff}
+  .ccq{font-size:clamp(1rem,2.2vw,1.45rem);border:1px dashed var(--line);border-radius:12px;padding:12px 18px;background:var(--code)}
+  .ccq i{color:var(--ink2)}
+  .clocks{display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,34px);align-items:flex-start}
+  .clocks figure{text-align:center}
+  .clocks svg{width:clamp(96px,14vw,170px);height:auto}
+  .clocks figcaption{font-size:clamp(.95rem,2vw,1.3rem);margin-top:6px}
+  .clocks figcaption small{display:block;color:var(--ink2);font-size:.8em}
+  .snd{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .snd div{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:clamp(1rem,2.2vw,1.5rem)}
+  .snd div b{display:block;font-family:"Archivo";font-size:1.5em;color:var(--accent)}
+  .snd div small{color:var(--ink2)}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="deck" id="deck">
+
+  <!-- 1 -->
+  <section class="slide on section">
+    <div class="eyebrow">Confident English (B2) · Instructor Kit</div>
+    <h1>Module 5<br>Precision Grammar</h1>
+    <p class="lead">When exactly. Who exactly. How many exactly.</p>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide">
+    <div class="eyebrow">Classes C14–C16 · the map</div>
+    <h2>Small choices, exact English</h2>
+    <ul>
+      <li><b>5.1</b> When exactly: <i>This time next year we'll be running classes. By June we'll have painted every room.</i></li>
+      <li><b>5.2</b> Who did it: <i>I fixed the sink. / I had the sink fixed. I got my landlord to call the plumber.</i></li>
+      <li><b>5.3</b> How much of the group: <i>Every person has… · Neither of us is… · Most of us…</i></li>
+    </ul>
+    <div class="tag"><span class="pill">NOTE</span> A project or character card, an invented answer, or "Pass": all are OK.</div>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide">
+    <div class="eyebrow">C14 · Welcome back · Progress Test 1</div>
+    <h2>A test is a map. It tells us where we are — not who we are.</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>We can tell stories with layers of time</li>
+        <li>We can imagine a different past</li>
+        <li>We can report exactly how people said things</li>
+        <li>We can argue a point in a discussion</li>
+      </ul>
+      <div class="ccq"><b>Let's fix it!</b><br>If I would have known, I would have called you.<br>I wish I didn't say that yesterday.<br>She suggested me to apply for the job.<br>I'm used to get up at five.</div>
+    </div>
+    <div class="tag"><span class="pill lab">MY GOAL</span> I want to practice ___. Every week I will ___.</div>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide">
+    <div class="eyebrow">5.1 · One reference point · two camera angles</div>
+    <h2>Still happening, or already done?</h2>
+    <table class="g">
+      <tr><th>Reference point</th><th>Future continuous (in progress)</th><th>Future perfect (already done)</th></tr>
+      <tr><td>At 8 p.m.</td><td>We'll <b>be eating</b> dinner.</td><td>We'll <b>have eaten</b> dinner.</td></tr>
+      <tr><td>This time next year</td><td>I'll <b>be studying</b> in Berlin.</td><td>I'll <b>have graduated</b>.</td></tr>
+      <tr><td>When you get here</td><td>They'll <b>be waiting</b> for you.</td><td>They'll <b>have gone</b> home.</td></tr>
+    </table>
+    <div class="ccq">"At 8 we'll be eating." At the table at 8? <i>(Yes.)</i> · "At 8 we'll have eaten." At the table? <i>(No, plates cleared.)</i> · First question to ask yourself? <i>(What's my reference point?)</i></div>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide">
+    <div class="eyebrow">5.1 · Future continuous · will be + -ing</div>
+    <h2>Catch the action mid-flight</h2>
+    <div class="two">
+      <div class="pics" style="grid-template-columns:1fr;max-width:220px">
+        <div class="pic"><img src="../assets/vocab/flight.jpg" alt=""><div class="w">This time tomorrow, I'll be flying.</div></div>
+      </div>
+      <table class="g">
+        <tr><th>Direct</th><th>Neutral, polite</th></tr>
+        <tr><td>Will you use the car tonight?</td><td>Will you <b>be using</b> the car tonight?</td></tr>
+        <tr><td>How long will you stay?</td><td>How long will you <b>be staying</b>?</td></tr>
+        <tr><td>Will you pay by card?</td><td>Will you <b>be paying</b> by card?</td></tr>
+      </table>
+    </div>
+    <div class="ccq">Asking for a decision or about your plans? <i>(About plans: softer.)</i> · Where do you hear it? <i>(Hotels, stores, offices, colleagues.)</i></div>
+    <div class="tag"><span class="pill lab">SAY IT</span> I'll be /aɪl bi/ · Will you be <b>pay</b>ing by <b>card</b>? ↗</div>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide">
+    <div class="eyebrow">5.1 · Future perfect · will have + past participle</div>
+    <h2>Finished by when?</h2>
+    <table class="g">
+      <tr><th>by / by then</th><td>By Friday, we<b>'ll have finished</b> the roof.</td></tr>
+      <tr><th>by the time + <u>present</u></th><td>By the time you <b>arrive</b>, we<b>'ll have left</b>.</td></tr>
+      <tr><th>in + period</th><td>In two years, she<b>'ll have qualified</b>. · In two hours, we<b>'ll be landing</b>.</td></tr>
+      <tr><th>by ≠ until</th><td>I'll have finished <b>by</b> six. ✔ · I'll be working <b>until</b> six. ✔ · <s>I'll have finished until six.</s> ✘</td></tr>
+    </table>
+    <div class="tag"><span class="pill warn">WATCH</span> by the time you will arrive ❌ · will finished ❌ · I'll have /ˈaɪləv/, not "I'll of"</div>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide">
+    <div class="eyebrow">5.1 · Model · find the reference points</div>
+    <h2>"Where do you see yourself this time next year?"</h2>
+    <div class="dlg">
+      <p><span class="sp">Joe:</span> So, Nina, where do you see yourself this time next year?</p>
+      <p class="b"><span class="sp">Nina:</span> Well, I'll have finished my training by then, so I'll probably be working at the new clinic downtown.</p>
+      <p><span class="sp">Joe:</span> Nice. And by the time you start, will you have moved into the city?</p>
+      <p class="b"><span class="sp">Nina:</span> I hope so. By September we'll have signed the lease, and by winter we'll be settling into the new place.</p>
+    </div>
+    <div class="ccq">Will Nina still be training next year? <i>(No, finished.)</i> · In winter, will the move be finished or in progress? <i>(In progress: settling in.)</i></div>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide">
+    <div class="eyebrow">5.1 · Groups of 3 · 17 min</div>
+    <h2>🗓️ Project Timeline</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>Choose a <b>project</b> card or a <b>character</b> card</li>
+        <li>4 points: next month · by the time… · this time next year · in five years' time</li>
+        <li>Each point: one <b>will be -ing</b> + one <b>will have done</b></li>
+        <li>Present to another group. The <b>council</b> asks: "Will you be…? Will you have… by…?"</li>
+      </ul>
+      <div class="ccq">Your own life in five years? <i>(No, a card.)</i><br>How many points? <i>(Four.)</i><br>Sentences per point? <i>(Two: -ing + done.)</i><br>Full sentences on the frame? <i>(No, key words.)</i><br>The council's job? <i>(Listen, ask 2+ questions.)</i></div>
+    </div>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide">
+    <div class="eyebrow">5.2 · The causative · who actually did it?</div>
+    <h2>I cut my hair. · I had my hair cut.</h2>
+    <table class="g">
+      <tr><th>Recipe</th><td colspan="3"><b>have / get</b> → <b>thing</b> → <b>done</b> (past participle)</td></tr>
+      <tr><th>every year</th><td>I <b>have</b> my car serviced.</td><th>right now</th><td>She<b>'s having</b> her hair cut.</td></tr>
+      <tr><th>last month</th><td>We <b>had</b> the house painted.</td><th>just</th><td>I<b>'ve</b> just <b>had</b> my eyes tested.</td></tr>
+      <tr><th>soon</th><td>They<b>'ll have</b> the roof repaired.</td><th>advice</th><td>You <b>should get</b> your teeth checked.</td></tr>
+    </table>
+    <div class="ccq">"I had my car repaired." Did I repair it? <i>(No, a mechanic.)</i> Who arranged it? <i>(I did.)</i> · What changes with the tense? <i>(Only have / get.)</i></div>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide">
+    <div class="eyebrow">5.2 · Everyday services</div>
+    <h2>What do you get done?</h2>
+    <div class="pics six">
+      <div class="pic"><img src="../assets/vocab/mechanic.jpg" alt=""><div class="w">car serviced</div></div>
+      <div class="pic"><img src="../assets/vocab/sink.jpg" alt=""><div class="w">sink fixed</div></div>
+      <div class="pic"><img src="../assets/vocab/window.jpg" alt=""><div class="w">window replaced</div></div>
+      <div class="pic"><img src="../assets/vocab/key.jpg" alt=""><div class="w">key copied</div></div>
+      <div class="pic"><img src="../assets/vocab/trousers.jpg" alt=""><div class="w">pants shortened</div></div>
+      <div class="pic"><img src="../assets/vocab/jacket.jpg" alt=""><div class="w">jacket dry-cleaned</div></div>
+      <div class="pic"><img src="../assets/vocab/shoes.jpg" alt=""><div class="w">shoes repaired</div></div>
+      <div class="pic"><img src="../assets/vocab/mobile-phone.jpg" alt=""><div class="w">screen replaced</div></div>
+      <div class="pic"><img src="../assets/vocab/passport.jpg" alt=""><div class="w">photo taken</div></div>
+      <div class="pic"><img src="../assets/vocab/fridge.jpg" alt=""><div class="w">fridge repaired</div></div>
+      <div class="pic"><div class="emo">💇</div><div class="w">hair cut</div></div>
+      <div class="pic"><div class="emo">📄</div><div class="w">flyers printed</div></div>
+    </div>
+    <div class="tag"><span class="pill lab">SAY IT</span> fixed /fɪkst/ · serviced /ˈsɝvɪst/ · painted /ˈpeɪntɪd/ · I had it fixed /ˈhædɪt/</div>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide">
+    <div class="eyebrow">5.2 · have vs get · misfortune · word order</div>
+    <h2>Same form, different stories</h2>
+    <table class="g">
+      <tr><td>I <b>had</b> the report translated. / I <b>got</b> it translated.</td><td>same meaning · <b>get</b> = more informal</td></tr>
+      <tr><td>It took weeks, but I finally <b>got</b> the heater fixed.</td><td><b>get</b> = finally managed</td></tr>
+      <tr><td>She <b>had her bag stolen</b> on the train.</td><td>misfortune: she didn't arrange it!</td></tr>
+      <tr><td>He <b>had stolen</b> a wallet.</td><td>past perfect: <b>he</b> was the thief</td></tr>
+    </table>
+    <div class="ccq">"She had her bag stolen." Did she arrange it? <i>(No!)</i> Did she steal it? <i>(No.)</i> · How do we know it's a misfortune? <i>(Common sense: nobody pays a thief.)</i> · Thing before or after "done"? <i>(Before!)</i></div>
+  </section>
+
+  <!-- 12 -->
+  <section class="slide">
+    <div class="eyebrow">5.2 · People patterns · model dialogue</div>
+    <h2>get him <u>to</u> help · have him help</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>get + person + to</th><td>I got my landlord <b>to fix</b> it. (persuaded)</td></tr>
+        <tr><th>have + person + verb</th><td>I'll have the porter <b>bring</b> your bags. (arranged)</td></tr>
+        <tr><th>have + person + -ing</th><td>She had everyone <b>laughing</b>.</td></tr>
+        <tr><th>make + person + verb</th><td>= force! Not for services.</td></tr>
+      </table>
+      <div class="dlg">
+        <p><span class="sp">A:</span> Your car looks brand new! Did you clean it yourself?</p>
+        <p class="b"><span class="sp">B:</span> No way. I had it detailed. And I finally got the dent fixed.</p>
+        <p><span class="sp">A:</span> I really need to get mine serviced.</p>
+        <p class="b"><span class="sp">B:</span> You should have it checked soon!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 13 -->
+  <section class="slide">
+    <div class="eyebrow">5.2 · Pairs · 10 min + 13 min</div>
+    <h2>🧾 Errand Week · 🛠️ Services &amp; Errands</h2>
+    <div class="two">
+      <ul class="lab">
+        <li><b>Errand Week:</b> A = Sam's to-do list · B = his receipts &amp; texts. "Did Sam get the flyers printed?"</li>
+        <li>Sort: did it himself · had it done · went wrong · still needs to get done</li>
+        <li><b>Role-play:</b> customer + service provider. Arrange <b>two</b> things. Ask "Will you have finished by…?" + one "Will you be…?"</li>
+        <li>Swap roles and cards every 4 minutes</li>
+      </ul>
+      <div class="ccq">Show your card? <i>(No.)</i><br>Errand Week: who asks? <i>(A.)</i><br>Customer: how many things? <i>(Two.)</i><br>What else do you ask? <i>(When it'll be ready + one "Will you be…?")</i><br>Swap when? <i>(After 4 minutes.)</i></div>
+    </div>
+  </section>
+
+  <!-- 14 -->
+  <section class="slide">
+    <div class="eyebrow">5.3 · all vs whole · every vs each</div>
+    <h2>Small words, big precision</h2>
+    <table class="g">
+      <tr><th>all</th><td>all <b>the</b> books · all the information · all day</td><th>the whole</th><td>the <b>whole</b> book · the whole day · my whole life</td></tr>
+      <tr><th>every</th><td>the group together: <b>Every room has</b> a view.</td><th>each</th><td>one by one: <b>Each student gets</b> a report.</td></tr>
+    </table>
+    <div class="ccq">"all the day"? <i>(No: all day / the whole day.)</i> · "a bag in every hand"? <i>(No, two hands: each.)</i> · "Every people needs water"? <i>(No: every person / all people.)</i> · Verb after every / each? <i>(Singular.)</i></div>
+    <div class="tag"><span class="pill lab">SAY IT</span> whole = hole /hoʊl/ · each /itʃ/ ≠ itch /ɪtʃ/</div>
+  </section>
+
+  <!-- 15 -->
+  <section class="slide">
+    <div class="eyebrow">5.3 · Only for two · both / neither / either</div>
+    <h2>2 of 2 · 0 of 2 · 1 of 2</h2>
+    <table class="g">
+      <tr><th>both</th><td>Both restaurants <b>are</b> excellent.</td><td>plural · both … and …</td></tr>
+      <tr><th>neither</th><td>Neither restaurant <b>is</b> cheap. · Neither of them <b>is</b> perfect.</td><td>singular · neither … nor …</td></tr>
+      <tr><th>either</th><td>Either day <b>works</b> for me.</td><td>singular · either … or …</td></tr>
+    </table>
+    <div class="dlg">
+      <p><span class="sp">A:</span> The apartment in the city or the house by the coast — which are you leaning toward?</p>
+      <p class="b"><span class="sp">B:</span> Honestly, both places have their charms, but neither option is cheap.</p>
+    </div>
+    <div class="tag"><span class="pill warn">WATCH</span> both of my three kids ❌ → all three of my kids · "neither of them are" = OK in speech</div>
+  </section>
+
+  <!-- 16 -->
+  <section class="slide">
+    <div class="eyebrow">5.3 · The "of" rule</div>
+    <h2>No <i>the</i>? No <i>of</i>.</h2>
+    <table class="g">
+      <tr><th>General (no of)</th><th>Specific (+ of + the / my / them)</th></tr>
+      <tr><td><b>Most people</b> love music.</td><td><b>Most of the people</b> here love jazz.</td></tr>
+      <tr><td><b>All children</b> need sleep.</td><td><b>All of my children</b> are grown up.</td></tr>
+      <tr><td>—</td><td><b>None of us</b> had heard of it. · <b>most of them</b> · <b>all of us</b></td></tr>
+    </table>
+    <div class="tag"><span class="pill warn">WATCH</span> most of people ❌ · all of people ❌ · the most of us ❌ · all us ❌</div>
+    <div class="tag"><span class="pill lab">NOTE</span> None of the students <b>was</b> late (formal) · <b>were</b> late (everyday): both OK</div>
+  </section>
+
+  <!-- 17 -->
+  <section class="slide">
+    <div class="eyebrow">5.3 · Pairs · mingle · 25 min</div>
+    <h2>📊 Class Survey &amp; Report</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>Ask <b>everyone</b> your question. Tally marks, no names. "Pass" counts!</li>
+        <li>Add up. The <b>data checker</b> checks the total and the verbs</li>
+        <li>Report 4–5 sentences: <b>all / most / none of us</b> + <b>every / each</b> + <b>both / neither / either</b></li>
+        <li>Best sentence → "Our class in numbers" poster</li>
+      </ul>
+      <div class="ccq">Who do you ask? <i>(Everyone, even the teacher.)</i><br>Names? <i>(No, tally marks.)</i><br>"Pass"? <i>(Yes, we count it.)</i><br>How many sentences? <i>(4–5.)</i><br>Only one person said yes: "Only Ana…"? <i>(No! "Only one of us…")</i></div>
+    </div>
+  </section>
+
+  <!-- 18 -->
+  <section class="slide section">
+    <div class="eyebrow">You can now say it precisely</div>
+    <h2>Module 5 done 🎉</h2>
+    <ul class="lab">
+      <li>🗓️ This time next year we<b>'ll be running</b> classes. By June we<b>'ll have painted</b> every room. <b>Will you be joining</b> us?</li>
+      <li>🛠️ I <b>had</b> the sink <b>fixed</b>. I <b>got</b> my landlord <b>to call</b> the plumber. She <b>had</b> her flight <b>canceled</b>.</li>
+      <li>📊 <b>Every</b> person <b>has</b>… · <b>Neither</b> of us <b>is</b>… · <b>Most of</b> us… · the <b>whole</b> class</li>
+    </ul>
+    <p class="lead" style="margin-top:10px;max-width:40ch">Homework: online lessons 5.1–5.3 with 🔊. Next: Module 6, <i>happy → unhappy → happiness → happily</i>.</p>
+  </section>
+
+
+</div>
+
+<div class="count" id="count">1 / 18</div>
+<div class="nav"><button id="prev" aria-label="Previous slide"></button><button id="next" aria-label="Next slide"></button></div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const bar=document.getElementById('bar'), count=document.getElementById('count');
+  let i=0;
+  function show(n){ i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+    bar.style.width=((i+1)/slides.length*100)+'%'; count.textContent=(i+1)+' / '+slides.length; }
+  document.getElementById('next').onclick=()=>show(i+1);
+  document.getElementById('prev').onclick=()=>show(i-1);
+  addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}
+    else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+  });
+  show(0);
+</script>
+</body>
+</html>
