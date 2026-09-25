@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slides — Module 5</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root{--bg:#0b1220;--ink:#edf2fb;--ink2:#a8b6cf;--accent:#7fb2ff;--accent2:#2563eb;--lab:#34d3bd;--warn:#fbbf24;--line:#233252;--code:#101a2e;color-scheme:dark}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;overflow:hidden}
+  .deck{height:100%;width:100%;position:relative}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:6vh 8vw;gap:20px}
+  .slide.on{display:flex}
+  h1,h2,h3{font-family:"Archivo",sans-serif;line-height:1.1;text-wrap:balance}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  .slide h1{font-size:clamp(2rem,6vw,4rem);font-weight:800;letter-spacing:-.02em}
+  .slide h2{font-size:clamp(1.5rem,4.2vw,2.8rem);font-weight:800;letter-spacing:-.01em}
+  .slide p.lead{font-size:clamp(1.05rem,2.4vw,1.5rem);color:var(--ink2);max-width:26ch}
+  ul{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:6px}
+  ul li{position:relative;padding-left:34px;font-size:clamp(1.05rem,2.3vw,1.6rem)}
+  ul li::before{content:"";position:absolute;left:0;top:.55em;width:12px;height:12px;border-radius:3px;background:var(--accent);transform:rotate(45deg)}
+  ul.lab li::before{background:var(--lab)}
+  code.k{font-family:"JetBrains Mono",monospace;color:#cfe0ff;font-size:.92em}
+  pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:22px 26px;font-family:"JetBrains Mono",monospace;font-size:clamp(.85rem,1.9vw,1.3rem);line-height:1.55;overflow:auto;max-width:100%}
+  pre .k{color:#7dd3fc} pre .s{color:#86efac} pre .c{color:#7183a3;font-style:italic}
+  .tag{display:inline-flex;align-items:center;gap:10px;font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);color:var(--ink2)}
+  .tag .pill{background:var(--accent2);color:#fff;font-weight:700;border-radius:999px;padding:3px 12px;letter-spacing:.06em}
+  .tag .pill.lab{background:var(--lab);color:#062b26} .tag .pill.warn{background:var(--warn);color:#3a2a05}
+  .section{background:linear-gradient(135deg,#132a52,#0b1220)}
+  .section .big{font-size:clamp(3rem,12vw,8rem);font-family:"Archivo";font-weight:800;color:var(--accent2);line-height:.9}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+  @media (max-width:760px){.two{grid-template-columns:1fr}}
+  .bar{position:fixed;left:0;top:0;height:4px;background:var(--accent2);width:0;transition:width .25s;z-index:5}
+  .count{position:fixed;right:16px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink2);z-index:5}
+  .nav{position:fixed;inset:auto 0 0 0;display:flex;justify-content:space-between;pointer-events:none;z-index:4}
+  .nav button{pointer-events:auto;background:transparent;border:none;color:transparent;width:22vw;height:100vh;cursor:pointer}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+  /* ESL extras (picture vocab, grammar tables, dialogue, clocks) */
+  .pics{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,1.6vw,18px)}
+  .pics.six{grid-template-columns:repeat(6,1fr)}
+  .pic{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center}
+  .pic img{width:100%;max-width:150px;aspect-ratio:1;object-fit:cover;border-radius:10px;background:#FFF3E0;display:block;margin:0 auto}
+  .pic .emo{font-size:clamp(2.6rem,7vw,5rem);line-height:1;aspect-ratio:1;max-width:150px;margin:0 auto;display:flex;align-items:center;justify-content:center}
+  .pic .w{font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(.9rem,2vw,1.35rem);margin-top:6px}
+  @media (max-width:760px){.pics,.pics.six{grid-template-columns:repeat(3,1fr)}}
+  table.g{border-collapse:collapse;font-size:clamp(.95rem,2.1vw,1.45rem);width:100%;max-width:1000px}
+  table.g th,table.g td{border:1px solid var(--line);padding:10px 16px;text-align:left}
+  table.g th{background:var(--code);color:var(--accent);font-family:"JetBrains Mono",monospace;font-size:.8em;letter-spacing:.04em}
+  table.g b{color:#ffd166}
+  .dlg{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:18px 24px;display:flex;flex-direction:column;gap:8px;font-size:clamp(1rem,2.2vw,1.45rem);max-width:1000px}
+  .dlg .sp{display:inline-block;min-width:3.6em;font-weight:700;color:var(--accent)}
+  .dlg .b .sp{color:#c4a1ff}
+  .ccq{font-size:clamp(1rem,2.2vw,1.45rem);border:1px dashed var(--line);border-radius:12px;padding:12px 18px;background:var(--code)}
+  .ccq i{color:var(--ink2)}
+  .clocks{display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,34px);align-items:flex-start}
+  .clocks figure{text-align:center}
+  .clocks svg{width:clamp(96px,14vw,170px);height:auto}
+  .clocks figcaption{font-size:clamp(.95rem,2vw,1.3rem);margin-top:6px}
+  .clocks figcaption small{display:block;color:var(--ink2);font-size:.8em}
+  .snd{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .snd div{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:clamp(1rem,2.2vw,1.5rem)}
+  .snd div b{display:block;font-family:"Archivo";font-size:1.5em;color:var(--accent)}
+  .snd div small{color:var(--ink2)}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="deck" id="deck">
+
+  <!-- 1 -->
+  <section class="slide on section">
+    <div class="eyebrow">Independent English (B1) · Instructor Kit</div>
+    <h1>Module 5<br>Narrating Past &amp; Future</h1>
+    <p class="lead">Rewind. Tell. Fast-forward.</p>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide">
+    <div class="eyebrow">Classes C14–C16 · the map</div>
+    <h2>Welcome back!</h2>
+    <ul>
+      <li><b>5.1</b> Rewind: <i>When I arrived, the train had already left.</i></li>
+      <li><b>5.2</b> Tell a story: <i>It was raining. Suddenly the bus stopped. I'd forgotten my umbrella…</i></li>
+      <li><b>5.3</b> Fast-forward: <i>This time tomorrow I'll be flying. I'll call you when I land.</i></li>
+    </ul>
+    <div class="tag"><span class="pill">NOTE</span> A test is a map. It tells us where we are, not who we are.</div>
+    <div class="tag"><span class="pill lab">CHOICE</span> Your stories: a light real one, an identity card, or an invented one. You can say "Pass."</div>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide">
+    <div class="eyebrow">5.1 · The earlier past</div>
+    <h2>I got to the platform at 8:05… 😮</h2>
+    <div class="two">
+      <div class="pic" style="max-width:260px"><img src="../assets/vocab/station.jpg" alt="An empty train platform"><div class="w">an empty platform</div></div>
+      <table class="g">
+        <tr><th>① earlier</th><th>② later</th><th>③ now</th></tr>
+        <tr><td>the train <b>had left</b></td><td>I <b>arrived</b></td><td>I tell the story</td></tr>
+      </table>
+    </div>
+    <div class="tag"><span class="pill lab">SAY IT</span> When I arrived, the train <b>had already left</b>.</div>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide">
+    <div class="eyebrow">5.1 · had + past participle</div>
+    <h2>The same for everyone</h2>
+    <table class="g">
+      <tr><th>✅</th><td>I<b>'d</b> finished. · She <b>had</b> gone. · They<b>'d</b> left.</td></tr>
+      <tr><th>❌</th><td>We <b>hadn't</b> met before that day.</td></tr>
+      <tr><th>❓</th><td><b>Had</b> you seen the email? · Why <b>had</b> he gone?</td></tr>
+      <tr><th>💬</th><td>Yes, I <b>had</b>. / No, I <b>hadn't</b>.</td></tr>
+    </table>
+    <div class="tag"><span class="pill">PARTICIPLES</span> gone · left · lost · forgotten · eaten · seen · taken · written</div>
+    <div class="tag"><span class="pill warn">WATCH</span> had forget ❌ · Had you did…? ❌ · Yes, I'd ❌ · 'd + go = would!</div>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide">
+    <div class="eyebrow">5.1 · Check the meaning</div>
+    <h2>Which happened first?</h2>
+    <div class="ccq">"When I arrived, the train <b>had left</b>." Did I see the train? <i>(No.)</i> Which was first? <i>(The train left.)</i></div>
+    <div class="ccq">"When I arrived, the train <b>left</b>." Did I see the train? <i>(Yes! It left as I arrived.)</i></div>
+    <div class="ccq">"I was hungry because I <b>hadn't eaten</b> all day." Cause or result? <i>(The cause: it came first.)</i></div>
+    <div class="ccq">"I got up, had breakfast and left." Past perfect? <i>(No need: a simple list in order.)</i></div>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide">
+    <div class="eyebrow">5.1 · Signal words</div>
+    <h2>by the time · already · just · never … before</h2>
+    <table class="g">
+      <tr><th>by the time</th><td><b>By the time</b> we arrived, the shop <b>had closed</b>.</td></tr>
+      <tr><th>before / after</th><td>He <b>had eaten</b> before he left. · After she'<b>d finished</b>, she rested.</td></tr>
+      <tr><th>because</th><td>He couldn't log in because he'<b>d forgotten</b> his password.</td></tr>
+      <tr><th>had + ___ + pp</th><td>The bus had <b>already</b> gone. · I'd <b>just</b> sat down. · I'd <b>never</b> flown before.</td></tr>
+    </table>
+    <div class="tag"><span class="pill lab">SAY IT</span> "the train had al<b>READ</b>y <b>LEFT</b>" · I'd /aɪd/ · hadn't /ˈhædənt/</div>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide">
+    <div class="eyebrow">5.1 · What had happened?</div>
+    <h2>Why? Something had happened before…</h2>
+    <div class="pics">
+      <div class="pic"><img src="../assets/vocab/key.jpg" alt=""><div class="w">lose your keys</div></div>
+      <div class="pic"><img src="../assets/vocab/passport.jpg" alt=""><div class="w">forget your passport</div></div>
+      <div class="pic"><img src="../assets/vocab/umbrella.jpg" alt=""><div class="w">leave your umbrella</div></div>
+      <div class="pic"><img src="../assets/vocab/mobile-phone.jpg" alt=""><div class="w">the battery died</div></div>
+      <div class="pic"><img src="../assets/vocab/shop.jpg" alt=""><div class="w">the store closed</div></div>
+      <div class="pic"><img src="../assets/vocab/flight.jpg" alt=""><div class="w">miss a flight</div></div>
+      <div class="pic"><img src="../assets/vocab/cake.jpg" alt=""><div class="w">someone ate the cake</div></div>
+      <div class="pic"><img src="../assets/vocab/garage.jpg" alt=""><div class="w">the car broke down</div></div>
+    </div>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide">
+    <div class="eyebrow">5.1 · Group game · 20 min</div>
+    <h2>🕵️ What Had Happened?</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>Reader: read the scene, show the clues. Hide the answer!</li>
+        <li>Detectives: ask "<b>Had</b> she lost her ticket?"</li>
+        <li>Reader: "Yes, she <b>had</b>. / No, she <b>hadn't</b>."</li>
+        <li>Find the answer → keep the card. 8 questions max.</li>
+        <li>One question per turn, clockwise.</li>
+      </ul>
+      <div class="ccq">See the answer? <i>(No!)</i><br>First word of the question? <i>("Had.")</i><br>How many questions? <i>(Eight.)</i><br>Who keeps the card? <i>(The person who finds the answer.)</i></div>
+    </div>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide">
+    <div class="eyebrow">5.2 · Three tenses, one story</div>
+    <h2>🎥 The story camera</h2>
+    <table class="g">
+      <tr><th>🎬 action</th><td>past simple</td><td>main events, in order</td><td>The bus <b>stopped</b>. He <b>got off</b>.</td></tr>
+      <tr><th>🌧️ background</th><td>was / were + -ing</td><td>the scene, in progress</td><td>It <b>was raining</b>.</td></tr>
+      <tr><th>⏪ flashback</th><td>had + pp</td><td>earlier than the story</td><td>He'<b>d left</b> his umbrella at home.</td></tr>
+    </table>
+    <div class="tag"><span class="pill lab">BALANCE</span> Mostly past simple · a little background · one or two flashbacks</div>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide">
+    <div class="eyebrow">5.2 · while &amp; when · check the meaning</div>
+    <h2>A long action + a short surprise</h2>
+    <table class="g">
+      <tr><th>while + was -ing</th><td><b>While</b> we <b>were eating</b>, the lights <b>went</b> out.</td></tr>
+      <tr><th>when + past simple</th><td>I <b>was walking</b> home <b>when</b> I <b>saw</b> an old friend.</td></tr>
+    </table>
+    <div class="ccq">"While Dev was drinking his coffee, the bus stopped." Long action? <i>(Drinking coffee.)</i> Short and sudden? <i>(The bus stopped.)</i> "The bus was stopping"? <i>(No: sudden = past simple.)</i></div>
+    <div class="tag"><span class="pill warn">WATCH</span> Suddenly the phone was ringing ❌ · While I walked… ❌ · I was knowing ❌</div>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide">
+    <div class="eyebrow">5.2 · Connectors &amp; story shape</div>
+    <h2>① → ⑥ The story map</h2>
+    <table class="g">
+      <tr><th>① 🎥 Scene</th><td>It was a cold morning, and it <b>was raining</b>.</td></tr>
+      <tr><th>② ⏪ Flashback</th><td>I'<b>d forgotten</b> my umbrella.</td></tr>
+      <tr><th>③ ⚡ Problem</th><td><b>Suddenly</b>, the bus broke down.</td></tr>
+      <tr><th>④ ➡️ Next</th><td><b>Then</b> I ran. <b>While</b> I was running, …</td></tr>
+      <tr><th>⑤ ⏱️ Later</th><td><b>By the time</b> I arrived, the meeting <b>had started</b>.</td></tr>
+      <tr><th>⑥ 🏁 Ending</th><td><b>In the end</b>, everyone laughed.</td></tr>
+    </table>
+    <div class="tag"><span class="pill warn">WATCH</span> At the end ❌ → In the end ✅</div>
+  </section>
+
+  <!-- 12 -->
+  <section class="slide">
+    <div class="eyebrow">5.2 · Model dialogue · be a good listener</div>
+    <h2>You'll never believe what happened!</h2>
+    <div class="dlg">
+      <p><span class="sp">A:</span> So, I was walking to the station, and it was raining really hard. I'd forgotten my umbrella.</p>
+      <p class="b"><span class="sp">B:</span> Typical! What did you do?</p>
+      <p><span class="sp">A:</span> While I was standing under a tree, a car suddenly pulled up. It was my old teacher! I hadn't seen her for years.</p>
+      <p class="b"><span class="sp">B:</span> No way! What a coincidence.</p>
+      <p><span class="sp">A:</span> She offered me a ride, and in the end she drove me right to my door.</p>
+    </div>
+    <div class="tag"><span class="pill lab">REACT</span> No <b>WAY</b>! · Oh <b>NO</b>! · You're kidding! · Then what <b>HAP</b>pened? · How did it end?</div>
+  </section>
+
+  <!-- 13 -->
+  <section class="slide">
+    <div class="eyebrow">5.2 · Groups of 4 · 22 min</div>
+    <h2>😱 Worst Day Ever — story chain</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>Read the starter card: an <b>invented</b> person</li>
+        <li>Take an event card. Add the next step (① → ⑥)</li>
+        <li>Go round the table <b>twice</b></li>
+        <li>Retell to a new partner: 2 min, then 90 sec</li>
+        <li>End well or funny! Real story? Only a light one, if you want.</li>
+      </ul>
+      <div class="ccq">True or invented? <i>(Invented.)</i><br>Step ① tense? <i>(was / were + -ing.)</i><br>Step ⑤ starts with…? <i>("By the time.")</i><br>Your partner's story: what do you do? <i>(React + ask one question.)</i></div>
+    </div>
+  </section>
+
+  <!-- 14 -->
+  <section class="slide">
+    <div class="eyebrow">5.3 · Which future?</div>
+    <h2>Decide now · plan · in the diary</h2>
+    <table class="g">
+      <tr><th>⚡ will</th><td>decide now · I think · offer · promise</td><td>(The phone rings.) I<b>'ll</b> get it! · I think it<b>'ll</b> rain.</td></tr>
+      <tr><th>🧠 going to</th><td>plan I already have · evidence</td><td>We<b>'re going to</b> paint the kitchen. · Look! It<b>'s going to</b> rain.</td></tr>
+      <tr><th>📅 -ing</th><td>fixed arrangement</td><td>I<b>'m seeing</b> the dentist on Thursday at 3.</td></tr>
+    </table>
+    <div class="tag"><span class="pill lab">RELAX</span> Often two forms are OK. Choose by meaning.</div>
+  </section>
+
+  <!-- 15 -->
+  <section class="slide">
+    <div class="eyebrow">5.3 · will be + -ing</div>
+    <h2>✈️ This time tomorrow, I'll be flying.</h2>
+    <table class="g">
+      <tr><th>✅</th><td>At 8 p.m. I<b>'ll be watching</b> the game.</td></tr>
+      <tr><th>❌</th><td>Don't call at noon. I <b>won't be working</b> then.</td></tr>
+      <tr><th>❓ polite</th><td><b>Will</b> you <b>be using</b> the car tonight?</td></tr>
+    </table>
+    <div class="ccq">"At 8 I'll watch the game." / "At 8 I'll be watching the game." Which starts at 8? <i>(The first.)</i> Which is already happening at 8? <i>(The second.)</i><br>"Will you be using the car?" Pushy or polite? <i>(Polite.)</i></div>
+    <div class="tag"><span class="pill warn">WATCH</span> I'll flying ❌ · I will be fly ❌</div>
+  </section>
+
+  <!-- 16 -->
+  <section class="slide">
+    <div class="eyebrow">5.3 · Time clauses</div>
+    <h2>No <i>will</i> after <i>when</i></h2>
+    <table class="g">
+      <tr><th>❌</th><td>I'll call you when I <b>will arrive</b>.</td></tr>
+      <tr><th>✅</th><td>I'll call you when I <b>arrive</b>.</td></tr>
+      <tr><th>✅</th><td>I'll text you <b>as soon as</b> I <b>land</b>. · We'll wait <b>until</b> she <b>comes</b>.</td></tr>
+      <tr><th>✅</th><td><b>When</b> the class <b>finishes</b>, we'll go for coffee.</td></tr>
+    </table>
+    <div class="tag"><span class="pill">LIKE "IF"</span> If I see her, I'll tell her. · When I see her, I'll tell her.</div>
+  </section>
+
+  <!-- 17 -->
+  <section class="slide">
+    <div class="eyebrow">5.3 · Groups of 4 · 20 min</div>
+    <h2>🌍 Life in 2040</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>Warm-up, choose one: "This time next week, I'll be…" · an identity card · an imagined person</li>
+        <li>Discuss the <b>world</b>: transport, work, shopping, homes, schools, food…</li>
+        <li>Roles: Chair · Question-asker · Timekeeper · Reporter</li>
+        <li>3 talking chips each. No chips? Listen and ask.</li>
+        <li>Use: will / might / won't · will be -ing · When…, … will…</li>
+      </ul>
+      <div class="ccq">About your own life in 2040? <i>(No: about society.)</i><br>Must you talk about your week? <i>(No: choose.)</i><br>When do you put a chip in? <i>(When I speak.)</i><br>Disagree? <i>("I'm not sure. I think…")</i></div>
+    </div>
+  </section>
+
+  <!-- 18 -->
+  <section class="slide section">
+    <div class="eyebrow">You can now narrate past &amp; future</div>
+    <h2>Module 5 done 🎉</h2>
+    <ul class="lab">
+      <li>⏪ By the time I arrived, the train had already left.</li>
+      <li>🎥 It was raining when the bus suddenly stopped. I'd forgotten my umbrella. In the end, I got the job!</li>
+      <li>⏩ I'm seeing the dentist at 3. This time tomorrow I'll be flying. I'll call you when I land.</li>
+    </ul>
+    <p class="lead" style="margin-top:10px;max-width:40ch">Homework: online lessons 5.1–5.3 with 🔊. Look back at your goal. Next: Module 6, <i>a, an, the</i>… or nothing!</p>
+  </section>
+
+</div>
+
+<div class="count" id="count">1 / 18</div>
+<div class="nav"><button id="prev" aria-label="Previous slide"></button><button id="next" aria-label="Next slide"></button></div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const bar=document.getElementById('bar'), count=document.getElementById('count');
+  let i=0;
+  function show(n){ i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+    bar.style.width=((i+1)/slides.length*100)+'%'; count.textContent=(i+1)+' / '+slides.length; }
+  document.getElementById('next').onclick=()=>show(i+1);
+  document.getElementById('prev').onclick=()=>show(i-1);
+  addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}
+    else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+  });
+  show(0);
+</script>
+</body>
+</html>

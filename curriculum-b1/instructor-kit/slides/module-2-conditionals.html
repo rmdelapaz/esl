@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slides — Module 2</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root{--bg:#0b1220;--ink:#edf2fb;--ink2:#a8b6cf;--accent:#7fb2ff;--accent2:#2563eb;--lab:#34d3bd;--warn:#fbbf24;--line:#233252;--code:#101a2e;color-scheme:dark}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;overflow:hidden}
+  .deck{height:100%;width:100%;position:relative}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:6vh 8vw;gap:20px}
+  .slide.on{display:flex}
+  h1,h2,h3{font-family:"Archivo",sans-serif;line-height:1.1;text-wrap:balance}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  .slide h1{font-size:clamp(2rem,6vw,4rem);font-weight:800;letter-spacing:-.02em}
+  .slide h2{font-size:clamp(1.5rem,4.2vw,2.8rem);font-weight:800;letter-spacing:-.01em}
+  .slide p.lead{font-size:clamp(1.05rem,2.4vw,1.5rem);color:var(--ink2);max-width:26ch}
+  ul{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:6px}
+  ul li{position:relative;padding-left:34px;font-size:clamp(1.05rem,2.3vw,1.6rem)}
+  ul li::before{content:"";position:absolute;left:0;top:.55em;width:12px;height:12px;border-radius:3px;background:var(--accent);transform:rotate(45deg)}
+  ul.lab li::before{background:var(--lab)}
+  code.k{font-family:"JetBrains Mono",monospace;color:#cfe0ff;font-size:.92em}
+  pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:22px 26px;font-family:"JetBrains Mono",monospace;font-size:clamp(.85rem,1.9vw,1.3rem);line-height:1.55;overflow:auto;max-width:100%}
+  pre .k{color:#7dd3fc} pre .s{color:#86efac} pre .c{color:#7183a3;font-style:italic}
+  .tag{display:inline-flex;align-items:center;gap:10px;font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);color:var(--ink2)}
+  .tag .pill{background:var(--accent2);color:#fff;font-weight:700;border-radius:999px;padding:3px 12px;letter-spacing:.06em}
+  .tag .pill.lab{background:var(--lab);color:#062b26} .tag .pill.warn{background:var(--warn);color:#3a2a05}
+  .section{background:linear-gradient(135deg,#132a52,#0b1220)}
+  .section .big{font-size:clamp(3rem,12vw,8rem);font-family:"Archivo";font-weight:800;color:var(--accent2);line-height:.9}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+  @media (max-width:760px){.two{grid-template-columns:1fr}}
+  .bar{position:fixed;left:0;top:0;height:4px;background:var(--accent2);width:0;transition:width .25s;z-index:5}
+  .count{position:fixed;right:16px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink2);z-index:5}
+  .nav{position:fixed;inset:auto 0 0 0;display:flex;justify-content:space-between;pointer-events:none;z-index:4}
+  .nav button{pointer-events:auto;background:transparent;border:none;color:transparent;width:22vw;height:100vh;cursor:pointer}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+  /* ESL extras (picture vocab, grammar tables, dialogue, clocks) */
+  .pics{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,1.6vw,18px)}
+  .pics.six{grid-template-columns:repeat(6,1fr)}
+  .pic{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center}
+  .pic img{width:100%;max-width:150px;aspect-ratio:1;object-fit:cover;border-radius:10px;background:#FFF3E0;display:block;margin:0 auto}
+  .pic .emo{font-size:clamp(2.6rem,7vw,5rem);line-height:1;aspect-ratio:1;max-width:150px;margin:0 auto;display:flex;align-items:center;justify-content:center}
+  .pic .w{font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(.9rem,2vw,1.35rem);margin-top:6px}
+  @media (max-width:760px){.pics,.pics.six{grid-template-columns:repeat(3,1fr)}}
+  table.g{border-collapse:collapse;font-size:clamp(.95rem,2.1vw,1.45rem);width:100%;max-width:1000px}
+  table.g th,table.g td{border:1px solid var(--line);padding:10px 16px;text-align:left}
+  table.g th{background:var(--code);color:var(--accent);font-family:"JetBrains Mono",monospace;font-size:.8em;letter-spacing:.04em}
+  table.g b{color:#ffd166}
+  .dlg{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:18px 24px;display:flex;flex-direction:column;gap:8px;font-size:clamp(1rem,2.2vw,1.45rem);max-width:1000px}
+  .dlg .sp{display:inline-block;min-width:3.6em;font-weight:700;color:var(--accent)}
+  .dlg .b .sp{color:#c4a1ff}
+  .ccq{font-size:clamp(1rem,2.2vw,1.45rem);border:1px dashed var(--line);border-radius:12px;padding:12px 18px;background:var(--code)}
+  .ccq i{color:var(--ink2)}
+  .clocks{display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,34px);align-items:flex-start}
+  .clocks figure{text-align:center}
+  .clocks svg{width:clamp(96px,14vw,170px);height:auto}
+  .clocks figcaption{font-size:clamp(.95rem,2vw,1.3rem);margin-top:6px}
+  .clocks figcaption small{display:block;color:var(--ink2);font-size:.8em}
+  .snd{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .snd div{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:clamp(1rem,2.2vw,1.5rem)}
+  .snd div b{display:block;font-family:"Archivo";font-size:1.5em;color:var(--accent)}
+  .snd div small{color:var(--ink2)}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="deck" id="deck">
+
+  <!-- 1 -->
+  <section class="slide on section">
+    <div class="eyebrow">Independent English (B1) · Instructor Kit</div>
+    <h1>Module 2<br>If &amp; Imagining</h1>
+    <p class="lead">Real. Imagined. Wished for.</p>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide">
+    <div class="eyebrow">Classes C4–C6 · the map</div>
+    <h2>The verb shows how real it is</h2>
+    <ul>
+      <li><b>2.1</b> Always true &amp; real futures: <i>If you heat ice, it melts. If it rains, I'll take the bus.</i></li>
+      <li><b>2.2</b> Imagined: <i>If I won the lottery, I'd travel. If I were you, I'd…</i></li>
+      <li><b>2.3</b> Wished for: <i>I wish it were sunny. I wish I could sing.</i></li>
+    </ul>
+    <div class="tag"><span class="pill">NOTE</span> Your real answer, an "imagine a person" card, or an invented one: all OK. You can say "Pass."</div>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide">
+    <div class="eyebrow">2.1 · New words · life hacks &amp; superstitions</div>
+    <h2>🔧 A life hack or 🍀 a superstition?</h2>
+    <div class="pics">
+      <div class="pic"><img src="../assets/vocab/water.jpg" alt=""><div class="w">boil</div></div>
+      <div class="pic"><img src="../assets/vocab/fridge.jpg" alt=""><div class="w">freeze</div></div>
+      <div class="pic"><img src="../assets/vocab/bread.jpg" alt=""><div class="w">go hard</div></div>
+      <div class="pic"><img src="../assets/vocab/mobile-phone.jpg" alt=""><div class="w">charge</div></div>
+      <div class="pic"><img src="../assets/vocab/umbrella.jpg" alt=""><div class="w">umbrella indoors</div></div>
+      <div class="pic"><img src="../assets/vocab/mirror.jpg" alt=""><div class="w">break a mirror</div></div>
+      <div class="pic"><img src="../assets/vocab/salt.jpg" alt=""><div class="w">spill salt</div></div>
+      <div class="pic"><img src="../assets/vocab/hand.jpg" alt=""><div class="w">my hand itches</div></div>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide">
+    <div class="eyebrow">2.1 · Zero conditional · always true</div>
+    <h2>If / When + present, present</h2>
+    <table class="g">
+      <tr><th>🔬 fact</th><td>If you <b>heat</b> ice, it <b>melts</b>.</td></tr>
+      <tr><th>🔧 life hack</th><td>If you <b>freeze</b> grapes, they <b>make</b> great ice cubes.</td></tr>
+      <tr><th>☕ habit</th><td>When I <b>drink</b> coffee late, I <b>can't</b> sleep.</td></tr>
+      <tr><th>⚙️ how it works</th><td>If you <b>press</b> this key, the screen <b>turns</b> off.</td></tr>
+    </table>
+    <div class="ccq">"If you heat ice, it melts." One day or every time? <i>(Every time.)</i> · "If I'm tired…" = "When I'm tired…"? <i>(Yes, here.)</i></div>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide">
+    <div class="eyebrow">2.1 · First conditional · one real future</div>
+    <h2>If + present, will + verb</h2>
+    <table class="g">
+      <tr><th>📅</th><td>If it <b>rains</b> this afternoon, I<b>'ll take</b> the bus.</td></tr>
+      <tr><th>⚠️</th><td>If we <b>leave</b> now, we <b>won't be</b> late.</td></tr>
+      <tr><th>➕</th><td>If you finish early, you <b>can</b> go home. · If you see John, <b>tell</b> him hi.</td></tr>
+    </table>
+    <div class="tag"><span class="pill warn">NEVER</span> If it <s>will</s> rain ❌ · When I <s>will</s> get home ❌ → will lives in the RESULT</div>
+    <div class="tag"><span class="pill lab">SAY IT</span> If it <b>RAINS</b> ↗ | I'll take the <b>BUS</b> ↘</div>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide">
+    <div class="eyebrow">2.1 · when · if · unless · the comma</div>
+    <h2>Sure, maybe, or "if not"?</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>when</th><td>sure: <b>When</b> I get home, I'll call you.</td></tr>
+        <tr><th>if</th><td>maybe: <b>If</b> I get the job, I'll celebrate.</td></tr>
+        <tr><th>unless</th><td>= if … not: I'll be late <b>unless</b> I leave now.</td></tr>
+      </table>
+      <div class="ccq">Will I get home? <i>(Yes, sure.)</i><br>Will I get the job? <i>(Maybe.)</i><br>"unless you <s>don't</s> hurry"? <i>(No! unless you hurry.)</i><br>Comma? <i>If first → yes. If second → no.</i></div>
+    </div>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide">
+    <div class="eyebrow">2.1 · Model dialogue</div>
+    <h2>Do you want to go for a walk?</h2>
+    <div class="dlg">
+      <p><span class="sp">A:</span> Do you want to go for a walk this afternoon?</p>
+      <p class="b"><span class="sp">B:</span> Maybe. If it stays dry, I'll come with you.</p>
+      <p><span class="sp">A:</span> And if it rains?</p>
+      <p class="b"><span class="sp">B:</span> Then I'll stay home — unless you really want company!</p>
+      <p><span class="sp">A:</span> Ha! When I finish work, I'll text you. If the sky looks bad, we can just get coffee.</p>
+      <p class="b"><span class="sp">B:</span> Perfect. If you text before three, I'll be ready.</p>
+    </div>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide">
+    <div class="eyebrow">2.1 · Groups of 3 · 20 min</div>
+    <h2>Life Hacks &amp; Superstitions</h2>
+    <div class="two">
+      <ul class="lab">
+        <li><b>Match</b> the halves: 16 sentences</li>
+        <li><b>Sort</b>: 🔧 always true · 🍀 superstition · 📅 one real future</li>
+        <li><b>Talk</b>: Do you believe it? Have you tried it? (1 token = 1 turn)</li>
+        <li><b>Write</b> 2 real life hacks for the Life Hack Wall</li>
+      </ul>
+      <div class="ccq">How many sentences? <i>(16.)</i><br>How many groups? <i>(Three.)</i><br>Must you say what you believe? <i>(No. "Pass" is OK.)</i><br>What goes on the sticky notes? <i>(2 life hacks: If… / When…)</i></div>
+    </div>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide">
+    <div class="eyebrow">2.2 · New words · dreams &amp; dilemmas</div>
+    <h2>What would you do if…?</h2>
+    <div class="pics six">
+      <div class="pic"><div class="emo">💰</div><div class="w">win the lottery</div></div>
+      <div class="pic"><div class="emo">👛</div><div class="w">find a wallet</div></div>
+      <div class="pic"><div class="emo">🦸</div><div class="w">a superpower</div></div>
+      <div class="pic"><img src="../assets/vocab/flight.jpg" alt=""><div class="w">travel the world</div></div>
+      <div class="pic"><img src="../assets/vocab/sing.jpg" alt=""><div class="w">a famous singer</div></div>
+      <div class="pic"><img src="../assets/vocab/restaurant.jpg" alt=""><div class="w">open a restaurant</div></div>
+    </div>
+    <div class="tag"><span class="pill">DILEMMA</span> a difficult choice · no one right answer</div>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide">
+    <div class="eyebrow">2.2 · Second conditional · imagined</div>
+    <h2>If + past, would ('d) + verb</h2>
+    <table class="g">
+      <tr><th>✅</th><td>If I <b>won</b> the lottery, I<b>'d buy</b> a house by the sea.</td></tr>
+      <tr><th>❌</th><td>If they <b>didn't</b> work so much, they <b>wouldn't</b> be so tired.</td></tr>
+      <tr><th>❓</th><td><b>What would</b> you <b>do</b> if you <b>found</b> a wallet?</td></tr>
+      <tr><th>be</th><td>If I <b>were</b> rich… · If it <b>were</b> warmer…</td></tr>
+      <tr><th>➕</th><td>If I had a car, I <b>could</b> drive you. · If she asked, I <b>might</b> say yes.</td></tr>
+    </table>
+    <div class="tag"><span class="pill warn">WATCH</span> past verb = NOT REAL (not past time!) · If I <s>would have</s> ❌ · If I had…, I <s>will</s> ❌</div>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide">
+    <div class="eyebrow">2.2 · Check the meaning · real or dream?</div>
+    <h2>Do I really think it might happen?</h2>
+    <div class="two">
+      <div class="ccq">📅 <b>"If I have time, I'll call you."</b><br>Maybe I'll have time? <i>(Yes.)</i> → <b>1st · REAL</b></div>
+      <div class="ccq">💭 <b>"If I had time, I'd call you."</b><br>Do I have time? <i>(No.)</i> → <b>2nd · DREAM</b></div>
+    </div>
+    <div class="ccq">"If I won the lottery, I'd quit my job." Did I win? <i>(No.)</i> Is <i>won</i> about the past? <i>(No! Imagined.)</i> Likely? <i>(No.)</i></div>
+    <div class="tag"><span class="pill lab">SAY IT</span> I'll /aɪl/ = real · I'd /aɪd/ = dream · wouldn't /ˈwʊdənt/</div>
+  </section>
+
+  <!-- 12 -->
+  <section class="slide">
+    <div class="eyebrow">2.2 · Friendly advice · model dialogue</div>
+    <h2>If I were you, I'd…</h2>
+    <div class="dlg">
+      <p><span class="sp">Rosa:</span> I got an offer for a new job. But it's a two-hour drive.</p>
+      <p class="b"><span class="sp">Sam:</span> Really? If I were you, I'd take it. You always want a change.</p>
+      <p><span class="sp">Rosa:</span> Maybe. If it were closer, I'd say yes right away.</p>
+      <p class="b"><span class="sp">Sam:</span> If I were in your position, I might visit the city first.</p>
+    </div>
+    <div class="ccq">Am I you? <i>(No, impossible.)</i> Is it an order? <i>(No, soft advice.)</i> "If I was you"? <i>(Informal. Standard: were.)</i></div>
+  </section>
+
+  <!-- 13 -->
+  <section class="slide">
+    <div class="eyebrow">2.2 · Groups of 3–4 · 18 min</div>
+    <h2>👛 💰 🦸 Dilemma discussion</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>The asker reads a card</li>
+        <li>Everyone answers in turn: <b>If I…, I'd… because…</b></li>
+        <li>Discuss: "I'd do the same." · "Really? I wouldn't." · "That depends."</li>
+        <li>Reporter: "Three of us would…, but Ana would…"</li>
+      </ul>
+      <div class="ccq">Who answers first? <i>(Everyone, in turn.)</i><br>What do you add? <i>(A reason: because…)</i><br>1 token = ? <i>(1 turn.)</i><br>Don't like a card? <i>("Pass!")</i></div>
+    </div>
+  </section>
+
+  <!-- 14 -->
+  <section class="slide">
+    <div class="eyebrow">2.3 · New words · small, everyday wishes</div>
+    <h2>☀️ weather · 🎸 skills · 🚌 the commute</h2>
+    <div class="pics six">
+      <div class="pic"><img src="../assets/vocab/umbrella.jpg" alt=""><div class="w">rainy</div></div>
+      <div class="pic"><img src="../assets/vocab/cold.jpg" alt=""><div class="w">cold</div></div>
+      <div class="pic"><img src="../assets/vocab/sing.jpg" alt=""><div class="w">sing</div></div>
+      <div class="pic"><img src="../assets/vocab/swim.jpg" alt=""><div class="w">swim</div></div>
+      <div class="pic"><img src="../assets/vocab/bus-stop.jpg" alt=""><div class="w">wait for the bus</div></div>
+      <div class="pic"><img src="../assets/vocab/station.jpg" alt=""><div class="w">a crowded train</div></div>
+    </div>
+  </section>
+
+  <!-- 15 -->
+  <section class="slide">
+    <div class="eyebrow">2.3 · wish + past · were · could</div>
+    <h2>A wish is the opposite of now</h2>
+    <table class="g">
+      <tr><th>Real now</th><th>My wish</th></tr>
+      <tr><td>It's raining.</td><td>I wish it <b>were</b> sunny.</td></tr>
+      <tr><td>I live far from work.</td><td>I wish I <b>lived</b> closer.</td></tr>
+      <tr><td>I have a lot of work.</td><td>I wish I <b>didn't have</b> so much work.</td></tr>
+      <tr><td>I can't sing.</td><td>I wish I <b>could</b> sing.</td></tr>
+    </table>
+    <div class="tag"><span class="pill lab">SAY IT</span> I wish it were <b>SUN</b>ny. · If <b>ON</b>ly it were <b>FRI</b>day!</div>
+  </section>
+
+  <!-- 16 -->
+  <section class="slide">
+    <div class="eyebrow">2.3 · wish + would · hope vs wish</div>
+    <h2>😤 I wish the bus would come!</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>😤 would</th><td>someone / something <b>else</b>: I wish my neighbor <b>would</b> turn the music down.</td></tr>
+        <tr><th>🤞 hope</th><td>possible: I <b>hope</b> it's sunny tomorrow.</td></tr>
+        <tr><th>🌠 wish</th><td>not real now: I <b>wish</b> it were sunny.</td></tr>
+      </table>
+      <div class="ccq">Does the bus come on time? <i>(No.)</i> About me or the bus? <i>(The bus.)</i><br>"I wish I <s>would</s> be taller"? <i>(No → I wish I were taller.)</i><br>Friend's interview tomorrow? <i>(I hope you get it!)</i></div>
+    </div>
+    <div class="tag"><span class="pill warn">WATCH</span> I wish I can ❌ · I wish I have ❌ · I wish it will ❌ · I wish you come ❌</div>
+  </section>
+
+  <!-- 17 -->
+  <section class="slide">
+    <div class="eyebrow">2.3 · Mingle 12 min · Pairs 13 min</div>
+    <h2>🌠 Small Wishes, Real Fixes</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>Mingle: "<b>Do you wish</b> you could…?" — "Yes, I do!"</li>
+        <li>Cards: A makes a small wish</li>
+        <li>B: 💭 "If it were…, what would you do?" or 🔧 "If I were you, I'd…"</li>
+        <li>Then 3 of your own small wishes: weather · a skill · the commute</li>
+      </ul>
+      <div class="ccq">Big wishes or small? <i>(Small, everyday.)</i><br>Must you share your real wishes? <i>(No. Card, invented, or "Pass.")</i><br>What does B do? <i>(A dream question or a fix.)</i></div>
+    </div>
+  </section>
+
+  <!-- 18 -->
+  <section class="slide section">
+    <div class="eyebrow">You can now talk about the real and the imagined</div>
+    <h2>Module 2 done 🎉</h2>
+    <ul class="lab">
+      <li>🔧 If you heat ice, it melts. 📅 If it rains, I'll take the bus — unless you drive me!</li>
+      <li>💭 If I won the lottery, I'd travel. If I were you, I'd take the job.</li>
+      <li>🌠 I wish it were sunny. I wish I could sing. I wish the bus would come!</li>
+    </ul>
+    <p class="lead" style="margin-top:10px;max-width:40ch">Homework: online lessons 2.1–2.3 with 🔊. Next: Module 3, <i>She said she was tired.</i></p>
+  </section>
+
+
+</div>
+
+<div class="count" id="count">1 / 18</div>
+<div class="nav"><button id="prev" aria-label="Previous slide"></button><button id="next" aria-label="Next slide"></button></div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const bar=document.getElementById('bar'), count=document.getElementById('count');
+  let i=0;
+  function show(n){ i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+    bar.style.width=((i+1)/slides.length*100)+'%'; count.textContent=(i+1)+' / '+slides.length; }
+  document.getElementById('next').onclick=()=>show(i+1);
+  document.getElementById('prev').onclick=()=>show(i-1);
+  addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}
+    else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+  });
+  show(0);
+</script>
+</body>
+</html>

@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Final Test — B1 Exit</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../kit.css">
+<style>
+  /* ── Test-paper components (shared with progress-test-1.html) ── */
+  .pagebreak{break-before:page}
+  .teacher-only{font-family:"JetBrains Mono",monospace;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+    color:#fff;background:var(--warn);border-radius:999px;padding:3px 11px;display:inline-block;margin-bottom:8px;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .paper{font-size:17px;line-height:1.5}
+  .paper-head{display:grid;grid-template-columns:2fr 1fr 1fr;gap:14px;margin:6px 0 14px;font-size:1.05rem}
+  .paper-head div{border-bottom:1.5px solid var(--ink-2);padding:6px 2px 4px}
+  .paper-head b{font-weight:700}
+  .key-icons{display:flex;flex-wrap:wrap;gap:8px 16px;margin:10px 0 4px;font-size:1rem;color:var(--ink-2)}
+  .key-icons span{border:1px solid var(--line);border-radius:999px;padding:3px 12px;background:var(--surface-2)}
+  .part-h{display:flex;align-items:center;gap:12px;margin:30px 0 6px;padding:10px 14px;background:var(--accent-soft);
+    border-radius:10px;break-after:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .part-h .ic{font-size:1.8rem;line-height:1}
+  .part-h h2{font-size:1.3rem;font-weight:800;flex:1}
+  .part-h .score{font-family:"JetBrains Mono",monospace;font-size:.95rem;font-weight:600;border:1.5px solid var(--ink-2);
+    border-radius:8px;padding:4px 10px;background:var(--surface);white-space:nowrap}
+  .inst{display:flex;gap:10px;align-items:baseline;font-size:1.12rem;font-weight:600;margin:16px 0 8px;break-after:avoid}
+  .inst .ic{font-size:1.35rem}
+  .inst .sub{font-weight:400;color:var(--ink-2);font-size:.95rem}
+  .item{display:flex;gap:12px;align-items:baseline;margin:10px 0;font-size:1.08rem;break-inside:avoid}
+  .item .n{font-family:"JetBrains Mono",monospace;font-weight:600;color:var(--accent);min-width:1.6em}
+  .item.ex{color:var(--ink-2)}
+  .item.ex .n::after{content:" e.g.";font-size:.7rem;color:var(--ink-3)}
+  .item .cue{color:var(--ink-3);font-style:italic;font-size:.95rem;margin-right:6px}
+  .ch{display:inline-flex;flex-wrap:wrap;gap:10px}
+  .ch span{border:1.5px solid var(--line-strong);border-radius:999px;padding:2px 14px;background:var(--surface)}
+  .ch span.circled{border:2.5px solid var(--ink);font-weight:700}
+  .ch.stack{display:flex;flex-direction:column;align-items:flex-start;gap:6px;margin-top:4px}
+  .ch.stack span{border-radius:10px}
+  .bank{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px;padding:10px 12px;border:2px dashed var(--line-strong);border-radius:10px;font-size:1.1rem;font-weight:600}
+  .bank span{padding:2px 10px}
+  .text{border:1px solid var(--line);border-radius:10px;padding:14px 18px;background:var(--surface-2);font-size:1.04rem;line-height:1.7;margin:10px 0}
+  .text p{margin:0 0 10px}
+  .text p:last-child{margin-bottom:0}
+  .text .ttl{font-family:"Archivo",sans-serif;font-weight:800;font-size:1.2rem;margin-bottom:6px}
+  .text ul{margin:4px 0 10px 1.2em;padding:0}
+  .tfrow{display:grid;grid-template-columns:2em 1fr auto;gap:12px;align-items:center;padding:7px 0;border-bottom:1px solid var(--line);font-size:1.06rem;break-inside:avoid}
+  .tfrow .n{font-family:"JetBrains Mono",monospace;font-weight:600;color:var(--accent)}
+  .tfrow .tf{display:flex;gap:10px}
+  .tfrow .tf span{border:1.5px solid var(--line-strong);border-radius:8px;padding:1px 10px;font-weight:600}
+  .tfrow .tf span.circled{border:2.5px solid var(--ink)}
+  .wline{border-bottom:1.5px solid var(--ink-2);height:2.1em}
+  table.grid{width:100%;border-collapse:collapse;margin:10px 0;font-size:.9rem}
+  table.grid th,table.grid td{border:1px solid var(--line-strong);padding:8px 10px;text-align:left;vertical-align:top}
+  table.grid thead th{background:var(--surface-2);font-family:"JetBrains Mono",monospace;font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+  table.grid td.sc{width:17%;text-align:center;font-family:"JetBrains Mono",monospace;color:var(--ink-3)}
+  .done{margin-top:26px;text-align:center;font-size:1.2rem;font-weight:700}
+  @media (max-width:680px){
+    .paper-head{grid-template-columns:1fr}
+    table.grid{display:block;overflow-x:auto}
+    .tfrow{grid-template-columns:2em 1fr}
+    .tfrow .tf{grid-column:2}
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="lbl">Test pack —</span>
+  <button type="button" onclick="window.print()">🖨 Print / Save as PDF</button>
+  <span class="hint">teacher notes · learner paper · scripts &amp; interview (teacher only)</span>
+</div>
+
+<div class="sheet">
+
+  <header class="mast">
+    <div class="kit-eyebrow">Independent English (B1) · Assessment · Class 26</div>
+    <h1>Final Test — B1 Exit Check</h1>
+    <p class="sub">The end-of-course check on all eight modules, taken on the last day, which is also a <b>celebration</b>. It shows each learner what they can now do in English: tell a story with the right tenses, report what people said, give and defend an opinion, make a complaint that gets results, handle a job interview, and give a short talk. It also gives you the evidence for the next step: <b>Confident English (B2)</b>, B2 with a review plan, or another round of B1 with more support. It is never a pass/fail verdict on a person.</p>
+    <div class="meta-row">
+      <span class="chip">⏱ <b>~60 min</b> written</span>
+      <span class="chip">+ <b>~8 min</b> interview each</span>
+      <span class="chip">Written <b>/85</b> · Speaking <b>/15</b> · Total <b>/100</b></span>
+      <span class="chip">Covers <b>Modules 1–8</b></span>
+    </div>
+  </header>
+
+  <div class="note">
+    <div class="t">Frame it as "show what you can do"</div>
+    <p>By Class 26 your learners have met you 25 times. Use that trust: <b>"Thirteen weeks ago you chose between two tenses. Today you can give a talk, defend your opinion, and get a refund, all in English!"</b> Do every example item together, keep the room warm and unhurried, and plan the celebration so it happens <i>whatever</i> the scores are. Every learner gets a certificate of attendance. The test decides the <b>next class</b>, not who gets to celebrate.</p>
+  </div>
+
+  <div class="sec"><h2>Running Class 26 (90 min)</h2><span class="rule"></span></div>
+  <table class="timing">
+    <thead><tr><th>Stage</th><th>Time</th><th>Interaction</th><th>Procedure</th></tr></thead>
+    <tbody>
+      <tr><td>Welcome &amp; set-up</td><td class="t">5 min</td><td>T–S</td><td>Greet everyone. Remind them: read the questions first. Papers go out face down, and learners write their names.</td></tr>
+      <tr><td>Part 1 · Listening</td><td class="t">15 min</td><td>T–S</td><td>Whole class. Give 30 seconds to read each section's questions, then read each script on the teacher pages <b>twice</b>.</td></tr>
+      <tr><td>Parts 2–5 · written</td><td class="t">45 min</td><td>S</td><td>Individual work. Suggest a pace on the board: <b>Parts 2–3 about 15 minutes, Part 4 about 12, Part 5 about 18.</b> <b>Interviews run at the same time</b> at a side table (or in the hallway). Call learners one by one for about 8 minutes each, which is 5–6 learners. If a volunteer or co-teacher is free, they supervise the room. If not, sit where you can see everyone.</td></tr>
+      <tr><td>Break</td><td class="t">5 min</td><td>—</td><td>Collect papers. Set out snacks if your program allows.</td></tr>
+      <tr><td>Remaining interviews + celebration</td><td class="t">20 min</td><td>S–S · T–S</td><td>Finish the remaining interviews while the class makes an <b>"I can…" wall</b>: each learner writes three things they can do now on sticky notes ("I can make a complaint politely and get a refund."). Then certificates, a one-sentence wish or plan from each learner ("This time next year, I'll be…"), a class photo if everyone agrees, and how to join <b>Confident English (B2)</b>. <b>For a class of more than 8</b>, start interviews in the second half of Class 25 during the presentation project, or book short one-to-one slots in the following week.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="grid2">
+    <div class="blk"><div class="h">You need</div>
+      <ul class="tick">
+        <li>One learner paper each (the middle section of this pack)</li>
+        <li>Teacher pages: listening scripts, the <b>interview script</b>, the talk-topic cards and discussion statements (cut), and one interview grid per learner</li>
+        <li>The key and rubrics: <code class="inline">assessment/assessment-key.html</code></li>
+        <li>Certificates, sticky notes, and a timer</li>
+      </ul>
+    </div>
+    <div class="blk"><div class="h">What each part checks</div>
+      <ul class="tick">
+        <li><b>Listening /15</b>: a short talk; a complaint phone call; choosing the best reply</li>
+        <li><b>Words &amp; phrases /15</b>: work vocabulary, phrasal verbs, and the right phrase for the situation</li>
+        <li><b>Grammar /20</b>: one item for each main structure in Modules 1–8</li>
+        <li><b>Reading /15</b>: a career story + a job advertisement</li>
+        <li><b>Writing /20</b>: a complaint email + an opinion essay (120–150 words)</li>
+        <li><b>Speaking /15</b>: an individual interview with a story, a short talk, a discussion, and a role-play</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="note lab">
+    <div class="t">Literacy-adapted version</div>
+    <p>Same paper, different delivery. <b>Read all instructions and items aloud</b>, enlarge the paper, and give extra time or split it over Classes 25 and 26. Parts 2–3: read the choices aloud and accept a spoken answer. Part 4: read the story and the job ad aloud and ask the questions orally (numbers and times can be <b>pointed to</b>). Part 5: the learner <b>says</b> the complaint and the opinion while you scribe, and you score them with the same checklist and rubric. Mark the paper <b>"Adapted"</b>. For these learners, the <b>interview and listening</b> are the main evidence for placement. The key explains how to recommend B2 together with literacy support instead of holding someone back for reading and writing alone.</p>
+  </div>
+
+  <div class="note warn">
+    <div class="t">Real or imagined, always</div>
+    <p>The interview asks about work, a past experience, and change over time. For some learners those are painful or private questions: a lost profession, a hard journey, a job they can't do here yet. Say before you start: <b>"Real or imagined, no problem. You can tell me about a new person."</b> The new-identity cards from the progress test work here too. Never ask follow-up questions about home country, family members who are absent, or immigration status. If a learner says "I'd rather not talk about that," thank them and move to the next stage.</p>
+  </div>
+
+  <!-- ═════════════════════ LEARNER PAPER ═════════════════════ -->
+  <div class="pagebreak"></div>
+  <div class="paper">
+    <header class="mast">
+      <div class="kit-eyebrow">Independent English (B1) · Final Test</div>
+      <h1>Look How Far I've Come! 🌟</h1>
+      <div class="paper-head">
+        <div><b>Name:</b></div>
+        <div><b>Date:</b></div>
+        <div><b>Class:</b></div>
+      </div>
+      <div class="key-icons">
+        <span>👂 Listen</span><span>📖 Read</span><span>⭕ Circle</span><span>✏️ Write</span><span>🗣️ Speak</span>
+      </div>
+      <p style="font-size:1.05rem;margin-top:10px">Read the questions <b>before</b> you listen or read. Look at the example first. If you don't understand an instruction, just ask. 🙂</p>
+    </header>
+
+    <!-- PART 1 -->
+    <div class="part-h"><span class="ic">👂</span><h2>Part 1 · Listening</h2><span class="score">___ / 15</span></div>
+
+    <div class="inst"><span class="ic">👂⭕</span><span>A. Listen to Grace's short talk about volunteering. Circle the correct answer.</span></div>
+    <div class="item"><span class="n">1</span><span>Grace saw the sign when she was … &nbsp;<span class="ch"><span>walking past the center</span><span>working in the kitchen</span><span>looking for a job</span></span></span></div>
+    <div class="item"><span class="n">2</span><span>Before that day, Grace … &nbsp;<span class="ch"><span>had volunteered once</span><span>had never volunteered</span><span>volunteered every week</span></span></span></div>
+    <div class="item"><span class="n">3</span><span>Now she teaches a computer class on … &nbsp;<span class="ch"><span>Saturdays</span><span>Tuesdays</span><span>Thursdays</span></span></span></div>
+    <div class="item"><span class="n">4</span><span>Last month, Grace … &nbsp;<span class="ch"><span>got a new job</span><span>left her job</span><span>started a new class</span></span></span></div>
+    <div class="item"><span class="n">5</span><span>Next Saturday, the volunteers will be … &nbsp;<span class="ch"><span>teaching</span><span>cooking</span><span>cleaning</span></span></span></div>
+
+    <div class="inst"><span class="ic">👂⭕</span><span>B. Listen to a phone call to a store. Circle the correct answer.</span></div>
+    <div class="item"><span class="n">6</span><span>The washing machine was delivered on … &nbsp;<span class="ch"><span>Monday</span><span>Tuesday</span><span>Thursday</span></span></span></div>
+    <div class="item"><span class="n">7</span><span>The machine … &nbsp;<span class="ch"><span>is the wrong size</span><span>doesn't work</span><span>hasn't arrived</span></span></span></div>
+    <div class="item"><span class="n">8</span><span>The order number is … &nbsp;<span class="ch"><span>47159</span><span>47195</span><span>41759</span></span></span></div>
+    <div class="item"><span class="n">9</span><span>The extra money will be back in … &nbsp;<span class="ch"><span>3–5 days</span><span>5–7 days</span><span>2 weeks</span></span></span></div>
+    <div class="item"><span class="n">10</span><span>For the machine, the customer asks for … &nbsp;<span class="ch"><span>a refund</span><span>a replacement</span><span>a discount</span></span></span></div>
+
+    <div class="inst"><span class="ic">👂⭕</span><span>C. Listen. Circle the best reply.</span></div>
+    <div class="item"><span class="n">11</span><span><span class="cue">(You're surprised and happy.)</span><span class="ch stack"><span>a) Did you? Congratulations!</span><span>b) Have you? Congratulations!</span><span>c) Were you? Congratulations!</span></span></span></div>
+    <div class="item"><span class="n">12</span><span><span class="cue">(You disagree politely.)</span><span class="ch stack"><span>a) No, that's wrong.</span><span>b) I see your point, but I miss my colleagues.</span><span>c) So do I.</span></span></span></div>
+    <div class="item"><span class="n">13</span><span><span class="cue">(You're in a job interview.)</span><span class="ch stack"><span>a) I'm good at solving problems. For example, I fixed our booking system last year.</span><span>b) I don't have any weaknesses.</span><span>c) I'm responsible for to answer the phone.</span></span></span></div>
+    <div class="item"><span class="n">14</span><span><span class="cue">(You work in a restaurant.)</span><span class="ch stack"><span>a) That's not my fault.</span><span>b) I'm terribly sorry. I'll bring you a hot one right away.</span><span>c) Really? It must be cold.</span></span></span></div>
+    <div class="item"><span class="n">15</span><span><span class="cue">(You agree.)</span><span class="ch stack"><span>a) Yes, it is.</span><span>b) Yes, it isn't.</span><span>c) No, it is.</span></span></span></div>
+
+    <!-- PART 2 -->
+    <div class="part-h pagebreak"><span class="ic">✏️</span><h2>Part 2 · Words &amp; Phrases</h2><span class="score">___ / 15</span></div>
+    <div class="inst"><span class="ic">📖✏️</span><span>A. Complete with a word from the box. <span class="sub">There is 1 extra word.</span></span></div>
+    <div class="bank"><span>apply</span><span>colleague</span><span>deadline</span><span>experience</span><span>position</span><span>responsible</span><span>strengths</span></div>
+    <div class="item ex"><span class="n">0</span><span>One of my <b>strengths</b> is working in a team.</span></div>
+    <div class="item"><span class="n">1</span><span>I'd like to <span class="blank"></span> for the job at the clinic.</span></div>
+    <div class="item"><span class="n">2</span><span>In my last job, I was <span class="blank"></span> for training new staff.</span></div>
+    <div class="item"><span class="n">3</span><span>The <span class="blank"></span> for the report is Friday at 5 p.m.</span></div>
+    <div class="item"><span class="n">4</span><span>I have five years of <span class="blank"></span> in customer service.</span></div>
+    <div class="item"><span class="n">5</span><span>My <span class="blank"></span> did my work for me when I was sick. We work in the same office.</span></div>
+
+    <div class="inst"><span class="ic">📖✏️</span><span>B. Complete the phrasal verbs with a word from the box. <span class="sub">There is 1 extra word.</span></span></div>
+    <div class="bank"><span>up</span><span>off</span><span>out</span><span>after</span><span>on</span><span>with</span></div>
+    <div class="item"><span class="n">6</span><span>We need to set <span class="blank"></span> early to avoid the traffic.</span></div>
+    <div class="item"><span class="n">7</span><span>Who's going to look <span class="blank"></span> the kids while we're at work?</span></div>
+    <div class="item"><span class="n">8</span><span>Can you find <span class="blank"></span> what time the store opens?</span></div>
+    <div class="item"><span class="n">9</span><span>Don't give <span class="blank"></span>. You're nearly finished!</span></div>
+    <div class="item"><span class="n">10</span><span>I get <span class="blank"></span> really well with my new manager.</span></div>
+
+    <div class="inst"><span class="ic">⭕</span><span>C. Circle the best phrase for the situation.</span></div>
+    <div class="item"><span class="n">11</span><span><span class="cue">You want your money back.</span> <span class="ch"><span>Give me my money back.</span><span>Would it be possible to get a refund?</span></span></span></div>
+    <div class="item"><span class="n">12</span><span><span class="cue">You're finishing a presentation.</span> <span class="ch"><span>To sum up, …</span><span>To begin with, …</span></span></span></div>
+    <div class="item"><span class="n">13</span><span><span class="cue">You disagree with your manager.</span> <span class="ch"><span>You're wrong.</span><span>I see your point, but …</span></span></span></div>
+    <div class="item"><span class="n">14</span><span><span class="cue">You agree completely.</span> <span class="ch"><span>I couldn't agree more.</span><span>I couldn't care less.</span></span></span></div>
+    <div class="item"><span class="n">15</span><span><span class="cue">You ask for someone's opinion.</span> <span class="ch"><span>What's your view on this?</span><span>Tell me your view now.</span></span></span></div>
+
+    <!-- PART 3 -->
+    <div class="part-h pagebreak"><span class="ic">⭕</span><h2>Part 3 · Grammar</h2><span class="score">___ / 20</span></div>
+    <div class="inst"><span class="ic">📖⭕</span><span>Circle the correct word or words.</span></div>
+    <div class="item ex"><span class="n">0</span><span>She <span class="ch"><span>lives</span><span class="circled">has lived</span></span> in this city since 2020.</span></div>
+    <div class="item"><span class="n">1</span><span>I <span class="ch"><span>went</span><span>have been</span></span> to Canada three times, and I'd love to go again.</span></div>
+    <div class="item"><span class="n">2</span><span>How long <span class="ch"><span>are you waiting</span><span>have you been waiting</span></span> for the bus?</span></div>
+    <div class="item"><span class="n">3</span><span>Every summer, we <span class="ch"><span>would</span><span>were</span></span> swim in the river near my grandmother's house.</span></div>
+    <div class="item"><span class="n">4</span><span>I'll call you if I <span class="ch"><span>have</span><span>will have</span></span> time this afternoon.</span></div>
+    <div class="item"><span class="n">5</span><span>If I <span class="ch"><span>have</span><span>had</span><span>would have</span></span> a million dollars, I'd buy a house by the ocean.</span></div>
+    <div class="item"><span class="n">6</span><span>I wish my neighbors <span class="ch"><span>would</span><span>will</span><span>are</span></span> stop playing loud music at night.</span></div>
+    <div class="item"><span class="n">7</span><span>She <span class="ch"><span>said me</span><span>told me</span><span>told to me</span></span> that she was leaving.</span></div>
+    <div class="item"><span class="n">8</span><span>He asked me where <span class="ch"><span>I lived</span><span>did I live</span><span>do I live</span></span>.</span></div>
+    <div class="item"><span class="n">9</span><span>My brother, <span class="ch"><span>who</span><span>that</span><span>which</span></span> lives in Texas, is a nurse.</span></div>
+    <div class="item"><span class="n">10</span><span>This bridge <span class="ch"><span>built</span><span>was built</span><span>is built</span></span> in 1932.</span></div>
+    <div class="item"><span class="n">11</span><span>She's been working for twelve hours. She <span class="ch"><span>must</span><span>can't</span><span>mustn't</span></span> be exhausted.</span></div>
+    <div class="item"><span class="n">12</span><span>When we got to the station, the train <span class="ch"><span>left</span><span>had left</span><span>has left</span></span>, so we took a taxi.</span></div>
+    <div class="item"><span class="n">13</span><span>I <span class="ch"><span>cooked</span><span>was cooking</span><span>had cooked</span></span> dinner when the lights suddenly went out.</span></div>
+    <div class="item"><span class="n">14</span><span>I'll text you as soon as I <span class="ch"><span>get</span><span>will get</span><span>got</span></span> home.</span></div>
+    <div class="item"><span class="n">15</span><span>Don't call me at 8 tonight. I <span class="ch"><span>will be watching</span><span>watch</span><span>watched</span></span> the game then.</span></div>
+    <div class="item"><span class="n">16</span><span>My sister is <span class="ch"><span>a</span><span>an</span><span>the</span></span> engineer.</span></div>
+    <div class="item"><span class="n">17</span><span>I'm looking forward to <span class="ch"><span>see</span><span>seeing</span><span>saw</span></span> you next week.</span></div>
+    <div class="item"><span class="n">18</span><span>It was <span class="ch"><span>so</span><span>such a</span><span>such</span></span> good movie that I watched it twice.</span></div>
+    <div class="item"><span class="n">19</span><span>The radio is too loud. Could you turn <span class="ch"><span>off it</span><span>it off</span><span>it</span></span>, please?</span></div>
+    <div class="item"><span class="n">20</span><span>You're coming to the meeting, <span class="ch"><span>aren't you</span><span>don't you</span><span>isn't it</span></span>?</span></div>
+
+    <!-- PART 4 -->
+    <div class="part-h pagebreak"><span class="ic">📖</span><h2>Part 4 · Reading</h2><span class="score">___ / 15</span></div>
+    <div class="inst"><span class="ic">📖</span><span>A. Read the questions first. Then read Samira's story.</span></div>
+    <div class="text">
+      <div class="ttl">From Dishwasher to Head Chef</div>
+      <p>When Samira Haddad arrived in Chicago in 2014, she didn't know anyone. She had studied accounting in her home country, but her degree wasn't recognized, so she took the first job she could find: washing dishes in a busy hotel restaurant.</p>
+      <p>"It was hard," she remembers. "I was working ten hours a day, and I was so tired that I fell asleep on the bus most evenings." But Samira watched the cooks carefully. After her shift, she would stay for an extra hour and practice cutting vegetables. One night, while the kitchen was preparing for a big wedding, one of the cooks suddenly got sick. The head chef, who had noticed Samira's hard work, asked her to help. By the end of the night, she had prepared 150 salads, and she had found a new passion.</p>
+      <p>Over the next five years, Samira was promoted three times. She took evening classes at a community college, where she learned about food safety and kitchen management. Today she is the head chef at the same hotel, and she is responsible for a team of twelve people.</p>
+      <p>"Most of my team started like me," she says. "A few of them didn't speak much English at first, so I always tell them not to give up." Next spring, Samira is opening her own small restaurant. "This time next year, I'll be cooking my grandmother's recipes for my own customers. I can't wait."</p>
+    </div>
+    <div class="inst"><span class="ic">⭕</span><span>Circle <b>Yes</b>, <b>No</b>, or <b>Doesn't say</b>.</span></div>
+    <div class="tfrow"><span class="n">1</span><span>Samira had studied cooking before she came to Chicago.</span><span class="tf"><span>Yes</span><span>No</span><span>Doesn't say</span></span></div>
+    <div class="tfrow"><span class="n">2</span><span>Her first job in Chicago was washing dishes.</span><span class="tf"><span>Yes</span><span>No</span><span>Doesn't say</span></span></div>
+    <div class="tfrow"><span class="n">3</span><span>She often fell asleep on the bus.</span><span class="tf"><span>Yes</span><span>No</span><span>Doesn't say</span></span></div>
+    <div class="tfrow"><span class="n">4</span><span>The head chef got sick on the night of the wedding.</span><span class="tf"><span>Yes</span><span>No</span><span>Doesn't say</span></span></div>
+    <div class="tfrow"><span class="n">5</span><span>Samira's grandmother taught her to cook.</span><span class="tf"><span>Yes</span><span>No</span><span>Doesn't say</span></span></div>
+    <div class="inst"><span class="ic">✏️</span><span>Answer the questions.</span></div>
+    <div class="item"><span class="n">6</span><span style="flex:1">What did Samira do after her shift? <div class="wline"></div></span></div>
+    <div class="item"><span class="n">7</span><span style="flex:1">How many people is she responsible for now? <div class="wline"></div></span></div>
+    <div class="item"><span class="n">8</span><span style="flex:1">What is Samira going to do next spring? <div class="wline"></div></span></div>
+
+    <div class="inst"><span class="ic">📖</span><span>B. Read the job advertisement.</span></div>
+    <div class="text" style="max-width:600px;margin-left:auto;margin-right:auto">
+      <div class="ttl">🏥 Front Desk Assistant · Lakeside Community Clinic</div>
+      <p><b>Part-time · 25 hours a week · Monday–Friday, 12:30–5:30 p.m. · $18.50 an hour</b></p>
+      <p>We're looking for a friendly, organized person to join our busy front-desk team.</p>
+      <p><b>You'll be responsible for:</b></p>
+      <ul>
+        <li>answering phone calls and booking appointments</li>
+        <li>welcoming patients and checking them in</li>
+        <li>dealing with questions and simple complaints</li>
+      </ul>
+      <p><b>You must have</b> at least one year of experience in customer service and good computer skills. It would be great if you speak a second language, because we serve many Spanish- and Vietnamese-speaking families. You <b>don't have to</b> have experience in healthcare: full training is given.</p>
+      <p><b>How to apply:</b> Send your résumé and a short email explaining why you would like the job to <i>jobs@lakeside-clinic.example</i>. Applications must be received by <b>Friday, June 12</b>. Interviews will be held the following week.</p>
+    </div>
+    <div class="item"><span class="n">9</span><span style="flex:1">How many hours a week is the job? <div class="wline"></div></span></div>
+    <div class="item"><span class="n">10</span><span style="flex:1">What time does the working day start? <div class="wline"></div></span></div>
+    <div class="item"><span class="n">11</span><span style="flex:1">Name <b>one</b> thing the assistant will be responsible for. <div class="wline"></div></span></div>
+    <div class="tfrow"><span class="n">12</span><span>Do you need experience in healthcare?</span><span class="tf"><span>Yes</span><span>No</span></span></div>
+    <div class="item"><span class="n">13</span><span style="flex:1">What <b>two</b> things must you send? <div class="wline"></div></span></div>
+    <div class="item"><span class="n">14</span><span style="flex:1">What is the last day to apply? <div class="wline"></div></span></div>
+    <div class="item"><span class="n">15</span><span style="flex:1">Why is a second language useful in this job? <div class="wline"></div></span></div>
+
+    <!-- PART 5 -->
+    <div class="part-h pagebreak"><span class="ic">✏️</span><h2>Part 5 · Writing</h2><span class="score">___ / 20</span></div>
+    <div class="inst"><span class="ic">✏️</span><span>A. Write an email of complaint. <span class="sub">(80–100 words)</span></span></div>
+    <p style="font-size:1.05rem;margin:0 0 6px">Two weeks ago you bought a laptop online from <b>TechWorld</b>. It arrived four days late, and now the screen doesn't work. Write to customer service. Say <b>what you bought and when</b>, <b>what the problems are</b>, and <b>what you would like them to do</b>. Be polite.</p>
+    <div class="phrase-bank">
+      <span class="phrase">Dear Customer Service,</span><span class="phrase">I'm writing to complain about …</span><span class="phrase">I'm afraid …</span><span class="phrase">It doesn't work. / It hasn't …</span><span class="phrase">Would it be possible to …?</span><span class="phrase">I'd appreciate it if you could …</span><span class="phrase">Best regards,</span>
+    </div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+
+    <div class="inst"><span class="ic">✏️</span><span>B. Write an opinion essay. Choose <b>one</b> question. <span class="sub">(120–150 words)</span></span></div>
+    <ul class="tick" style="font-size:1.05rem">
+      <li>☐ <b>Is it better to work from home or at a workplace?</b></li>
+      <li>☐ <b>Should everyone learn a second language at school?</b></li>
+    </ul>
+    <p style="font-size:1.05rem;margin:0 0 6px">Give your opinion, <b>two or three reasons</b> with examples, and think about the <b>other side</b>. Finish with a conclusion.</p>
+    <div class="phrase-bank">
+      <span class="phrase">In my opinion, … / It seems to me that …</span>
+      <span class="phrase">First of all, … / Another point is that …</span>
+      <span class="phrase">For example, …</span>
+      <span class="phrase">On the one hand … On the other hand …</span>
+      <span class="phrase">Some people say … but …</span>
+      <span class="phrase">If …, … would …</span>
+      <span class="phrase">To sum up, …</span>
+    </div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+
+    <p class="done">Finished! You did it. 🎉 Now check your answers. ✔️</p>
+
+    <table class="grid" style="margin-top:22px">
+      <thead><tr><th>For the teacher</th><th>1 Listening</th><th>2 Words</th><th>3 Grammar</th><th>4 Reading</th><th>5 Writing</th><th>Written</th><th>Speaking</th><th>Total</th></tr></thead>
+      <tbody><tr><td>Score</td><td>/15</td><td>/15</td><td>/20</td><td>/15</td><td>/20</td><td>/85</td><td>/15</td><td>/100</td></tr></tbody>
+    </table>
+  </div>
+
+  <!-- ═════════════════════ TEACHER PAGES ═════════════════════ -->
+  <div class="pagebreak"></div>
+  <span class="teacher-only">Teacher only · do not copy for learners</span>
+  <div class="sec" style="margin-top:6px"><h2>Part 1 · Listening Scripts</h2><span class="rule"></span></div>
+  <p>Give 30 seconds to read each section's questions. Read each script <b>twice</b>, clearly and at a natural pace, and pause about 10 seconds between readings. Read Part B as a dialogue: change your voice or stand in a different place for each speaker, or read it with a colleague. In Part C, say the number, then the line <b>once per reading</b>. Don't read the answer choices aloud.</p>
+
+  <div class="blk"><div class="h">A · Grace's talk (read the whole talk twice, then give 1 minute)</div>
+    <div class="script">Good evening, everyone. Today I'd like to talk about volunteering. First of all, let me tell you how I started. Three years ago, I <b>was walking past the community center</b> when I saw a sign: "Volunteers needed." I <b>had never volunteered before</b>, but I decided to try. At first, I helped in the kitchen on Saturdays. Now I teach a computer class for older people every <b>Tuesday</b> evening.<br>
+    Another point is that volunteering has helped my career. I've learned to organize events and deal with problems calmly, and last month I <b>got a new job</b> as an office manager. My experience at the center really helped in the interview.<br>
+    Finally, it's fun! Most of my best friends are people I met there. To sum up: if you have a few free hours a week, try it. Next Saturday we'll be <b>cooking</b> for two hundred people, so come and join us. Thank you for listening.</div>
+  </div>
+  <div class="blk"><div class="h">B · A phone call to a store (read the whole dialogue twice, then give 1 minute)</div>
+    <div class="dialogue">
+      <p class="line a"><span class="speaker">Jenna:</span> Good morning, BrightHome Appliances, Jenna speaking. How can I help you?</p>
+      <p class="line b"><span class="speaker">Customer:</span> Hi. I'm sorry to bother you, but I'm afraid there's a problem with a washing machine I ordered.</p>
+      <p class="line a"><span class="speaker">Jenna:</span> I'm sorry to hear that. Could you tell me exactly what happened?</p>
+      <p class="line b"><span class="speaker">Customer:</span> Well, it was delivered on <b>Monday</b>, but <b>it doesn't work</b>. It makes a terrible noise and then it stops. And I was charged twice. I checked my bank account yesterday.</p>
+      <p class="line a"><span class="speaker">Jenna:</span> I do apologize. Could I have your order number, please?</p>
+      <p class="line b"><span class="speaker">Customer:</span> Yes, it's <b>four – seven – one – five – nine</b>.</p>
+      <p class="line a"><span class="speaker">Jenna:</span> Thank you. You're right, I can see two payments. I'll sort that out right away, and you'll get the extra money back in <b>three to five days</b>.</p>
+      <p class="line b"><span class="speaker">Customer:</span> Thank you. And the machine? Would it be possible to get <b>a replacement</b>?</p>
+      <p class="line a"><span class="speaker">Jenna:</span> Of course. We'll collect the old one and bring you a new one on Thursday morning. Is that OK?</p>
+      <p class="line b"><span class="speaker">Customer:</span> Thursday morning is fine. I'd appreciate it if you could call me before the driver comes.</p>
+      <p class="line a"><span class="speaker">Jenna:</span> No problem. I'll make a note. Again, I'm terribly sorry for the trouble.</p>
+    </div>
+  </div>
+  <div class="blk"><div class="h">C · Choose the best reply</div>
+    <div class="script">Number 11: <b>I passed my driving test yesterday!</b><br>
+    Number 12: <b>Working from home is always better than going to the office.</b><br>
+    Number 13: <b>So, what would you say your main strengths are?</b><br>
+    Number 14: <b>Excuse me, I'm afraid my soup is cold.</b><br>
+    Number 15: <b>It's a lovely day, isn't it?</b> (falling intonation)</div>
+  </div>
+
+  <div class="sec"><h2>Individual Speaking Interview · ~8 minutes</h2><span class="rule"></span></div>
+  <p>Sit <b>beside</b> the learner, not across a desk, with the grid on your lap. Speak at a natural pace. Ask the <b>core</b> question first. If there's no answer after about 5 seconds, use the <b>support</b> version (a choice question or a model). If the answer comes easily, add the <b>stretch</b> question. At B1, listen for <b>connected answers</b>: a story in order, a reason for every opinion, and a short talk with a beginning, middle, and end. Don't correct during the interview. Note one strength and one next step instead. <b>Before stage 1</b>, let the learner choose a talk-topic card so they can think about it quietly while you do stage 1 and 2.</p>
+
+  <div class="lesson">
+    <div class="lesson-head"><span class="lcode">1</span><h3>Warm-up: work &amp; experience</h3><span class="dur">~1 min</span></div>
+    <div class="lesson-body">
+      <div class="say">Hello! How are you today? How long have you been studying English?</div>
+      <div class="say">Tell me about your work, or the kind of work you'd like to do. What are you (or would you be) responsible for? <span style="font-style:normal;color:var(--ink-3)">(real or imagined)</span></div>
+      <p style="font-size:.9rem;color:var(--ink-2)"><b>Support:</b> "Do you work now, or are you looking for a job?" · <b>Stretch:</b> "How is your work life different from five years ago?" (<i>used to … but now …</i>; present perfect)</p>
+    </div>
+  </div>
+  <div class="lesson">
+    <div class="lesson-head"><span class="lcode">2</span><h3>A story</h3><span class="dur">~1½ min</span></div>
+    <div class="lesson-body">
+      <div class="say">Tell me about a time when something went wrong, or went surprisingly well. Where were you? What were you doing? What happened?</div>
+      <p style="font-size:.9rem;color:var(--ink-2)"><b>Support:</b> "Was it on a trip? At work? What was the weather like?" · model: "I was waiting for the bus when…" · <b>Stretch:</b> "Had anything like that happened to you before?" (past perfect) · "What did people say to you afterwards?" (reported speech)</p>
+    </div>
+  </div>
+  <div class="lesson">
+    <div class="lesson-head"><span class="lcode">3</span><h3>Short talk (monologue)</h3><span class="dur">~2 min</span></div>
+    <div class="lesson-body">
+      <div class="say">Now please give me your short talk on the topic you chose. About one minute. Start with "Today I'd like to talk about…"</div>
+      <p style="font-size:.9rem;color:var(--ink-2)">Let them speak without interrupting. Time about 1 minute; stop them kindly at 1½ minutes. <b>Support:</b> if they freeze, ask "What's your first point?" then "Can you give me an example?" · <b>Stretch:</b> one follow-up question on the talk: "What would happen if everyone did that?" Listen for <b>signposting</b> (<i>First of all, Another point is, For example, To sum up</i>).</p>
+    </div>
+  </div>
+  <div class="lesson">
+    <div class="lesson-head"><span class="lcode">4</span><h3>Discussion</h3><span class="dur">~2 min</span></div>
+    <div class="lesson-body">
+      <p>Read <b>one</b> discussion statement below as if it were your opinion. Push back gently once, so the learner has to agree, disagree, or defend a view.</p>
+      <div class="say">Here's my opinion: [statement]. What do you think? … Why? … Some people say the opposite. Do you agree with them? … What would happen if…?</div>
+      <p style="font-size:.9rem;color:var(--ink-2)"><b>Support:</b> "Do you agree or disagree?" then "Why?" · <b>Stretch:</b> "What's the strongest argument on the other side?" Listen for polite disagreement (<i>I see your point, but…</i>), reasons, and hedging (<i>maybe, I suppose, to be honest</i>).</p>
+    </div>
+  </div>
+  <div class="lesson">
+    <div class="lesson-head"><span class="lcode">5</span><h3>Role-play + your question</h3><span class="dur">~1½ min</span></div>
+    <div class="lesson-body">
+      <p>The learner chooses <b>one</b> role-play card. You play the other person. Then invite one question.</p>
+      <div class="say">(Complaint, you are the store worker) Good afternoon, how can I help? … Oh, I'm sorry to hear that. When did you buy it? … Do you have your receipt? … What would you like us to do?</div>
+      <div class="say">(Interview, you are the interviewer) Thanks for coming in. Tell me a little about yourself. … Why do you want this job? … What's your biggest weakness?</div>
+      <div class="say">Now, do you have a question for me? Anything at all.</div>
+    </div>
+  </div>
+
+  <div class="blk"><div class="h">Talk-topic cards (cut · the learner chooses one before stage 1)</div>
+    <div class="cards">
+      <div class="card-cut"><div class="ct">Talk topic</div><h4>🎤 A skill everyone should learn</h4><p>What is it? Why is it useful? Give an example from your life.</p></div>
+      <div class="card-cut b"><div class="ct">Talk topic</div><h4>🎤 The best place in this town</h4><p>Where is it? What can you do there? Why do you like it?</p></div>
+      <div class="card-cut"><div class="ct">Talk topic</div><h4>🎤 How life has changed</h4><p>How was life different 20 or 30 years ago? What is better now? What is worse?</p></div>
+      <div class="card-cut b"><div class="ct">Talk topic</div><h4>🎤 A change I'd like to see</h4><p>In your town, your workplace, or the world. Why? What would happen if it changed?</p></div>
+    </div>
+  </div>
+  <div class="blk"><div class="h">Discussion statements (you choose one)</div>
+    <ul class="tick">
+      <li>"Everyone should work four days a week, not five."</li>
+      <li>"Children today have an easier life than we did."</li>
+      <li>"Public transportation should be free for everyone."</li>
+      <li>"It's better to rent a home than to buy one."</li>
+    </ul>
+  </div>
+  <div class="blk"><div class="h">Role-play cards (cut · the learner chooses one)</div>
+    <div class="cards">
+      <div class="card-cut"><div class="ct">Complaint</div><h4>🛍️ Return a jacket</h4><p>You bought a jacket last week. After one wash, the zipper broke. You have the receipt.<br>Explain the problem politely and ask for a replacement or a refund.</p></div>
+      <div class="card-cut b"><div class="ct">Job interview</div><h4>💼 Front desk job</h4><p>You're applying for a job at a hotel front desk (real or imagined experience).<br>Answer the questions. Give one strength <b>with an example</b>. Ask one question at the end.</p></div>
+    </div>
+  </div>
+
+  <div class="sec"><h2>Interview Scoring Grid</h2><span class="rule"></span></div>
+  <p style="font-size:.9rem;color:var(--ink-2)">Score each criterion <b>0–3</b>: 0 = no response · 1 = Not yet B1 · 2 = B1 · 3 = B1+ (strong). Descriptors are in the assessment key. Total /15. Print one per learner.</p>
+  <p style="font-size:.95rem">Learner: ______________________ &nbsp; Date: __________ &nbsp; Talk topic: ____________ &nbsp; Role-play: ☐ Complaint ☐ Interview &nbsp; ☐ Adapted</p>
+  <table class="grid">
+    <thead><tr><th>Criterion</th><th>What to listen for</th><th>Score (0–3)</th></tr></thead>
+    <tbody>
+      <tr><td><b>Task &amp; coherence</b></td><td>A story told in order with some detail; a 1-minute talk with a clear beginning, middle, and end; reasons for every opinion; the role-play completed politely</td><td class="sc">&nbsp;</td></tr>
+      <tr><td><b>Range</b></td><td>Work, experience, and opinion language; signposting; complaint or interview phrases; a few phrasal verbs; rephrases a missing word</td><td class="sc">&nbsp;</td></tr>
+      <tr><td><b>Accuracy</b></td><td>Narrative tenses (past simple, continuous, perfect); present perfect for experience; conditionals; reported speech; gerund/infinitive after common verbs</td><td class="sc">&nbsp;</td></tr>
+      <tr><td><b>Interaction</b></td><td>Agrees and disagrees politely, defends a view when you push back, asks a question, asks for clarification, keeps the role-play going</td><td class="sc">&nbsp;</td></tr>
+      <tr><td><b>Pronunciation &amp; fluency</b></td><td>Clearly understandable; keeps going with some pausing to plan; falling tone on tags; stress on key words in the talk</td><td class="sc">&nbsp;</td></tr>
+      <tr><td colspan="2"><b>Total /15</b> · Went well: ____________________ · Next step: ____________________</td><td class="sc">&nbsp;</td></tr>
+    </tbody>
+  </table>
+
+  <div class="note lab">
+    <div class="t">After the test</div>
+    <p>Score with the key and put written + speaking on the placement summary. Tell each learner their next step <b>privately</b> and kindly before they leave, or at a short one-to-one in the following week. Never read scores aloud. The key's "grade to outcome" table shows who is ready for <b>Confident English (B2)</b>, who goes on with a review plan, and who should repeat B1 with support.</p>
+  </div>
+
+  <div class="foot">
+    <div class="who"><b>Ray de la Paz</b><span class="bio">© 2026 Ray de la Paz · Independent English (B1 Intermediate)</span></div>
+    <div class="ver">Assessment · Final Test · v1.0</div>
+  </div>
+
+</div>
+</body>
+</html>

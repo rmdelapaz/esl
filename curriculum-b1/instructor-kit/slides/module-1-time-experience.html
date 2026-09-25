@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slides — Module 1</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root{--bg:#0b1220;--ink:#edf2fb;--ink2:#a8b6cf;--accent:#7fb2ff;--accent2:#2563eb;--lab:#34d3bd;--warn:#fbbf24;--line:#233252;--code:#101a2e;color-scheme:dark}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;overflow:hidden}
+  .deck{height:100%;width:100%;position:relative}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:6vh 8vw;gap:20px}
+  .slide.on{display:flex}
+  h1,h2,h3{font-family:"Archivo",sans-serif;line-height:1.1;text-wrap:balance}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  .slide h1{font-size:clamp(2rem,6vw,4rem);font-weight:800;letter-spacing:-.02em}
+  .slide h2{font-size:clamp(1.5rem,4.2vw,2.8rem);font-weight:800;letter-spacing:-.01em}
+  .slide p.lead{font-size:clamp(1.05rem,2.4vw,1.5rem);color:var(--ink2);max-width:26ch}
+  ul{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:6px}
+  ul li{position:relative;padding-left:34px;font-size:clamp(1.05rem,2.3vw,1.6rem)}
+  ul li::before{content:"";position:absolute;left:0;top:.55em;width:12px;height:12px;border-radius:3px;background:var(--accent);transform:rotate(45deg)}
+  ul.lab li::before{background:var(--lab)}
+  code.k{font-family:"JetBrains Mono",monospace;color:#cfe0ff;font-size:.92em}
+  pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:22px 26px;font-family:"JetBrains Mono",monospace;font-size:clamp(.85rem,1.9vw,1.3rem);line-height:1.55;overflow:auto;max-width:100%}
+  pre .k{color:#7dd3fc} pre .s{color:#86efac} pre .c{color:#7183a3;font-style:italic}
+  .tag{display:inline-flex;align-items:center;gap:10px;font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);color:var(--ink2)}
+  .tag .pill{background:var(--accent2);color:#fff;font-weight:700;border-radius:999px;padding:3px 12px;letter-spacing:.06em}
+  .tag .pill.lab{background:var(--lab);color:#062b26} .tag .pill.warn{background:var(--warn);color:#3a2a05}
+  .section{background:linear-gradient(135deg,#132a52,#0b1220)}
+  .section .big{font-size:clamp(3rem,12vw,8rem);font-family:"Archivo";font-weight:800;color:var(--accent2);line-height:.9}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+  @media (max-width:760px){.two{grid-template-columns:1fr}}
+  .bar{position:fixed;left:0;top:0;height:4px;background:var(--accent2);width:0;transition:width .25s;z-index:5}
+  .count{position:fixed;right:16px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink2);z-index:5}
+  .nav{position:fixed;inset:auto 0 0 0;display:flex;justify-content:space-between;pointer-events:none;z-index:4}
+  .nav button{pointer-events:auto;background:transparent;border:none;color:transparent;width:22vw;height:100vh;cursor:pointer}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+  /* ESL extras (picture vocab, grammar tables, dialogue, clocks) */
+  .pics{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,1.6vw,18px)}
+  .pics.six{grid-template-columns:repeat(6,1fr)}
+  .pic{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center}
+  .pic img{width:100%;max-width:150px;aspect-ratio:1;object-fit:cover;border-radius:10px;background:#FFF3E0;display:block;margin:0 auto}
+  .pic .emo{font-size:clamp(2.6rem,7vw,5rem);line-height:1;aspect-ratio:1;max-width:150px;margin:0 auto;display:flex;align-items:center;justify-content:center}
+  .pic .w{font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(.9rem,2vw,1.35rem);margin-top:6px}
+  @media (max-width:760px){.pics,.pics.six{grid-template-columns:repeat(3,1fr)}}
+  table.g{border-collapse:collapse;font-size:clamp(.95rem,2.1vw,1.45rem);width:100%;max-width:1000px}
+  table.g th,table.g td{border:1px solid var(--line);padding:10px 16px;text-align:left}
+  table.g th{background:var(--code);color:var(--accent);font-family:"JetBrains Mono",monospace;font-size:.8em;letter-spacing:.04em}
+  table.g b{color:#ffd166}
+  .dlg{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:18px 24px;display:flex;flex-direction:column;gap:8px;font-size:clamp(1rem,2.2vw,1.45rem);max-width:1000px}
+  .dlg .sp{display:inline-block;min-width:3.6em;font-weight:700;color:var(--accent)}
+  .dlg .b .sp{color:#c4a1ff}
+  .ccq{font-size:clamp(1rem,2.2vw,1.45rem);border:1px dashed var(--line);border-radius:12px;padding:12px 18px;background:var(--code)}
+  .ccq i{color:var(--ink2)}
+  .clocks{display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,34px);align-items:flex-start}
+  .clocks figure{text-align:center}
+  .clocks svg{width:clamp(96px,14vw,170px);height:auto}
+  .clocks figcaption{font-size:clamp(.95rem,2vw,1.3rem);margin-top:6px}
+  .clocks figcaption small{display:block;color:var(--ink2);font-size:.8em}
+  .snd{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .snd div{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:clamp(1rem,2.2vw,1.5rem)}
+  .snd div b{display:block;font-family:"Archivo";font-size:1.5em;color:var(--accent)}
+  .snd div small{color:var(--ink2)}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="deck" id="deck">
+
+  <!-- 1 -->
+  <section class="slide on section">
+    <div class="eyebrow">Independent English (B1) · Instructor Kit</div>
+    <h1>Module 1<br>Time, Experience &amp; Past Habits</h1>
+    <p class="lead">What I've done. What I've been doing. How things used to be.</p>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide">
+    <div class="eyebrow">Welcome to B1 · how our class works</div>
+    <h2>Independent English</h2>
+    <ul>
+      <li><b>26 classes</b> · 2 a week · 13 weeks · bring your workbook every time</li>
+      <li><b>Homework</b> = the online lesson for each class, with 🔊 Listen buttons</li>
+      <li><b>B1 =</b> choose the right form · speak in longer turns · give your opinion · discuss</li>
+      <li><b>Module 1:</b> 1.1 I've done / I did · 1.2 I've been doing · 1.3 I used to / I would</li>
+    </ul>
+    <div class="tag"><span class="pill">NOTE</span> Your real life, a new identity card, or people in general: all are OK. You can say "Pass."</div>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide">
+    <div class="eyebrow">C1 · Welcome mingle · 15 min</div>
+    <h2>Get to know your classmates</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>Take 3 cards: <b>PAST</b> · <b>PERFECT</b> · <b>FUTURE</b></li>
+        <li>Find a partner. Ask <b>one question + one follow-up</b></li>
+        <li>Answer in 2–3 sentences. Then <b>swap cards</b></li>
+        <li>New partner! (4 rounds) Then tell the class one thing</li>
+      </ul>
+      <div class="ccq">How many cards? <i>(Three.)</i><br>Questions per person? <i>(One + a follow-up.)</i><br>After you talk? <i>(Swap cards, new partner.)</i><br>Must it be your real life? <i>(No.)</i></div>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide">
+    <div class="eyebrow">1.1 · New words · experiences</div>
+    <h2>Have you ever…?</h2>
+    <div class="pics six">
+      <div class="pic"><img src="../assets/vocab/flight.jpg" alt=""><div class="w">flown in a plane</div></div>
+      <div class="pic"><img src="../assets/vocab/hike.jpg" alt=""><div class="w">climbed a mountain</div></div>
+      <div class="pic"><img src="../assets/vocab/swim.jpg" alt=""><div class="w">swum in the ocean</div></div>
+      <div class="pic"><img src="../assets/vocab/cook.jpg" alt=""><div class="w">cooked for a big group</div></div>
+      <div class="pic"><img src="../assets/vocab/sing.jpg" alt=""><div class="w">sung in public</div></div>
+      <div class="pic"><img src="../assets/vocab/play-the-guitar.jpg" alt=""><div class="w">learned an instrument</div></div>
+      <div class="pic"><img src="../assets/vocab/ticket.jpg" alt=""><div class="w">been to a concert</div></div>
+      <div class="pic"><img src="../assets/vocab/key.jpg" alt=""><div class="w">lost your keys</div></div>
+      <div class="pic"><img src="../assets/vocab/mobile-phone.jpg" alt=""><div class="w">broken your phone</div></div>
+      <div class="pic"><img src="../assets/vocab/restaurant.jpg" alt=""><div class="w">tried a new restaurant</div></div>
+      <div class="pic"><div class="emo">🏃</div><div class="w">run a race</div></div>
+      <div class="pic"><div class="emo">⭐</div><div class="w">met a famous person</div></div>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide">
+    <div class="eyebrow">1.1 · The choice</div>
+    <h2>Finished time or connected to now?</h2>
+    <table class="g">
+      <tr><th>🔚 Past simple · finished time</th><th>➡️● Present perfect · connected to now</th></tr>
+      <tr><td>I <b>lost</b> my keys yesterday.</td><td>I<b>'ve lost</b> my keys. (I can't find them now.)</td></tr>
+      <tr><td>She <b>lived</b> there in 2015. (not now)</td><td>She<b>'s lived</b> here for ten years. (still here)</td></tr>
+      <tr><td><b>Did</b> you <b>eat</b> sushi at the party?</td><td><b>Have</b> you ever <b>eaten</b> sushi?</td></tr>
+      <tr><td>We <b>arrived</b> at 8 o'clock.</td><td>We<b>'ve just arrived</b>. (we're here now)</td></tr>
+    </table>
+    <div class="tag"><span class="pill warn">GOLDEN RULE</span> You say WHEN (yesterday, in 2019, ago) → past simple · I've seen him yesterday ❌</div>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide">
+    <div class="eyebrow">1.1 · Check the meaning</div>
+    <h2>What does it mean?</h2>
+    <div class="two">
+      <div class="ccq">"I've lost my keys."<br>Do I have them now? <i>(No.)</i><br>Do we know when? <i>(No. The result is important.)</i></div>
+      <div class="ccq">"She has lived here for ten years."<br>Does she live here now? <i>(Yes.)</i><br>"She lived there for ten years." Now? <i>(No.)</i></div>
+      <div class="ccq">"I've been to Japan." Am I in Japan now? <i>(No, I came back.)</i><br>"She's gone to Japan." Where is she? <i>(In Japan.)</i></div>
+      <div class="ccq">"I still haven't finished." Did I finish? <i>(No.)</i><br>Happy or a bit unhappy? <i>(Unhappy / surprised.)</i></div>
+    </div>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide">
+    <div class="eyebrow">1.1 · for / since · just, already, yet, still</div>
+    <h2>How long? And how's it going?</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>for + a length</th><th>since + a start point</th></tr>
+        <tr><td><b>for</b> ten years</td><td><b>since</b> 2014</td></tr>
+        <tr><td><b>for</b> a long time</td><td><b>since</b> Monday</td></tr>
+        <tr><td><b>for</b> ages</td><td><b>since</b> I was a child</td></tr>
+      </table>
+      <table class="g">
+        <tr><th>just</th><td>I've <b>just</b> finished lunch.</td></tr>
+        <tr><th>already</th><td>She's <b>already</b> left.</td></tr>
+        <tr><th>yet</th><td>Have you eaten <b>yet</b>? · I haven't eaten <b>yet</b>.</td></tr>
+        <tr><th>still</th><td>I <b>still</b> haven't packed.</td></tr>
+      </table>
+    </div>
+    <div class="tag"><span class="pill warn">WATCH</span> since three years ❌ · for 2019 ❌ · I live here for five years ❌ → I've lived here…</div>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide">
+    <div class="eyebrow">1.1 · Model dialogue · open → details</div>
+    <h2>Have you ever run a marathon?</h2>
+    <div class="dlg">
+      <p><span class="sp">A:</span> Have you ever run a marathon?</p>
+      <p class="b"><span class="sp">B:</span> Yes, I have! I ran one last year in Chicago.</p>
+      <p><span class="sp">A:</span> Wow. How was it?</p>
+      <p class="b"><span class="sp">B:</span> Really hard, but great. I trained for six months before it.</p>
+      <p><span class="sp">A:</span> I've never done anything like that. I've just started going to the gym, though!</p>
+    </div>
+    <div class="tag"><span class="pill lab">SHAPE</span> Open: present perfect (no time) → Details: past simple (when, where, how)</div>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide">
+    <div class="eyebrow">1.1 · Pair task · 14 min</div>
+    <h2>Timeline interview</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>Draw your timeline: 4–5 events as <b>pictures or one word</b> + one thing still true now</li>
+        <li>Swap. Open: <b>Have you ever…? / How long have you…?</b></li>
+        <li>Details: <b>When did you…? Who…? How was it?</b></li>
+        <li>Answer in 2–3 sentences. Then tell the class one story</li>
+      </ul>
+      <div class="ccq">Write sentences on the timeline? <i>(No, pictures or one word.)</i><br>Your real life only? <i>(No.)</i><br>First question: which tense? <i>(Present perfect.)</i><br>Then? <i>(Past simple.)</i></div>
+    </div>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide">
+    <div class="eyebrow">1.2 · Clues · what have they been doing?</div>
+    <h2>Look! What have you been doing?</h2>
+    <div class="pics">
+      <div class="pic"><img src="../assets/vocab/mechanic.jpg" alt=""><div class="w">dirty hands → fixing the car</div></div>
+      <div class="pic"><img src="../assets/vocab/swim.jpg" alt=""><div class="w">wet hair → swimming</div></div>
+      <div class="pic"><img src="../assets/vocab/garden.jpg" alt=""><div class="w">muddy knees → planting flowers</div></div>
+      <div class="pic"><img src="../assets/vocab/bus-stop.jpg" alt=""><div class="w">cold and angry → waiting for the bus</div></div>
+      <div class="pic"><img src="../assets/vocab/bread.jpg" alt=""><div class="w">flour on hands → baking</div></div>
+      <div class="pic"><img src="../assets/vocab/play-the-guitar.jpg" alt=""><div class="w">sore fingers → practicing</div></div>
+      <div class="pic"><img src="../assets/vocab/read.jpg" alt=""><div class="w">tired eyes → reading</div></div>
+      <div class="pic"><div class="emo">🎨</div><div class="w">paint on hands → painting</div></div>
+    </div>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide">
+    <div class="eyebrow">1.2 · have / has + been + -ing</div>
+    <h2>Three pieces, always in this order</h2>
+    <table class="g">
+      <tr><th>✅</th><td>I<b>'ve been</b> work<b>ing</b>. · She<b>'s been</b> study<b>ing</b>.</td></tr>
+      <tr><th>❌</th><td>They <b>haven't been</b> sleep<b>ing</b> well lately.</td></tr>
+      <tr><th>❓</th><td><b>Have</b> you <b>been</b> wait<b>ing</b> long? — Yes, I have. / No, I haven't.</td></tr>
+      <tr><th>⏳</th><td><b>How long have</b> you <b>been</b> learn<b>ing</b> English? — For three years. / Since 2023.</td></tr>
+      <tr><th>👀</th><td>His hands are dirty. He<b>'s been</b> fix<b>ing</b> the car.</td></tr>
+    </table>
+    <div class="tag"><span class="pill lab">SAY IT</span> been = "bin" /bɪn/ · I've been WAIT-ing · How LONG have you been WORK-ing?</div>
+  </section>
+
+  <!-- 12 -->
+  <section class="slide">
+    <div class="eyebrow">1.2 · Simple or continuous? · check the meaning</div>
+    <h2>How many? or How long?</h2>
+    <table class="g">
+      <tr><th>🔢 How many? → simple</th><th>⏳ How long? → continuous</th></tr>
+      <tr><td>I've <b>written</b> three emails.</td><td>I've <b>been writing</b> emails all morning.</td></tr>
+      <tr><td>We've <b>painted</b> the kitchen. (done)</td><td>We've <b>been painting</b> the kitchen. (that's why it's messy)</td></tr>
+    </table>
+    <div class="ccq">"I've painted the kitchen." Finished? <i>(Yes.)</i> · "I've been painting the kitchen." Finished? <i>(Maybe not.)</i><br>"I've been knowing her for years"? <i>(No! know = a state → I've known her.)</i></div>
+    <div class="tag"><span class="pill warn">NO -ING</span> know · like · love · want · need · believe · understand · be · have (= own)</div>
+  </section>
+
+  <!-- 13 -->
+  <section class="slide">
+    <div class="eyebrow">1.2 · Group game 13 min · pairs 8 min</div>
+    <h2>Clue game → Catching up</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>Take a card. <b>Act it or read the clue</b>. Don't say the activity!</li>
+        <li>Guess: "<b>Have you been</b> paint<b>ing</b>?" — "Yes, I have! / No, I haven't."</li>
+        <li>Winner asks: "How many rooms <b>have you painted</b>?" (simple!)</li>
+        <li>Then: "Hi! What have you been doing lately?"</li>
+      </ul>
+      <div class="ccq">Say the activity? <i>(No!)</i><br>First word of the guess? <i>("Have.")</i><br>"Have you painting?" <i>(No, "Have you been painting?")</i><br>How many… → simple or continuous? <i>(Simple.)</i></div>
+    </div>
+  </section>
+
+  <!-- 14 -->
+  <section class="slide">
+    <div class="eyebrow">1.3 · New words · then and now</div>
+    <h2>People used to… Now…</h2>
+    <div class="pics">
+      <div class="pic"><img src="../assets/vocab/post-office.jpg" alt=""><div class="w">send letters</div></div>
+      <div class="pic"><img src="../assets/vocab/email.jpg" alt=""><div class="w">send messages</div></div>
+      <div class="pic"><img src="../assets/vocab/bank.jpg" alt=""><div class="w">go to the bank</div></div>
+      <div class="pic"><img src="../assets/vocab/mobile-phone.jpg" alt=""><div class="w">pay with a phone</div></div>
+      <div class="pic"><img src="../assets/vocab/market.jpg" alt=""><div class="w">shop at the market</div></div>
+      <div class="pic"><img src="../assets/vocab/supermarket.jpg" alt=""><div class="w">the supermarket</div></div>
+      <div class="pic"><img src="../assets/vocab/tv.jpg" alt=""><div class="w">watch TV together</div></div>
+      <div class="pic"><img src="../assets/vocab/notebook.jpg" alt=""><div class="w">write by hand</div></div>
+    </div>
+  </section>
+
+  <!-- 15 -->
+  <section class="slide">
+    <div class="eyebrow">1.3 · used to + base verb</div>
+    <h2>True then — not true now</h2>
+    <table class="g">
+      <tr><th>✅</th><td>People <b>used to</b> write letters. · There <b>used to be</b> a bakery here.</td></tr>
+      <tr><th>❌</th><td>I <b>didn't use to</b> like coffee.</td></tr>
+      <tr><th>❓</th><td><b>Did</b> you <b>use to</b> have a bike? — Yes, I <b>did</b>. / No, I <b>didn't</b>.</td></tr>
+    </table>
+    <div class="ccq">"I used to smoke." Do I smoke now? <i>(No.)</i> Once or many times? <i>(Many times.)</i><br>"There used to be a movie theater here." Is it here now? <i>(No, it's gone.)</i></div>
+    <div class="tag"><span class="pill warn">SPELLING</span> after did → no d: didn't use to · Did you use to…? · used to went ❌ · <span class="pill lab">SAY IT</span> /ˈjustə/ "YOO-stuh"</div>
+  </section>
+
+  <!-- 16 -->
+  <section class="slide">
+    <div class="eyebrow">1.3 · would · the state rule</div>
+    <h2>Every Sunday we would…</h2>
+    <table class="g">
+      <tr><th></th><th>used to</th><th>would</th></tr>
+      <tr><td>🔁 Actions: visit, walk, cook, tell</td><td>✅ We used to visit them.</td><td>✅ We would visit them.</td></tr>
+      <tr><td>🏠 States: live, like, have, be, know</td><td>✅ I used to live in Rome.</td><td>❌ I would live in Rome.</td></tr>
+    </table>
+    <div class="ccq">"When I was a child, every Sunday my father would cook a big breakfast." Future? <i>(No.)</i> One time or many? <i>(Many.)</i><br>"We would have a dog." OK? <i>(No! have = a state → We used to have a dog.)</i></div>
+    <div class="tag"><span class="pill lab">TIP</span> Set the past scene first. Not sure? <b>used to</b> is always safe.</div>
+  </section>
+
+  <!-- 17 -->
+  <section class="slide">
+    <div class="eyebrow">1.3 · Group discussion · 20 min</div>
+    <h2>How life has changed</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>Roles: <b>chair</b> · <b>timekeeper</b> · <b>questioner</b> · <b>reporter</b> · 3 tokens each</li>
+        <li>2 topics · 2 min silent notes · 5 min talk per topic</li>
+        <li>People used to… · People would… · Now… · Better before or now? <b>Why?</b></li>
+        <li>People in general, a place you know, your life, or a card</li>
+      </ul>
+      <div class="ccq">Chair's job? <i>(Ask everyone, help quiet people.)</i><br>A token? <i>(Put it down when you take a long turn.)</i><br>Your own life only? <i>(No.)</i><br>would + live / have? <i>(No! used to.)</i></div>
+    </div>
+    <div class="tag"><span class="pill">SAY</span> I think it was better before, because… · In my opinion… · I see your point, but…</div>
+  </section>
+
+  <!-- 18 -->
+  <section class="slide section">
+    <div class="eyebrow">You can now connect the past and now</div>
+    <h2>Module 1 done 🎉</h2>
+    <ul class="lab">
+      <li>➡️● I've been to Japan. 🔚 I went in 2019. I've worked here since 2021.</li>
+      <li>⏳ I've been learning the guitar for six months. I've learned ten songs.</li>
+      <li>🔁 People used to write letters. Every Sunday we would… Now…</li>
+    </ul>
+    <p class="lead" style="margin-top:10px;max-width:40ch">Homework: online lessons 1.1–1.3 with 🔊. Next: Module 2, <i>If it rains, we'll…</i></p>
+  </section>
+
+
+</div>
+
+<div class="count" id="count">1 / 18</div>
+<div class="nav"><button id="prev" aria-label="Previous slide"></button><button id="next" aria-label="Next slide"></button></div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const bar=document.getElementById('bar'), count=document.getElementById('count');
+  let i=0;
+  function show(n){ i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+    bar.style.width=((i+1)/slides.length*100)+'%'; count.textContent=(i+1)+' / '+slides.length; }
+  document.getElementById('next').onclick=()=>show(i+1);
+  document.getElementById('prev').onclick=()=>show(i-1);
+  addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}
+    else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+  });
+  show(0);
+</script>
+</body>
+</html>

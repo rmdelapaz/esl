@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Classroom Materials — Module 1</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../../kit.css">
+<style>
+  /* Module 1 print extras (this sheet only) */
+  .flashcard .emo{font-size:4.2rem;line-height:1}
+  .flashcard .sub{font-size:.95rem;color:var(--ink-2)}
+  .card-cut p{font-size:.88rem;margin:.25rem 0}
+  .card-cut ul{margin:.2rem 0;padding-left:1.1rem;font-size:.88rem}
+  .card-cut table.grammar{font-size:.8rem;margin:6px 0}
+  .card-cut table.grammar td,.card-cut table.grammar th{padding:3px 6px}
+  .qcards{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:10px 0}
+  .qcards .qc{border:1.5px dashed var(--line-strong);padding:12px 12px 10px;min-height:1.6in;break-inside:avoid;display:flex;flex-direction:column;gap:6px}
+  .qcards .qc .ct{font-family:"JetBrains Mono",monospace;font-size:.68rem;font-weight:600;letter-spacing:.12em;color:#fff;border-radius:999px;padding:2px 10px;align-self:flex-start;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .qcards .past .ct{background:#1f5fc9} .qcards .perf .ct{background:#0f766e} .qcards .fut .ct{background:#b45309}
+  .qcards .qc .qq{font-family:"Archivo",sans-serif;font-weight:700;font-size:1.05rem;line-height:1.25}
+  .qcards .qc .fu{font-size:.8rem;color:var(--ink-3);margin-top:auto}
+  table.diag{width:100%;border-collapse:collapse;margin:10px 0;font-size:.9rem}
+  table.diag th,table.diag td{border:1px solid var(--line-strong);padding:8px 8px;text-align:left;vertical-align:top}
+  table.diag th{background:var(--surface-2);font-size:.82rem}
+  table.diag td{height:2.1em}
+  .sort{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:10px 0}
+  .sort span{border:1.5px dashed var(--line-strong);padding:16px 6px;text-align:center;font-family:"Archivo",sans-serif;font-weight:700;font-size:1.15rem;break-inside:avoid}
+  .sort span.hd{background:var(--accent-soft);font-size:1rem;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .qd{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:10px 0}
+  .qd .c{border:1.5px dashed var(--line-strong);padding:10px;text-align:center;break-inside:avoid;min-height:1.9in;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px}
+  .qd .c img{width:.9in;height:.9in;object-fit:cover;border-radius:8px;background:#FFF3E0}
+  .qd .c .emo{font-size:2.8rem;line-height:1.1;height:.9in;display:flex;align-items:center}
+  .qd .c .s{font-family:"Archivo",sans-serif;font-weight:700;font-size:.98rem;line-height:1.25}
+  .qd .c .h{font-size:.74rem;color:var(--ink-3)}
+  .qd .c .n{font-family:"JetBrains Mono",monospace;font-size:.66rem;color:var(--accent);letter-spacing:.1em}
+  .tl{display:flex;align-items:center;gap:6px;margin:14px 0 6px;font-family:"JetBrains Mono",monospace;font-size:.75rem;color:var(--ink-3)}
+  .tl .ln{flex:1;border-top:2px solid var(--ink-2);position:relative;height:0}
+  .tl .ln::after{content:"";position:absolute;right:-2px;top:-7px;border-left:10px solid var(--ink-2);border-top:6px solid transparent;border-bottom:6px solid transparent}
+  .tl .now{font-weight:700;color:var(--ink)}
+  .tlboxes{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+  .tlboxes div{border:1.5px solid var(--line-strong);border-radius:6px;height:.75in}
+  table.fsw{width:100%;border-collapse:collapse;margin:10px 0;font-size:.95rem}
+  table.fsw th,table.fsw td{border:1px solid var(--line-strong);padding:9px 10px;text-align:left}
+  table.fsw th{background:var(--surface-2)}
+  table.fsw td.nm{width:22%} table.fsw td.ex{width:32%}
+  .tok{display:grid;grid-template-columns:repeat(8,1fr);gap:0;margin:10px 0}
+  .tok span{border:1.5px dashed var(--line-strong);height:.8in;display:flex;align-items:center;justify-content:center;font-size:1.8rem}
+  .pb{break-before:page}
+  @media (max-width:680px){.flashcards{grid-template-columns:1fr 1fr}.qd,.sort,.qcards{grid-template-columns:1fr 1fr}.cards{grid-template-columns:1fr}.tok{grid-template-columns:repeat(4,1fr)}}
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="lbl">Classroom materials —</span>
+  <button type="button" onclick="window.print()">🖨 Print / Save as PDF</button>
+  <span class="hint">print on card stock · cut on the dashed lines</span>
+</div>
+
+<div class="sheet">
+
+  <header class="mast">
+    <div class="kit-eyebrow">Independent English · Module 1 Materials</div>
+    <h1>Time, Experience &amp; Past Habits — Classroom Materials</h1>
+    <p class="sub">Everything to print for Classes C1–C3: picture flashcards and time-word sort cards, the welcome question cards and the A2 diagnostic grid, new identity cards, the teacher's listening scripts, the timeline interview cards, the "What have you been doing?" clue game, the "How life has changed" discussion cards with roles and talking tokens, and the "Have you ever…?" Find Someone Who.</p>
+    <div class="meta-row">
+      <span class="chip">Lessons <b>1.1–1.3</b></span>
+      <span class="chip">Classes <b>C1–C3</b></span>
+      <span class="chip"><b>8</b> print sets</span>
+      <span class="chip">CEFR <b>B1</b></span>
+    </div>
+  </header>
+
+  <div class="sec"><h2>What to Print</h2><span class="rule"></span></div>
+  <table class="timing">
+    <thead><tr><th>Set</th><th>What</th><th>How many</th><th>Used in</th></tr></thead>
+    <tbody>
+      <tr><td class="t">A</td><td>Picture flashcards (experiences, then and now) + time-word sort cards (14)</td><td>Flashcards: 1 set for the board · sort cards: 1 set per pair</td><td>C1, C2, C3</td></tr>
+      <tr><td class="t">B</td><td>Welcome question cards (12: PAST · PERFECT · FUTURE) + A2 diagnostic grid</td><td>Cards: 1 set per 12 learners · grid: teacher only</td><td>C1</td></tr>
+      <tr><td class="t">C</td><td>New identity cards (6)</td><td>1–2 sets, on a side table</td><td>C1, C2, C3</td></tr>
+      <tr><td class="t">D</td><td>Listening &amp; dictation scripts</td><td>Teacher only</td><td>C1, C2, C3</td></tr>
+      <tr><td class="t">E</td><td>Timeline interview card + question strip</td><td>1 per learner</td><td>C1</td></tr>
+      <tr><td class="t">F</td><td>"What have you been doing?" clue game (18 cards)</td><td>1 deck per group of 3–4</td><td>C2 (and C3 warmer)</td></tr>
+      <tr><td class="t">G</td><td>"How life has changed" topic cards (8) + role cards (4) + talking tokens</td><td>1 set per group of 4 · 3 tokens per learner</td><td>C3</td></tr>
+      <tr><td class="t">H</td><td>Find Someone Who: "Have you ever…?" (game)</td><td>1 per learner</td><td>C2 warmer</td></tr>
+    </tbody>
+  </table>
+
+  <!-- ===================== A. FLASHCARDS ===================== -->
+  <div class="sec pb"><h2>A · Picture Flashcards — Experiences (1.1)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">Hold up a card and ask "Have you ever…?" Learners answer and give one past-simple detail. The past participle is under the word.</p>
+  <div class="flashcards">
+    <div class="flashcard"><img src="../../assets/vocab/flight.jpg" alt=""><div class="w">fly in a plane</div><div class="sub">flown</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/hike.jpg" alt=""><div class="w">climb a mountain</div><div class="sub">climbed</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/swim.jpg" alt=""><div class="w">swim in the ocean</div><div class="sub">swum</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/cook.jpg" alt=""><div class="w">cook for a big group</div><div class="sub">cooked</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/sing.jpg" alt=""><div class="w">sing in public</div><div class="sub">sung</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/play-the-guitar.jpg" alt=""><div class="w">learn an instrument</div><div class="sub">learned</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/ticket.jpg" alt=""><div class="w">go to a concert</div><div class="sub">been</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/key.jpg" alt=""><div class="w">lose your keys</div><div class="sub">lost</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/mobile-phone.jpg" alt=""><div class="w">break your phone</div><div class="sub">broken</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/restaurant.jpg" alt=""><div class="w">try a new restaurant</div><div class="sub">tried</div></div>
+    <div class="flashcard word-only"><div class="emo">🏃</div><div class="w">run a race</div><div class="sub">run</div></div>
+    <div class="flashcard word-only"><div class="emo">⭐</div><div class="w">meet a famous person</div><div class="sub">met</div></div>
+  </div>
+
+  <div class="sec pb"><h2>A · Time-Word Sort Cards (1.1 · 1 set per pair)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">Cut out. Pairs put the two heading cards on the desk and sort the 14 time words under them (3 minutes). Then they make one sentence for two cards in each column. <b>Answer:</b> the first seven words after the headings are FINISHED; the last seven are CONNECTED TO NOW. (<i>today / this week</i> = the day or week is not finished yet.)</p>
+  <div class="sort">
+    <span class="hd">🔚 FINISHED TIME<br><small>past simple</small></span>
+    <span class="hd">➡️● CONNECTED TO NOW<br><small>present perfect</small></span>
+    <span>yesterday</span><span>last week</span>
+    <span>in 2019</span><span>two days ago</span><span>when I was a child</span><span>on Friday</span>
+    <span>at 8 o'clock</span><span>ever</span><span>never</span><span>today</span>
+    <span>this week</span><span>so far</span><span>for ten years</span><span>since Monday</span>
+  </div>
+
+  <div class="sec pb"><h2>A · Flashcards — Then and Now (1.3)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">Use them in pairs for the lead-in and the drill: "People <b>used to</b> send letters. <b>Now</b> they send messages."</p>
+  <div class="flashcards">
+    <div class="flashcard"><img src="../../assets/vocab/post-office.jpg" alt=""><div class="w">send letters</div><div class="sub">then</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/email.jpg" alt=""><div class="w">send messages</div><div class="sub">now</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/bank.jpg" alt=""><div class="w">go to the bank</div><div class="sub">then</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/mobile-phone.jpg" alt=""><div class="w">use an app</div><div class="sub">now</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/market.jpg" alt=""><div class="w">shop at the market</div><div class="sub">then</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/supermarket.jpg" alt=""><div class="w">the supermarket</div><div class="sub">now</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/tv.jpg" alt=""><div class="w">watch TV together</div><div class="sub">then</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/notebook.jpg" alt=""><div class="w">write by hand</div><div class="sub">then</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/ticket.jpg" alt=""><div class="w">a paper ticket</div><div class="sub">then</div></div>
+    <div class="flashcard word-only"><div class="emo">🗺️</div><div class="w">a paper map</div><div class="sub">then → GPS now</div></div>
+    <div class="flashcard word-only"><div class="emo">💵</div><div class="w">pay with cash</div><div class="sub">then → cards now</div></div>
+    <div class="flashcard word-only"><div class="emo">📼</div><div class="w">rent a video</div><div class="sub">then → streaming now</div></div>
+  </div>
+
+  <!-- ===================== B. WELCOME + DIAGNOSTIC ===================== -->
+  <div class="sec pb"><h2>B · Welcome Question Cards (C1 mingle)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">One set per 12 learners (print two sets for a bigger class). Each learner takes one card of each color. They ask one question and one follow-up per partner, answer the partner's question in 2–3 sentences, <b>swap cards</b>, and find a new partner. The small line is the follow-up. Every card works with a new identity. None asks about the home country, age, family, migration or health, on purpose.</p>
+  <div class="qcards">
+    <div class="qc past"><span class="ct">PAST</span><div class="qq">What did you do last weekend?</div><div class="fu">+ Was it fun? What was the best part?</div></div>
+    <div class="qc past"><span class="ct">PAST</span><div class="qq">What was the last movie or show you watched?</div><div class="fu">+ Did you like it? Why?</div></div>
+    <div class="qc past"><span class="ct">PAST</span><div class="qq">What did you have for dinner last night?</div><div class="fu">+ Who cooked it?</div></div>
+    <div class="qc past"><span class="ct">PAST</span><div class="qq">When did you last buy something new? What was it?</div><div class="fu">+ Where did you buy it?</div></div>
+    <div class="qc perf"><span class="ct">PERFECT</span><div class="qq">Have you ever cooked for more than ten people?</div><div class="fu">+ What did you make?</div></div>
+    <div class="qc perf"><span class="ct">PERFECT</span><div class="qq">Have you ever met a famous person?</div><div class="fu">+ Where did you meet him / her?</div></div>
+    <div class="qc perf"><span class="ct">PERFECT</span><div class="qq">How long have you had your phone?</div><div class="fu">+ Do you like it? Why?</div></div>
+    <div class="qc perf"><span class="ct">PERFECT</span><div class="qq">What's the best thing you've eaten this month?</div><div class="fu">+ Where did you eat it?</div></div>
+    <div class="qc fut"><span class="ct">FUTURE</span><div class="qq">What are you going to do this weekend?</div><div class="fu">+ Who are you going to see?</div></div>
+    <div class="qc fut"><span class="ct">FUTURE</span><div class="qq">Are you doing anything after class today?</div><div class="fu">+ What time?</div></div>
+    <div class="qc fut"><span class="ct">FUTURE</span><div class="qq">Do you think it will rain this week?</div><div class="fu">+ What will you do if it rains?</div></div>
+    <div class="qc fut"><span class="ct">FUTURE</span><div class="qq">What's something you're going to learn this year?</div><div class="fu">+ Why? How?</div></div>
+  </div>
+
+  <div class="sec pb"><h2>B · A2 Diagnostic Grid (teacher only · C1)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">Listen during the welcome mingle and the report. Mark <b>✓</b> easy and accurate · <b>~</b> understands, some errors · <b>✗</b> not yet. Write one real example in Notes. Keep this page private; compare it with Progress Test 1 in C13.</p>
+  <table class="diag">
+    <thead><tr><th style="width:18%">Name</th><th style="width:15%">PAST SIMPLE<br><span style="font-weight:400">went · Did you…? · didn't</span></th><th style="width:15%">PRESENT PERFECT<br><span style="font-weight:400">Have you ever…? · I've…</span></th><th style="width:15%">FUTURE<br><span style="font-weight:400">going to · will · I'm meeting…</span></th><th style="width:13%">FLUENCY<br><span style="font-weight:400">long turns · asks back</span></th><th>Notes (an example I heard)</th></tr></thead>
+    <tbody>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    </tbody>
+  </table>
+  <div class="note"><div class="t">Listen for</div>
+    <p><b>PAST SIMPLE:</b> "I goed" · "Did you went?" · "I no went." <b>PRESENT PERFECT:</b> "Have you ever went?" · "I have see" · "I've been there last year." <b>FUTURE:</b> "I going to" · "I will to" · "Tomorrow I visit…" (for a plan). <b>FLUENCY:</b> one-word answers · never asks back · stops when a word is missing.</p>
+    <p><b>Mostly ✓/~</b> = ready for B1. <b>Many ~ in PRESENT PERFECT</b> = normal; C1–C2 teach it. <b>✗ in two or three columns</b> = a private 5-minute oral placement interview this week (toolkit); the A2 course may fit better. <b>✓ everywhere + strong fluency</b> = stretch tasks from Day 1.</p>
+  </div>
+
+  <!-- ===================== C. NEW IDENTITY ===================== -->
+  <div class="sec pb"><h2>C · New Identity Cards (1.1 · 1.2 · 1.3)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">Any learner may use a card instead of their real life, in any task: no reason needed. In C1 use the <b>Experiences</b> part (and the timeline), in C2 the <b>Lately</b> part, in C3 the <b>Then and now</b> part. The people are the same as in the A1 and A2 kits, one year later.</p>
+  <div class="cards">
+    <div class="card-cut"><div class="ct">New identity · 1</div><h4>Rosa — hospital cleaner</h4>
+      <p><b>Experiences:</b> I've finished a computer course. I took it at the library last spring. I've never worked in an office.</p>
+      <p><b>Lately:</b> I've been working day shifts since March. I've been sleeping much better!</p>
+      <p><b>Then and now:</b> I used to work at night. I would sleep all morning and eat breakfast at 3 p.m.! I didn't use to have much free time.</p>
+      <p><b>Timeline:</b> 💻 computer course · ☀️ day shifts (since March) · 🎂 cooked for 30 people</p></div>
+    <div class="card-cut b"><div class="ct">New identity · 2</div><h4>Daniel — bus driver</h4>
+      <p><b>Experiences:</b> I've driven an electric bus. I drove one for the first time last November. It was so quiet! I've been to three big soccer stadiums.</p>
+      <p><b>Lately:</b> I've been painting my kitchen for two weeks. I've painted three walls.</p>
+      <p><b>Then and now:</b> Buses used to be loud. Passengers would pay with coins. Now they tap a card or a phone.</p>
+      <p><b>Timeline:</b> 🚌 electric bus · ⚽ stadiums · 🎨 kitchen (for two weeks)</p></div>
+    <div class="card-cut"><div class="ct">New identity · 3</div><h4>Amina — student and mother</h4>
+      <p><b>Experiences:</b> I've passed my English course. I started a nursing course in September. I've never given an injection… yet!</p>
+      <p><b>Lately:</b> I've been studying every night. I've been getting up at five.</p>
+      <p><b>Then and now:</b> I used to take the bus everywhere. On Saturdays I would walk the children to the park. I didn't use to drive, but now I do.</p>
+      <p><b>Timeline:</b> 🎓 English course · 🩺 nursing course (since September) · 🚗 driver's license</p></div>
+    <div class="card-cut b"><div class="ct">New identity · 4</div><h4>Chen — cook</h4>
+      <p><b>Experiences:</b> I've opened my own food truck! We opened it in May. I've cooked for 300 people in one day.</p>
+      <p><b>Lately:</b> I've been working 12 hours a day. I've been testing new recipes. I've tried twenty!</p>
+      <p><b>Then and now:</b> I used to work in a restaurant kitchen. My boss would always choose the menu. I didn't use to have my own customers.</p>
+      <p><b>Timeline:</b> 🚚 food truck (May) · 🍜 300 people · 📝 new recipes (lately)</p></div>
+    <div class="card-cut"><div class="ct">New identity · 5</div><h4>Lucía — grandmother</h4>
+      <p><b>Experiences:</b> I've learned to use video calls. I called my grandson for the first time last winter. I've never used a laptop.</p>
+      <p><b>Lately:</b> I've been walking in the park every morning. I've been taking a dance class since June.</p>
+      <p><b>Then and now:</b> People used to write letters. I would wait weeks for a letter from my sister. Now we talk every Sunday on video.</p>
+      <p><b>Timeline:</b> 📱 video calls · 💃 dance class (since June) · 🌳 walks</p></div>
+    <div class="card-cut b"><div class="ct">New identity · 6</div><h4>Yusuf — warehouse worker</h4>
+      <p><b>Experiences:</b> I've gotten my forklift license. I passed the test in April. I've played on a soccer team.</p>
+      <p><b>Lately:</b> I've been working at a big warehouse since May. I've been playing soccer every Saturday.</p>
+      <p><b>Then and now:</b> I used to look for a job every day. I would send ten emails every morning. I didn't use to have a routine.</p>
+      <p><b>Timeline:</b> 🏗️ forklift license (April) · 📦 warehouse (since May) · ⚽ soccer team</p></div>
+  </div>
+
+  <!-- ===================== D. SCRIPTS ===================== -->
+  <div class="sec pb"><h2>D · Listening &amp; Dictation Scripts (teacher reads aloud)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">Read at a natural speed with clear pauses, using contractions (<i>I've, she's, haven't</i>) and weak forms (<i>been</i> /bɪn/, <i>used to</i> /ˈjustə/), because that is what learners hear outside class. Read each script twice: once for the main idea, once to check. For two-voice scripts, read both or ask a confident learner to read one part.</p>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">1.1-A · Sam's news <span style="font-weight:500;color:var(--ink-3)">(Workbook 1.1, Ex 1)</span></h3>
+  <div class="script"><b>Priya:</b> Sam! I haven't seen you for ages. How are you? · <b>Sam:</b> Great, thanks! Actually, I have some news. I've started a new job. · <b>Priya:</b> Congratulations! Where? · <b>Sam:</b> At a hotel downtown. I'm a receptionist. I started two weeks ago. · <b>Priya:</b> That's great. Have you ever worked in a hotel before? · <b>Sam:</b> No, never. But I worked at a bank for three years, so I know how to talk to customers. · <b>Priya:</b> And have you met your manager yet? · <b>Sam:</b> Yes, I met her on my first day. She's really nice. But I still haven't learned everyone's name! There are forty people. · <b>Priya:</b> Ha! Well, I've just finished my exams, so I'm free on Saturday. Let's celebrate! · <b>Sam:</b> Good idea!</div>
+  <p style="font-size:.86rem;color:var(--ink-2)">Answers: 1 he's started a new job (hotel receptionist) · 2 two weeks ago · 3 no, never · 4 at a bank, three years · 5 yes, on his first day · 6 learned everyone's name · 7 finished her exams. Opener = present perfect; details = past simple.</p>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">1.1-B · Dictation <span style="font-weight:500;color:var(--ink-3)">(read each sentence 3 times)</span></h3>
+  <div class="script">1. I've worked here for three years. · 2. Have you ever been to Canada? · 3. I saw her last Friday. · 4. We still haven't finished the project.</div>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">1.2-A · Catching up <span style="font-weight:500;color:var(--ink-3)">(Workbook 1.2, Ex 1)</span></h3>
+  <div class="script"><b>Lena:</b> Marco! Hi! Sorry, have you been waiting long? · <b>Marco:</b> Only about ten minutes. It's fine. So, what have you been doing lately? · <b>Lena:</b> Oh, I've been really busy. I've been taking a driving class since January. · <b>Marco:</b> Really? How's it going? · <b>Lena:</b> Good! I've had eight lessons, and I've driven on the highway twice! What about you? · <b>Marco:</b> Well, I've been working at the new supermarket for three months now. · <b>Lena:</b> Do you like it? · <b>Marco:</b> Yes, but I've been getting up at five every day, so I'm always tired! · <b>Lena:</b> Oh no. And are you still playing the guitar? · <b>Marco:</b> Yes! I've been practicing every evening. I've learned about ten songs. · <b>Lena:</b> Wow. Hey, why are your hands so dirty? · <b>Marco:</b> Oh! I've been fixing my bike. I've fixed the chain, but not the light.</div>
+  <p style="font-size:.86rem;color:var(--ink-2)">Answers: Lena · driving class · since January · 8 lessons, highway twice. Marco · supermarket · three months · always tired. Marco · guitar · every evening · ten songs. Marco · fixing his bike · just now · dirty hands, fixed the chain.</p>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">1.2-B · Dictation <span style="font-weight:500;color:var(--ink-3)">(read each sentence 3 times)</span></h3>
+  <div class="script">1. I've been studying English for two years. · 2. How long have you been waiting? · 3. She's tired because she's been running. · 4. I've known him since we were at school.</div>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">1.3-A · Then and now: three voices <span style="font-weight:500;color:var(--ink-3)">(Workbook 1.3, Ex 1)</span></h3>
+  <div class="script"><b>Joe, a retired mail carrier:</b> When I started this job, people used to write a lot of letters. In December I would carry two big bags every day, full of cards! People didn't use to shop online, so there weren't many packages. Now it's the opposite: very few letters, and boxes everywhere. · <b>Grace, a bank worker:</b> I used to work at the bank counter. Every Friday, people would wait in a long line to cash their paychecks. Now most people use an app on their phone. These days I don't work at the counter anymore. I help customers on the phone and online. · <b>Ali, a student:</b> When I was a kid, my family used to watch TV together. Every Saturday evening we would watch a game show and eat pizza. Now everybody watches different things on their own phone. Honestly, I think it was better before.</div>
+  <p style="font-size:.86rem;color:var(--ink-2)">Answers: 1 T · 2 F · 3 T · 4 F · 5 T · 6 F. Follow-up: "Find two <i>used to</i> and two <i>would</i> sentences."</p>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">1.3-B · Dictation <span style="font-weight:500;color:var(--ink-3)">(read each sentence 3 times; check the spelling of <i>use to</i>)</span></h3>
+  <div class="script">1. There used to be a bakery on this street. · 2. I didn't use to like coffee. · 3. Did you use to walk to school? · 4. Every summer we would go to the lake.</div>
+
+  <!-- ===================== E. TIMELINE INTERVIEW ===================== -->
+  <div class="sec pb"><h2>E · Timeline Interview Card (1.1 · 1 per learner)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">Learners draw 4–5 events as <b>pictures or one word</b> in the boxes (left = older, right = more recent; years optional) and one thing that is <b>still true now</b> in the NOW box. Real, a new identity card, or imagined. Then they swap cards and interview each other with the question strip.</p>
+  <div class="cards">
+    <div class="card-cut"><div class="ct">My timeline · name: ____________</div>
+      <div class="tlboxes"><div></div><div></div><div></div><div></div><div></div></div>
+      <div class="tl"><span>PAST</span><span class="ln"></span><span class="now">NOW ●</span></div>
+      <p><b>Still true now</b> (since… / for…): ______________________</p></div>
+    <div class="card-cut b"><div class="ct">Question strip</div>
+      <p><b>Open (present perfect):</b></p>
+      <ul><li>I see a ___. Have you ever…?</li><li>How long have you…? (for / since)</li><li>Have you… yet?</li></ul>
+      <p><b>Details (past simple):</b></p>
+      <ul><li>When did you…? Where did you…?</li><li>Who did you go with?</li><li>What happened? How was it?</li></ul>
+      <p><b>Report:</b> "___ has… He / She… last year."</p></div>
+    <div class="card-cut"><div class="ct">Teacher example (put it on the board)</div>
+      <p>🍞 bread class · 🚲 bike · ✈️ Mexico · 🎸 guitar · <b>NOW:</b> 📚 teach English (since 2020)</p>
+      <p>"Have you ever made bread?" — "Yes, I have! I took a class two years ago. The first loaf was terrible!"</p></div>
+    <div class="card-cut b"><div class="ct">My timeline · name: ____________</div>
+      <div class="tlboxes"><div></div><div></div><div></div><div></div><div></div></div>
+      <div class="tl"><span>PAST</span><span class="ln"></span><span class="now">NOW ●</span></div>
+      <p><b>Still true now</b> (since… / for…): ______________________</p></div>
+  </div>
+
+  <!-- ===================== F. CLUE GAME ===================== -->
+  <div class="sec pb"><h2>F · Game — "What Have You Been Doing?" Clue Cards (1.2)</h2><span class="rule"></span></div>
+  <div class="note lab"><div class="t">Rules (read them to the class, or give one copy per group)</div>
+    <ol class="steps lab">
+      <li>Groups of 3–4. Cards face down. Player A takes a card and <b>acts it out or reads the clue as "I"</b>: "Look at my hands! There's paint everywhere!" Don't say the activity.</li>
+      <li>The others guess: "<b>Have you been</b> …<b>ing</b>?" A answers "Yes, I have!" or "No, I haven't."</li>
+      <li>The first correct guess wins the card. The winner asks one <b>How many / How much</b> question, and A answers in the <b>simple</b>: "I've painted two rooms."</li>
+      <li>Any logical guess is correct. The gray line is a hint for A only. Most cards wins.</li>
+    </ol>
+  </div>
+  <div class="qd">
+    <div class="c"><div class="n">1</div><div class="emo">🎨</div><div class="s">There's paint on your hands and in your hair.</div><div class="h">painting a room · How many rooms?</div></div>
+    <div class="c"><div class="n">2</div><img src="../../assets/vocab/cook.jpg" alt=""><div class="s">Your kitchen smells great, and there are pots everywhere.</div><div class="h">cooking · How many dishes?</div></div>
+    <div class="c"><div class="n">3</div><img src="../../assets/vocab/swim.jpg" alt=""><div class="s">Your hair is wet, and you smell like the pool.</div><div class="h">swimming · How many laps?</div></div>
+    <div class="c"><div class="n">4</div><img src="../../assets/vocab/mechanic.jpg" alt=""><div class="s">Your hands are black. There are tools on the floor.</div><div class="h">fixing the car · What have you fixed?</div></div>
+    <div class="c"><div class="n">5</div><img src="../../assets/vocab/garden.jpg" alt=""><div class="s">Your knees are muddy, and there are new flowers outside.</div><div class="h">gardening / planting flowers · How many?</div></div>
+    <div class="c"><div class="n">6</div><img src="../../assets/vocab/bus-stop.jpg" alt=""><div class="s">You're cold and angry. You're at the bus stop. It's 8:40.</div><div class="h">waiting for the bus · How many buses have passed?</div></div>
+    <div class="c"><div class="n">7</div><img src="../../assets/vocab/boots.jpg" alt=""><div class="s">Your boots are muddy, and your legs hurt.</div><div class="h">hiking / walking · How far have you walked?</div></div>
+    <div class="c"><div class="n">8</div><img src="../../assets/vocab/play-the-guitar.jpg" alt=""><div class="s">Your fingers hurt. There's a guitar on the sofa.</div><div class="h">practicing the guitar · How many songs?</div></div>
+    <div class="c"><div class="n">9</div><img src="../../assets/vocab/throat.jpg" alt=""><div class="s">Your voice is very quiet. You were at a party last night.</div><div class="h">singing (karaoke) / shouting · How many songs?</div></div>
+    <div class="c"><div class="n">10</div><img src="../../assets/vocab/read.jpg" alt=""><div class="s">Your eyes are tired. There are books all over the table.</div><div class="h">reading / studying · How many pages?</div></div>
+    <div class="c"><div class="n">11</div><div class="emo">🧅</div><div class="s">Your eyes are red and full of tears, and your hands smell of onions.</div><div class="h">chopping onions · How many onions?</div></div>
+    <div class="c"><div class="n">12</div><img src="../../assets/vocab/sunny.jpg" alt=""><div class="s">Your face and arms are red. There are sunglasses on your head.</div><div class="h">sitting in the sun · How many hours?</div></div>
+    <div class="c"><div class="n">13</div><img src="../../assets/vocab/bread.jpg" alt=""><div class="s">Your hands are white and covered in flour.</div><div class="h">baking · How many loaves / cookies?</div></div>
+    <div class="c"><div class="n">14</div><img src="../../assets/vocab/dance.jpg" alt=""><div class="s">You're hot and happy, and your feet hurt. Music is still playing.</div><div class="h">dancing · How many songs?</div></div>
+    <div class="c"><div class="n">15</div><div class="emo">🏃</div><div class="s">You're out of breath and your face is red. You're wearing sneakers.</div><div class="h">running · How far have you run?</div></div>
+    <div class="c"><div class="n">16</div><img src="../../assets/vocab/box.jpg" alt=""><div class="s">There are boxes everywhere, and your back hurts.</div><div class="h">packing / moving furniture · How many boxes?</div></div>
+    <div class="c"><div class="n">17</div><img src="../../assets/vocab/tv.jpg" alt=""><div class="s">It's 2 a.m. Your eyes are square! The remote is in your hand.</div><div class="h">watching TV / a series · How many episodes?</div></div>
+    <div class="c"><div class="n">18</div><div class="emo">✏️</div><div class="s">Your own clue:<br>__________________</div><div class="h">make your own card</div></div>
+  </div>
+
+  <!-- ===================== G. DISCUSSION ===================== -->
+  <div class="sec pb"><h2>G · Discussion — How Life Has Changed (1.3)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">One set of topic cards and role cards per group of 4. Each group chooses <b>two</b> topics. Every card is about the world, not about any one country. Learners can talk about <b>people in general</b>, <b>a place they know</b>, <b>their own life</b>, or <b>a new identity card</b>.</p>
+  <div class="cards">
+    <div class="card-cut"><div class="ct">Topic · 1</div><h4>📱 Phones &amp; keeping in touch</h4>
+      <ul><li>How did people use to keep in touch with friends far away?</li><li>What would people do on a birthday or a holiday?</li><li>What's different now?</li><li><b>Better before or now? Why?</b></li></ul></div>
+    <div class="card-cut b"><div class="ct">Topic · 2</div><h4>🛒 Shopping</h4>
+      <ul><li>Where did people use to buy food and clothes?</li><li>What would people do every weekend?</li><li>Did people use to shop online?</li><li><b>Better before or now? Why?</b></li></ul></div>
+    <div class="card-cut"><div class="ct">Topic · 3</div><h4>💼 Work</h4>
+      <ul><li>How did people use to find a job?</li><li>What would a normal workday look like?</li><li>Which jobs used to exist and don't now?</li><li><b>Better before or now? Why?</b></li></ul></div>
+    <div class="card-cut b"><div class="ct">Topic · 4</div><h4>🚌 Getting around</h4>
+      <ul><li>How did people use to find their way? (maps, asking…)</li><li>How would people buy a bus or train ticket?</li><li>What's different now?</li><li><b>Better before or now? Why?</b></li></ul></div>
+    <div class="card-cut"><div class="ct">Topic · 5</div><h4>📺 Free time</h4>
+      <ul><li>What did people use to do in the evenings?</li><li>What would families do on the weekend?</li><li>Did people use to spend more time outside?</li><li><b>Better before or now? Why?</b></li></ul></div>
+    <div class="card-cut b"><div class="ct">Topic · 6</div><h4>🍲 Food &amp; cooking</h4>
+      <ul><li>Did people use to cook more at home?</li><li>What would people eat on a special day?</li><li>How do people find recipes now?</li><li><b>Better before or now? Why?</b></li></ul></div>
+    <div class="card-cut"><div class="ct">Topic · 7</div><h4>💵 Money</h4>
+      <ul><li>How did people use to pay for things?</li><li>What would people do on payday?</li><li>Is it easier to save money now?</li><li><b>Better before or now? Why?</b></li></ul></div>
+    <div class="card-cut b"><div class="ct">Topic · 8</div><h4>📚 Learning</h4>
+      <ul><li>How did people use to learn a new skill or a language?</li><li>What would students do in class?</li><li>What's different now? (videos, apps…)</li><li><b>Better before or now? Why?</b></li></ul></div>
+  </div>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">Role cards (1 set per group)</h3>
+  <div class="cards">
+    <div class="card-cut"><div class="ct">Role · Chair</div><h4>🎤 You make everyone talk</h4>
+      <p>Read the question. Ask each person in turn. Invite quiet people: "What do you think, ___?" Say kindly: "Let's hear from someone new."</p></div>
+    <div class="card-cut b"><div class="ct">Role · Timekeeper</div><h4>⏱️ You watch the clock</h4>
+      <p>5 minutes per topic. Say: "Two minutes left!" · "One minute left!" · "Time's up. Next topic!"</p></div>
+    <div class="card-cut"><div class="ct">Role · Questioner</div><h4>❓ You ask one more question</h4>
+      <p>Ask each person one follow-up: "Did people use to…?" · "Why do you think that?" · "Can you give an example?"</p></div>
+    <div class="card-cut b"><div class="ct">Role · Reporter</div><h4>📝 You tell the class</h4>
+      <p>Take short notes. At the end say: "Our group thinks it was better before / it's better now, because… Most of us said…"</p></div>
+  </div>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">Talking tokens (3 per learner · or use paper clips or beans)</h3>
+  <p style="font-size:.9rem">Put one token in the middle when you take a long turn. When your tokens are gone, you can ask questions, but wait to give opinions until everyone has used theirs.</p>
+  <div class="tok"><span>💬</span><span>💬</span><span>💬</span><span>💬</span><span>💬</span><span>💬</span><span>💬</span><span>💬</span><span>💬</span><span>💬</span><span>💬</span><span>💬</span><span>💬</span><span>💬</span><span>💬</span><span>💬</span></div>
+
+  <!-- ===================== H. FIND SOMEONE WHO ===================== -->
+  <div class="sec pb"><h2>H · Game — Find Someone Who… "Have you ever…?" (C2 warmer)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">Photocopy one per learner. Learners stand, walk and ask "<b>Have you ever</b> + past participle…?" If the answer is "Yes, I have," they write the name and ask the <b>past-simple</b> follow-up. One name per box; ask each person only one or two questions, then move on. At the end, report: "Omar has met a famous person. He met a soccer player at the airport!"</p>
+  <table class="fsw">
+    <thead><tr><th>Find someone who…</th><th>Name</th><th>Follow-up (past simple)</th></tr></thead>
+    <tbody>
+      <tr><td>1. has cooked for more than ten people</td><td class="nm"></td><td class="ex">What did you cook?</td></tr>
+      <tr><td>2. has met a famous person</td><td class="nm"></td><td class="ex">Where did you meet him / her?</td></tr>
+      <tr><td>3. has been to a big concert</td><td class="nm"></td><td class="ex">Who did you see?</td></tr>
+      <tr><td>4. has run a race</td><td class="nm"></td><td class="ex">How long did it take?</td></tr>
+      <tr><td>5. has never eaten sushi</td><td class="nm"></td><td class="ex">Would you like to try it?</td></tr>
+      <tr><td>6. has sung in public</td><td class="nm"></td><td class="ex">What did you sing?</td></tr>
+      <tr><td>7. has had the same phone for more than two years</td><td class="nm"></td><td class="ex">Where did you buy it?</td></tr>
+      <tr><td>8. has known a friend since they were a child</td><td class="nm"></td><td class="ex">How did you meet?</td></tr>
+      <tr><td>9. has already done the online lesson 1.1</td><td class="nm"></td><td class="ex">What did you learn?</td></tr>
+      <tr><td>10. hasn't checked their phone yet today</td><td class="nm"></td><td class="ex">Really? When did you last check it?</td></tr>
+      <tr><td>11. has won a prize or a competition</td><td class="nm"></td><td class="ex">What did you win?</td></tr>
+      <tr><td>12. has learned something new this year</td><td class="nm"></td><td class="ex">How did you learn it?</td></tr>
+    </tbody>
+  </table>
+  <div class="note"><div class="t">Teacher note</div>
+    <p>Drill the question first: "Have you ever <b>met</b>…? · Have you ever <b>been</b> to…? · Have you ever <b>run</b>…?" (participles on the board: met, been, run, eaten, sung, had, known, done, checked, won, learned). Short answers: "Yes, I have. / No, I haven't." Follow-ups go into the <b>past simple</b>: that is the C1 "open → details" shape. Learners with a new identity card answer as their card person. Literacy support: read the rows aloud first; learners mark ✓ and the first letter of the name.</p>
+  </div>
+
+  <div class="foot">
+    <div class="who"><b>Ray de la Paz</b><span class="bio">© 2026 Ray de la Paz · Independent English (B1 Intermediate)</span></div>
+    <div class="ver">Module 1 · Classroom Materials · v1.0</div>
+  </div>
+
+</div>
+</body>
+</html>

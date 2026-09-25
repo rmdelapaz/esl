@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slides — Module 4</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root{--bg:#0b1220;--ink:#edf2fb;--ink2:#a8b6cf;--accent:#7fb2ff;--accent2:#2563eb;--lab:#34d3bd;--warn:#fbbf24;--line:#233252;--code:#101a2e;color-scheme:dark}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;overflow:hidden}
+  .deck{height:100%;width:100%;position:relative}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:6vh 8vw;gap:20px}
+  .slide.on{display:flex}
+  h1,h2,h3{font-family:"Archivo",sans-serif;line-height:1.1;text-wrap:balance}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  .slide h1{font-size:clamp(2rem,6vw,4rem);font-weight:800;letter-spacing:-.02em}
+  .slide h2{font-size:clamp(1.5rem,4.2vw,2.8rem);font-weight:800;letter-spacing:-.01em}
+  .slide p.lead{font-size:clamp(1.05rem,2.4vw,1.5rem);color:var(--ink2);max-width:26ch}
+  ul{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:6px}
+  ul li{position:relative;padding-left:34px;font-size:clamp(1.05rem,2.3vw,1.6rem)}
+  ul li::before{content:"";position:absolute;left:0;top:.55em;width:12px;height:12px;border-radius:3px;background:var(--accent);transform:rotate(45deg)}
+  ul.lab li::before{background:var(--lab)}
+  code.k{font-family:"JetBrains Mono",monospace;color:#cfe0ff;font-size:.92em}
+  pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:22px 26px;font-family:"JetBrains Mono",monospace;font-size:clamp(.85rem,1.9vw,1.3rem);line-height:1.55;overflow:auto;max-width:100%}
+  pre .k{color:#7dd3fc} pre .s{color:#86efac} pre .c{color:#7183a3;font-style:italic}
+  .tag{display:inline-flex;align-items:center;gap:10px;font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);color:var(--ink2)}
+  .tag .pill{background:var(--accent2);color:#fff;font-weight:700;border-radius:999px;padding:3px 12px;letter-spacing:.06em}
+  .tag .pill.lab{background:var(--lab);color:#062b26} .tag .pill.warn{background:var(--warn);color:#3a2a05}
+  .section{background:linear-gradient(135deg,#132a52,#0b1220)}
+  .section .big{font-size:clamp(3rem,12vw,8rem);font-family:"Archivo";font-weight:800;color:var(--accent2);line-height:.9}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+  @media (max-width:760px){.two{grid-template-columns:1fr}}
+  .bar{position:fixed;left:0;top:0;height:4px;background:var(--accent2);width:0;transition:width .25s;z-index:5}
+  .count{position:fixed;right:16px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink2);z-index:5}
+  .nav{position:fixed;inset:auto 0 0 0;display:flex;justify-content:space-between;pointer-events:none;z-index:4}
+  .nav button{pointer-events:auto;background:transparent;border:none;color:transparent;width:22vw;height:100vh;cursor:pointer}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+  /* ESL extras (picture vocab, grammar tables, dialogue, clocks) */
+  .pics{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,1.6vw,18px)}
+  .pics.six{grid-template-columns:repeat(6,1fr)}
+  .pic{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center}
+  .pic img{width:100%;max-width:150px;aspect-ratio:1;object-fit:cover;border-radius:10px;background:#FFF3E0;display:block;margin:0 auto}
+  .pic .emo{font-size:clamp(2.6rem,7vw,5rem);line-height:1;aspect-ratio:1;max-width:150px;margin:0 auto;display:flex;align-items:center;justify-content:center}
+  .pic .w{font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(.9rem,2vw,1.35rem);margin-top:6px}
+  @media (max-width:760px){.pics,.pics.six{grid-template-columns:repeat(3,1fr)}}
+  table.g{border-collapse:collapse;font-size:clamp(.95rem,2.1vw,1.45rem);width:100%;max-width:1000px}
+  table.g th,table.g td{border:1px solid var(--line);padding:10px 16px;text-align:left}
+  table.g th{background:var(--code);color:var(--accent);font-family:"JetBrains Mono",monospace;font-size:.8em;letter-spacing:.04em}
+  table.g b{color:#ffd166}
+  .dlg{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:18px 24px;display:flex;flex-direction:column;gap:8px;font-size:clamp(1rem,2.2vw,1.45rem);max-width:1000px}
+  .dlg .sp{display:inline-block;min-width:3.6em;font-weight:700;color:var(--accent)}
+  .dlg .b .sp{color:#c4a1ff}
+  .ccq{font-size:clamp(1rem,2.2vw,1.45rem);border:1px dashed var(--line);border-radius:12px;padding:12px 18px;background:var(--code)}
+  .ccq i{color:var(--ink2)}
+  .clocks{display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,34px);align-items:flex-start}
+  .clocks figure{text-align:center}
+  .clocks svg{width:clamp(96px,14vw,170px);height:auto}
+  .clocks figcaption{font-size:clamp(.95rem,2vw,1.3rem);margin-top:6px}
+  .clocks figcaption small{display:block;color:var(--ink2);font-size:.8em}
+  .snd{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .snd div{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:clamp(1rem,2.2vw,1.5rem)}
+  .snd div b{display:block;font-family:"Archivo";font-size:1.5em;color:var(--accent)}
+  .snd div small{color:var(--ink2)}
+</style>
+<style>
+  /* Module 4 extras: mystery close-ups (4.2) */
+  .zoom{width:100%;max-width:150px;aspect-ratio:1;overflow:hidden;border-radius:10px;margin:0 auto;background:#FFF3E0}
+  .zoom img{width:100%;height:100%;object-fit:cover;transform:scale(3);transform-origin:50% 50%;border-radius:0!important}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="deck" id="deck">
+
+  <!-- 1 -->
+  <section class="slide on section">
+    <div class="eyebrow">Independent English (B1) · Instructor Kit</div>
+    <h1>Module 4<br>Structures for Fluency</h1>
+    <p class="lead">How it's made. What it must be. What I think.</p>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide">
+    <div class="eyebrow">Classes C10–C12 · the map</div>
+    <h2>Three classes, one halfway point</h2>
+    <ul>
+      <li><b>4.1</b> The passive: <i>Coffee is grown in Brazil. The bridge was built in 1932.</i></li>
+      <li><b>4.2</b> Deduction &amp; rules: <i>It must be raining. It can't be true. You don't have to pay.</i></li>
+      <li><b>4.3</b> Review project: a mini debate + a short story with Modules 1–4</li>
+    </ul>
+    <div class="tag"><span class="pill">NOTE</span> Real facts, opinion cards, invented stories: all are OK. You can say "Pass."</div>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide">
+    <div class="eyebrow">4.1 · New words · products</div>
+    <h2>Where is it grown? What is it made from?</h2>
+    <div class="pics">
+      <div class="pic"><img src="../assets/vocab/coffee.jpg" alt=""><div class="w">coffee</div></div>
+      <div class="pic"><img src="../assets/vocab/tea.jpg" alt=""><div class="w">tea</div></div>
+      <div class="pic"><img src="../assets/vocab/rice.jpg" alt=""><div class="w">rice</div></div>
+      <div class="pic"><img src="../assets/vocab/chocolate.jpg" alt=""><div class="w">chocolate</div></div>
+      <div class="pic"><img src="../assets/vocab/cheese.jpg" alt=""><div class="w">cheese</div></div>
+      <div class="pic"><img src="../assets/vocab/bread.jpg" alt=""><div class="w">bread</div></div>
+      <div class="pic"><img src="../assets/vocab/banana.jpg" alt=""><div class="w">bananas</div></div>
+      <div class="pic"><img src="../assets/vocab/sugar.jpg" alt=""><div class="w">sugar</div></div>
+    </div>
+    <div class="tag"><span class="pill lab">SAY IT</span> grow → grown · pick → picked · roast → roasted · grind → ground · sell → sold</div>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide">
+    <div class="eyebrow">4.1 · be + past participle</div>
+    <h2>Only <i>be</i> changes</h2>
+    <table class="g">
+      <tr><th>Present</th><td>English <b>is spoken</b> here. · These cars <b>are made</b> in Japan.</td></tr>
+      <tr><th>Past</th><td>The bridge <b>was built</b> in 1890. · The letters <b>were sent</b> yesterday.</td></tr>
+      <tr><th>❌</th><td>Plastic <b>isn't recycled</b> here. · The package <b>wasn't delivered</b>.</td></tr>
+      <tr><th>❓</th><td><b>Is</b> this <b>made</b> with milk? · When <b>was</b> it <b>built</b>?</td></tr>
+      <tr><th>made…</th><td>made <b>of</b> wood · made <b>from</b> milk · made <b>in</b> Italy · made <b>by</b> hand</td></tr>
+    </table>
+    <div class="tag"><span class="pill warn">WATCH</span> English spoken here ❌ · are make ❌ · was builded ❌ · was happened ❌</div>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide">
+    <div class="eyebrow">4.1 · Why passive? · check the meaning</div>
+    <h2>The thing is the star</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>❓ unknown</th><td>My car <b>was stolen</b>.</td></tr>
+        <tr><th>🤷 not important</th><td>The rooms <b>are cleaned</b> every day.</td></tr>
+        <tr><th>👮 obvious</th><td>He <b>was arrested</b> on Friday.</td></tr>
+        <tr><th>🌍 everyone</th><td>Rice <b>is eaten</b> all over Asia.</td></tr>
+        <tr><th>⚙️ a process</th><td>The beans <b>are dried</b>, then <b>roasted</b>.</td></tr>
+      </table>
+      <div class="ccq">"Hamlet was written <b>by Shakespeare</b>." Is <i>by Shakespeare</i> useful? <i>(Yes! Famous.)</i><br>"My bike was stolen <b>by someone</b>." Useful? <i>(No. Drop it.)</i><br>"This watch is made in Switzerland." About the workers or the watch? <i>(The watch.)</i></div>
+    </div>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide">
+    <div class="eyebrow">4.1 · Active → passive in 3 steps</div>
+    <h2>They built the house in 1990.</h2>
+    <ul>
+      <li>① The <b>object</b> moves to the front: <i>The house…</i></li>
+      <li>② The verb becomes <b>be + participle</b> (same tense): <i>…was built…</i></li>
+      <li>③ The doer becomes <b>by…</b> or disappears: <i>The house was built in 1990.</i></li>
+    </ul>
+    <div class="dlg">
+      <p><span class="sp">⚙️</span> First, the coffee cherries <b>are picked</b>. The skins <b>are removed</b> and the beans <b>are dried</b> in the sun. Then they <b>are roasted</b> and <b>ground</b>. Finally, the coffee <b>is packed</b> and <b>sold</b>.</p>
+    </div>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide">
+    <div class="eyebrow">4.1 · Team quiz · 14 min</div>
+    <h2>🏭 How It's Made quiz</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>Teams of 3–4. Listen to the question and the 3 answers.</li>
+        <li>Talk for 30 seconds, in English.</li>
+        <li>The speaker says a <b>full passive sentence</b>: "Paper <b>was invented</b> in China."</li>
+        <li>1 point for the fact · +1 for good English. New speaker every round.</li>
+      </ul>
+      <div class="ccq">Who talks first? <i>(The team, 30 seconds.)</i><br>How do you answer? <i>(A full passive sentence.)</i><br>Same speaker every time? <i>(No, it changes.)</i><br>Wrong fact, perfect sentence? <i>(Still 1 point!)</i></div>
+    </div>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide">
+    <div class="eyebrow">4.2 · Mystery close-ups · what is it?</div>
+    <h2>It might be… It can't be… It must be…!</h2>
+    <div class="pics">
+      <div class="pic"><div class="zoom"><img src="../assets/vocab/key.jpg" alt="close-up 1"></div><div class="w">1 ?</div></div>
+      <div class="pic"><div class="zoom"><img src="../assets/vocab/umbrella.jpg" alt="close-up 2"></div><div class="w">2 ?</div></div>
+      <div class="pic"><div class="zoom"><img src="../assets/vocab/egg.jpg" alt="close-up 3"></div><div class="w">3 ?</div></div>
+      <div class="pic"><div class="zoom"><img src="../assets/vocab/remote.jpg" alt="close-up 4"></div><div class="w">4 ?</div></div>
+    </div>
+    <div class="tag"><span class="pill">REVEAL</span> hold up the full flashcard after the guesses (key in the Teacher's Guide, C11)</div>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide">
+    <div class="eyebrow">4.2 · The certainty scale</div>
+    <h2>How sure are you?</h2>
+    <table class="g">
+      <tr><th>✅ sure YES</th><td><b>must</b></td><td>The light's on, <b>so</b> she <b>must be</b> home.</td></tr>
+      <tr><th>🤔 maybe</th><td><b>might · may · could</b></td><td>She's not answering. She <b>might be</b> busy.</td></tr>
+      <tr><th>❌ sure NO</th><td><b>can't</b></td><td>He <b>can't be</b> hungry. He just ate.</td></tr>
+    </table>
+    <div class="tag"><span class="pill warn">WATCH</span> modal + plain verb · must to be ❌ · must is ❌ · It can be the mail carrier ❌ → might be</div>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide">
+    <div class="eyebrow">4.2 · Check the meaning</div>
+    <h2>must: one word, two jobs</h2>
+    <div class="two">
+      <div class="ccq">📜 "You <b>must</b> sign here."<br>A rule or a guess? <i>(A rule.)</i><br>🕵️ "You <b>must</b> be tired."<br>A rule or a guess? <i>(A guess from a clue.)</i></div>
+      <div class="ccq">"He <b>mustn't</b> be at home. His car's gone."<br>Correct? <i>(No!)</i><br>Sure NO = <i>(can't)</i>: "He <b>can't</b> be at home."<br><i>mustn't</i> = <i>(not allowed)</i></div>
+    </div>
+    <div class="tag"><span class="pill lab">SAY IT</span> I <b>CAN'T</b> /kænt/ (strong) · I can /kən/ go (weak) · mustn't = "MUS-ent"</div>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide">
+    <div class="eyebrow">4.2 · Rules &amp; advice · review</div>
+    <h2>Do I have to? Should I?</h2>
+    <table class="g">
+      <tr><th>📜 necessary</th><td><b>have to / must</b></td><td>You have to show ID at the bank.</td></tr>
+      <tr><th>🆓 not necessary</th><td><b>don't have to</b></td><td>It's free. You don't have to pay.</td></tr>
+      <tr><th>🚫 not allowed</th><td><b>mustn't</b> · US: <b>can't / not allowed to</b></td><td>You mustn't (can't) park here.</td></tr>
+      <tr><th>💡 advice</th><td><b>should / shouldn't</b></td><td>You look tired. You should rest.</td></tr>
+    </table>
+    <div class="tag"><span class="pill warn">WATCH</span> "You mustn't come" ≠ "You don't have to come" · a rule (have to) ≠ my advice (should)</div>
+  </section>
+
+  <!-- 12 -->
+  <section class="slide">
+    <div class="eyebrow">4.2 · Model dialogue</div>
+    <h2>Whose bag is it?</h2>
+    <div class="dlg">
+      <p><span class="sp">A:</span> Someone left a bag on the train. Whose do you think it is?</p>
+      <p class="b"><span class="sp">B:</span> There's a laptop and some business cards, so it <b>can't be</b> a child's.</p>
+      <p><span class="sp">A:</span> And there's a ticket to Chicago. The owner <b>might be</b> going there for work.</p>
+      <p class="b"><span class="sp">B:</span> Look, the coffee's still warm. They <b>must be</b> on the train right now!</p>
+      <p><span class="sp">A:</span> They <b>could be</b> in the next car. We <b>should</b> tell the conductor.</p>
+    </div>
+  </section>
+
+  <!-- 13 -->
+  <section class="slide">
+    <div class="eyebrow">4.2 · Groups · 13 min</div>
+    <h2>🕵️ The detective agency</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>"Whose bag?": turn over <b>one clue at a time</b></li>
+        <li>Detective cards: 3 deductions (<b>must · might · can't</b>) + the clue</li>
+        <li>Clue, <b>so</b> deduction: "The lights are off, so…"</li>
+        <li>The reader adds advice: "We <b>should</b>…"</li>
+      </ul>
+      <div class="ccq">Guesses about people in this room? <i>(No! Pictures, objects, card people.)</i><br>All clues at once? <i>(No, one at a time.)</i><br>The word between clue and deduction? <i>("So.")</i></div>
+    </div>
+  </section>
+
+  <!-- 14 -->
+  <section class="slide">
+    <div class="eyebrow">4.3 · Opinions · claim + reason + example</div>
+    <h2>Not only "I think…"</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>💬 give</th></tr>
+        <tr><td>In my opinion, … · If you ask me, …</td></tr>
+        <tr><td>As far as I'm concerned, …</td></tr>
+        <tr><td>It seems to me that … · Personally, I'd say …</td></tr>
+      </table>
+      <table class="g">
+        <tr><th>🧱 support</th></tr>
+        <tr><td>The main reason is (that) …</td></tr>
+        <tr><td>For example, … · What's more, …</td></tr>
+        <tr><td>On the one hand … on the other hand …</td></tr>
+      </table>
+    </div>
+    <div class="tag"><span class="pill warn">WATCH</span> I am agree ❌ · According to me ❌ · I think no ❌ → I don't think so</div>
+  </section>
+
+  <!-- 15 -->
+  <section class="slide">
+    <div class="eyebrow">4.3 · Agree &amp; disagree politely</div>
+    <h2>Acknowledge first, then disagree</h2>
+    <table class="g">
+      <tr><th>👍</th><td>That's a good point. · Exactly! · I couldn't agree more.</td></tr>
+      <tr><th>🙏</th><td>I <b>see</b> what you mean, but… · That may be true, but… · I'm not sure I agree.</td></tr>
+      <tr><th>🤝</th><td>"I love cooking." — "So <b>do</b> I." · "I don't like crowds." — "Neither <b>do</b> I." · "I've been there." — "So <b>have</b> I."</td></tr>
+    </table>
+    <div class="ccq">"You're wrong." Polite? <i>(No!)</i> · "I see what you mean, but…" Agree or disagree? <i>(Disagree, politely.)</i></div>
+  </section>
+
+  <!-- 16 -->
+  <section class="slide">
+    <div class="eyebrow">4.3 · Groups of 4 · 15 min</div>
+    <h2>🎤 The mini debate</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>Take a topic card and an <b>opinion card</b> (not your own opinion!)</li>
+        <li>Round 1: 1 minute each · Round 2: respond (3 <b>talking tokens</b>)</li>
+        <li>Start with the last speaker: "That's a good point, but…"</li>
+        <li>The <b>chair</b> keeps time, invites everyone, sums up</li>
+      </ul>
+      <div class="ccq">Your real opinion? <i>(No, the card's.)</i><br>A token = ? <i>(One turn.)</i><br>What does the chair do? <i>(Time, invite, sum up.)</i><br>Before you disagree? <i>("I see what you mean, but…")</i></div>
+    </div>
+  </section>
+
+  <!-- 17 -->
+  <section class="slide">
+    <div class="eyebrow">4.3 · Story circles · 2–3 minutes each</div>
+    <h2>The story road</h2>
+    <table class="g">
+      <tr><th>① Then</th><td>I <b>used to</b>… · It <b>was</b>…</td></tr>
+      <tr><th>② What happened</th><td>past simple + a woman <b>who</b>… / …, <b>which</b>…</td></tr>
+      <tr><th>③ What people said</th><td>She <b>told me that</b> she was…</td></tr>
+      <tr><th>④ A guess / a fact</th><td>She <b>must be</b>… · It <b>was found</b>…</td></tr>
+      <tr><th>⑤ Now &amp; if</th><td><b>I've</b>… since then · <b>If I</b> found…, <b>I'd</b>… · <b>I wish</b>…</td></tr>
+    </table>
+    <div class="tag"><span class="pill">I LISTEN FOR</span> task · range (Modules 1–4) · accuracy · interaction · fluency — true or invented, both are great</div>
+  </section>
+
+  <!-- 18 -->
+  <section class="slide section">
+    <div class="eyebrow">You're halfway through B1</div>
+    <h2>Module 4 done 🎉</h2>
+    <ul class="lab">
+      <li>🏭 Coffee is grown in Brazil. The bridge was built in 1932.</li>
+      <li>🕵️ It must be raining. She might be busy. That can't be right! · You don't have to pay. You should rest.</li>
+      <li>🎤 If you ask me, … The main reason is … I see what you mean, but …</li>
+    </ul>
+    <p class="lead" style="margin-top:10px;max-width:40ch">Homework: online lessons 4.1–4.3 with 🔊. Next class: a friendly check of Modules 1–4.</p>
+  </section>
+
+
+</div>
+
+<div class="count" id="count">1 / 18</div>
+<div class="nav"><button id="prev" aria-label="Previous slide"></button><button id="next" aria-label="Next slide"></button></div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const bar=document.getElementById('bar'), count=document.getElementById('count');
+  let i=0;
+  function show(n){ i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+    bar.style.width=((i+1)/slides.length*100)+'%'; count.textContent=(i+1)+' / '+slides.length; }
+  document.getElementById('next').onclick=()=>show(i+1);
+  document.getElementById('prev').onclick=()=>show(i-1);
+  addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}
+    else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+  });
+  show(0);
+</script>
+</body>
+</html>

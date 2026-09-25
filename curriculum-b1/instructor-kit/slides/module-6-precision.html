@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slides — Module 6</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root{--bg:#0b1220;--ink:#edf2fb;--ink2:#a8b6cf;--accent:#7fb2ff;--accent2:#2563eb;--lab:#34d3bd;--warn:#fbbf24;--line:#233252;--code:#101a2e;color-scheme:dark}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;overflow:hidden}
+  .deck{height:100%;width:100%;position:relative}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:6vh 8vw;gap:20px}
+  .slide.on{display:flex}
+  h1,h2,h3{font-family:"Archivo",sans-serif;line-height:1.1;text-wrap:balance}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  .slide h1{font-size:clamp(2rem,6vw,4rem);font-weight:800;letter-spacing:-.02em}
+  .slide h2{font-size:clamp(1.5rem,4.2vw,2.8rem);font-weight:800;letter-spacing:-.01em}
+  .slide p.lead{font-size:clamp(1.05rem,2.4vw,1.5rem);color:var(--ink2);max-width:26ch}
+  ul{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:6px}
+  ul li{position:relative;padding-left:34px;font-size:clamp(1.05rem,2.3vw,1.6rem)}
+  ul li::before{content:"";position:absolute;left:0;top:.55em;width:12px;height:12px;border-radius:3px;background:var(--accent);transform:rotate(45deg)}
+  ul.lab li::before{background:var(--lab)}
+  code.k{font-family:"JetBrains Mono",monospace;color:#cfe0ff;font-size:.92em}
+  pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:22px 26px;font-family:"JetBrains Mono",monospace;font-size:clamp(.85rem,1.9vw,1.3rem);line-height:1.55;overflow:auto;max-width:100%}
+  pre .k{color:#7dd3fc} pre .s{color:#86efac} pre .c{color:#7183a3;font-style:italic}
+  .tag{display:inline-flex;align-items:center;gap:10px;font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);color:var(--ink2)}
+  .tag .pill{background:var(--accent2);color:#fff;font-weight:700;border-radius:999px;padding:3px 12px;letter-spacing:.06em}
+  .tag .pill.lab{background:var(--lab);color:#062b26} .tag .pill.warn{background:var(--warn);color:#3a2a05}
+  .section{background:linear-gradient(135deg,#132a52,#0b1220)}
+  .section .big{font-size:clamp(3rem,12vw,8rem);font-family:"Archivo";font-weight:800;color:var(--accent2);line-height:.9}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+  @media (max-width:760px){.two{grid-template-columns:1fr}}
+  .bar{position:fixed;left:0;top:0;height:4px;background:var(--accent2);width:0;transition:width .25s;z-index:5}
+  .count{position:fixed;right:16px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink2);z-index:5}
+  .nav{position:fixed;inset:auto 0 0 0;display:flex;justify-content:space-between;pointer-events:none;z-index:4}
+  .nav button{pointer-events:auto;background:transparent;border:none;color:transparent;width:22vw;height:100vh;cursor:pointer}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+  /* ESL extras (picture vocab, grammar tables, dialogue, clocks) */
+  .pics{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,1.6vw,18px)}
+  .pics.six{grid-template-columns:repeat(6,1fr)}
+  .pic{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center}
+  .pic img{width:100%;max-width:150px;aspect-ratio:1;object-fit:cover;border-radius:10px;background:#FFF3E0;display:block;margin:0 auto}
+  .pic .emo{font-size:clamp(2.6rem,7vw,5rem);line-height:1;aspect-ratio:1;max-width:150px;margin:0 auto;display:flex;align-items:center;justify-content:center}
+  .pic .w{font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(.9rem,2vw,1.35rem);margin-top:6px}
+  @media (max-width:760px){.pics,.pics.six{grid-template-columns:repeat(3,1fr)}}
+  table.g{border-collapse:collapse;font-size:clamp(.95rem,2.1vw,1.45rem);width:100%;max-width:1000px}
+  table.g th,table.g td{border:1px solid var(--line);padding:10px 16px;text-align:left}
+  table.g th{background:var(--code);color:var(--accent);font-family:"JetBrains Mono",monospace;font-size:.8em;letter-spacing:.04em}
+  table.g b{color:#ffd166}
+  .dlg{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:18px 24px;display:flex;flex-direction:column;gap:8px;font-size:clamp(1rem,2.2vw,1.45rem);max-width:1000px}
+  .dlg .sp{display:inline-block;min-width:3.6em;font-weight:700;color:var(--accent)}
+  .dlg .b .sp{color:#c4a1ff}
+  .ccq{font-size:clamp(1rem,2.2vw,1.45rem);border:1px dashed var(--line);border-radius:12px;padding:12px 18px;background:var(--code)}
+  .ccq i{color:var(--ink2)}
+  .clocks{display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,34px);align-items:flex-start}
+  .clocks figure{text-align:center}
+  .clocks svg{width:clamp(96px,14vw,170px);height:auto}
+  .clocks figcaption{font-size:clamp(.95rem,2vw,1.3rem);margin-top:6px}
+  .clocks figcaption small{display:block;color:var(--ink2);font-size:.8em}
+  .snd{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .snd div{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:clamp(1rem,2.2vw,1.5rem)}
+  .snd div b{display:block;font-family:"Archivo";font-size:1.5em;color:var(--accent)}
+  .snd div small{color:var(--ink2)}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="deck" id="deck">
+
+  <!-- 1 -->
+  <section class="slide on section">
+    <div class="eyebrow">Independent English (B1) · Instructor Kit</div>
+    <h1>Module 6<br>Precision &amp; Detail</h1>
+    <p class="lead">Which one? Which form? How much?</p>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide">
+    <div class="eyebrow">Classes C17–C19 · the map</div>
+    <h2>Small words, big difference</h2>
+    <ul>
+      <li><b>6.1</b> Which one? <i>I saw a dog. The dog was huge. I love dogs.</i></li>
+      <li><b>6.2</b> Which form? <i>I enjoy cooking. I want to learn. I stopped to buy a coffee.</i></li>
+      <li><b>6.3</b> How much? <i>It's too cold. There aren't enough towels. You've been so helpful!</i></li>
+    </ul>
+    <div class="tag"><span class="pill">NOTE</span> Your real life, a new identity card, or an invented place: all are OK. You can say "Pass."</div>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide">
+    <div class="eyebrow">6.1 · Articles · one question</div>
+    <h2>Does my listener already know which one?</h2>
+    <table class="g">
+      <tr><th>YES → the</th><td>I saw a dog. <b>The</b> dog was huge. · <b>the</b> sun · Close <b>the</b> door. · <b>the</b> best day · <b>the</b> woman who called</td></tr>
+      <tr><th>NO + one thing → a / an</th><td>I bought <b>a</b> phone. · Pass me <b>a</b> pen. · She's <b>an</b> engineer.</td></tr>
+      <tr><th>NO + general → —</th><td>I like cats. · Water is important. · Life is hard.</td></tr>
+    </table>
+    <div class="tag"><span class="pill warn">WATCH</span> She's doctor ❌ · The life is hard ❌ · the France ❌ · a hour ❌</div>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide">
+    <div class="eyebrow">6.1 · One noun, three ways · check the meaning</div>
+    <h2>☕ a coffee · the coffee · coffee</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>a / an</th><td>I need <b>a</b> coffee. <i>(any cup)</i></td></tr>
+        <tr><th>the</th><td><b>The</b> coffee here is great. <i>(this coffee)</i></td></tr>
+        <tr><th>—</th><td>I don't drink coffee. <i>(in general)</i></td></tr>
+      </table>
+      <div class="ccq">"I saw a dog." Do you know this dog? <i>(No. It's new.)</i><br>"The dog was huge." Which dog? <i>(The one I told you about.)</i><br>"I love music." One song or all music? <i>(All music, in general.)</i><br>"The sun is hot." How many suns? <i>(One.)</i></div>
+    </div>
+    <div class="tag"><span class="pill lab">STEP BY STEP</span> 1 Specific? → the · 2 One countable thing? → a / an · 3 Otherwise → no article</div>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide">
+    <div class="eyebrow">6.1 · a or an? · listen to the sound</div>
+    <h2>It's the sound, not the letter</h2>
+    <div class="pics six">
+      <div class="pic"><img src="../assets/vocab/apple.jpg" alt=""><div class="w">an apple</div></div>
+      <div class="pic"><img src="../assets/vocab/egg.jpg" alt=""><div class="w">an egg</div></div>
+      <div class="pic"><img src="../assets/vocab/umbrella.jpg" alt=""><div class="w">an umbrella</div></div>
+      <div class="pic"><div class="emo">⏰</div><div class="w">an hour</div></div>
+      <div class="pic"><div class="emo">🎓</div><div class="w">a university</div></div>
+      <div class="pic"><div class="emo">👮</div><div class="w">a uniform</div></div>
+    </div>
+    <div class="tag"><span class="pill lab">SAY IT</span> a /ə/ · an /ən/ · the /ðə/ → /ði/ before a vowel sound · "an‿apple" = "a-napple"</div>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide">
+    <div class="eyebrow">6.1 · Fixed phrases · learn them as one piece</div>
+    <h2>go to bed · by bus · play the guitar</h2>
+    <div class="pics six">
+      <div class="pic"><img src="../assets/vocab/bed.jpg" alt=""><div class="w">go to bed</div></div>
+      <div class="pic"><img src="../assets/vocab/school.jpg" alt=""><div class="w">go to school</div></div>
+      <div class="pic"><img src="../assets/vocab/bus.jpg" alt=""><div class="w">by bus</div></div>
+      <div class="pic"><img src="../assets/vocab/play-the-guitar.jpg" alt=""><div class="w">play the guitar</div></div>
+      <div class="pic"><img src="../assets/vocab/football.jpg" alt=""><div class="w">play soccer</div></div>
+      <div class="pic"><img src="../assets/vocab/hospital.jpg" alt=""><div class="w">go to the hospital</div></div>
+    </div>
+    <div class="tag"><span class="pill">US</span> go to <b>the</b> hospital (UK: go to hospital) · have breakfast · on <b>the</b> bus · The cat is on <b>the</b> bed</div>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide">
+    <div class="eyebrow">6.1 · Pair task · 13 min</div>
+    <h2>✏️ You are the Editor</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>The community newsletter · the writer's language has no articles</li>
+        <li><b>12 mistakes</b>: 6 missing · 3 extra · 3 wrong</li>
+        <li><b>^</b> add · <b>/</b> delete · <b>circle</b> = change</li>
+        <li>A reason for every change. Finished? Take Editor B.</li>
+      </ul>
+      <div class="ccq">How many mistakes? <i>(Twelve.)</i><br>How many missing? <i>(Six.)</i><br>What does ^ mean? <i>(Add.)</i><br>Change every article? <i>(No! Some are correct.)</i><br>Need a reason? <i>(Yes, every time.)</i></div>
+    </div>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide">
+    <div class="eyebrow">6.1 · Pair task · 15 min</div>
+    <h2>🏠 Describe &amp; Draw</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>A real place, a place card, or a new identity card</li>
+        <li>A: "There's <b>a</b> window. <b>The</b> window has green curtains…"</li>
+        <li>B draws and asks: "Where's <b>the</b> sofa?" "Is there <b>a</b> lamp?"</li>
+        <li>8+ sentences · 2 in general: "It sells coffee and cakes."</li>
+      </ul>
+      <div class="ccq">Can B see A's notes? <i>(No.)</i><br>First time "window": a or the? <i>(A.)</i><br>Second time? <i>(The.)</i><br>Must it be your real home? <i>(No.)</i></div>
+    </div>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide">
+    <div class="eyebrow">6.2 · Verb patterns · check your sort</div>
+    <h2>-ing or to?</h2>
+    <table class="g">
+      <tr><th>+ -ing</th><td>enjoy · avoid · finish · suggest · keep · mind · can't stand · feel like · give up · miss</td><td>I enjoy <b>cooking</b>.</td></tr>
+      <tr><th>+ to</th><td>want · decide · hope · promise · learn · offer · refuse · manage · agree · can't afford</td><td>We decided <b>to stay</b> home.</td></tr>
+      <tr><th>both!</th><td>stop · remember · forget · try</td><td>The meaning changes →</td></tr>
+    </table>
+    <div class="tag"><span class="pill lab">HINT</span> many -ing verbs = experiences · many to verbs look forward (want, hope, plan, promise)</div>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide">
+    <div class="eyebrow">6.2 · Three more patterns</div>
+    <h2>told <i>him</i> to · good at <i>-ing</i> · <i>Swimming</i> is…</h2>
+    <table class="g">
+      <tr><th>verb + person + to</th><td>She told <b>him to</b> wait. · The doctor advised <b>her to</b> rest. · She warned him <b>not to</b> touch it.</td></tr>
+      <tr><th>preposition + -ing</th><td>good at draw<b>ing</b> · interested in learn<b>ing</b> · instead of tak<b>ing</b> the bus</td></tr>
+      <tr><th>"to" trap</th><td>I'm looking forward <b>to</b> see<b>ing</b> you. (looking forward to <i>the weekend</i> ✔ → preposition)</td></tr>
+      <tr><th>-ing = subject</th><td><b>Learning</b> a language takes time.</td></tr>
+    </table>
+    <div class="tag"><span class="pill warn">WATCH</span> She told to wait ❌ · I want that you listen ❌ · looking forward to see ❌ · before to leave ❌</div>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide">
+    <div class="eyebrow">6.2 · The meaning changes · check it</div>
+    <h2>stop · remember · forget · try</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th></th><th>+ -ing</th><th>+ to</th></tr>
+        <tr><th>stop</th><td>stopped <b>buying</b> coffee (no more)</td><td>stopped <b>to buy</b> a coffee (pause → in order to)</td></tr>
+        <tr><th>remember</th><td>remember <b>locking</b> it (memory ←)</td><td>Remember <b>to lock</b> it (task →)</td></tr>
+        <tr><th>forget</th><td>never forget <b>meeting</b> her</td><td>forgot <b>to call</b> him (didn't do it)</td></tr>
+        <tr><th>try</th><td>Try <b>restarting</b> it (a test)</td><td>tried <b>to open</b> the jar (an effort)</td></tr>
+      </table>
+      <div class="ccq">"He stopped working." Does he work now? <i>(No.)</i><br>"He stopped to buy bread." Why did he stop? <i>(To buy bread.)</i><br>"Remember to lock the door." Did you lock it? <i>(Not yet. A task.)</i><br>"Try restarting it." Easy or difficult? <i>(Easy. A test.)</i></div>
+    </div>
+  </section>
+
+  <!-- 12 -->
+  <section class="slide">
+    <div class="eyebrow">6.2 · Model dialogue</div>
+    <h2>Did you remember to bring the tickets?</h2>
+    <div class="dlg">
+      <p><span class="sp">Lena:</span> Did you remember to bring the tickets?</p>
+      <p class="b"><span class="sp">Marco:</span> Yes! And I clearly remember putting them in my bag last night.</p>
+      <p><span class="sp">Lena:</span> Good. On the way, can we stop to get a coffee?</p>
+      <p class="b"><span class="sp">Marco:</span> Sure. I've been trying to cut down, but I'll never stop drinking it completely!</p>
+    </div>
+    <div class="tag"><span class="pill lab">FIND</span> two memories? one task? one pause? one "no more"?</div>
+  </section>
+
+  <!-- 13 -->
+  <section class="slide">
+    <div class="eyebrow">6.2 · Mingle 12 min · talk 7 min</div>
+    <h2>Find Someone Who · Two Minutes About Me</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>Make a question: "<b>Do you enjoy cooking</b> for other people?"</li>
+        <li>"Yes" → write the name + ask the extra question</li>
+        <li>Then pairs: A talks for <b>2 minutes</b>: habits · plans · preferences</li>
+        <li>B = the checker: tick the patterns, don't correct. Swap.</li>
+      </ul>
+      <div class="ccq">Read the line or make a question? <i>(Make a question.)</i><br>Names per person? <i>(One.)</i><br>What does the checker do? <i>(Listens and counts.)</i><br>Real life only? <i>(No. A new identity card is fine.)</i></div>
+    </div>
+  </section>
+
+  <!-- 14 -->
+  <section class="slide">
+    <div class="eyebrow">6.3 · New words · how much?</div>
+    <h2>Too hot? Big enough?</h2>
+    <div class="pics">
+      <div class="pic"><img src="../assets/vocab/hot.jpg" alt=""><div class="w">too hot</div></div>
+      <div class="pic"><img src="../assets/vocab/expensive.jpg" alt=""><div class="w">too expensive</div></div>
+      <div class="pic"><img src="../assets/vocab/small.jpg" alt=""><div class="w">too small</div></div>
+      <div class="pic"><img src="../assets/vocab/tall.jpg" alt=""><div class="w">tall enough</div></div>
+      <div class="pic"><img src="../assets/vocab/chair.jpg" alt=""><div class="w">not enough chairs</div></div>
+      <div class="pic"><img src="../assets/vocab/sugar.jpg" alt=""><div class="w">too much sugar</div></div>
+      <div class="pic"><img src="../assets/vocab/milk.jpg" alt=""><div class="w">a little milk</div></div>
+      <div class="pic"><img src="../assets/vocab/egg.jpg" alt=""><div class="w">a few eggs</div></div>
+    </div>
+  </section>
+
+  <!-- 15 -->
+  <section class="slide">
+    <div class="eyebrow">6.3 · too · enough · too much / many</div>
+    <h2>"too" = a problem</h2>
+    <table class="g">
+      <tr><th>too + adjective</th><td>The coffee is <b>too</b> hot (to drink).</td></tr>
+      <tr><th>adjective + enough</th><td>She's old <b>enough</b> to drive. · The room isn't warm <b>enough</b>.</td></tr>
+      <tr><th>enough + noun</th><td>We don't have <b>enough</b> chairs.</td></tr>
+      <tr><th>count / no count</th><td><b>too many</b> cars · <b>too much</b> noise · You worry <b>too much</b>.</td></tr>
+    </table>
+    <div class="tag"><span class="pill warn">WATCH</span> enough big ❌ · too much people ❌ · "The food was too good!" (praise) ❌ → so good ✔</div>
+  </section>
+
+  <!-- 16 -->
+  <section class="slide">
+    <div class="eyebrow">6.3 · so / such … that</div>
+    <h2>Is there a noun after it?</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>NO → so</th><td>It was <b>so</b> hot <b>that</b> we left early.</td></tr>
+        <tr><th>YES → such a</th><td>It was <b>such a</b> good movie <b>that</b> I watched it twice.</td></tr>
+        <tr><th>YES → such</th><td>They're <b>such</b> kind people. · <b>such</b> nice weather</td></tr>
+      </table>
+      <div class="dlg">
+        <p><span class="sp">Priya:</span> How was the concert last night?</p>
+        <p class="b"><span class="sp">Dan:</span> Amazing! The band was so good that we didn't want it to end.</p>
+        <p><span class="sp">Priya:</span> Really? I heard it was such a long show, though.</p>
+        <p class="b"><span class="sp">Dan:</span> It was, three hours! But the time went so quickly that I hardly noticed.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 17 -->
+  <section class="slide">
+    <div class="eyebrow">6.3 · a few / few · a little / little · most of</div>
+    <h2>🙂 a few friends · 🙁 few friends</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th></th><th>count</th><th>no count</th></tr>
+        <tr><th>🙂 some</th><td><b>a few</b> friends</td><td><b>a little</b> time</td></tr>
+        <tr><th>🙁 not many / much</th><td><b>few</b> friends</td><td><b>little</b> time</td></tr>
+        <tr><th>general</th><td colspan="2">Most people agree.</td></tr>
+        <tr><th>specific</th><td colspan="2">Most <b>of the</b> people here · Some <b>of my</b> friends · None <b>of them</b></td></tr>
+      </table>
+      <div class="ccq">"I have a few friends here." Am I OK? <i>(Yes 🙂.)</i><br>"I have few friends here." <i>(Lonely 🙁.)</i><br>"We have little time." Relax or hurry? <i>(Hurry!)</i><br>"Most of people"? <i>(No! Most people.)</i></div>
+    </div>
+  </section>
+
+  <!-- 18 -->
+  <section class="slide">
+    <div class="eyebrow">6.3 · Model dialogue · a polite complaint</div>
+    <h2>"There's a problem with my room."</h2>
+    <div class="dlg">
+      <p><span class="sp">Guest:</span> Excuse me. I'm sorry to bother you, but there's a problem with my room.</p>
+      <p class="b"><span class="sp">Clerk:</span> Oh, I'm sorry to hear that. What's wrong?</p>
+      <p><span class="sp">Guest:</span> It's too cold. The heater is on, but it isn't warm enough. And there are only a few towels. That's not enough for three people.</p>
+      <p class="b"><span class="sp">Clerk:</span> I'm so sorry. I'll send more towels right away. We have a few rooms free on the fifth floor. Would you like to move?</p>
+      <p><span class="sp">Guest:</span> Yes, please. Thank you. You've been so helpful!</p>
+    </div>
+    <div class="tag"><span class="pill lab">5 MOVES</span> soft start → exact problem → request → sorry + offer → compliment</div>
+  </section>
+
+  <!-- 19 -->
+  <section class="slide">
+    <div class="eyebrow">6.3 · Role-play · 17 min</div>
+    <h2>Complaints &amp; Compliments</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>A = customer · B = staff · plan 1 minute, don't write it all</li>
+        <li>A: "Excuse me, I'm sorry to bother you, but… It's too… / There aren't enough…"</li>
+        <li>B: "I'm so sorry. I'll… / Let me see what I can do."</li>
+        <li>Fixed? A gives a compliment: "You've been so helpful!" Swap cards.</li>
+      </ul>
+      <div class="ccq">Is A the customer? <i>(Yes.)</i><br>Write the whole dialogue? <i>(No.)</i><br>"The room is bad." Enough? <i>(No! Say exactly what.)</i><br>What does A say at the end? <i>(A compliment.)</i><br>A real complaint? <i>(No. They're roles.)</i></div>
+    </div>
+  </section>
+
+  <!-- 20 -->
+  <section class="slide section">
+    <div class="eyebrow">You can now say it precisely</div>
+    <h2>Module 6 done 🎉</h2>
+    <ul class="lab">
+      <li>Which one? I saw <b>a</b> dog. <b>The</b> dog was huge. I love dogs.</li>
+      <li>Which form? I enjoy cook<b>ing</b>. I want <b>to</b> learn. I stopped <b>to</b> buy a coffee.</li>
+      <li>How much? It's <b>too</b> cold. Not warm <b>enough</b>. <b>So</b> helpful! <b>A few</b> towels.</li>
+    </ul>
+    <p class="lead" style="margin-top:10px;max-width:40ch">Homework: online lessons 6.1–6.3 with 🔊 + write a review. Next: Module 7, agreeing &amp; disagreeing.</p>
+  </section>
+
+</div>
+
+<div class="count" id="count">1 / 20</div>
+<div class="nav"><button id="prev" aria-label="Previous slide"></button><button id="next" aria-label="Next slide"></button></div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const bar=document.getElementById('bar'), count=document.getElementById('count');
+  let i=0;
+  function show(n){ i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+    bar.style.width=((i+1)/slides.length*100)+'%'; count.textContent=(i+1)+' / '+slides.length; }
+  document.getElementById('next').onclick=()=>show(i+1);
+  document.getElementById('prev').onclick=()=>show(i-1);
+  addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}
+    else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+  });
+  show(0);
+</script>
+</body>
+</html>

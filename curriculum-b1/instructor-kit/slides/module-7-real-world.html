@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slides — Module 7</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root{--bg:#0b1220;--ink:#edf2fb;--ink2:#a8b6cf;--accent:#7fb2ff;--accent2:#2563eb;--lab:#34d3bd;--warn:#fbbf24;--line:#233252;--code:#101a2e;color-scheme:dark}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;overflow:hidden}
+  .deck{height:100%;width:100%;position:relative}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:6vh 8vw;gap:20px}
+  .slide.on{display:flex}
+  h1,h2,h3{font-family:"Archivo",sans-serif;line-height:1.1;text-wrap:balance}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  .slide h1{font-size:clamp(2rem,6vw,4rem);font-weight:800;letter-spacing:-.02em}
+  .slide h2{font-size:clamp(1.5rem,4.2vw,2.8rem);font-weight:800;letter-spacing:-.01em}
+  .slide p.lead{font-size:clamp(1.05rem,2.4vw,1.5rem);color:var(--ink2);max-width:26ch}
+  ul{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:6px}
+  ul li{position:relative;padding-left:34px;font-size:clamp(1.05rem,2.3vw,1.6rem)}
+  ul li::before{content:"";position:absolute;left:0;top:.55em;width:12px;height:12px;border-radius:3px;background:var(--accent);transform:rotate(45deg)}
+  ul.lab li::before{background:var(--lab)}
+  code.k{font-family:"JetBrains Mono",monospace;color:#cfe0ff;font-size:.92em}
+  pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:22px 26px;font-family:"JetBrains Mono",monospace;font-size:clamp(.85rem,1.9vw,1.3rem);line-height:1.55;overflow:auto;max-width:100%}
+  pre .k{color:#7dd3fc} pre .s{color:#86efac} pre .c{color:#7183a3;font-style:italic}
+  .tag{display:inline-flex;align-items:center;gap:10px;font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);color:var(--ink2)}
+  .tag .pill{background:var(--accent2);color:#fff;font-weight:700;border-radius:999px;padding:3px 12px;letter-spacing:.06em}
+  .tag .pill.lab{background:var(--lab);color:#062b26} .tag .pill.warn{background:var(--warn);color:#3a2a05}
+  .section{background:linear-gradient(135deg,#132a52,#0b1220)}
+  .section .big{font-size:clamp(3rem,12vw,8rem);font-family:"Archivo";font-weight:800;color:var(--accent2);line-height:.9}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+  @media (max-width:760px){.two{grid-template-columns:1fr}}
+  .bar{position:fixed;left:0;top:0;height:4px;background:var(--accent2);width:0;transition:width .25s;z-index:5}
+  .count{position:fixed;right:16px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink2);z-index:5}
+  .nav{position:fixed;inset:auto 0 0 0;display:flex;justify-content:space-between;pointer-events:none;z-index:4}
+  .nav button{pointer-events:auto;background:transparent;border:none;color:transparent;width:22vw;height:100vh;cursor:pointer}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+  /* ESL extras (picture vocab, grammar tables, dialogue, clocks) */
+  .pics{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,1.6vw,18px)}
+  .pics.six{grid-template-columns:repeat(6,1fr)}
+  .pic{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center}
+  .pic img{width:100%;max-width:150px;aspect-ratio:1;object-fit:cover;border-radius:10px;background:#FFF3E0;display:block;margin:0 auto}
+  .pic .emo{font-size:clamp(2.6rem,7vw,5rem);line-height:1;aspect-ratio:1;max-width:150px;margin:0 auto;display:flex;align-items:center;justify-content:center}
+  .pic .w{font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(.9rem,2vw,1.35rem);margin-top:6px}
+  @media (max-width:760px){.pics,.pics.six{grid-template-columns:repeat(3,1fr)}}
+  table.g{border-collapse:collapse;font-size:clamp(.95rem,2.1vw,1.45rem);width:100%;max-width:1000px}
+  table.g th,table.g td{border:1px solid var(--line);padding:10px 16px;text-align:left}
+  table.g th{background:var(--code);color:var(--accent);font-family:"JetBrains Mono",monospace;font-size:.8em;letter-spacing:.04em}
+  table.g b{color:#ffd166}
+  .dlg{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:18px 24px;display:flex;flex-direction:column;gap:8px;font-size:clamp(1rem,2.2vw,1.45rem);max-width:1000px}
+  .dlg .sp{display:inline-block;min-width:3.6em;font-weight:700;color:var(--accent)}
+  .dlg .b .sp{color:#c4a1ff}
+  .ccq{font-size:clamp(1rem,2.2vw,1.45rem);border:1px dashed var(--line);border-radius:12px;padding:12px 18px;background:var(--code)}
+  .ccq i{color:var(--ink2)}
+  .clocks{display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,34px);align-items:flex-start}
+  .clocks figure{text-align:center}
+  .clocks svg{width:clamp(96px,14vw,170px);height:auto}
+  .clocks figcaption{font-size:clamp(.95rem,2vw,1.3rem);margin-top:6px}
+  .clocks figcaption small{display:block;color:var(--ink2);font-size:.8em}
+  .snd{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .snd div{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:clamp(1rem,2.2vw,1.5rem)}
+  .snd div b{display:block;font-family:"Archivo";font-size:1.5em;color:var(--accent)}
+  .snd div small{color:var(--ink2)}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="deck" id="deck">
+
+  <!-- 1 -->
+  <section class="slide on section">
+    <div class="eyebrow">Independent English (B1) · Instructor Kit</div>
+    <h1>Module 7<br>Real-World Communication</h1>
+    <p class="lead">Speak up. Stand up for yourself. Present yourself.</p>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide">
+    <div class="eyebrow">Classes C20–C22 · the map</div>
+    <h2>Calm, polite and clear gets results</h2>
+    <ul>
+      <li><b>7.1</b> Discussion: <i>In my opinion… · I couldn't agree more. · I see your point, but…</i></li>
+      <li><b>7.2</b> Getting things fixed: <i>I'm afraid there's been a mistake. Would it be possible to…?</i></li>
+      <li><b>7.3</b> Job interviews: <i>I've been working as… · For example… · STAR stories</i></li>
+    </ul>
+    <div class="tag"><span class="pill">NOTE</span> Real problems or situation cards · real experience or a candidate profile card: all are OK. You can say "Pass."</div>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide">
+    <div class="eyebrow">7.1 · Topics · give an opinion</div>
+    <h2>What do you think about…?</h2>
+    <div class="pics six">
+      <div class="pic"><img src="../assets/vocab/bus.jpg" alt=""><div class="w">public transport</div></div>
+      <div class="pic"><img src="../assets/vocab/desk.jpg" alt=""><div class="w">working from home</div></div>
+      <div class="pic"><img src="../assets/vocab/mobile-phone.jpg" alt=""><div class="w">phones in schools</div></div>
+      <div class="pic"><img src="../assets/vocab/park.jpg" alt=""><div class="w">country life</div></div>
+      <div class="pic"><img src="../assets/vocab/station.jpg" alt=""><div class="w">city life</div></div>
+      <div class="pic"><img src="../assets/vocab/supermarket.jpg" alt=""><div class="w">stores vs online</div></div>
+    </div>
+    <table class="g">
+      <tr><th>casual</th><td><b>If you ask me,</b> … · <b>I think</b> …</td></tr>
+      <tr><th>neutral</th><td><b>In my opinion,</b> … · <b>Personally, I feel</b> …</td></tr>
+      <tr><th>careful / strong</th><td><b>It seems to me that</b> … · <b>As far as I'm concerned,</b> …</td></tr>
+    </table>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide">
+    <div class="eyebrow">7.1 · Agreeing</div>
+    <h2>👍 Agree — and agree about yourself</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>strong</th><td>Exactly! · Absolutely. · I couldn't agree <b>more</b>.</td></tr>
+        <tr><th>warm</th><td>That's a good point. · I know what you mean.</td></tr>
+        <tr><th>+ I love it.</th><td>So <b>do</b> I.</td></tr>
+        <tr><th>+ I'm tired.</th><td>So <b>am</b> I.</td></tr>
+        <tr><th>− I don't drive.</th><td>Neither <b>do</b> I.</td></tr>
+        <tr><th>− I can't swim.</th><td>Neither <b>can</b> I.</td></tr>
+      </table>
+      <div class="ccq">"I couldn't agree more." Positive or negative? <i>(Positive!)</i><br>A little or completely? <i>(Completely.)</i><br>= "I couldn't care less"? <i>(No! That's "not interested.")</i></div>
+    </div>
+    <div class="tag"><span class="pill warn">WATCH</span> I'm agree ❌ → I agree ✅ · "I like it." — So am I ❌ → So do I ✅</div>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide">
+    <div class="eyebrow">7.1 · Disagreeing politely</div>
+    <h2>1 Acknowledge → 2 <i>but</i> → 3 your view</h2>
+    <div class="two">
+      <div class="ccq">😬 "No. You're wrong. It's too expensive."<br><br>🙂 "I see your point, <b>but</b> I think it's a bit too expensive."<br><br>Which person will people listen to? <i>(The second.)</i><br>Did she agree? <i>(No.)</i> Was she rude? <i>(No.)</i></div>
+      <table class="g">
+        <tr><td>I see your <b>point</b>, but…</td></tr>
+        <tr><td>I'm not so <b>sure</b> (about that).</td></tr>
+        <tr><td>I'm afraid I disagree.</td></tr>
+        <tr><td><b>Actually</b>, I think… <i>(= in fact, not "now")</i></td></tr>
+        <tr><td>That may be true, but…</td></tr>
+        <tr><td>Yes, but don't you think…?</td></tr>
+      </table>
+    </div>
+    <div class="tag"><span class="pill lab">GOLDEN RULE</span> Attack the idea, never the person.</div>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide">
+    <div class="eyebrow">7.1 · Ask &amp; soften</div>
+    <h2>❓ Bring people in · 🧸 soften your words</h2>
+    <div class="two">
+      <ul>
+        <li>What do you think, Mai?</li>
+        <li>How do you feel about…?</li>
+        <li>Do you agree?</li>
+        <li>Let's hear from someone new.</li>
+      </ul>
+      <ul class="lab">
+        <li><b>Maybe</b> it depends on the person.</li>
+        <li><b>I suppose</b> you could be right.</li>
+        <li><b>To be honest</b>, I'm not a fan.</li>
+        <li>It's <b>a bit</b> / <b>kind of</b> stressful.</li>
+      </ul>
+    </div>
+    <div class="tag"><span class="pill lab">SAY IT</span> I see your POINT ↘↗, but… · I couldn't agree MORE · AC-tu-al-ly</div>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide">
+    <div class="eyebrow">7.1 · Model discussion</div>
+    <h2>Home or office?</h2>
+    <div class="dlg">
+      <p><span class="sp">Nadia:</span> Personally, I feel much happier working at home.</p>
+      <p class="b"><span class="sp">Tom:</span> I'm not so sure. I see your point about the commute, but to be honest, I get a bit lonely.</p>
+      <p><span class="sp">Nadia:</span> That's a good point. But don't you think you concentrate better at home?</p>
+      <p class="b"><span class="sp">Priya:</span> As far as I'm concerned, the best answer is a mix.</p>
+      <p><span class="sp">Nadia:</span> Exactly! I couldn't agree more.</p>
+      <p class="b"><span class="sp">Tom:</span> Actually, that does sound sensible. What do you think, Priya?</p>
+    </div>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide">
+    <div class="eyebrow">7.1 · Structured discussion · 20 min</div>
+    <h2>Groups of 4–5 · roles · 3 tokens each</h2>
+    <div class="two">
+      <ul class="lab">
+        <li><b>Chair</b> asks everyone · <b>Timekeeper</b> · <b>Observer</b> (bingo, silent) · <b>Summarizer</b></li>
+        <li>1 min: plan · Round: one opinion each</li>
+        <li>6 min: discuss · a token in the middle each time you speak</li>
+        <li>Each person: opinion + reason · agree · disagree politely · ask · soften</li>
+      </ul>
+      <div class="ccq">Who asks everyone? <i>(The chair.)</i><br>Does the observer talk? <i>(No.)</i><br>No tokens left? <i>(Wait.)</i><br>How do you disagree? <i>("I see your point, but…")</i><br>Is there a winner? <i>(No!)</i></div>
+    </div>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide">
+    <div class="eyebrow">7.2 · What's the problem?</div>
+    <h2>Describe it clearly</h2>
+    <div class="pics six">
+      <div class="pic"><img src="../assets/vocab/remote.jpg" alt=""><div class="w">It doesn't work.</div></div>
+      <div class="pic"><img src="../assets/vocab/jacket.jpg" alt=""><div class="w">It's faulty.</div></div>
+      <div class="pic"><img src="../assets/vocab/shoes.jpg" alt=""><div class="w">the wrong size</div></div>
+      <div class="pic"><img src="../assets/vocab/bill.jpg" alt=""><div class="w">charged twice</div></div>
+      <div class="pic"><img src="../assets/vocab/sink.jpg" alt=""><div class="w">It's leaking.</div></div>
+      <div class="pic"><img src="../assets/vocab/shower.jpg" alt=""><div class="w">no hot water</div></div>
+    </div>
+    <div class="tag"><span class="pill lab">RECYCLE</span> The sink <b>has been leaking since</b> Monday. · I <b>was charged</b> twice. (no blame!)</div>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide">
+    <div class="eyebrow">7.2 · A complaint in 3 parts</div>
+    <h2>🧸 Opener → 🔎 Problem → 🙏 Request</h2>
+    <table class="g">
+      <tr><th>1</th><td>Excuse me, I'm <b>sorry to bother</b> you, but… · I'm <b>afraid</b> there's been a mistake.</td></tr>
+      <tr><th>2</th><td>There's a problem with my bill. · The heating doesn't work.</td></tr>
+      <tr><th>3 🪜</th><td><b>Would it be possible to</b> send a new one? ▸ Would you <b>mind</b> send<b>ing</b>…? ▸ I'd <b>appreciate</b> it if you could… ▸ <b>Could you</b>…?</td></tr>
+    </table>
+    <div class="ccq">"I'm afraid there's a mistake." Am I scared? <i>(No! It softens bad news.)</i> · "Would you mind checking?" — "Not at all." Yes or no? <i>(Yes, they'll do it!)</i></div>
+    <div class="tag"><span class="pill warn">WATCH</span> I want that you… ❌ · mind to check ❌ · You charged me! 😬</div>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide">
+    <div class="eyebrow">7.2 · Staff · escalation · 3 channels</div>
+    <h2>Sorry + action · or ask for a manager</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>🧑‍💼 staff</th><td>I do apologize. I'll sort that out right away.</td></tr>
+        <tr><th>⬆️ still no?</th><td>I understand, <b>but</b> I'd like to speak to a manager, please.</td></tr>
+        <tr><th>📞 phone</th><td>I'm calling about… · S-I-L-V-A · four-four-oh-nine · Could I have a <b>reference number</b>?</td></tr>
+      </table>
+      <div class="ccq">✉️ <b>Email</b><br>Dear Customer Service Team,<br>I'm writing to complain about…<br>On May 3, I… Unfortunately, …<br>I would appreciate it if you could…<br>I look forward to hearing from you.<br>Sincerely, …</div>
+    </div>
+  </section>
+
+  <!-- 12 -->
+  <section class="slide">
+    <div class="eyebrow">7.2 · Model phone call</div>
+    <h2>"I'm afraid I can't give refunds."</h2>
+    <div class="dlg">
+      <p><span class="sp">Agent:</span> Thank you for calling City Power. How can I help you?</p>
+      <p class="b"><span class="sp">Caller:</span> Hi. I'm calling about my bill. I think I was charged twice this month.</p>
+      <p><span class="sp">Agent:</span> I see two payments of $86, but I'm afraid I can't give refunds.</p>
+      <p class="b"><span class="sp">Caller:</span> I understand, but the second payment was a mistake. Would it be possible to speak to a supervisor?</p>
+      <p><span class="sp">Supervisor:</span> You're right. I do apologize. We'll refund the $86 in five to seven days.</p>
+      <p class="b"><span class="sp">Caller:</span> Thank you. Could you send me an email to confirm that?</p>
+    </div>
+  </section>
+
+  <!-- 13 -->
+  <section class="slide">
+    <div class="eyebrow">7.2 · Complaint carousel · 23 min</div>
+    <h2>🏪 Counter · 📞 Phone · ✉️ Desk</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>A = customer card · B = staff card · swap each card</li>
+        <li>📞 back to back: spell, give numbers, get a reference number</li>
+        <li>Staff says "I can't"? Escalate politely. B turns the card → manager</li>
+        <li>✉️ write an email together, swap, reply: sorry + action</li>
+      </ul>
+      <div class="ccq">3 parts? <i>(Opener, problem, request.)</i><br>Can you see your partner on the phone? <i>(No.)</i><br>Staff says no? <i>("I understand, but…")</i><br>Shout? <i>(Never!)</i><br>When do you move? <i>(When the teacher claps.)</i></div>
+    </div>
+  </section>
+
+  <!-- 14 -->
+  <section class="slide">
+    <div class="eyebrow">7.3 · Jobs &amp; experience</div>
+    <h2>What have you done? What are you good at?</h2>
+    <div class="pics">
+      <div class="pic"><img src="../assets/vocab/nurse.jpg" alt=""><div class="w">nursing assistant</div></div>
+      <div class="pic"><img src="../assets/vocab/cook.jpg" alt=""><div class="w">cook</div></div>
+      <div class="pic"><img src="../assets/vocab/driver.jpg" alt=""><div class="w">driver</div></div>
+      <div class="pic"><img src="../assets/vocab/mechanic.jpg" alt=""><div class="w">mechanic</div></div>
+      <div class="pic"><img src="../assets/vocab/cleaner.jpg" alt=""><div class="w">housekeeper</div></div>
+      <div class="pic"><img src="../assets/vocab/shop-assistant.jpg" alt=""><div class="w">sales assistant</div></div>
+      <div class="pic"><img src="../assets/vocab/waiter.jpg" alt=""><div class="w">server</div></div>
+      <div class="pic"><img src="../assets/vocab/teacher.jpg" alt=""><div class="w">teacher's aide</div></div>
+    </div>
+    <div class="tag"><span class="pill lab">ALL COUNT</span> paid work · volunteering · caring for family · a family business · studying</div>
+  </section>
+
+  <!-- 15 -->
+  <section class="slide">
+    <div class="eyebrow">7.3 · Describing your experience</div>
+    <h2>I've been working as… for / since…</h2>
+    <table class="g">
+      <tr><th>how long</th><td>I<b>'ve been working</b> as a cook <b>for</b> three years / <b>since</b> 2021.</td></tr>
+      <tr><th>experience</th><td>I<b>'ve worked</b> in two restaurants. · I<b>'ve trained</b> five new colleagues.</td></tr>
+      <tr><th>+ -ing</th><td>I'm responsible <b>for</b> train<b>ing</b>… · I'm good <b>at</b> solv<b>ing</b>… · I have experience <b>in</b> sales.</td></tr>
+      <tr><th>words</th><td>apply <b>for</b> a position · a colleague · a deadline · strengths / weaknesses</td></tr>
+    </table>
+    <div class="tag"><span class="pill warn">WATCH</span> I have 5 years here ❌ · since five years ❌ · responsible of ❌ · good at to cook ❌ · I work as nurse ❌</div>
+  </section>
+
+  <!-- 16 -->
+  <section class="slide">
+    <div class="eyebrow">7.3 · The classic questions</div>
+    <h2>"Tell me about yourself."</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>NOW</th><td>I'm currently working as a delivery driver.</td></tr>
+        <tr><th>BEFORE</th><td>I've been driving for two years. Before that, I worked in a supermarket.</td></tr>
+        <tr><th>NEXT</th><td>Now I'm looking for a full-time position. That's why I applied for this job.</td></tr>
+      </table>
+      <ul>
+        <li>Why do you want this job?</li>
+        <li>What are your strengths? → + <b>For example…</b></li>
+        <li>Your biggest weakness? → I used to…, but I've learned to…</li>
+        <li>Five years from now? · Any questions for us? <b>Yes!</b></li>
+      </ul>
+    </div>
+    <div class="tag"><span class="pill lab">THINKING TIME</span> That's a good question. · Let me think for a moment. · Well, I'd say…</div>
+  </section>
+
+  <!-- 17 -->
+  <section class="slide">
+    <div class="eyebrow">7.3 · "Tell me about a time when…"</div>
+    <h2>⭐ STAR = proof</h2>
+    <table class="g">
+      <tr><th>S · Situation</th><td>Last winter, a snowstorm closed a road on my route.</td></tr>
+      <tr><th>T · Task</th><td>I had fifteen deliveries to finish before six.</td></tr>
+      <tr><th>A · Action</th><td><b>I called</b> my supervisor, <b>planned</b> a new route and <b>phoned</b> my customers.</td></tr>
+      <tr><th>R · Result</th><td>I delivered every package, and two customers wrote nice reviews.</td></tr>
+    </table>
+    <div class="ccq">Who is the Action about? <i>("I", not "we".)</i> What tense? <i>(Past simple.)</i> Can we stop after A? <i>(No! Always a Result.)</i></div>
+  </section>
+
+  <!-- 18 -->
+  <section class="slide">
+    <div class="eyebrow">7.3 · Mock interview panels · 22 min</div>
+    <h2>🧑‍💼 Interviewer · 🙋 Candidate · 👀 Observer</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>5 min interview · 2 min feedback · then rotate</li>
+        <li>Interviewer: 5–6 cards, one "Tell me about a time…"</li>
+        <li>Candidate: notes, not full sentences · one STAR · one question</li>
+        <li>Observer: checklist → one great thing + one tip</li>
+      </ul>
+      <div class="ccq">How many roles? <i>(Three.)</i><br>Read full sentences? <i>(No, just notes.)</i><br>Which card needs STAR? <i>("Tell me about a time…")</i><br>Observer writes? <i>(One great thing, one tip.)</i><br>Profile card OK? <i>(Yes.)</i></div>
+    </div>
+  </section>
+
+  <!-- 19 -->
+  <section class="slide section">
+    <div class="eyebrow">You can now use English in the real world</div>
+    <h2>Module 7 done 🎉</h2>
+    <ul class="lab">
+      <li>💬 Speak up: In my opinion… · I see your point, but… · What do you think?</li>
+      <li>🛠️ Stand up for yourself: I'm afraid there's been a mistake. Would it be possible to…? · I'd like to speak to a manager.</li>
+      <li>💼 Present yourself: I've been working as… · I'm good at… For example… · STAR</li>
+    </ul>
+    <p class="lead" style="margin-top:10px;max-width:40ch">Homework: online lessons 7.1–7.3 with 🔊. Next: Module 8, question tags and the final project.</p>
+  </section>
+
+
+</div>
+
+<div class="count" id="count">1 / 19</div>
+<div class="nav"><button id="prev" aria-label="Previous slide"></button><button id="next" aria-label="Next slide"></button></div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const bar=document.getElementById('bar'), count=document.getElementById('count');
+  let i=0;
+  function show(n){ i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+    bar.style.width=((i+1)/slides.length*100)+'%'; count.textContent=(i+1)+' / '+slides.length; }
+  document.getElementById('next').onclick=()=>show(i+1);
+  document.getElementById('prev').onclick=()=>show(i-1);
+  addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}
+    else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+  });
+  show(0);
+</script>
+</body>
+</html>

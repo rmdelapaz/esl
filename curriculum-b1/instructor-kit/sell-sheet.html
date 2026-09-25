@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teach Independent English</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="kit.css">
+<style>
+  :root{ --shadow:0 1px 2px rgba(20,30,45,.05),0 8px 26px rgba(20,30,45,.07); }
+  .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin:18px 0 6px; }
+  .statcard { background:var(--surface-2); border:1px solid var(--line); border-radius:10px; padding:14px 12px; text-align:center; }
+  .statcard .n { font-family:"Archivo",sans-serif; font-weight:800; font-size:1.7rem; color:var(--accent); line-height:1; }
+  .statcard .l { font-size:.72rem; color:var(--ink-3); margin-top:5px; text-transform:uppercase; letter-spacing:.04em; }
+  .strip { display:flex; gap:8px; margin:14px 0 4px; overflow:hidden; }
+  .strip img { width:calc((100% - 56px)/8); aspect-ratio:1; object-fit:cover; border-radius:10px; background:#FFF3E0; border:1px solid var(--line); }
+  .tiers { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:14px 0; }
+  .tier { border:1px solid var(--line); border-radius:var(--radius); padding:18px 18px 20px; background:var(--surface); display:flex; flex-direction:column; }
+  .tier.feature { border:2px solid var(--accent); box-shadow:var(--shadow); }
+  .tier .name { font-family:"JetBrains Mono",monospace; font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3); }
+  .tier .price { font-family:"Archivo",sans-serif; font-weight:800; font-size:1.9rem; margin:6px 0 2px; letter-spacing:-.02em; }
+  .tier .price span { font-size:.8rem; font-weight:500; color:var(--ink-3); }
+  .tier ul { margin:10px 0 0; }
+  .tier .who { font-size:.82rem; color:var(--ink-2); margin-bottom:2px; }
+  .badge { display:inline-block; align-self:flex-start; font-family:"JetBrains Mono",monospace; font-size:.62rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:#fff; background:var(--accent); border-radius:999px; padding:2px 9px; margin-bottom:8px; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  @media (max-width:680px){ .stats{grid-template-columns:1fr 1fr} .tiers{grid-template-columns:1fr} .strip img{width:calc((100% - 24px)/4)} .strip img:nth-child(n+5){display:none} }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="lbl">Sell sheet —</span>
+  <button type="button" onclick="window.print()">🖨 Print / Save as PDF</button>
+  <span class="hint">for adult-ed programs, libraries &amp; community groups</span>
+</div>
+
+<div class="sheet">
+
+  <header class="mast">
+    <div class="kit-eyebrow">Course-in-a-Box · Instructor License · CEFR B1</div>
+    <h1>Teach Intermediate English to Adults, Ready to Run from Day One</h1>
+    <p class="sub"><b>Independent English (B1 Intermediate)</b> is a complete 13-week classroom course for adults who have finished an elementary course or placed at B1: workers, parents, and newcomers who can manage everyday life in English and now need to explain, persuade, and speak up at work and in their community. Every class is planned to the minute. It works for a trained ESL teacher and for a first-time volunteer.</p>
+    <div class="stats">
+      <div class="statcard"><div class="n">8</div><div class="l">Modules</div></div>
+      <div class="statcard"><div class="n">24</div><div class="l">Lessons</div></div>
+      <div class="statcard"><div class="n">26</div><div class="l">Classes × 90 min</div></div>
+      <div class="statcard"><div class="n">13</div><div class="l">Weeks · 2 classes / week</div></div>
+      <div class="statcard"><div class="n">39</div><div class="l">Instructional hours</div></div>
+      <div class="statcard"><div class="n">2</div><div class="l">Tests: progress + final</div></div>
+      <div class="statcard"><div class="n">B1</div><div class="l">CEFR can-do aligned</div></div>
+      <div class="statcard"><div class="n">Free</div><div class="l">Online companion course with audio</div></div>
+    </div>
+    <div class="strip" aria-hidden="true">
+      <img src="assets/vocab/shop-assistant.jpg" alt=""><img src="assets/vocab/nurse.jpg" alt=""><img src="assets/vocab/chef.jpg" alt=""><img src="assets/vocab/email.jpg" alt="">
+      <img src="assets/vocab/mechanic.jpg" alt=""><img src="assets/vocab/hotel.jpg" alt=""><img src="assets/vocab/driver.jpg" alt=""><img src="assets/vocab/cleaner.jpg" alt="">
+    </div>
+  </header>
+
+  <div class="sec"><h2>What You Get</h2><span class="rule"></span></div>
+  <div class="grid2">
+    <div class="blk"><div class="h">For every module (×8)</div>
+      <ul class="tick">
+        <li><b>Teacher's Guide</b>: one 90-minute plan per class with a board plan, a timed stage table, concept-check questions, drill scripts, instruction checks, fluency-first feedback, tips for managing discussions (including dominant speakers), differentiation for literacy and stretch, and L1 watch-outs</li>
+        <li><b>Student Workbook</b>: clear B1 English, grammar boxes, practice exercises, dialogues, a real speaking task in every lesson, "I can…" checklists, and a journal</li>
+        <li><b>Answer Key</b>: every exercise answered, with acceptable alternatives and the errors to expect</li>
+        <li><b>Slide deck</b>: grammar, model dialogues, concept checks, and discussion-task slides. A single file with nothing to install</li>
+        <li><b>Classroom materials</b>: flashcards, A/B role-play and information-gap cards, listening and dictation scripts, and a game</li>
+      </ul>
+    </div>
+    <div class="blk"><div class="h">Across the kit</div>
+      <ul class="tick">
+        <li>A <b>13-week, 26-class syllabus</b> in web and print versions</li>
+        <li><b>Progress Test 1</b> (Class 13) and a <b>Final Test</b> (Class 26): listening, vocabulary, grammar, reading, an opinion essay, a complaint email, and speaking (a pair task, then an interview with a short talk and a discussion)</li>
+        <li>An <b>assessment key</b> with CEFR-aligned speaking and writing rubrics and clear <b>next-level guidance</b> (ready for B2, B2 with a review plan, or repeat B1 with support)</li>
+        <li>A shared <b>placement test</b> (Pre-A1 → C2) and <b>can-do checklists</b> for intake and progress, from the free ESL instructor toolkit</li>
+        <li>A <b>learner welcome handout</b> in B1 English, with discussion ground rules and QR codes to the free online lessons</li>
+        <li>Combined, print-ready <b>Teacher's Guide, Student Workbook, and Answer Key</b> books</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec"><h2>Why Programs Choose It</h2><span class="rule"></span></div>
+  <ul class="tick">
+    <li><b>Zero prep to teach.</b> Every class adds up to 90 minutes: warmer, presentation, drill, controlled practice, a real communicative task, and homework set-up. A volunteer can open the guide and teach.</li>
+    <li><b>English for work.</b> Learners practice exactly what employers and case managers ask for: <b>describing their experience and answering interview questions</b>, <b>making a complaint and getting a problem fixed</b>, <b>taking part in a discussion</b> and disagreeing politely, reporting what a manager or customer said, and giving a short presentation. It fits WIOA and workforce-readiness goals.</li>
+    <li><b>Built for real adult classes.</b> Mixed first languages, mixed literacy, and adults with busy, sometimes difficult lives. Each lesson gives literacy support and stretch options, and the tests have an adapted version. Personal tasks always offer a <b>"new identity"</b> or an imagined story, so nobody has to share what they'd rather keep private.</li>
+    <li><b>Discussion and fluency at its heart.</b> B1 is where learners start to hold their own in a conversation. Every lesson ends in real speaking (debates, stories, role-plays, interviews), with fluency-before-accuracy feedback and clear routines that keep discussions fair.</li>
+    <li><b>The grammar of independence.</b> Present perfect choices, narrative tenses, all the key conditionals and wishes, reported speech, relative clauses, the passive, modals of deduction, verb patterns, and phrasal verbs, taught through meaning and always put to work. Two review projects pull it together: a story-and-opinion task and a final presentation with a panel discussion.</li>
+    <li><b>A free companion course.</b> Every lesson mirrors the free online course <b>Independent English (B1)</b> (<a href="https://rays-esl.netlify.app/curriculum-b1/">rays-esl.netlify.app/curriculum-b1</a>) with 🔊 audio on model sentences and dialogues. It serves as homework and review, and lets learners catch up after a missed class. A free tools page shows learners how to translate lessons into their own language.</li>
+    <li><b>A clear path forward.</b> The course is the third step of a complete free CEFR ladder (A1 → C2). It follows <b>Everyday English (A2)</b>, and learners who finish move into <b>Confident English (B2)</b>, with Business English and IELTS preparation available alongside.</li>
+  </ul>
+
+  <div class="sec"><h2>Who It's For</h2><span class="rule"></span></div>
+  <div class="meta-row">
+    <span class="chip">Adult education &amp; WIOA / workforce programs</span>
+    <span class="chip">Public libraries</span>
+    <span class="chip">Community organizations</span>
+    <span class="chip">Churches &amp; faith groups</span>
+    <span class="chip">Refugee-resettlement &amp; job-readiness programs</span>
+    <span class="chip">Workplace ESL</span>
+    <span class="chip">Community colleges</span>
+  </div>
+
+  <div class="sec"><h2>License &amp; Pricing</h2><span class="rule"></span></div>
+  <div class="tiers">
+    <div class="tier">
+      <div class="name">Solo</div>
+      <div class="price">[$ ___ ]<span> one-time</span></div>
+      <div class="who">One teacher or volunteer · unlimited learners</div>
+      <ul class="tick">
+        <li>Full kit, all 8 modules</li>
+        <li>Print workbooks for your classes</li>
+        <li>Perpetual license</li>
+      </ul>
+    </div>
+    <div class="tier feature">
+      <div class="badge">Most popular</div>
+      <div class="name">Organization</div>
+      <div class="price">[$ ___ ]<span> one-time</span></div>
+      <div class="who">A library system, adult-ed program, or community organization</div>
+      <ul class="tick">
+        <li>Everything in Solo</li>
+        <li>Unlimited teachers and volunteers at one organization</li>
+        <li>Best value per class</li>
+      </ul>
+    </div>
+    <div class="tier">
+      <div class="name">White-label</div>
+      <div class="price">[$ ___ ]<span> one-time</span></div>
+      <div class="who">Rebrand &amp; adapt freely</div>
+      <ul class="tick">
+        <li>Everything in Organization</li>
+        <li>Add your own branding</li>
+        <li>Edit &amp; adapt the materials</li>
+      </ul>
+    </div>
+  </div>
+  <p style="font-size:.85rem;color:var(--ink-3)">Optional content-updates add-on: <b>[$ ___ / yr]</b>. A2 + B1 bundle: <b>[$ ___ ]</b>. Reduced pricing for non-profits, libraries, faith-based, and volunteer-led programs. Contact us for full license terms.</p>
+
+  <div class="note lab">
+    <div class="t">Ready to run it?</div>
+    <p>Get in touch for a free sample module (Teacher's Guide, workbook pages, and slides) and licensing details.<br><b>Ray de la Paz</b> · via the contact form on the site.</p>
+  </div>
+
+  <p style="font-size:.78rem;color:var(--ink-3)">The Common European Framework of Reference for Languages (CEFR) is published by the Council of Europe. This course is designed around the CEFR B1 can-do descriptors. It is an independent educational product and is not certified or endorsed by the Council of Europe or any exam board.</p>
+
+  <div class="foot">
+    <div class="who"><b>Ray de la Paz</b><span class="bio">© 2026 Ray de la Paz · Independent English (B1 Intermediate)</span></div>
+    <div class="ver">Instructor Sell Sheet · v1.0</div>
+  </div>
+
+</div>
+</body>
+</html>

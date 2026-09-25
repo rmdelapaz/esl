@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slides — Module 8</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root{--bg:#0b1220;--ink:#edf2fb;--ink2:#a8b6cf;--accent:#7fb2ff;--accent2:#2563eb;--lab:#34d3bd;--warn:#fbbf24;--line:#233252;--code:#101a2e;color-scheme:dark}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;overflow:hidden}
+  .deck{height:100%;width:100%;position:relative}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:6vh 8vw;gap:20px}
+  .slide.on{display:flex}
+  h1,h2,h3{font-family:"Archivo",sans-serif;line-height:1.1;text-wrap:balance}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  .slide h1{font-size:clamp(2rem,6vw,4rem);font-weight:800;letter-spacing:-.02em}
+  .slide h2{font-size:clamp(1.5rem,4.2vw,2.8rem);font-weight:800;letter-spacing:-.01em}
+  .slide p.lead{font-size:clamp(1.05rem,2.4vw,1.5rem);color:var(--ink2);max-width:26ch}
+  ul{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:6px}
+  ul li{position:relative;padding-left:34px;font-size:clamp(1.05rem,2.3vw,1.6rem)}
+  ul li::before{content:"";position:absolute;left:0;top:.55em;width:12px;height:12px;border-radius:3px;background:var(--accent);transform:rotate(45deg)}
+  ul.lab li::before{background:var(--lab)}
+  code.k{font-family:"JetBrains Mono",monospace;color:#cfe0ff;font-size:.92em}
+  pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:22px 26px;font-family:"JetBrains Mono",monospace;font-size:clamp(.85rem,1.9vw,1.3rem);line-height:1.55;overflow:auto;max-width:100%}
+  pre .k{color:#7dd3fc} pre .s{color:#86efac} pre .c{color:#7183a3;font-style:italic}
+  .tag{display:inline-flex;align-items:center;gap:10px;font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);color:var(--ink2)}
+  .tag .pill{background:var(--accent2);color:#fff;font-weight:700;border-radius:999px;padding:3px 12px;letter-spacing:.06em}
+  .tag .pill.lab{background:var(--lab);color:#062b26} .tag .pill.warn{background:var(--warn);color:#3a2a05}
+  .section{background:linear-gradient(135deg,#132a52,#0b1220)}
+  .section .big{font-size:clamp(3rem,12vw,8rem);font-family:"Archivo";font-weight:800;color:var(--accent2);line-height:.9}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+  @media (max-width:760px){.two{grid-template-columns:1fr}}
+  .bar{position:fixed;left:0;top:0;height:4px;background:var(--accent2);width:0;transition:width .25s;z-index:5}
+  .count{position:fixed;right:16px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink2);z-index:5}
+  .nav{position:fixed;inset:auto 0 0 0;display:flex;justify-content:space-between;pointer-events:none;z-index:4}
+  .nav button{pointer-events:auto;background:transparent;border:none;color:transparent;width:22vw;height:100vh;cursor:pointer}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+  /* ESL extras (picture vocab, grammar tables, dialogue, clocks) */
+  .pics{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,1.6vw,18px)}
+  .pics.six{grid-template-columns:repeat(6,1fr)}
+  .pic{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center}
+  .pic img{width:100%;max-width:150px;aspect-ratio:1;object-fit:cover;border-radius:10px;background:#FFF3E0;display:block;margin:0 auto}
+  .pic .emo{font-size:clamp(2.6rem,7vw,5rem);line-height:1;aspect-ratio:1;max-width:150px;margin:0 auto;display:flex;align-items:center;justify-content:center}
+  .pic .w{font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(.9rem,2vw,1.35rem);margin-top:6px}
+  @media (max-width:760px){.pics,.pics.six{grid-template-columns:repeat(3,1fr)}}
+  table.g{border-collapse:collapse;font-size:clamp(.95rem,2.1vw,1.45rem);width:100%;max-width:1000px}
+  table.g th,table.g td{border:1px solid var(--line);padding:10px 16px;text-align:left}
+  table.g th{background:var(--code);color:var(--accent);font-family:"JetBrains Mono",monospace;font-size:.8em;letter-spacing:.04em}
+  table.g b{color:#ffd166}
+  .dlg{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:18px 24px;display:flex;flex-direction:column;gap:8px;font-size:clamp(1rem,2.2vw,1.45rem);max-width:1000px}
+  .dlg .sp{display:inline-block;min-width:3.6em;font-weight:700;color:var(--accent)}
+  .dlg .b .sp{color:#c4a1ff}
+  .ccq{font-size:clamp(1rem,2.2vw,1.45rem);border:1px dashed var(--line);border-radius:12px;padding:12px 18px;background:var(--code)}
+  .ccq i{color:var(--ink2)}
+  .clocks{display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,34px);align-items:flex-start}
+  .clocks figure{text-align:center}
+  .clocks svg{width:clamp(96px,14vw,170px);height:auto}
+  .clocks figcaption{font-size:clamp(.95rem,2vw,1.3rem);margin-top:6px}
+  .clocks figcaption small{display:block;color:var(--ink2);font-size:.8em}
+  .snd{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .snd div{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:clamp(1rem,2.2vw,1.5rem)}
+  .snd div b{display:block;font-family:"Archivo";font-size:1.5em;color:var(--accent)}
+  .snd div small{color:var(--ink2)}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="deck" id="deck">
+
+  <!-- 1 -->
+  <section class="slide on section">
+    <div class="eyebrow">Independent English (B1) · Instructor Kit</div>
+    <h1>Module 8<br>Fluency &amp; the Final Project</h1>
+    <p class="lead">Keep it going. Say it naturally. Stand up and speak.</p>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide">
+    <div class="eyebrow">Classes C23–C25 · the map</div>
+    <h2>Three steps to fluency</h2>
+    <ul>
+      <li><b>8.1</b> Keep it going: <i>Nice day, isn't it? ↘ · Oh really? What was it like?</i></li>
+      <li><b>8.2</b> Everyday verbs: <i>I'll sort it out. · I look after my niece. · I get along with my coworkers.</i></li>
+      <li><b>8.3</b> Your talk + a panel: <i>Today I'd like to talk about… · I see your point, but…</i></li>
+    </ul>
+    <div class="tag"><span class="pill">NOTE</span> Topic too personal? "Let's talk about something else, shall we?"</div>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide">
+    <div class="eyebrow">8.1 · Question tags · what are they?</div>
+    <h2>A little question at the end</h2>
+    <table class="g">
+      <tr><th>Plain statement</th><th>Statement + tag</th></tr>
+      <tr><td>It's cold today.</td><td>It's cold today, <b>isn't it</b>?</td></tr>
+      <tr><td>You know Maria.</td><td>You know Maria, <b>don't you</b>?</td></tr>
+      <tr><td>He can't drive.</td><td>He can't drive, <b>can he</b>?</td></tr>
+    </table>
+    <div class="ccq">"It's cold today, isn't it?" Information only, or an invitation to answer? <i>(An invitation.)</i> What answer do I expect? <i>("Yes, it is!")</i></div>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide">
+    <div class="eyebrow">8.1 · The mirror rule</div>
+    <h2>Flip it. Copy the helper.</h2>
+    <table class="g">
+      <tr><th>➕ → ➖</th><td>You<b>'re</b> tired, <b>aren't</b> you? · They<b>'ve</b> left, <b>haven't</b> they? · She<b>'ll</b> help, <b>won't</b> she?</td></tr>
+      <tr><th>➖ → ➕</th><td>He <b>isn't</b> ready, <b>is</b> he? · We <b>can't</b> park here, <b>can</b> we?</td></tr>
+      <tr><th>no helper</th><td>You live here, <b>don't</b> you? · She works late, <b>doesn't</b> she? · They went home, <b>didn't</b> they?</td></tr>
+    </table>
+    <div class="tag"><span class="pill lab">ASK YOURSELF</span> 1. Positive or negative? → flip · 2. Which verb? → copy it, or do / does / did</div>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide">
+    <div class="eyebrow">8.1 · Special cases · learn them as phrases</div>
+    <h2>aren't I? · will you? · shall we?</h2>
+    <table class="g">
+      <tr><th>I am…</th><td>I'm late, <b>aren't I</b>?</td></tr>
+      <tr><th>request</th><td>Pass the salt, <b>will you</b>?</td></tr>
+      <tr><th>invitation</th><td>Come in, <b>won't you</b>?</td></tr>
+      <tr><th>Let's…</th><td>Let's take a break, <b>shall we</b>?</td></tr>
+    </table>
+    <div class="tag"><span class="pill warn">WATCH</span> You like pizza, isn't it? ❌ · She has left, has she? ❌ · amn't I ❌ · Let's go, will we? ❌</div>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide">
+    <div class="eyebrow">8.1 · Intonation drill · 12 min</div>
+    <h2>Same words, two meanings</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>↘ voice goes down</th><th>↗ voice goes up</th></tr>
+        <tr><td>I'm sure. Agree with me!</td><td>I'm not sure. I'm checking.</td></tr>
+        <tr><td>Lovely day, <b>isn't it</b>? ↘</td><td>You haven't seen my keys, <b>have you</b>? ↗</td></tr>
+        <tr><td>You're coming, <b>aren't you</b>? ↘</td><td>You're coming, <b>aren't you</b>? ↗</td></tr>
+      </table>
+      <div class="ccq">"Lovely day, isn't it? ↘" Do I know the answer? <i>(Yes.)</i> Am I really asking? <i>(No.)</i><br>"…have you? ↗" Do I know? <i>(No. Tell me!)</i><br>"You don't drive, do you?" You don't. Answer? <i>("No, I don't.")</i></div>
+    </div>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide">
+    <div class="eyebrow">8.1 · Keeping a conversation going</div>
+    <h2>React → Ask → Share</h2>
+    <table class="g">
+      <tr><th>😮 React</th><td>Oh really? · That's interesting! · How nice! · Oh no! · You're kidding!</td></tr>
+      <tr><th>🔁 Echo</th><td>"I went to Chicago." — <b>Did you?</b> · "She's moved." — <b>Has she?</b></td></tr>
+      <tr><th>❓ Follow-up</th><td>What was it like? · How long for? · Who did you go with? · How did it go?</td></tr>
+      <tr><th>🙋 Share</th><td>Me too! I… · Really? I've never…</td></tr>
+      <tr><th>👂 Backchannel</th><td>mm-hm · uh-huh · right · yeah · really? · no way!</td></tr>
+    </table>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide">
+    <div class="eyebrow">8.1 · Model dialogue</div>
+    <h2>You went to the new café, didn't you?</h2>
+    <div class="dlg">
+      <p><span class="sp">Priya:</span> You went to the new café on Bridge Street, <b>didn't you</b>?</p>
+      <p class="b"><span class="sp">Tom:</span> I did, yeah. We had breakfast there on Sunday.</p>
+      <p><span class="sp">Priya:</span> <b>Oh really?</b> What was it like?</p>
+      <p class="b"><span class="sp">Tom:</span> Honestly, it was fantastic. The coffee's amazing.</p>
+      <p><span class="sp">Priya:</span> <b>Is it?</b> I love a good coffee. It's not too expensive, <b>is it</b>?</p>
+      <p class="b"><span class="sp">Tom:</span> Not really. You'll come with me next time, <b>won't you</b>?</p>
+      <p><span class="sp">Priya:</span> Of course! Let's go on Saturday, <b>shall we</b>?</p>
+    </div>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide">
+    <div class="eyebrow">8.1 · Mingle · 20 min</div>
+    <h2>Small-talk mingle</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>Read your card. Start with the tag ↘</li>
+        <li>2 minutes: React → Ask → Share. 1 echo + 1 follow-up each</li>
+        <li>Bell → "Nice talking to you!" → swap cards → new partner</li>
+        <li>Round 4: guess &amp; check with a tag ↗</li>
+      </ul>
+      <div class="ccq">Voice up or down at the start? <i>(Down.)</i><br>How long? <i>(Two minutes.)</i><br>What must you use? <i>(An echo + a follow-up.)</i><br>No tokens left? <i>(Only ask questions.)</i><br>Too personal? <i>("Let's talk about something else, shall we?")</i></div>
+    </div>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide">
+    <div class="eyebrow">8.2 · Phrasal verbs · what are they?</div>
+    <h2>verb + particle = one meaning</h2>
+    <table class="g">
+      <tr><th>Literal (easy)</th><td>sit <b>down</b> · stand <b>up</b> · come <b>in</b> · pick <b>up</b> the box</td></tr>
+      <tr><th>Idiomatic (learn it)</th><td>give <b>up</b> = stop trying · look <b>after</b> = take care of · find <b>out</b> = discover</td></tr>
+      <tr><th>Formal → everyday</th><td>discover → <b>find out</b> · postpone → <b>put off</b> · continue → <b>carry on</b> · solve → <b>sort out</b></td></tr>
+    </table>
+    <div class="ccq">"He gave up smoking." Does he smoke now? <i>(No.)</i> · "I ran into my teacher." Did I plan it? <i>(No, by chance.)</i></div>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide">
+    <div class="eyebrow">8.2 · Topic toolkit · home · work · relationships</div>
+    <h2>Everyday phrasal verbs</h2>
+    <div class="pics six">
+      <div class="pic"><img src="../assets/vocab/bed.jpg" alt=""><div class="w">wake up</div></div>
+      <div class="pic"><img src="../assets/vocab/lamp.jpg" alt=""><div class="w">turn on / off</div></div>
+      <div class="pic"><img src="../assets/vocab/tv.jpg" alt=""><div class="w">turn down</div></div>
+      <div class="pic"><img src="../assets/vocab/wardrobe.jpg" alt=""><div class="w">put away</div></div>
+      <div class="pic"><img src="../assets/vocab/key.jpg" alt=""><div class="w">look for</div></div>
+      <div class="pic"><img src="../assets/vocab/kitchen.jpg" alt=""><div class="w">clean up</div></div>
+    </div>
+    <table class="g">
+      <tr><th>💼 work</th><td>fill out · call back · find out · sort out · deal with · put off · hand in · carry on</td></tr>
+      <tr><th>❤️ people</th><td>get along with · look after · catch up with · run into · count on · get together · bring up · look forward to</td></tr>
+    </table>
+  </section>
+
+  <!-- 12 -->
+  <section class="slide">
+    <div class="eyebrow">8.2 · Separable or inseparable?</div>
+    <h2>Split ✂️ · Stick 🔗 · No object 🚫</h2>
+    <table class="g">
+      <tr><th>✂️ split</th><td>Turn on the TV. = Turn the TV on. → Turn <b>it</b> on. ✅ · Turn on it. ❌</td></tr>
+      <tr><th>🔗 stick</th><td>I look after the kids. → I look after <b>them</b>. ✅ · I look them after. ❌</td></tr>
+      <tr><th>🚫 no object</th><td>I get up at seven. · Let's get together. · Carry on!</td></tr>
+      <tr><th>+ -ing</th><td>I'm looking forward to <b>seeing</b> you. (not "to see")</td></tr>
+    </table>
+    <div class="tag"><span class="pill lab">SAY IT</span> turn it off "tur-ni-DOFF" · pick them up "pick-em-UP" · stress the particle</div>
+  </section>
+
+  <!-- 13 -->
+  <section class="slide">
+    <div class="eyebrow">8.2 · Group game · 15 min</div>
+    <h2>Split or Stick?</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>Turn over a card. Say it with <b>it / them</b>: "Put them away!"</li>
+        <li>Place it: ✂️ SPLIT · 🔗 STICK · 🚫 NO OBJECT</li>
+        <li>Group disagrees? Test it: does it sound right?</li>
+        <li>Round 2: pronoun race. Fastest correct team wins a point.</li>
+      </ul>
+      <div class="ccq">Before you place a card? <i>(Say it with a pronoun.)</i><br>How many places? <i>(Three.)</i><br>"Look after the baby" → ? <i>("Look after her.")</i><br>"Throw away the milk" → ? <i>("Throw it away.")</i></div>
+    </div>
+  </section>
+
+  <!-- 14 -->
+  <section class="slide">
+    <div class="eyebrow">8.3 · Your talk · 3–4 minutes</div>
+    <h2>Intro → 2–3 points → conclusion</h2>
+    <table class="g">
+      <tr><th>1 · start</th><td>Today I'd like to talk about… · I chose this topic because…</td></tr>
+      <tr><th>2 · points</th><td>First of all… · Another point is… · What's more… · For example… · Finally…</td></tr>
+      <tr><th>3 · end</th><td>To sum up… · In conclusion… · Thank you for listening. Any questions?</td></tr>
+    </table>
+    <div class="tag"><span class="pill">TOPIC</span> a hobby · a skill · a place you love · a change you'd like to see · a topic card</div>
+  </section>
+
+  <!-- 15 -->
+  <section class="slide">
+    <div class="eyebrow">8.3 · Model · a talk and a panel</div>
+    <h2>Maya: why we should cycle to work</h2>
+    <div class="dlg">
+      <p><span class="sp">Host:</span> Welcome, everyone. Maya, over to you.</p>
+      <p class="b"><span class="sp">Maya:</span> Today I'd like to talk about… <b>First of all</b>, it's healthy. <b>Another point is</b> cost… <b>Finally</b>… <b>To sum up</b>…</p>
+      <p><span class="sp">Host:</span> Let's open it up. Sam, what do you think?</p>
+      <p class="b"><span class="sp">Sam:</span> <b>That's a really good point</b> about health. But it's not always safe, is it?</p>
+      <p><span class="sp">Maya:</span> <b>I see what you mean. However</b>, if cities built more bike lanes, it would be much safer.</p>
+      <p class="b"><span class="sp">Priya:</span> <b>I'm not sure I agree</b> that everyone can do it, though.</p>
+    </div>
+  </section>
+
+  <!-- 16 -->
+  <section class="slide">
+    <div class="eyebrow">8.3 · Panel roles</div>
+    <h2>🪑 Chair · 🎤 Speakers · 🙋 Audience</h2>
+    <table class="g">
+      <tr><th>🪑 chair</th><td>Welcome to our panel. · Let's start with… · What's your view on that? · One more question. · To wrap up, let's thank our speakers.</td></tr>
+      <tr><th>🎤 speaker</th><td>In my opinion… · That's a good point, but… · I see what you mean. However… · I'm not sure I agree, to be honest.</td></tr>
+      <tr><th>🙋 audience</th><td>I have a question for… · You said that… Could you explain…? · What would happen if…?</td></tr>
+    </table>
+    <div class="tag"><span class="pill warn">WATCH</span> "No, you're wrong." 😬 → disagree with the idea, not the person</div>
+  </section>
+
+  <!-- 17 -->
+  <section class="slide">
+    <div class="eyebrow">8.3 · The task · 18 + 14 min</div>
+    <h2>Present, then panel</h2>
+    <div class="two">
+      <ul class="lab">
+        <li><b>A · groups of 4:</b> each talk 3–4 min, from key words</li>
+        <li>Listeners: 1 question + a ★ star and a 🎯 wish</li>
+        <li><b>B · fishbowl:</b> 1 group = panel (chair + 3 speakers), 1 group = audience. 7 min, then swap</li>
+        <li>Speakers: 1 minute each · audience: 1 question each</li>
+      </ul>
+      <div class="ccq">How long is your talk? <i>(3–4 minutes.)</i><br>Read a full script? <i>(No, key words.)</i><br>Who opens and closes the panel? <i>(The chair.)</i><br>Disagree how? <i>("I see your point, but…")</i></div>
+    </div>
+  </section>
+
+  <!-- 18 -->
+  <section class="slide section">
+    <div class="eyebrow">You finished B1 🎉 · next: C26</div>
+    <h2>Module 8 done. Independent English!</h2>
+    <ul class="lab">
+      <li>💬 Nice day, isn't it? ↘ · Oh really? What was it like?</li>
+      <li>🛠️ Don't worry, I'll sort it out. · I get along with my coworkers.</li>
+      <li>🎤 Today I'd like to talk about… · I see your point, but…</li>
+      <li><b>C26:</b> a friendly one-to-one speaking check (a short talk, a discussion and a role-play), short listening, reading &amp; writing, then we celebrate! 🎓</li>
+    </ul>
+    <p class="lead" style="margin-top:10px;max-width:44ch">Homework: online lessons 8.1–8.3 with 🔊 · record your talk · final B1 journal. Next level: B2, <i>Confident English</i>.</p>
+  </section>
+
+
+</div>
+
+<div class="count" id="count">1 / 18</div>
+<div class="nav"><button id="prev" aria-label="Previous slide"></button><button id="next" aria-label="Next slide"></button></div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const bar=document.getElementById('bar'), count=document.getElementById('count');
+  let i=0;
+  function show(n){ i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+    bar.style.width=((i+1)/slides.length*100)+'%'; count.textContent=(i+1)+' / '+slides.length; }
+  document.getElementById('next').onclick=()=>show(i+1);
+  document.getElementById('prev').onclick=()=>show(i-1);
+  addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}
+    else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+  });
+  show(0);
+</script>
+</body>
+</html>

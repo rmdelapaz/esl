@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Progress Test 1 — Modules 1–4</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../kit.css">
+<style>
+  /* ── Test-paper components (shared with final-test.html) ── */
+  .pagebreak{break-before:page}
+  .teacher-only{font-family:"JetBrains Mono",monospace;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+    color:#fff;background:var(--warn);border-radius:999px;padding:3px 11px;display:inline-block;margin-bottom:8px;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .paper{font-size:17px;line-height:1.5}
+  .paper-head{display:grid;grid-template-columns:2fr 1fr 1fr;gap:14px;margin:6px 0 14px;font-size:1.05rem}
+  .paper-head div{border-bottom:1.5px solid var(--ink-2);padding:6px 2px 4px}
+  .paper-head b{font-weight:700}
+  .key-icons{display:flex;flex-wrap:wrap;gap:8px 16px;margin:10px 0 4px;font-size:1rem;color:var(--ink-2)}
+  .key-icons span{border:1px solid var(--line);border-radius:999px;padding:3px 12px;background:var(--surface-2)}
+  .part-h{display:flex;align-items:center;gap:12px;margin:30px 0 6px;padding:10px 14px;background:var(--accent-soft);
+    border-radius:10px;break-after:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .part-h .ic{font-size:1.8rem;line-height:1}
+  .part-h h2{font-size:1.3rem;font-weight:800;flex:1}
+  .part-h .score{font-family:"JetBrains Mono",monospace;font-size:.95rem;font-weight:600;border:1.5px solid var(--ink-2);
+    border-radius:8px;padding:4px 10px;background:var(--surface);white-space:nowrap}
+  .inst{display:flex;gap:10px;align-items:baseline;font-size:1.12rem;font-weight:600;margin:16px 0 8px;break-after:avoid}
+  .inst .ic{font-size:1.35rem}
+  .inst .sub{font-weight:400;color:var(--ink-2);font-size:.95rem}
+  .item{display:flex;gap:12px;align-items:baseline;margin:10px 0;font-size:1.08rem;break-inside:avoid}
+  .item .n{font-family:"JetBrains Mono",monospace;font-weight:600;color:var(--accent);min-width:1.6em}
+  .item.ex{color:var(--ink-2)}
+  .item.ex .n::after{content:" e.g.";font-size:.7rem;color:var(--ink-3)}
+  .ch{display:inline-flex;flex-wrap:wrap;gap:10px}
+  .ch span{border:1.5px solid var(--line-strong);border-radius:999px;padding:2px 14px;background:var(--surface)}
+  .ch span.circled{border:2.5px solid var(--ink);font-weight:700}
+  .tbox{display:inline-block;width:24px;height:24px;border:2px solid var(--ink-2);border-radius:5px;vertical-align:middle;text-align:center;line-height:20px;font-weight:700}
+  .bank{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px;padding:10px 12px;border:2px dashed var(--line-strong);border-radius:10px;font-size:1.1rem;font-weight:600}
+  .bank span{padding:2px 10px}
+  .text{border:1px solid var(--line);border-radius:10px;padding:14px 18px;background:var(--surface-2);font-size:1.06rem;line-height:1.7;margin:10px 0;break-inside:avoid}
+  .text p{margin:0 0 10px}
+  .text p:last-child{margin-bottom:0}
+  .text .ttl{font-family:"Archivo",sans-serif;font-weight:800;font-size:1.2rem;margin-bottom:6px}
+  .tfrow{display:grid;grid-template-columns:2em 1fr auto;gap:12px;align-items:center;padding:7px 0;border-bottom:1px solid var(--line);font-size:1.06rem;break-inside:avoid}
+  .tfrow .n{font-family:"JetBrains Mono",monospace;font-weight:600;color:var(--accent)}
+  .tfrow .tf{display:flex;gap:10px}
+  .tfrow .tf span{border:1.5px solid var(--line-strong);border-radius:8px;padding:1px 10px;font-weight:600}
+  .tfrow .tf span.circled{border:2.5px solid var(--ink)}
+  .wline{border-bottom:1.5px solid var(--ink-2);height:2.1em}
+  .rw{display:grid;grid-template-columns:2em 1fr;gap:4px 12px;margin:12px 0;font-size:1.06rem;break-inside:avoid}
+  .rw .n{font-family:"JetBrains Mono",monospace;font-weight:600;color:var(--accent)}
+  .rw .from{color:var(--ink-2)}
+  .rw .to{grid-column:2;display:flex;gap:8px;align-items:baseline}
+  .rw .to .wline{flex:1}
+  .letters{display:grid;grid-template-columns:1fr 1fr;gap:4px 18px;margin:8px 0 12px;padding:10px 14px;border:2px dashed var(--line-strong);border-radius:10px;font-size:1.02rem}
+  table.grid{width:100%;border-collapse:collapse;margin:10px 0;font-size:.9rem}
+  table.grid th,table.grid td{border:1px solid var(--line-strong);padding:8px 10px;text-align:left;vertical-align:top}
+  table.grid thead th{background:var(--surface-2);font-family:"JetBrains Mono",monospace;font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+  table.grid td.sc{width:17%;text-align:center;font-family:"JetBrains Mono",monospace;color:var(--ink-3)}
+  .done{margin-top:26px;text-align:center;font-size:1.2rem;font-weight:700}
+  @media (max-width:680px){
+    .paper-head{grid-template-columns:1fr}
+    .letters{grid-template-columns:1fr}
+    table.grid{display:block;overflow-x:auto}
+    .tfrow{grid-template-columns:2em 1fr}
+    .tfrow .tf{grid-column:2}
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="lbl">Test pack —</span>
+  <button type="button" onclick="window.print()">🖨 Print / Save as PDF</button>
+  <span class="hint">teacher notes · learner paper · scripts &amp; speaking (teacher only)</span>
+</div>
+
+<div class="sheet">
+
+  <header class="mast">
+    <div class="kit-eyebrow">Independent English (B1) · Assessment · Class 13</div>
+    <h1>Progress Test 1 — Modules 1–4</h1>
+    <p class="sub">A friendly halfway check after Lesson 4.3. It covers the present perfect vs the past simple (<i>for/since, already/yet/just/still</i>), the present perfect continuous, <i>used to</i> and <i>would</i>, the zero, first, and second conditionals (<i>unless</i>, <i>If I were you…</i>), <i>wish / if only</i>, reported statements, questions, and commands, relative clauses, the present and past simple passive, modals of deduction, and the language of opinions. It tells you <b>what to recycle</b> in Weeks 7–13. It does not rank anyone.</p>
+    <div class="meta-row">
+      <span class="chip">⏱ <b>~50 min</b> written</span>
+      <span class="chip">+ <b>7 min</b> pair speaking</span>
+      <span class="chip">Written <b>/55</b> · Speaking <b>/15</b></span>
+      <span class="chip">CEFR <b>B1</b></span>
+    </div>
+  </header>
+
+  <div class="note">
+    <div class="t">Why a progress test, and how to frame it</div>
+    <p>Most of your learners have already taken an A2 course or the placement test, so a test is not new to them. For some adults, though, a written test still brings back job screenings or official interviews. Say it plainly: <b>"This is a check, not an exam. It shows me what to teach next, and it shows you how far you have come."</b> At B1 the texts are longer, so tell the class to <b>read the questions before they read the text</b>. Do every <i>example</i> item together, and remind them they can ask you to repeat an instruction at any time. The listening is read twice at a natural pace. Don't slow down so much that the contractions (<i>I've, I'd, she's been</i>) disappear, because hearing them is part of the test.</p>
+  </div>
+
+  <div class="sec"><h2>Running Class 13 (90 min)</h2><span class="rule"></span></div>
+  <table class="timing">
+    <thead><tr><th>Stage</th><th>Time</th><th>Interaction</th><th>Procedure</th></tr></thead>
+    <tbody>
+      <tr><td>Warmer &amp; set-up</td><td class="t">7 min</td><td>S–S · T–S</td><td>A 3-minute "What have you been doing lately?" mingle (two partners), which warms up the present perfect and the continuous. Then go through the paper's instruction words on the board: <i>circle, complete, rewrite, Yes / No / Doesn't say</i>. Hand out the paper <b>face down</b>; learners write their names.</td></tr>
+      <tr><td>Part 1 · Listening</td><td class="t">12 min</td><td>T–S</td><td>The whole class together. Give 30 seconds to read each section's questions first. Read each script on the teacher pages <b>twice</b>, with about 10 seconds between readings. Do example item 0 together first.</td></tr>
+      <tr><td>Parts 2–5 · written</td><td class="t">38 min</td><td>S</td><td>Words &amp; phrases, Grammar, Reading, and Writing, done individually. Suggest a pace on the board: <b>Parts 2–3 about 15 minutes, Part 4 about 10, Part 5 about 13.</b> Walk around and read instructions aloud to anyone who asks. Early finishers check their work, then read a graded reader or set up the catch-up stations. They don't help classmates with the test.</td></tr>
+      <tr><td>Break</td><td class="t">5 min</td><td>—</td><td>Collect papers.</td></tr>
+      <tr><td>Speaking + catch-up stations</td><td class="t">28 min</td><td>S–S · T–S</td><td>Call learners to a quiet corner <b>in pairs</b> for the 7-minute speaking task (cards on the teacher pages) and score with the grid. Everyone else rotates through <b>catch-up stations</b>: ① a "used to / would" and "What would you do if…?" question-card game from Modules 1–2, ② the online lessons on a phone (🔊 Listen, then say the model sentences), ③ workbook review pages for Modules 3–4. About 4 pairs fit in 28 minutes. With more learners, finish the speaking in the Class 14 warmer or ask a volunteer to run the stations.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="grid2">
+    <div class="blk"><div class="h">You need</div>
+      <ul class="tick">
+        <li>One learner paper per person (the middle section of this pack). Print it at 100% so the writing lines stay usable</li>
+        <li>The teacher pages: listening scripts, speaking cards (cut A/B), and one scoring grid per pair</li>
+        <li>Pencils and erasers, and a clock the class can see</li>
+        <li>The answer key and rubrics: <code class="inline">assessment/assessment-key.html</code></li>
+      </ul>
+    </div>
+    <div class="blk"><div class="h">What each part checks</div>
+      <ul class="tick">
+        <li><b>Listening /12</b>: hearing tense and conditional forms, a short talk about a neighborhood, and who thinks what in a discussion</li>
+        <li><b>Words &amp; phrases /10</b>: time words and linkers, and what a phrase is doing (advice, opinion, polite disagreement, deduction)</li>
+        <li><b>Grammar /15</b>: 10 circle items + 5 rewrites, one or two for every lesson in Modules 1–4</li>
+        <li><b>Reading /8</b>: a blog post, "My street, then and now"</li>
+        <li><b>Writing /10</b>: a reply with advice + an opinion paragraph (80–100 words)</li>
+        <li><b>Speaking /15</b>: experiences, then and now, and a short discussion (pairs)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="note lab">
+    <div class="t">Literacy-adapted version (learners still building reading and writing)</div>
+    <p>Use the <b>same paper</b> and change how it is done, not what it tests. <b>Read every instruction and item aloud</b>, one at a time, and enlarge the paper if you can. In <b>Part 2</b>, read the word box aloud and let the learner say the answer while you mark it. In <b>Part 3</b>, read the choices aloud and let them circle the one that sounds right; for the rewrites (11–15), let them <b>say</b> the new sentence and score what they say. Do <b>Part 4</b> orally: read the blog post aloud twice and ask the questions. In <b>Part 5</b>, the learner may <b>say</b> the advice and the opinion while you scribe; score what they say. Give extra time, or split the paper over two sittings. Write <b>"Adapted"</b> at the top and note what changed. Report these learners' <b>listening and speaking</b> as the main evidence. Low literacy is not low ability. It points to a literacy-support need, and the key says how to act on it.</p>
+  </div>
+
+  <div class="note warn">
+    <div class="t">Personal information is always optional</div>
+    <p>The speaking task asks how long people have lived somewhere and how life used to be. The writing asks for opinions about where to live. Learners can answer with a <b>"new identity"</b> (the cards on the teacher pages) or anything they invent. Say this before the test starts: <b>"Real or imagined, no problem."</b> We are testing the English, not the facts. Never ask follow-up questions about home country, family members who are absent, or immigration status.</p>
+  </div>
+
+  <!-- ═════════════════════ LEARNER PAPER ═════════════════════ -->
+  <div class="pagebreak"></div>
+  <div class="paper">
+    <header class="mast">
+      <div class="kit-eyebrow">Independent English (B1) · Progress Test 1</div>
+      <h1>My Halfway Check ✅</h1>
+      <div class="paper-head">
+        <div><b>Name:</b></div>
+        <div><b>Date:</b></div>
+        <div><b>Class:</b></div>
+      </div>
+      <div class="key-icons">
+        <span>👂 Listen</span><span>📖 Read</span><span>⭕ Circle</span><span>✏️ Write</span><span>🔁 Rewrite</span><span>🗣️ Speak</span>
+      </div>
+      <p style="font-size:1.05rem;margin-top:10px">Read the questions <b>before</b> you listen or read. Look at the example first. If you don't understand an instruction, just ask: <b>"Could you explain that again, please?"</b> 🙂</p>
+    </header>
+
+    <!-- PART 1 -->
+    <div class="part-h"><span class="ic">👂</span><h2>Part 1 · Listening</h2><span class="score">___ / 12</span></div>
+
+    <div class="inst"><span class="ic">👂⭕</span><span>A. Listen. Circle the sentence you hear.</span></div>
+    <div class="item ex"><span class="n">0</span><span class="ch"><span class="circled">I've lived here for two years.</span><span>I lived here for two years.</span></span></div>
+    <div class="item"><span class="n">1</span><span class="ch"><span>She's worked all day.</span><span>She's been working all day.</span></span></div>
+    <div class="item"><span class="n">2</span><span class="ch"><span>If I have more time, I'll help you.</span><span>If I had more time, I'd help you.</span></span></div>
+    <div class="item"><span class="n">3</span><span class="ch"><span>He told me he was busy.</span><span>He tells me he's busy.</span></span></div>
+    <div class="item"><span class="n">4</span><span class="ch"><span>They built the school in 1990.</span><span>The school was built in 1990.</span></span></div>
+
+    <div class="inst"><span class="ic">👂⭕</span><span>B. Listen to Rosa talking about her neighborhood. Circle the correct answer.</span></div>
+    <div class="item"><span class="n">5</span><span>Rosa has run her café for … &nbsp;<span class="ch"><span>8 years</span><span>10 years</span><span>18 years</span></span></span></div>
+    <div class="item"><span class="n">6</span><span>When she was a child, Rosa went to the market with her … &nbsp;<span class="ch"><span>mother</span><span>grandmother</span><span>sister</span></span></span></div>
+    <div class="item"><span class="n">7</span><span>The old market building was turned into … &nbsp;<span class="ch"><span>a café</span><span>a parking lot</span><span>a supermarket</span></span></span></div>
+    <div class="item"><span class="n">8</span><span>The new market is held on … &nbsp;<span class="ch"><span>Saturdays</span><span>Sundays</span><span>weekdays</span></span></span></div>
+
+    <div class="inst"><span class="ic">👂⭕</span><span>C. Listen to Amir and Lena discussing their town. Circle <b>Amir</b>, <b>Lena</b>, or <b>Both</b>.</span></div>
+    <div class="item"><span class="n">9</span><span>Who wants to close the town center to cars? &nbsp;<span class="ch"><span>Amir</span><span>Lena</span><span>Both</span></span></span></div>
+    <div class="item"><span class="n">10</span><span>Who is worried about older people and the stores? &nbsp;<span class="ch"><span>Amir</span><span>Lena</span><span>Both</span></span></span></div>
+    <div class="item"><span class="n">11</span><span>Who thinks the town needs more buses? &nbsp;<span class="ch"><span>Amir</span><span>Lena</span><span>Both</span></span></span></div>
+    <div class="item"><span class="n">12</span><span>Amir suggests that cars could come into the center … &nbsp;<span class="ch"><span>in the morning</span><span>in the evening</span><span>on weekends</span></span></span></div>
+
+    <!-- PART 2 -->
+    <div class="part-h pagebreak"><span class="ic">✏️</span><h2>Part 2 · Words &amp; Phrases</h2><span class="score">___ / 10</span></div>
+    <div class="inst"><span class="ic">📖✏️</span><span>A. Complete each sentence with a word from the box. <span class="sub">There is 1 extra word.</span></span></div>
+    <div class="bank"><span>yet</span><span>since</span><span>still</span><span>unless</span><span>whose</span><span>whether</span></div>
+    <div class="item ex"><span class="n">0</span><span>I've <b>just</b> finished lunch, so I'm not hungry.</span></div>
+    <div class="item"><span class="n">1</span><span>I haven't finished my report <span class="blank"></span>. Can I send it tomorrow?</span></div>
+    <div class="item"><span class="n">2</span><span>We've known each other <span class="blank"></span> we were in high school.</span></div>
+    <div class="item"><span class="n">3</span><span>You won't get the job <span class="blank"></span> you apply before Friday.</span></div>
+    <div class="item"><span class="n">4</span><span>That's the neighbor <span class="blank"></span> dog barks all night.</span></div>
+    <div class="item"><span class="n">5</span><span>She asked me <span class="blank"></span> I wanted to join the team.</span></div>
+
+    <div class="inst"><span class="ic">📖✏️</span><span>B. What is the speaker doing? Write the letter. <span class="sub">There is 1 extra letter.</span></span></div>
+    <div class="letters">
+      <span><b>a</b> giving advice</span><span><b>b</b> disagreeing politely</span>
+      <span><b>c</b> agreeing strongly</span><span><b>d</b> making a deduction</span>
+      <span><b>e</b> reporting what someone said</span><span><b>f</b> giving an opinion</span>
+    </div>
+    <div class="item"><span class="n">6</span><span><span class="tbox"></span> &nbsp;"I couldn't agree more."</span></div>
+    <div class="item"><span class="n">7</span><span><span class="tbox"></span> &nbsp;"If I were you, I'd talk to your manager."</span></div>
+    <div class="item"><span class="n">8</span><span><span class="tbox"></span> &nbsp;"I see what you mean, but I think it's too expensive."</span></div>
+    <div class="item"><span class="n">9</span><span><span class="tbox"></span> &nbsp;"He can't be at work. His car is still outside."</span></div>
+    <div class="item"><span class="n">10</span><span><span class="tbox"></span> &nbsp;"As far as I'm concerned, buses should be free for students."</span></div>
+
+    <!-- PART 3 -->
+    <div class="part-h pagebreak"><span class="ic">⭕</span><h2>Part 3 · Grammar</h2><span class="score">___ / 15</span></div>
+    <div class="inst"><span class="ic">📖⭕</span><span>A. Circle the correct word or words.</span></div>
+    <div class="item ex"><span class="n">0</span><span>I <span class="ch"><span>lost</span><span class="circled">have lost</span></span> my keys. I can't find them anywhere.</span></div>
+    <div class="item"><span class="n">1</span><span>I <span class="ch"><span>met</span><span>have met</span></span> her at a party last Saturday.</span></div>
+    <div class="item"><span class="n">2</span><span>We've lived in this city <span class="ch"><span>for</span><span>since</span></span> 2019.</span></div>
+    <div class="item"><span class="n">3</span><span>I'm tired because I <span class="ch"><span>have cleaned</span><span>have been cleaning</span></span> the house all morning.</span></div>
+    <div class="item"><span class="n">4</span><span>I <span class="ch"><span>have known</span><span>have been knowing</span></span> my best friend for twenty years.</span></div>
+    <div class="item"><span class="n">5</span><span>When I was a child, I <span class="ch"><span>used to</span><span>would</span></span> have a red bike.</span></div>
+    <div class="item"><span class="n">6</span><span>If it <span class="ch"><span>rains</span><span>will rain</span></span> tomorrow, we'll eat inside.</span></div>
+    <div class="item"><span class="n">7</span><span>If I <span class="ch"><span>am</span><span>were</span><span>will be</span></span> you, I'd take the job.</span></div>
+    <div class="item"><span class="n">8</span><span>I wish I <span class="ch"><span>can</span><span>could</span><span>will</span></span> speak Chinese.</span></div>
+    <div class="item"><span class="n">9</span><span>The trains <span class="ch"><span>clean</span><span>are cleaned</span><span>are cleaning</span></span> every night.</span></div>
+    <div class="item"><span class="n">10</span><span>The lights are off and nobody is answering. They <span class="ch"><span>must</span><span>can't</span><span>mustn't</span></span> be at home.</span></div>
+
+    <div class="inst"><span class="ic">🔁✏️</span><span>B. Rewrite each sentence. Keep the same meaning.</span></div>
+    <div class="rw"><span class="n">11</span><span class="from">Sam: "I'm moving to Denver next month."</span><span class="to">Sam told me <span class="wline"></span></span></div>
+    <div class="rw"><span class="n">12</span><span class="from">The manager: "Where do you work?"</span><span class="to">The manager asked me <span class="wline"></span></span></div>
+    <div class="rw"><span class="n">13</span><span class="from">My boss: "Please don't be late."</span><span class="to">My boss asked me <span class="wline"></span></span></div>
+    <div class="rw"><span class="n">14</span><span class="from">I have a friend. She speaks four languages.</span><span class="to">I have a friend <span class="wline"></span></span></div>
+    <div class="rw"><span class="n">15</span><span class="from">Someone stole my phone last night.</span><span class="to">My phone <span class="wline"></span></span></div>
+
+    <!-- PART 4 -->
+    <div class="part-h pagebreak"><span class="ic">📖</span><h2>Part 4 · Reading</h2><span class="score">___ / 8</span></div>
+    <div class="inst"><span class="ic">📖</span><span>Read the questions first. Then read David's blog post.</span></div>
+    <div class="text">
+      <div class="ttl">My street, then and now</div>
+      <p>I've lived on Carver Street for twenty-two years. When I first arrived, it was a quiet street with small houses and a few old stores. There used to be a bakery on the corner, and the owner, Mrs. Park, would give a free cookie to every child who walked past. Everyone knew everyone.</p>
+      <p>A lot has changed since then. The bakery closed in 2015, and a big apartment building was built in its place. Most of the new people work downtown. They leave early and come home late, so I don't see them very often. My neighbor Luis, whose family has lived here even longer than mine, says the street has lost its heart. I don't completely agree. The new park, which opened last spring, is full of families on the weekend, and I've met more people there this year than in the last five years.</p>
+      <p>Still, I wish the rents weren't so high. My daughter has been looking for an apartment near me for six months, but she hasn't found anything she can afford yet. If rents were lower, she'd move here tomorrow. The city says new homes are planned, but nobody knows when. Maybe this year's street party will bring people together again. I'm organizing it, so I really hope so!</p>
+    </div>
+    <div class="inst"><span class="ic">⭕</span><span>A. Circle <b>Yes</b>, <b>No</b>, or <b>Doesn't say</b>.</span></div>
+    <div class="tfrow" style="color:var(--ink-2)"><span class="n">0</span><span>David lives on Carver Street now.</span><span class="tf"><span class="circled">Yes</span><span>No</span><span>Doesn't say</span></span></div>
+    <div class="tfrow"><span class="n">1</span><span>David has lived on Carver Street for more than twenty years.</span><span class="tf"><span>Yes</span><span>No</span><span>Doesn't say</span></span></div>
+    <div class="tfrow"><span class="n">2</span><span>Mrs. Park gave free cookies only to her own children.</span><span class="tf"><span>Yes</span><span>No</span><span>Doesn't say</span></span></div>
+    <div class="tfrow"><span class="n">3</span><span>An apartment building now stands where the bakery was.</span><span class="tf"><span>Yes</span><span>No</span><span>Doesn't say</span></span></div>
+    <div class="tfrow"><span class="n">4</span><span>David completely agrees with Luis about the street.</span><span class="tf"><span>Yes</span><span>No</span><span>Doesn't say</span></span></div>
+    <div class="tfrow"><span class="n">5</span><span>Luis takes his family to the new park every weekend.</span><span class="tf"><span>Yes</span><span>No</span><span>Doesn't say</span></span></div>
+    <div class="tfrow"><span class="n">6</span><span>David's daughter has found an apartment on Carver Street.</span><span class="tf"><span>Yes</span><span>No</span><span>Doesn't say</span></span></div>
+    <div class="inst"><span class="ic">✏️</span><span>B. Answer the questions.</span></div>
+    <div class="item"><span class="n">7</span><span style="flex:1">Why doesn't David see his new neighbors very often? <div class="wline"></div></span></div>
+    <div class="item"><span class="n">8</span><span style="flex:1">What would David's daughter do if rents were lower? <div class="wline"></div></span></div>
+
+    <!-- PART 5 -->
+    <div class="part-h pagebreak"><span class="ic">✏️</span><h2>Part 5 · Writing</h2><span class="score">___ / 10</span></div>
+    <div class="inst"><span class="ic">✏️</span><span>A. Reply to your friend. Give advice. <span class="sub">(3–4 sentences)</span></span></div>
+    <div class="text" style="font-size:1rem">"Hi! I've been offered a job in another city. The pay is much better, but I'd have to leave my family and friends. I don't know what to do. What would you do?" — Kim</div>
+    <div class="phrase-bank">
+      <span class="phrase">Hi Kim! …</span><span class="phrase">If I were you, I'd …</span><span class="phrase">I (don't) think you should …</span><span class="phrase">If you take the job, you'll …</span><span class="phrase">because …</span><span class="phrase">Good luck! / Let me know …</span>
+    </div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+
+    <div class="inst"><span class="ic">✏️</span><span>B. Write a paragraph. <span class="sub">(80–100 words)</span></span></div>
+    <p style="font-size:1.08rem;margin:0 0 6px"><b>Is it better to live in a big city or a small town?</b> Give your opinion, <b>two reasons</b>, and <b>an example</b>. Finish with a short conclusion.</p>
+    <div class="phrase-bank">
+      <span class="phrase">In my opinion, … / If you ask me, …</span>
+      <span class="phrase">The main reason is that …</span>
+      <span class="phrase">For example, …</span>
+      <span class="phrase">What's more, …</span>
+      <span class="phrase">On the other hand, …</span>
+      <span class="phrase">If I lived in …, I'd …</span>
+      <span class="phrase">So, all in all, …</span>
+    </div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+
+    <p class="done">Finished! Well done. 🎉 Now check your answers. ✔️</p>
+
+    <table class="grid" style="margin-top:22px">
+      <thead><tr><th>For the teacher</th><th>1 Listening</th><th>2 Words</th><th>3 Grammar</th><th>4 Reading</th><th>5 Writing</th><th>Written</th><th>Speaking</th></tr></thead>
+      <tbody><tr><td>Score</td><td>/12</td><td>/10</td><td>/15</td><td>/8</td><td>/10</td><td>/55</td><td>/15</td></tr></tbody>
+    </table>
+  </div>
+
+  <!-- ═════════════════════ TEACHER PAGES ═════════════════════ -->
+  <div class="pagebreak"></div>
+  <span class="teacher-only">Teacher only · do not copy for learners</span>
+  <div class="sec" style="margin-top:6px"><h2>Part 1 · Listening Scripts</h2><span class="rule"></span></div>
+  <p>Give 30 seconds to read the questions for each section. Read each script <b>twice</b> at a natural pace, with a pause of about 10 seconds between readings. Say the item number first ("Number one"). Don't mouth the answer or point. In Part A, say the sentence <b>once per reading</b>, with natural contractions: the contrast is the test. For Part C, change your voice or position for each speaker, or read it with a colleague.</p>
+
+  <div class="blk"><div class="h">A · Circle the sentence you hear</div>
+    <div class="script">Example, number zero: <b>I've lived here for two years.</b> (Show the circle on "I've lived here for two years.")<br>
+    Number 1: <b>She's been working all day.</b><br>
+    Number 2: <b>If I had more time, I'd help you.</b><br>
+    Number 3: <b>He told me he was busy.</b><br>
+    Number 4: <b>The school was built in 1990.</b></div>
+  </div>
+  <div class="blk"><div class="h">B · Rosa (read the whole text twice, then give 1 minute to circle)</div>
+    <div class="script">Hi, I'm Rosa. I've been running a small café on Market Street for <b>eight years</b>. When I was a child, there used to be a big market here every Saturday. My <b>grandmother</b> would take me there, and we would buy fresh bread and fruit. The market closed in 2010, and the old building was turned into <b>a parking lot</b>. Last year, the city decided to open a new market. It's held every <b>Sunday</b> now, and it's been really good for my café. I've already doubled my weekend customers! If the city opened it on Saturdays too, I'd need another cook. I just wish parking were easier.</div>
+  </div>
+  <div class="blk"><div class="h">C · Amir and Lena (read the whole dialogue twice, then give 1 minute)</div>
+    <div class="dialogue">
+      <p class="line a"><span class="speaker">Amir:</span> If you ask me, the town center should be closed to cars.</p>
+      <p class="line b"><span class="speaker">Lena:</span> Really? I'm not sure I agree. What's the main reason?</p>
+      <p class="line a"><span class="speaker">Amir:</span> Well, the air is terrible. If there were no cars, people would walk and cycle more.</p>
+      <p class="line b"><span class="speaker">Lena:</span> I see what you mean, but a lot of older people can't walk very far. And the stores might lose customers.</p>
+      <p class="line a"><span class="speaker">Amir:</span> That's a good point. Maybe cars could come in only in the evening, when the stores are closing?</p>
+      <p class="line b"><span class="speaker">Lena:</span> That might work. But as far as I'm concerned, we need more buses first.</p>
+      <p class="line a"><span class="speaker">Amir:</span> I couldn't agree more. The buses are always full. There must be a better system!</p>
+    </div>
+  </div>
+
+  <div class="sec"><h2>Pair Speaking Task · 7 minutes</h2><span class="rule"></span></div>
+  <p>Two learners sit with you. Give Card A to one and Card B to the other. Give them <b>one minute</b> to read the cards silently, then check the instructions:</p>
+  <div class="say">In Part 1, do you only answer, or do you ask questions too? (Both.) Do you give short or long answers? (Long: two or three sentences.) In Part 2, do you have to agree with your partner? (No! Agree or disagree, politely.) Real life or imagined? (Real or imagined, no problem.)</div>
+  <p><b>Part 1</b> (about 3 minutes): they ask and answer the card questions, which cover experiences, how long, how life used to be, and imagining. <b>Part 2</b> (about 3 minutes): give them the <b>discussion card</b>. They discuss it together, giving opinions with reasons and agreeing or disagreeing politely. <b>Part 3</b> (about 1 minute): ask each learner, <b>"What did your partner tell you?"</b> Listen for reported speech (<i>She told me she'd lived…, He said he would…</i>). Step in only to restart a stuck pair ("Now ask your next question"). Don't correct during the task. Score each learner on the grid, using the rubric in the key. <b>Mixed-level pairs:</b> score each person on what <i>they</i> did, not on the pair's result.</p>
+
+  <div class="cards">
+    <div class="card-cut">
+      <div class="ct">Card A · Student A</div>
+      <h4>👥 Part 1 · Ask your partner</h4>
+      <ol class="steps">
+        <li><b>How long have you lived in this town?</b> → <b>What do you like about it?</b></li>
+        <li><b>What have you been doing in your free time lately?</b></li>
+        <li><b>What did you use to do on weekends when you were younger?</b></li>
+        <li><b>If you could live anywhere in the world, where would you live? Why?</b></li>
+        <li>Answer your partner's questions. Say 2–3 sentences for each one.</li>
+      </ol>
+    </div>
+    <div class="card-cut b">
+      <div class="ct">Card B · Student B</div>
+      <h4>👥 Part 1 · Ask your partner</h4>
+      <ol class="steps">
+        <li><b>How long have you been learning English?</b> → <b>What has helped you most?</b></li>
+        <li><b>What's something you've never done, but would like to do?</b></li>
+        <li><b>How is your life different now from ten years ago?</b> (<i>I used to … but now …</i>)</li>
+        <li><b>What do you wish you could change about your town or your job?</b></li>
+        <li>Answer your partner's questions. Say 2–3 sentences for each one.</li>
+      </ol>
+    </div>
+    <div class="card-cut">
+      <div class="ct">Discussion card · both students</div>
+      <h4>💬 Part 2 · Our town</h4>
+      <p>Talk together for about 3 minutes.</p>
+      <ul class="tick">
+        <li>What is <b>better</b> in this town now than a few years ago? What is <b>worse</b>?</li>
+        <li><b>If you were the mayor for one day, what would you change? Why?</b></li>
+        <li>Give reasons. Agree or disagree politely: <i>That's a good point. · I see what you mean, but …</i></li>
+      </ul>
+    </div>
+    <div class="card-cut b">
+      <div class="ct">New identity cards (optional)</div>
+      <h4>🪪 Sam Lee</h4>
+      <p>Lived here: 3 years · Lately: learning to cook, running · Used to: play basketball every weekend · Never: been on a plane · Would live: by the ocean · Wish: shorter bus trip to work</p>
+      <h4>🪪 Maria Costa</h4>
+      <p>Learning English: 2 years · Helped most: songs and TV · Ten years ago: lived in a small village, used to walk everywhere · Wish: more parks, cheaper apartments</p>
+    </div>
+  </div>
+  <p style="font-size:.88rem;color:var(--ink-2)"><b>Stretch</b> (for a pair who finishes early): "Some people say small towns are dying. Do you agree?" <b>Support</b>: a learner may read the question from the card, which is fine. Score the <i>answers</i> and the discussion as normal. <b>Dominant speaker?</b> Turn to the quieter learner: "And what do you think?" If it continues, say "Let's hear from [name] first this time" and note it under Interaction; don't lower the quieter learner's score because they got fewer chances.</p>
+
+  <div class="sec"><h2>Speaking Scoring Grid</h2><span class="rule"></span></div>
+  <p style="font-size:.9rem;color:var(--ink-2)">Score each criterion <b>0–3</b>: 0 = no response · 1 = Not yet B1 · 2 = B1 · 3 = B1+ (strong). The descriptors are in the assessment key. Total /15.</p>
+  <p style="font-size:.95rem">Learner A: ______________________ &nbsp; Learner B: ______________________ &nbsp; Date: __________</p>
+  <table class="grid">
+    <thead><tr><th>Criterion</th><th>What to listen for</th><th>A (0–3)</th><th>B (0–3)</th></tr></thead>
+    <tbody>
+      <tr><td><b>Task &amp; coherence</b></td><td>Answers in 2–3 connected sentences; describes experiences and how life used to be; gives an opinion <b>with a reason</b>; reports what the partner said</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td></tr>
+      <tr><td><b>Range</b></td><td>Enough language for town, work, free time, and change; opinion phrases (<i>If you ask me, As far as I'm concerned</i>); can rephrase a missing word</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td></tr>
+      <tr><td><b>Accuracy</b></td><td>Present perfect + <i>for/since</i> vs past simple; <i>I've been -ing</i>; <i>used to / would</i>; <i>If I were…, I'd…</i>; <i>I wish I could…</i>; reported speech backshift</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td></tr>
+      <tr><td><b>Interaction</b></td><td>Asks the card questions and a follow-up; agrees and disagrees politely (acknowledges first); invites the partner's view; asks for clarification when needed</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td></tr>
+      <tr><td><b>Pronunciation &amp; fluency</b></td><td>Clearly understandable; keeps going with some pausing to plan; contractions (<i>I've, I'd</i>) and weak <i>been</i> /bɪn/</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td></tr>
+      <tr><td colspan="2"><b>Total /15</b> · one thing that went well · one next step</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td></tr>
+    </tbody>
+  </table>
+
+  <div class="note lab">
+    <div class="t">After the test: close the loop in Week 7</div>
+    <p>Score the papers before Class 14 with the key. Add up each <b>section</b> across the class, because the weakest section tells you what to recycle. Warmers in Classes 14–19 are a good place for it: for example, a 5-minute "Have you ever…? When did you…?" chain if many missed items 1–2, or a "What did she say?" whisper game if the rewrites (11–13) were weak. Both also prepare Module 5's storytelling. Give each learner their paper back with <b>one thing they did well and one thing to practice</b>, plus the online lesson that practices it. The key has a class analysis and feedback phrases.</p>
+  </div>
+
+  <div class="foot">
+    <div class="who"><b>Ray de la Paz</b><span class="bio">© 2026 Ray de la Paz · Independent English (B1 Intermediate)</span></div>
+    <div class="ver">Assessment · Progress Test 1 · v1.0</div>
+  </div>
+
+</div>
+</body>
+</html>
