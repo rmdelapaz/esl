@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Final Test — C2 Exit</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../kit.css">
+<style>
+  /* ── Test-paper components (shared with progress-test-1.html) ── */
+  .pagebreak{break-before:page}
+  .teacher-only{font-family:"JetBrains Mono",monospace;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+    color:#fff;background:var(--warn);border-radius:999px;padding:3px 11px;display:inline-block;margin-bottom:8px;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .paper{font-size:17px;line-height:1.5}
+  .paper-head{display:grid;grid-template-columns:2fr 1fr 1fr;gap:14px;margin:6px 0 14px;font-size:1.05rem}
+  .paper-head div{border-bottom:1.5px solid var(--ink-2);padding:6px 2px 4px}
+  .paper-head b{font-weight:700}
+  .key-labels{display:flex;flex-wrap:wrap;gap:8px 12px;margin:10px 0 4px;font-size:.95rem;color:var(--ink-2)}
+  .key-labels span{border:1px solid var(--line);border-radius:999px;padding:3px 12px;background:var(--surface-2)}
+  .part-h{display:flex;align-items:center;gap:12px;margin:30px 0 6px;padding:10px 14px;background:var(--accent-soft);
+    border-radius:10px;break-after:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .part-h .pn{font-family:"Archivo",sans-serif;font-weight:800;font-size:1rem;color:#fff;background:var(--accent);border-radius:8px;
+    min-width:1.9em;text-align:center;padding:3px 6px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .part-h h2{font-size:1.3rem;font-weight:800;flex:1}
+  .part-h .score{font-family:"JetBrains Mono",monospace;font-size:.95rem;font-weight:600;border:1.5px solid var(--ink-2);
+    border-radius:8px;padding:4px 10px;background:var(--surface);white-space:nowrap}
+  .inst{display:flex;gap:10px;align-items:baseline;font-size:1.1rem;font-weight:600;margin:16px 0 8px;break-after:avoid}
+  .inst .lbl{font-family:"JetBrains Mono",monospace;font-size:.66rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--accent);white-space:nowrap;border:1px solid var(--line-strong);border-radius:6px;padding:1px 6px}
+  .inst .sub{font-weight:400;color:var(--ink-2);font-size:.95rem}
+  .item{display:flex;gap:12px;align-items:baseline;margin:10px 0;font-size:1.06rem;break-inside:avoid}
+  .item .n{font-family:"JetBrains Mono",monospace;font-weight:600;color:var(--accent);min-width:1.6em}
+  .item.ex{color:var(--ink-2)}
+  .item.ex .n::after{content:" e.g.";font-size:.7rem;color:var(--ink-3)}
+  .item .cue{color:var(--ink-3);font-style:italic;font-size:.95rem;margin-right:6px}
+  .ch{display:inline-flex;flex-wrap:wrap;gap:10px}
+  .ch span{border:1.5px solid var(--line-strong);border-radius:999px;padding:2px 14px;background:var(--surface)}
+  .ch span.circled{border:2.5px solid var(--ink);font-weight:700}
+  .ch.stack{display:flex;flex-direction:column;align-items:flex-start;gap:6px;margin-top:4px}
+  .ch.stack span{border-radius:10px}
+  .text{border:1px solid var(--line);border-radius:10px;padding:14px 18px;background:var(--surface-2);font-size:1.04rem;line-height:1.7;margin:10px 0}
+  .text p{margin:0 0 10px}
+  .text p:last-child{margin-bottom:0}
+  .text .ttl{font-family:"Archivo",sans-serif;font-weight:800;font-size:1.2rem;margin-bottom:6px}
+  .text .by{font-size:.9rem;color:var(--ink-3);margin:-4px 0 8px}
+  .text .pn{font-family:"JetBrains Mono",monospace;font-size:.72rem;color:var(--ink-3);margin-right:6px}
+  .cloze .g{font-family:"JetBrains Mono",monospace;font-weight:700;color:var(--accent);font-size:.85rem}
+  .wline{border-bottom:1.5px solid var(--ink-2);height:2.1em}
+  .kwt{display:grid;grid-template-columns:2em 1fr;gap:4px 12px;margin:14px 0;font-size:1.04rem;break-inside:avoid}
+  .kwt .n{font-family:"JetBrains Mono",monospace;font-weight:600;color:var(--accent)}
+  .kwt .key{font-family:"JetBrains Mono",monospace;font-weight:700;letter-spacing:.06em;border:1.5px solid var(--ink-2);border-radius:6px;padding:0 8px;margin:0 4px}
+  .kwt .to{grid-column:2}
+  table.grid{width:100%;border-collapse:collapse;margin:10px 0;font-size:.9rem}
+  table.grid th,table.grid td{border:1px solid var(--line-strong);padding:8px 10px;text-align:left;vertical-align:top}
+  table.grid thead th{background:var(--surface-2);font-family:"JetBrains Mono",monospace;font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+  table.grid td.sc{width:17%;text-align:center;font-family:"JetBrains Mono",monospace;color:var(--ink-3)}
+  .done{margin-top:26px;text-align:center;font-size:1.15rem;font-weight:700}
+  @media (max-width:680px){
+    .paper-head{grid-template-columns:1fr}
+    table.grid{display:block;overflow-x:auto}
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="lbl">Test pack —</span>
+  <button type="button" onclick="window.print()">Print / Save as PDF</button>
+  <span class="hint">teacher notes · learner paper · scripts &amp; interview (teacher only)</span>
+</div>
+
+<div class="sheet">
+
+  <header class="mast">
+    <div class="kit-eyebrow">Mastery English (C2) · Assessment · Class 26</div>
+    <h1>Final Test — C2 Exit Check</h1>
+    <p class="sub">The end-of-course check on all eight modules, taken on the last day, which is also a <b>celebration</b>: the end of this course and, for many learners, of the whole A1–C2 ladder. It shows each learner what they can now do: hear attitude, irony, and implication in extended speech; read a literary text for theme, voice, and technique; write an op-ed, a review, or a synthesis with authority; control the fine points of usage; and sustain an individual interview with a long turn, an abstract discussion under push-back, and a negotiation or diplomatic task with a register shift. It also gives you the evidence for the next step: <b>C2 achieved</b> (with exam entry, professional, teaching, and translation pathways as options), C2 with a review plan, or consolidation at C1/C2 with support. It is never a pass/fail verdict on a person.</p>
+    <div class="meta-row">
+      <span class="chip"><b>~62 min</b> written</span>
+      <span class="chip">+ <b>~12 min</b> interview each</span>
+      <span class="chip">Written <b>/85</b> · Speaking <b>/15</b> · Total <b>/100</b></span>
+      <span class="chip">Covers <b>Modules 1–8</b></span>
+    </div>
+  </header>
+
+  <div class="note">
+    <div class="t">Frame it as "show what you can do"</div>
+    <p>By Class 26 your learners have met you 25 times, and yesterday they delivered and defended a masterwork. Use that: <b>"Thirteen weeks ago we were arguing about the difference between <i>frugal</i> and <i>stingy</i>. Yesterday you held a room, took a hard question, conceded the fair part, and kept your argument standing."</b> Tell them plainly that <b>this is not a proficiency exam</b> and doesn't predict one: the Use of English section is written in the style of such exams, with original items, so that anyone thinking of sitting one sees the task types. Do every example item together, keep the room calm, and plan the celebration so it happens <i>whatever</i> the scores are. Every learner gets a certificate of attendance. The test decides the <b>next step</b>, not who gets to celebrate.</p>
+  </div>
+
+  <div class="sec"><h2>Running Class 26 (90 min)</h2><span class="rule"></span></div>
+  <table class="timing">
+    <thead><tr><th>Stage</th><th>Time</th><th>Interaction</th><th>Procedure</th></tr></thead>
+    <tbody>
+      <tr><td>Welcome &amp; set-up</td><td class="t">4 min</td><td>T–S</td><td>Greet everyone. Remind them to skim the questions first and that several items accept more than one good answer. Papers go out face down; learners write their names.</td></tr>
+      <tr><td>Part 1 · Listening</td><td class="t">14 min</td><td>T–S</td><td>Whole class. Give 45 seconds to read the Part A questions and 30 seconds for each later section, then read each script on the teacher pages <b>twice</b>.</td></tr>
+      <tr><td>Parts 2–4 · written</td><td class="t">48 min</td><td>S</td><td>Individual work. Suggest a pace on the board: <b>Part 2 Reading about 13 minutes, Part 3 Use of English about 11, Part 4 Writing about 24.</b> <b>Interviews run at the same time</b> at a side table or in the hallway: call learners one by one for about 12 minutes each, which is 3 or 4 learners. Start with learners who finish Part 3 quickly, and let them finish their writing afterwards. If a volunteer or co-teacher is free, they supervise the room; if not, sit where you can see everyone.</td></tr>
+      <tr><td>Break</td><td class="t">4 min</td><td>—</td><td>Collect papers. Set out snacks if your program allows.</td></tr>
+      <tr><td>Remaining interview + celebration</td><td class="t">20 min</td><td>S–S · T–S</td><td>Finish one more interview while the class builds a <b>"lifelong command" wall</b>: each learner writes on a card the one habit they are committing to (a book, a room they'll speak in, a person they'll teach) and a word from this course they now own. Then certificates, a one-sentence farewell from each learner in any register they choose, a class photo if everyone agrees, and the <b>next steps</b>: exam entry for those who want it, specialist tracks, and the lifelong habits from Lesson 8.3. <b>With more than four learners</b>, book 12-minute one-to-one slots in the week before or after (Class 25 is too busy for interviews: you are chairing the masterwork discussions). Never shorten an interview below 10 minutes to fit everyone in; move it instead.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="grid2">
+    <div class="blk"><div class="h">You need</div>
+      <ul class="tick">
+        <li>One learner paper each (the middle section of this pack)</li>
+        <li>Teacher pages: listening scripts, the <b>interview script</b>, the long-turn cards, the discussion statements, the task cards (cut), and one interview grid per learner</li>
+        <li>The key and rubrics: <code class="inline">assessment/assessment-key.html</code></li>
+        <li>Certificates (the shared toolkit has a template), cards for the wall, and a timer</li>
+      </ul>
+    </div>
+    <div class="blk"><div class="h">What each part checks</div>
+      <ul class="tick">
+        <li><b>Listening /15</b>: a curator's talk heard for decision, stance, irony, concession, and image; a fast conversation between colleagues (sarcasm, understatement, a hedged refusal, slang); variety and contrastive stress</li>
+        <li><b>Reading /15</b>: an original literary passage read for theme, narrative reliability, symbol, imagery, juxtaposition, irony, a periodic sentence, and authorial purpose</li>
+        <li><b>Use of English /25</b>: original proficiency-style items: open cloze, word formation, five key word transformations (2 pts each), and the fine points of usage</li>
+        <li><b>Writing /30</b>: an op-ed, a review, <i>or</i> a two-source synthesis (about 300 words), scored with the writing rubric</li>
+        <li><b>Speaking /15</b>: an individual interview of about 12 minutes: a long turn, an abstract discussion with push-back, and a negotiation or diplomatic task with a register shift</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="note lab">
+    <div class="t">Literacy-adapted version</div>
+    <p>Same paper, different delivery. <b>Read all instructions and items aloud</b>, enlarge the paper, and give extra time or split it over two sittings. Parts 1–3: accept spoken answers (for the transformations, the learner says the completed sentence and you check it). Part 2: read the passage aloud twice. Part 4: the learner <b>dictates</b> the piece while you scribe, and you score it with the same rubric. Mark the paper <b>"Adapted"</b>. For these learners the <b>interview and listening</b> are the main evidence; the key explains how to recognize C2 oral command without holding someone back for reading and writing alone.</p>
+  </div>
+
+  <div class="note warn">
+    <div class="t">Your side, an assigned side, or an imagined example</div>
+    <p>The interview asks for opinions and, in the long turn, sometimes for an experience. Some learners' experiences of moving between languages involve loss, a profession left behind, or a hard journey. Say before you start: <b>"Real or imagined, general or personal: your choice. And in the discussion I'll argue against you on purpose. That's my job today, not my real opinion."</b> Never ask follow-up questions about home country, family members who are absent, or immigration status. If a learner says "I'd rather not talk about that," thank them and move to the next stage.</p>
+  </div>
+
+  <!-- ═════════════════════ LEARNER PAPER ═════════════════════ -->
+  <div class="pagebreak"></div>
+  <div class="paper">
+    <header class="mast">
+      <div class="kit-eyebrow">Mastery English (C2) · Final Test</div>
+      <h1>The Summit: Show What You Command</h1>
+      <div class="paper-head">
+        <div><b>Name:</b></div>
+        <div><b>Date:</b></div>
+        <div><b>Class:</b></div>
+      </div>
+      <div class="key-labels">
+        <span>Listen</span><span>Read</span><span>Circle</span><span>Complete</span><span>Transform</span><span>Write</span><span>Speak</span>
+      </div>
+      <p style="font-size:1.03rem;margin-top:10px">Skim the questions <b>before</b> you listen or read, and look at each example first. Where an answer can be phrased in several ways, any accurate version earns the point. If an instruction isn't clear, just ask.</p>
+    </header>
+
+    <!-- PART 1 -->
+    <div class="part-h"><span class="pn">1</span><h2>Listening</h2><span class="score">___ / 15</span></div>
+
+    <div class="inst"><span class="lbl">Listen · Circle · Write</span><span>A. Listen to part of a talk by Dr. Elena Voss, a museum conservator. Circle the best answer, or answer briefly. <span class="sub">You will hear the talk twice.</span></span></div>
+    <div class="item"><span class="n">1</span><span>In the end, what did the museum do with the crack in the bowl? <span class="ch stack"><span>a) filled it and painted over it</span><span>b) left it visible</span><span>c) replaced the bowl with a copy</span></span></span></div>
+    <div class="item"><span class="n">2</span><span style="flex:1">According to the records, what kind of person made one of the earlier repairs? <div class="wline"></div></span></div>
+    <div class="item"><span class="n">3</span><span style="flex:1">A trustee called the bowl "a lovely piece, if you stand far enough away." What did the trustee mean? <div class="wline"></div></span></div>
+    <div class="item"><span class="n">4</span><span>"We took that under advisement." Dr. Voss's tone here is … <span class="ch stack"><span>a) dryly ironic: they politely set the comment aside</span><span>b) deeply hurt</span><span>c) sincerely grateful</span></span></span></div>
+    <div class="item"><span class="n">5</span><span style="flex:1">What does she <b>concede</b> about invisible restoration? <div class="wline"></div></span></div>
+    <div class="item"><span class="n">6</span><span style="flex:1">"A museum that erases every scar is not preserving the past; it is airbrushing it." What does <b>airbrushing</b> suggest here? <div class="wline"></div></span></div>
+    <div class="item"><span class="n">7</span><span>When she says "<b>Tellingly</b>, the bowl has become one of the most photographed objects," she signals that … <span class="ch stack"><span>a) the detail reveals something that supports her argument</span><span>b) she is reporting a claim she doubts</span><span>c) she is changing the subject</span></span></span></div>
+    <div class="item"><span class="n">8</span><span>Her overall attitude to visible repairs is … <span class="ch stack"><span>a) convinced and enthusiastic, while accepting exceptions</span><span>b) neutral: she simply describes both approaches</span><span>c) reluctant: she was overruled by colleagues</span></span></span></div>
+
+    <div class="inst"><span class="lbl">Listen · Circle · Write</span><span>B. Listen to two colleagues, Jess and Omar, talking at the end of the day. Circle or answer briefly.</span></div>
+    <div class="item"><span class="n">9</span><span style="flex:1">How did Omar <b>really</b> feel about the offsite day? <div class="wline"></div></span></div>
+    <div class="item"><span class="n">10</span><span>"The team-building bit was … not our finest hour." He means it … &nbsp;<span class="ch"><span>went badly</span><span>went reasonably well</span><span>was the best part</span></span></span></div>
+    <div class="item"><span class="n">11</span><span>"I couldn't possibly comment." Omar implies that … <span class="ch stack"><span>a) it was Graham, though he won't say so outright</span><span>b) he doesn't know who it was</span><span>c) it definitely wasn't Graham</span></span></span></div>
+    <div class="item"><span class="n">12</span><span>How does Jess respond to the offer to lead the project? <span class="ch stack"><span>a) a polite, indirect no: she is unlikely to accept</span><span>b) an enthusiastic yes</span><span>c) yes, as soon as the audit is finished</span></span></span></div>
+    <div class="item"><span class="n">13</span><span>Omar says he "lowkey" thinks Jess would "smash it." He means … <span class="ch stack"><span>a) he quietly but genuinely thinks she'd do brilliantly</span><span>b) he's worried she'd break something</span><span>c) he doubts she could manage it</span></span></span></div>
+
+    <div class="inst"><span class="lbl">Listen · Circle</span><span>C. Listen to how each sentence is said, or what it assumes. Circle the answer.</span></div>
+    <div class="item"><span class="n">14</span><span>Jess speaks British English. Where is she meeting Priya? <span class="ch stack"><span>a) at street level, near the elevator</span><span>b) one floor above street level, near the elevator</span></span></span></div>
+    <div class="item"><span class="n">15</span><span><span class="cue">"I didn't say we should cancel the conference."</span> <span class="ch stack"><span>a) I suggested doing something else with it, such as postponing it.</span><span>b) Somebody else said we should cancel it, not me.</span></span></span></div>
+
+    <!-- PART 2 -->
+    <div class="part-h pagebreak"><span class="pn">2</span><h2>Reading</h2><span class="score">___ / 15</span></div>
+    <div class="inst"><span class="lbl">Read</span><span>Read the opening of a short story. Read it once for the surface, then again slowly for how it means.</span></div>
+    <div class="text">
+      <div class="ttl">The Clock</div>
+      <div class="by">an original short story, written for this test</div>
+      <p><span class="pn">¶1</span>They gave me a clock when I retired, which I thought showed a certain sense of humor on the part of the accounts department. It is a handsome thing, walnut and brass, and it now stands on the mantelpiece, where it tells me, with great precision, the time I no longer need to know.</p>
+      <p><span class="pn">¶2</span>I want to say at once that I did not mind leaving. Thirty-one years is long enough in any building, and I had, in any case, been planning my departure for some time, or would have been, had the firm not planned it first. Nor was I in the least upset that Hollis, whom I trained, gave the speech. He spoke warmly, if briefly, and made only one small error about the year I joined, which hardly anyone would have noticed, and which I corrected afterwards, quietly, for the record.</p>
+      <p><span class="pn">¶3</span>Since then my days have acquired a pleasant looseness. I rise when I like. I walk to the river, where the gulls conduct their business with an urgency I remember. In the afternoons I read, or rather I hold a book, and watch the light move along the carpet like a slow tide going out.</p>
+      <p><span class="pn">¶4</span>My wife says I should find something to do. I tell her I am doing it. Last Tuesday, for no particular reason, I put on my good suit and walked as far as the corner of Fenwick Street, from which one can see the fourth-floor windows of my old office. Somebody had moved the plant. I stood there for perhaps an hour, an entirely reasonable length of time for a man enjoying the air, and then I walked home, and wound the clock, although it did not need winding.</p>
+    </div>
+    <div class="item"><span class="n">1</span><span style="flex:1">The <b>subject</b> is a man's retirement. State the <b>theme</b> in one specific, arguable sentence. <span class="cue">(2 points)</span> <div class="wline"></div><div class="wline"></div></span></div>
+    <div class="item"><span class="n">2</span><span style="flex:1">Is the narrator reliable? Give your view <b>and</b> quote one short phrase as evidence. <span class="cue">(2 points)</span> <div class="wline"></div><div class="wline"></div></span></div>
+    <div class="item"><span class="n">3</span><span style="flex:1">What might the clock <b>symbolize</b>? <div class="wline"></div></span></div>
+    <div class="item"><span class="n">4</span><span style="flex:1">"watch the light move along the carpet like a slow tide going out" (¶3). What does this simile suggest about his days? <div class="wline"></div></span></div>
+    <div class="item"><span class="n">5</span><span style="flex:1">"the gulls conduct their business with an urgency I remember" (¶3). What contrast does this image quietly set up? <div class="wline"></div></span></div>
+    <div class="item"><span class="n">6</span><span style="flex:1">Paraphrase in <b>one plain sentence</b>: "I had, in any case, been planning my departure for some time, or would have been, had the firm not planned it first." <span class="cue">(2 points)</span> <div class="wline"></div><div class="wline"></div></span></div>
+    <div class="item"><span class="n">7</span><span style="flex:1">"which I corrected afterwards, quietly, for the record" (¶2). What does this detail reveal about the narrator? <div class="wline"></div></span></div>
+    <div class="item"><span class="n">8</span><span style="flex:1">"Somebody had moved the plant." Why does the narrator notice, and mention, this detail? <div class="wline"></div></span></div>
+    <div class="item"><span class="n">9</span><span>"an entirely reasonable length of time for a man enjoying the air" (¶4). The effect of this phrase is … <span class="ch stack"><span>a) its self-justification makes us doubt him</span><span>b) it proves he was relaxed</span><span>c) it describes the weather</span></span></span></div>
+    <div class="item"><span class="n">10</span><span style="flex:1">"and wound the clock, although it did not need winding." What is the irony or effect of this final gesture? <div class="wline"></div></span></div>
+    <div class="item"><span class="n">11</span><span>In ¶3, <b>conduct</b> (their business) means … &nbsp;<span class="ch"><span>carry out</span><span>direct an orchestra</span><span>transmit heat</span></span></span></div>
+    <div class="item"><span class="n">12</span><span>The author's main purpose is … <span class="ch stack"><span>a) to make us feel, gently, a loss the narrator will not admit</span><span>b) to persuade readers to retire early</span><span>c) to satirize accounts departments</span></span></span></div>
+
+    <!-- PART 3 -->
+    <div class="part-h pagebreak"><span class="pn">3</span><h2>Use of English</h2><span class="score">___ / 25</span></div>
+    <div class="inst"><span class="lbl">Complete</span><span>A. Read the text. Write <b>one</b> word in each gap.</span></div>
+    <div class="text cloze">
+      <p>No translator, however gifted, can carry every shade of meaning <span class="g">(1)</span> ____________ one language into another. What gets lost is rarely the dictionary sense; it is <span class="g">(2)</span> ____________ the word does: the joke it makes, the class it signals, the memory it stirs. <span class="g">(3)</span> ____________ this reason, the best translators think less about words than about effects. They ask not only what a sentence says but what it is trying to do, and only when the answer is clear <span class="g">(4)</span> ____________ they reach for an equivalent. By <span class="g">(5)</span> ____________ large, readers never notice this work, <span class="g">(6)</span> ____________ is exactly as it should be.</p>
+    </div>
+
+    <div class="inst"><span class="lbl">Complete</span><span>B. Use the word in capitals to form a word that fits the gap.</span></div>
+    <div class="item"><span class="n">7</span><span>Her <span class="blank long"></span> to compromise brought the talks to an end. <span class="cue">(WILLING)</span></span></div>
+    <div class="item"><span class="n">8</span><span>His apology sounded so <span class="blank long"></span> that nobody believed a word of it. <span class="cue">(SINCERE)</span></span></div>
+    <div class="item"><span class="n">9</span><span>The committee's decision was entirely <span class="blank long"></span>: no one saw it coming. <span class="cue">(PREDICT)</span></span></div>
+    <div class="item"><span class="n">10</span><span>The report was criticized for the <span class="blank long"></span> of several key figures. <span class="cue">(OMIT)</span></span></div>
+    <div class="item"><span class="n">11</span><span>Her <span class="blank long"></span> of the poem was subtle and persuasive. <span class="cue">(INTERPRET)</span></span></div>
+
+    <div class="inst"><span class="lbl">Transform</span><span>C. Complete the second sentence so that it means the same as the first, using the word given. <b>Do not change the word given.</b> Use <b>three to eight</b> words, including the word given. <span class="sub">(2 points each)</span></span></div>
+    <div class="kwt"><span class="n">12</span><span>I couldn't understand the instructions at all. <span class="key">HEAD</span></span><span class="to">I couldn't make <span class="blank long"></span> the instructions.</span></div>
+    <div class="kwt"><span class="n">13</span><span>As soon as the curtain rose, the audience fell silent. <span class="key">SOONER</span></span><span class="to">No <span class="blank long"></span> than the audience fell silent.</span></div>
+    <div class="kwt"><span class="n">14</span><span>Everyone knew from the start that the committee would approve the plan. <span class="key">FOREGONE</span></span><span class="to">The committee's <span class="blank long"></span> <span class="blank"></span> from the start.</span></div>
+    <div class="kwt"><span class="n">15</span><span>People say that the director is planning to resign. <span class="key">SAID</span></span><span class="to">The director <span class="blank long"></span> to resign.</span></div>
+    <div class="kwt"><span class="n">16</span><span>The decision disappointed her enormously. <span class="key">BITTERLY</span></span><span class="to">She <span class="blank long"></span> the decision.</span></div>
+
+    <div class="inst"><span class="lbl">Circle</span><span>D. Circle the correct answer.</span></div>
+    <div class="item"><span class="n">17</span><span>Which sentence tells us the writer has <b>only one</b> sister? <span class="ch stack"><span>a) My sister who lives in Denver is a lawyer.</span><span>b) My sister, who lives in Denver, is a lawyer.</span></span></span></div>
+    <div class="item"><span class="n">18</span><span>Between you and <span class="ch"><span>I</span><span>me</span></span>, the proposal will never pass.</span></div>
+    <div class="item"><span class="n">19</span><span>Which sentence is correct? <span class="ch stack"><span>a) Having read the report, the conclusion seemed obvious.</span><span>b) Having read the report, I found the conclusion obvious.</span><span>c) Read the report, the conclusion seemed obvious to me.</span></span></span></div>
+    <div class="item"><span class="n">20</span><span>The board recommends that she <span class="ch"><span>step</span><span>steps</span><span>will step</span></span> down at the end of the year.</span></div>
+
+    <!-- PART 4 -->
+    <div class="part-h pagebreak"><span class="pn">4</span><h2>Writing</h2><span class="score">___ / 30</span></div>
+    <div class="inst"><span class="lbl">Write</span><span>Choose <b>one</b> task. Write about <b>300 words</b> (270–330). <span class="sub">Plan for 3–4 minutes first, and leave 3 minutes at the end to edit.</span></span></div>
+
+    <div class="blk"><div class="h">Option A · An op-ed</div>
+      <p style="font-size:1.03rem;margin:4px 0 6px">Your city newspaper is inviting readers' op-eds on this question: <b>"Should schools teach students to write <i>with</i> AI tools rather than ban them?"</b> Write for the paper's general readership: open with a real hook, make your line unmistakable, concede the strongest objection and answer it, marry evidence to a human detail, and close on a line that lands. <span style="color:var(--ink-2)">You may argue either side.</span></p>
+    </div>
+    <div class="blk"><div class="h">Option B · A review</div>
+      <p style="font-size:1.03rem;margin:4px 0 6px">A cultural magazine is publishing short reviews under the heading <b>"The work that changed how I see."</b> Review a book, film, exhibition, album, or podcast (real or invented). Describe only enough to orient the reader, evaluate through specific, grounded detail, balance praise and criticism, and end with a clear verdict. No spoilers.</p>
+    </div>
+    <div class="blk"><div class="h">Option C · A synthesis</div>
+      <p style="font-size:1.03rem;margin:4px 0 6px">Write an article for a school's newsletter for parents that brings together the two views below on <b>handwriting and typing in class</b>. Organize by <b>idea</b>, not source by source; attribute each view accurately with fair reporting verbs; show where the sources agree and diverge; and end with your own measured conclusion, clearly marked as yours.</p>
+      <div class="text" style="font-size:.98rem">
+        <p><b>Source 1</b> (a cognitive scientist, in a magazine interview): "When students write notes by hand, they cannot copy every word, so they are forced to decide what matters. That act of selection is where learning happens. Laptops make transcription easy, and understanding optional."</p>
+        <p><b>Source 2</b> (a learning-support teacher, on her blog): "For many of my students with dyslexia or motor difficulties, handwriting is not a route to understanding but a wall in front of it. Typing lets them keep up with the class. The question is not which tool is better, but which tool lets <i>this</i> student think."</p>
+      </div>
+    </div>
+    <div class="phrase-bank">
+      <span class="phrase">It's tempting to think … , but …</span>
+      <span class="phrase">The obvious reply is that …</span>
+      <span class="phrase">None of this is to deny that …</span>
+      <span class="phrase">What makes it remarkable is …</span>
+      <span class="phrase">For all its flaws, …</span>
+      <span class="phrase">Whereas X emphasizes …, Y counters that …</span>
+      <span class="phrase">X's view is complicated by Y's point that …</span>
+      <span class="phrase">Taken together, these accounts suggest …</span>
+    </div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <p style="font-size:.95rem;color:var(--ink-2)">Continue on the back if you need more space. Option chosen: A / B / C &nbsp;·&nbsp; Word count (approximately): ________</p>
+
+    <p class="done">Finished. Read your piece once more, aloud in your head, and kill one darling.</p>
+
+    <table class="grid" style="margin-top:22px">
+      <thead><tr><th>For the teacher</th><th>1 Listening</th><th>2 Reading</th><th>3 Use of English</th><th>4 Writing</th><th>Written</th><th>Speaking</th><th>Total</th></tr></thead>
+      <tbody><tr><td>Score</td><td>/15</td><td>/15</td><td>/25</td><td>/30</td><td>/85</td><td>/15</td><td>/100</td></tr></tbody>
+    </table>
+  </div>
+
+  <!-- ═════════════════════ TEACHER PAGES ═════════════════════ -->
+  <div class="pagebreak"></div>
+  <span class="teacher-only">Teacher only · do not copy for learners</span>
+  <div class="sec" style="margin-top:6px"><h2>Part 1 · Listening Scripts</h2><span class="rule"></span></div>
+  <p>Give 45 seconds to read the Part A questions and 30 seconds for each later section. Read each script <b>twice</b> at a natural pace, with about 10 seconds between readings. Read Part A as a real talk: warm, unhurried, with the pauses marked. Notice that it <b>mentions the wrong option first</b> ("my first instinct was…") before the real decision, exactly as Lesson 8.1 warned. Don't signal the switch with your voice beyond what the words do. For Part B, change your voice or position for each speaker, or read it with a colleague, at a brisk conversational speed, with Omar's sarcasm flat and deadpan. In Part C, say the number, then the sentence <b>once per reading</b>, with the marked stress. Don't read the answer choices aloud.</p>
+
+  <div class="blk"><div class="h">A · Dr. Elena Voss, "Why we kept the crack" (read the whole talk twice, then give 1 minute)</div>
+    <div class="script">Good evening, and thank you for coming out on such a wet night. I'm told the umbrella stand downstairs is now, technically, an installation.<br>
+    Tonight I want to talk about a single object: the blue-and-white bowl in Case Twelve, the one with the crack running right through the middle. When it came to us, three years ago, the obvious question was how to hide that crack. I'll be honest: <b>my first instinct was to fill it and paint over it</b>, so that visitors would see the bowl as it looked on the day it was made. In the end, though, <b>we did the opposite. We kept the crack visible</b>, and I want to explain why.<br>
+    Arguably, a restorer's first duty is to an object's history, not to its original appearance. And this bowl's history includes that crack. The records suggest it was broken, and mended, at least twice, <b>once by someone who, judging by the quality of the work, was not a professional, and cared about it a great deal.</b> That repair is not damage to the story; it is part of the story.<br>
+    Now, I'm not going to pretend everyone agreed. One of our trustees described the bowl as, and I quote, <b>"a lovely piece, if you stand far enough away."</b> (pause; dry) <b>We took that under advisement.</b><br>
+    <b>Admittedly, there are objects where invisible restoration is the right choice</b>: a painting, say, where the damage would distract from everything the artist intended. I'm not arguing that every crack is sacred. What I am arguing is that we should stop treating the marks of use as a kind of embarrassment. <b>A museum that erases every scar is not preserving the past; it is airbrushing it.</b><br>
+    <b>Tellingly</b>, the bowl has become one of the most photographed objects in the gallery. Visitors stand in front of it longer than almost anything else on that floor. Why? I suspect it's because a perfect object asks only to be admired, whereas a mended one asks a question: who loved this enough to fix it?<br>
+    So when you walk through the galleries tonight, I'd invite you to look <i>for</i> the repairs rather than past them. They're the places where the objects are still talking.</div>
+  </div>
+  <div class="blk"><div class="h">B · Jess and Omar (read the whole dialogue twice, then give 1 minute)</div>
+    <div class="dialogue">
+      <p class="line a"><span class="speaker">Jess:</span> So, did you survive the offsite?</p>
+      <p class="line b"><span class="speaker">Omar:</span> Just about. Eight hours of "blue-sky thinking" in a room with no windows. (flat, deadpan) <b>Loved it. Honestly, best day of my life.</b></p>
+      <p class="line a"><span class="speaker">Jess:</span> Ha. That good?</p>
+      <p class="line b"><span class="speaker">Omar:</span> <b>The team-building bit was… not our finest hour.</b> Someone fell in the pond.</p>
+      <p class="line a"><span class="speaker">Jess:</span> Tell me it wasn't Graham.</p>
+      <p class="line b"><span class="speaker">Omar:</span> (a small smile in the voice) <b>I couldn't possibly comment.</b> Anyway, the big news is they want someone to lead the new client project. Any chance you'd be up for it?</p>
+      <p class="line a"><span class="speaker">Jess:</span> Me? Oh… that's really kind of you to think of me. <b>It's just, with the audit and everything, it might be a bit of a stretch right now. Let me have a think.</b></p>
+      <p class="line b"><span class="speaker">Omar:</span> No pressure. <b>I lowkey think you'd smash it,</b> though.</p>
+      <p class="line a"><span class="speaker">Jess:</span> You're sweet. Right, I'm off. <b>I'm meeting Priya on the first floor, by the lift.</b> See you tomorrow!</p>
+    </div>
+  </div>
+  <div class="blk"><div class="h">C · Variety and stress</div>
+    <div class="script">Number 14: (Replay Jess's last line from Part B.) <b>I'm meeting Priya on the first floor, by the lift.</b><br>
+    Number 15: <b>I didn't say we should CANCEL the conference.</b> (Put strong contrastive stress on <i>cancel</i>; keep every other word light, with a slight fall-rise on <i>conference</i>, as if "…but I did say something else.")</div>
+  </div>
+
+  <div class="sec"><h2>Individual Speaking Interview · about 12 minutes</h2><span class="rule"></span></div>
+  <p>Sit <b>beside</b> the learner, not across a desk, with the grid on your lap. Speak naturally, at your normal pace. Ask the <b>core</b> question first; if there's no answer after about 5 seconds, use the <b>support</b> version; if the answer comes easily, add the <b>stretch</b>. At C2 you are listening for <b>effortless precision and appropriacy</b>: a long turn that is shaped and memorable, abstract reasoning that bends under challenge without breaking, idiom and register that feel chosen rather than learned, and tact that never blurs the message. Many C2 learners are near-native in some areas and fossilized in others (a stubborn article pattern, an L1 stress habit, one register they never leave). Score what you hear on each criterion separately. Don't correct during the interview. <b>Before stage 1</b>, let the learner choose a long-turn card and think about it quietly (about 1 minute) while you do the warm-up.</p>
+
+  <div class="lesson">
+    <div class="lesson-head"><span class="lcode">1</span><h3>Warm-up: what's next</h3><span class="dur">~1 min</span></div>
+    <div class="lesson-body">
+      <div class="say">Hello! So, now that the course is almost over, what are you going to do with your English next? <span style="font-style:normal;color:var(--ink-3)">(real or imagined)</span></div>
+      <p style="font-size:.9rem;color:var(--ink-2)"><b>Support:</b> "Work, study, reading, something else?" · <b>Stretch:</b> "And what, if anything, do you think you'll miss about <i>learning</i> it?"</p>
+    </div>
+  </div>
+  <div class="lesson">
+    <div class="lesson-head"><span class="lcode">2</span><h3>Long turn</h3><span class="dur">~3½ min</span></div>
+    <div class="lesson-body">
+      <div class="say">Please talk about the card you chose, for about two and a half minutes. I'll just listen.</div>
+      <p style="font-size:.9rem;color:var(--ink-2)">Don't interrupt. Time about 2½ minutes; stop kindly at 3. Then ask <b>one</b> follow-up question about the content. <b>Support:</b> if they freeze, "What's your main point?" then "Give me an example." · <b>Stretch:</b> "What's the most persuasive thing someone could say against you?" or "Say that last point again, as you'd put it to a skeptical expert." Listen for a <b>hook and a resonant close</b>, signposting that doesn't creak, a controlled figure or image, precisely placed stance markers (<i>arguably, if anything, tellingly</i>), and delivery that uses pause and stress for effect.</p>
+    </div>
+  </div>
+  <div class="lesson">
+    <div class="lesson-head"><span class="lcode">3</span><h3>Abstract discussion with push-back</h3><span class="dur">~3½ min</span></div>
+    <div class="lesson-body">
+      <p>Read <b>one</b> statement below. Whatever the learner says, take the <b>other side</b> and push back <b>twice</b>, politely but firmly. Make the second push-back sharper: challenge an assumption, offer a counter-example, or slip in a mildly <b>loaded question</b> (Lesson 2.1) and see whether they refuse the premise. Your push-back is a role, not your opinion.</p>
+      <div class="say">Here's a statement: [statement]. Where do you stand? … Why? … I'm not sure that follows. Surely [counter-argument]? … But isn't that just [loaded reformulation]? … So, on balance, where does that leave you?</div>
+      <p style="font-size:.9rem;color:var(--ink-2)"><b>Support:</b> "Do you agree or disagree?" then "Why?" and one push-back only · <b>Stretch:</b> "Put the other side's case as fairly as you can." · "What would it take to change your mind?" Listen for <b>concession without collapse</b>, a refined final position, hedging calibrated to the argument, precise abstract vocabulary, and a presupposition noticed and declined ("That assumes…, which I'd question").</p>
+    </div>
+  </div>
+  <div class="lesson">
+    <div class="lesson-head"><span class="lcode">4</span><h3>Negotiation or diplomatic task + register shift</h3><span class="dur">~3½ min</span></div>
+    <div class="lesson-body">
+      <p>The learner chooses <b>one</b> task card. Part 1 (about 2½ minutes): you play the other person and react naturally, with one real objection and one mild push. Part 2 (about 1 minute): ask for the outcome in <b>two registers</b>: the one-sentence version for the formal minutes, then the voice message to a friend.</p>
+      <div class="say">(Festival director) Thanks for coming in. I have to say, our budget is basically fixed. What did you want to raise? … Twelve percent? That's a very hard sell for us. … What could you offer in return?</div>
+      <div class="say">(Applicant) Thanks for calling. I've been waiting to hear. So, how did it go? … Oh. Can I ask what the reason was? … So is there any point applying again?</div>
+      <div class="say">(New partner) Hi. Yes, sorry, I've been meaning to get back to you about Thursday. … Well… it's quite challenging. … What would you suggest?</div>
+      <div class="say">(Switch) Thanks. Now, one sentence for the minutes, please. … And the voice message you'd send a friend about how it went?</div>
+      <p style="font-size:.9rem;color:var(--ink-2)">Listen for the moves of Lessons 7.1–7.2: <b>acknowledge → counter</b>, a <b>conditional trade</b> ("If you were able to…, then we could…"), a face-saving bridge, a <b>difficult message stated clearly and early, then cushioned</b>, and the hedge decoded as a refusal and repaired without blame. In Part 2, listen for two genuinely different registers, each internally consistent. <b>Support:</b> model the first line ("I'll be straight with you: I need to raise something difficult"). <b>Stretch:</b> push back a second time, harder, and see whether they stay calm and assertive.</p>
+    </div>
+  </div>
+  <div class="lesson">
+    <div class="lesson-head"><span class="lcode">5</span><h3>Closing + your question</h3><span class="dur">~½ min</span></div>
+    <div class="lesson-body">
+      <div class="say">Thank you, that's everything. Before you go, is there anything you'd like to ask me? About the course, what comes next, anything at all.</div>
+    </div>
+  </div>
+
+  <div class="blk"><div class="h">Long-turn cards (cut · the learner chooses one before stage 1)</div>
+    <div class="cards">
+      <div class="card-cut"><div class="ct">Long turn · Style</div><h4>Plain or ornate?</h4><p>"The plainest word is almost always the best one." Is it? When does ornament (a figure, a rare word, a long periodic sentence) earn its place, and when does it get in the way? Use examples from writing or speech you know.</p></div>
+      <div class="card-cut b"><div class="ct">Long turn · Mediation</div><h4>Something lost, something carried</h4><p>A word, a joke, a proverb, or an idea that does not cross easily between two languages or cultures (yours, or ones you know about). What gets lost, and how would you carry as much as possible across?</p></div>
+      <div class="card-cut"><div class="ct">Long turn · Interpretation</div><h4>A text that changed how you see</h4><p>A book, film, speech, poem, or article (it may be imagined or described in general terms). Not just what it said, but <i>how</i> its craft worked on you: its voice, an image, a turn, its ending.</p></div>
+      <div class="card-cut b"><div class="ct">Long turn · Evaluation</div><h4>The measure of mastery</h4><p>Can any exam truly measure mastery of a language? What does a test capture well, what does it miss, and what would a fairer measure look like?</p></div>
+    </div>
+  </div>
+  <div class="blk"><div class="h">Discussion statements (you choose one · take the other side)</div>
+    <ul class="tick">
+      <li>"A language you don't use every day isn't really yours."</li>
+      <li>"Machine translation will soon make learning languages unnecessary."</li>
+      <li>"Irony and understatement do more harm than good in international communication."</li>
+      <li>"Everyone who speaks English as an additional language should aim to sound like a native speaker."</li>
+    </ul>
+    <p style="font-size:.86rem;color:var(--ink-2)">If the learner chose Writing Option A (AI tools in school), avoid the second statement so that the interview gives you fresh evidence. The fourth statement touches identity: use it only if you're confident the learner will enjoy it, and push back on the <i>idea</i>, never on the learner's own accent.</p>
+  </div>
+  <div class="blk"><div class="h">Task cards (cut · the learner chooses one)</div>
+    <div class="cards">
+      <div class="card-cut"><div class="ct">Negotiation · Formal → two registers</div><h4>A price rise</h4><p>You print the programs for a small arts festival. Your paper costs have risen <b>12%</b> and you need a higher price. The festival director (your teacher) has a fixed budget. Negotiate a deal you can both defend.<br>Then: one sentence for the minutes, and a voice message to a friend.</p></div>
+      <div class="card-cut b"><div class="ct">Difficult message · Formal → two registers</div><h4>Not funded this time</h4><p>You chair a small grants panel. Tell an applicant (your teacher) that their strong proposal was <b>not funded</b> this round: the reason was budget, not quality. Be clear and kind, and keep the door open.<br>Then: one sentence for the minutes, and a voice message to a friend.</p></div>
+      <div class="card-cut"><div class="ct">Cross-cultural repair · Formal → two registers</div><h4>"Challenging"</h4><p>A new partner (your teacher) agreed to a Thursday deadline, then went quiet. You now suspect their "that would be challenging" meant no. Repair the misunderstanding without blame and agree on a realistic date.<br>Then: one sentence for the minutes, and a voice message to a friend.</p></div>
+    </div>
+  </div>
+
+  <div class="sec"><h2>Interview Scoring Grid</h2><span class="rule"></span></div>
+  <p style="font-size:.9rem;color:var(--ink-2)">Score each criterion <b>0–3</b>: 0 = no response · 1 = Not yet C2 · 2 = C2 · 3 = C2 strong mastery. Descriptors are in the assessment key. Total /15. Print one per learner.</p>
+  <p style="font-size:.95rem">Learner: ______________________ &nbsp; Date: __________ &nbsp; Long turn: ____________ &nbsp; Task: ☐ Price ☐ Not funded ☐ Repair &nbsp; ☐ Adapted</p>
+  <table class="grid">
+    <thead><tr><th>Criterion</th><th>What to listen for</th><th>Score (0–3)</th></tr></thead>
+    <tbody>
+      <tr><td><b>Task &amp; coherence</b></td><td>A long turn with a hook, a clear spine, and a resonant close; a position that survives push-back or is refined honestly; a negotiated or delivered outcome that is clear; both registers delivered in stage 4</td><td class="sc">&nbsp;</td></tr>
+      <tr><td><b>Precision &amp; range</b></td><td>The mot juste; idiom and restricted collocation exactly right; abstract vocabulary for abstract ideas; complex grammar controlled even while attention is on the argument; errors rare and self-repaired</td><td class="sc">&nbsp;</td></tr>
+      <tr><td><b>Register &amp; pragmatics</b></td><td>Register chosen and held, then shifted cleanly in stage 4; stance markers placed precisely; a loaded premise noticed and declined; diplomacy that is firm on substance and warm on person</td><td class="sc">&nbsp;</td></tr>
+      <tr><td><b>Interaction</b></td><td>Concedes the fair point and narrows to the real claim; picks up your hints and tone; proposes a conditional trade or a face-saving bridge; asks a genuine question at the end</td><td class="sc">&nbsp;</td></tr>
+      <tr><td><b>Fluency &amp; delivery</b></td><td>Natural, effortless flow; pauses only to choose the exact word; pause and stress used for effect; intonation that carries attitude (warmth, irony, reservation) in both registers</td><td class="sc">&nbsp;</td></tr>
+      <tr><td colspan="2"><b>Total /15</b> · Worked well: ____________________ · To refine: ____________________</td><td class="sc">&nbsp;</td></tr>
+    </tbody>
+  </table>
+
+  <div class="note lab">
+    <div class="t">After the test</div>
+    <p>Score with the key and put written + speaking on the summary sheet. Score the writing with the rubric (/15) and <b>double it</b> for the paper total (/30). Tell each learner their next step <b>privately</b> and kindly before they leave, or at a short one-to-one the following week. Never read scores aloud. The key's "grade to outcome" table shows who has reached C2 (and who is ready to sit a proficiency exam if they want the credential), who goes on with a review plan, and who would benefit from consolidating at C1/C2 with support.</p>
+  </div>
+
+  <div class="foot">
+    <div class="who"><b>Ray de la Paz</b><span class="bio">© 2026 Ray de la Paz · Mastery English (C2 Proficiency)</span></div>
+    <div class="ver">Assessment · Final Test · v1.0</div>
+  </div>
+
+</div>
+</body>
+</html>

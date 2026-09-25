@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slides — Module 4</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root{--bg:#0b1220;--ink:#edf2fb;--ink2:#a8b6cf;--accent:#7fb2ff;--accent2:#2563eb;--lab:#34d3bd;--warn:#fbbf24;--line:#233252;--code:#101a2e;color-scheme:dark}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;overflow:hidden}
+  .deck{height:100%;width:100%;position:relative}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:6vh 8vw;gap:20px}
+  .slide.on{display:flex}
+  h1,h2,h3{font-family:"Archivo",sans-serif;line-height:1.1;text-wrap:balance}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  .slide h1{font-size:clamp(2rem,6vw,4rem);font-weight:800;letter-spacing:-.02em}
+  .slide h2{font-size:clamp(1.5rem,4.2vw,2.8rem);font-weight:800;letter-spacing:-.01em}
+  .slide p.lead{font-size:clamp(1.05rem,2.4vw,1.5rem);color:var(--ink2);max-width:26ch}
+  ul{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:6px}
+  ul li{position:relative;padding-left:34px;font-size:clamp(1.05rem,2.3vw,1.6rem)}
+  ul li::before{content:"";position:absolute;left:0;top:.55em;width:12px;height:12px;border-radius:3px;background:var(--accent);transform:rotate(45deg)}
+  ul.lab li::before{background:var(--lab)}
+  code.k{font-family:"JetBrains Mono",monospace;color:#cfe0ff;font-size:.92em}
+  pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:22px 26px;font-family:"JetBrains Mono",monospace;font-size:clamp(.85rem,1.9vw,1.3rem);line-height:1.55;overflow:auto;max-width:100%}
+  pre .k{color:#7dd3fc} pre .s{color:#86efac} pre .c{color:#7183a3;font-style:italic}
+  .tag{display:inline-flex;align-items:center;gap:10px;font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);color:var(--ink2)}
+  .tag .pill{background:var(--accent2);color:#fff;font-weight:700;border-radius:999px;padding:3px 12px;letter-spacing:.06em}
+  .tag .pill.lab{background:var(--lab);color:#062b26} .tag .pill.warn{background:var(--warn);color:#3a2a05}
+  .section{background:linear-gradient(135deg,#132a52,#0b1220)}
+  .section .big{font-size:clamp(3rem,12vw,8rem);font-family:"Archivo";font-weight:800;color:var(--accent2);line-height:.9}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+  @media (max-width:760px){.two{grid-template-columns:1fr}}
+  .bar{position:fixed;left:0;top:0;height:4px;background:var(--accent2);width:0;transition:width .25s;z-index:5}
+  .count{position:fixed;right:16px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink2);z-index:5}
+  .nav{position:fixed;inset:auto 0 0 0;display:flex;justify-content:space-between;pointer-events:none;z-index:4}
+  .nav button{pointer-events:auto;background:transparent;border:none;color:transparent;width:22vw;height:100vh;cursor:pointer}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+  /* ESL extras (picture vocab, grammar tables, dialogue, clocks) */
+  .pics{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,1.6vw,18px)}
+  .pics.six{grid-template-columns:repeat(6,1fr)}
+  .pic{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center}
+  .pic img{width:100%;max-width:150px;aspect-ratio:1;object-fit:cover;border-radius:10px;background:#FFF3E0;display:block;margin:0 auto}
+  .pic .emo{font-size:clamp(2.6rem,7vw,5rem);line-height:1;aspect-ratio:1;max-width:150px;margin:0 auto;display:flex;align-items:center;justify-content:center}
+  .pic .w{font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(.9rem,2vw,1.35rem);margin-top:6px}
+  @media (max-width:760px){.pics,.pics.six{grid-template-columns:repeat(3,1fr)}}
+  table.g{border-collapse:collapse;font-size:clamp(.95rem,2.1vw,1.45rem);width:100%;max-width:1000px}
+  table.g th,table.g td{border:1px solid var(--line);padding:10px 16px;text-align:left}
+  table.g th{background:var(--code);color:var(--accent);font-family:"JetBrains Mono",monospace;font-size:.8em;letter-spacing:.04em}
+  table.g b{color:#ffd166}
+  .dlg{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:18px 24px;display:flex;flex-direction:column;gap:8px;font-size:clamp(1rem,2.2vw,1.45rem);max-width:1000px}
+  .dlg .sp{display:inline-block;min-width:3.6em;font-weight:700;color:var(--accent)}
+  .dlg .b .sp{color:#c4a1ff}
+  .ccq{font-size:clamp(1rem,2.2vw,1.45rem);border:1px dashed var(--line);border-radius:12px;padding:12px 18px;background:var(--code)}
+  .ccq i{color:var(--ink2)}
+  .clocks{display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,34px);align-items:flex-start}
+  .clocks figure{text-align:center}
+  .clocks svg{width:clamp(96px,14vw,170px);height:auto}
+  .clocks figcaption{font-size:clamp(.95rem,2vw,1.3rem);margin-top:6px}
+  .clocks figcaption small{display:block;color:var(--ink2);font-size:.8em}
+  .snd{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .snd div{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:clamp(1rem,2.2vw,1.5rem)}
+  .snd div b{display:block;font-family:"Archivo";font-size:1.5em;color:var(--accent)}
+  .snd div small{color:var(--ink2)}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="deck" id="deck">
+
+  <!-- 1 -->
+  <section class="slide on section">
+    <div class="eyebrow">Mastery English (C2) · Instructor Kit</div>
+    <h1>Module 4<br>The Complete Communicator</h1>
+    <p class="lead">Persuade. Sound like yourself. Orchestrate.</p>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide">
+    <div class="eyebrow">Classes C10–C12 · the map</div>
+    <h2>From command to effect</h2>
+    <ul>
+      <li><b>4.1</b> Rhetoric &amp; persuasion: <i>ethos · pathos · logos</i>, the figures, the concession, the counterfeits</li>
+      <li><b>4.2</b> Style &amp; voice: rhythm, economy, strong verbs, <i>one event in three voices</i></li>
+      <li><b>4.3</b> Mastery in Action: a speech, a live Q&amp;A, a written re-pitch (Modules 1–4)</li>
+    </ul>
+    <div class="tag"><span class="pill">NOTE</span> You argue the card, not your convictions. Real life, a new identity card, or invented: all fine. "Pass" is always allowed.</div>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide">
+    <div class="eyebrow">4.1 · Lead-in · same content, different force</div>
+    <h2>Which one would you remember tomorrow?</h2>
+    <div class="dlg">
+      <p><span class="sp">Flat</span> We need to act on this problem now, because it will get worse and cost more if we wait, and future generations will suffer.</p>
+      <p class="b"><span class="sp">Figured</span> We can act now, or we can pay later. We can spend a little today, or a fortune tomorrow. We can spare our children this burden, or bequeath it to them.</p>
+    </div>
+    <div class="ccq">Same content? <i>(Yes.)</i> Which one moves? <i>(The second.)</i> What did the speaker <b>do</b>? <i>(Balanced opposites, repetition, three parts, an image of the future.)</i></div>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide">
+    <div class="eyebrow">4.1 · Meaning · where persuasion comes from</div>
+    <h2>Ethos · pathos · logos</h2>
+    <table class="g">
+      <tr><th>Appeal</th><th>Works by</th><th>Sounds like</th><th>Overused, it becomes</th></tr>
+      <tr><td><b>Ethos</b></td><td>credibility, fairness, shared values</td><td>As someone who has… · I'll be the first to admit…</td><td>self-importance</td></tr>
+      <tr><td><b>Pathos</b></td><td>stakes, story, the telling detail</td><td>Picture, for a moment… · Behind every statistic…</td><td>manipulation</td></tr>
+      <tr><td><b>Logos</b></td><td>evidence, reasoning</td><td>The figures are stark: · It follows, then, that…</td><td>a cold wall of numbers</td></tr>
+    </table>
+    <div class="tag"><span class="pill">BRAID</span> Open on ethos · reason with logos · close on pathos. No single strand carries the rope.</div>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide">
+    <div class="eyebrow">4.1 · Form · the shapes the ear remembers</div>
+    <h2>Name the figure</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>Tricolon</th><td>we buy it, we use it once, and we store it</td></tr>
+        <tr><th>Anaphora</th><td><b>This city deserves</b>… <b>This city deserves</b>…</td></tr>
+        <tr><th>Antithesis</th><td>not to spend <b>more</b>, but to own <b>less</b></td></tr>
+        <tr><th>Rhetorical Q</th><td>Isn't that what a neighborhood is for? ↘</td></tr>
+        <tr><th>Chiasmus</th><td>never negotiate out of fear… never fear to negotiate</td></tr>
+        <tr><th>Hypophora</th><td>Why does that matter? I'll tell you why.</td></tr>
+      </table>
+      <div class="ccq">Three parts, same grammar? <i>(Tricolon.)</i><br>Does a rhetorical question want an answer? <i>(No: it falls.)</i><br>Five figures in one paragraph? <i>(Too many: nothing stands out.)</i><br>Where do they go? <i>(The hinges: opening, pivot, close.)</i></div>
+    </div>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide">
+    <div class="eyebrow">4.1 · "Lend It, Don't Buy It" · the architecture</div>
+    <h2>Claim → grounds → warrant → concession → refutation</h2>
+    <table class="g">
+      <tr><th>Claim</th><td>This association should open a tool library.</td></tr>
+      <tr><th>Grounds</th><td>35 of 42 drill owners used theirs fewer than three times last year.</td></tr>
+      <tr><th>Warrant</th><td>A tool in a garage is not an asset; it is a cost with a handle.</td></tr>
+      <tr><th>Concession</th><td><b>I grant that</b> a few tools will come back worse than they left.</td></tr>
+      <tr><th>Refutation</th><td><b>But</b> borrowers return what they borrow, and a repair fund costs less than 42 drills.</td></tr>
+      <tr><th>Restated claim</th><td>Lend it, don't buy it.</td></tr>
+    </table>
+    <div class="tag"><span class="pill warn">FIND IT</span> One line is counterfeit. Which one? Why is it dangerous in an honest speech?</div>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide">
+    <div class="eyebrow">4.1 · Fallacies · refuse them, name them, calmly</div>
+    <h2>Spot the counterfeit</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>Straw man</th><td>"So you want to ban email altogether?"</td></tr>
+        <tr><th>Ad hominem</th><td>"He can't even park straight."</td></tr>
+        <tr><th>False dilemma</th><td>"Cancel the party or go over budget."</td></tr>
+        <tr><th>Slippery slope</th><td>"One Friday at home, then nobody comes in."</td></tr>
+        <tr><th>Bandwagon</th><td>"Everyone has open-plan, so it's best."</td></tr>
+        <tr><th>Hasty generalization</th><td>"My cousin hurt her back, so…"</td></tr>
+      </table>
+      <div class="ccq">"That's not what I said. I suggested <b>fewer</b>, not none."<br>"His parking isn't the question; the plan is."<br>Counter = <i>redirect to the actual claim</i>.<br>Insult back? <i>(No: that's another ad hominem.)</i></div>
+    </div>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide">
+    <div class="eyebrow">4.1 · Freer task · 9 + 9 + 5 min</div>
+    <h2>Persuasion Lab: two minutes to win the room</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>Draw a topic + a side · argue the card</li>
+        <li>Spine sheet: draft the <b>concession first</b> · write in full only the opening, the pivot, the close</li>
+        <li>3+ named figures · all 3 appeals · no more than 4 figures</li>
+        <li>Groups of 3 · speak 2 min · listeners fill the <b>device-hunt grid</b></li>
+        <li><b>Flat-reading test</b>: read your best line flat. Does it still hold?</li>
+      </ul>
+      <div class="ccq">Whose opinion? <i>(The card's.)</i><br>How long? <i>(Two minutes.)</i><br>What do listeners do? <i>(Tick and quote devices.)</i><br>A good concession is…? <i>(Narrow.)</i><br>"Pass"? <i>(Always OK.)</i></div>
+    </div>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide">
+    <div class="eyebrow">4.2 · Rhythm · the music of prose</div>
+    <h2>Long, long, long… then short. Hard.</h2>
+    <table class="g">
+      <tr><th>Simple</th><td>The room fell silent.</td></tr>
+      <tr><th>Compound</th><td>She spoke, and the room fell silent.</td></tr>
+      <tr><th>Complex</th><td>When she spoke, the room fell silent.</td></tr>
+      <tr><th>Periodic</th><td>When she rose, when she drew breath, when at last she spoke, <b>the room fell silent</b>.</td></tr>
+      <tr><th>Loose</th><td><b>The room fell silent</b>, all argument spent, every eye turned toward her.</td></tr>
+    </table>
+    <div class="ccq">Periodic: when do we get the point? <i>(At the end: suspense.)</i> Loose? <i>(First: relaxed.)</i> Where does a fragment belong? <i>(Story, essay, speech. Not a report.)</i> The test? <i>(Read it aloud.)</i></div>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide">
+    <div class="eyebrow">4.2 · Economy · omit needless words</div>
+    <h2>Cut the dead, keep the living</h2>
+    <div class="dlg">
+      <p><span class="sp">42</span> It is important to note that, due to the fact that the committee had not yet reached a final decision on the matter, we were, at this point in time, quite unable to make any kind of announcement to the general public.</p>
+      <p class="b"><span class="sp">14</span> Because the committee had not yet decided, we could not yet announce anything publicly.</p>
+    </div>
+    <div class="two">
+      <table class="g">
+        <tr><td><s>make a decision</s> <b>decide</b> · <s>give consideration to</s> <b>consider</b></td></tr>
+        <tr><td><s>each and every</s> <b>every</b> · <s>very unique</s> <b>unique</b></td></tr>
+      </table>
+      <div class="ccq">Meaning lost? <i>(None.)</i> "Committee undecided; no announcement." Better? <i>(No: telegram prose.)</i></div>
+    </div>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide">
+    <div class="eyebrow">4.2 · Voice · the personality in the pattern</div>
+    <h2>One fire drill, three voices</h2>
+    <div class="dlg">
+      <p><span class="sp">A</span> At 10:14 on Tuesday, a scheduled fire drill interrupted the quarterly budget meeting. The meeting resumed at 10:40.</p>
+      <p class="b"><span class="sp">B</span> Deep in the third hour of the quarterly budget, somewhere in that long gray corridor of spreadsheets, we heard the bell. Then the stairs.</p>
+      <p><span class="sp">C</span> We reached the parking lot in six minutes, which is faster than we have reached any decision this year.</p>
+    </div>
+    <div class="ccq">Fingerprint: sentence length · plain or Latinate · few or many images · distant or intimate · the reader relationship. Voice = <b>consistency</b>. Pastiche: imitate a manner, then diverge.</div>
+  </section>
+
+  <!-- 12 -->
+  <section class="slide">
+    <div class="eyebrow">4.2 · Workshop · choose your event</div>
+    <h2>Same facts. Three tellings.</h2>
+    <div class="pics six">
+      <div class="pic"><img src="../assets/vocab/luggage.jpg" alt=""><div class="w">the suitcase</div></div>
+      <div class="pic"><img src="../assets/vocab/umbrella.jpg" alt=""><div class="w">the umbrella</div></div>
+      <div class="pic"><img src="../assets/vocab/cake.jpg" alt=""><div class="w">the cake</div></div>
+      <div class="pic"><img src="../assets/vocab/bus-stop.jpg" alt=""><div class="w">the bus</div></div>
+      <div class="pic"><img src="../assets/vocab/market.jpg" alt=""><div class="w">the last loaf</div></div>
+      <div class="pic"><img src="../assets/vocab/kitchen.jpg" alt=""><div class="w">the smoke alarm</div></div>
+    </div>
+    <div class="tag"><span class="pill lab">VOICES</span> The Reporter · The Lyric Essayist · The Deadpan Wit · 50–70 words each</div>
+  </section>
+
+  <!-- 13 -->
+  <section class="slide">
+    <div class="eyebrow">4.2 · Freer task · 14 + 12 + 2 min</div>
+    <h2>Style &amp; Voice Workshop + Critique Circle</h2>
+    <div class="two">
+      <ul class="lab">
+        <li><b>0</b> Blind reading: someone else reads · guess the voices</li>
+        <li><b>1</b> What stayed with me (quote it) · no suggestions yet</li>
+        <li><b>2</b> The writer's one question</li>
+        <li><b>3</b> Neutral questions only</li>
+        <li><b>4</b> One darling, one fix, <b>with permission</b></li>
+      </ul>
+      <div class="ccq">Change the facts? <i>(Never.)</i><br>Who reads your piece aloud? <i>(Someone else.)</i><br>When can critics suggest? <i>(Step 4, if the writer says yes.)</i><br>You get a suggestion. You say…? <i>("Thank you.")</i></div>
+    </div>
+  </section>
+
+  <!-- 14 -->
+  <section class="slide">
+    <div class="eyebrow">4.3 · Orchestration · the art that hides its art</div>
+    <h2>How many layers in one breath?</h2>
+    <div class="dlg">
+      <p>We are told, endlessly, that the machine will "free us" from drudgery. Perhaps. But freedom, like fire, warms only those who tend it.</p>
+    </div>
+    <table class="g">
+      <tr><td><b>"free us"</b> irony · stance</td><td><b>Perhaps.</b> rhythm · concession</td><td><b>like fire</b> simile carrying the argument</td><td><b>tend</b> the mot juste</td></tr>
+    </table>
+    <div class="ccq">Did you notice them the first time? <i>(No: you felt them.)</i> Metaphor + idiom + tricolon + register drop in one sentence? <i>(They fight. Keep one layer in reserve.)</i></div>
+  </section>
+
+  <!-- 15 -->
+  <section class="slide">
+    <div class="eyebrow">4.3 · Adaptation · the same substance, a new room</div>
+    <h2>Misreading the room is the C2 error</h2>
+    <table class="g">
+      <tr><th></th><th>Expert · formal · written</th><th>Lay · informal · spoken</th></tr>
+      <tr><td><b>Register</b></td><td>There is reason to suspect a degree of cognitive atrophy.</td><td>Lean on it too hard and your own thinking goes soft.</td></tr>
+      <tr><td><b>Density</b></td><td>high: nominal, qualified</td><td>low: one idea at a time</td></tr>
+      <tr><td><b>Rhetoric</b></td><td>logos-forward, careful concession</td><td>a story, a question, "you"</td></tr>
+      <tr><td><b>Stance</b></td><td>arguably · the evidence tends to suggest</td><td>Honestly? I think we're kidding ourselves.</td></tr>
+    </table>
+  </section>
+
+  <!-- 16 -->
+  <section class="slide">
+    <div class="eyebrow">4.3 · Model · handling the room</div>
+    <h2>The question beneath the question</h2>
+    <div class="dlg">
+      <p><span class="sp">Priya:</span> So your proposal is a one-line record of every decision. Isn't this just more bureaucracy?</p>
+      <p class="b"><span class="sp">Daniel:</span> <b>If I read your question rightly</b>, the worry is that the log becomes the work. <b>That's a fair challenge. What I'd say is</b>: one line, ninety seconds.</p>
+      <p><span class="sp">Tom:</span> What happens when someone's name is next to a decision that goes wrong?</p>
+      <p class="b"><span class="sp">Daniel:</span> <b>Let me answer the question beneath the question</b>: will this be used to blame people? It records decisions, not culprits.</p>
+    </div>
+    <div class="ccq">What does Priya do before she challenges? <i>(Paraphrases.)</i> Daniel: concede or counter first? <i>(Concede, then counter.)</i></div>
+  </section>
+
+  <!-- 17 -->
+  <section class="slide">
+    <div class="eyebrow">4.3 · The task · 10 + 22 + 14 min</div>
+    <h2>Mastery in Action</h2>
+    <div class="two">
+      <ul class="lab">
+        <li><b>Plan</b>: hook · claim · grounds · turn · landing · six layers, one in reserve</li>
+        <li><b>Speak</b>: 3 min · then 2 min of questions (challengers paraphrase first)</li>
+        <li>Listeners write: the claim in one sentence + the strongest challenge</li>
+        <li><b>Re-pitch</b>: 150–180 words for your audience card · report the challenge fairly · answer it</li>
+      </ul>
+      <div class="ccq">How long? <i>(Three minutes.)</i><br>Read your notes? <i>(A glance.)</i><br>Re-pitch = summary? <i>(No: same argument, new reader.)</i><br>Leave out a strong challenge? <i>(Never.)</i><br>Speak only to the teacher? <i>(Yes, if you prefer.)</i></div>
+    </div>
+  </section>
+
+  <!-- 18 -->
+  <section class="slide section">
+    <div class="eyebrow">Halfway through C2</div>
+    <h2>Module 4 done</h2>
+    <ul class="lab">
+      <li><b>Persuade:</b> ethos · pathos · logos · <i>not to spend more, but to own less</i> · <i>I grant that… but this overlooks…</i></li>
+      <li><b>Sound like yourself:</b> long, long… then short · cut the dead, keep the living · kill your darlings</li>
+      <li><b>Orchestrate:</b> six layers, one voice · the same substance for a new room · the question beneath the question</li>
+    </ul>
+    <p class="lead" style="margin-top:10px;max-width:40ch">Homework: online lessons 4.1–4.3 with 🔊. Next: C13, Progress Test 1 (Modules 1–4) + catch-up stations.</p>
+  </section>
+
+
+</div>
+
+<div class="count" id="count">1 / 18</div>
+<div class="nav"><button id="prev" aria-label="Previous slide"></button><button id="next" aria-label="Next slide"></button></div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const bar=document.getElementById('bar'), count=document.getElementById('count');
+  let i=0;
+  function show(n){ i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+    bar.style.width=((i+1)/slides.length*100)+'%'; count.textContent=(i+1)+' / '+slides.length; }
+  document.getElementById('next').onclick=()=>show(i+1);
+  document.getElementById('prev').onclick=()=>show(i-1);
+  addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}
+    else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+  });
+  show(0);
+</script>
+</body>
+</html>

@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slides — Module 7</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root{--bg:#0b1220;--ink:#edf2fb;--ink2:#a8b6cf;--accent:#7fb2ff;--accent2:#2563eb;--lab:#34d3bd;--warn:#fbbf24;--line:#233252;--code:#101a2e;color-scheme:dark}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;overflow:hidden}
+  .deck{height:100%;width:100%;position:relative}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:6vh 8vw;gap:20px}
+  .slide.on{display:flex}
+  h1,h2,h3{font-family:"Archivo",sans-serif;line-height:1.1;text-wrap:balance}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  .slide h1{font-size:clamp(2rem,6vw,4rem);font-weight:800;letter-spacing:-.02em}
+  .slide h2{font-size:clamp(1.5rem,4.2vw,2.8rem);font-weight:800;letter-spacing:-.01em}
+  .slide p.lead{font-size:clamp(1.05rem,2.4vw,1.5rem);color:var(--ink2);max-width:26ch}
+  ul{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:6px}
+  ul li{position:relative;padding-left:34px;font-size:clamp(1.05rem,2.3vw,1.6rem)}
+  ul li::before{content:"";position:absolute;left:0;top:.55em;width:12px;height:12px;border-radius:3px;background:var(--accent);transform:rotate(45deg)}
+  ul.lab li::before{background:var(--lab)}
+  code.k{font-family:"JetBrains Mono",monospace;color:#cfe0ff;font-size:.92em}
+  pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:22px 26px;font-family:"JetBrains Mono",monospace;font-size:clamp(.85rem,1.9vw,1.3rem);line-height:1.55;overflow:auto;max-width:100%}
+  pre .k{color:#7dd3fc} pre .s{color:#86efac} pre .c{color:#7183a3;font-style:italic}
+  .tag{display:inline-flex;align-items:center;gap:10px;font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);color:var(--ink2)}
+  .tag .pill{background:var(--accent2);color:#fff;font-weight:700;border-radius:999px;padding:3px 12px;letter-spacing:.06em}
+  .tag .pill.lab{background:var(--lab);color:#062b26} .tag .pill.warn{background:var(--warn);color:#3a2a05}
+  .section{background:linear-gradient(135deg,#132a52,#0b1220)}
+  .section .big{font-size:clamp(3rem,12vw,8rem);font-family:"Archivo";font-weight:800;color:var(--accent2);line-height:.9}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+  @media (max-width:760px){.two{grid-template-columns:1fr}}
+  .bar{position:fixed;left:0;top:0;height:4px;background:var(--accent2);width:0;transition:width .25s;z-index:5}
+  .count{position:fixed;right:16px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink2);z-index:5}
+  .nav{position:fixed;inset:auto 0 0 0;display:flex;justify-content:space-between;pointer-events:none;z-index:4}
+  .nav button{pointer-events:auto;background:transparent;border:none;color:transparent;width:22vw;height:100vh;cursor:pointer}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+  /* ESL extras (picture vocab, grammar tables, dialogue, clocks) */
+  .pics{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,1.6vw,18px)}
+  .pics.six{grid-template-columns:repeat(6,1fr)}
+  .pic{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center}
+  .pic img{width:100%;max-width:150px;aspect-ratio:1;object-fit:cover;border-radius:10px;background:#FFF3E0;display:block;margin:0 auto}
+  .pic .emo{font-size:clamp(2.6rem,7vw,5rem);line-height:1;aspect-ratio:1;max-width:150px;margin:0 auto;display:flex;align-items:center;justify-content:center}
+  .pic .w{font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(.9rem,2vw,1.35rem);margin-top:6px}
+  @media (max-width:760px){.pics,.pics.six{grid-template-columns:repeat(3,1fr)}}
+  table.g{border-collapse:collapse;font-size:clamp(.95rem,2.1vw,1.45rem);width:100%;max-width:1000px}
+  table.g th,table.g td{border:1px solid var(--line);padding:10px 16px;text-align:left}
+  table.g th{background:var(--code);color:var(--accent);font-family:"JetBrains Mono",monospace;font-size:.8em;letter-spacing:.04em}
+  table.g b{color:#ffd166}
+  .dlg{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:18px 24px;display:flex;flex-direction:column;gap:8px;font-size:clamp(1rem,2.2vw,1.45rem);max-width:1000px}
+  .dlg .sp{display:inline-block;min-width:3.6em;font-weight:700;color:var(--accent)}
+  .dlg .b .sp{color:#c4a1ff}
+  .ccq{font-size:clamp(1rem,2.2vw,1.45rem);border:1px dashed var(--line);border-radius:12px;padding:12px 18px;background:var(--code)}
+  .ccq i{color:var(--ink2)}
+  .clocks{display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,34px);align-items:flex-start}
+  .clocks figure{text-align:center}
+  .clocks svg{width:clamp(96px,14vw,170px);height:auto}
+  .clocks figcaption{font-size:clamp(.95rem,2vw,1.3rem);margin-top:6px}
+  .clocks figcaption small{display:block;color:var(--ink2);font-size:.8em}
+  .snd{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .snd div{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:clamp(1rem,2.2vw,1.5rem)}
+  .snd div b{display:block;font-family:"Archivo";font-size:1.5em;color:var(--accent)}
+  .snd div small{color:var(--ink2)}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="deck" id="deck">
+
+  <!-- 1 -->
+  <section class="slide on section">
+    <div class="eyebrow">Mastery English (C2) · Instructor Kit</div>
+    <h1>Module 7<br>Communicating Across Cultures</h1>
+    <p class="lead">Read the rules. Negotiate across them. Carry meaning between them.</p>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide">
+    <div class="eyebrow">Classes C20–C22 · the map</div>
+    <h2>Same English, different unwritten rules</h2>
+    <ul>
+      <li><b>7.1</b> Cross-cultural pragmatics: <i>I don't suppose you could…? · That would be quite challenging · That's on me</i></li>
+      <li><b>7.2</b> Diplomacy &amp; negotiation: <i>If you were able to…, then we could… · What matters most to you here?</i></li>
+      <li><b>7.3</b> Working between languages: <i>It literally means…, but we'd actually say…</i></li>
+    </ul>
+    <div class="tag"><span class="pill warn">OUR RULES</span> Situations, not nationalities · nobody speaks for a culture · no jokes at anyone's expense · your own languages are optional · real, invented or new identity: all OK · "Pass" is always fine</div>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide">
+    <div class="eyebrow">7.1 · Four moments · what could go wrong?</div>
+    <h2>Nothing ungrammatical. Still risky.</h2>
+    <div class="pics">
+      <div class="pic"><img src="../assets/vocab/coffee.jpg" alt=""><div class="w">small talk</div></div>
+      <div class="pic"><img src="../assets/vocab/cake.jpg" alt=""><div class="w">a compliment</div></div>
+      <div class="pic"><img src="../assets/vocab/umbrella.jpg" alt=""><div class="w">irony</div></div>
+      <div class="pic"><img src="../assets/vocab/email.jpg" alt=""><div class="w">a request</div></div>
+    </div>
+    <div class="ccq">"So, how much rent do you pay?" · "You made this? It's amazing!" "Oh, it's nothing." · "Lovely weather!" (in a downpour) · "Send me the figures by 3." Any grammar mistakes? <i>(No.)</i> Where's the risk? <i>(In the rules for use: pragmatics.)</i></div>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide">
+    <div class="eyebrow">7.1 · Meaning · the directness dial</div>
+    <h2>Same act, different dial</h2>
+    <table class="g">
+      <tr><th>Act</th><th>More direct</th><th>More indirect</th></tr>
+      <tr><td>Request</td><td>Send me the file today.</td><td><b>I don't suppose</b> there's any chance of the file today?</td></tr>
+      <tr><td>Refusal</td><td>No, that won't work for me.</td><td>That would be <b>quite challenging</b>…</td></tr>
+      <tr><td>Criticism</td><td>This section is wrong.</td><td><b>I wonder whether</b> this section might read a little differently?</td></tr>
+      <tr><td>Disagreement</td><td>I don't agree.</td><td>I see it slightly differently, <b>though I may be missing something</b>.</td></tr>
+    </table>
+    <div class="tag"><span class="pill">KEY</span> Neither end is "more polite." And an indirect refusal is <b>still a refusal</b>: read the softener as content.</div>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide">
+    <div class="eyebrow">7.1 · Four politeness strategies · face-threatening acts</div>
+    <h2>How will you protect their face?</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>Bald on record</th><td>Watch out, the step!</td></tr>
+        <tr><th>Positive</th><td>You're a genius with this. <b>Let's</b> look at it together.</td></tr>
+        <tr><th>Negative</th><td><b>Sorry to bother you. Would you mind</b> if I moved your bag?</td></tr>
+        <tr><th>Off record</th><td>Gosh, it's chilly in here.</td></tr>
+      </table>
+      <div class="ccq">"Watch out!" Rude? <i>(No: urgent.)</i><br>Why the compliment first? <i>(Closeness before the ask.)</i><br>"It's chilly in here." About the weather? <i>(Maybe a hint.)</i> Can the speaker deny it was a request? <i>(Yes: off record.)</i></div>
+    </div>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide">
+    <div class="eyebrow">7.1 · Small talk, compliments, silence · taboo as language</div>
+    <h2>Match, then observe · handle with care</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>Dysphemism</th><th>Neutral</th><th>Euphemism</th></tr>
+        <tr><td>kicked the bucket</td><td>died</td><td><b>passed away</b></td></tr>
+        <tr><td>got the boot</td><td>was fired</td><td><b>was let go</b></td></tr>
+        <tr><td>the john</td><td>the bathroom</td><td><b>the facilities</b></td></tr>
+      </table>
+      <div class="ccq">Minced oaths: <b>darn · gosh · heck · shoot</b>. Did she swear? <i>(No.)</i><br>Treadmill: toilet → bathroom → restroom. Why? <i>(Polite words wear out.)</i><br>Raise it gently: <b>May I ask something a little personal? Please feel free not to answer.</b></div>
+    </div>
+    <div class="tag"><span class="pill">DEFAULT</span> Safe openers: weather, the journey, the place. Silence may be thinking, not awkwardness. A deflected compliment may be the thank-you.</div>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide">
+    <div class="eyebrow">7.1 · Humor across a gap · and the repair</div>
+    <h2>The recovery, not the joke, is the skill</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>Irony</th><td>heard as a false statement</td></tr>
+        <tr><th>Self-deprecation</th><td>heard as real low status</td></tr>
+        <tr><th>Banter</th><td>a friendly jab lands as a real one</td></tr>
+        <tr><th>Understatement</th><td>"a bit of a problem" underestimated</td></tr>
+      </table>
+      <div class="ccq"><b>Notice:</b> Did I get the wrong idea? / Have I got the wrong end of the stick?<br><b>Clarify:</b> When you said…, did you mean…?<br><b>Realign:</b> That's on me. No harm done. Let's start again from there.<br>Explain the joke? <i>(Never.)</i></div>
+    </div>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide">
+    <div class="eyebrow">7.1 · Freer task · 22 min</div>
+    <h2>Critical-Incident Clinic</h2>
+    <div class="two">
+      <ul class="lab">
+        <li><b>Diagnose</b> (8): Describe · Interpret (2 good-faith readings for <b>each</b> person) · Evaluate</li>
+        <li><b>Bridge</b> (7): softener + clarifying check + realigning line; rehearse it</li>
+        <li><b>Perform &amp; review</b> (7): the good-faith test · one strength, one suggestion</li>
+      </ul>
+      <div class="ccq">Where are they from? <i>(Doesn't say. Doesn't matter.)</i><br>"He was rude" in Describe? <i>(No: only words and actions.)</i><br>How many readings? <i>(Two for each person.)</i><br>The test? <i>(Could both feel fairly described?)</i></div>
+    </div>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide">
+    <div class="eyebrow">7.2 · The content is fixed · the tone is yours</div>
+    <h2>Firm on substance, warm on person</h2>
+    <table class="g">
+      <tr><th>Blunt</th><th>Diplomatic</th><th>What it does</th></tr>
+      <tr><td>You're wrong.</td><td><b>I appreciate where you're coming from, but</b> I see it differently.</td><td>acknowledges, then counters</td></tr>
+      <tr><td>That's a bad idea.</td><td>I have <b>one or two reservations</b>.</td><td>verdict → concern</td></tr>
+      <tr><td>No.</td><td>I'm not sure we'll be able to do that, <b>I'm afraid</b>.</td><td>regretful hedge</td></tr>
+      <tr><td>You didn't deliver.</td><td><b>Things</b> didn't quite go to plan.</td><td>depersonalizes</td></tr>
+    </table>
+    <div class="tag"><span class="pill warn">WATCH</span> "With respect…" said through the teeth = weaponized courtesy. The words only work if the respect is real.</div>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide">
+    <div class="eyebrow">7.2 · Before you negotiate · know three things</div>
+    <h2>Position · interest · BATNA</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>Position</th><td>"We need the big room every Thursday morning."</td></tr>
+        <tr><th>Interest</th><td>"Our clients have to see the demo on a large screen."</td></tr>
+        <tr><th>BATNA</th><td>"If we can't agree, we'll book the hotel room at $150."</td></tr>
+      </table>
+      <div class="ccq">Position or interest? Ask <b>why?</b> <i>(Interests open options.)</i><br>A deal that costs $200 a morning? <i>(No: worse than the BATNA.)</i><br>"Give us the room or we go to the hotel"? <i>(No: a threat closes the door.)</i></div>
+    </div>
+    <div class="pics" style="grid-template-columns:repeat(2,minmax(0,150px))">
+      <div class="pic"><img src="../assets/vocab/bill.jpg" alt=""><div class="w">the price</div></div>
+      <div class="pic"><img src="../assets/vocab/notebook.jpg" alt=""><div class="w">put it in writing</div></div>
+    </div>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide">
+    <div class="eyebrow">7.2 · Form · the engine of negotiation · and face</div>
+    <h2>If you were able to X, then we could Y</h2>
+    <div class="two">
+      <table class="g">
+        <tr><td>If you <b>were able to</b> commit to a year, we <b>could</b> hold the rate.</td></tr>
+        <tr><td>We could move on price, <b>provided</b> the timeline <b>shifts</b>.</td></tr>
+        <tr><td><b>What if we were to</b> add Saturdays?</td></tr>
+        <tr><td><b>Shall we say</b> three percent, twelve months?</td></tr>
+      </table>
+      <div class="ccq"><b>Save their face:</b><br>The timing has been against us.<br>Your logic was sound given what we knew.<br>With the new figures in, it'd be completely reasonable to revisit this.<br>How do <b>we</b> solve this together?</div>
+    </div>
+    <div class="tag"><span class="pill warn">GRAMMAR</span> provided you <s>will sign</s> <b>sign</b> · as long as you <b>pay</b> · on condition that you <b>commit</b></div>
+  </section>
+
+  <!-- 12 -->
+  <section class="slide">
+    <div class="eyebrow">7.2 · Model · where are the moves?</div>
+    <h2>A delicate negotiation</h2>
+    <div class="dlg">
+      <p><span class="sp">Rosa:</span> I'll be straight with you: I need to raise something difficult about the pricing.</p>
+      <p class="b"><span class="sp">Daniel:</span> Go on. Although the budget on our side is more or less locked.</p>
+      <p><span class="sp">Rosa:</span> <b>I understand, and I appreciate you saying so.</b> Costs have risen across <b>the whole sector</b>.</p>
+      <p><span class="sp">Rosa:</span> <b>If you were able to</b> commit to twelve months, <b>then we could</b> hold the rate much closer to where it is.</p>
+      <p class="b"><span class="sp">Daniel:</span> A longer term I can defend: it looks like stability, not a cost.</p>
+      <p><span class="sp">Rosa:</span> <b>Shall we say</b> three percent, twelve months, rate frozen? I'll put it in writing today.</p>
+    </div>
+    <div class="ccq">Daniel's real interest? <i>(Predictability; a story he can sell upstairs.)</i> Who lost? <i>(Nobody.)</i></div>
+  </section>
+
+  <!-- 13 -->
+  <section class="slide">
+    <div class="eyebrow">7.2 · Freer task · 8 + 12 + 8 min</div>
+    <h2>Negotiation Simulation</h2>
+    <div class="two">
+      <ul class="lab">
+        <li><b>The Hall</b>: Harbor Lane Community Center × Blue Heron Youth Robotics Club</li>
+        <li><b>The Coffee Cart</b>: Maplewood Public Library × Fernside Coffee Co-op</li>
+        <li>Prep: interests · BATNA · walk-away · 3 conditional offers</li>
+        <li>Close on the deal sheet · Test: <b>can you sell it upstairs?</b></li>
+      </ul>
+      <div class="ccq">Show your points table? <i>(No.)</i><br>Compare points with the other side? <i>(No.)</i><br>A deal worse than your BATNA? <i>(Walk away.)</i><br>Offers in what grammar? <i>(If you were able to… / provided…)</i></div>
+    </div>
+  </section>
+
+  <!-- 14 -->
+  <section class="slide">
+    <div class="eyebrow">7.3 · You already mediate · every week</div>
+    <h2>Everyday mediation</h2>
+    <div class="pics">
+      <div class="pic"><img src="../assets/vocab/menu.jpg" alt=""><div class="w">glossing a menu</div></div>
+      <div class="pic"><img src="../assets/vocab/mobile-phone.jpg" alt=""><div class="w">checking a machine translation</div></div>
+      <div class="pic"><img src="../assets/vocab/book.jpg" alt=""><div class="w">translating a text</div></div>
+      <div class="pic"><img src="../assets/vocab/passport.jpg" alt=""><div class="w">crossing between languages</div></div>
+    </div>
+    <div class="ccq">"I hold you in the current." Grammatical? <i>(Yes.)</i> Meaningful? <i>(No.)</i> French <i>Je te tiens au courant</i> = ? <i>(I'll keep you posted.)</i></div>
+  </section>
+
+  <!-- 15 -->
+  <section class="slide">
+    <div class="eyebrow">7.3 · Why word-for-word fails · false friends</div>
+    <h2>The unit is the idea, not the word</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>Idiom</th><td>I hold you in the current → <b>I'll keep you posted</b></td></tr>
+        <tr><th>Collocation</th><td><b>make</b> a decision · <b>take</b> a photo</td></tr>
+        <tr><th>Grammar</th><td>I have 30 years → <b>I'm 30</b></td></tr>
+      </table>
+      <table class="g">
+        <tr><th>Looks like</th><th>Really means</th></tr>
+        <tr><td>embarazada (ES)</td><td><b>pregnant</b></td></tr>
+        <tr><td>actuellement (FR)</td><td><b>currently</b></td></tr>
+        <tr><td>Gift (DE)</td><td><b>poison</b></td></tr>
+        <tr><td>libreria (IT)</td><td><b>bookstore</b></td></tr>
+        <tr><td>pretender (PT)</td><td><b>to intend</b></td></tr>
+        <tr><td>sensible (FR)</td><td><b>sensitive</b></td></tr>
+      </table>
+    </div>
+    <div class="tag"><span class="pill warn">HABIT</span> Suspect the too-convenient match · keep a <b>personal</b> false-friend list</div>
+  </section>
+
+  <!-- 16 -->
+  <section class="slide">
+    <div class="eyebrow">7.3 · The untranslatable · the paraphrase pattern</div>
+    <h2>Signal → image → meaning → feeling</h2>
+    <div class="dlg">
+      <p><span class="sp">Ana:</span> There's a word in my language, <b>sobremesa</b>. Do you have it in English?</p>
+      <p class="b"><span class="sp">Tom:</span> I don't think we've got a single word for that. What does it mean, literally?</p>
+      <p><span class="sp">Ana:</span> <b>Literally</b> it's "over-the-table." <b>Roughly</b>, it's the time you spend still sitting and talking after a meal.</p>
+      <p class="b"><span class="sp">Tom:</span> <b>The closest we'd get</b> is "chatting over coffee after dinner," <b>but that loses</b> the sense that it's a whole custom.</p>
+    </div>
+    <div class="ccq">hygge · saudade · Schadenfreude · tsundoku · nunchi · Feierabend. Untranslatable? <i>(Not one-word-able. Conveyable.)</i></div>
+  </section>
+
+  <!-- 17 -->
+  <section class="slide">
+    <div class="eyebrow">7.3 · Between speakers · and the ethics</div>
+    <h2>Translation, interpreting &amp; the interpreter's code</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>Translation</th><td>written · time to craft</td></tr>
+        <tr><th>Consecutive</th><td>speaker pauses · interpreter renders the chunk</td></tr>
+        <tr><th>Simultaneous</th><td>almost at once · usually a booth</td></tr>
+        <tr><th>Sight translation</th><td>a written text read aloud in another language</td></tr>
+      </table>
+      <div class="ccq"><b>Accurate &amp; complete</b>: soften a rude remark? <i>(No.)</i><br><b>Impartial</b>: give advice? <i>(No.)</i><br><b>Confidential</b> · <b>transparent</b>: missed a number? <i>("Interpreter speaking: could you repeat that?")</i><br><b>First person</b>: "I have two children."</div>
+    </div>
+    <div class="tag"><span class="pill">NOTE</span> Register and tone must survive the crossing. High-stakes settings need professional interpreters, not children.</div>
+  </section>
+
+  <!-- 18 -->
+  <section class="slide">
+    <div class="eyebrow">7.3 · Freer task · 8 + 13 + 3 min</div>
+    <h2>Translation &amp; Interpreting Lab</h2>
+    <div class="two">
+      <ul class="lab">
+        <li><b>Ethics &amp; register</b>: 2 dilemma cards + 1 register rescue · then spot the volunteer's breaches</li>
+        <li><b>Mediate</b>: sight-translate a text you chose · <b>or</b> render a dense English notice in plain English · <b>or</b> convey an untranslatable word</li>
+        <li>Listener: <b>explain it back</b> (meaning + feeling) · checker: register, frame, traps</li>
+      </ul>
+      <div class="ccq">Must you use your own language? <i>(No.)</i><br>A letter from your bank? <i>(No: public, simple texts only.)</i><br>Word by word or idea by idea? <i>(Idea.)</i><br>Stuck on a word? <i>(Paraphrase, keep going.)</i></div>
+    </div>
+  </section>
+
+  <!-- 19 -->
+  <section class="slide section">
+    <div class="eyebrow">You can now read, negotiate and mediate across cultures</div>
+    <h2>Module 7 done</h2>
+    <ul class="lab">
+      <li><b>That would be quite challenging</b> = probably no · <b>When you said…, did you mean…?</b> · <b>That's on me.</b></li>
+      <li><b>If you were able to…, then we could…</b> · <b>What matters most to you here?</b> · <b>it'd be completely reasonable to revisit this</b></li>
+      <li><b>It literally means…, but we'd actually say…</b> · <b>The nearest we get is…, though that loses…</b></li>
+    </ul>
+    <p class="lead" style="margin-top:10px;max-width:40ch">Homework: online lessons 7.1–7.3 with the Listen buttons. Next: Module 8, the summit: exams, public speaking and your masterwork.</p>
+  </section>
+
+
+</div>
+
+<div class="count" id="count">1 / 19</div>
+<div class="nav"><button id="prev" aria-label="Previous slide"></button><button id="next" aria-label="Next slide"></button></div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const bar=document.getElementById('bar'), count=document.getElementById('count');
+  let i=0;
+  function show(n){ i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+    bar.style.width=((i+1)/slides.length*100)+'%'; count.textContent=(i+1)+' / '+slides.length; }
+  document.getElementById('next').onclick=()=>show(i+1);
+  document.getElementById('prev').onclick=()=>show(i-1);
+  addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}
+    else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+  });
+  show(0);
+</script>
+</body>
+</html>

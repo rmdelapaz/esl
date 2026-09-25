@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Assessment Key &amp; Rubrics</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../kit.css">
+<style>
+  table.rubric { width:100%; border-collapse:collapse; margin:12px 0; font-size:.85rem; }
+  table.rubric th, table.rubric td { border:1px solid var(--line); padding:8px 10px; vertical-align:top; text-align:left; }
+  table.rubric thead th { background:var(--surface-2); font-family:"JetBrains Mono",monospace; font-size:.66rem; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-3); font-weight:600; }
+  table.rubric td.crit { font-weight:600; color:var(--ink); width:18%; }
+  table.rubric td .pts { display:block; font-family:"JetBrains Mono",monospace; font-size:.66rem; color:var(--accent); margin-top:3px; }
+  table.rubric tbody tr:nth-child(even) td { background:var(--surface); }
+  table.ans { width:100%; border-collapse:collapse; margin:8px 0 12px; font-size:.9rem; }
+  table.ans th, table.ans td { border-bottom:1px solid var(--line); padding:6px 9px; text-align:left; vertical-align:top; }
+  table.ans th { font-family:"JetBrains Mono",monospace; font-size:.64rem; letter-spacing:.07em; text-transform:uppercase; color:var(--ink-3); font-weight:600; }
+  table.ans td.n { font-family:"JetBrains Mono",monospace; color:var(--accent); font-weight:600; width:2.6em; }
+  table.ans td.a { font-weight:700; color:var(--lab); }
+  table.ans td.l { font-family:"JetBrains Mono",monospace; font-size:.76rem; color:var(--ink-3); white-space:nowrap; }
+  .band { display:inline-block; font-family:"JetBrains Mono",monospace; font-size:.7rem; font-weight:700; border-radius:999px; padding:2px 10px; color:#fff; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  .band.go { background:var(--lab); } .band.mid { background:var(--accent); } .band.rep { background:var(--warn); }
+  .model { font-size:.88rem; color:var(--ink-2); }
+  .model p { margin:0 0 8px; }
+  .model .tag { font-family:"JetBrains Mono",monospace; font-size:.66rem; color:var(--accent); }
+  @media (max-width:680px){ table.rubric{display:block;overflow-x:auto} }
+  @media print { table.rubric, table.ans { break-inside:auto; } table.rubric tr, table.ans tr { break-inside:avoid; } }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="lbl">Teacher copy —</span>
+  <button type="button" onclick="window.print()">Print / Save as PDF</button>
+  <span class="hint">answers · rubrics · outcome guidance · not for learners</span>
+</div>
+
+<div class="sheet">
+
+  <header class="mast">
+    <div class="kit-eyebrow">Mastery English (C2) · Assessment Key</div>
+    <h1>Answer Keys, Rubrics &amp; Next Steps</h1>
+    <p class="sub">Everything you need to score <b>Progress Test 1</b> (Class 13) and the <b>Final Test</b> (Class 26): answers and point values, acceptable alternatives, the errors to expect, CEFR-aligned speaking and writing rubrics, what the scores mean for each learner's next step (including exam entry and professional pathways), and how to give the news kindly.</p>
+    <div class="meta-row">
+      <span class="chip">Progress Test 1 <b>/75</b></span>
+      <span class="chip">Final Test <b>/100</b></span>
+      <span class="chip">Rubric bands: <b>Not yet C2 · C2 · C2 strong mastery</b></span>
+      <span class="chip">Confidential · teacher only</span>
+    </div>
+  </header>
+
+  <div class="note">
+    <div class="t">Scoring principles</div>
+    <p><b>Score the choice, not the key's wording.</b> At C2 many items have several defensible answers: the register rewrites, the "what is really meant" items, the reading short answers, the gist and paraphrase. Award the point whenever the answer does the job the item names; the key gives a model and the line between "does it" and "doesn't". If a learner has written a margin note defending an unexpected answer, read it: a well-argued alternative is itself C2 evidence. <b>Score meaning, not spelling</b>, in Listening and Reading. In the one-word items (Progress Part 2B, Final Parts 3A–B) the word itself is being tested, so it must be right, though a pure spelling slip (<i>resouding</i> for <i>resounding</i>) still earns the point where the word is unmistakable. Circle items are right or wrong. Half points are not used. The key word transformations are scored in <b>two parts</b> (1 + 1), as proficiency exams do.</p>
+    <p><b>US and UK forms.</b> The tests use American English; <b>accept British forms everywhere</b>. The online lessons are written in British spelling and use British examples freely (<i>summarising, colour, programme, flat, lorry, cuppa, gutted, whilst</i>, single quotation marks, "full stop" for period), and Lesson 5.1 teaches both systems. Three points to know: ① the mandative subjunctive (<i>recommends that she step down</i>) is standard in American English; British <i>should step down</i> is also correct; only the indicative <i>steps</i> earns no point in Final item 20. ② Collective nouns may take a plural verb in British English (<i>the committee are</i>); never penalize it. ③ Final item 14 turns on a real US/UK difference taught in Lesson 5.1 (<i>first floor</i>); it tests awareness, not preference.</p>
+  </div>
+
+  <div class="sec"><h2>At a Glance</h2><span class="rule"></span></div>
+  <table class="ans">
+    <thead><tr><th>Section</th><th>Progress Test 1 (Modules 1–4)</th><th>Final Test (Modules 1–8)</th></tr></thead>
+    <tbody>
+      <tr><td>Listening</td><td>5 implicature items + 5 commentary items · <b>/10</b></td><td>8 talk items + 5 conversation items + 2 variety/stress · <b>/15</b></td></tr>
+      <tr><td>Words &amp; phrases</td><td>5 mot juste + 5 fixed expressions / collocations · <b>/10</b></td><td>(tested inside Use of English)</td></tr>
+      <tr><td>Register, meaning &amp; discourse</td><td>3 rewrites × 2 + 4 implicature/presupposition + 5 stance markers · <b>/15</b></td><td>(tested in Listening, Reading, and the interview)</td></tr>
+      <tr><td>Reading</td><td>A column, 12 items (item 1 = 2 pts) · <b>/13</b></td><td>A literary passage, 12 items (items 1, 2, 6 = 2 pts) · <b>/15</b></td></tr>
+      <tr><td>Use of English</td><td>—</td><td>6 cloze + 5 word formation + 5 transformations × 2 + 4 usage · <b>/25</b></td></tr>
+      <tr><td>Writing</td><td>Opening of a persuasive talk, 4 criteria × 0–3 · <b>/12</b></td><td>Op-ed, review, <i>or</i> synthesis: writing rubric /15 × 2 · <b>/30</b></td></tr>
+      <tr><td>Speaking</td><td>Pair task, rubric 5 × 0–3 · <b>/15</b></td><td>Individual interview, rubric 5 × 0–3 · <b>/15</b></td></tr>
+      <tr><td><b>Total</b></td><td><b>/75</b> (written /60)</td><td><b>/100</b> (written /85)</td></tr>
+    </tbody>
+  </table>
+
+  <!-- ═════════════ PROGRESS TEST 1 ═════════════ -->
+  <div class="sec"><h2>Progress Test 1 · Answer Key</h2><span class="rule"></span></div>
+
+  <div class="grid2">
+    <div class="blk"><div class="h">Part 1 · Listening /10</div>
+      <table class="ans">
+        <tr><td class="n">1</td><td class="a">b</td><td>faint praise: only a trivial merit is offered (flouts Quantity)</td><td class="l">2.1</td></tr>
+        <tr><td class="n">2</td><td class="a">b</td><td>irony: <i>swimmingly</i> + a disaster, flat tone</td><td class="l">2.2</td></tr>
+        <tr><td class="n">3</td><td class="a">c</td><td>the hedge <i>is</i> the answer: a courteous no</td><td class="l">2.1 · 7.1</td></tr>
+        <tr><td class="n">4</td><td class="a">a</td><td>presupposition trigger <i>stopped</i> (+ <i>finally</i>)</td><td class="l">2.1</td></tr>
+        <tr><td class="n">5</td><td class="a">b</td><td>understatement: "a slight issue" after a crash and 200 complaints</td><td class="l">2.2</td></tr>
+        <tr><td class="n">6</td><td class="a">b</td><td>concedes the convenience; recommends keeping the app</td><td class="l">3.1</td></tr>
+        <tr><td class="n">7</td><td class="a">a</td><td><i>presumably</i> used ironically to mock the council's claim</td><td class="l">2.2 · 3.1</td></tr>
+        <tr><td class="n">8</td><td class="a">a</td><td>praise that cancels itself: it fails at its one job</td><td class="l">2.1</td></tr>
+        <tr><td class="n">9</td><td class="a">a</td><td>metaphor: bridge (connects) → locked gate (excludes)</td><td class="l">2.3</td></tr>
+        <tr><td class="n">10</td><td class="a">b</td><td>"not that we scrap the app…"</td><td class="l">4.1</td></tr>
+      </table>
+    </div>
+    <div class="blk"><div class="h">Part 2 · Words &amp; phrases /10</div>
+      <table class="ans">
+        <tr><td class="n">1</td><td class="a">frugal</td><td>positive connotation; <i>stingy, tight-fisted</i> damn</td><td class="l">1.1</td></tr>
+        <tr><td class="n">2</td><td class="a">brought about</td><td><i>cause</i> leans negative (prosody); <i>set in</i> favors grim states</td><td class="l">1.1</td></tr>
+        <tr><td class="n">3</td><td class="a">bemused</td><td>= puzzled, not amused</td><td class="l">1.1</td></tr>
+        <tr><td class="n">4</td><td class="a">a man of rare warmth and generosity</td><td>the other two clang in a formal retirement card</td><td class="l">1.2</td></tr>
+        <tr><td class="n">5</td><td class="a">trudged</td><td>specific verb; <i>strolled</i> has the wrong connotation</td><td class="l">1.1</td></tr>
+        <tr><td class="n">6</td><td class="a">large</td><td>by and large</td><td class="l">1.3</td></tr>
+        <tr><td class="n">7</td><td class="a">parcel</td><td>part and parcel</td><td class="l">1.3</td></tr>
+        <tr><td class="n">8</td><td class="a">void</td><td>null and void</td><td class="l">1.3</td></tr>
+        <tr><td class="n">9</td><td class="a">moot</td><td>no point for <i>mute</i> (the classic garble)</td><td class="l">1.3</td></tr>
+        <tr><td class="n">10</td><td class="a">resounding</td><td>the restricted collocation; no point for <i>loud</i> (the trap in Lesson 1.3)</td><td class="l">1.3</td></tr>
+      </table>
+      <p style="font-size:.86rem;color:var(--ink-2)">Item 10: also accept <i>roaring</i> and <i>runaway</i>, which are genuine fixed collocations. <i>Huge, great,</i> and <i>massive</i> are perfectly natural free collocations, but the instruction asks for the fixed partner, so they earn no point; tell the learner their English is fine and the task was the restricted phrase.</p>
+    </div>
+  </div>
+
+  <div class="blk"><div class="h">Part 3 · Register, meaning &amp; discourse /15 · with the lesson to revisit</div>
+    <table class="ans">
+      <thead><tr><th>#</th><th>Model answer</th><th>How to score / typical wrong answer</th><th>Lesson</th></tr></thead>
+      <tbody>
+        <tr><td class="n">11</td><td class="a">All staff are required to remove their vehicles from the staff parking lot no later than Friday.</td><td><b>2 pts</b>: 1 for formal lexis and grammar (<i>required, remove, vehicles, no later than</i>, passive or impersonal frame); 1 for a <b>whole cluster</b> that agrees (no contractions, no leftover <i>please make sure you've</i>). Accept <i>Staff are kindly requested to ensure that…</i>, <i>Vehicles must be removed from…</i>. Only 1 pt for a half-shift ("Staff must make sure they've moved their cars"). <i>Hereby</i> is frozen-legal; accept it, but mention the slight over-pitch.</td><td class="l">1.2</td></tr>
+        <tr><td class="n">12</td><td class="a">So sorry, can't make it Saturday! Have an amazing time, and let's celebrate properly soon.</td><td><b>2 pts</b>: 1 for informal lexis (<i>can't make it</i>), contraction or ellipsis; 1 for warmth and a consistent cluster. No point for the second criterion if <i>regret, unable, shall</i>, or <i>attend</i> survive.</td><td class="l">1.2</td></tr>
+        <tr><td class="n">13</td><td class="a">We wish you every success with future applications.</td><td><b>2 pts</b>: 1 for a formal, impersonal register; 1 for a tone that is courteous without being cold or mocking. Accept <i>We would encourage you to apply again in a future round.</i> No point for <i>Good luck next time!</i> (still chatty) or for a sentence that repeats the bad news.</td><td class="l">1.2</td></tr>
+        <tr><td class="n">14</td><td class="a">That his actual work was not good: the writer has nothing positive to say about it.</td><td>faint praise; flouts Quantity. No point for a literal answer ("he was punctual and smart").</td><td class="l">2.1</td></tr>
+        <tr><td class="n">15</td><td class="a">That the team has been missing deadlines (and still is).</td><td>trigger <i>still</i>; accept any answer naming the smuggled premise. Bonus insight, no extra point: "I'd reject the premise before answering."</td><td class="l">2.1</td></tr>
+        <tr><td class="n">16</td><td class="a">It's a terrible start to the vacation.</td><td>verbal irony. No point for "a good start."</td><td class="l">2.2</td></tr>
+        <tr><td class="n">17</td><td class="a">That the finance team were the least likely to enjoy it.</td><td>trigger <i>even</i>. Accept "they usually find training boring."</td><td class="l">2.1</td></tr>
+        <tr><td class="n">18</td><td class="a">Admittedly</td><td><i>undoubtedly</i> is full commitment, the opposite job</td><td class="l">3.1</td></tr>
+        <tr><td class="n">19</td><td class="a">ostensibly</td><td>stated reason, with a whiff of the real one</td><td class="l">3.1</td></tr>
+        <tr><td class="n">20</td><td class="a">Furthermore</td><td><i>Plus</i> and <i>Anyway</i> are spoken, casual markers</td><td class="l">3.1</td></tr>
+        <tr><td class="n">21</td><td class="a">reportedly</td><td>attributes without vouching</td><td class="l">3.1</td></tr>
+        <tr><td class="n">22</td><td class="a">if anything</td><td>corrects toward the opposite of what was expected</td><td class="l">3.1</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="grid2">
+    <div class="blk"><div class="h">Part 4 · Reading /13</div>
+      <table class="ans">
+        <tr><td class="n">1</td><td>She opposes turning the quiet reading room into a collaboration hub, though she accepts the library must modernize and would welcome keeping one quiet room.</td><td><b>2 pts</b>: 1 for the opposition, 1 for the nuance (not against change; a compromise)</td></tr>
+        <tr><td class="n">2</td><td class="a">so-called / supposedly / we are told</td><td>any one, copied recognizably</td></tr>
+        <tr><td class="n">3</td><td>The board is asserting its claim against the evidence; the writer doubts it.</td><td>accept "defensive," "protesting too much"</td></tr>
+        <tr><td class="n">4</td><td>The board ignored or downplayed what the public said.</td><td>juxtaposition implies the verdict</td></tr>
+        <tr><td class="n">5</td><td class="a">a</td><td>concession withheld, then challenged</td></tr>
+        <tr><td class="n">6</td><td class="a">the sea and harbors</td><td></td></tr>
+        <tr><td class="n">7</td><td>It is the one place of calm and refuge in a hectic city.</td><td>must capture "only/rare" or "refuge"</td></tr>
+        <tr><td class="n">8</td><td>That libraries must change and modernize.</td><td></td></tr>
+        <tr><td class="n">9</td><td>A rhetorical question: its implied answer ("no one") undercuts the board.</td><td>need both the label (or its idea) and the effect</td></tr>
+        <tr><td class="n">10</td><td class="a">a</td><td></td></tr>
+        <tr><td class="n">11</td><td class="a">b</td><td>a and c are patchwriting (same skeleton, synonyms swapped)</td></tr>
+        <tr><td class="n">12</td><td>Quiet does not mean the room is unused or worthless.</td><td>accept "a silent room can be full of people and purpose"</td></tr>
+      </table>
+      <p style="font-size:.86rem;color:var(--ink-2)">Lessons: 2 and 3 → 3.1 (stance) and 3.3 (reporting verbs); 4 and 5 → 2.1; 6 and 7 → 2.3; 8 → 4.1 (concession); 9 → 4.1; 11 → 3.3.</p>
+    </div>
+    <div class="blk"><div class="h">Part 5 · Writing /12</div>
+      <ul class="tick">
+        <li><b>Task &amp; rhetoric 0–3.</b> 3 = a real hook, a clear line, all three appeals, two named figures that do work, and a concession that is answered; 2 = one element weak (often the refutation, or a figure that decorates rather than argues); 1 = a list of reasons with no persuasive design, or under about 120 words; 0 = off task.</li>
+        <li><b>Organization &amp; cohesion 0–3.</b> 3 = the opening builds, turns, and lands, with invisible signposting; 2 = clear but mechanical ("Firstly… Secondly…"); 1 = points in no evident order; 0 = incoherent.</li>
+        <li><b>Precision &amp; range 0–3.</b> 3 = the mot juste throughout, connotation used deliberately, fresh images, no mixed metaphor or stale cliché; 2 = precise with one or two near-misses or a tired phrase; 1 = general vocabulary (<i>good, bad, a lot of</i>) or a mixed metaphor; 0 = too limited to judge.</li>
+        <li><b>Register &amp; accuracy 0–3.</b> 3 = a consistent spoken-public register and near-flawless control; 2 = one register slip or occasional minor errors; 1 = frequent slips or errors that distract; 0 = meaning often lost.</li>
+      </ul>
+      <div class="model"><p><b>Model answer (12/12, about 185 words):</b></p>
+        <p>Last Sunday I timed my walk down Main Street. Four minutes to cover two blocks, not because of the crowds, but because I waited at three crossings for cars that were, for the most part, simply looking for somewhere to park. <span class="tag">[hook]</span></p>
+        <p>I've run the bookshop on this street for eleven years <span class="tag">[ethos]</span>, and I want to argue that one car-free day a week would be the best thing to happen to it in a decade. <span class="tag">[line]</span></p>
+        <p>I'll grant that some of my neighbors fear lost trade: if customers can't park at the door, will they come at all? It's a fair question. <span class="tag">[concession]</span> But towns that have tried it tell a different story. In Riverton, Sunday footfall rose by almost a third in the first year. <span class="tag">[logos · refutation]</span></p>
+        <p>Picture it for a moment: children chalking on the asphalt, café tables spilling into the road, an elderly couple crossing without a second glance. <span class="tag">[pathos · tricolon]</span> We are not closing a street; we are opening one. <span class="tag">[antithesis]</span></p>
+        <p>So what, exactly, do we lose by trying it for one summer? <span class="tag">[rhetorical question]</span></p>
+      </div>
+      <p style="font-size:.84rem;color:var(--ink-2)">Invented but plausible figures are acceptable in a test task (the model's "Riverton" is invented); in real life, say so and cite.</p>
+    </div>
+  </div>
+
+  <div class="blk warn"><div class="h">Errors to expect (Progress Test 1)</div>
+    <ul class="tick">
+      <li><b>Prosody and connotation near-misses</b>: <i>caused a breakthrough</i> (item 2) and <i>amused</i> for <i>bemused</i> (item 3). These survive to C2 precisely because they never block meaning. Recycle Lesson 1.1's "hear it in stereo" test: meaning in one channel, company and feeling in the other.</li>
+      <li><b>Garbled or reordered chunks</b>: <i>mute point</i>, <i>large and by</i>, <i>null and invalid</i>. The fix is a verbatim phrasebook, not a rule (Lesson 1.3).</li>
+      <li><b>Half-shifting in the rewrites</b>: formal vocabulary with casual grammar ("Staff must make sure they've…"), or the reverse; and <b>over-pitching</b> to frozen legalese in item 11 or to cold impersonality in item 13. At C2 the register clang is the error that matters most, so name it clearly and kindly.</li>
+      <li><b>Literal readings</b> of implicature items (14: "he was well dressed and punctual"). A learner who does this on paper usually hears the implication perfectly in conversation: reassure them that the skill is there and the task is to put the unsaid into words.</li>
+      <li><b>Stance marker slips</b>: <i>undoubtedly</i> for a concession (18), <i>plus</i> in a formal essay (20). <b>Reading</b>: naming the topic instead of the line (item 1: "the library"), and choosing the patchwrite (item 11a) because it "sounds more formal."</li>
+      <li><b>Writing</b>: figures bolted on and labeled but doing no work; a concession with no refutation; the throat-clearing hook ("In today's world, cars are a big issue"); and the <b>mixed metaphor</b> born of half-dead idioms ("we need to grab this opportunity before it sails away"). Praise the ambition, then ask: "Can you picture it?"</li>
+    </ul>
+  </div>
+
+  <!-- ═════════════ FINAL TEST ═════════════ -->
+  <div class="sec"><h2>Final Test · Answer Key</h2><span class="rule"></span></div>
+
+  <div class="grid2">
+    <div class="blk"><div class="h">Part 1 · Listening /15</div>
+      <table class="ans">
+        <tr><td class="n">1</td><td class="a">b</td><td>distractor: "my first instinct was to fill it…" → "we did the opposite"</td></tr>
+        <tr><td class="n">2</td><td>A non-professional (an amateur) who cared about the bowl a great deal.</td><td>accept "not a professional" alone</td></tr>
+        <tr><td class="n">3</td><td>It only looks good from a distance: the trustee disliked the visible crack.</td><td>implicature by a self-cancelling compliment</td></tr>
+        <tr><td class="n">4</td><td class="a">a</td><td>dry understatement / irony</td></tr>
+        <tr><td class="n">5</td><td>That invisible restoration is sometimes right (e.g., a painting where damage would distract).</td><td>no point for "every crack is sacred"</td></tr>
+        <tr><td class="n">6</td><td>Making the past look better or cleaner than it really was; falsifying it.</td><td>accept "retouching/prettifying the truth"</td></tr>
+        <tr><td class="n">7</td><td class="a">a</td><td></td></tr>
+        <tr><td class="n">8</td><td class="a">a</td><td></td></tr>
+        <tr><td class="n">9</td><td>He hated it / found it tedious.</td><td>sarcasm; no point for "he loved it"</td></tr>
+        <tr><td class="n">10</td><td class="a">went badly</td><td>understatement</td></tr>
+        <tr><td class="n">11</td><td class="a">a</td><td>deniable implicature</td></tr>
+        <tr><td class="n">12</td><td class="a">a</td><td>the hedge is the answer</td></tr>
+        <tr><td class="n">13</td><td class="a">a</td><td>slang: <i>lowkey</i> = quietly/honestly; <i>smash it</i> = do brilliantly</td></tr>
+        <tr><td class="n">14</td><td class="a">b</td><td>British <i>first floor</i> = one floor above street level</td></tr>
+        <tr><td class="n">15</td><td class="a">a</td><td>contrastive stress on <i>cancel</i></td></tr>
+      </table>
+      <p style="font-size:.86rem;color:var(--ink-2)">Lessons: 1 and 8 → 8.1 (listening for the settled answer, attitude questions); 3, 4, 11 → 2.1–2.2; 5 and 7 → 3.1 and 4.1; 6 → 2.3; 9–13 → 5.3 (authentic speech) and 7.1 (hedged refusals); 14 → 5.1; 15 → 8.2. If you read items 4, 9, and 15 without the marked delivery, don't score them.</p>
+    </div>
+    <div class="blk"><div class="h">Part 2 · Reading /15</div>
+      <table class="ans">
+        <tr><td class="n">1</td><td>e.g., "The story is about how a man's sense of purpose, and even of self, depended on his work, and how he cannot admit its loss."</td><td><b>2 pts</b>: 1 for a theme rather than a subject; 1 for a specific, arguable claim. No second point for a bland moral ("retirement is sad").</td></tr>
+        <tr><td class="n">2</td><td>Unreliable (or self-deceiving): e.g., "I did not mind leaving," contradicted by "corrected afterwards… for the record," "perhaps an hour," "an entirely reasonable length of time."</td><td><b>2 pts</b>: 1 judgment + 1 apt quotation. Accept "reliable about facts, unreliable about feelings" with evidence.</td></tr>
+        <tr><td class="n">3</td><td>Time that is now empty or purposeless; a life that was measured by work; his clinging to routine.</td><td>any defensible symbolic reading</td></tr>
+        <tr><td class="n">4</td><td>His days are slowly ebbing away; empty, passive, a sense of decline.</td><td></td></tr>
+        <tr><td class="n">5</td><td>Their busyness and purpose against his idleness; he misses having urgent work.</td><td>must name both sides of the contrast</td></tr>
+        <tr><td class="n">6</td><td>He hadn't really been planning to leave: the firm decided to retire him before he did.</td><td><b>2 pts</b>: 1 for "he wasn't really planning it," 1 for "the firm made the decision first"</td></tr>
+        <tr><td class="n">7</td><td>He cares deeply about recognition and was hurt, despite claiming not to mind.</td><td></td></tr>
+        <tr><td class="n">8</td><td>He is still watching his old office closely; life there has moved on without him.</td><td></td></tr>
+        <tr><td class="n">9</td><td class="a">a</td><td></td></tr>
+        <tr><td class="n">10</td><td>A futile, habitual gesture: he needs something to do and clings to routine; the clock doesn't need him, just as the office no longer does.</td><td></td></tr>
+        <tr><td class="n">11</td><td class="a">carry out</td><td></td></tr>
+        <tr><td class="n">12</td><td class="a">a</td><td></td></tr>
+      </table>
+      <p style="font-size:.86rem;color:var(--ink-2)">All items → Lesson 5.2 (theme vs subject, narrative voice, technique → effect → theme, the one-sentence drill for periodic sentences). Item 6 also draws on 3.3 (paraphrase). Reward precise readings expressed in the language of literary discussion (<i>the simile suggests…</i>, <i>the juxtaposition implies…</i>), but never penalize plain wording that is accurate.</p>
+    </div>
+  </div>
+
+  <div class="blk"><div class="h">Part 3 · Use of English /25 · with the lesson to revisit</div>
+    <table class="ans">
+      <thead><tr><th>#</th><th>Answer</th><th>Why / typical wrong answer</th><th>Lesson</th></tr></thead>
+      <tbody>
+        <tr><td class="n">1</td><td class="a">from</td><td>from one language into another</td><td class="l">8.1</td></tr>
+        <tr><td class="n">2</td><td class="a">what</td><td>nominal relative: "what the word does"; no point for <i>that</i> or <i>how</i></td><td class="l">8.1</td></tr>
+        <tr><td class="n">3</td><td class="a">For</td><td>for this reason</td><td class="l">8.1</td></tr>
+        <tr><td class="n">4</td><td class="a">do</td><td>inversion after a fronted <i>only when…</i></td><td class="l">8.1</td></tr>
+        <tr><td class="n">5</td><td class="a">and</td><td>binomial <i>by and large</i></td><td class="l">1.3</td></tr>
+        <tr><td class="n">6</td><td class="a">which</td><td>sentential relative; no point for <i>that</i> or <i>this</i> (comma splice)</td><td class="l">6.3</td></tr>
+        <tr><td class="n">7</td><td class="a">unwillingness</td><td>noun + negative prefix; no point for <i>willingness</i> (meaning reversed)</td><td class="l">8.1</td></tr>
+        <tr><td class="n">8</td><td class="a">insincere</td><td></td><td class="l">8.1</td></tr>
+        <tr><td class="n">9</td><td class="a">unpredictable</td><td></td><td class="l">8.1</td></tr>
+        <tr><td class="n">10</td><td class="a">omission</td><td>spelling: one <i>m</i>, double <i>s</i>; accept a slip only if unmistakable</td><td class="l">8.1</td></tr>
+        <tr><td class="n">11</td><td class="a">interpretation</td><td>no point for <i>interpreting</i></td><td class="l">8.1 · 5.2</td></tr>
+        <tr><td class="n">12</td><td class="a">head or tail | of</td><td>1 pt <i>head or tail</i> (accept <i>head nor tail</i>), 1 pt <i>of</i></td><td class="l">1.3 · 8.1</td></tr>
+        <tr><td class="n">13</td><td class="a">sooner had the curtain | risen</td><td>1 pt inversion <i>sooner had the curtain</i>, 1 pt past participle <i>risen</i> (no point for <i>rose</i>)</td><td class="l">8.1</td></tr>
+        <tr><td class="n">14</td><td class="a">approval of the plan | was a foregone conclusion</td><td>1 pt nominalization <i>approval of the plan</i>, 1 pt the restricted collocation. 8 words: at the limit</td><td class="l">1.3 · 3.3</td></tr>
+        <tr><td class="n">15</td><td class="a">is said | to be planning</td><td>1 pt passive reporting <i>is said</i>, 1 pt progressive infinitive (<i>to plan</i> = 0 for the second part)</td><td class="l">8.1</td></tr>
+        <tr><td class="n">16</td><td class="a">was bitterly disappointed | by / with / at</td><td>1 pt <i>was bitterly disappointed</i>, 1 pt the preposition. <i>felt bitterly disappointed by</i> is fine</td><td class="l">1.3</td></tr>
+        <tr><td class="n">17</td><td class="a">b</td><td>non-restrictive commas = one sister</td><td class="l">6.3</td></tr>
+        <tr><td class="n">18</td><td class="a">me</td><td>object after a preposition; "between you and I" is hypercorrection</td><td class="l">6.3</td></tr>
+        <tr><td class="n">19</td><td class="a">b</td><td>a and c dangle (the conclusion didn't read the report)</td><td class="l">6.3</td></tr>
+        <tr><td class="n">20</td><td class="a">step</td><td>mandative subjunctive; accept <i>should step</i> if written in</td><td class="l">6.3</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:.86rem;color:var(--ink-2)">A transformation that changes the key word or exceeds eight words scores 0 for the whole item, as Lesson 8.1 warns; check both before scoring the parts. Contractions count as two words. Modules 2 and 4 (pragmatics, rhetoric) are tested through Listening, Reading, and the interview; Module 6's writing genres through Part 4; Module 7 through the interview's task; Lesson 8.2 through Listening 15 and the long turn.</p>
+  </div>
+
+  <div class="blk"><div class="h">Part 4 · Writing /30</div>
+    <p>Score the piece with the <b>writing rubric</b> below: five criteria × 0–3 = /15, then <b>double it</b> (/30). Check the length first: under about 220 words caps <i>Task &amp; content</i> at 1; over about 360 words, score the first 330 or so and note concision as a next step. <b>Option C</b> must represent both sources fairly: a synthesis that marches source by source ("Source 1 says… Source 2 says…") is capped at 1 for <i>Organization &amp; cohesion</i>; one that copies long phrases from the sources is capped at 1 for <i>Range &amp; precision</i> (patchwriting, Lesson 3.3). <b>Option B</b> that retells the plot in order is capped at 1 for <i>Task &amp; content</i>.</p>
+    <div class="grid2">
+      <div class="model"><p><b>Model answer, Option A (C2 strong mastery, 30/30, about 300 words)</b></p>
+        <p><b>Let Them Write With the Machine, and Teach Them to Argue With It</b></p>
+        <p>Last spring my nephew handed in an essay on the causes of the First World War that was, by any measure, flawless. It was also, he admitted cheerfully, not his. The software had written it in eleven seconds. What struck me was not the cheating but the shrug: he genuinely could not see what he had lost.</p>
+        <p>The obvious reply is to ban the tools, and I understand the instinct. Schools exist to build minds, and a mind that outsources every sentence builds nothing. But a ban is a wall around a single classroom in a world where the machine sits in every pocket. Students will use it at home, at university, and at work; the only question is whether anyone ever teaches them to use it well.</p>
+        <p>What would that look like? Not "write me an essay," but "here is a draft the machine produced: find its three weakest claims, check its sources, and rewrite its conclusion so that it says something true." A student who can do that has learned more about argument than one who copies a paragraph from a textbook, and far more than one who is simply forbidden to look.</p>
+        <p>None of this is to deny the risk. Some students will take the shortcut whatever we do, and teachers will need time, training, and new kinds of assessment (more writing in class, more oral defense of written work) to tell thinking from copying. That is a real cost, and districts should fund it rather than pretend it away.</p>
+        <p>But the choice is not between the machine and the mind. It is between students who are quietly used by these tools and students who know how to use them, and to argue back. My nephew, to his credit, now does the second. It took one teacher who refused to shrug.</p>
+      </div>
+      <div class="model"><p><b>Model answer, Option C (C2 strong mastery, 30/30, about 290 words)</b></p>
+        <p><b>Pen or Keyboard? The Wrong Question</b></p>
+        <p>Few classroom debates generate as much heat as the one over laptops, and it is tempting to treat it as a contest with a winner. The two views gathered here suggest instead that the argument turns less on the tool than on what it does for a particular learner's thinking.</p>
+        <p>Both writers, notably, care about the same thing: understanding, not neat notes. A cognitive scientist argues that handwriting forces students to select, since no one can copy a lecture word for word by hand, and that this act of selection is where learning takes place. Typing, in her view, makes transcription effortless and comprehension optional.</p>
+        <p>A learning-support teacher does not dispute that selection matters. She points out, however, that for many of her students with dyslexia or motor difficulties, handwriting is less a route to understanding than an obstacle in front of it; typing is what allows them to keep pace with the class at all. Where the scientist sees a shortcut, the teacher sees a ramp.</p>
+        <p>Taken together, the two accounts suggest that the scientist's claim holds for the typical student but not for every student, and that the teacher's reframing ("which tool lets this student think?") absorbs the scientist's insight rather than contradicting it. A laptop used to transcribe everything may indeed make understanding optional; a laptop used by a student for whom a pen is a wall may be the only way understanding can happen.</p>
+        <p>My own conclusion, for what it is worth, is that schools should stop issuing blanket rules. Teach every student to take selective notes, whichever tool they use, and let the choice of tool follow the learner rather than the policy.</p>
+      </div>
+    </div>
+    <p style="font-size:.84rem;color:var(--ink-2)">What makes these C2 strong mastery: a hook that earns the next line; a line or governing idea stated early; the best objection conceded and answered; reporting verbs that are fair to both sources (<i>argues, points out, does not dispute</i>); a controlled image that carries an argument ("a shortcut… a ramp"); and a close that lands. For Option B, look for the same qualities in review form: minimal description, grounded evaluation through a specific detail, calibrated praise and criticism, and a verdict the reader can act on (Lesson 6.1).</p>
+  </div>
+
+  <div class="blk warn"><div class="h">Errors to expect (Final Test)</div>
+    <ul class="tick">
+      <li><b>Listening:</b> choosing the first-mentioned option in item 1 ("fill and paint"), exactly the trap Lesson 8.1 describes; and literal readings of Omar's sarcasm (item 9) by learners who follow the words but not the flat delivery. The second is a delivery-reading issue (Lessons 2.2 and 5.3), not a vocabulary gap.</li>
+      <li><b>Reading:</b> naming the subject instead of the theme (item 1: "a man retires"); technique-spotting without effect ("it is a simile"); and taking the narrator at his word (item 2). Learners who read a great deal in their first language often shine here; learners from strongly exam-driven systems may hunt for a "right answer." Reassure them that a well-supported reading is the right answer.</li>
+      <li><b>Use of English:</b> <i>that</i> for <i>what</i> (2), <i>rose</i> for <i>risen</i> (13), <i>willingness</i> with the prefix forgotten (7), and transformations that exceed the word limit or alter the key word. These are technique leaks, fixable in a week of targeted practice if the learner plans to sit an exam.</li>
+      <li><b>Usage:</b> "between you and I" (18) survives in many highly educated speakers of English, native and not; and the dangling participle (19) is often invisible to the writer. Point to Lesson 6.3's "whose action is it?" test.</li>
+      <li><b>Op-ed:</b> essay register in disguise ("It is important to note that…"), a throat-clearing opening, and a close that summarizes instead of landing. <b>Review:</b> the plot recap, and unrelieved praise. <b>Synthesis:</b> the source-by-source march, loaded reporting verbs on the view the writer dislikes (<i>claims, alleges</i>), and a conclusion that simply picks a winner.</li>
+      <li><b>Across all options:</b> <b>over-ornamentation</b>, the C2 version of over-formality: a sentence carrying a metaphor, an inversion, and a tricolon at once. Lesson 4.2's "kill your darlings" is the kindest possible correction.</li>
+    </ul>
+  </div>
+
+  <!-- ═════════════ RUBRICS ═════════════ -->
+  <div class="sec"><h2>Speaking Rubric · Both Tests</h2><span class="rule"></span></div>
+  <p style="font-size:.9rem;color:var(--ink-2)">Five criteria, each <b>0–3</b> (total /15). <b>0</b> = no response, or only L1. The <b>C2</b> column paraphrases the Council of Europe's C2 descriptors for spoken production and interaction, range, accuracy, fluency, coherence, sociolinguistic appropriateness, and phonological control (<i>CEFR Companion Volume</i>, 2020). The <b>strong mastery</b> column describes performance at the top of C2 as this course defines it. For the progress test, judge against Modules 1–4 only.</p>
+  <table class="rubric">
+    <thead><tr><th>Criterion</th><th>Not yet C2 (1)</th><th>C2 (2)</th><th>C2 strong mastery (3)</th></tr></thead>
+    <tbody>
+      <tr><td class="crit">Task &amp; coherence <span class="pts">/3</span></td>
+        <td>Solid C1: well-structured and clear, but the long turn is organized rather than shaped; the argument holds under push-back by repetition rather than refinement; the diplomatic outcome is reached but blurred.</td>
+        <td>Produces clear, smoothly flowing, well-structured speech with an effective logical structure that helps the listener notice and remember significant points. Creates coherent, cohesive discourse, making full and appropriate use of a variety of organizational patterns and cohesive devices.</td>
+        <td>The talk is memorable as well as clear: a hook, a turn, and a close that lands. Under challenge, the position is refined with visible intellectual honesty; every task outcome is unmistakable.</td></tr>
+      <tr><td class="crit">Precision &amp; range <span class="pts">/3</span></td>
+        <td>A broad C1 range, but near-synonyms, collocations, and fixed expressions are sometimes approximate ("a loud success," "a mute point"); abstract ideas are expressed through general words; complex grammar slips when attention moves to the argument.</td>
+        <td>Shows great flexibility in reformulating ideas in differing linguistic forms to convey finer shades of meaning precisely, give emphasis, differentiate, and eliminate ambiguity. Maintains consistent grammatical control of complex language, even while attention is otherwise engaged.</td>
+        <td>The mot juste, reliably and apparently without search; idiom and restricted collocation used with a native speaker's exactness; a figure or image deployed once, at the right moment, for effect.</td></tr>
+      <tr><td class="crit">Register &amp; pragmatics <span class="pts">/3</span></td>
+        <td>Register shifts in vocabulary but not as a cluster, or one register dominates everywhere; implication is either too buried to land or stated baldly; the hedged refusal is taken at face value.</td>
+        <td>Has a good command of idiomatic expressions and colloquialisms with awareness of connotative levels of meaning. Appreciates fully the sociolinguistic and sociocultural implications of language and can react accordingly; mediates effectively between speakers, sensitive to differences in style and register.</td>
+        <td>Register moves as a whole system, deliberately and invisibly; implicature, understatement, and irony are controlled and deniable; a loaded premise is noticed and courteously declined; firmness and warmth coexist.</td></tr>
+      <tr><td class="crit">Interaction <span class="pts">/3</span></td>
+        <td>Takes part skillfully, but responds to the words rather than the intent; concedes too readily or not at all; needs help to steer toward an outcome.</td>
+        <td>Can interact with ease and skill, picking up and using non-verbal and intonational cues apparently effortlessly. Can interweave their contribution into the joint discourse with fully natural turn-taking, referencing, and allusion.</td>
+        <td>Reads the other speaker's hints and tone and answers the question beneath the question; concedes the fair point and narrows to the claim that survives; builds a face-saving bridge or a conditional trade that both sides can defend.</td></tr>
+      <tr><td class="crit">Fluency &amp; delivery <span class="pts">/3</span></td>
+        <td>Fluent and spontaneous on most topics, but noticeable searching on abstract ones; prosody is correct but seldom used for effect; irony or reservation is carried by words alone.</td>
+        <td>Can express themselves at length with a natural, effortless, unhesitating flow, pausing only to reflect on precisely the right words. Can exploit the full range of phonological features (stress, rhythm, intonation) with a high level of control to convey finer shades of meaning.</td>
+        <td>Delivery is part of the meaning: the planned pause, the contrastive stress, the flat irony, the warmth of the formal register and the ease of the informal one. Accent, whatever it is, has no effect on clarity or authority.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="sec"><h2>Writing Rubric · Final Test Part 4</h2><span class="rule"></span></div>
+  <p style="font-size:.9rem;color:var(--ink-2)">Five criteria, each <b>0–3</b> (/15), then <b>× 2</b> = /30. <b>0</b> = nothing written, or nothing in English. At C2 the learner can write clear, smoothly flowing, complex texts in an appropriate and effective style, with a logical structure that helps the reader find the significant points; can produce articles, reviews, and essays that present a case or give a critical appreciation of a work; and can summarize and synthesize information and arguments from different sources in a coherent presentation (paraphrased from the CEFR). An assigned side is fine: score the craft, never the opinion.</p>
+  <table class="rubric">
+    <thead><tr><th>Criterion</th><th>Not yet C2 (1)</th><th>C2 (2)</th><th>C2 strong mastery (3)</th></tr></thead>
+    <tbody>
+      <tr><td class="crit">Task &amp; content <span class="pts">/3</span></td>
+        <td>Under about 220 words; a topic discussed rather than a line argued; a review that recaps; a synthesis that summarizes each source separately or distorts one.</td>
+        <td><b>Op-ed:</b> a sharp line, the best objection conceded and answered, evidence married to a human detail. <b>Review:</b> minimal description, grounded evaluation, a clear verdict. <b>Synthesis:</b> both sources represented accurately, agreement and divergence identified, a conclusion clearly marked as the writer's own.</td>
+        <td>The piece has something to say that a thoughtful reader would remember: the concession is steel-manned, the verdict is calibrated, or the synthesis reframes the question rather than merely reporting it.</td></tr>
+      <tr><td class="crit">Organization &amp; cohesion <span class="pts">/3</span></td>
+        <td>Clear paragraphs but a mechanical architecture ("Firstly… In conclusion…"); a source-by-source march; connectors that assert relations the ideas don't have.</td>
+        <td>A genre-appropriate shape (hook → line → concession → evidence → landing; description → evaluation → verdict; governing idea → agreement → divergence → conclusion); given-before-new flow; lexical chains and reference that carry the reader.</td>
+        <td>The joins are felt rather than flagged; the close echoes or reframes the opening; the one-sentence-per-paragraph skeleton reads as a complete argument.</td></tr>
+      <tr><td class="crit">Range &amp; precision <span class="pts">/3</span></td>
+        <td>Accurate but general vocabulary; clichés (<i>game-changer, at the end of the day</i>); figures that decorate or collide; patchwriting from the sources.</td>
+        <td>The mot juste, precise reporting verbs and stance markers, fresh images, fixed expressions exactly right, and a full range of structures used naturally rather than displayed.</td>
+        <td>Word choice carries stance by itself (connotation used deliberately); one controlled image does argumentative work; nothing is ornament for its own sake.</td></tr>
+      <tr><td class="crit">Accuracy <span class="pts">/3</span></td>
+        <td>Occasional errors that a careful reader notices: a dangler, a comma splice, a <i>which</i> for <i>that</i> that changes meaning, agreement after a long subject.</td>
+        <td>Consistent grammatical and orthographic control of complex language; the fine points of usage and punctuation are right; errors are rare slips.</td>
+        <td>Punctuation used for rhythm and emphasis (the semicolon that balances, the dash that turns); no errors a copy editor would change.</td></tr>
+      <tr><td class="crit">Register, tone &amp; effect <span class="pts">/3</span></td>
+        <td>Essay register in an op-ed, or a tone that wobbles between formal and chatty; claims over- or under-hedged; the reader's attention is not earned.</td>
+        <td>Register and tone pitched to the named readership and held consistently; a distinct voice that serves the reader; hedging calibrated to the evidence.</td>
+        <td>The voice is unmistakable yet never self-indulgent; the piece would stand publication in the outlet named; the last sentence is the one a reader carries away.</td></tr>
+    </tbody>
+  </table>
+
+  <!-- ═════════════ WHAT THE SCORES MEAN ═════════════ -->
+  <div class="sec"><h2>What the Scores Mean</h2><span class="rule"></span></div>
+
+  <div class="blk"><div class="h">Progress Test 1 (/75): a diagnosis, not a verdict</div>
+    <table class="ans">
+      <thead><tr><th>Score</th><th>What it tells you</th><th>What to do in Weeks 7–13</th></tr></thead>
+      <tbody>
+        <tr><td><span class="band go">62–75</span></td><td>Strong. Modules 1–4 are reliable.</td><td>Push for <b>effect</b>, not correctness: ask for the version that would make a reader stop, the second register, the line that lands. Invite them to chair the Lesson 7.2 negotiation or lead peer critique, and to give quieter classmates the first turn. If they mention a proficiency exam, point them to Lesson 8.1 early.</td></tr>
+        <tr><td><span class="band mid">48–61</span></td><td>On track, with one or two areas that are not yet reliable.</td><td>Point the learner to the <b>online lessons</b> behind their missed items (use the lesson columns above) and recycle those points in warmers.</td></tr>
+        <tr><td><span class="band mid">34–47</span></td><td>Needs targeted support.</td><td>A short one-to-one: which part felt hard, and why? Agree on <b>two</b> online lessons to redo with the Listen buttons, usually 1.2 (register) and 2.1 (implicature). Use the support options in every class, and check attendance and workload.</td></tr>
+        <tr><td><span class="band rep">0–33</span></td><td>Something is getting in the way.</td><td>Talk privately and gently. Check vision, hearing, literacy, attendance, and life stress, and whether the learner was placed at the right level. Re-check with the shared <b>placement test</b>; Advanced English (C1) may be a better fit for now. Keep them welcome while you decide together.</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:.88rem;color:var(--ink-2)"><b>Class analysis:</b> add up each section for the whole class and divide by the number of learners. A section average under 60% is a class problem, not an individual one. Build a 5–10 minute recycle into the warmers of Classes 14–19: a "one message, four rooms" relay if the rewrites (11–13) are weak; a "what did she really mean?" round of faint praise, hedges, and loaded questions if Part 1A and 3B are weak, which also prepares Lesson 7.1; a "strip the stance markers" task on a real column if 3C and Reading 2–4 are weak. Chunk garbles and prosody near-misses (Part 2) respond best to a shared class phrasebook that grows through the second half.</p>
+  </div>
+
+  <div class="blk"><div class="h">Final Test (/100): grade to outcome</div>
+    <table class="rubric">
+      <thead><tr><th>Outcome</th><th>Guideline</th><th>What to tell the learner and program</th></tr></thead>
+      <tbody>
+        <tr><td class="crit"><span class="band go">C2 achieved · strong mastery</span></td>
+          <td><b>88+</b> total <b>and</b> Speaking <b>13+/15</b>, with Writing <b>24+/30</b>.</td>
+          <td>They have completed the top of the CEFR ladder with room to spare. If a credential would open a door they want, they are a strong candidate for a <b>proficiency exam</b> (for example Cambridge C2 Proficiency, or IELTS where a band of 8 or above is the target), after some practice with the real format and timing. Otherwise, point them to the <b>professional pathways</b> below.</td></tr>
+        <tr><td class="crit"><span class="band go">C2 achieved</span></td>
+          <td><b>75+</b> total <b>and</b> Speaking <b>11+/15</b>, with Writing <b>18+/30</b>.</td>
+          <td>Congratulate them plainly: this is C2. Exam entry is an <b>option, not a next step</b>: recommend it only where the learner has a real purpose, and suggest a focused exam-technique course and at least one full timed practice test first (Lesson 8.1's advice). Share the lifelong habits of Lesson 8.3 and the pathways below.</td></tr>
+        <tr><td class="crit"><span class="band mid">C2 with a review plan</span></td>
+          <td><b>62–74</b> total with Speaking <b>9+</b>, or <b>75+</b> with Speaking 9–10 or Writing under 18/30.</td>
+          <td>Their command is at or near C2 but not yet reliable in one area. Give a written <b>review plan</b>: the 3–4 online lessons behind their weakest items (see the lesson columns), done with the Listen buttons over the next month. Lessons 1.2, 2.1, 3.3, and 6.3 are the usual ones; add 6.1 if the writing lacked a line, 7.2 if the interview task wobbled. Suggest waiting before booking any exam.</td></tr>
+        <tr><td class="crit"><span class="band rep">Consolidate at C1/C2 with support</span></td>
+          <td>Below <b>62</b> total, or Speaking <b>8 or below</b>.</td>
+          <td>Recommend a <b>second lap</b>, framed as consolidation, not failure: either C2 again with a conversation group or writing partner, or the C1 course if the gaps are in C1 language (register control, cohesion, hedging). "At this level the second lap is where choices become instincts." If the score was very low, re-check with the shared placement test.</td></tr>
+        <tr><td class="crit">Literacy pathway</td>
+          <td>Speaking <b>11+</b> and Listening <b>11+/15</b>, but Reading + Writing under <b>27/45</b>.</td>
+          <td>Oral command is at C2; literacy is the barrier. <b>Don't hold them back for literacy alone.</b> Recognize the oral achievement, recommend a writing center, tutor, or academic-writing course alongside, and ask whether a reading difficulty has ever been assessed. Advise against exam entry until the written skills catch up, since proficiency exams weigh reading and writing heavily.</td></tr>
+        <tr><td class="crit">Professional, teaching &amp; translation pathways</td>
+          <td>Any learner at <b>C2 achieved</b>, and some on a review plan with a clear goal.</td>
+          <td><b>Professional use:</b> the Business English track (<a href="https://rays-esl.netlify.app/curriculum-business/">rays-esl.netlify.app/curriculum-business/</a>) for negotiation and professional writing, or discipline-specific writing courses. <b>Teaching:</b> an accredited teacher-training certificate in English language teaching, and a volunteer role in your own program (C2 learners often make excellent conversation-group leaders). <b>Translation and interpreting:</b> Lesson 7.3 was awareness, not training; point them to a formal translation or community-interpreting program and its own entry requirements. <b>Exam preparation:</b> the IELTS track (<a href="https://rays-esl.netlify.app/curriculum-ielts/">rays-esl.netlify.app/curriculum-ielts/</a>) for format practice where IELTS is the credential required.</td></tr>
+      </tbody>
+    </table>
+    <div class="note" style="margin-top:10px">
+      <div class="t">A note on IELTS equivalence (approximate only)</div>
+      <p>Learners will ask, "What IELTS band is this?" Answer honestly, and consistently with the C1 kit: <b>as a rough guide only</b>, a secure C1 corresponds to about <b>IELTS 7.0–8.0</b>, and C2 to about <b>8.5–9</b>. Published tables differ slightly at the boundaries, which is why Lesson 8.1 speaks more loosely of "band 8 and above" as proficiency territory: a strong C1+ user may well score 8. These are broad, published alignments, <b>not a conversion of this test's score</b>. No classroom test can predict an official band or grade, and proficiency exams reward format knowledge and timing that this course only introduces. A learner who needs a specific result should practice with the official materials and take at least one full timed practice test before booking. This kit is independent and is not affiliated with or endorsed by Cambridge English, IELTS, or any exam board.</p>
+    </div>
+    <p style="font-size:.88rem;color:var(--ink-2)">These are <b>guidelines</b>. Your thirteen weeks of observation count as much as one test on one day, especially the Class 12 and Class 25 masterworks: a learner who held a room and fielded a hard question yesterday has shown you what C2 looks like. A learner who was ill, anxious, or grieving on test day deserves a re-test or a quick re-check before any "consolidate" recommendation. Record the outcome and a one-line reason for your program.</p>
+  </div>
+
+  <!-- ═════════════ FEEDBACK ═════════════ -->
+  <div class="sec"><h2>Giving Feedback Kindly</h2><span class="rule"></span></div>
+  <div class="grid2">
+    <div class="blk lab"><div class="h">Principles</div>
+      <ul class="tick lab">
+        <li><b>Private, always.</b> Never read scores aloud or return papers in score order.</li>
+        <li><b>Strength first, then one thing to refine.</b> One precise next step, not a list of errors.</li>
+        <li><b>Name the progress.</b> Compare with Week 1, not with classmates.</li>
+        <li><b>Precision, appropriacy, naturalness, effect.</b> At C2 the useful feedback is almost never "that's wrong." It is "that's correct, and here is the version that would land harder, sit better in that room, or sound less translated."</li>
+        <li><b>Near-native and fossilized at once.</b> Many C2 learners have one stubborn habit (an article pattern, a stress pattern, one register they never leave) inside otherwise flawless English. Name it once, precisely, with an example of their own, and don't let it overshadow everything else.</li>
+        <li><b>Respect the expert.</b> Many learners are translators, teachers, or specialists. Ask what they noticed first, and give feedback as one professional to another.</li>
+        <li><b>A written note to take home</b>, with the lesson number and URL.</li>
+        <li><b>Adults decide.</b> Offer the recommendation and the reason, and let the learner choose, especially about exams.</li>
+      </ul>
+    </div>
+    <div class="blk"><div class="h">Phrases that work at C2</div>
+      <div class="phrase-bank">
+        <span class="phrase">You did an outstanding job.</span>
+        <span class="phrase">The way you conceded the fair point and then narrowed your claim was genuinely masterful.</span>
+        <span class="phrase">Your opening made the second sentence unavoidable.</span>
+        <span class="phrase">That image did real argumentative work; it wasn't decoration.</span>
+        <span class="phrase">One refinement: your register held beautifully until the last line. Read it aloud and you'll hear the clang.</span>
+        <span class="phrase">Do Lesson 1.2 again at home and keep collecting clangs from real emails.</span>
+        <span class="phrase">This is C2. If you want the certificate, you're ready to start exam practice.</span>
+        <span class="phrase">One more lap. This time it'll feel like polishing, not learning.</span>
+        <span class="phrase">It has been a privilege to teach you.</span>
+      </div>
+      <div class="say">Thirteen weeks ago we were arguing about frugal and stingy. Yesterday you held a room and kept your argument standing under a hard question.</div>
+      <div class="say">Your speaking is unmistakably C2. Your writing needs a little more time, so let's find a writing partner or a writing center to go with it.</div>
+    </div>
+  </div>
+  <div class="note warn">
+    <div class="t">Avoid</div>
+    <p>Red ink everywhere, percentages without meaning ("68%"), the word "fail", comparisons ("Ana got 92"), and correcting a learner's accent as though it were an error: at C2, intelligibility and control are the standard, not a "native" sound (Lesson 5.1). Don't grade opinions: a learner who argued the opposite of your view, or an assigned side, with craft and courtesy has done exactly what C2 asks. Don't push anyone toward an exam they don't need. Highly accomplished adults can take a "consolidate" recommendation hard; if a learner goes quiet or gets upset, pause the conversation and come back to it. The number can wait.</p>
+  </div>
+
+  <div class="foot">
+    <div class="who"><b>Ray de la Paz</b><span class="bio">© 2026 Ray de la Paz · Mastery English (C2 Proficiency)</span></div>
+    <div class="ver">Assessment · Answer Key &amp; Rubrics · v1.0</div>
+  </div>
+
+</div>
+</body>
+</html>

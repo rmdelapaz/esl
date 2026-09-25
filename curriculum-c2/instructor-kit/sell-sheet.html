@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teach Mastery English</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="kit.css">
+<style>
+  :root{ --shadow:0 1px 2px rgba(20,30,45,.05),0 8px 26px rgba(20,30,45,.07); }
+  .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin:18px 0 6px; }
+  .statcard { background:var(--surface-2); border:1px solid var(--line); border-radius:10px; padding:14px 12px; text-align:center; }
+  .statcard .n { font-family:"Archivo",sans-serif; font-weight:800; font-size:1.7rem; color:var(--accent); line-height:1; }
+  .statcard .l { font-size:.72rem; color:var(--ink-3); margin-top:5px; text-transform:uppercase; letter-spacing:.04em; }
+  .ladder { display:flex; gap:6px; margin:16px 0 4px; flex-wrap:wrap; }
+  .ladder span { flex:1; min-width:64px; text-align:center; font-family:"JetBrains Mono",monospace; font-size:.78rem; font-weight:600; color:var(--ink-3);
+    border:1px solid var(--line); border-radius:8px; padding:7px 4px; background:var(--surface); }
+  .ladder span.on { color:#fff; background:var(--accent); border-color:var(--accent); -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  .ladder-cap { font-size:.8rem; color:var(--ink-3); margin:0 0 4px; }
+  .quote { border-left:4px solid var(--lab); background:var(--lab-soft); border-radius:0 10px 10px 0; padding:12px 16px; margin:14px 0; font-size:1rem; font-style:italic; color:var(--ink-2); -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  .tiers { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:14px 0; }
+  .tier { border:1px solid var(--line); border-radius:var(--radius); padding:18px 18px 20px; background:var(--surface); display:flex; flex-direction:column; }
+  .tier.feature { border:2px solid var(--accent); box-shadow:var(--shadow); }
+  .tier .name { font-family:"JetBrains Mono",monospace; font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3); }
+  .tier .price { font-family:"Archivo",sans-serif; font-weight:800; font-size:1.9rem; margin:6px 0 2px; letter-spacing:-.02em; }
+  .tier .price span { font-size:.8rem; font-weight:500; color:var(--ink-3); }
+  .tier ul { margin:10px 0 0; }
+  .tier .who { font-size:.82rem; color:var(--ink-2); margin-bottom:2px; }
+  .badge { display:inline-block; align-self:flex-start; font-family:"JetBrains Mono",monospace; font-size:.62rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:#fff; background:var(--accent); border-radius:999px; padding:2px 9px; margin-bottom:8px; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  @media (max-width:680px){ .stats{grid-template-columns:1fr 1fr} .tiers{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="lbl">Sell sheet —</span>
+  <button type="button" onclick="window.print()">Print / Save as PDF</button>
+  <span class="hint">for universities, exam-preparation &amp; translation programs, adult-ed providers, libraries &amp; employers</span>
+</div>
+
+<div class="sheet">
+
+  <header class="mast">
+    <div class="kit-eyebrow">Course-in-a-Box · Instructor License · CEFR C2</div>
+    <h1>Teach Mastery English: The Top of the Ladder, Ready to Run</h1>
+    <p class="sub"><b>Mastery English (C2 Proficiency)</b> is a complete 13-week classroom course for adults who have completed an advanced course or placed at C2: translators and interpreters, teachers of English, academics and graduate students, senior professionals, and candidates for proficiency exams. Their English is already fluent and accurate; this course makes it <b>exact, nuanced, and effective</b>. Every class is planned to the minute and built around a demanding workshop task: close reading, editing, rhetorical analysis, stylistic writing, negotiation, or public speaking. It works for an experienced ESL teacher and for a well-prepared volunteer with a strong command of English.</p>
+    <div class="stats">
+      <div class="statcard"><div class="n">8</div><div class="l">Modules</div></div>
+      <div class="statcard"><div class="n">24</div><div class="l">Lessons</div></div>
+      <div class="statcard"><div class="n">26</div><div class="l">Classes × 90 min</div></div>
+      <div class="statcard"><div class="n">13</div><div class="l">Weeks · 2 classes / week</div></div>
+      <div class="statcard"><div class="n">39</div><div class="l">Instructional hours</div></div>
+      <div class="statcard"><div class="n">2</div><div class="l">Tests: progress + final</div></div>
+      <div class="statcard"><div class="n">C2</div><div class="l">CEFR can-do aligned</div></div>
+      <div class="statcard"><div class="n">Free</div><div class="l">Online companion course with audio</div></div>
+    </div>
+    <div class="ladder" aria-label="The CEFR ladder: this course is the sixth and final level">
+      <span>A1</span><span>A2</span><span>B1</span><span>B2</span><span>C1</span><span class="on">C2</span>
+    </div>
+    <p class="ladder-cap">The final step of a complete, free CEFR ladder, with IELTS Academic and Business English tracks alongside.</p>
+  </header>
+
+  <div class="sec"><h2>What You Get</h2><span class="rule"></span></div>
+  <div class="grid2">
+    <div class="blk"><div class="h">For every module (×8)</div>
+      <ul class="tick">
+        <li><b>Teacher's Guide</b>: one 90-minute plan per class with a board plan, a timed stage table, concept-check questions, instruction checks, workshop and <b>peer-critique protocols</b>, advice on handling dominant speakers, and guidance on giving genuinely useful feedback to learners who are near-native in some areas and fossilized in others; plus stretch tasks, literacy support, and L1 watch-outs</li>
+        <li><b>Student Workbook</b>: written in sophisticated C2 English, with concept boxes, exercises, model texts and dialogues, a demanding workshop task in every lesson, "I can…" checklists, and a journal</li>
+        <li><b>Answer Key</b>: every exercise answered, with the range of acceptable answers (US and UK) and the errors to expect</li>
+        <li><b>Slide deck</b>: concepts, model texts, concept checks, and task slides. A single file with nothing to install</li>
+        <li><b>Classroom materials</b>: flashcards, role-play and negotiation cards, read-aloud listening scripts, and a game</li>
+      </ul>
+    </div>
+    <div class="blk"><div class="h">Across the kit</div>
+      <ul class="tick">
+        <li>A <b>13-week, 26-class syllabus</b> in web and print versions</li>
+        <li><b>Progress Test 1</b> (Class 13) and a <b>Final Test</b> (Class 26): listening for implicature and attitude, close reading of a literary text, original proficiency-style Use of English (open cloze, word formation, key word transformations), an op-ed, review, or two-source synthesis, and speaking (a pair task, then a 12-minute individual interview with a long turn, an abstract discussion under push-back, and a negotiation or diplomatic task)</li>
+        <li>An <b>assessment key</b> with CEFR-aligned rubrics (Not yet C2 · C2 · C2 strong mastery) and clear <b>outcome guidance</b>: C2 achieved (with exam entry, professional, teaching, and translation pathways as options), C2 with a review plan, or consolidation with support</li>
+        <li>A shared <b>placement test</b> (Pre-A1 → C2) and <b>can-do checklists</b> from the free ESL instructor toolkit</li>
+        <li>A <b>learner welcome handout</b> in C2 English, with workshop and critique norms and QR codes to the free online lessons</li>
+        <li>Combined, print-ready <b>Teacher's Guide, Student Workbook, and Answer Key</b> books</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec"><h2>Why Programs Choose It</h2><span class="rule"></span></div>
+  <ul class="tick">
+    <li><b>Mastery, not more grammar.</b> C2 learners rarely need another rule. They need the mot juste, register agility, idiom and restricted collocation, implicature, irony, figurative language, stance, cohesion across long texts, rhetoric, and a voice of their own, each taught as a set of <b>choices</b> and practiced for effect.</li>
+    <li><b>Workshops that work.</b> Every lesson ends in a demanding task (a close reading, an editing pass, a persuasive speech, a negotiation, a critique) run with a clear protocol, so feedback targets <b>precision, appropriacy, naturalness, and effect</b>, not just accuracy.</li>
+    <li><b>Exam preparation without teaching to the test.</b> A dedicated lesson on proficiency-exam technique (in the style of Cambridge C2 Proficiency and IELTS at band 8 and above), and a final test with original items in those formats, give candidates a realistic sense of the task types while the rest of the course builds the underlying command. All items are original; the kit is independent of every exam board.</li>
+    <li><b>Built for professional, academic, and translation users.</b> Writing for a real readership (op-eds, reviews, long-form reports, abstracts), fine points of usage and punctuation, cross-cultural pragmatics, diplomacy and negotiation, translation and interpreting awareness, and public speaking: the work that C2 users actually do.</li>
+    <li><b>World Englishes, respectfully.</b> Learners study British, American, and global varieties as equals, and learn to understand fast, authentic, reference-heavy media. No learner is ever asked to perform an accent or to speak "for" a culture.</li>
+    <li><b>Debate without division.</b> Topics stay in workplace, education, science, arts and culture, technology, language, and community territory, never party politics or religion. Every argument task offers an <b>assigned side</b>; humor is studied without ever targeting a nationality, a religion, an accent, or a disability.</li>
+    <li><b>A free companion course.</b> Every lesson mirrors the free online course <b>Mastery English (C2)</b> (<a href="https://rays-esl.netlify.app/curriculum-c2/">rays-esl.netlify.app/curriculum-c2</a>) with 🔊 audio on model sentences and dialogues. It serves as homework and review and lets learners catch up after a missed class.</li>
+    <li><b>A clear finish, and what comes after.</b> The course completes a free CEFR ladder (A1 → C2) and follows <b>Advanced English (C1)</b>. Its final lesson turns learners toward lifelong command, and the assessment key maps each learner's result to a concrete next step.</li>
+  </ul>
+
+  <div class="quote">"At this level the question is rarely 'Is it correct?' It is 'Is it exactly right, for this reader, in this moment?' Every class in this course is built around that question."</div>
+
+  <div class="sec"><h2>Who It's For</h2><span class="rule"></span></div>
+  <div class="meta-row">
+    <span class="chip">Universities &amp; graduate programs</span>
+    <span class="chip">Exam-preparation centers</span>
+    <span class="chip">Translation &amp; interpreting programs</span>
+    <span class="chip">Teacher-development &amp; volunteer-tutor programs</span>
+    <span class="chip">Professional associations &amp; employers</span>
+    <span class="chip">Adult education &amp; workforce programs</span>
+    <span class="chip">Public libraries &amp; community organizations</span>
+  </div>
+
+  <div class="sec"><h2>License &amp; Pricing</h2><span class="rule"></span></div>
+  <div class="tiers">
+    <div class="tier">
+      <div class="name">Solo</div>
+      <div class="price">[$ ___ ]<span> one-time</span></div>
+      <div class="who">One teacher or volunteer · unlimited learners</div>
+      <ul class="tick">
+        <li>Full kit, all 8 modules</li>
+        <li>Print workbooks for your classes</li>
+        <li>Perpetual license</li>
+      </ul>
+    </div>
+    <div class="tier feature">
+      <div class="badge">Most popular</div>
+      <div class="name">Organization</div>
+      <div class="price">[$ ___ ]<span> one-time</span></div>
+      <div class="who">A university, college, library system, adult-ed program, or community organization</div>
+      <ul class="tick">
+        <li>Everything in Solo</li>
+        <li>Unlimited teachers and volunteers at one organization</li>
+        <li>Best value per class</li>
+      </ul>
+    </div>
+    <div class="tier">
+      <div class="name">White-label</div>
+      <div class="price">[$ ___ ]<span> one-time</span></div>
+      <div class="who">Rebrand &amp; adapt freely</div>
+      <ul class="tick">
+        <li>Everything in Organization</li>
+        <li>Add your own branding</li>
+        <li>Edit &amp; adapt the materials</li>
+      </ul>
+    </div>
+  </div>
+  <p style="font-size:.85rem;color:var(--ink-3)">Optional content-updates add-on: <b>[$ ___ / yr]</b>. C1 + C2 bundle: <b>[$ ___ ]</b>. Full A1–C2 ladder bundle: <b>[$ ___ ]</b>. Reduced pricing for non-profits, libraries, faith-based, and volunteer-led programs. Contact us for full license terms.</p>
+
+  <div class="note lab">
+    <div class="t">Ready to run it?</div>
+    <p>Get in touch for a free sample module (Teacher's Guide, workbook pages, and slides) and licensing details.<br><b>Ray de la Paz</b> · via the contact form on the site.</p>
+  </div>
+
+  <p style="font-size:.78rem;color:var(--ink-3)">The Common European Framework of Reference for Languages (CEFR) is published by the Council of Europe. This course is designed around the CEFR C2 can-do descriptors. It is an independent educational product and is not certified or endorsed by the Council of Europe, Cambridge English, IELTS, or any exam board. Cambridge C2 Proficiency and IELTS are trademarks of their respective owners.</p>
+
+  <div class="foot">
+    <div class="who"><b>Ray de la Paz</b><span class="bio">© 2026 Ray de la Paz · Mastery English (C2 Proficiency)</span></div>
+    <div class="ver">Instructor Sell Sheet · v1.0</div>
+  </div>
+
+</div>
+</body>
+</html>

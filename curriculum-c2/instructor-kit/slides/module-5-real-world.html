@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slides — Module 5</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root{--bg:#0b1220;--ink:#edf2fb;--ink2:#a8b6cf;--accent:#7fb2ff;--accent2:#2563eb;--lab:#34d3bd;--warn:#fbbf24;--line:#233252;--code:#101a2e;color-scheme:dark}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;overflow:hidden}
+  .deck{height:100%;width:100%;position:relative}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:6vh 8vw;gap:20px}
+  .slide.on{display:flex}
+  h1,h2,h3{font-family:"Archivo",sans-serif;line-height:1.1;text-wrap:balance}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  .slide h1{font-size:clamp(2rem,6vw,4rem);font-weight:800;letter-spacing:-.02em}
+  .slide h2{font-size:clamp(1.5rem,4.2vw,2.8rem);font-weight:800;letter-spacing:-.01em}
+  .slide p.lead{font-size:clamp(1.05rem,2.4vw,1.5rem);color:var(--ink2);max-width:26ch}
+  ul{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:6px}
+  ul li{position:relative;padding-left:34px;font-size:clamp(1.05rem,2.3vw,1.6rem)}
+  ul li::before{content:"";position:absolute;left:0;top:.55em;width:12px;height:12px;border-radius:3px;background:var(--accent);transform:rotate(45deg)}
+  ul.lab li::before{background:var(--lab)}
+  code.k{font-family:"JetBrains Mono",monospace;color:#cfe0ff;font-size:.92em}
+  pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:22px 26px;font-family:"JetBrains Mono",monospace;font-size:clamp(.85rem,1.9vw,1.3rem);line-height:1.55;overflow:auto;max-width:100%}
+  pre .k{color:#7dd3fc} pre .s{color:#86efac} pre .c{color:#7183a3;font-style:italic}
+  .tag{display:inline-flex;align-items:center;gap:10px;font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);color:var(--ink2)}
+  .tag .pill{background:var(--accent2);color:#fff;font-weight:700;border-radius:999px;padding:3px 12px;letter-spacing:.06em}
+  .tag .pill.lab{background:var(--lab);color:#062b26} .tag .pill.warn{background:var(--warn);color:#3a2a05}
+  .section{background:linear-gradient(135deg,#132a52,#0b1220)}
+  .section .big{font-size:clamp(3rem,12vw,8rem);font-family:"Archivo";font-weight:800;color:var(--accent2);line-height:.9}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+  @media (max-width:760px){.two{grid-template-columns:1fr}}
+  .bar{position:fixed;left:0;top:0;height:4px;background:var(--accent2);width:0;transition:width .25s;z-index:5}
+  .count{position:fixed;right:16px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink2);z-index:5}
+  .nav{position:fixed;inset:auto 0 0 0;display:flex;justify-content:space-between;pointer-events:none;z-index:4}
+  .nav button{pointer-events:auto;background:transparent;border:none;color:transparent;width:22vw;height:100vh;cursor:pointer}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+  /* ESL extras (picture vocab, grammar tables, dialogue, clocks) */
+  .pics{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,1.6vw,18px)}
+  .pics.six{grid-template-columns:repeat(6,1fr)}
+  .pic{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center}
+  .pic img{width:100%;max-width:150px;aspect-ratio:1;object-fit:cover;border-radius:10px;background:#FFF3E0;display:block;margin:0 auto}
+  .pic .emo{font-size:clamp(2.6rem,7vw,5rem);line-height:1;aspect-ratio:1;max-width:150px;margin:0 auto;display:flex;align-items:center;justify-content:center}
+  .pic .w{font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(.9rem,2vw,1.35rem);margin-top:6px}
+  @media (max-width:760px){.pics,.pics.six{grid-template-columns:repeat(3,1fr)}}
+  table.g{border-collapse:collapse;font-size:clamp(.95rem,2.1vw,1.45rem);width:100%;max-width:1000px}
+  table.g th,table.g td{border:1px solid var(--line);padding:10px 16px;text-align:left}
+  table.g th{background:var(--code);color:var(--accent);font-family:"JetBrains Mono",monospace;font-size:.8em;letter-spacing:.04em}
+  table.g b{color:#ffd166}
+  .dlg{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:18px 24px;display:flex;flex-direction:column;gap:8px;font-size:clamp(1rem,2.2vw,1.45rem);max-width:1000px}
+  .dlg .sp{display:inline-block;min-width:3.6em;font-weight:700;color:var(--accent)}
+  .dlg .b .sp{color:#c4a1ff}
+  .ccq{font-size:clamp(1rem,2.2vw,1.45rem);border:1px dashed var(--line);border-radius:12px;padding:12px 18px;background:var(--code)}
+  .ccq i{color:var(--ink2)}
+  .clocks{display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,34px);align-items:flex-start}
+  .clocks figure{text-align:center}
+  .clocks svg{width:clamp(96px,14vw,170px);height:auto}
+  .clocks figcaption{font-size:clamp(.95rem,2vw,1.3rem);margin-top:6px}
+  .clocks figcaption small{display:block;color:var(--ink2);font-size:.8em}
+  .snd{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .snd div{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:clamp(1rem,2.2vw,1.5rem)}
+  .snd div b{display:block;font-family:"Archivo";font-size:1.5em;color:var(--accent)}
+  .snd div small{color:var(--ink2)}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="deck" id="deck">
+
+  <!-- 1 -->
+  <section class="slide on section">
+    <div class="eyebrow">Mastery English (C2) · Instructor Kit</div>
+    <h1>Module 5<br>Interpreting the Real World</h1>
+    <p class="lead">Hear it. Read it. Decode it.</p>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide">
+    <div class="eyebrow">Classes C14–C16 · the map</div>
+    <h2>English nobody simplified for you</h2>
+    <ul>
+      <li><b>5.1</b> Varieties of English: <i>rhotic · a flap · prepone · go-slow · first floor ≠ first floor</i></li>
+      <li><b>5.2</b> Literature &amp; complex texts: <i>theme · voice · strip → spine → restore · technique → effect → theme</i></li>
+      <li><b>5.3</b> Authentic media: <i>slang has a date · headlines · allusions · whatcha gonna do? · sarcasm</i></li>
+    </ul>
+    <div class="tag"><span class="pill">NOTE</span> Nobody performs or is judged on an accent. Your real life, a new identity card, or something invented: all are OK.</div>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide section">
+    <div class="eyebrow">C14 · Progress Test 1 · Modules 1–4</div>
+    <h2>We can…</h2>
+    <ul class="lab">
+      <li>choose the <b>mot juste</b> and shift <b>register</b> on demand</li>
+      <li>read <b>implicature</b>, irony and metaphor</li>
+      <li>signal <b>stance</b> and hold a long text together</li>
+      <li>summarize, synthesize and argue with <b>rhetorical control</b></li>
+    </ul>
+    <p class="lead" style="max-width:40ch">A test is a map. It tells us where we are. It doesn't tell us who we are.</p>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide">
+    <div class="eyebrow">5.1 · Model · one scene, five Englishes</div>
+    <h2>The delayed train</h2>
+    <div class="dlg">
+      <p><span class="sp">Priya:</span> The train is delayed <b>only</b>, no? <b>Kindly</b> do not worry. <i style="color:var(--ink2)">(Indian English)</i></p>
+      <p class="b"><span class="sp">Callum:</span> Aye, I <b>ken</b> the <b>wee</b> café does a braw coffee. <i style="color:var(--ink2)">(Scottish)</i></p>
+      <p><span class="sp">Maddie:</span> I'm gasping for a <b>cuppa</b>. This <b>arvo</b>'s a right shocker. <i style="color:var(--ink2)">(Australian)</i></p>
+      <p class="b"><span class="sp">Chidi:</span> <b>No wahala</b>. There is a <b>go-slow</b> on the roads. We shall reach in good time. <i style="color:var(--ink2)">(Nigerian)</i></p>
+      <p><span class="sp">Ray:</span> <b>Elevator</b>'s right over there if you've got bags. <i style="color:var(--ink2)">(American)</i></p>
+    </div>
+    <div class="ccq">Is any of this a mistake? <i>(No: each is standard in its variety.)</i> What do you need to understand all five? <i>(Exposure, context, and the idea: assume variety, not error.)</i></div>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide">
+    <div class="eyebrow">5.1 · Meaning · listen for features, not "an accent"</div>
+    <h2>The r · the t · the vowel · the rhythm</h2>
+    <table class="g">
+      <tr><th>Feature</th><th>Listen for</th><th>Typical of</th></tr>
+      <tr><td><b>rhotic</b> / non-rhotic</td><td>the r in <i>car, hard</i> sounded / dropped ("cah")</td><td>US, Scotland, Ireland / S. England, Australia</td></tr>
+      <tr><td><b>t-flapping</b></td><td><i>water</i> ≈ "wader"</td><td>US, Canada</td></tr>
+      <tr><td><b>glottal stop</b></td><td><i>butter</i> ≈ "bu'er"</td><td>London, much of England</td></tr>
+      <tr><td>broad / flat <b>bath</b></td><td>"bahth" / short <i>a</i></td><td>S. England, Australia / US</td></tr>
+      <tr><td><b>syllable-timed</b></td><td>even syllables</td><td>India, Nigeria, Singapore</td></tr>
+    </table>
+    <div class="tag"><span class="pill warn">NOTE</span> These are listening targets. Nobody imitates them.</div>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide">
+    <div class="eyebrow">5.1 · Vocabulary · same thing, different word</div>
+    <h2>Two Englishes</h2>
+    <div class="pics">
+      <div class="pic"><img src="../assets/vocab/trousers.jpg" alt=""><div class="w">trousers / pants</div></div>
+      <div class="pic"><img src="../assets/vocab/mobile-phone.jpg" alt=""><div class="w">mobile / cell phone</div></div>
+      <div class="pic"><img src="../assets/vocab/bill.jpg" alt=""><div class="w">the bill / the check</div></div>
+      <div class="pic"><img src="../assets/vocab/football.jpg" alt=""><div class="w">football / soccer</div></div>
+      <div class="pic"><img src="../assets/vocab/garden.jpg" alt=""><div class="w">garden / yard</div></div>
+      <div class="pic"><img src="../assets/vocab/shop-assistant.jpg" alt=""><div class="w">shop assistant / salesclerk</div></div>
+      <div class="pic"><img src="../assets/vocab/post-office.jpg" alt=""><div class="w">the post / the mail</div></div>
+      <div class="pic"><img src="../assets/vocab/muffin.jpg" alt=""><div class="w">muffin ≠ muffin</div></div>
+    </div>
+    <div class="tag"><span class="pill warn">FALSE FRIENDS</span> first floor · pants · <b>table a proposal</b> (UK: discuss / US: postpone) · quite good · homely</div>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide">
+    <div class="eyebrow">5.1 · Form · spelling and grammar tells</div>
+    <h2>One document, one variety</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>British</th><th>American</th></tr>
+        <tr><td>colour · centre</td><td><b>color · center</b></td></tr>
+        <tr><td>defence · travelled</td><td><b>defense · traveled</b></td></tr>
+        <tr><td>Have you got a minute?</td><td><b>Do you have</b> a minute?</td></tr>
+        <tr><td>The team <b>are</b> winning.</td><td>The team <b>is</b> winning.</td></tr>
+        <tr><td>Have you eaten yet?</td><td>Did you eat yet?</td></tr>
+        <tr><td>got</td><td><b>gotten</b></td></tr>
+      </table>
+      <div class="ccq">"The committee are arguing." Error? <i>(No: British.)</i><br><i>organize</i>: American only? <i>(No: many British publishers use -ize too.)</i><br><i>colour</i> and <i>color</i> in one report? <i>(Pick one.)</i></div>
+    </div>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide">
+    <div class="eyebrow">5.1 · World Englishes · intelligibility, not imitation</div>
+    <h2>Assume variety, not error</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>India</th><td>prepone · do the needful · out of station</td></tr>
+        <tr><th>Nigeria</th><td>go-slow · no wahala · I'll reach by ten</td></tr>
+        <tr><th>Philippines</th><td>comfort room · open the light</td></tr>
+        <tr><th>Singapore</th><td>can or not? · lah</td></tr>
+        <tr><th>Australia</th><td>arvo · servo · heaps</td></tr>
+      </table>
+      <div class="ccq">"I can't understand his accent." Whose skill does that describe? <i>(The listener's.)</i><br>✘ heavy accent · broken English<br>✔ <b>an accent I'm less familiar with</b> · <b>it took me a minute to tune in</b><br>Who adjusts in a global team? <i>(Everyone: accommodation.)</i></div>
+    </div>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide">
+    <div class="eyebrow">5.1 · Workshop · 25 min</div>
+    <h2>Varieties Lab</h2>
+    <div class="two">
+      <ul class="lab">
+        <li><b>Round 1</b> Feature Detective: two unlabeled transcripts · gloss every feature · place the variety <b>with evidence</b></li>
+        <li><b>Round 2</b> Transatlantic info gap: find six traps in a British email</li>
+        <li><b>Round 3</b> Attitudes: three cards · agree / disagree / it depends</li>
+        <li>Roles: scribe · evidence checker · <b>fair-language monitor</b></li>
+      </ul>
+      <div class="ccq">Is the variety on the card? <i>(No.)</i><br>"It sounds Nigerian": evidence? <i>(No: assumption.)</i><br>Will anyone imitate an accent? <i>(No.)</i><br>Discussing people in the room? <i>(No: ideas.)</i><br>Must you share a story? <i>(No. You can pass.)</i></div>
+    </div>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide">
+    <div class="eyebrow">5.2 · A father and son go fishing and say almost nothing</div>
+    <h2>What is it <i>really</i> about?</h2>
+    <table class="g">
+      <tr><th>Subject</th><td>What happens?</td><td>a fishing trip</td></tr>
+      <tr><th>Theme</th><td>What is it really about?</td><td><b>love that cannot be spoken</b></td></tr>
+      <tr><th>Purpose</th><td>What does it want to do to me?</td><td>move · unsettle · satirize · mourn</td></tr>
+      <tr><th>Tone</th><td>What's the attitude?</td><td>tender · ironic · detached</td></tr>
+    </table>
+    <div class="ccq">"It's about love." Arguable? <i>(No: too broad.)</i> A real theme: can you point to lines, and could a thoughtful reader disagree? <i>(Yes and yes.)</i></div>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide">
+    <div class="eyebrow">5.2 · Voice · the narrator is not the author</div>
+    <h2>Who is really speaking?</h2>
+    <div class="dlg">
+      <p><span class="sp">A:</span> "I was frightened, and I said so."</p>
+      <p class="b"><span class="sp">B:</span> "I was perfectly calm — anyone would have done as I did, and only a coward would say otherwise."</p>
+      <p><span class="sp">Austen:</span> "It is a truth universally acknowledged, that a single man in possession of a good fortune must be in want of a wife." <i style="color:var(--ink2)">(1813)</i></p>
+    </div>
+    <div class="ccq">Was B calm? <i>(Probably not: he protests too much.)</i><br>Is Austen's "truth" universal? <i>(No.)</i> Who actually wants the marriage? <i>(The neighbors with daughters.)</i> Sincere or ironic? <i>(Ironic.)</i></div>
+  </section>
+
+  <!-- 12 -->
+  <section class="slide">
+    <div class="eyebrow">5.2 · Form · difficult syntax</div>
+    <h2>Strip → spine → restore → paraphrase</h2>
+    <table class="g">
+      <tr><th>Inversion</th><td>And <b>sore must be the storm</b> / That could abash the little bird</td><td>= The storm would have to be terrible to silence the bird.</td></tr>
+      <tr><th>Periodic</th><td><b>I went to the woods</b> [because I wished to live deliberately, to front only…] … <b>discover that I had not lived</b>.</td><td>Spine first; the weight lands last.</td></tr>
+      <tr><th>Verbless</th><td><b>Fog everywhere.</b> Fog up the river… fog down the river…</td><td>No verb on purpose: stillness.</td></tr>
+    </table>
+    <div class="tag"><span class="pill warn">ARCHAIC</span> <i>wanted wear</i> = lacked wear · <i>hence</i> = from now · <i>I fancy</i> = I think</div>
+  </section>
+
+  <!-- 13 -->
+  <section class="slide">
+    <div class="eyebrow">5.2 · Meaning · the engine of interpretation</div>
+    <h2>Technique → effect → theme</h2>
+    <div class="two">
+      <table class="g">
+        <tr><td><b>allusion</b> · <b>imagery</b> · <b>symbolism</b> · <b>irony</b></td></tr>
+        <tr><td><b>juxtaposition</b> · <b>foreshadowing</b> · <b>motif</b></td></tr>
+        <tr><td>the passage <b>evokes</b>… · the image <b>juxtaposes</b>…</td></tr>
+        <tr><td><b>the effect is to</b>… · <b>which suggests</b>…</td></tr>
+        <tr><td><b>I'd read it slightly differently</b>: …</td></tr>
+      </table>
+      <div class="ccq">"There is imagery of fog." Interpretation? <i>(Not yet: a label.)</i><br>"The repeated 'Fog' makes it feel inescapable, <b>which suggests</b> a city lost in its own confusion." <i>(Yes: technique, effect, theme.)</i><br>"The author wants to say…" <i>(→ suggests / implies.)</i></div>
+    </div>
+  </section>
+
+  <!-- 14 -->
+  <section class="slide">
+    <div class="eyebrow">5.2 · Workshop · 10 + 14 + 5 min</div>
+    <h2>Close-Reading Seminar</h2>
+    <div class="two">
+      <ul class="lab">
+        <li><b>Annotate</b>: read three times · underline images · [bracket] interruptions · ? = uncertain</li>
+        <li>Write <b>one arguable theme</b> + <b>one chain</b> with a quotation</li>
+        <li><b>Seminar</b> (6 people): leader (speaks last) · evidence keeper · alternative reader · connector</li>
+        <li><b>"Show me the words"</b>: every claim quotes the text</li>
+      </ul>
+      <div class="ccq">How many readings? <i>(Three.)</i><br>What does the evidence keeper ask? <i>("Where does it say that?")</i><br>Who speaks last? <i>(The leader.)</i><br>One right answer? <i>(No, but every answer needs the words.)</i></div>
+    </div>
+  </section>
+
+  <!-- 15 -->
+  <section class="slide">
+    <div class="eyebrow">5.3 · CHEF GRILLS MAYOR OVER FOOD-TRUCK RULES</div>
+    <h2>Slang has a date and a room</h2>
+    <table class="g">
+      <tr><th>Dated</th><td>groovy (60s–70s) · rad (80s) · da bomb (90s) · on fleek (2010s)</td></tr>
+      <tr><th>Established</th><td>ghost someone · the vibe · binge-watch · FOMO · a hot take · (UK) gutted, knackered</td></tr>
+      <tr><th>Current</th><td>no cap · it slaps · lowkey / highkey · the ick <i style="color:var(--ink2)">(check: some may already be dated!)</i></td></tr>
+    </table>
+    <div class="ccq">"No cap, the report slaps." In an email to your manager? <i>(No.)</i> Wrong English? <i>(No: wrong room.)</i> Understand it? <i>(Yes.)</i> Use it? <i>(Sparingly, if it's natural for you.)</i></div>
+  </section>
+
+  <!-- 16 -->
+  <section class="slide">
+    <div class="eyebrow">5.3 · References · the words are clear; the meaning isn't</div>
+    <h2>Headlines, allusions, memes</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>MAYOR TO UNVEIL PARK PLAN</th><td>will unveil</td></tr>
+        <tr><th>LIBRARY FINES AXED</th><td>have been abolished</td></tr>
+        <tr><th>COUNCIL BACKS BIKE LANES</th><td>has supported</td></tr>
+        <tr><th>a Trojan horse</th><td>a gift hiding a threat</td></tr>
+        <tr><th>Groundhog Day</th><td>every day the same</td></tr>
+        <tr><th>Catch-22</th><td>a no-win rule</td></tr>
+      </table>
+      <div class="ccq">A cartoon dog sits in a burning room with a coffee: "This is fine." When would someone share it? <i>(When things are going badly and they're pretending to be calm.)</i><br>Everyone laughs; you don't know why. <i>(A reference passed: ride the gist, look it up later.)</i></div>
+    </div>
+  </section>
+
+  <!-- 17 -->
+  <section class="slide">
+    <div class="eyebrow">5.3 · Fast speech &amp; tone</div>
+    <h2>Whatcha gonna do about it?</h2>
+    <div class="two">
+      <table class="g">
+        <tr><td>What are you going to do? → <b>Whatcha gonna do?</b></td></tr>
+        <tr><td>Did you see it? → <b>Didja see it?</b></td></tr>
+        <tr><td>Let me know. → <b>Lemme know.</b></td></tr>
+        <tr><td>I don't know. → <b>I dunno.</b></td></tr>
+        <tr><td>should have → <b>shoulda</b> · next day → "nex day" · ten bikes → "tem bikes"</td></tr>
+      </table>
+      <div class="ccq">The car breaks down. "Well, this is going great." Great? <i>(No: the opposite.)</i> How do you know? <i>(The situation + a flat tone.)</i><br>Can you look sarcasm up? <i>(No: trust the tone over the text.)</i><br>Write "gonna" in a report? <i>(Never.)</i></div>
+    </div>
+  </section>
+
+  <!-- 18 -->
+  <section class="slide">
+    <div class="eyebrow">5.3 · Workshop · 4 stations × 4 min + 6 min</div>
+    <h2>Media Decoding Lab</h2>
+    <div class="two">
+      <ul class="lab">
+        <li><b>1</b> Headlines: full sentences · find the puns</li>
+        <li><b>2</b> Memes in words: the joke · the attitude · when to share</li>
+        <li><b>3</b> Allusion hunt: five allusions · meaning + source</li>
+        <li><b>4</b> Slang &amp; register: sort by date · text → email to a manager</li>
+        <li>At every station: <b>one gloss for a newcomer</b></li>
+      </ul>
+      <div class="ccq">Must you finish everything? <i>(No.)</i><br>What does the newcomer do? <i>(Asks, and says honestly if the gloss works.)</i><br>Three checks for a gloss? <i>(Accurate · understandable · respectful.)</i></div>
+    </div>
+  </section>
+
+  <!-- 19 -->
+  <section class="slide section">
+    <div class="eyebrow">You can now hear it, read it and decode it</div>
+    <h2>Module 5 done</h2>
+    <ul class="lab">
+      <li><b>rhotic · a flap · prepone · go-slow · table it (UK) ≠ table it (US)</b> · intelligibility, not imitation</li>
+      <li><b>theme is arguable · narrator ≠ author · strip → spine → restore · Where does it say that?</b></li>
+      <li><b>slang has a date and a room · a Trojan horse · MAYOR TO UNVEIL… · whatcha gonna do? · trust the tone</b></li>
+    </ul>
+    <p class="lead" style="margin-top:10px;max-width:40ch">Homework: online lessons 5.1–5.3 with 🔊. Next: Module 6, writing with authority.</p>
+  </section>
+
+
+</div>
+
+<div class="count" id="count">1 / 19</div>
+<div class="nav"><button id="prev" aria-label="Previous slide"></button><button id="next" aria-label="Next slide"></button></div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const bar=document.getElementById('bar'), count=document.getElementById('count');
+  let i=0;
+  function show(n){ i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+    bar.style.width=((i+1)/slides.length*100)+'%'; count.textContent=(i+1)+' / '+slides.length; }
+  document.getElementById('next').onclick=()=>show(i+1);
+  document.getElementById('prev').onclick=()=>show(i-1);
+  addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}
+    else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+  });
+  show(0);
+</script>
+</body>
+</html>

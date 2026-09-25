@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slides — Module 1</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root{--bg:#0b1220;--ink:#edf2fb;--ink2:#a8b6cf;--accent:#7fb2ff;--accent2:#2563eb;--lab:#34d3bd;--warn:#fbbf24;--line:#233252;--code:#101a2e;color-scheme:dark}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;overflow:hidden}
+  .deck{height:100%;width:100%;position:relative}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:6vh 8vw;gap:20px}
+  .slide.on{display:flex}
+  h1,h2,h3{font-family:"Archivo",sans-serif;line-height:1.1;text-wrap:balance}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  .slide h1{font-size:clamp(2rem,6vw,4rem);font-weight:800;letter-spacing:-.02em}
+  .slide h2{font-size:clamp(1.5rem,4.2vw,2.8rem);font-weight:800;letter-spacing:-.01em}
+  .slide p.lead{font-size:clamp(1.05rem,2.4vw,1.5rem);color:var(--ink2);max-width:26ch}
+  ul{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:6px}
+  ul li{position:relative;padding-left:34px;font-size:clamp(1.05rem,2.3vw,1.6rem)}
+  ul li::before{content:"";position:absolute;left:0;top:.55em;width:12px;height:12px;border-radius:3px;background:var(--accent);transform:rotate(45deg)}
+  ul.lab li::before{background:var(--lab)}
+  code.k{font-family:"JetBrains Mono",monospace;color:#cfe0ff;font-size:.92em}
+  pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:22px 26px;font-family:"JetBrains Mono",monospace;font-size:clamp(.85rem,1.9vw,1.3rem);line-height:1.55;overflow:auto;max-width:100%}
+  pre .k{color:#7dd3fc} pre .s{color:#86efac} pre .c{color:#7183a3;font-style:italic}
+  .tag{display:inline-flex;align-items:center;gap:10px;font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);color:var(--ink2)}
+  .tag .pill{background:var(--accent2);color:#fff;font-weight:700;border-radius:999px;padding:3px 12px;letter-spacing:.06em}
+  .tag .pill.lab{background:var(--lab);color:#062b26} .tag .pill.warn{background:var(--warn);color:#3a2a05}
+  .section{background:linear-gradient(135deg,#132a52,#0b1220)}
+  .section .big{font-size:clamp(3rem,12vw,8rem);font-family:"Archivo";font-weight:800;color:var(--accent2);line-height:.9}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+  @media (max-width:760px){.two{grid-template-columns:1fr}}
+  .bar{position:fixed;left:0;top:0;height:4px;background:var(--accent2);width:0;transition:width .25s;z-index:5}
+  .count{position:fixed;right:16px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink2);z-index:5}
+  .nav{position:fixed;inset:auto 0 0 0;display:flex;justify-content:space-between;pointer-events:none;z-index:4}
+  .nav button{pointer-events:auto;background:transparent;border:none;color:transparent;width:22vw;height:100vh;cursor:pointer}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+  /* ESL extras (picture vocab, grammar tables, dialogue, clocks) */
+  .pics{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,1.6vw,18px)}
+  .pics.six{grid-template-columns:repeat(6,1fr)}
+  .pic{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center}
+  .pic img{width:100%;max-width:150px;aspect-ratio:1;object-fit:cover;border-radius:10px;background:#FFF3E0;display:block;margin:0 auto}
+  .pic .emo{font-size:clamp(2.6rem,7vw,5rem);line-height:1;aspect-ratio:1;max-width:150px;margin:0 auto;display:flex;align-items:center;justify-content:center}
+  .pic .w{font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(.9rem,2vw,1.35rem);margin-top:6px}
+  @media (max-width:760px){.pics,.pics.six{grid-template-columns:repeat(3,1fr)}}
+  table.g{border-collapse:collapse;font-size:clamp(.95rem,2.1vw,1.45rem);width:100%;max-width:1000px}
+  table.g th,table.g td{border:1px solid var(--line);padding:10px 16px;text-align:left}
+  table.g th{background:var(--code);color:var(--accent);font-family:"JetBrains Mono",monospace;font-size:.8em;letter-spacing:.04em}
+  table.g b{color:#ffd166}
+  .dlg{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:18px 24px;display:flex;flex-direction:column;gap:8px;font-size:clamp(1rem,2.2vw,1.45rem);max-width:1000px}
+  .dlg .sp{display:inline-block;min-width:3.6em;font-weight:700;color:var(--accent)}
+  .dlg .b .sp{color:#c4a1ff}
+  .ccq{font-size:clamp(1rem,2.2vw,1.45rem);border:1px dashed var(--line);border-radius:12px;padding:12px 18px;background:var(--code)}
+  .ccq i{color:var(--ink2)}
+  .clocks{display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,34px);align-items:flex-start}
+  .clocks figure{text-align:center}
+  .clocks svg{width:clamp(96px,14vw,170px);height:auto}
+  .clocks figcaption{font-size:clamp(.95rem,2vw,1.3rem);margin-top:6px}
+  .clocks figcaption small{display:block;color:var(--ink2);font-size:.8em}
+  .snd{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .snd div{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:clamp(1rem,2.2vw,1.5rem)}
+  .snd div b{display:block;font-family:"Archivo";font-size:1.5em;color:var(--accent)}
+  .snd div small{color:var(--ink2)}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="deck" id="deck">
+
+  <!-- 1 -->
+  <section class="slide on section">
+    <div class="eyebrow">Mastery English (C2) · Instructor Kit</div>
+    <h1>Module 1<br>The Mot Juste: Precision &amp; Nuance</h1>
+    <p class="lead">Choose the word. Choose the voice. Choose the chunk.</p>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide">
+    <div class="eyebrow">Classes C1–C3 · the map</div>
+    <h2>Not "correct": exactly right</h2>
+    <ul>
+      <li><b>1.1</b> The mot juste: <i>frugal / stingy · bemused ≠ amused · rot sets in</i></li>
+      <li><b>1.2</b> Register agility &amp; tone: one message, five voices</li>
+      <li><b>1.3</b> Fixed expressions: <i>by and large · a foregone conclusion · a moot point</i></li>
+    </ul>
+    <div class="tag"><span class="pill">FEEDBACK</span> precision · naturalness · appropriacy · effect</div>
+    <div class="tag"><span class="pill">NOTE</span> Your real life, a new identity card, or something invented: all are OK. You can always say "Pass."</div>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide">
+    <div class="eyebrow">1.1 · Welcome mingle · 4 rounds × 3 min</div>
+    <h2>Four cards, four conversations</h2>
+    <div class="two">
+      <ul class="lab">
+        <li><b>LOOK CLOSER</b> describe it so precisely we can see it</li>
+        <li><b>SHADES OF MEANING</b> frugal vs cheap? assertive vs pushy?</li>
+        <li><b>TAKE A POSITION</b> argue the side on the card</li>
+        <li><b>SAY IT THREE WAYS</b> a friend, a colleague, a formal note</li>
+      </ul>
+      <div class="ccq">How long is your answer? <i>(About a minute.)</i><br>After the answer? <i>(One follow-up question.)</i><br>Then? <i>(Swap one card, new partner.)</i><br>Your real opinion? <i>(Not required: argue the card.)</i><br>Real life? <i>(Or a new identity, or "Pass.")</i></div>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide">
+    <div class="eyebrow">1.1 · Lead-in</div>
+    <h2>The lightning-bug and the lightning</h2>
+    <p class="lead" style="max-width:40ch">"The difference between the almost right word and the right word is really a large matter: 'tis the difference between the lightning-bug and the lightning." (Mark Twain)</p>
+    <div class="ccq">"She's careful with money." Say it so I'll <b>admire</b> her. <i>(She's frugal.)</i> So I'll <b>dislike</b> her. <i>(She's stingy.)</i> Same behavior? <i>(Yes.)</i> Same verdict? <i>(No.)</i></div>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide">
+    <div class="eyebrow">1.1 · Force · order the word cards under each picture</div>
+    <h2>Every word sits on a cline</h2>
+    <div class="pics">
+      <div class="pic"><img src="../assets/vocab/small.jpg" alt=""><div class="w">small → tiny → minuscule</div></div>
+      <div class="pic"><img src="../assets/vocab/cold.jpg" alt=""><div class="w">chilly → cold → freezing → glacial</div></div>
+      <div class="pic"><img src="../assets/vocab/expensive.jpg" alt=""><div class="w">pricey → expensive → exorbitant</div></div>
+      <div class="pic"><img src="../assets/vocab/angry.jpg" alt=""><div class="w">irritated → annoyed → furious → livid</div></div>
+    </div>
+    <div class="tag"><span class="pill">ALSO</span> decent → good → excellent → superb → sublime · tepid → warm → hot → scorching</div>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide">
+    <div class="eyebrow">1.1 · Denotation vs connotation</div>
+    <h2>One fact, three verdicts</h2>
+    <table class="g">
+      <tr><th>Neutral</th><th>Positive</th><th>Negative</th></tr>
+      <tr><td>careful with money</td><td><b>thrifty, frugal</b></td><td><b>stingy, tight-fisted</b></td></tr>
+      <tr><td>determined</td><td><b>resolute, tenacious</b></td><td><b>obstinate, pig-headed</b></td></tr>
+      <tr><td>confident</td><td><b>self-assured, poised</b></td><td><b>cocky, smug</b></td></tr>
+      <tr><td>unusual</td><td><b>distinctive, singular</b></td><td><b>odd, peculiar</b></td></tr>
+    </table>
+    <div class="ccq">"He's resolute." "He's pig-headed." Different facts? <i>(No.)</i> Which goes in a job reference? <i>(Resolute.)</i> The choice of word <b>is</b> the message.</div>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide">
+    <div class="eyebrow">1.1 · The myth of the synonym</div>
+    <h2>surprised is not astonished is not startled</h2>
+    <div class="two">
+      <table class="g">
+        <tr><td><b>astonished</b></td><td>stronger; slightly formal</td></tr>
+        <tr><td><b>startled</b></td><td>sudden, physical: a noise</td></tr>
+        <tr><td><b>taken aback</b></td><td>disconcerted: his rudeness</td></tr>
+        <tr><td><b>flabbergasted</b></td><td>very strong, informal, comic</td></tr>
+        <tr><td><b>bemused</b></td><td>puzzled (NOT amused)</td></tr>
+      </table>
+      <div class="ccq">"I was bemused by the instructions." Laughing? <i>(No.)</i> Confused? <i>(Yes.)</i><br>"Absolutely flabbergasted" in a report? <i>(No.)</i><br><i>fulsome</i> praise? <i>(Excessive, insincere.)</i><br><i>enormity</i>? <i>(Great wickedness, not just size.)</i></div>
+    </div>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide">
+    <div class="eyebrow">1.1 · Semantic prosody · the company a word keeps</div>
+    <h2>Rot sets in. Happiness doesn't.</h2>
+    <table class="g">
+      <tr><th>set in</th><td>rot · despair · a cold winter</td><th>cause</th><td>damage · delay · concern</td></tr>
+      <tr><th>utterly</th><td>ruined · exhausted</td><th>rife with</th><td>corruption · rumors</td></tr>
+      <tr><th>bordering on</th><td>rudeness · obsession</td><th>a spate of</th><td>burglaries · complaints</td></tr>
+    </table>
+    <div class="ccq">"Years of practice finally <s>caused</s> her success." Grammatical? <i>(Yes.)</i> Natural? <i>(No.)</i> Better? <i>(<b>brought about · led to · paved the way for</b>)</i></div>
+    <div class="tag"><span class="pill warn">TEST</span> Force? Connotation? Register? Prosody? Specific? Then: does it serve or show off?</div>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide">
+    <div class="eyebrow">1.1 · Workshop · 20 min</div>
+    <h2>Mot Juste Editing Workshop</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>Groups of 3: <b>editor</b> · <b>advocate</b> · <b>skeptic</b></li>
+        <li>Tune a vague text: <b>10+ changes</b> · force, connotation, specificity, register · <b>no new facts</b></li>
+        <li>Log 4 changes: original → choice → dimension → why</li>
+        <li>Swap · <b>Justify or cut</b> · revert at least one ornament</li>
+      </ul>
+      <div class="ccq">How many changes? <i>(Ten or more.)</i><br>Add a number or a name? <i>(Never.)</i><br>The skeptic asks…? <i>(Does it serve or show off?)</i><br>Can't justify it? <i>(Cut it.)</i></div>
+    </div>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide">
+    <div class="eyebrow">1.2 · Register agility · which room?</div>
+    <h2>A console, not a voice</h2>
+    <div class="pics">
+      <div class="pic"><img src="../assets/vocab/book.jpg" alt=""><div class="w">the official notice</div></div>
+      <div class="pic"><img src="../assets/vocab/email.jpg" alt=""><div class="w">the email</div></div>
+      <div class="pic"><img src="../assets/vocab/mobile-phone.jpg" alt=""><div class="w">the social post</div></div>
+      <div class="pic"><img src="../assets/vocab/coffee.jpg" alt=""><div class="w">the coffee chat</div></div>
+    </div>
+    <div class="ccq"><b>FIELD</b> what about? · <b>TENOR</b> who to whom? power, distance · <b>MODE</b> spoken or written? planned? · <b>FORMALITY</b> cuts across all three.</div>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide">
+    <div class="eyebrow">1.2 · The formality cline · move the whole cluster</div>
+    <h2>One message, five levels</h2>
+    <table class="g">
+      <tr><th>1 Frozen</th><td>Notice is <b>hereby</b> given that the premises will close at 3:00 p.m. on Friday.</td></tr>
+      <tr><th>2 Formal</th><td><b>Please be advised</b> that the center will close early on Friday.</td></tr>
+      <tr><th>3 Neutral</th><td><b>Just a reminder</b> that we're closing at 3 on Friday.</td></tr>
+      <tr><th>4 Informal</th><td><b>Heads up</b>, we're shutting early Friday.</td></tr>
+      <tr><th>5 Intimate</th><td>Friday, 3 o'clock, doors shut. <b>Don't be late!</b></td></tr>
+    </table>
+    <div class="tag"><span class="pill warn">CLANG</span> Please find attached the aforementioned <s>pics</s>. · The committee will <s>utilize</s> the feedback to <s>commence</s> a review.</div>
+  </section>
+
+  <!-- 12 -->
+  <section class="slide">
+    <div class="eyebrow">1.2 · Tone · the second dial</div>
+    <h2>Same formality, opposite tone</h2>
+    <div class="dlg">
+      <p><span class="sp">Warm:</span> Thanks so much for flagging this; it's really helpful. I'll get it fixed today and let you know the moment it's done.</p>
+      <p class="b"><span class="sp">Cool:</span> Noted. This will be addressed in due course. You will be informed upon completion.</p>
+    </div>
+    <div class="ccq">Which is more formal? <i>(Neither, really.)</i> Which would you rather receive? <i>(The warm one.)</i> Can formal be warm? <i>(Yes.)</i><br>WARM · COOL · IRONIC · AUTHORITATIVE · DEFERENTIAL: "The report is ready."</div>
+  </section>
+
+  <!-- 13 -->
+  <section class="slide">
+    <div class="eyebrow">1.2 · Model · re-keying mid-conversation</div>
+    <h2>The architect's call</h2>
+    <div class="dlg">
+      <p><span class="sp">Nadia:</span> The permit application is, <b>in principle, approvable</b>, <b>subject to</b> a satisfactory structural review.</p>
+      <p class="b"><span class="sp">Joe:</span> Sorry, in plain English: can I open the café in May or not?</p>
+      <p><span class="sp">Nadia:</span> Ha, fair enough. Yes: <b>you'll get the permit</b>, as long as the engineer says the building is safe. May is realistic.</p>
+      <p class="b"><span class="sp">Joe:</span> Now <i>that</i> I understand.</p>
+    </div>
+    <div class="ccq">What changed: field, tenor or mode? <i>(Tenor: a client, not a colleague.)</i> Did the facts change? <i>(No.)</i></div>
+  </section>
+
+  <!-- 14 -->
+  <section class="slide">
+    <div class="eyebrow">1.2 · Workshop · 28 min</div>
+    <h2>Five Voices</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>One message card · <b>identical facts</b> in every version</li>
+        <li>① official notice · ② friendly email · ③ press release · ④ social post (280 characters) · ⑤ tribute</li>
+        <li>Write your voice + field, tenor, mode, two markers</li>
+        <li>Perform in a <b>random order</b> · listeners name the voice · <b>Clang hunt</b></li>
+      </ul>
+      <div class="ccq">Can the facts change? <i>(No.)</i><br>Contractions in the notice? <i>(None.)</i><br>How long is the post? <i>(280 characters max.)</i><br>The tribute is for…? <i>(A retirement or a closing.)</i><br>A clang? <i>(Raise your hand.)</i></div>
+    </div>
+  </section>
+
+  <!-- 15 -->
+  <section class="slide">
+    <div class="eyebrow">1.3 · Binomials · which order?</div>
+    <h2>Pepper and salt?</h2>
+    <div class="pics">
+      <div class="pic"><img src="../assets/vocab/bread.jpg" alt=""><div class="w">bread and butter</div></div>
+      <div class="pic"><img src="../assets/vocab/salt.jpg" alt=""><div class="w">salt and pepper</div></div>
+      <div class="pic"><img src="../assets/vocab/fish.jpg" alt=""><div class="w">fish and chips</div></div>
+      <div class="pic"><img src="../assets/vocab/sugar.jpg" alt=""><div class="w">milk and sugar</div></div>
+    </div>
+    <div class="ccq"><b>by and large · odds and ends · part and parcel · touch and go · null and void · wear and tear · sooner or later · lock, stock and barrel</b><br>"large and by"? <i>(Never.)</i> Say it as one unit: <i>by 'n' LARGE</i>.</div>
+  </section>
+
+  <!-- 16 -->
+  <section class="slide">
+    <div class="eyebrow">1.3 · Restricted collocation &amp; garbles</div>
+    <h2>One partner. Exact or nothing.</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>Natural</th><th>Not</th></tr>
+        <tr><td>a <b>foregone</b> conclusion</td><td>predetermined</td></tr>
+        <tr><td>a <b>moot</b> point</td><td>mute</td></tr>
+        <tr><td>a <b>vested</b> interest</td><td>invested</td></tr>
+        <tr><td><b>drive</b> a hard bargain</td><td>make</td></tr>
+        <tr><td><b>bitterly</b> disappointed</td><td>harshly</td></tr>
+      </table>
+      <table class="g">
+        <tr><th>Garbled</th><th>Exact</th></tr>
+        <tr><td>for all intensive purposes</td><td>intents and purposes</td></tr>
+        <tr><td>nip it in the butt</td><td>in the <b>bud</b></td></tr>
+        <tr><td>peaked my interest</td><td><b>piqued</b></td></tr>
+        <tr><td>on tender hooks</td><td>on <b>tenterhooks</b></td></tr>
+        <tr><td>should of</td><td>should <b>have</b></td></tr>
+      </table>
+    </div>
+    <div class="tag"><span class="pill warn">RATION</span> that said (anywhere) · at the end of the day (worn smooth) · as easy as pie (never in a report)</div>
+  </section>
+
+  <!-- 17 -->
+  <section class="slide">
+    <div class="eyebrow">1.3 · Audit 20 min · game 10 min</div>
+    <h2>Naturalness Audit + Odds and Ends</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>Pairs: a near-native text with <b>7 hidden problems</b></li>
+        <li>Label: ORDER · PARTNER · GARBLE · REGISTER · STUFFING</li>
+        <li>Cross-check with another pair · then the <b>Seams test</b></li>
+        <li>Game: two cards = a binomial? Say it <b>in order</b> + a natural sentence in 5 seconds</li>
+      </ul>
+      <div class="ccq">How many problems? <i>(Seven.)</i><br>Is every chunk wrong? <i>(No, most are correct.)</i><br>Disagree? <i>(Argue it in one sentence.)</i><br>Wrong order in the game? <i>(Cards go back.)</i></div>
+    </div>
+  </section>
+
+  <!-- 18 -->
+  <section class="slide section">
+    <div class="eyebrow">You can now choose the word, the voice and the chunk</div>
+    <h2>Module 1 done</h2>
+    <ul class="lab">
+      <li><b>She isn't stingy; she's frugal.</b> · <b>Rot sets in; happiness doesn't.</b> · <b>She trudged home.</b></li>
+      <li><b>Notice is hereby given…</b> ↔ <b>Heads up, we're shutting early Friday.</b> Tone is a second dial.</li>
+      <li><b>By and large</b> · <b>a foregone conclusion</b> · <b>a moot point</b>, not a mute one</li>
+    </ul>
+    <p class="lead" style="margin-top:10px;max-width:40ch">Homework: online lessons 1.1–1.3 with 🔊. Next: Module 2, reading between the lines.</p>
+  </section>
+
+
+</div>
+
+<div class="count" id="count">1 / 18</div>
+<div class="nav"><button id="prev" aria-label="Previous slide"></button><button id="next" aria-label="Next slide"></button></div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const bar=document.getElementById('bar'), count=document.getElementById('count');
+  let i=0;
+  function show(n){ i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+    bar.style.width=((i+1)/slides.length*100)+'%'; count.textContent=(i+1)+' / '+slides.length; }
+  document.getElementById('next').onclick=()=>show(i+1);
+  document.getElementById('prev').onclick=()=>show(i-1);
+  addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}
+    else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+  });
+  show(0);
+</script>
+</body>
+</html>

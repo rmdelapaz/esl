@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slides — Module 8</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root{--bg:#0b1220;--ink:#edf2fb;--ink2:#a8b6cf;--accent:#7fb2ff;--accent2:#2563eb;--lab:#34d3bd;--warn:#fbbf24;--line:#233252;--code:#101a2e;color-scheme:dark}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;overflow:hidden}
+  .deck{height:100%;width:100%;position:relative}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:6vh 8vw;gap:20px}
+  .slide.on{display:flex}
+  h1,h2,h3{font-family:"Archivo",sans-serif;line-height:1.1;text-wrap:balance}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  .slide h1{font-size:clamp(2rem,6vw,4rem);font-weight:800;letter-spacing:-.02em}
+  .slide h2{font-size:clamp(1.5rem,4.2vw,2.8rem);font-weight:800;letter-spacing:-.01em}
+  .slide p.lead{font-size:clamp(1.05rem,2.4vw,1.5rem);color:var(--ink2);max-width:26ch}
+  ul{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:6px}
+  ul li{position:relative;padding-left:34px;font-size:clamp(1.05rem,2.3vw,1.6rem)}
+  ul li::before{content:"";position:absolute;left:0;top:.55em;width:12px;height:12px;border-radius:3px;background:var(--accent);transform:rotate(45deg)}
+  ul.lab li::before{background:var(--lab)}
+  code.k{font-family:"JetBrains Mono",monospace;color:#cfe0ff;font-size:.92em}
+  pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:22px 26px;font-family:"JetBrains Mono",monospace;font-size:clamp(.85rem,1.9vw,1.3rem);line-height:1.55;overflow:auto;max-width:100%}
+  pre .k{color:#7dd3fc} pre .s{color:#86efac} pre .c{color:#7183a3;font-style:italic}
+  .tag{display:inline-flex;align-items:center;gap:10px;font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);color:var(--ink2)}
+  .tag .pill{background:var(--accent2);color:#fff;font-weight:700;border-radius:999px;padding:3px 12px;letter-spacing:.06em}
+  .tag .pill.lab{background:var(--lab);color:#062b26} .tag .pill.warn{background:var(--warn);color:#3a2a05}
+  .section{background:linear-gradient(135deg,#132a52,#0b1220)}
+  .section .big{font-size:clamp(3rem,12vw,8rem);font-family:"Archivo";font-weight:800;color:var(--accent2);line-height:.9}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+  @media (max-width:760px){.two{grid-template-columns:1fr}}
+  .bar{position:fixed;left:0;top:0;height:4px;background:var(--accent2);width:0;transition:width .25s;z-index:5}
+  .count{position:fixed;right:16px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink2);z-index:5}
+  .nav{position:fixed;inset:auto 0 0 0;display:flex;justify-content:space-between;pointer-events:none;z-index:4}
+  .nav button{pointer-events:auto;background:transparent;border:none;color:transparent;width:22vw;height:100vh;cursor:pointer}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+  /* ESL extras (picture vocab, grammar tables, dialogue, clocks) */
+  .pics{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,1.6vw,18px)}
+  .pics.six{grid-template-columns:repeat(6,1fr)}
+  .pic{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center}
+  .pic img{width:100%;max-width:150px;aspect-ratio:1;object-fit:cover;border-radius:10px;background:#FFF3E0;display:block;margin:0 auto}
+  .pic .emo{font-size:clamp(2.6rem,7vw,5rem);line-height:1;aspect-ratio:1;max-width:150px;margin:0 auto;display:flex;align-items:center;justify-content:center}
+  .pic .w{font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(.9rem,2vw,1.35rem);margin-top:6px}
+  @media (max-width:760px){.pics,.pics.six{grid-template-columns:repeat(3,1fr)}}
+  table.g{border-collapse:collapse;font-size:clamp(.95rem,2.1vw,1.45rem);width:100%;max-width:1000px}
+  table.g th,table.g td{border:1px solid var(--line);padding:10px 16px;text-align:left}
+  table.g th{background:var(--code);color:var(--accent);font-family:"JetBrains Mono",monospace;font-size:.8em;letter-spacing:.04em}
+  table.g b{color:#ffd166}
+  .dlg{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:18px 24px;display:flex;flex-direction:column;gap:8px;font-size:clamp(1rem,2.2vw,1.45rem);max-width:1000px}
+  .dlg .sp{display:inline-block;min-width:3.6em;font-weight:700;color:var(--accent)}
+  .dlg .b .sp{color:#c4a1ff}
+  .ccq{font-size:clamp(1rem,2.2vw,1.45rem);border:1px dashed var(--line);border-radius:12px;padding:12px 18px;background:var(--code)}
+  .ccq i{color:var(--ink2)}
+  .clocks{display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,34px);align-items:flex-start}
+  .clocks figure{text-align:center}
+  .clocks svg{width:clamp(96px,14vw,170px);height:auto}
+  .clocks figcaption{font-size:clamp(.95rem,2vw,1.3rem);margin-top:6px}
+  .clocks figcaption small{display:block;color:var(--ink2);font-size:.8em}
+  .snd{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .snd div{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:clamp(1rem,2.2vw,1.5rem)}
+  .snd div b{display:block;font-family:"Archivo";font-size:1.5em;color:var(--accent)}
+  .snd div small{color:var(--ink2)}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="deck" id="deck">
+
+  <!-- 1 -->
+  <section class="slide on section">
+    <div class="eyebrow">Mastery English (C2) · Instructor Kit</div>
+    <h1>Module 8<br>The Summit</h1>
+    <p class="lead">Exams, performance &amp; lifelong command.</p>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide">
+    <div class="eyebrow">Classes C23–C25 · the map</div>
+    <h2>Three arenas, one skill: performing your English</h2>
+    <ul>
+      <li><b>8.1</b> The exam room: <i>key word · count · meaning · fit</i>, and prove every answer</li>
+      <li><b>8.2</b> The stage: <i>a hook, a spine, a close · the pause · the stressed word · poise</i></li>
+      <li><b>8.3</b> Your masterwork: <i>a piece you choose, a discussion, a plan for lifelong command</i></li>
+    </ul>
+    <div class="tag"><span class="pill">NOTE</span> All exam-style items are original. Check the official specification for any exam you plan to take.</div>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide">
+    <div class="eyebrow">8.1 · Lead-in · you already have the English</div>
+    <h2>Where C2 marks leak</h2>
+    <div class="two">
+      <ul>
+        <li>The <b>under-answered</b> prompt</li>
+        <li>The <b>"true but not there"</b> answer</li>
+        <li>The <b>miscounted</b> transformation, the changed key word</li>
+        <li>The <b>monologued</b> collaborative task</li>
+      </ul>
+      <div class="ccq">One gap has stumped you for two minutes. <i>(Mark it, move on, return.)</i><br>An option "feels right," but you can't find the words. <i>(Reject it.)</i><br>A great idea for part one of two. <i>(Plan both parts first.)</i><br>Your partner falls silent. <i>(Invite them in.)</i></div>
+    </div>
+    <div class="tag"><span class="pill lab">KEY</span> Lost marks at C2 are leaks in technique, and technique is fixable in an afternoon.</div>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide">
+    <div class="eyebrow">8.1 · Use of English · the signature task</div>
+    <h2>Key word transformation: the four checks</h2>
+    <table class="g">
+      <tr><th>NO · 3–6 words</th><td>I couldn't understand the lecture at all. → I could make <b>no sense of</b> the lecture.</td></tr>
+      <tr><th>SOONER</th><td>As soon as she arrived, the argument started. → <b>No sooner had she arrived</b> than the argument started.</td></tr>
+      <tr><th>The checks</th><td>① key word <b>unchanged</b> · ② word <b>limit</b> (a contraction = 2) · ③ <b>same meaning</b> · ④ <b>fits</b> both sides of the gap</td></tr>
+    </table>
+    <div class="ccq">"No sooner she had arrived…" Mark? <i>(Zero: no inversion.)</i> SOONER → "soon"? <i>(Zero: key word changed.)</i> "I'll" counts as? <i>(Two words.)</i></div>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide">
+    <div class="eyebrow">8.1 · Form · what the task keeps testing</div>
+    <h2>Structures, phrases, stems</h2>
+    <table class="g">
+      <tr><th>Negative inversion</th><td>No sooner <b>had she</b>… than · On no account <b>should you</b>… · Not until… <b>did we</b>… · Never before <b>have I</b>…</td></tr>
+      <tr><th>Fixed phrase</th><td>make sense <b>of</b> · make light <b>of</b> · on <b>the</b> brink <b>of</b> · in <b>the</b> wake <b>of</b> · cast doubt <b>on</b></td></tr>
+      <tr><th>Word formation</th><td>part of speech → prefix? → plural? · conclude → <b>in</b>conclusive · foresee → <b>un</b>foreseen</td></tr>
+      <tr><th>Collocation</th><td>a <b>strong</b> possibility · a <b>deep</b> sleep · <b>scathing</b> criticism · an <b>open</b> secret</td></tr>
+    </table>
+    <div class="tag"><span class="pill warn">WATCH</span> <s>on brink of</s> → on <b>the</b> brink of · <s>unconclusive</s> → <b>in</b>conclusive · <s>heavy possibility</s> → <b>strong</b> possibility</div>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide">
+    <div class="eyebrow">8.1 · Reading &amp; listening · evidence, not instinct</div>
+    <h2>Follow the breadcrumbs</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>Gapped text</th><td>The missing sentence must fit what comes <b>before</b> AND what comes <b>after</b>.</td></tr>
+        <tr><th>Breadcrumbs</th><td><b>this</b> compression · <b>such</b> answers · <b>the latter</b> · <b>However,</b> · <b>by contrast</b></td></tr>
+        <tr><th>Listening</th><td>The first thing mentioned is often the trap: listen for what the speaker <b>settles on</b>.</td></tr>
+      </table>
+      <div class="ccq">The next sentence begins "This compression…". What must the gap mention? <i>(Something compressed.)</i><br>True in the world, not in the text? <i>(Wrong.)</i><br>"I thought it was the budget, but actually it came down to timing." Answer? <i>(Timing.)</i></div>
+    </div>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide">
+    <div class="eyebrow">8.1 · Writing · summarize AND evaluate</div>
+    <h2>The essay summary</h2>
+    <table class="g">
+      <tr><th>The task</th><td>Two short texts, one question. Summarize and evaluate the key points of <b>both</b>, and give <b>your own view</b>, in your own words.</td></tr>
+      <tr><th>¶1</th><td>The shared question; the two positions</td></tr>
+      <tr><th>¶2 · ¶3</th><td>Each text: key points <b>paraphrased</b> + one strength, one weakness</td></tr>
+      <tr><th>¶4</th><td>Your view, weighed: where they meet, where you stand</td></tr>
+    </table>
+    <div class="ccq">Only summarize? <i>(Under-answered.)</i> Copy the best sentence? <i>(No: paraphrase shows range.)</i> "Nowadays, with the development of society…"? <i>(Formulaic: engage the texts.)</i></div>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide">
+    <div class="eyebrow">8.1 · Freer task · 20 min · groups of 3</div>
+    <h2>The Speaking Circuit</h2>
+    <div class="pics six">
+      <div class="pic"><img src="../assets/vocab/park.jpg" alt=""><div class="w">a new park</div></div>
+      <div class="pic"><img src="../assets/vocab/market.jpg" alt=""><div class="w">a weekly market</div></div>
+      <div class="pic"><img src="../assets/vocab/bus.jpg" alt=""><div class="w">better buses</div></div>
+      <div class="pic"><img src="../assets/vocab/garden.jpg" alt=""><div class="w">a community garden</div></div>
+      <div class="pic"><img src="../assets/vocab/restaurant.jpg" alt=""><div class="w">outdoor seating</div></div>
+      <div class="pic"><img src="../assets/vocab/school.jpg" alt=""><div class="w">after-school programs</div></div>
+    </div>
+    <div class="two">
+      <ul class="lab">
+        <li><b>Long turn:</b> 1 min prep · 2 min speech · 1 follow-up</li>
+        <li><b>Collaborative:</b> 3 min · decide on <b>two</b> ideas for a more welcoming town center</li>
+        <li>Invite · build · differ softly · decide</li>
+      </ul>
+      <div class="ccq">Prep time? <i>(One minute, three words.)</i> Best speech wins the collaborative task? <i>(No: interaction.)</i> How many ideas? <i>(Two.)</i> Examiner reports? <i>(Four criteria, briefly.)</i> "Pass"? <i>(Yes.)</i></div>
+    </div>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide section">
+    <div class="eyebrow">8.2 · Class C24 · the stage</div>
+    <h2>Same words. Two deliveries.</h2>
+    <p class="lead" style="max-width:40ch">An audience forgets most of what you say and remembers how you made them feel. A listener cannot rewind.</p>
+    <div class="ccq">Were the words different? <i>(No.)</i> Which version do you remember? Why? <i>(Pauses, stress, a slower close.)</i> Is delivery vanity? <i>(No: it makes meaning easy to receive.)</i></div>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide">
+    <div class="eyebrow">8.2 · Structure for the ear · rhetoric performed (4.1)</div>
+    <h2>Open · spine · close</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>Open</th><td>Every one of you made a decision this morning that you can't remember making.</td></tr>
+        <tr><th>Spine</th><td>I want to leave you with <b>three</b> thoughts, and here's the <b>first</b>.</td></tr>
+        <tr><th>Close</th><td>So the next time you can't remember making a choice: <b>pause</b>.</td></tr>
+      </table>
+      <table class="g">
+        <tr><th>Tricolon</th><td>quick ↗ | clean ↗ | completely <b>wrong</b> ↘</td></tr>
+        <tr><th>Rhetorical Q</th><td>And what did it achieve? || Nothing.</td></tr>
+        <tr><th>Antithesis</th><td>known <b>more</b> | understood <b>less</b></td></tr>
+        <tr><th>Anaphora</th><td><b>Not</b> in a year. <b>Not</b> in a decade.</td></tr>
+      </table>
+    </div>
+    <div class="tag"><span class="pill warn">WATCH</span> <s>"Sorry, I'm a bit nervous…"</s> to open · <s>"So… yeah, that's about it."</s> to close</div>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide">
+    <div class="eyebrow">8.2 · The voice · stress is meaning</div>
+    <h2>Seven words, five meanings</h2>
+    <table class="g">
+      <tr><th>"I never said she stole the money."</th><th>…so the meaning is</th></tr>
+      <tr><td><b>I</b> never said she stole the money.</td><td>someone else said it</td></tr>
+      <tr><td>I <b>never</b> said she stole the money.</td><td>a flat denial</td></tr>
+      <tr><td>I never <b>said</b> she stole the money.</td><td>I only implied it</td></tr>
+      <tr><td>I never said <b>she</b> stole the money.</td><td>someone else stole it</td></tr>
+      <tr><td>I never said she stole the <b>money</b>.</td><td>she stole something else</td></tr>
+    </table>
+    <div class="ccq">Stress every word? <i>(Robotic: one word per idea.)</i> Stress "the"? <i>(Almost never.)</i></div>
+  </section>
+
+  <!-- 12 -->
+  <section class="slide">
+    <div class="eyebrow">8.2 · The pause · one idea, one breath</div>
+    <h2>Silence on purpose</h2>
+    <div class="dlg">
+      <p><span class="sp">Line 1</span> Every expert you admire || was once <b>catastrophically</b> bad | at the thing they're now famous for. ||</p>
+      <p><span class="sp">Line 2</span> Every single <b>one</b>. ||</p>
+      <p class="b"><span class="sp">Line 3</span> The gap between you and the person you admire | is not <b>talent</b>. || It is <b>time</b>.</p>
+    </div>
+    <div class="ccq">| short pause · || long pause. Before a key line? <i>("Listen: this matters.")</i> After? <i>("Let it land.")</i> Two seconds feels long to whom? <i>(The speaker, not the audience.)</i></div>
+  </section>
+
+  <!-- 13 -->
+  <section class="slide">
+    <div class="eyebrow">8.2 · Nerves &amp; Q&amp;A · poise is the persuasion</div>
+    <h2>Rename it. Then answer what was asked.</h2>
+    <div class="two">
+      <div class="pics" style="grid-template-columns:1fr 1fr">
+        <div class="pic"><img src="../assets/vocab/nervous.jpg" alt=""><div class="w">"I'm terrified"</div></div>
+        <div class="pic"><img src="../assets/vocab/excited.jpg" alt=""><div class="w">"I'm excited"</div></div>
+      </div>
+      <ul>
+        <li>Listen to the <b>whole</b> question</li>
+        <li><b>Acknowledge:</b> I'm glad you raised that.</li>
+        <li><b>Concede + narrow:</b> You're right about that; where I'd differ is…</li>
+        <li><b>Bridge back:</b> Which brings me back to…</li>
+      </ul>
+    </div>
+    <div class="tag"><span class="pill lab">NERVES</span> bookends by heart · "I'm excited" · slow exhales · friendly faces first</div>
+  </section>
+
+  <!-- 14 -->
+  <section class="slide">
+    <div class="eyebrow">8.2 · Freer task · 25 min · groups of 4</div>
+    <h2>The Speech Lab</h2>
+    <div class="two">
+      <ul class="lab">
+        <li><b>Speaker:</b> 3 minutes (stop at 3:15)</li>
+        <li><b>Timekeeper:</b> "1 min" · "30 s" · "Thank you"</li>
+        <li><b>Questioner:</b> one genuine question</li>
+        <li><b>Feedback lead:</b> the slip; everyone adds one line they remember</li>
+      </ul>
+      <div class="ccq">How long? <i>(Three minutes.)</i> Open with an apology? <i>(No: a hook.)</i> How many questions? <i>(One.)</i> Feedback on accent? <i>(Never.)</i> Sit down to speak? <i>(Yes, if you prefer.)</i> Change roles when? <i>(When the teacher says "Change.")</i></div>
+    </div>
+    <div class="tag"><span class="pill">FEEDBACK</span> Quote before you judge: "The line I'll remember is…" · "If this were mine, I might…"</div>
+  </section>
+
+  <!-- 15 -->
+  <section class="slide">
+    <div class="eyebrow">8.3 · Class C25 · the review project</div>
+    <h2>Your Masterwork: four formats</h2>
+    <table class="g">
+      <tr><th>Speech</th><td>4–5 minutes, delivered in full from notes</td></tr>
+      <tr><th>Op-ed</th><td>500–700 words · a 1-minute frame + the two strongest paragraphs, performed</td></tr>
+      <tr><th>Creative piece</th><td>500–700 words · read aloud + a 30-second craft note</td></tr>
+      <tr><th>Research summary</th><td>500–700 words, 3+ real sources · a 4-minute spoken briefing</td></tr>
+    </table>
+    <div class="ccq">Is anything in the masterwork new? <i>(No: you orchestrate what you already have.)</i> Every device in one paragraph? <i>(A showreel. Deploy the range, then hide the seams.)</i></div>
+  </section>
+
+  <!-- 16 -->
+  <section class="slide">
+    <div class="eyebrow">8.3 · Model · a masterwork and its discussion</div>
+    <h2>Concede, then narrow</h2>
+    <div class="dlg">
+      <p><span class="sp">Speaker:</span> Fluency is the door. What lies beyond it… that is the <b>room</b>. And I spent years, frankly, mistaking the door for the room.</p>
+      <p class="b"><span class="sp">Discussant:</span> Isn't there something a little elitist in it?</p>
+      <p><span class="sp">Speaker:</span> That's a genuinely important challenge, and <b>you're right to press it</b>. <b>Let me draw the distinction I actually mean.</b> I'm not saying mastery makes a person richer; <b>I'm saying</b> it opens particular rooms.</p>
+    </div>
+    <div class="ccq">Does she reject the challenge? <i>(No.)</i> Give up her position? <i>(No.)</i> What does she do? <i>(Concedes the risk, then narrows the claim.)</i> Weaker or stronger now? <i>(Smaller, and stronger.)</i></div>
+  </section>
+
+  <!-- 17 -->
+  <section class="slide">
+    <div class="eyebrow">8.3 · Task · the Masterwork Salon · about 10 min each</div>
+    <h2>Reflect · probe · challenge · offer</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>Present</th><td>4–5 min</td></tr>
+        <tr><th>Reflect (R1)</th><td>What landed for me was "…": it made me…</td></tr>
+        <tr><th>Probe (R1)</th><td>What made you choose… rather than…?</td></tr>
+        <tr><th>Challenge (R2)</th><td>Someone might push back on…</td></tr>
+        <tr><th>Offer</th><td>If this were mine, I might…</td></tr>
+      </table>
+      <div class="ccq">R1 does what? <i>(Quotes, then asks.)</i> R2? <i>(One fair challenge.)</i> A question about the person? <i>(The chair stops it.)</i> How many changes do you offer? <i>(One.)</i> Presenter during offers? <i>(Just "Thank you.")</i> A grade? <i>(No: practice.)</i></div>
+    </div>
+  </section>
+
+  <!-- 18 -->
+  <section class="slide section">
+    <div class="eyebrow">Lifelong command · looking ahead</div>
+    <h2>The summit is a door</h2>
+    <ul class="lab">
+      <li><b>Read</b> widely · <b>use</b> it where it matters · <b>teach</b> it · <b>live</b> in it</li>
+      <li>Key word · count · meaning · fit → <b>If you remember one thing today, let it be this.</b> → <b>You're right to press that; let me draw the distinction I mean.</b></li>
+      <li><b>C26:</b> an individual speaking interview (about 12 minutes) plus listening, reading and writing tasks. Then we celebrate.</li>
+    </ul>
+    <p class="lead" style="margin-top:10px;max-width:44ch">Homework: online lessons 8.1–8.3 with the Listen buttons. Record your masterwork. Write the letter to your A1 self.</p>
+  </section>
+
+
+</div>
+
+<div class="count" id="count">1 / 18</div>
+<div class="nav"><button id="prev" aria-label="Previous slide"></button><button id="next" aria-label="Next slide"></button></div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const bar=document.getElementById('bar'), count=document.getElementById('count');
+  let i=0;
+  function show(n){ i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+    bar.style.width=((i+1)/slides.length*100)+'%'; count.textContent=(i+1)+' / '+slides.length; }
+  document.getElementById('next').onclick=()=>show(i+1);
+  document.getElementById('prev').onclick=()=>show(i-1);
+  addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}
+    else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+  });
+  show(0);
+</script>
+</body>
+</html>

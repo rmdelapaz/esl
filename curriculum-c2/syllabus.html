@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mastery English Syllabus</title>
+<meta name="description" content="13-week, 26-class instructor-led syllabus for Mastery English (C2 Proficiency): adult mastery-level English, 90-minute classes twice a week.">
+<link rel="icon" href="favicon.png">
+<script>try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root{
+    --ground:#eef2f8;
+    --surface:#ffffff;
+    --surface-2:#f4f6fa;
+    --ink:#16202e;
+    --ink-2:#45536a;
+    --ink-3:#6f7c8e;
+    --line:#d6dee9;
+    --line-strong:#bcc7d6;
+    --accent:#1f5fc9;
+    --accent-2:#2563eb;
+    --accent-soft:#e6eefc;
+    --lab:#0f766e;
+    --lab-soft:#d7efe9;
+    --shadow:0 1px 2px rgba(20,30,45,.05),0 8px 26px rgba(20,30,45,.07);
+    --radius:14px;
+    --on-accent:#ffffff;
+    --on-lab:#ffffff;
+    color-scheme:light;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --ground:#0d131e;
+      --surface:#141c29;
+      --surface-2:#1a2433;
+      --ink:#e8eef6;
+      --ink-2:#9fadc1;
+      --ink-3:#7c899b;
+      --line:#26324a;
+      --line-strong:#33425e;
+      --accent:#7fb2ff;
+      --accent-2:#a9ccff;
+      --accent-soft:rgba(127,178,255,.14);
+      --lab:#4dd0be;
+      --lab-soft:rgba(77,208,190,.13);
+      --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.35);
+      --on-accent:#0b1a33;
+      --on-lab:#062521;
+      color-scheme:dark;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#0d131e;
+    --surface:#141c29;
+    --surface-2:#1a2433;
+    --ink:#e8eef6;
+    --ink-2:#9fadc1;
+    --ink-3:#7c899b;
+    --line:#26324a;
+    --line-strong:#33425e;
+    --accent:#7fb2ff;
+    --accent-2:#a9ccff;
+    --accent-soft:rgba(127,178,255,.14);
+    --lab:#4dd0be;
+    --lab-soft:rgba(77,208,190,.13);
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.35);
+    --on-accent:#0b1a33;
+    --on-lab:#062521;
+    color-scheme:dark;
+  }
+
+  *{box-sizing:border-box}
+  body{
+    margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Source Sans 3",system-ui,-apple-system,sans-serif;
+    font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:940px;margin:0 auto;padding-block:28px 64px;padding-left:20px;padding-right:20px}
+  h1,h2,h3{font-family:"Archivo","Source Sans 3",sans-serif;margin:0;line-height:1.12;text-wrap:balance}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  .topbar{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;margin-bottom:16px;font-size:.9rem}
+  .topbar a{font-weight:600}
+  .topbar .sp{flex:1}
+  .topbar button{font:inherit;font-size:.85rem;cursor:pointer;border:1px solid var(--line-strong);background:var(--surface);color:var(--ink-2);
+    border-radius:999px;padding:5px 12px}
+  .topbar button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+
+  /* ── Masthead ── */
+  .mast{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);padding:34px 34px 30px;position:relative;overflow:hidden}
+  .mast::before{content:"";position:absolute;inset:0 auto 0 0;width:6px;background:linear-gradient(180deg,var(--accent),var(--accent-2))}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+  .mast h1{font-size:clamp(1.9rem,5vw,2.7rem);font-weight:800;letter-spacing:-.02em;margin:12px 0 6px}
+  .mast .tag{font-size:1.05rem;color:var(--ink-2);font-weight:500;max-width:60ch}
+  .meta{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:26px}
+  .tile{background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:13px 15px}
+  .tile .k{font-family:"JetBrains Mono",monospace;font-size:.66rem;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3)}
+  .tile .v{font-family:"Archivo",sans-serif;font-weight:700;font-size:1.05rem;margin-top:3px;letter-spacing:-.01em}
+
+  .sec-label{display:flex;align-items:baseline;gap:12px;margin:44px 2px 16px}
+  .sec-label h2{font-size:1.02rem;font-weight:700;letter-spacing:.02em;text-transform:uppercase;color:var(--ink-2)}
+  .sec-label .rule{flex:1;height:1px;background:var(--line-strong)}
+  .lead-p{margin:-6px 2px 18px;color:var(--ink-2);font-size:.95rem}
+
+  /* ── Week card ── */
+  .day{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;margin-bottom:18px}
+  .day-head{display:flex;flex-wrap:wrap;align-items:center;gap:14px;padding:16px 22px;border-bottom:1px solid var(--line);background:var(--surface-2)}
+  .daynum{font-family:"Archivo",sans-serif;font-weight:800;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--on-accent);background:var(--accent);padding:5px 11px;border-radius:999px;white-space:nowrap}
+  .day-head h3{font-size:1.22rem;font-weight:700;letter-spacing:-.01em;flex:1;min-width:200px}
+  .obj{font-size:.9rem;color:var(--ink-2);width:100%;margin-top:-2px}
+  .obj b{color:var(--ink);font-weight:600}
+  .session{padding:4px 22px 8px}
+
+  .slot{display:grid;grid-template-columns:52px 52px 1fr;gap:12px;align-items:baseline;padding:10px 0;border-top:1px solid var(--line)}
+  .slot:first-of-type{border-top:none}
+  .slot .t{font-family:"JetBrains Mono",monospace;font-size:.82rem;color:var(--ink-2);font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .slot .code{font-family:"JetBrains Mono",monospace;font-size:.72rem;font-weight:600;color:var(--accent);background:var(--accent-soft);border-radius:6px;padding:2px 0;text-align:center}
+  .slot .desc{font-size:.99rem;color:var(--ink);font-weight:600}
+  .slot .desc .sub{color:var(--ink-3);font-size:.85rem;display:block;margin-top:2px;font-weight:400}
+  .slot .desc .cando{color:var(--lab);font-size:.88rem;display:block;margin-top:2px;font-weight:600}
+  .slot.break .t,.slot.break .desc{color:var(--ink-3)}
+  .slot.break .desc{font-style:italic;font-size:.9rem;font-weight:400}
+  .slot .code.none{visibility:hidden}
+  .slot.lab .code{color:var(--on-lab);background:var(--lab)}
+  .slot.lab .desc b{color:var(--lab);font-weight:700}
+
+  /* ── Info columns ── */
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 24px}
+  .panel h3{font-size:1.05rem;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:9px}
+  .panel h3 .dot{width:9px;height:9px;border-radius:3px;background:var(--accent);display:inline-block}
+  .panel.lab-accent h3 .dot{background:var(--lab)}
+  ul.clean{list-style:none;margin:0;padding:0}
+  ul.clean li{position:relative;padding:5px 0 5px 22px;font-size:.95rem;color:var(--ink-2);border-top:1px solid var(--line)}
+  ul.clean li:first-child{border-top:none}
+  ul.clean li::before{content:"";position:absolute;left:2px;top:12px;width:7px;height:7px;border-radius:2px;background:var(--accent);transform:rotate(45deg)}
+  ul.clean.lab-accent li::before{background:var(--lab)}
+  ul.clean li b{color:var(--ink);font-weight:600}
+
+  .outcomes{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:24px 26px;margin-top:22px}
+  .outcomes h3{font-size:1.15rem;font-weight:700;margin-bottom:4px}
+  .outcomes p.lead{color:var(--ink-2);font-size:.95rem;margin:0 0 14px}
+  .out-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 26px}
+  .out-grid div{position:relative;padding:6px 0 6px 26px;font-size:.95rem;border-top:1px solid var(--line)}
+  .out-grid div::before{content:"\2713";position:absolute;left:2px;top:6px;color:var(--lab);font-weight:700;font-family:"Archivo",sans-serif}
+
+  .foot{margin-top:34px;padding-top:20px;border-top:1px solid var(--line-strong);display:flex;flex-wrap:wrap;gap:12px 24px;align-items:baseline;justify-content:space-between}
+  .foot .who{font-size:.95rem;color:var(--ink-2)}
+  .foot .who b{color:var(--ink);font-weight:600}
+  .foot .who .bio{display:block;color:var(--ink-3);font-size:.82rem;margin-top:2px}
+  .foot .ver{font-family:"JetBrains Mono",monospace;font-size:.72rem;color:var(--ink-3);letter-spacing:.04em}
+
+  @media (max-width:720px){
+    .meta{grid-template-columns:1fr 1fr}
+    .cols{grid-template-columns:1fr}
+    .out-grid{grid-template-columns:1fr}
+    .slot{grid-template-columns:46px 48px 1fr;gap:10px}
+  }
+  @media (max-width:430px){
+    .wrap{padding-left:16px;padding-right:16px}
+    .mast{padding:26px 22px}
+    .session{padding:4px 14px 8px}
+    .day-head{padding:14px 14px}
+    .slot{grid-template-columns:40px 44px 1fr}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+  @media print{
+    :root{--shadow:none}
+    body{background:#fff}
+    .wrap{max-width:none;padding:0}
+    .topbar{display:none}
+    .mast,.day,.panel,.outcomes{border-color:#c9d2df;break-inside:avoid}
+    .foot{break-inside:avoid}
+    a{color:inherit}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="topbar" aria-label="Syllabus">
+    <a href="index.html">← Mastery English (C2)</a>
+    <span class="sp"></span>
+    <a href="syllabus-print.html">🖨 Print version</a>
+    <button type="button" id="themeBtn" aria-label="Toggle dark or light mode">🌙 Theme</button>
+  </nav>
+
+  <header class="mast">
+    <div class="eyebrow">Instructor-Led Course Syllabus</div>
+    <h1>Mastery English (C2 Proficiency)</h1>
+    <p class="tag">A 13-week, 26-class course for adults who already command English and now want mastery: the exact word, the right register, the meaning beneath the words, and prose and speech that move people. Twice a week for 90 minutes, you work on nuance and idiom, irony and imagery, stance and cohesion, rhetoric and style, world Englishes and literature, writing for real readers, diplomacy and mediation between languages, exam technique and public speaking, and you finish by delivering and defending a masterwork. Between classes, the free online lessons (with audio) are your homework.</p>
+    <div class="meta">
+      <div class="tile"><div class="k">Level</div><div class="v">CEFR C2 · Proficiency</div></div>
+      <div class="tile"><div class="k">Duration</div><div class="v">13 weeks · 26 classes</div></div>
+      <div class="tile"><div class="k">Each class</div><div class="v">90 minutes · 2 × week</div></div>
+      <div class="tile"><div class="k">Content</div><div class="v">8 modules · 24 lessons</div></div>
+    </div>
+  </header>
+
+  <div class="sec-label"><h2>Class Schedule</h2><span class="rule"></span></div>
+  <p class="lead-p">Two classes a week, 90 minutes each. Every class has <b>one lesson</b> from the online course, except the two assessment classes, and every class ends in a demanding <b>workshop</b>: close reading, editing, stylistic writing, negotiation, or a talk. Lessons 4.3 and 8.3 are <b>review projects</b>: a halfway masterwork, and a final masterwork delivered and defended in discussion. Each class shows its lesson, its focus, and the <span style="color:var(--lab);font-weight:600">✓ can-do</span> goal learners reach by the end.</p>
+
+
+  <section class="day">
+    <div class="day-head">
+      <span class="daynum">Week 1</span>
+      <h3>The Exact Word &amp; the Right Room</h3>
+      <div class="obj"><b>Module 1:</b> choosing a word on every axis at once, then choosing a whole manner.</div>
+    </div>
+    <div class="session">
+      <div class="slot"><span class="t">C1</span><span class="code">1.1</span><span class="desc">Fine Shades of Meaning — The Mot Juste<span class="sub">denotation vs connotation · <i>frugal / stingy</i> · semantic prosody (<i>cause, set in</i>) · force, register, specificity · <i>bemused</i> ≠ <i>amused</i></span><span class="cando">✓ I can choose the exactly right word for connotation, force, and company.</span></span></div>
+      <div class="slot"><span class="t">C2</span><span class="code">1.2</span><span class="desc">Register Agility &amp; Tone<span class="sub">field, tenor, mode · one message, five levels · tone as a second dial · the register clang · jargon, slang, archaism</span><span class="cando">✓ I can re-pitch one message across the formality cline, with no stray clang.</span></span></div>
+    </div>
+  </section>
+
+  <section class="day">
+    <div class="day-head">
+      <span class="daynum">Week 2</span>
+      <h3>Ready-Made Phrases &amp; the Unsaid</h3>
+      <div class="obj"><b>Modules 1–2:</b> the prefabricated layer of English, then what speakers mean but never say.</div>
+    </div>
+    <div class="session">
+      <div class="slot"><span class="t">C3</span><span class="code">1.3</span><span class="desc">Fixed Expressions, Binomials &amp; Advanced Collocation<span class="sub"><i>by and large · part and parcel</i> · <i>a foregone conclusion, a moot point</i> · lexical bundles · the garble (<i>for all intents and purposes</i>)</span><span class="cando">✓ I can use fixed chunks exactly, sparingly, and in the right register.</span></span></div>
+      <div class="slot"><span class="t">C4</span><span class="code">2.1</span><span class="desc">Implicature, Inference &amp; Reading Between the Lines<span class="sub">said vs meant · the cooperative maxims · damning with faint praise · presupposition triggers and loaded questions · hinting and understatement</span><span class="cando">✓ I can decode, and deliver, a message that is never stated.</span></span></div>
+    </div>
+  </section>
+
+  <section class="day">
+    <div class="day-head">
+      <span class="daynum">Week 3</span>
+      <h3>Irony &amp; Image</h3>
+      <div class="obj"><b>Module 2:</b> humor, wordplay, and the figures that make the abstract felt.</div>
+    </div>
+    <div class="session">
+      <div class="slot"><span class="t">C5</span><span class="code">2.2</span><span class="desc">Irony, Humor &amp; Wordplay<span class="sub">verbal irony vs sarcasm · understatement and litotes · hyperbole · situational and dramatic irony · puns, malapropisms, spoonerisms</span><span class="cando">✓ I can hear irony and make a dry joke land, in the right company.</span></span></div>
+      <div class="slot"><span class="t">C6</span><span class="code">2.3</span><span class="desc">Figurative Language — Metaphor &amp; Imagery<span class="sub">metaphor, simile, metonymy, synecdoche · ARGUMENT IS WAR · live, dead, and clichéd · the sustained metaphor · mixed metaphors</span><span class="cando">✓ I can carry an argument in one controlled image, and never mix it.</span></span></div>
+    </div>
+  </section>
+
+  <section class="day">
+    <div class="day-head">
+      <span class="daynum">Week 4</span>
+      <h3>Stance &amp; Architecture</h3>
+      <div class="obj"><b>Module 3:</b> the small words that color a text, and the structure that holds a long one together.</div>
+    </div>
+    <div class="session">
+      <div class="slot"><span class="t">C7</span><span class="code">3.1</span><span class="desc">Discourse Markers &amp; Stance<span class="sub">organizing markers by register · <i>admittedly, arguably, ostensibly, tellingly</i> · <i>so-called, supposedly</i> · <i>mind you, the thing is</i></span><span class="cando">✓ I can signpost a commentary and color it with a precise attitude.</span></span></div>
+      <div class="slot"><span class="t">C8</span><span class="code">3.2</span><span class="desc">Cohesion &amp; Coherence Across Long Texts<span class="sub">cohesion vs coherence · theme and rheme, given before new · lexical chains vs elegant variation · signposting · the one-sentence-per-paragraph test</span><span class="cando">✓ I can re-engineer a disjointed text into one line of thought.</span></span></div>
+    </div>
+  </section>
+
+  <section class="day">
+    <div class="day-head">
+      <span class="daynum">Week 5</span>
+      <h3>Other Voices, Then Your Case</h3>
+      <div class="obj"><b>Modules 3–4:</b> handling sources fairly, then building a case that persuades.</div>
+    </div>
+    <div class="session">
+      <div class="slot"><span class="t">C9</span><span class="code">3.3</span><span class="desc">Summarizing, Paraphrasing &amp; Synthesis<span class="sub">the précis · genuine paraphrase vs patchwriting · reporting verbs and stance · synthesis by idea, not by source</span><span class="cando">✓ I can condense and combine sources faithfully, with fair attribution.</span></span></div>
+      <div class="slot"><span class="t">C10</span><span class="code">4.1</span><span class="desc">Rhetoric &amp; Persuasion — The Art of Argument<span class="sub">ethos, pathos, logos · tricolon, anaphora, antithesis, chiasmus · claim → warrant → concession → refutation · fallacies</span><span class="cando">✓ I can build and deliver a persuasive case, and take a dishonest one apart.</span></span></div>
+    </div>
+  </section>
+
+  <section class="day">
+    <div class="day-head">
+      <span class="daynum">Week 6</span>
+      <h3>Voice &amp; a Halfway Masterwork</h3>
+      <div class="obj"><b>Module 4:</b> style and editing, then the first review project.</div>
+    </div>
+    <div class="session">
+      <div class="slot"><span class="t">C11</span><span class="code">4.2</span><span class="desc">Style, Voice &amp; Creative Command<span class="sub">rhythm and sentence variety · periodic vs loose sentences · omit needless words · strong verbs · edit in passes; kill your darlings</span><span class="cando">✓ I can edit my own prose for economy, rhythm, and voice.</span></span></div>
+      <div class="slot"><span class="t">C12</span><span class="code">4.3</span><span class="desc">Review Project — Mastery in Action<span class="sub">orchestration · re-pitching for the room · a 5–6 minute talk and an unscripted discussion · the mastery rubric · Modules 1–4 in action</span><span class="cando">✓ I can orchestrate the first-half toolkit in one talk and defend it.</span></span></div>
+    </div>
+  </section>
+
+  <section class="day">
+    <div class="day-head">
+      <span class="daynum">Week 7</span>
+      <h3>Halfway Check &amp; the World's Englishes</h3>
+      <div class="obj"><b>Module 5:</b> a progress check, then English as a family of varieties.</div>
+    </div>
+    <div class="session">
+      <div class="slot lab"><span class="t">C13</span><span class="code">TEST</span><span class="desc"><b>Progress Test 1 (Modules 1–4) + Catch-Up</b><span class="sub">~62-min written check · 9-min pair speaking · catch-up stations</span><span class="cando">✓ I know what is already reliable and what to polish next.</span></span></div>
+      <div class="slot"><span class="t">C14</span><span class="code">5.1</span><span class="desc">Varieties of English — Accents, Dialects &amp; Global Englishes<span class="sub">rhoticity, the <i>bath</i> vowel, t-flapping, the glottal stop · <i>lift / elevator</i> · <i>-ise / -ize</i> · Indian, Singaporean, Nigerian English · intelligibility, not imitation</span><span class="cando">✓ I can follow, and respect, speakers of many Englishes.</span></span></div>
+    </div>
+  </section>
+
+  <section class="day">
+    <div class="day-head">
+      <span class="daynum">Week 8</span>
+      <h3>Reading Deep, Listening Fast</h3>
+      <div class="obj"><b>Module 5:</b> literature and complex texts, then fast, authentic media.</div>
+    </div>
+    <div class="session">
+      <div class="slot"><span class="t">C15</span><span class="code">5.2</span><span class="desc">Reading Literature &amp; Complex Texts<span class="sub">subject vs theme · narrative voice and the unreliable narrator · parsing periodic sentences · allusion, imagery, symbol, irony</span><span class="cando">✓ I can close-read a literary text and defend my reading with evidence.</span></span></div>
+      <div class="slot"><span class="t">C16</span><span class="code">5.3</span><span class="desc">Decoding Authentic Media — Slang, Cultural Reference &amp; Fast Speech<span class="sub">slang that dates · noticing a reference · elision, linking, <i>gonna / whatcha</i> · sarcasm in the delivery · riding the gist</span><span class="cando">✓ I can follow fast, reference-heavy media and cope with what I miss.</span></span></div>
+    </div>
+  </section>
+
+  <section class="day">
+    <div class="day-head">
+      <span class="daynum">Week 9</span>
+      <h3>Writing for Readers</h3>
+      <div class="obj"><b>Module 6:</b> short public forms, then the long form.</div>
+    </div>
+    <div class="session">
+      <div class="slot"><span class="t">C17</span><span class="code">6.1</span><span class="desc">Writing for an Audience — Op-eds, Reviews &amp; Articles<span class="sub">earn the next line · hook, line, evidence, landing · description → evaluation → verdict · matching the publication</span><span class="cando">✓ I can write an op-ed or a review that a real reader chooses to finish.</span></span></div>
+      <div class="slot"><span class="t">C18</span><span class="code">6.2</span><span class="desc">The Long Form — Extended &amp; Research Writing<span class="sub">the argued outline · a through-line and informative headings · signposting at every seam · attribution verbs and plagiarism · the abstract</span><span class="cando">✓ I can plan a long piece and write the abstract that stands for it.</span></span></div>
+    </div>
+  </section>
+
+  <section class="day">
+    <div class="day-head">
+      <span class="daynum">Week 10</span>
+      <h3>The Fine Grain &amp; the Unwritten Rules</h3>
+      <div class="obj"><b>Modules 6–7:</b> polish at the level of the comma, then pragmatics across cultures.</div>
+    </div>
+    <div class="session">
+      <div class="slot"><span class="t">C19</span><span class="code">6.3</span><span class="desc">Fine Points of Usage &amp; Punctuation<span class="sub"><i>who / whom, fewer / less, that / which</i> · danglers and parallelism · the semicolon, colon, and em dash · myths worth retiring</span><span class="cando">✓ I can proofread to an educated reader's standard, and tell a rule from a myth.</span></span></div>
+      <div class="slot"><span class="t">C20</span><span class="code">7.1</span><span class="desc">Cross-Cultural Pragmatics — Politeness, Taboo &amp; Humor<span class="sub">directness vs indirectness · a hedge as a refusal · compliments and silence · sensitive topics handled abstractly · the repair toolkit</span><span class="cando">✓ I can read and bridge a cross-cultural misunderstanding without blame.</span></span></div>
+    </div>
+  </section>
+
+  <section class="day">
+    <div class="day-head">
+      <span class="daynum">Week 11</span>
+      <h3>High Stakes &amp; Between Languages</h3>
+      <div class="obj"><b>Module 7:</b> diplomacy and negotiation, then mediation between languages.</div>
+    </div>
+    <div class="session">
+      <div class="slot"><span class="t">C21</span><span class="code">7.2</span><span class="desc">Diplomacy, Negotiation &amp; High-Stakes Communication<span class="sub">acknowledge → counter · <i>If you were able to…, then we could…</i> · face-saving bridges · the cushioned difficult message · calm under pressure</span><span class="cando">✓ I can negotiate firmly and deliver hard news clearly and kindly.</span></span></div>
+      <div class="slot"><span class="t">C22</span><span class="code">7.3</span><span class="desc">Working Between Languages — Translation &amp; Interpreting Awareness<span class="sub">why word-for-word fails · false friends · untranslatable words, conveyed · translation vs interpreting · signal → image → meaning → feeling</span><span class="cando">✓ I can carry a meaning across languages when the word itself won't cross.</span></span></div>
+    </div>
+  </section>
+
+  <section class="day">
+    <div class="day-head">
+      <span class="daynum">Week 12</span>
+      <h3>Exam Technique &amp; the Stage</h3>
+      <div class="obj"><b>Module 8:</b> proficiency-exam strategy, then delivery.</div>
+    </div>
+    <div class="session">
+      <div class="slot"><span class="t">C23</span><span class="code">8.1</span><span class="desc">C2 Proficiency Exam Skills (CPE / IELTS 8+)<span class="sub">open cloze, word formation, key word transformations · the "true but not there" trap · band descriptors · the collaborative task</span><span class="cando">✓ I can show my command under exam conditions, if I choose to sit an exam.</span></span></div>
+      <div class="slot"><span class="t">C24</span><span class="code">8.2</span><span class="desc">Public Speaking &amp; Delivering with Impact<span class="sub">the open, the spine, the close · pace, pause, and stress · rapport and nerves · rhetoric performed · poised Q&amp;A</span><span class="cando">✓ I can deliver a talk in which the delivery carries the meaning.</span></span></div>
+    </div>
+  </section>
+
+  <section class="day">
+    <div class="day-head">
+      <span class="daynum">Week 13</span>
+      <h3>The Masterwork &amp; the Summit</h3>
+      <div class="obj"><b>Module 8:</b> the capstone, the final check, and a celebration.</div>
+    </div>
+    <div class="session">
+      <div class="slot"><span class="t">C25</span><span class="code">8.3</span><span class="desc">Review Project — Your Masterwork &amp; Lifelong Command<span class="sub">the whole range, integrated · deliver and defend · self-assessment against the C2 standard · habits of lifelong command</span><span class="cando">✓ I can deliver and defend a masterwork, and I have a plan for what comes next.</span></span></div>
+      <div class="slot lab"><span class="t">C26</span><span class="code">TEST</span><span class="desc"><b>Final Test + Celebration</b><span class="sub">~62-min written test · ~12-min individual interview · certificates</span><span class="cando">✓ I can show what I command in English.</span></span></div>
+    </div>
+  </section>
+
+  <div class="sec-label"><h2>Every Class, the Same Shape</h2><span class="rule"></span></div>
+  <p class="lead-p">A steady routine helps learners relax and take risks. Timings flex from lesson to lesson, and the review projects give the workshop far more time.</p>
+  <section class="day">
+    <div class="session">
+      <div class="slot"><span class="t">0:00</span><span class="code none">—</span><span class="desc">Warmer &amp; review of the last class<span class="sub">A speaking task that recycles last class's language</span></span></div>
+      <div class="slot"><span class="t">0:10</span><span class="code none">—</span><span class="desc">Input &amp; analysis<span class="sub">A text, talk, or model · meaning, form, register &amp; effect</span></span></div>
+      <div class="slot"><span class="t">0:30</span><span class="code none">—</span><span class="desc">Focused practice<span class="sub">Controlled work on the key choices, checked with a partner</span></span></div>
+      <div class="slot break"><span class="t">0:50</span><span class="code none">—</span><span class="desc">Break (5 min)</span></div>
+      <div class="slot"><span class="t">0:55</span><span class="code none">—</span><span class="desc">The workshop task<span class="sub">Close reading, editing, stylistic writing, negotiation, or a talk</span></span></div>
+      <div class="slot"><span class="t">1:20</span><span class="code none">—</span><span class="desc">Critique &amp; “I can…”<span class="sub">Precision, appropriacy, naturalness &amp; effect · peer critique · tick the can-do checklist</span></span></div>
+      <div class="slot"><span class="t">1:25</span><span class="code none">—</span><span class="desc">Homework set-up<span class="sub">The online lesson with 🔊 audio + one workbook page</span></span></div>
+    </div>
+  </section>
+
+  <div class="sec-label"><h2>Course Details</h2><span class="rule"></span></div>
+
+  <div class="cols">
+    <div class="panel">
+      <h3><span class="dot"></span>Prerequisites</h3>
+      <ul class="clean">
+        <li><b>CEFR C1.</b> You can place events precisely in time and calibrate certainty, use inversion, clefts, and nominal style, write essays, reports, and professional emails, read arguments critically, follow lectures, and hold your own in a seminar.</li>
+        <li>Finished <b>Advanced English (C1)</b>? You’re ready. New to our program? Take the shared <b>placement test</b> first.</li>
+        <li>Learners whose reading and writing lag behind their speaking are welcome. Every lesson has support options, and the tests have an adapted version.</li>
+        <li>No computer needed in class. A phone or computer helps for homework and for recording yourself, but it isn’t required.</li>
+      </ul>
+    </div>
+    <div class="panel lab-accent">
+      <h3><span class="dot"></span>What’s Provided</h3>
+      <ul class="clean lab-accent">
+        <li>A <b>Student Workbook</b> for all 24 lessons, written in C2 English (the learner keeps it)</li>
+        <li>A <b>welcome handout</b> with workshop, critique, and discussion norms, and QR codes to the online lessons</li>
+        <li>For the teacher: a <b>Teacher’s Guide</b> (a 90-minute plan for every class), slides, role-play and negotiation cards, listening scripts, games, and answer keys</li>
+        <li>Free access to the companion online course: <a href="index.html">Mastery English (C2)</a>, with 🔊 audio</li>
+        <li>A free <a href="../curriculum/learning-tools.html">learning-tools page</a> that shows how to translate lessons into any language</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cols" style="margin-top:22px">
+    <div class="panel">
+      <h3><span class="dot"></span>Assessment</h3>
+      <ul class="clean">
+        <li><b>Every class:</b> an “I can…” checklist and critique of the workshop task, with no grades</li>
+        <li><b>Class 13 · Progress Test 1</b> (Modules 1–4): listening for implicature and attitude, word choice and collocation, register rewrites, stance, a close reading of a column, the opening of a persuasive talk, and a 9-minute pair speaking task</li>
+        <li><b>Class 26 · Final Test</b> (all 8 modules): listening, a literary close reading, original proficiency-style Use of English, an op-ed, review, or synthesis (about 300 words), and a 12-minute individual interview with a long turn, an abstract discussion under push-back, and a negotiation or diplomatic task</li>
+        <li>Rubrics follow the CEFR C2 descriptors. Results point to the <b>next step</b>, never to who gets to celebrate</li>
+        <li>Tasks about your life can always use a real, general, or imagined example, and in debates you may argue an <b>assigned side</b> instead of your own view</li>
+      </ul>
+    </div>
+    <div class="panel lab-accent">
+      <h3><span class="dot"></span>Homework &amp; the Online Course</h3>
+      <ul class="clean lab-accent">
+        <li>After each class, do the matching <b>online lesson</b> at home: about <b>45–60 minutes</b>, with 🔊 Listen buttons for model sentences and dialogues</li>
+        <li>Plus one <b>workbook page</b>, and serious reading in English every day</li>
+        <li>Missed a class? The online lesson covers the same ground, so you can catch up</li>
+        <li>After the course: C2 is the top of the CEFR ladder. A proficiency exam is an option if you need the credential; <a href="../curriculum-ielts/index.html">IELTS Academic Preparation</a> and <a href="../curriculum-business/index.html">Business English</a> are free specialist tracks</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="outcomes">
+    <h3>What You’ll Be Able to Do</h3>
+    <p class="lead">By the end of the course, learners work at <b>CEFR C2</b>: they understand virtually everything they hear or read and express themselves spontaneously, very fluently, and precisely, differentiating finer shades of meaning even in complex situations:</p>
+    <div class="out-grid">
+        <div>Choose the exactly right word for connotation, force, register, and company</div>
+        <div>Shift a message across the whole register cline, and control tone independently</div>
+        <div>Use idiom, binomials, and restricted collocation exactly and sparingly</div>
+        <div>Decode and deliver implicature, irony, understatement, and figurative meaning</div>
+        <div>Signal stance precisely and build long texts that cohere</div>
+        <div>Summarize, paraphrase, and synthesize sources faithfully and fairly</div>
+        <div>Persuade with the classical appeals and figures, and detect manipulation</div>
+        <div>Follow world Englishes, literature, and fast authentic media with ease</div>
+        <div>Write op-eds, reviews, and long-form pieces to an educated reader's standard</div>
+        <div>Negotiate, mediate between languages, and deliver a talk with impact</div>
+    </div>
+  </div>
+
+  <p style="margin:26px 2px 0;color:var(--ink-2);font-size:.92rem">Want to preview a lesson or catch up on a missed class? The full companion course is free online: <a href="index.html">Mastery English (C2)</a>. Previous level: <a href="../curriculum-c1/index.html">Advanced English (C1)</a>. Specialist tracks: <a href="../curriculum-ielts/index.html">IELTS Academic Preparation</a> · <a href="../curriculum-business/index.html">Business English</a>.</p>
+
+  <div class="foot">
+    <div class="who"><b>Ray de la Paz</b><span class="bio">© 2026 Ray de la Paz · Mastery English (C2 Proficiency)</span></div>
+    <div class="ver">v1.0 · 13 weeks · 26 classes · 39 instructional hours</div>
+  </div>
+
+</div>
+<script>
+  (function(){
+    var btn=document.getElementById('themeBtn'); if(!btn) return;
+    function cur(){var a=document.documentElement.getAttribute('data-theme'); if(a) return a;
+      return (window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light';}
+    btn.addEventListener('click',function(){
+      var next=cur()==='dark'?'light':'dark';
+      document.documentElement.setAttribute('data-theme',next);
+      try{localStorage.setItem('theme',next);}catch(e){}
+    });
+  })();
+</script>
+</body>
+</html>

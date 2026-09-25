@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slides — Module 3</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root{--bg:#0b1220;--ink:#edf2fb;--ink2:#a8b6cf;--accent:#7fb2ff;--accent2:#2563eb;--lab:#34d3bd;--warn:#fbbf24;--line:#233252;--code:#101a2e;color-scheme:dark}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;overflow:hidden}
+  .deck{height:100%;width:100%;position:relative}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:6vh 8vw;gap:20px}
+  .slide.on{display:flex}
+  h1,h2,h3{font-family:"Archivo",sans-serif;line-height:1.1;text-wrap:balance}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  .slide h1{font-size:clamp(2rem,6vw,4rem);font-weight:800;letter-spacing:-.02em}
+  .slide h2{font-size:clamp(1.5rem,4.2vw,2.8rem);font-weight:800;letter-spacing:-.01em}
+  .slide p.lead{font-size:clamp(1.05rem,2.4vw,1.5rem);color:var(--ink2);max-width:26ch}
+  ul{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:6px}
+  ul li{position:relative;padding-left:34px;font-size:clamp(1.05rem,2.3vw,1.6rem)}
+  ul li::before{content:"";position:absolute;left:0;top:.55em;width:12px;height:12px;border-radius:3px;background:var(--accent);transform:rotate(45deg)}
+  ul.lab li::before{background:var(--lab)}
+  code.k{font-family:"JetBrains Mono",monospace;color:#cfe0ff;font-size:.92em}
+  pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:22px 26px;font-family:"JetBrains Mono",monospace;font-size:clamp(.85rem,1.9vw,1.3rem);line-height:1.55;overflow:auto;max-width:100%}
+  pre .k{color:#7dd3fc} pre .s{color:#86efac} pre .c{color:#7183a3;font-style:italic}
+  .tag{display:inline-flex;align-items:center;gap:10px;font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);color:var(--ink2)}
+  .tag .pill{background:var(--accent2);color:#fff;font-weight:700;border-radius:999px;padding:3px 12px;letter-spacing:.06em}
+  .tag .pill.lab{background:var(--lab);color:#062b26} .tag .pill.warn{background:var(--warn);color:#3a2a05}
+  .section{background:linear-gradient(135deg,#132a52,#0b1220)}
+  .section .big{font-size:clamp(3rem,12vw,8rem);font-family:"Archivo";font-weight:800;color:var(--accent2);line-height:.9}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+  @media (max-width:760px){.two{grid-template-columns:1fr}}
+  .bar{position:fixed;left:0;top:0;height:4px;background:var(--accent2);width:0;transition:width .25s;z-index:5}
+  .count{position:fixed;right:16px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink2);z-index:5}
+  .nav{position:fixed;inset:auto 0 0 0;display:flex;justify-content:space-between;pointer-events:none;z-index:4}
+  .nav button{pointer-events:auto;background:transparent;border:none;color:transparent;width:22vw;height:100vh;cursor:pointer}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+  /* ESL extras (picture vocab, grammar tables, dialogue, clocks) */
+  .pics{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,1.6vw,18px)}
+  .pics.six{grid-template-columns:repeat(6,1fr)}
+  .pic{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center}
+  .pic img{width:100%;max-width:150px;aspect-ratio:1;object-fit:cover;border-radius:10px;background:#FFF3E0;display:block;margin:0 auto}
+  .pic .emo{font-size:clamp(2.6rem,7vw,5rem);line-height:1;aspect-ratio:1;max-width:150px;margin:0 auto;display:flex;align-items:center;justify-content:center}
+  .pic .w{font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(.9rem,2vw,1.35rem);margin-top:6px}
+  @media (max-width:760px){.pics,.pics.six{grid-template-columns:repeat(3,1fr)}}
+  table.g{border-collapse:collapse;font-size:clamp(.95rem,2.1vw,1.45rem);width:100%;max-width:1000px}
+  table.g th,table.g td{border:1px solid var(--line);padding:10px 16px;text-align:left}
+  table.g th{background:var(--code);color:var(--accent);font-family:"JetBrains Mono",monospace;font-size:.8em;letter-spacing:.04em}
+  table.g b{color:#ffd166}
+  .dlg{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:18px 24px;display:flex;flex-direction:column;gap:8px;font-size:clamp(1rem,2.2vw,1.45rem);max-width:1000px}
+  .dlg .sp{display:inline-block;min-width:3.6em;font-weight:700;color:var(--accent)}
+  .dlg .b .sp{color:#c4a1ff}
+  .ccq{font-size:clamp(1rem,2.2vw,1.45rem);border:1px dashed var(--line);border-radius:12px;padding:12px 18px;background:var(--code)}
+  .ccq i{color:var(--ink2)}
+  .clocks{display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,34px);align-items:flex-start}
+  .clocks figure{text-align:center}
+  .clocks svg{width:clamp(96px,14vw,170px);height:auto}
+  .clocks figcaption{font-size:clamp(.95rem,2vw,1.3rem);margin-top:6px}
+  .clocks figcaption small{display:block;color:var(--ink2);font-size:.8em}
+  .snd{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .snd div{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:clamp(1rem,2.2vw,1.5rem)}
+  .snd div b{display:block;font-family:"Archivo";font-size:1.5em;color:var(--accent)}
+  .snd div small{color:var(--ink2)}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="deck" id="deck">
+
+  <!-- 1 -->
+  <section class="slide on section">
+    <div class="eyebrow">Mastery English (C2) · Instructor Kit</div>
+    <h1>Module 3<br>Discourse Mastery: Structure &amp; Cohesion</h1>
+    <p class="lead">Steer it. Build it. Distill it.</p>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide">
+    <div class="eyebrow">Classes C7–C9 · the map</div>
+    <h2>From the sentence to the whole text</h2>
+    <ul>
+      <li><b>3.1</b> Discourse markers &amp; stance: <i>that said · admittedly · arguably · tellingly · mind you</i></li>
+      <li><b>3.2</b> Cohesion &amp; coherence: given → new, lexical chains, topic sentences, the skeleton test</li>
+      <li><b>3.3</b> Summary, paraphrase, synthesis: <i>In essence… · Whereas X…, Y counters… · Taken together…</i></li>
+    </ul>
+    <div class="tag"><span class="pill">NOTE</span> Every stance you write is assigned. Your life, a new identity card, or something invented: all are OK.</div>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide">
+    <div class="eyebrow">3.1 · Four rooms · the marker announces the register</div>
+    <h2>Which room are you in?</h2>
+    <div class="pics">
+      <div class="pic"><img src="../assets/vocab/coffee.jpg" alt=""><div class="w">the coffee chat</div></div>
+      <div class="pic"><img src="../assets/vocab/email.jpg" alt=""><div class="w">the work email</div></div>
+      <div class="pic"><img src="../assets/vocab/notebook.jpg" alt=""><div class="w">the report</div></div>
+      <div class="pic"><img src="../assets/vocab/book.jpg" alt=""><div class="w">the essay</div></div>
+    </div>
+    <div class="ccq">"Right, so the plan didn't work. That said, we learned a lot. Anyway, what next?" Which room? <i>(Coffee chat.)</i> · "The plan did not succeed. Admittedly, however, it yielded valuable lessons. We now turn to what follows." <i>(Report / essay.)</i> Did the facts change? <i>(No: only the joints.)</i></div>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide">
+    <div class="eyebrow">3.1 · Organizing markers · the joints of discourse</div>
+    <h2>Open · add · concede · shift · close</h2>
+    <table class="g">
+      <tr><th>Function</th><th>Spoken / casual</th><th>Written / formal</th></tr>
+      <tr><td>Open</td><td>Right, so… · Now, the thing is…</td><td><b>To begin with</b> · Let us first consider</td></tr>
+      <tr><td>Add</td><td>On top of that · Plus…</td><td><b>Furthermore</b> · What is more</td></tr>
+      <tr><td>Concede</td><td>That said · Mind you</td><td><b>Nevertheless</b> · Be that as it may</td></tr>
+      <tr><td>Shift</td><td>Anyway · Speaking of which</td><td><b>Turning to…</b> · As for…</td></tr>
+      <tr><td>Close</td><td>Long story short</td><td><b>In short</b> · All in all</td></tr>
+    </table>
+    <div class="tag"><span class="pill warn">SEAM</span> <i>anyway</i> in an essay slouches · <i>furthermore</i> at a barbecue sounds starched</div>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide">
+    <div class="eyebrow">3.1 · Stance adverbials · one word recolors a clause</div>
+    <h2>"The safety feature caused the accident."</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>Epistemic</th><td><b>admittedly</b> · arguably · presumably · <b>ostensibly</b></td></tr>
+        <tr><th>Attitude</th><td>frankly · remarkably · ironically · <b>tellingly</b></td></tr>
+        <tr><th>Viewpoint</th><td>technically · broadly speaking · reportedly</td></tr>
+        <tr><th>Focus</th><td>notably · if anything · at least</td></tr>
+      </table>
+      <div class="ccq"><b>Ironically,</b> the safety feature… Did a fact change? <i>(No.)</i> What changed? <i>(How we read it.)</i><br>"<b>Ostensibly</b>, a courtesy call." Was it? <i>(That was the stated reason…)</i><br>"<b>Admittedly</b>, my figures were thin." Whose side does it weaken? <i>(Mine: that's why it builds trust.)</i></div>
+    </div>
+    <div class="tag"><span class="pill">FORM</span> <b>Frankly,</b> I disagree. · The result, <b>remarkably</b>, held. · He said nothing, <b>tellingly</b>. · (She spoke frankly = manner)</div>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide">
+    <div class="eyebrow">3.1 · Model · stance and interaction together</div>
+    <h2>After the exhibition</h2>
+    <div class="dlg">
+      <p><span class="sp">Maya:</span> So, <b>honestly</b>, what did you make of the exhibition?</p>
+      <p class="b"><span class="sp">Theo:</span> Well… mixed. The early rooms were, <b>arguably</b>, the strongest. But <b>the thing is</b>, by the last gallery it felt, <b>I mean</b>, a bit repetitive. <b>Mind you</b>, that might just be me.</p>
+      <p><span class="sp">Maya:</span> And <b>let's face it</b>, the ticket price was, <b>frankly</b>, absurd.</p>
+      <p class="b"><span class="sp">Theo:</span> Though, <b>to be fair</b>, it is for a good cause.</p>
+    </div>
+    <div class="ccq">Which words color a judgment? <i>(honestly, arguably, frankly, to be fair)</i> Which manage the conversation? <i>(the thing is, I mean, mind you, let's face it)</i> Would any belong in a report? <i>(arguably, perhaps; the rest, no.)</i> · Strip them out: is anything left? <i>(The facts, and no personality.)</i></div>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide">
+    <div class="eyebrow">3.1 · Workshop · 12 + 6 + 7 min</div>
+    <h2>Stance Workshop + Stance Detective</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>One neutral report → three versions: <b>skeptical · approving · judiciously balanced</b></li>
+        <li>Every fact unchanged · nothing added · 3–5 markers each · never 3 in one sentence</li>
+        <li>Review: name the attitude + quote two words · Strip test on one version</li>
+        <li>Pairs: 90-second commentary in a <b>secret attitude</b> · the detective names it</li>
+      </ul>
+      <div class="ccq">Change a number? <i>(No.)</i><br>Add a fact? <i>(No.)</i><br><i>anyway</i> in the report? <i>(No: written register.)</i><br>What's the Strip test? <i>(Delete every marker: are the facts identical?)</i><br>Does the detective know the attitude? <i>(No.)</i></div>
+    </div>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide">
+    <div class="eyebrow">3.2 · Two virtues · is the wiring missing, or the thought?</div>
+    <h2>Cohesion ≠ coherence</h2>
+    <div class="dlg">
+      <p><span class="sp">Glued:</span> The committee approved the budget. <b>However</b>, the budget is a document. <b>Moreover</b>, paper comes from trees. <b>Therefore</b>, the committee met on Tuesday.</p>
+      <p class="b"><span class="sp">Bare:</span> The scheme failed. Nobody had been consulted. Attendance collapsed within a month.</p>
+    </div>
+    <div class="ccq">Glued: any grammar errors? <i>(No.)</i> Links? <i>(Everywhere.)</i> Does it make sense? <i>(No: cohesive, not coherent.)</i><br>Bare: can you follow it? <i>(Yes.)</i> What's missing? <i>(A little wiring: because, so.)</i> Which is easier to fix? <i>(The bare one.)</i></div>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide">
+    <div class="eyebrow">3.2 · Theme / rheme · start on the known, end on the news</div>
+    <h2>The staircase</h2>
+    <table class="g">
+      <tr><th>Theme (given)</th><th>Rheme (new)</th></tr>
+      <tr><td>The lecture</td><td>introduced <b>a new theory</b>.</td></tr>
+      <tr><td><b>This theory</b></td><td>challenges <b>the standard model</b>.</td></tr>
+      <tr><td><b>The standard model</b></td><td>had gone unquestioned for decades.</td></tr>
+    </table>
+    <div class="tag"><span class="pill warn">JOLT</span> <s>Alarm among her own party</s> was the reaction. → <b>This proposal</b> alarmed her own party.</div>
+    <div class="ccq">Where does each sentence start? <i>(On the last one's news.)</i> Where does the new information go? <i>(At the end.)</i> Linear or constant theme? <i>(Linear: A→B, B→C.)</i></div>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide">
+    <div class="eyebrow">3.2 · Lexical chains · bind and develop</div>
+    <h2>Repeat the anchor. Vary the rest.</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>Repetition</th><td>the drought… the drought</td></tr>
+        <tr><th>Synonym</th><td>the dry spell · the water shortage</td></tr>
+        <tr><th>Superordinate</th><td>spaniel → dog → animal</td></tr>
+        <tr><th>General word</th><td>the crisis · the whole business</td></tr>
+      </table>
+      <div class="ccq">"The novel… the book… the work… the volume… the tome." How many books? <i>(One, but the reader has to keep checking.)</i><br>Fix? <i>(Repeat "novel" once; let "it" do the rest.)</i><br>Is repeating a key word bad style? <i>(No: it's a virtue.)</i></div>
+    </div>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide">
+    <div class="eyebrow">3.2 · Architecture · signpost the turns, not the steps</div>
+    <h2>The skeleton test</h2>
+    <div class="two">
+      <ul>
+        <li>Preview: <i>This essay will argue that…</i></li>
+        <li>Topic sentence: <i>A second objection is more serious.</i></li>
+        <li>Internal summary: <i>So far, then, …</i></li>
+        <li>Transition: <i>A very different picture emerges when…</i></li>
+      </ul>
+      <div class="ccq">One sentence per paragraph, read as a list. Does it make an argument? <i>(If not, fix the order, not the words.)</i><br>Orders: chronological · general → specific · problem → solution · claim → evidence · compare / contrast</div>
+    </div>
+    <div class="tag"><span class="pill warn">CLUTTER</span> <s>In this next part I will now begin by turning to…</s></div>
+  </section>
+
+  <!-- 12 -->
+  <section class="slide">
+    <div class="eyebrow">3.2 · Workshop · 10 + 9 + 6 min</div>
+    <h2>Cohesion &amp; Coherence Lab</h2>
+    <div class="two">
+      <ul class="lab">
+        <li><b>Reconstruct</b>: a 700-word article in 7 paragraphs · no showing for 5 min · order + principle + 3 clues</li>
+        <li><b>Diagnose &amp; repair</b>: 6 faults · label each cohesion or coherence first · repair in ~120 words</li>
+        <li><b>Skeleton test</b>: one sentence per move, read aloud · one strength, one suggestion</li>
+      </ul>
+      <div class="ccq">Show your paragraphs at first? <i>(No: read or describe.)</i><br>Rewrite before labeling? <i>(No.)</i><br>What does the skeleton writer do? <i>(One sentence per move; read it; no comments.)</i></div>
+    </div>
+  </section>
+
+  <!-- 13 -->
+  <section class="slide">
+    <div class="eyebrow">3.3 · The three condensing arts</div>
+    <h2>Summarize · paraphrase · synthesize</h2>
+    <table class="g">
+      <tr><th>Summarize</th><td>same meaning, <b>far fewer</b> words: delete · generalize · topic sentence · <b>keep the logic</b></td></tr>
+      <tr><th>Paraphrase</th><td>same meaning, same length, <b>new structure</b></td></tr>
+      <tr><th>Synthesize</th><td>several sources, one account <b>organized by idea</b></td></tr>
+    </table>
+    <div class="ccq">"Some critics worry the reform may raise costs." → "The reform is a costly failure." Shorter? <i>(Yes.)</i> Faithful? <i>(No.)</i> What changed? <i>(some → all · may → is · a worry → a verdict)</i></div>
+  </section>
+
+  <!-- 14 -->
+  <section class="slide">
+    <div class="eyebrow">3.3 · Rebuild, don't re-skin</div>
+    <h2>Paraphrase vs patchwriting</h2>
+    <table class="g">
+      <tr><th>Original</th><td>The rapid expansion of social media has fundamentally altered the way young people form their political opinions.</td></tr>
+      <tr><th>Patchwrite</th><td>The quick growth of social media has basically changed the way young individuals develop their political views.</td></tr>
+      <tr><th>Paraphrase</th><td>Where young people once <b>inherited</b> their politics from family and community, many now form those views through the <b>fast-growing</b> world of social media.</td></tr>
+    </table>
+    <div class="ccq">Same skeleton in the patchwrite? <i>(Yes: only synonyms.)</i> If I cite it, is it OK? <i>(No: quote it or rebuild it.)</i> Change the words or the structure first? <i>(The structure.)</i></div>
+  </section>
+
+  <!-- 15 -->
+  <section class="slide">
+    <div class="eyebrow">3.3 · Attribution · the verb carries the stance</div>
+    <h2>notes → argues → points out → concedes → claims</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>Neutral</th><td>notes · observes · describes</td></tr>
+        <tr><th>Committed</th><td>argues · contends · maintains</td></tr>
+        <tr><th>You agree</th><td>points out · shows</td></tr>
+        <tr><th>Reluctant</th><td>concedes · acknowledges</td></tr>
+        <tr><th>Opposing</th><td>counters · disputes</td></tr>
+        <tr><th>You doubt</th><td>claims · alleges</td></tr>
+      </table>
+      <div class="ccq">"As Halpern <b>shows</b>, the policy failed." Agree? <i>(Yes.)</i><br>"As Halpern <b>claims</b>…" <i>(A raised eyebrow.)</i><br>"Ortega <b>concedes</b> that fines raised some money." Happy to say so? <i>(No: it's against her position.)</i><br>"According to Hsu, he argues…" <i>(One frame only.)</i></div>
+    </div>
+  </section>
+
+  <!-- 16 -->
+  <section class="slide">
+    <div class="eyebrow">3.3 · Synthesis · organize by idea, not by source</div>
+    <h2>A list vs an argument</h2>
+    <div class="two">
+      <div class="dlg">
+        <p><span class="sp">Weak:</span> Source A says… Source B says… Source C says…</p>
+        <p class="b"><span class="sp">Strong:</span> <b>Both</b> X and Y concur that… · <b>Where they diverge</b> is… · <b>Whereas</b> X…, Y <b>counters</b> that… · Z <b>qualifies</b> X's claim… · <b>Taken together</b>, …</p>
+      </div>
+      <div class="ccq">First question? <i>(Where do they agree, diverge, qualify each other?)</i><br>First sentence? <i>(A governing idea, not a list.)</i><br>Must I be neutral? <i>(Fair, not neutral: my view is openly marked.)</i></div>
+    </div>
+  </section>
+
+  <!-- 17 -->
+  <section class="slide">
+    <div class="eyebrow">3.3 · Workshop · 6 + 5 + 11 + 5 min</div>
+    <h2>Synthesis Workshop: fine-free libraries</h2>
+    <div class="two">
+      <ul class="lab">
+        <li><b>Experts</b>: read your source, turn it over, give a 30-second gist from memory</li>
+        <li><b>Idea grid</b>: agree · diverge · qualify · a governing sentence</li>
+        <li><b>Write</b> ~200 words (180–220) · by idea · every claim attributed · nothing copied</li>
+        <li><b>Integrity review</b>: Highlighter test (3+ borrowed words) · "Whose voice?" test</li>
+      </ul>
+      <div class="ccq">Read your source aloud? <i>(No: from memory.)</i><br>By source or by idea? <i>(Idea.)</i><br>"Claims" for the view you dislike? <i>(Only if the doubt is earned.)</i><br>What does "writer" in the margin mean? <i>(My own view.)</i></div>
+    </div>
+  </section>
+
+  <!-- 18 -->
+  <section class="slide section">
+    <div class="eyebrow">You can now steer, build and distill</div>
+    <h2>Module 3 done</h2>
+    <ul class="lab">
+      <li><b>Admittedly, … that said, … tellingly.</b> One word, the right attitude.</li>
+      <li><b>This decline… It is this unplanned expense that…</b> Given before new; the skeleton reads as one argument.</li>
+      <li><b>In essence… · Whereas Ortega argues…, Hsu notes… · Taken together…</b></li>
+    </ul>
+    <p class="lead" style="margin-top:10px;max-width:40ch">Homework: online lessons 3.1–3.3 with 🔊. Next: Module 4, rhetoric, style and voice.</p>
+  </section>
+
+
+</div>
+
+<div class="count" id="count">1 / 18</div>
+<div class="nav"><button id="prev" aria-label="Previous slide"></button><button id="next" aria-label="Next slide"></button></div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const bar=document.getElementById('bar'), count=document.getElementById('count');
+  let i=0;
+  function show(n){ i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+    bar.style.width=((i+1)/slides.length*100)+'%'; count.textContent=(i+1)+' / '+slides.length; }
+  document.getElementById('next').onclick=()=>show(i+1);
+  document.getElementById('prev').onclick=()=>show(i-1);
+  addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}
+    else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+  });
+  show(0);
+</script>
+</body>
+</html>

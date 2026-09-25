@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slides — Module 2</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root{--bg:#0b1220;--ink:#edf2fb;--ink2:#a8b6cf;--accent:#7fb2ff;--accent2:#2563eb;--lab:#34d3bd;--warn:#fbbf24;--line:#233252;--code:#101a2e;color-scheme:dark}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;overflow:hidden}
+  .deck{height:100%;width:100%;position:relative}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:6vh 8vw;gap:20px}
+  .slide.on{display:flex}
+  h1,h2,h3{font-family:"Archivo",sans-serif;line-height:1.1;text-wrap:balance}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  .slide h1{font-size:clamp(2rem,6vw,4rem);font-weight:800;letter-spacing:-.02em}
+  .slide h2{font-size:clamp(1.5rem,4.2vw,2.8rem);font-weight:800;letter-spacing:-.01em}
+  .slide p.lead{font-size:clamp(1.05rem,2.4vw,1.5rem);color:var(--ink2);max-width:26ch}
+  ul{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:6px}
+  ul li{position:relative;padding-left:34px;font-size:clamp(1.05rem,2.3vw,1.6rem)}
+  ul li::before{content:"";position:absolute;left:0;top:.55em;width:12px;height:12px;border-radius:3px;background:var(--accent);transform:rotate(45deg)}
+  ul.lab li::before{background:var(--lab)}
+  code.k{font-family:"JetBrains Mono",monospace;color:#cfe0ff;font-size:.92em}
+  pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:22px 26px;font-family:"JetBrains Mono",monospace;font-size:clamp(.85rem,1.9vw,1.3rem);line-height:1.55;overflow:auto;max-width:100%}
+  pre .k{color:#7dd3fc} pre .s{color:#86efac} pre .c{color:#7183a3;font-style:italic}
+  .tag{display:inline-flex;align-items:center;gap:10px;font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);color:var(--ink2)}
+  .tag .pill{background:var(--accent2);color:#fff;font-weight:700;border-radius:999px;padding:3px 12px;letter-spacing:.06em}
+  .tag .pill.lab{background:var(--lab);color:#062b26} .tag .pill.warn{background:var(--warn);color:#3a2a05}
+  .section{background:linear-gradient(135deg,#132a52,#0b1220)}
+  .section .big{font-size:clamp(3rem,12vw,8rem);font-family:"Archivo";font-weight:800;color:var(--accent2);line-height:.9}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+  @media (max-width:760px){.two{grid-template-columns:1fr}}
+  .bar{position:fixed;left:0;top:0;height:4px;background:var(--accent2);width:0;transition:width .25s;z-index:5}
+  .count{position:fixed;right:16px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink2);z-index:5}
+  .nav{position:fixed;inset:auto 0 0 0;display:flex;justify-content:space-between;pointer-events:none;z-index:4}
+  .nav button{pointer-events:auto;background:transparent;border:none;color:transparent;width:22vw;height:100vh;cursor:pointer}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+  /* ESL extras (picture vocab, grammar tables, dialogue, clocks) */
+  .pics{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,1.6vw,18px)}
+  .pics.six{grid-template-columns:repeat(6,1fr)}
+  .pic{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center}
+  .pic img{width:100%;max-width:150px;aspect-ratio:1;object-fit:cover;border-radius:10px;background:#FFF3E0;display:block;margin:0 auto}
+  .pic .emo{font-size:clamp(2.6rem,7vw,5rem);line-height:1;aspect-ratio:1;max-width:150px;margin:0 auto;display:flex;align-items:center;justify-content:center}
+  .pic .w{font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(.9rem,2vw,1.35rem);margin-top:6px}
+  @media (max-width:760px){.pics,.pics.six{grid-template-columns:repeat(3,1fr)}}
+  table.g{border-collapse:collapse;font-size:clamp(.95rem,2.1vw,1.45rem);width:100%;max-width:1000px}
+  table.g th,table.g td{border:1px solid var(--line);padding:10px 16px;text-align:left}
+  table.g th{background:var(--code);color:var(--accent);font-family:"JetBrains Mono",monospace;font-size:.8em;letter-spacing:.04em}
+  table.g b{color:#ffd166}
+  .dlg{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:18px 24px;display:flex;flex-direction:column;gap:8px;font-size:clamp(1rem,2.2vw,1.45rem);max-width:1000px}
+  .dlg .sp{display:inline-block;min-width:3.6em;font-weight:700;color:var(--accent)}
+  .dlg .b .sp{color:#c4a1ff}
+  .ccq{font-size:clamp(1rem,2.2vw,1.45rem);border:1px dashed var(--line);border-radius:12px;padding:12px 18px;background:var(--code)}
+  .ccq i{color:var(--ink2)}
+  .clocks{display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,34px);align-items:flex-start}
+  .clocks figure{text-align:center}
+  .clocks svg{width:clamp(96px,14vw,170px);height:auto}
+  .clocks figcaption{font-size:clamp(.95rem,2vw,1.3rem);margin-top:6px}
+  .clocks figcaption small{display:block;color:var(--ink2);font-size:.8em}
+  .snd{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .snd div{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:clamp(1rem,2.2vw,1.5rem)}
+  .snd div b{display:block;font-family:"Archivo";font-size:1.5em;color:var(--accent)}
+  .snd div small{color:var(--ink2)}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="deck" id="deck">
+
+  <!-- 1 -->
+  <section class="slide on section">
+    <div class="eyebrow">Mastery English (C2) · Instructor Kit</div>
+    <h1>Module 2<br>Reading Between the Lines</h1>
+    <p class="lead">Infer it. Play with it. Picture it.</p>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide">
+    <div class="eyebrow">Classes C4–C6 · the map</div>
+    <h2>The gap between said and meant</h2>
+    <ul>
+      <li><b>2.1</b> Implicature &amp; inference: <i>"He's very punctual." · "Why are you <b>still</b> behind?" · reportedly</i></li>
+      <li><b>2.2</b> Irony, humor &amp; wordplay: <i>a bit of a problem · Oh, fantastic · BAKERY RISES TO THE OCCASION</i></li>
+      <li><b>2.3</b> Metaphor &amp; imagery: <i>she shot down my idea · time is a thief · one image, one frame</i></li>
+    </ul>
+    <div class="tag"><span class="pill">NOTE</span> Your real life, a new identity card, or something invented: all are OK. Messages on cards are the card's, not yours. Nobody has to perform a joke.</div>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide">
+    <div class="eyebrow">2.1 · Four texts · what do they really say?</div>
+    <h2>"It's cold in here."</h2>
+    <div class="pics">
+      <div class="pic"><img src="../assets/vocab/email.jpg" alt=""><div class="w">the work email</div></div>
+      <div class="pic"><img src="../assets/vocab/pen.jpg" alt=""><div class="w">the reference</div></div>
+      <div class="pic"><img src="../assets/vocab/hotel.jpg" alt=""><div class="w">the review</div></div>
+      <div class="pic"><img src="../assets/vocab/notebook.jpg" alt=""><div class="w">the minutes</div></div>
+    </div>
+    <div class="ccq">"It's cold in here." What did I say? <i>(The temperature.)</i> What did I mean? <i>(Close the window.)</i> Did I say "close"? <i>(No.)</i> Sentence meaning ≠ speaker meaning.</div>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide">
+    <div class="eyebrow">2.1 · Meaning · four expectations, broken on purpose</div>
+    <h2>Flout a maxim → imply a meaning</h2>
+    <table class="g">
+      <tr><th>Quantity · enough</th><td>"Is she good?" "She's very <b>punctual</b>." → nothing better to say</td></tr>
+      <tr><th>Quality · true</th><td>In a storm: "<b>Lovely</b> day out." → a disaster</td></tr>
+      <tr><th>Relation · relevant</th><td>"My presentation?" "<b>Shall we get coffee?</b>" → I'd rather not say</td></tr>
+      <tr><th>Manner · clear</th><td>"Did they sing?" "They <b>produced sounds</b> corresponding to the score." → barely</td></tr>
+    </table>
+    <div class="ccq">Did the speaker say anything negative? <i>(No.)</i> Do we know the verdict? <i>(Yes.)</i> Could they deny it? <i>(Yes: "I only said she was punctual!")</i> That's why it's useful.</div>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide">
+    <div class="eyebrow">2.1 · Presupposition · what the sentence takes for granted</div>
+    <h2>Spot the trigger. Refuse the premise.</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>Trigger</th><th>Takes for granted</th></tr>
+        <tr><td>Why are you <b>still</b> behind?</td><td>you were behind</td></tr>
+        <tr><td>Are you late <b>again</b>?</td><td>you've been late before</td></tr>
+        <tr><td><b>Even</b> the intern saw it.</td><td>the intern was least likely</td></tr>
+        <tr><td><b>the</b> error in your figures</td><td>there is an error</td></tr>
+        <tr><td>Did you <b>manage to</b> finish?</td><td>it was difficult</td></tr>
+      </table>
+      <div class="ccq">"Why is your team still behind?" Say yes or no: what have you accepted? <i>(That we're behind.)</i><br><br><b>That question assumes X, which isn't the case. What I can tell you is…</b></div>
+    </div>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide">
+    <div class="eyebrow">2.1 · Slant in text · nothing false, verdict clear</div>
+    <h2>Diction · omission · juxtaposition · distance</h2>
+    <div class="dlg">
+      <p>The company's much-anticipated app, which <b>reportedly</b> crashed twice during the launch, was described by its CEO as <b>"a game-changer."</b> She <b>declined</b> to take questions. A <b>modest</b> crowd of some forty attended; the press release put the figure at <b>"well over two hundred."</b></p>
+    </div>
+    <div class="ccq">What does it <b>state</b>? What does it want you to <b>conclude</b>? <i>(The launch flopped; the company is exaggerating.)</i> Neutral for <i>declined</i>? <i>(did not take.)</i></div>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide">
+    <div class="eyebrow">2.1 · Model dialogue · decoding the director</div>
+    <h2>"It's certainly comprehensive."</h2>
+    <div class="dlg">
+      <p><span class="sp">Sam:</span> "It's clear a great deal of work went into it. It's <b>certainly comprehensive</b>."</p>
+      <p class="b"><span class="sp">Priya:</span> It's the only adjective in the email. What else?</p>
+      <p><span class="sp">Sam:</span> "A slightly different direction <b>for now</b>." And: "Has finance checked the budget <b>yet</b>?"</p>
+      <p class="b"><span class="sp">Priya:</span> A polite no. That "yet" assumes it should have been checked. And comprehensive? Too long. Deniably.</p>
+    </div>
+    <div class="ccq">Three messages? <i>(No, for now · too long · budget doubts.)</i> Hardest to deny? <i>(The budget: "yet" is a presupposition.)</i></div>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide">
+    <div class="eyebrow">2.1 · Workshop · 25 min</div>
+    <h2>Implicature Lab</h2>
+    <div class="two">
+      <ul class="lab">
+        <li><b>Round 1</b> Decode: email · reference · review · minutes. Said / Meant / Mechanism + the real message in one line</li>
+        <li><b>Round 2</b> Encode: draw a card, write 4–6 lines that imply it. Never state it.</li>
+        <li><b>Round 3</b> Peer test: "What's the real message?" · pass · too buried · too bald</li>
+      </ul>
+      <div class="ccq">How many columns? <i>(Three.)</i><br>Can you state the message? <i>(Never.)</i><br>Show your card? <i>(Only after the test.)</i><br>Whose opinion is it? <i>(The card's.)</i></div>
+    </div>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide">
+    <div class="eyebrow">2.2 · Four situations · what would you say?</div>
+    <h2>Saying the opposite</h2>
+    <div class="pics">
+      <div class="pic"><img src="../assets/vocab/umbrella.jpg" alt=""><div class="w">"Lovely weather for it."</div></div>
+      <div class="pic"><img src="../assets/vocab/flight.jpg" alt=""><div class="w">"This is going brilliantly."</div></div>
+      <div class="pic"><img src="../assets/vocab/coffee.jpg" alt=""><div class="w">"Just what I needed."</div></div>
+      <div class="pic"><img src="../assets/vocab/mobile-phone.jpg" alt=""><div class="w">"Oh, fantastic."</div></div>
+    </div>
+    <div class="ccq">Flight canceled: "Well, this is going brilliantly." Does she mean it? <i>(No.)</i> How do we know? <i>(The situation clashes with the words; her voice.)</i></div>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide">
+    <div class="eyebrow">2.2 · Meaning · the signals and the devices</div>
+    <h2>Irony · sarcasm · less · more</h2>
+    <table class="g">
+      <tr><th>Irony</th><td>the opposite, often gentle: "Perfect picnic weather." (pouring rain)</td></tr>
+      <tr><th>Sarcasm</th><td>irony + a <b>target</b> + an <b>edge</b>: "Oh, nice parking."</td></tr>
+      <tr><th>Understatement</th><td><b>a bit of a problem</b> · <b>not our finest hour</b> · <b>a few reservations</b></td></tr>
+      <tr><th>Hyperbole</th><td><b>a mountain of paperwork</b> · on hold <b>for a lifetime</b> (keep it rare)</td></tr>
+    </table>
+    <div class="ccq">Signals: <b>STRESS</b> · flat or drawled tone · <b>context clash</b>. Which one survives in an email? <i>(Only the clash.)</i></div>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide">
+    <div class="eyebrow">2.2 · Wordplay · one word, two meanings</div>
+    <h2>Find the pivot</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>Pun</th><td>I used to be a banker, but I lost <b>interest</b>.</td></tr>
+        <tr><th>Malapropism</th><td>a real <b>escape goat</b> → scapegoat</td></tr>
+        <tr><th>Spoonerism</th><td>a <b>well-boiled icicle</b> ← a well-oiled bicycle</td></tr>
+      </table>
+      <div class="dlg">
+        <p>BAKERY <b>RISES</b> TO THE OCCASION</p>
+        <p>SWIMMING POOL PLAN MAKES A <b>SPLASH</b></p>
+        <p>BEEKEEPERS CREATE A <b>BUZZ</b></p>
+      </div>
+    </div>
+    <div class="tag"><span class="pill warn">WATCH</span> Puns rarely translate. Explaining the pun inside the joke kills it.</div>
+  </section>
+
+  <!-- 12 -->
+  <section class="slide">
+    <div class="eyebrow">2.2 · Model dialogue · the calm after the fire</div>
+    <h2>Setup → incongruity → punchline</h2>
+    <div class="dlg">
+      <p><span class="sp">Maya:</span> How did it go? I heard the projector caught fire.</p>
+      <p class="b"><span class="sp">Dev:</span> Oh, it went <b>swimmingly</b>.</p>
+      <p><span class="sp">Maya:</span> And the client?</p>
+      <p class="b"><span class="sp">Dev:</span> Let's just say they had <b>a few reservations</b>.</p>
+      <p><span class="sp">Maya:</span> So, <b>not our finest hour</b>.</p>
+      <p class="b"><span class="sp">Dev:</span> Next time, a flip chart. At least paper has the decency to <b>burn quietly</b>.</p>
+    </div>
+    <div class="ccq">Who pays for the joke? <i>(The situation, the projector, themselves.)</i> Where is the punchline? <i>(At the very end.)</i></div>
+  </section>
+
+  <!-- 13 -->
+  <section class="slide">
+    <div class="eyebrow">2.2 · Workshop · 25 min</div>
+    <h2>Wit Workshop</h2>
+    <div class="two">
+      <ul class="lab">
+        <li><b>Round 1</b> Headline Desk: 2 stories → 2 pun headlines (7 words max.) + the pivot word</li>
+        <li><b>Round 2</b> Write 80–120 words: a mock review or a wry anecdote (irony · understatement or hyperbole · wordplay)</li>
+        <li><b>Round 3</b> Gap and Target review: the gap · the signals · who pays? · one cut</li>
+      </ul>
+      <div class="ccq">Targets: objects · situations · systems · yourself. <b>Never</b> countries, religions, accents, bodies.<br>Must you read it aloud? <i>(No: someone else can, or just show it.)</i></div>
+    </div>
+  </section>
+
+  <!-- 14 -->
+  <section class="slide">
+    <div class="eyebrow">2.3 · The hidden maps · what's the connection?</div>
+    <h2>We think in metaphors</h2>
+    <div class="pics">
+      <div class="pic"><img src="../assets/vocab/bank.jpg" alt=""><div class="w">TIME IS MONEY</div></div>
+      <div class="pic"><img src="../assets/vocab/bread.jpg" alt=""><div class="w">IDEAS ARE FOOD</div></div>
+      <div class="pic"><img src="../assets/vocab/station.jpg" alt=""><div class="w">LIFE IS A JOURNEY</div></div>
+      <div class="pic"><img src="../assets/vocab/lamp.jpg" alt=""><div class="w">UNDERSTANDING IS SEEING</div></div>
+    </div>
+    <div class="ccq"><i>spend time · a half-baked plan · at a crossroads · I see what you mean</i>. Decoration, or the normal way to talk? <i>(The normal way.)</i></div>
+  </section>
+
+  <!-- 15 -->
+  <section class="slide">
+    <div class="eyebrow">2.3 · Form · the figures and the families</div>
+    <h2>Name it · map it</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>Metaphor</th><td>Her argument was a <b>fortress</b>.</td></tr>
+        <tr><th>Simile</th><td>Fear rose <b>like</b> cold water.</td></tr>
+        <tr><th>Metonymy</th><td><b>The front desk</b> called.</td></tr>
+        <tr><th>Synecdoche</th><td>All <b>hands</b> on deck.</td></tr>
+        <tr><th>Personification</th><td>The old house <b>groaned</b>.</td></tr>
+      </table>
+      <table class="g">
+        <tr><th>ARGUMENT IS WAR</th><td>defend · attack · <b>shoot down</b> · win</td></tr>
+        <tr><th>TIME IS MONEY</th><td>spend · save · <b>budget</b> · waste</td></tr>
+        <tr><th>IDEAS ARE FOOD</th><td><b>half-baked</b> · digest · swallow</td></tr>
+        <tr><th>LIFE IS A JOURNEY</th><td>crossroads · <b>dead end</b></td></tr>
+        <tr><th>UP IS GOOD</th><td>spirits <b>rose</b> · feeling <b>down</b></td></tr>
+      </table>
+    </div>
+    <div class="ccq">If ARGUMENT IS WAR, can I say "Her question <b>ambushed</b> him"? <i>(Yes: it's on the map.)</i></div>
+  </section>
+
+  <!-- 16 -->
+  <section class="slide">
+    <div class="eyebrow">2.3 · Keep it alive · keep it in one frame</div>
+    <h2>Dead · cliché · live · mixed</h2>
+    <table class="g">
+      <tr><th>Dead</th><td>the <b>leg</b> of the table · the <b>foot</b> of the hill (invisible: leave it)</td></tr>
+      <tr><th>Cliché</th><td><b>think outside the box</b> · at the end of the day (tired: refresh or re-coin)</td></tr>
+      <tr><th>Live</th><td>"the fog comes on <b>little cat feet</b>" (we see it)</td></tr>
+      <tr><th>Mixed</th><td><s>We'll burn that bridge when we come to it.</s> · <s>take the bull by the horns and dive in at the deep end</s></td></tr>
+    </table>
+    <div class="ccq">The test: can you <b>see</b> it? Can both pictures share one frame? <i>(If not, choose one.)</i></div>
+  </section>
+
+  <!-- 17 -->
+  <section class="slide">
+    <div class="eyebrow">2.3 · Workshop · 23 min</div>
+    <h2>Figurative Language Studio</h2>
+    <div class="two">
+      <ul class="lab">
+        <li><b>Round 1</b> Analyze a passage: controlling metaphor · supporting images · the intruder · the cliché</li>
+        <li><b>Round 2</b> Write 120–150 words: one subject + one source domain, 4+ sentences, 2–3 supporting images</li>
+        <li><b>Round 3</b> Name the frame: read silently, write first, then talk</li>
+      </ul>
+      <div class="ccq">How many source domains? <i>(One.)</i><br>When do you talk to the writer? <i>(After writing.)</i><br>Can't name the frame? <i>(Tell them: it needs to be stronger.)</i><br>Your own life? <i>(Optional.)</i></div>
+    </div>
+  </section>
+
+  <!-- 18 -->
+  <section class="slide section">
+    <div class="eyebrow">You can now infer, play with and picture meaning</div>
+    <h2>Module 2 done</h2>
+    <ul class="lab">
+      <li><b>"He's very punctual."</b> · Why are you <b>still</b> behind? → <b>That assumes…</b> · <b>reportedly</b></li>
+      <li><b>a bit of a problem</b> · <b>Oh, fantastic.</b> · BAKERY <b>RISES</b> TO THE OCCASION</li>
+      <li>She <b>shot down</b> my idea · <b>time is a thief</b> · one image, one frame</li>
+    </ul>
+    <p class="lead" style="margin-top:10px;max-width:40ch">Homework: online lessons 2.1–2.3 with 🔊. Next: Module 3, discourse markers, cohesion &amp; synthesis.</p>
+  </section>
+
+
+</div>
+
+<div class="count" id="count">1 / 18</div>
+<div class="nav"><button id="prev" aria-label="Previous slide"></button><button id="next" aria-label="Next slide"></button></div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const bar=document.getElementById('bar'), count=document.getElementById('count');
+  let i=0;
+  function show(n){ i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+    bar.style.width=((i+1)/slides.length*100)+'%'; count.textContent=(i+1)+' / '+slides.length; }
+  document.getElementById('next').onclick=()=>show(i+1);
+  document.getElementById('prev').onclick=()=>show(i-1);
+  addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}
+    else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+  });
+  show(0);
+</script>
+</body>
+</html>

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slides — Module 6</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root{--bg:#0b1220;--ink:#edf2fb;--ink2:#a8b6cf;--accent:#7fb2ff;--accent2:#2563eb;--lab:#34d3bd;--warn:#fbbf24;--line:#233252;--code:#101a2e;color-scheme:dark}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;overflow:hidden}
+  .deck{height:100%;width:100%;position:relative}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:6vh 8vw;gap:20px}
+  .slide.on{display:flex}
+  h1,h2,h3{font-family:"Archivo",sans-serif;line-height:1.1;text-wrap:balance}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  .slide h1{font-size:clamp(2rem,6vw,4rem);font-weight:800;letter-spacing:-.02em}
+  .slide h2{font-size:clamp(1.5rem,4.2vw,2.8rem);font-weight:800;letter-spacing:-.01em}
+  .slide p.lead{font-size:clamp(1.05rem,2.4vw,1.5rem);color:var(--ink2);max-width:26ch}
+  ul{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:6px}
+  ul li{position:relative;padding-left:34px;font-size:clamp(1.05rem,2.3vw,1.6rem)}
+  ul li::before{content:"";position:absolute;left:0;top:.55em;width:12px;height:12px;border-radius:3px;background:var(--accent);transform:rotate(45deg)}
+  ul.lab li::before{background:var(--lab)}
+  code.k{font-family:"JetBrains Mono",monospace;color:#cfe0ff;font-size:.92em}
+  pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:22px 26px;font-family:"JetBrains Mono",monospace;font-size:clamp(.85rem,1.9vw,1.3rem);line-height:1.55;overflow:auto;max-width:100%}
+  pre .k{color:#7dd3fc} pre .s{color:#86efac} pre .c{color:#7183a3;font-style:italic}
+  .tag{display:inline-flex;align-items:center;gap:10px;font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);color:var(--ink2)}
+  .tag .pill{background:var(--accent2);color:#fff;font-weight:700;border-radius:999px;padding:3px 12px;letter-spacing:.06em}
+  .tag .pill.lab{background:var(--lab);color:#062b26} .tag .pill.warn{background:var(--warn);color:#3a2a05}
+  .section{background:linear-gradient(135deg,#132a52,#0b1220)}
+  .section .big{font-size:clamp(3rem,12vw,8rem);font-family:"Archivo";font-weight:800;color:var(--accent2);line-height:.9}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+  @media (max-width:760px){.two{grid-template-columns:1fr}}
+  .bar{position:fixed;left:0;top:0;height:4px;background:var(--accent2);width:0;transition:width .25s;z-index:5}
+  .count{position:fixed;right:16px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink2);z-index:5}
+  .nav{position:fixed;inset:auto 0 0 0;display:flex;justify-content:space-between;pointer-events:none;z-index:4}
+  .nav button{pointer-events:auto;background:transparent;border:none;color:transparent;width:22vw;height:100vh;cursor:pointer}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+  /* ESL extras (picture vocab, grammar tables, dialogue, clocks) */
+  .pics{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,1.6vw,18px)}
+  .pics.six{grid-template-columns:repeat(6,1fr)}
+  .pic{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center}
+  .pic img{width:100%;max-width:150px;aspect-ratio:1;object-fit:cover;border-radius:10px;background:#FFF3E0;display:block;margin:0 auto}
+  .pic .emo{font-size:clamp(2.6rem,7vw,5rem);line-height:1;aspect-ratio:1;max-width:150px;margin:0 auto;display:flex;align-items:center;justify-content:center}
+  .pic .w{font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(.9rem,2vw,1.35rem);margin-top:6px}
+  @media (max-width:760px){.pics,.pics.six{grid-template-columns:repeat(3,1fr)}}
+  table.g{border-collapse:collapse;font-size:clamp(.95rem,2.1vw,1.45rem);width:100%;max-width:1000px}
+  table.g th,table.g td{border:1px solid var(--line);padding:10px 16px;text-align:left}
+  table.g th{background:var(--code);color:var(--accent);font-family:"JetBrains Mono",monospace;font-size:.8em;letter-spacing:.04em}
+  table.g b{color:#ffd166}
+  .dlg{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:18px 24px;display:flex;flex-direction:column;gap:8px;font-size:clamp(1rem,2.2vw,1.45rem);max-width:1000px}
+  .dlg .sp{display:inline-block;min-width:3.6em;font-weight:700;color:var(--accent)}
+  .dlg .b .sp{color:#c4a1ff}
+  .ccq{font-size:clamp(1rem,2.2vw,1.45rem);border:1px dashed var(--line);border-radius:12px;padding:12px 18px;background:var(--code)}
+  .ccq i{color:var(--ink2)}
+  .clocks{display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,34px);align-items:flex-start}
+  .clocks figure{text-align:center}
+  .clocks svg{width:clamp(96px,14vw,170px);height:auto}
+  .clocks figcaption{font-size:clamp(.95rem,2vw,1.3rem);margin-top:6px}
+  .clocks figcaption small{display:block;color:var(--ink2);font-size:.8em}
+  .snd{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .snd div{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:clamp(1rem,2.2vw,1.5rem)}
+  .snd div b{display:block;font-family:"Archivo";font-size:1.5em;color:var(--accent)}
+  .snd div small{color:var(--ink2)}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="deck" id="deck">
+
+  <!-- 1 -->
+  <section class="slide on section">
+    <div class="eyebrow">Mastery English (C2) · Instructor Kit</div>
+    <h1>Module 6<br>Writing with Authority</h1>
+    <p class="lead">Earn the reader. Carry the reader. Never let the reader snag.</p>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide">
+    <div class="eyebrow">Classes C17–C19 · the map</div>
+    <h2>Three writing workshops</h2>
+    <ul>
+      <li><b>6.1</b> Op-eds, reviews &amp; features: the hook, the line, the grounded verdict, a voice that fits the outlet</li>
+      <li><b>6.2</b> The long form: through-line, argued outline, signposts, sources synthesized, not listed</li>
+      <li><b>6.3</b> Fine points: <b>; : —</b> · restrictive commas · danglers · parallelism · rule vs myth · US vs UK</li>
+    </ul>
+    <div class="tag"><span class="pill">NOTE</span> Any anecdote may be real, invented or from a writer identity card. Argument cards come with an assigned side.</div>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide">
+    <div class="eyebrow">6.1 · Where will your piece appear?</div>
+    <h2>Name the room, picture the reader</h2>
+    <div class="pics six">
+      <div class="pic"><img src="../assets/vocab/restaurant.jpg" alt=""><div class="w">the review</div></div>
+      <div class="pic"><img src="../assets/vocab/tv.jpg" alt=""><div class="w">the film column</div></div>
+      <div class="pic"><img src="../assets/vocab/coffee.jpg" alt=""><div class="w">the lifestyle blog</div></div>
+      <div class="pic"><img src="../assets/vocab/park.jpg" alt=""><div class="w">the city feature</div></div>
+      <div class="pic"><img src="../assets/vocab/book.jpg" alt=""><div class="w">the broadsheet op-ed</div></div>
+      <div class="pic"><img src="../assets/vocab/notebook.jpg" alt=""><div class="w">the trade magazine</div></div>
+    </div>
+    <div class="ccq">An examiner is paid to read every word. Your reader? <i>(Free to leave at any line.)</i> So every sentence must…? <i>(Earn the next one.)</i></div>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide">
+    <div class="eyebrow">6.1 · The op-ed · one line, argued with conviction</div>
+    <h2>Hook → line → concede → rebut → land</h2>
+    <table class="g">
+      <tr><th>Flat</th><td>This article will discuss the topic of urban green spaces and their various benefits for residents.</td></tr>
+      <tr><th>Hook</th><td>There is a park bench near my apartment that has, over three years, quietly done more for my mental health than any app I've downloaded.</td></tr>
+      <tr><th>Concede → turn</th><td><b>The obvious reply is that</b> busy people are simply busy. That is true, <b>and it is exactly the problem.</b></td></tr>
+    </table>
+    <div class="tag"><span class="pill warn">DELETE</span> <s>In today's fast-paced world…</s> · <s>This article will discuss…</s> · <s>It is important to note that…</s></div>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide">
+    <div class="eyebrow">6.1 · The review · describe little, judge with evidence</div>
+    <h2>Grounded, calibrated, actionable</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>Describe</th><td>minimal · no spoilers</td></tr>
+        <tr><th>Evaluate</th><td><b>What makes it remarkable is…</b> · <b>Where it falls short is…</b></td></tr>
+        <tr><th>Verdict</th><td><b>For all its flaws, …</b> · worth the trip for … alone</td></tr>
+      </table>
+      <div class="ccq">"The food was amazing and the vibe was great." What's missing? <i>(A detail: which dish?)</i><br>"It's perfect in every way." Credible? <i>(No: a press release.)</i><br>"It has good and bad points." Verdict? <i>(None: mush.)</i></div>
+    </div>
+    <div class="tag"><span class="pill">FEATURE</span> specific headline · payoff early · one idea per paragraph · subheadings · one reader</div>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide">
+    <div class="eyebrow">6.1 · Model · voice and the publication</div>
+    <h2>"The voice is all wrong for us"</h2>
+    <div class="dlg">
+      <p><span class="sp">Editor:</span> Who did you picture reading this?</p>
+      <p class="b"><span class="sp">Writer:</span> Honestly? My old professor. I was still writing an essay.</p>
+      <p><span class="sp">Editor:</span> Our reader is on a train, half-distracted, deciding by the second paragraph whether to bother.</p>
+      <p class="b"><span class="sp">Writer:</span> So less "one might argue," more "here's what nobody says out loud"?</p>
+      <p><span class="sp">Editor:</span> Same rigor, human temperature.</p>
+    </div>
+    <div class="ccq">Is the writer's English wrong? <i>(No: the register is.)</i> Broadsheet, blog, trade magazine: same voice? <i>(No: name the outlet first.)</i></div>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide">
+    <div class="eyebrow">6.1 · Workshop · 30 min</div>
+    <h2>Write–Critique–Revise Lab</h2>
+    <div class="two">
+      <ul class="lab">
+        <li><b>Pitch</b> (4): three sentences · the editor asks three questions</li>
+        <li><b>Draft</b> (12): 200–250 words for the outlet on your card</li>
+        <li><b>Critique</b> (8): mark <b>where you stopped</b> · rubric 1–4 · one strength, one suggestion</li>
+        <li><b>Revise</b> (6): the hook, the close, the paragraph where the reader stopped</li>
+      </ul>
+      <div class="ccq">Your own opinion or the card's side? <i>(The card's.)</i><br>Must the anecdote be true? <i>(No.)</i><br>Where does the reader put the mark? <i>(Where attention dipped.)</i><br>Can the writer argue back? <i>(No: thank you or a question.)</i></div>
+    </div>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide">
+    <div class="eyebrow">6.2 · The long form · 1,500+ words</div>
+    <h2>Length changes writing in kind</h2>
+    <div class="pics">
+      <div class="pic"><img src="../assets/vocab/book.jpg" alt=""><div class="w">the report</div></div>
+      <div class="pic"><img src="../assets/vocab/notebook.jpg" alt=""><div class="w">the plan</div></div>
+      <div class="pic"><img src="../assets/vocab/desk.jpg" alt=""><div class="w">many sittings</div></div>
+      <div class="pic"><img src="../assets/vocab/read.jpg" alt=""><div class="w">the lost reader</div></div>
+    </div>
+    <div class="ccq">"I got lost around page nine." Whose problem? <i>(The writer's.)</i> Can the reader see the whole? <i>(No.)</i> So what replaces good sentences as the main job? <i>(Structure.)</i></div>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide">
+    <div class="eyebrow">6.2 · Architecture · claims, not topics</div>
+    <h2>Read the claims in order</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>Topic list</th><th>Argued outline</th></tr>
+        <tr><td>1. History</td><td>The debate is stuck on a false choice.</td></tr>
+        <tr><td>2. Traffic</td><td>Car-free centers cut pollution and road deaths.</td></tr>
+        <tr><td>3. Businesses</td><td>The retailers' fear, granted: lost customers.</td></tr>
+        <tr><td>4. Other cities</td><td>Where transit came with the ban, footfall rose.</td></tr>
+        <tr><td>5. Conclusion</td><td>It's an investment question, not a ban question.</td></tr>
+      </table>
+      <div class="ccq">Can you swap 2 and 3 on the left? <i>(Yes: a list.)</i> On the right? <i>(No: the argument breaks.)</i><br>"Background" or "Why the old model broke down"? <i>(The second: it states a claim.)</i></div>
+    </div>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide">
+    <div class="eyebrow">6.2 · Signposting · at every seam</div>
+    <h2>Backward · forward · where we are</h2>
+    <table class="g">
+      <tr><th>Backward</th><td><b>Having established that</b> output rises, … · <b>As noted in the previous section</b>, …</td></tr>
+      <tr><th>Forward</th><td><b>This section argues that</b> … · <b>The following section turns to</b> …</td></tr>
+      <tr><th>Locational</th><td><b>The remainder of this report is organized as follows:</b> … · <b>At this point it is worth stepping back.</b></td></tr>
+    </table>
+    <div class="dlg">
+      <p><span class="sp">Student:</span> I stopped signposting. I knew where I was, so I assumed the reader did.</p>
+      <p class="b"><span class="sp">Supervisor:</span> You can hold the whole in your head; your reader can't.</p>
+    </div>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide">
+    <div class="eyebrow">6.2 · Sources · the verb carries your stance</div>
+    <h2>Paraphrase by default · choose the verb</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>accept</th><td><b>demonstrates</b> · shows · establishes</td></tr>
+        <tr><th>position</th><td><b>argues</b> · contends · maintains</td></tr>
+        <tr><th>distance</th><td><b>claims</b> · asserts · alleges</td></tr>
+        <tr><th>admission</th><td><b>concedes</b> · acknowledges</td></tr>
+        <tr><th>tentative</th><td><b>suggests</b> · speculates</td></tr>
+        <tr><th>extends</th><td><b>draws on</b> · builds on</td></tr>
+      </table>
+      <div class="ccq">"Okafor claims the app doubled sales." Do you believe it? <i>(Not fully.)</i><br>"Even Okafor concedes the sample was small." <i>(An admission.)</i><br>Same structure, swapped synonyms, with a citation: OK? <i>(No: patchwriting = plagiarism.)</i></div>
+    </div>
+  </section>
+
+  <!-- 12 -->
+  <section class="slide">
+    <div class="eyebrow">6.2 · The literature review · synthesize, don't list</div>
+    <h2>Shopping list → synthesis</h2>
+    <table class="g">
+      <tr><th>List</th><td>Garcia (2020) found visits rose. Nwosu (2022) found visits rose. Chen (2023) found loans fell.</td></tr>
+      <tr><th>Synthesis</th><td><b>There is broad agreement that</b> hubs attract visitors (Garcia 2020; Nwosu 2022). <b>Borrowing, however, tells a different story:</b> Chen (2023) shows loans still falling. <b>What remains unclear is whether</b> new visitors ever borrow books.</td></tr>
+    </table>
+    <div class="tag"><span class="pill">MOVES</span> consensus · divergence (<i>Whereas A…, B…</i>) · building on · <b>the gap</b> · positioning (<i>This report therefore asks…</i>)</div>
+  </section>
+
+  <!-- 13 -->
+  <section class="slide">
+    <div class="eyebrow">6.2 · Workshop · 26 min</div>
+    <h2>Architecture Lab</h2>
+    <div class="two">
+      <ul class="lab">
+        <li><b>Plan</b> (9): through-line + 5–7 section claims + informative headings · 1,500–2,500 words</li>
+        <li><b>Supervision</b> (4): your partner reads your claims aloud, in order, and asks four questions</li>
+        <li><b>Draft</b> (10): one section, 250–300 words · 2+ sources synthesized · signposts in and out</li>
+        <li><b>Check</b> (3): reverse outline: what does each paragraph <i>do</i>?</li>
+      </ul>
+      <div class="ccq">Topic or claim next to each heading? <i>(Claim.)</i><br>Can the supervisor rewrite it? <i>(No, only ask.)</i><br>How many sections do you draft? <i>(One.)</i><br>Are the sources real? <i>(No: invented for practice.)</i></div>
+    </div>
+  </section>
+
+  <!-- 14 -->
+  <section class="slide">
+    <div class="eyebrow">6.3 · Two commas and a family</div>
+    <h2>The comma that carries meaning</h2>
+    <div class="dlg">
+      <p><span class="sp">A</span> My brother who lives in Berlin is a doctor.</p>
+      <p class="b"><span class="sp">B</span> My brother<b>,</b> who lives in Berlin<b>,</b> is a doctor.</p>
+    </div>
+    <div class="ccq">How many brothers in A? <i>(More than one: the Berlin one.)</i> In B? <i>(One.)</i> Which one is read with a lower voice and pauses? <i>(B.)</i><br>The report <b>that</b> I sent is final. / The report<b>, which</b> I sent<b>,</b> is final. <i>(identifies · adds)</i></div>
+    <div class="tag"><span class="pill warn">OXFORD</span> I'd like to thank my parents, the head chef and the night porter. <i>(Two people or four?)</i> → …the head chef<b>,</b> and the night porter.</div>
+  </section>
+
+  <!-- 15 -->
+  <section class="slide">
+    <div class="eyebrow">6.3 · The marks · each has a job</div>
+    <h2>; balances · : delivers · — turns</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>;</th><td>The café was full<b>;</b> the bakery was empty.</td></tr>
+        <tr><th>:</th><td>The menu has one weakness<b>:</b> dessert.</td></tr>
+        <tr><th>—</th><td>They had planned for everything <b>—</b> and then the power failed.</td></tr>
+        <tr><th>, — ( )</th><td>neutral · loud · quiet: three volumes of aside</td></tr>
+      </table>
+      <div class="ccq">"It rained, we left." <i>(Comma splice.)</i> Three cures? <i>(; · period · , so)</i><br>"Her goals are: to win." <i>(Clause before the colon isn't complete.)</i><br>Five dashes in a paragraph? <i>(Noise.)</i></div>
+    </div>
+  </section>
+
+  <!-- 16 -->
+  <section class="slide">
+    <div class="eyebrow">6.3 · Usage · the sentence says what you didn't mean</div>
+    <h2>Danglers, stray modifiers, parallelism</h2>
+    <table class="g">
+      <tr><th>Dangler</th><td><s>Rushing to catch the train, my coffee spilled.</s> → Rushing to catch the train, <b>I</b> spilled my coffee.</td></tr>
+      <tr><th>Misplaced</th><td><s>We almost drove 500 miles.</s> → We drove <b>almost</b> 500 miles.</td></tr>
+      <tr><th>Parallel</th><td><s>how to install, configuring, and the maintenance of</s> → how to <b>install, configure, and maintain</b></td></tr>
+      <tr><th>Tests</th><td>he/him → who/whom · drop the other person → you and <b>me</b> · count it? → <b>fewer</b> · I insist that he <b>be</b> present</td></tr>
+    </table>
+  </section>
+
+  <!-- 17 -->
+  <section class="slide">
+    <div class="eyebrow">6.3 · Judgment · know which is which</div>
+    <h2>Rule · convention · myth · house style</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>Rule</th><td>danglers · restrictive commas · comma splice</td></tr>
+        <tr><th>Convention</th><td><i>whom</i> · subjunctive <i>were</i></td></tr>
+        <tr><th>Myth</th><td><i>to really understand</i> · a preposition to end with · <i>And</i> to start</td></tr>
+      </table>
+      <table class="g">
+        <tr><th></th><th>US</th><th>UK</th></tr>
+        <tr><td>quotes</td><td>"double,"</td><td>'single',</td></tr>
+        <tr><td>dash</td><td>word—word</td><td>word – word</td></tr>
+        <tr><td>Oxford ,</td><td>standard</td><td>optional</td></tr>
+        <tr><td>team</td><td>is</td><td>is / are</td></tr>
+        <tr><td>title</td><td>Mr.</td><td>Mr</td></tr>
+      </table>
+    </div>
+    <div class="tag"><span class="pill">PAIRS</span> Style-sheet cards: US copy editor + British author · agree five lines of house style in 4 minutes</div>
+  </section>
+
+  <!-- 18 -->
+  <section class="slide">
+    <div class="eyebrow">6.3 · Workshop · 22 min</div>
+    <h2>The Editing Race</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>Teams of 3 · four stations · 4 min each · 8 faults per passage</li>
+        <li><b>+1</b> fix · <b>+1</b> name the point · <b>−1</b> false alarm (a myth "corrected")</li>
+        <li><b>+2</b> one style improvement you can justify (; : —)</li>
+        <li>Roles rotate: editor · namer · judge</li>
+      </ul>
+      <div class="ccq">Fix only, or fix and name? <i>(Both.)</i><br>"To really understand": fault? <i>(No: myth.)</i><br>What loses a point? <i>(Changing what isn't wrong.)</i><br>Who rules on a myth? <i>(The judge, after listening.)</i></div>
+    </div>
+  </section>
+
+  <!-- 19 -->
+  <section class="slide section">
+    <div class="eyebrow">You can now earn, carry and polish</div>
+    <h2>Module 6 done</h2>
+    <ul class="lab">
+      <li><b>A hook that earns the next line · a line in one breath · a grounded, calibrated verdict</b></li>
+      <li><b>Claims in a necessary order · signposts at every seam · sources synthesized with stance verbs</b></li>
+      <li><b>The comma that carries meaning · the dangler repaired · the myth left alone · one house style</b></li>
+    </ul>
+    <p class="lead" style="margin-top:10px;max-width:40ch">Homework: online lessons 6.1–6.3 with 🔊. Write your personal watch list. Next: Module 7, communicating across cultures.</p>
+  </section>
+
+
+</div>
+
+<div class="count" id="count">1 / 19</div>
+<div class="nav"><button id="prev" aria-label="Previous slide"></button><button id="next" aria-label="Next slide"></button></div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const bar=document.getElementById('bar'), count=document.getElementById('count');
+  let i=0;
+  function show(n){ i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+    bar.style.width=((i+1)/slides.length*100)+'%'; count.textContent=(i+1)+' / '+slides.length; }
+  document.getElementById('next').onclick=()=>show(i+1);
+  document.getElementById('prev').onclick=()=>show(i-1);
+  addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}
+    else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+  });
+  show(0);
+</script>
+</body>
+</html>

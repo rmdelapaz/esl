@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Progress Test 1 — Modules 1–4</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../kit.css">
+<style>
+  /* ── Test-paper components (shared with final-test.html) ── */
+  .pagebreak{break-before:page}
+  .teacher-only{font-family:"JetBrains Mono",monospace;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+    color:#fff;background:var(--warn);border-radius:999px;padding:3px 11px;display:inline-block;margin-bottom:8px;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .paper{font-size:17px;line-height:1.5}
+  .paper-head{display:grid;grid-template-columns:2fr 1fr 1fr;gap:14px;margin:6px 0 14px;font-size:1.05rem}
+  .paper-head div{border-bottom:1.5px solid var(--ink-2);padding:6px 2px 4px}
+  .paper-head b{font-weight:700}
+  .key-labels{display:flex;flex-wrap:wrap;gap:8px 12px;margin:10px 0 4px;font-size:.95rem;color:var(--ink-2)}
+  .key-labels span{border:1px solid var(--line);border-radius:999px;padding:3px 12px;background:var(--surface-2)}
+  .part-h{display:flex;align-items:center;gap:12px;margin:30px 0 6px;padding:10px 14px;background:var(--accent-soft);
+    border-radius:10px;break-after:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .part-h .pn{font-family:"Archivo",sans-serif;font-weight:800;font-size:1rem;color:#fff;background:var(--accent);border-radius:8px;
+    min-width:1.9em;text-align:center;padding:3px 6px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .part-h h2{font-size:1.3rem;font-weight:800;flex:1}
+  .part-h .score{font-family:"JetBrains Mono",monospace;font-size:.95rem;font-weight:600;border:1.5px solid var(--ink-2);
+    border-radius:8px;padding:4px 10px;background:var(--surface);white-space:nowrap}
+  .inst{display:flex;gap:10px;align-items:baseline;font-size:1.1rem;font-weight:600;margin:16px 0 8px;break-after:avoid}
+  .inst .lbl{font-family:"JetBrains Mono",monospace;font-size:.66rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--accent);white-space:nowrap;border:1px solid var(--line-strong);border-radius:6px;padding:1px 6px}
+  .inst .sub{font-weight:400;color:var(--ink-2);font-size:.95rem}
+  .item{display:flex;gap:12px;align-items:baseline;margin:10px 0;font-size:1.06rem;break-inside:avoid}
+  .item .n{font-family:"JetBrains Mono",monospace;font-weight:600;color:var(--accent);min-width:1.6em}
+  .item.ex{color:var(--ink-2)}
+  .item.ex .n::after{content:" e.g.";font-size:.7rem;color:var(--ink-3)}
+  .item .cue{color:var(--ink-3);font-style:italic;font-size:.95rem;margin-right:6px}
+  .ch{display:inline-flex;flex-wrap:wrap;gap:10px}
+  .ch span{border:1.5px solid var(--line-strong);border-radius:999px;padding:2px 14px;background:var(--surface)}
+  .ch span.circled{border:2.5px solid var(--ink);font-weight:700}
+  .ch.stack{display:flex;flex-direction:column;align-items:flex-start;gap:6px;margin-top:4px}
+  .ch.stack span{border-radius:10px}
+  .bank{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px;padding:10px 12px;border:2px dashed var(--line-strong);border-radius:10px;font-size:1.08rem;font-weight:600}
+  .bank span{padding:2px 10px}
+  .text{border:1px solid var(--line);border-radius:10px;padding:14px 18px;background:var(--surface-2);font-size:1.04rem;line-height:1.7;margin:10px 0}
+  .text p{margin:0 0 10px}
+  .text p:last-child{margin-bottom:0}
+  .text .ttl{font-family:"Archivo",sans-serif;font-weight:800;font-size:1.2rem;margin-bottom:6px}
+  .text .by{font-size:.9rem;color:var(--ink-3);margin:-4px 0 8px}
+  .text .pn{font-family:"JetBrains Mono",monospace;font-size:.72rem;color:var(--ink-3);margin-right:6px}
+  .wline{border-bottom:1.5px solid var(--ink-2);height:2.1em}
+  .rw{display:grid;grid-template-columns:2em 1fr;gap:4px 12px;margin:12px 0;font-size:1.04rem;break-inside:avoid}
+  .rw .n{font-family:"JetBrains Mono",monospace;font-weight:600;color:var(--accent)}
+  .rw .from{color:var(--ink-2)}
+  .rw .from .cue{color:var(--ink-3);font-style:italic;font-size:.92rem}
+  .rw .to{grid-column:2}
+  table.grid{width:100%;border-collapse:collapse;margin:10px 0;font-size:.9rem}
+  table.grid th,table.grid td{border:1px solid var(--line-strong);padding:8px 10px;text-align:left;vertical-align:top}
+  table.grid thead th{background:var(--surface-2);font-family:"JetBrains Mono",monospace;font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+  table.grid td.sc{width:17%;text-align:center;font-family:"JetBrains Mono",monospace;color:var(--ink-3)}
+  .done{margin-top:26px;text-align:center;font-size:1.15rem;font-weight:700}
+  @media (max-width:680px){
+    .paper-head{grid-template-columns:1fr}
+    table.grid{display:block;overflow-x:auto}
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="lbl">Test pack —</span>
+  <button type="button" onclick="window.print()">Print / Save as PDF</button>
+  <span class="hint">teacher notes · learner paper · scripts &amp; speaking (teacher only)</span>
+</div>
+
+<div class="sheet">
+
+  <header class="mast">
+    <div class="kit-eyebrow">Mastery English (C2) · Assessment · Class 13</div>
+    <h1>Progress Test 1 — Modules 1–4</h1>
+    <p class="sub">A halfway check after Lesson 4.3. It covers the whole first half of C2: the mot juste (connotation, semantic prosody, force, and specificity), register agility and tone, binomials and restricted collocation, implicature and presupposition, irony and understatement, figurative language, discourse and stance markers, cohesion and coherence, summary, paraphrase and synthesis, rhetoric and persuasion, and style and voice. It tells you <b>what to refine</b> in Weeks 7–13. It does not rank anyone, and it is not a mock proficiency exam.</p>
+    <div class="meta-row">
+      <span class="chip"><b>~62 min</b> written</span>
+      <span class="chip">+ <b>9 min</b> pair speaking</span>
+      <span class="chip">Written <b>/60</b> · Speaking <b>/15</b> · Total <b>/75</b></span>
+      <span class="chip">CEFR <b>C2</b></span>
+    </div>
+  </header>
+
+  <div class="note">
+    <div class="t">Why a progress test at C2, and how to frame it</div>
+    <p>C2 learners are often accomplished professionals (translators, teachers, academics, managers) who have not been "tested" in years, and some are preparing for a proficiency exam and will read every mark as a forecast. Say it plainly: <b>"This is a check, not an exam. At this level almost nothing here is about right and wrong grammar. It is about precision, appropriacy, and effect. It tells me which of those are already reliable for you and which we should polish in the second half."</b> Point out that many items have <b>more than one good answer</b> (the rewrites, the gist, the writing): you are scoring whether the choice works, not whether it matches a key word for word. Read the listening at a natural, unhurried pace, <b>with the intonation marked in the script</b>. At C2, hearing irony and hesitation in the voice is part of what is being tested, so don't flatten it and don't exaggerate it into pantomime.</p>
+  </div>
+
+  <div class="sec"><h2>Running Class 13 (90 min)</h2><span class="rule"></span></div>
+  <table class="timing">
+    <thead><tr><th>Stage</th><th>Time</th><th>Interaction</th><th>Procedure</th></tr></thead>
+    <tbody>
+      <tr><td>Warmer &amp; set-up</td><td class="t">4 min</td><td>S–S · T–S</td><td>A 2-minute "one message, three rooms" warmer in pairs: say <i>"The meeting is cancelled"</i> as a formal notice, to a colleague, and to a close friend. It wakes up register without giving anything away. Go through the paper's instruction words on the board: <i>circle, complete, rewrite, what is implied, copy, gist</i>. Papers go out <b>face down</b>; learners write their names.</td></tr>
+      <tr><td>Part 1 · Listening</td><td class="t">12 min</td><td>T–S</td><td>The whole class together. Give 30 seconds to read each section's questions first. Read each script on the teacher pages <b>twice</b>, with about 10 seconds between readings. Do example item 0 together.</td></tr>
+      <tr><td>Parts 2–5 · written</td><td class="t">50 min</td><td>S</td><td>Individual work. Suggest a pace on the board: <b>Part 2 about 6 minutes, Part 3 about 14, Part 4 about 12, Part 5 about 18.</b> Walk around and clarify instructions, but don't help with answers. At C2 learners often ask "Is this answer acceptable too?" Reply: "If you can justify it, write it, and add a word of explanation in the margin." Early finishers reread and then annotate a short quality column you bring in (stance markers, one figure, one implicature). They don't help classmates.</td></tr>
+      <tr><td>Break</td><td class="t">4 min</td><td>—</td><td>Collect papers.</td></tr>
+      <tr><td>Speaking + catch-up stations</td><td class="t">20 min</td><td>S–S · T–S</td><td>Call learners to a quiet corner <b>in pairs</b> for the 9-minute speaking task (cards on the teacher pages) and score with the grid. Everyone else rotates through <b>catch-up stations</b>: (1) a "four registers" card game from Lesson 1.2 (one message, four rooms, no stray clang); (2) the online lessons on a phone (Listen, then shadow the model sentences, especially Lessons 2.1 and 2.2, where tone carries the meaning); (3) a "fix the mix, refresh the cliché" card set from Lesson 2.3 with a partner. About two pairs fit in 20 minutes. Finish the remaining pairs in the Class 14 warmer, or ask a volunteer or co-teacher to run the stations while you score.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="grid2">
+    <div class="blk"><div class="h">You need</div>
+      <ul class="tick">
+        <li>One learner paper per person (the middle section of this pack), printed at 100% so the writing lines stay usable</li>
+        <li>The teacher pages: listening scripts, speaking cards (cut A/B and the discussion card), and one scoring grid per pair</li>
+        <li>Pens, and a clock the class can see</li>
+        <li>The answer key and rubrics: <code class="inline">assessment/assessment-key.html</code></li>
+      </ul>
+    </div>
+    <div class="blk"><div class="h">What each part checks</div>
+      <ul class="tick">
+        <li><b>Listening /10</b>: what speakers really mean in five short exchanges (faint praise, irony, a hedged refusal, a presupposition, understatement), then a radio commentary heard for stance, irony, and image</li>
+        <li><b>Words &amp; phrases /10</b>: the mot juste (connotation, prosody, specificity) and fixed expressions and restricted collocations (1.1, 1.3)</li>
+        <li><b>Register, meaning &amp; discourse /15</b>: three register rewrites (2 pts each), four "what is really meant" items, and five stance and discourse markers (1.2, 2.1–2.2, 3.1)</li>
+        <li><b>Reading /13</b>: a column read for its line, stance, juxtaposition, metaphor, concession, rhetorical question, tone, and paraphrase (2.1, 2.3, 3.1–3.3, 4.1)</li>
+        <li><b>Writing /12</b>: the opening of a short persuasive talk (160–200 words) with appeals, named figures, and a concession (4.1–4.2)</li>
+        <li><b>Speaking /15</b>: one message in two registers, a message conveyed by implication, and a persuasive discussion that reaches a decision (pairs)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="note lab">
+    <div class="t">Literacy-adapted version (learners whose reading and writing lag behind their speaking)</div>
+    <p>Rare at C2, but it happens: a learner whose English was built almost entirely through work and conversation, or who has dyslexia. Use the <b>same paper</b> and change how it is done, not what it tests. <b>Read every instruction and item aloud</b>, enlarge the paper, and accept <b>spoken answers</b> in Parts 2–4 (for the register rewrites, the learner says the new version and you score what they say). Read the column aloud twice for Part 4. In Part 5 the learner may <b>dictate</b> the talk while you scribe, or simply <b>deliver</b> it aloud; score content, rhetoric, and register, not spelling. Give extra time or split the paper over two sittings. Write <b>"Adapted"</b> at the top and note what changed. For these learners, listening and speaking are the main evidence; the key explains how to act on the result.</p>
+  </div>
+
+  <div class="note warn">
+    <div class="t">Opinions are optional; sides can be assigned</div>
+    <p>Part 5 and the speaking discussion ask learners to argue a position. They may argue <b>either side</b>, and in the speaking task you can assign sides. Say before the test starts: <b>"Your side or the other side, it makes no difference. I'm scoring the craft, not your views."</b> Nothing in the speaking task asks about a learner's own life; if someone reaches for a personal example, real or imagined is equally fine. Never ask follow-up questions about home country, family members who are absent, or immigration status.</p>
+  </div>
+
+  <!-- ═════════════════════ LEARNER PAPER ═════════════════════ -->
+  <div class="pagebreak"></div>
+  <div class="paper">
+    <header class="mast">
+      <div class="kit-eyebrow">Mastery English (C2) · Progress Test 1</div>
+      <h1>Halfway: Precision, Meaning &amp; Effect</h1>
+      <div class="paper-head">
+        <div><b>Name:</b></div>
+        <div><b>Date:</b></div>
+        <div><b>Class:</b></div>
+      </div>
+      <div class="key-labels">
+        <span>Listen</span><span>Read</span><span>Circle</span><span>Complete</span><span>Rewrite</span><span>Write</span><span>Speak</span>
+      </div>
+      <p style="font-size:1.03rem;margin-top:10px">Skim the questions <b>before</b> you listen or read, and look at each example first. Several items accept more than one good answer: if you think yours is defensible, write it and add a brief note in the margin. If an instruction isn't clear, just ask.</p>
+    </header>
+
+    <!-- PART 1 -->
+    <div class="part-h"><span class="pn">1</span><h2>Listening</h2><span class="score">___ / 10</span></div>
+
+    <div class="inst"><span class="lbl">Listen · Circle</span><span>A. Listen to five short exchanges. What does the second speaker really mean? Circle a, b, or c.</span></div>
+    <div class="item ex"><span class="n">0</span><span>"Is Tom a good cook?" <span class="ch stack"><span class="circled">a) Tom is not a good cook.</span><span>b) Tom is an excellent cook.</span><span>c) Tom only cooks breakfast.</span></span></span></div>
+    <div class="item"><span class="n">1</span><span>"What did you think of the new restaurant?" <span class="ch stack"><span>a) She loved everything about it.</span><span>b) The food was disappointing.</span><span>c) She was too busy to notice the food.</span></span></span></div>
+    <div class="item"><span class="n">2</span><span>"How did the presentation go?" <span class="ch stack"><span>a) It went very smoothly.</span><span>b) It went badly.</span><span>c) He isn't sure yet.</span></span></span></div>
+    <div class="item"><span class="n">3</span><span>"Could you review my report before Friday?" <span class="ch stack"><span>a) Yes, definitely.</span><span>b) Yes, but only on Friday morning.</span><span>c) Probably not; it's a polite refusal.</span></span></span></div>
+    <div class="item"><span class="n">4</span><span>What does the manager's question <b>take for granted</b>? <span class="ch stack"><span>a) The employee has left the room untidy before.</span><span>b) The meeting room has just been redecorated.</span><span>c) The employee has never used the room.</span></span></span></div>
+    <div class="item"><span class="n">5</span><span>"How's the new booking system?" <span class="ch stack"><span>a) There is a small, unimportant fault.</span><span>b) There is a serious problem.</span><span>c) The system works well.</span></span></span></div>
+
+    <div class="inst"><span class="lbl">Listen · Circle</span><span>B. Listen to Dana Price's weekly radio commentary, <i>Town Talk</i>. Circle the best answer.</span></div>
+    <div class="item"><span class="n">6</span><span>Her overall attitude to the parking app is … <span class="ch stack"><span>a) enthusiastic</span><span>b) skeptical, but not entirely dismissive</span><span>c) completely hostile</span></span></span></div>
+    <div class="item"><span class="n">7</span><span>"Presumably, then, the expectations were rather low." Here she is … <span class="ch stack"><span>a) mocking the council's claim through irony</span><span>b) agreeing with the council's figures</span><span>c) admitting that she expected too much</span></span></span></div>
+    <div class="item"><span class="n">8</span><span>The café owner says, "It's a lovely app, if you don't need to park." She implies that … <span class="ch stack"><span>a) the app looks good but fails at its main job</span><span>b) she personally enjoys using the app</span><span>c) parking downtown is now easy</span></span></span></div>
+    <div class="item"><span class="n">9</span><span>"A bridge … has become a locked gate." This image means that … <span class="ch stack"><span>a) the app now shuts out some of the people it was meant to help</span><span>b) the app connects older residents with each other</span><span>c) roadworks have closed a bridge downtown</span></span></span></div>
+    <div class="item"><span class="n">10</span><span>What does she recommend? <span class="ch stack"><span>a) scrapping the app completely</span><span>b) keeping a card-payment meter on every block until the app works for everyone</span><span>c) closing downtown to cars</span></span></span></div>
+
+    <!-- PART 2 -->
+    <div class="part-h pagebreak"><span class="pn">2</span><h2>Words &amp; Phrases</h2><span class="score">___ / 10</span></div>
+    <div class="inst"><span class="lbl">Read · Circle</span><span>A. Circle the word or phrase that is <b>exactly right</b> for the context. <span class="sub">Think about connotation, prosody, register, and specificity.</span></span></div>
+    <div class="item ex"><span class="n">0</span><span><span class="cue">(a compliment)</span> She is admirably <span class="ch"><span class="circled">resolute</span><span>pig-headed</span></span> in a crisis.</span></div>
+    <div class="item"><span class="n">1</span><span><span class="cue">(praising a colleague)</span> Maria is admirably <span class="ch"><span>stingy</span><span>frugal</span><span>tight-fisted</span></span> with the department's budget.</span></div>
+    <div class="item"><span class="n">2</span><span>Years of patient research finally <span class="ch"><span>caused</span><span>brought about</span><span>set in</span></span> a breakthrough.</span></div>
+    <div class="item"><span class="n">3</span><span>I was <span class="ch"><span>amused</span><span>bemused</span><span>startled</span></span> by the instructions: I couldn't work out what they wanted at all.</span></div>
+    <div class="item"><span class="n">4</span><span><span class="cue">(a retirement card for a colleague)</span> Mr. Hughes has been <span class="ch stack"><span>a real legend.</span><span>a man of rare warmth and generosity.</span><span>a top guy.</span></span></span></div>
+    <div class="item"><span class="n">5</span><span>Exhausted after a twelve-hour shift, she <span class="ch"><span>strolled</span><span>trudged</span><span>walked slowly</span></span> home through the snow.</span></div>
+
+    <div class="inst"><span class="lbl">Complete</span><span>B. Complete each fixed expression or collocation with <b>one</b> word. <span class="sub">The order and the partner word are fixed.</span></span></div>
+    <div class="item"><span class="n">6</span><span>By and <span class="blank"></span>, the pilot scheme has been a success.</span></div>
+    <div class="item"><span class="n">7</span><span>Late nights are part and <span class="blank"></span> of the job.</span></div>
+    <div class="item"><span class="n">8</span><span>The contract was never signed, so it is now null and <span class="blank"></span>.</span></div>
+    <div class="item"><span class="n">9</span><span>Whether he knew in advance is now a <span class="blank"></span> point: the decision has already been made.</span></div>
+    <div class="item"><span class="n">10</span><span>The launch was a <span class="blank"></span> success: every ticket sold within an hour.</span></div>
+
+    <!-- PART 3 -->
+    <div class="part-h pagebreak"><span class="pn">3</span><h2>Register, Meaning &amp; Discourse</h2><span class="score">___ / 15</span></div>
+    <div class="inst"><span class="lbl">Rewrite</span><span>A. Rewrite each message as instructed. Move the <b>whole cluster</b> (vocabulary, grammar, contractions, tone), not just one word. <span class="sub">(2 points each)</span></span></div>
+    <div class="rw"><span class="n">11</span><span class="from">"Please make sure you've moved your car out of the staff parking lot by Friday." <span class="cue">(→ a formal written notice to all staff)</span></span><span class="to"><div class="wline"></div><div class="wline"></div></span></div>
+    <div class="rw"><span class="n">12</span><span class="from">"I regret that I shall be unable to attend your celebration on Saturday." <span class="cue">(→ a text message to a close friend)</span></span><span class="to"><div class="wline"></div><div class="wline"></div></span></div>
+    <div class="rw"><span class="n">13</span><span class="from">"We are writing to inform you that your application has not been successful on this occasion. Better luck next time, pal!" <span class="cue">(→ rewrite the second sentence so that it matches the frame of the first)</span></span><span class="to"><div class="wline"></div><div class="wline"></div></span></div>
+
+    <div class="inst"><span class="lbl">Read · Write</span><span>B. What is really meant, or taken for granted? Answer briefly.</span></div>
+    <div class="item"><span class="n">14</span><span style="flex:1">A reference letter says only: <i>"Mr. Lane was always well dressed and never late."</i> What does the writer imply about his work? <div class="wline"></div></span></div>
+    <div class="item"><span class="n">15</span><span style="flex:1"><i>"Why is your team still missing its deadlines?"</i> What does this question take for granted? <div class="wline"></div></span></div>
+    <div class="item"><span class="n">16</span><span style="flex:1">After three hours stuck in traffic: <i>"Well, this is the perfect start to a vacation."</i> What does the speaker mean? <div class="wline"></div></span></div>
+    <div class="item"><span class="n">17</span><span style="flex:1"><i>"Even the finance team enjoyed the training."</i> What does <b>even</b> take for granted about the finance team? <div class="wline"></div></span></div>
+
+    <div class="inst"><span class="lbl">Circle</span><span>C. Circle the stance or discourse marker that does the job described.</span></div>
+    <div class="item"><span class="n">18</span><span><span class="cue">(conceding a point against yourself)</span> <span class="ch"><span>Admittedly</span><span>Undoubtedly</span><span>Mercifully</span></span>, our sample was small.</span></div>
+    <div class="item"><span class="n">19</span><span><span class="cue">(the stated reason, hinting at a different real one)</span> The visit was <span class="ch"><span>ostensibly</span><span>notably</span><span>understandably</span></span> a courtesy call.</span></div>
+    <div class="item"><span class="n">20</span><span><span class="cue">(a formal essay, adding a point)</span> <span class="ch"><span>Plus</span><span>Anyway</span><span>Furthermore</span></span>, the scheme has reduced costs.</span></div>
+    <div class="item"><span class="n">21</span><span><span class="cue">(distancing yourself from an unverified claim)</span> The director has <span class="ch"><span>frankly</span><span>reportedly</span><span>personally</span></span> resigned.</span></div>
+    <div class="item"><span class="n">22</span><span><span class="cue">(correcting toward the opposite of what was expected)</span> The new policy hasn't slowed us down; <span class="ch"><span>at least</span><span>to be fair</span><span>if anything</span></span>, it has made us faster.</span></div>
+
+    <!-- PART 4 -->
+    <div class="part-h pagebreak"><span class="pn">4</span><h2>Reading</h2><span class="score">___ / 13</span></div>
+    <div class="inst"><span class="lbl">Read</span><span>Skim the questions first. Then read this column from a city magazine, once for sense and once for its craft.</span></div>
+    <div class="text">
+      <div class="ttl">The Room Where Nothing Happens</div>
+      <p><span class="pn">¶1</span>For forty years, the second floor of the Eastgate Public Library has held a room in which, officially, nothing happens. There are no computers, no meetings, no talking; there are long oak tables, green lamps, and a sign that says only <i>Quiet, please</i>. This spring the library board announced that the room would become a so-called "flexible collaboration hub," complete with movable pods and a coffee bar. The change, we are told, will supposedly "bring the library into the twenty-first century."</p>
+      <p><span class="pn">¶2</span>The board insists that the reading room was under-used. Perhaps. It is certainly true that on a weekday morning you will rarely find more than a dozen readers there. But the public consultation received 412 responses; the board's published summary ran to a single paragraph. Tellingly, it did not mention that nine in ten respondents asked for the room to stay.</p>
+      <p><span class="pn">¶3</span>Admittedly, libraries must change, and I have no wish to preserve them in amber. A building that refuses every new idea soon becomes a museum of itself. But the reading room was never a relic. For the student with five siblings at home, the night-shift nurse between jobs, the retired teacher learning Italian, it was a harbor: a still stretch of water in a city that never stops churning. Replace it with pods and a coffee bar, and we will have built one more busy dock and lost the only calm mooring in town.</p>
+      <p><span class="pn">¶4</span>Who, exactly, was the reading room failing? Not its readers. The board may yet be persuaded to keep one quiet room while it modernizes the rest of the building; that would be a compromise worth having. What it should not do is mistake silence for emptiness.</p>
+    </div>
+    <div class="item"><span class="n">1</span><span style="flex:1">In one sentence, what is the writer's position? <span class="cue">(2 points)</span> <div class="wline"></div><div class="wline"></div></span></div>
+    <div class="item"><span class="n">2</span><span style="flex:1">Copy <b>one</b> word or phrase from ¶1 that signals the writer's doubt about the board's claims. <div class="wline"></div></span></div>
+    <div class="item"><span class="n">3</span><span style="flex:1">In ¶2 the board "insists" rather than "says." What does this choice of verb suggest? <div class="wline"></div></span></div>
+    <div class="item"><span class="n">4</span><span style="flex:1">¶2 places "412 responses" next to "a single paragraph." What does the writer want us to conclude, without saying it? <div class="wline"></div></span></div>
+    <div class="item"><span class="n">5</span><span>In ¶2, with the one-word sentence "Perhaps.", the writer … <span class="ch stack"><span>a) grants the point only provisionally, before challenging it</span><span>b) agrees wholeheartedly with the board</span><span>c) changes the subject</span></span></span></div>
+    <div class="item"><span class="n">6</span><span>The controlling metaphor in ¶3 draws on the world of … &nbsp;<span class="ch"><span>warfare</span><span>the sea and harbors</span><span>cooking</span></span></span></div>
+    <div class="item"><span class="n">7</span><span style="flex:1">What does "the only calm mooring in town" suggest about the reading room? <div class="wline"></div></span></div>
+    <div class="item"><span class="n">8</span><span style="flex:1">What does the writer concede with "Admittedly" in ¶3? <div class="wline"></div></span></div>
+    <div class="item"><span class="n">9</span><span style="flex:1">"Who, exactly, was the reading room failing?" What kind of question is this, and what is its effect? <div class="wline"></div></span></div>
+    <div class="item"><span class="n">10</span><span>The writer's tone is best described as … <span class="ch stack"><span>a) wistful, with a quiet edge of irony</span><span>b) neutral and technical</span><span>c) furious and abusive</span></span></span></div>
+    <div class="item"><span class="n">11</span><span>Which is a <b>genuine paraphrase</b> (not patchwriting) of "The board insists that the reading room was under-used"? <span class="ch stack"><span>a) The board maintains that the reading room was underutilized.</span><span>b) According to the board, too few people used the reading room to justify keeping it.</span><span>c) The board insisted that the reading room was not used enough.</span></span></span></div>
+    <div class="item"><span class="n">12</span><span style="flex:1">What does the writer mean by "mistake silence for emptiness" (¶4)? <div class="wline"></div></span></div>
+
+    <!-- PART 5 -->
+    <div class="part-h pagebreak"><span class="pn">5</span><h2>Writing</h2><span class="score">___ / 12</span></div>
+    <div class="inst"><span class="lbl">Write</span><span>Write the opening of a short persuasive talk. <span class="sub">(160–200 words)</span></span></div>
+    <p style="font-size:1.05rem;margin:0 0 6px">Your town is holding a public meeting on this motion: <b>"Main Street should be closed to cars every Sunday and become a pedestrian zone."</b> Write the first minute of your talk. <span style="color:var(--ink-2)">You may argue either side. It does not have to be your personal view.</span></p>
+    <ul class="tick" style="font-size:1.02rem">
+      <li>Open with a <b>hook</b>, not a throat-clearing generality, and make your <b>line</b> clear.</li>
+      <li>Appeal through <b>ethos, pathos, and logos</b> (at least one of each), and use at least <b>two named figures</b> (tricolon, antithesis, anaphora, rhetorical question, hypophora, chiasmus). Label your two figures in the margin.</li>
+      <li><b>Concede</b> the other side's strongest fair point, then refute it.</li>
+      <li>Keep one register throughout, choose your words for connotation, and avoid mixed metaphors and tired clichés.</li>
+    </ul>
+    <div class="phrase-bank">
+      <span class="phrase">As someone who has …</span>
+      <span class="phrase">Picture, for a moment, …</span>
+      <span class="phrase">The figures are stark: …</span>
+      <span class="phrase">I'll grant that … ; that said, …</span>
+      <span class="phrase">There is force in the objection that …</span>
+      <span class="phrase">It is not that … ; rather, …</span>
+      <span class="phrase">What does this mean for us? Simply this: …</span>
+    </div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+
+    <p class="done">Finished. Now reread, and cut one word that isn't earning its place.</p>
+
+    <table class="grid" style="margin-top:22px">
+      <thead><tr><th>For the teacher</th><th>1 Listening</th><th>2 Words</th><th>3 Register &amp; meaning</th><th>4 Reading</th><th>5 Writing</th><th>Written</th><th>Speaking</th><th>Total</th></tr></thead>
+      <tbody><tr><td>Score</td><td>/10</td><td>/10</td><td>/15</td><td>/13</td><td>/12</td><td>/60</td><td>/15</td><td>/75</td></tr></tbody>
+    </table>
+  </div>
+
+  <!-- ═════════════════════ TEACHER PAGES ═════════════════════ -->
+  <div class="pagebreak"></div>
+  <span class="teacher-only">Teacher only · do not copy for learners</span>
+  <div class="sec" style="margin-top:6px"><h2>Part 1 · Listening Scripts</h2><span class="rule"></span></div>
+  <p>Give 30 seconds to read the questions for each section. Read each script <b>twice</b> at a natural pace, with a pause of about 10 seconds between readings, and say the item number first ("Number one"). Don't read the answer choices aloud. In Part A, change your voice or position for the two speakers, or read with a colleague. <b>The delivery notes in brackets are part of the test</b>: the pause before the faint praise, the flat tone of the irony, the drawn-out "Friday… hmm." Deliver them as a real speaker would, then stop; don't add a knowing look.</p>
+
+  <div class="blk"><div class="h">A · What does the second speaker really mean?</div>
+    <div class="script">Example, number zero. <b>A:</b> Is Tom a good cook? <b>B:</b> (a short pause) He makes excellent toast. (Show the circle on a.)<br>
+    Number 1. <b>A:</b> So, what did you think of the new restaurant? <b>B:</b> Well… (pause) the napkins were beautifully folded.<br>
+    Number 2. <b>A:</b> How did the presentation go? <b>B:</b> (flat, dry) Oh, swimmingly. The projector died, and then so did I.<br>
+    Number 3. <b>A:</b> Could you review my report before Friday? <b>B:</b> Friday… hmm. (pause) That might be a little tricky, to be honest.<br>
+    Number 4. <b>Manager:</b> (to an employee, crisply) Have you finally stopped leaving the meeting room in a mess?<br>
+    Number 5. <b>A:</b> How's the new booking system? <b>B:</b> (calmly, after a long day) Well, it crashed on Monday, we've had about two hundred complaints, and the phones haven't stopped. So we may have a slight issue with it.</div>
+  </div>
+  <div class="blk"><div class="h">B · Dana Price, <i>Town Talk</i> (read the whole commentary twice, then give 1 minute)</div>
+    <div class="script">Good morning. On this week's <i>Town Talk</i> I want to say a few words about the city's so-called "smart" parking app: the one that, we were promised, would make finding a space downtown "effortless." Admittedly, the app does some things well. Paying from your phone is genuinely convenient, and I'll grant that the old coin meters were hardly a triumph of design. But let's look at the first three months. The council tells us that complaints are "broadly in line with expectations." (brief pause, dry) <b>Presumably, then, the expectations were rather low</b>: the help line received more than four thousand calls in March alone. I spoke to a café owner on Harbor Street who put it rather well. <b>"It's a lovely app," she said, "if you don't need to park."</b> And there's a deeper problem. The app was meant to be a bridge between drivers and the spaces they need; <b>for many older residents it has become a locked gate.</b> If you don't own a smartphone, you now have precisely two options: walk to one of the four remaining pay stations, or pay a fine. So here's my suggestion. Not that we scrap the app, which would be throwing out the baby with the bathwater, but that <b>the council keep a simple card-payment meter on every block until the app actually works for everyone.</b> That, surely, isn't too much to ask.</div>
+  </div>
+
+  <div class="sec"><h2>Pair Speaking Task · 9 minutes</h2><span class="rule"></span></div>
+  <p>Two learners sit with you. Give Card A to one and Card B to the other and allow <b>one minute</b> of silent preparation. Then check the instructions:</p>
+  <div class="say">In Part 1, how many versions of your message do you give? (Two, in two different registers.) What has to change between them? (Everything that marks register, not just the vocabulary.) In Part 2, are you allowed to state the problem directly? (No, only by implication.) What does your partner do? (Decode it and respond.) In Part 3, do you have to argue your real opinion? (No, you can take the side on the card.) What do you need to reach by the end? (A decision you both accept.)</div>
+  <p><b>Part 1</b> (about 3 minutes): <b>One message, two registers.</b> Each learner delivers the message on their card twice: first in the formal register described, then informally. Listen for the whole cluster moving together (lexis, grammar, contraction, tone, delivery). <b>Part 2</b> (about 2 minutes): <b>Say it without saying it.</b> Student A conveys the difficult message on their card entirely by implication; Student B responds naturally, then says what they understood ("So what you're really telling me is…"). Swap for B's message. <b>Part 3</b> (about 4 minutes): give them the <b>discussion card</b>. Each opens with a short case (30–40 seconds) using one appeal and one figure; then they concede, refute, and reach a decision. If a pair doesn't want to choose sides, assign them: A argues <i>for</i>, B <i>against</i>. Step in only to restart a stuck pair. Don't correct during the task. Score each learner on the grid using the rubric in the key. <b>Mixed-level pairs:</b> score each person on what <i>they</i> did, not on the pair's result.</p>
+
+  <div class="cards">
+    <div class="card-cut">
+      <div class="ct">Card A · Student A</div>
+      <h4>Part 1 · One message, two registers</h4>
+      <p><b>Message:</b> Friday's team meeting is cancelled because the director is ill.</p>
+      <ol class="steps">
+        <li>Deliver it as a <b>formal announcement</b> to all staff at the start of a company meeting.</li>
+        <li>Then as a quick <b>voice message</b> to a close colleague.</li>
+      </ol>
+      <h4>Part 2 · Say it without saying it</h4>
+      <p>Your colleague (your partner) has just shown you the 60-slide deck they will present tomorrow in a 10-minute slot. <b>Tell them it is far too long, without ever saying so directly.</b></p>
+    </div>
+    <div class="card-cut b">
+      <div class="ct">Card B · Student B</div>
+      <h4>Part 1 · One message, two registers</h4>
+      <p><b>Message:</b> The community garden needs volunteers this weekend.</p>
+      <ol class="steps">
+        <li>Deliver it as a <b>formal appeal</b> at a neighborhood council meeting.</li>
+        <li>Then as a <b>chat</b> with a good friend over coffee.</li>
+      </ol>
+      <h4>Part 2 · Say it without saying it</h4>
+      <p>Your neighbor (your partner) has a dog that barks every morning at six. <b>Let them know it's a problem, without ever saying so directly.</b></p>
+    </div>
+    <div class="card-cut">
+      <div class="ct">Discussion card · both students</div>
+      <h4>Part 3 · The proposal</h4>
+      <p><b>"Our organization should replace its printed annual report with a three-minute video."</b></p>
+      <ul class="tick">
+        <li>Open with a short case (30–40 seconds): use at least <b>one appeal</b> (ethos, pathos, or logos) and <b>one figure</b> (a tricolon, an antithesis, a rhetorical question…).</li>
+        <li><b>Concede</b> your partner's strongest fair point before you refute it.</li>
+        <li>Use at least one <b>stance marker</b> precisely: <i>admittedly, arguably, if anything, to be fair…</i></li>
+        <li><b>Reach a decision</b> you can both defend. No preference? Student A argues <b>for</b>, Student B <b>against</b>.</li>
+      </ul>
+    </div>
+    <div class="card-cut b">
+      <div class="ct">Teacher prompts (keep)</div>
+      <h4>If a pair stalls</h4>
+      <p><b>Part 1:</b> "Now the same message, as if to a friend." · <b>Part 2:</b> "Try a hint." / "What did you understand?" · <b>Part 3:</b> "What's the strongest point on the other side?" / "So what have you decided?"</p>
+      <h4>Stretch</h4>
+      <p>"Give me the headline version of your decision, then the version for the minutes." (a register shift in both directions)</p>
+    </div>
+  </div>
+  <p style="font-size:.88rem;color:var(--ink-2)"><b>Support</b>: a learner may glance at the card during Part 1; score what they produce. In Part 2, if the implication is so buried that the partner misses it, prompt once ("Try a hint"), and score the second attempt. <b>Dominant speaker?</b> Turn to the quieter learner: "And where do you stand on that?" If it continues, say "Let's hear from [name] first this time" and note it under Interaction. Don't lower the quieter learner's score because they got fewer chances. <b>Near-native in some areas, fossilized in others:</b> expect a learner whose idiom is flawless but whose register never moves, or whose irony lands but whose stress pattern is L1-driven. Score each criterion separately; that is exactly the profile the grid is designed to show.</p>
+
+  <div class="sec"><h2>Speaking Scoring Grid</h2><span class="rule"></span></div>
+  <p style="font-size:.9rem;color:var(--ink-2)">Score each criterion <b>0–3</b>: 0 = no response · 1 = Not yet C2 · 2 = C2 · 3 = C2 strong mastery. The descriptors are in the assessment key. Total /15.</p>
+  <p style="font-size:.95rem">Learner A: ______________________ &nbsp; Learner B: ______________________ &nbsp; Date: __________</p>
+  <table class="grid">
+    <thead><tr><th>Criterion</th><th>What to listen for</th><th>A (0–3)</th><th>B (0–3)</th></tr></thead>
+    <tbody>
+      <tr><td><b>Task &amp; coherence</b></td><td>Two genuinely different versions in Part 1; a message conveyed and decoded by implication in Part 2; a case that is argued, conceded, refuted, and resolved in Part 3</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td></tr>
+      <tr><td><b>Precision &amp; range</b></td><td>The mot juste rather than the near-miss; restricted collocations and fixed expressions exactly right; a named figure used for effect; complex structures controlled without effort</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td></tr>
+      <tr><td><b>Register &amp; pragmatics</b></td><td>The whole cluster shifts in Part 1 with no stray clang; implicature that is clear yet deniable in Part 2; stance markers placed precisely; tact that never blurs the message</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td></tr>
+      <tr><td><b>Interaction</b></td><td>Decodes the partner's hint and responds to its real meaning; concedes before challenging; builds on the partner's point; steers toward a shared decision</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td></tr>
+      <tr><td><b>Fluency &amp; delivery</b></td><td>Effortless flow; prosody that carries meaning (the flat irony, the pause before faint praise, stress on the contrasted word); tone matched to each register</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td></tr>
+      <tr><td colspan="2"><b>Total /15</b> · one thing that worked · one thing to refine</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td></tr>
+    </tbody>
+  </table>
+
+  <div class="note lab">
+    <div class="t">After the test: close the loop in Week 7</div>
+    <p>Score the papers before Class 14 with the key. Add up each <b>section</b> across the class, because the weakest section tells you what to recycle. The warmers in Classes 14–19 are the place for it: a 5-minute "one message, four rooms" relay if the register rewrites (11–13) were weak; a "what did she really mean?" exchange with faint praise and hedged refusals if Part 1A and 3B were weak (it also sets up Lesson 7.1's cross-cultural politeness); a "strip the stance markers" task on a real column if Part 3C and Reading 2–4 were weak. Give each learner their paper back with <b>one thing that already works and one thing to refine</b>, plus the online lesson that practices it. The key has a class analysis and feedback phrases.</p>
+  </div>
+
+  <div class="foot">
+    <div class="who"><b>Ray de la Paz</b><span class="bio">© 2026 Ray de la Paz · Mastery English (C2 Proficiency)</span></div>
+    <div class="ver">Assessment · Progress Test 1 · v1.0</div>
+  </div>
+
+</div>
+</body>
+</html>
