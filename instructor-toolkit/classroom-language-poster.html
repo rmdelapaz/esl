@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Classroom Language Posters</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="./kit.css">
+<style>
+.poster{min-height:9.3in;display:flex;flex-direction:column;border:6px solid var(--accent);border-radius:22px;padding:26px 28px;margin:0 0 28px;
+  -webkit-print-color-adjust:exact;print-color-adjust:exact;break-inside:avoid}
+.poster.tips{border-color:var(--lab)}
+.poster .pt{font-family:"Archivo",sans-serif;font-weight:800;font-size:3rem;line-height:1.05;letter-spacing:-.02em;text-align:center;margin:4px 0 4px}
+.poster .ps{text-align:center;font-size:1.25rem;color:var(--ink-2);margin:0 0 18px}
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;flex:1}
+.pgrid .tile{border:2px solid var(--line-strong);border-radius:16px;padding:12px 10px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;background:var(--surface)}
+.pgrid .ic{font-size:3.2rem;line-height:1}
+.pgrid .tx{font-family:"Archivo",sans-serif;font-weight:700;font-size:1.45rem;line-height:1.18}
+.pgrid .tx u{text-decoration:none;border-bottom:2px solid var(--ink-2)}
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;flex:1}
+.tgrid .tile{border:2px solid var(--line-strong);border-radius:16px;padding:12px;background:var(--surface);text-align:center}
+.tgrid .ic{font-size:2.8rem;line-height:1.1}
+.tgrid h3{font-size:1.4rem;margin:6px 0 4px}
+.tgrid p{font-size:1.08rem;line-height:1.35;margin:0}
+.urlbar{margin-top:16px;text-align:center;background:var(--lab-soft);border-radius:12px;padding:12px;font-size:1.25rem;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.urlbar b{font-family:"JetBrains Mono",monospace;font-size:1.3rem;color:var(--lab)}
+.pb{break-before:page}
+.poster .credit{text-align:right;font-family:"JetBrains Mono",monospace;font-size:.66rem;color:var(--ink-3);margin-top:10px}
+@page{size:Letter;margin:.45in}
+@media print{.poster{margin:0;min-height:0;height:9.95in;padding:20px 24px}.poster .pt{font-size:2.7rem}.poster .ps{margin-bottom:12px}.tgrid .ic{font-size:2.4rem}.tgrid h3{font-size:1.28rem}.tgrid p{font-size:1rem}.urlbar{margin-top:12px;padding:9px}.sheet .mast,.sheet>.note,.pb.first,.foot{display:none!important}}
+@media (max-width:680px){.pgrid,.tgrid{grid-template-columns:1fr 1fr}.poster .pt{font-size:2.1rem}}
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="lbl">Wall posters —</span>
+  <button type="button" onclick="window.print()">🖨 Print / Save as PDF</button>
+  <span class="hint">one poster per page · print in color · scale 129% for Tabloid/A3</span>
+</div>
+
+<div class="sheet">
+<header class="mast">
+    <div class="kit-eyebrow">ESL Instructor Toolkit · Classroom posters</div>
+    <h1>Classroom Language Posters</h1>
+    <p class="sub">Two printable posters for the classroom wall, one per page. "Classroom English" gives learners the phrases they need to keep learning when they're lost. "Learning English at home" shows them how to study between classes. Both are written in simple A1 English, so they work at every level.</p>
+    <div class="meta-row">
+      <span class="chip"><b>2</b> posters</span>
+      <span class="chip">Letter / A4 · <b>1 page</b> each</span>
+      <span class="chip">All levels</span>
+    </div>
+  </header>
+  <div class="note">
+    <div class="t">Teaching the classroom-language poster</div>
+    <p>Put it up in the first class and <b>teach it</b>: model each phrase with a gesture, drill it chorally, then act "lost" and let learners rescue you with the right phrase. After that, point to the poster instead of answering in another language. For extra impact, print at 129% on Tabloid/A3. <i>(This note and the header above don't print.)</i></p>
+  </div>
+
+  <div class="pb first"></div>
+  <section class="poster" aria-label="Classroom English poster">
+    <div class="pt">Classroom English</div>
+    <p class="ps">Use these phrases in class. It's OK to ask!</p>
+    <div class="pgrid"><div class="tile"><div class="ic" aria-hidden="true">🔁</div><div class="tx">Can you repeat that, please?</div></div><div class="tile"><div class="ic" aria-hidden="true">🐢</div><div class="tx">Can you speak more slowly, please?</div></div><div class="tile"><div class="ic" aria-hidden="true">🤷</div><div class="tx">Sorry, I don't understand.</div></div><div class="tile"><div class="ic" aria-hidden="true">❓</div><div class="tx">What does <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u> mean?</div></div><div class="tile"><div class="ic" aria-hidden="true">💬</div><div class="tx">How do you say <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u> in English?</div></div><div class="tile"><div class="ic" aria-hidden="true">🔤</div><div class="tx">How do you spell it?</div></div><div class="tile"><div class="ic" aria-hidden="true">✏️</div><div class="tx">Can you write it, please?</div></div><div class="tile"><div class="ic" aria-hidden="true">📖</div><div class="tx">Which page?</div></div><div class="tile"><div class="ic" aria-hidden="true">✋</div><div class="tx">I have a question.</div></div><div class="tile"><div class="ic" aria-hidden="true">👥</div><div class="tx">Can we work together?</div></div><div class="tile"><div class="ic" aria-hidden="true">⏰</div><div class="tx">Sorry I'm late.</div></div><div class="tile"><div class="ic" aria-hidden="true">🚻</div><div class="tx">Can I go to the restroom, please?</div></div></div>
+    <div class="credit">© 2026 Ray de la Paz · ESL Instructor Toolkit</div>
+  </section>
+
+  <div class="pb"></div>
+  <section class="poster tips" aria-label="Learning English at home poster">
+    <div class="pt">Learning English at home</div>
+    <p class="ps">Small steps every day. You can do it!</p>
+    <div class="tgrid"><div class="tile"><div class="ic" aria-hidden="true">🔊</div><h3>Listen and repeat</h3><p>Use the <b>🔊 Listen</b> buttons in the online course. Listen, stop, and say it out loud.</p></div><div class="tile"><div class="ic" aria-hidden="true">⏱️</div><h3>A little every day</h3><p>15 minutes every day is better than 2 hours once a week.</p></div><div class="tile"><div class="ic" aria-hidden="true">🗣️</div><h3>Say it out loud</h3><p>Read your lesson out loud. Talk to yourself in English when you cook or walk.</p></div><div class="tile"><div class="ic" aria-hidden="true">📓</div><h3>Keep a word notebook</h3><p>Write new words with a picture or a word in your language.</p></div><div class="tile"><div class="ic" aria-hidden="true">📱</div><h3>Record yourself</h3><p>Record your voice on your phone. Listen. Try again.</p></div><div class="tile"><div class="ic" aria-hidden="true">🏷️</div><h3>Label your home</h3><p>Put notes on things: <i>door, fridge, window</i>. Read them every day.</p></div><div class="tile"><div class="ic" aria-hidden="true">📺</div><h3>Watch and listen</h3><p>Watch videos, shows or the news in English, with English subtitles.</p></div><div class="tile"><div class="ic" aria-hidden="true">👨‍👩‍👧</div><h3>Practice with people</h3><p>Say hello to neighbors, co-workers and your children's teachers in English.</p></div><div class="tile"><div class="ic" aria-hidden="true">😊</div><h3>Mistakes are OK!</h3><p>Every mistake helps you learn. Keep going.</p></div></div>
+    <div class="urlbar">🔊 Your free online course, with Listen buttons: <b>rays-esl.netlify.app</b></div>
+    <div class="credit">© 2026 Ray de la Paz · ESL Instructor Toolkit</div>
+  </section>
+
+  <div class="foot">
+    <div class="who"><b>Ray de la Paz</b><span class="bio">© 2026 Ray de la Paz · ESL Instructor Toolkit (all levels, A1–C2)</span></div>
+    <div class="ver">Toolkit · Classroom Posters · v1.0</div>
+  </div>
+
+</div>
+</body>
+</html>

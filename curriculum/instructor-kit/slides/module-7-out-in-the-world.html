@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slides — Module 7</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root{--bg:#0b1220;--ink:#eef3fc;--ink2:#a9b8d3;--accent:#7fb2ff;--accent2:#2563eb;--lab:#34d3bd;--warn:#fbbf24;--line:#223253;--code:#0f1a30;color-scheme:dark}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;overflow:hidden}
+  .deck{height:100%;width:100%;position:relative}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:6vh 8vw;gap:20px}
+  .slide.on{display:flex}
+  h1,h2,h3{font-family:"Archivo",sans-serif;line-height:1.1;text-wrap:balance}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  .slide h1{font-size:clamp(2rem,6vw,4rem);font-weight:800;letter-spacing:-.02em}
+  .slide h2{font-size:clamp(1.5rem,4.2vw,2.8rem);font-weight:800;letter-spacing:-.01em}
+  .slide p.lead{font-size:clamp(1.05rem,2.4vw,1.5rem);color:var(--ink2);max-width:26ch}
+  ul{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:6px}
+  ul li{position:relative;padding-left:34px;font-size:clamp(1.05rem,2.3vw,1.6rem)}
+  ul li::before{content:"";position:absolute;left:0;top:.55em;width:12px;height:12px;border-radius:3px;background:var(--accent);transform:rotate(45deg)}
+  ul.lab li::before{background:var(--lab)}
+  code.k{font-family:"JetBrains Mono",monospace;color:#c7dcff;font-size:.92em}
+  pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:22px 26px;font-family:"JetBrains Mono",monospace;font-size:clamp(.85rem,1.9vw,1.3rem);line-height:1.55;overflow:auto;max-width:100%}
+  pre .k{color:#7dd3fc} pre .s{color:#86efac} pre .c{color:#7183a3;font-style:italic}
+  .tag{display:inline-flex;align-items:center;gap:10px;font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);color:var(--ink2)}
+  .tag .pill{background:var(--accent2);color:#fff;font-weight:700;border-radius:999px;padding:3px 12px;letter-spacing:.06em}
+  .tag .pill.lab{background:var(--lab);color:#062b26} .tag .pill.warn{background:var(--warn);color:#3a2a05}
+  .section{background:linear-gradient(135deg,#132a52,#0b1220)}
+  .section .big{font-size:clamp(3rem,12vw,8rem);font-family:"Archivo";font-weight:800;color:var(--accent2);line-height:.9}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+  @media (max-width:760px){.two{grid-template-columns:1fr}}
+  .bar{position:fixed;left:0;top:0;height:4px;background:var(--accent2);width:0;transition:width .25s;z-index:5}
+  .count{position:fixed;right:16px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink2);z-index:5}
+  .nav{position:fixed;inset:auto 0 0 0;display:flex;justify-content:space-between;pointer-events:none;z-index:4}
+  .nav button{pointer-events:auto;background:transparent;border:none;color:transparent;width:22vw;height:100vh;cursor:pointer}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+</style>
+<style>
+  /* ESL additions: picture vocabulary + dialogue lines (sized for projection) */
+  .pics{display:grid;grid-template-columns:repeat(auto-fill,minmax(clamp(110px,13vw,170px),1fr));gap:14px;margin-top:4px}
+  .pics figure{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:10px 8px 8px;text-align:center}
+  .pics img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px;background:#FFF3E0;display:block}
+  .pics figcaption{font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(.9rem,1.9vw,1.3rem);margin-top:6px}
+  .pics.sm{grid-template-columns:repeat(auto-fill,minmax(clamp(90px,10vw,130px),1fr))}
+  .pics .emo{font-size:clamp(2.6rem,6vw,4.4rem);line-height:1;aspect-ratio:1;display:flex;align-items:center;justify-content:center;border-radius:10px;background:#1b2340}
+  .dlg{display:flex;flex-direction:column;gap:8px;font-size:clamp(1rem,2.2vw,1.45rem)}
+  .dlg p b{display:inline-block;min-width:4.2em;color:var(--accent)}
+  .dlg p.b b{color:#c4a1ff}
+  table.g{border-collapse:collapse;font-size:clamp(.95rem,2vw,1.35rem)}
+  table.g th,table.g td{border:1px solid var(--line);padding:8px 14px;text-align:left}
+  table.g th{color:var(--accent);font-family:"Archivo",sans-serif}
+  .ok{color:var(--lab)} .no{color:#ff8a8a}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="deck" id="deck">
+  <section class="slide on section">
+    <div class="eyebrow">English Foundations (A1) · Instructor Kit</div>
+    <h1>Module 7<br>Out in the World</h1>
+    <p class="lead">The kitchen, the café, and the clothing store.</p>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow">Module 7 · three classes</div>
+    <h2>Check the kitchen → go to the café → go shopping</h2>
+    <ul>
+      <li><b>7.1 · C20</b> Food &amp; drink: <em>some &amp; any</em></li>
+      <li><b>7.2 · C21</b> At a café: <em>I'd like…</em></li>
+      <li><b>7.3 · C22</b> Clothes, shopping &amp; weather</li>
+    </ul>
+    <div class="tag"><span class="pill">GOAL</span> Real English for real places.</div>
+  </section>
+
+  <!-- 7.1 -->
+  <section class="slide">
+    <div class="eyebrow">7.1 · Food &amp; drink</div>
+    <h2>What's in the kitchen?</h2>
+    <div class="pics sm">
+      <figure><img src="../assets/vocab/bread.jpg" alt=""><figcaption>bread</figcaption></figure>
+      <figure><img src="../assets/vocab/rice.jpg" alt=""><figcaption>rice</figcaption></figure>
+      <figure><img src="../assets/vocab/milk.jpg" alt=""><figcaption>milk</figcaption></figure>
+      <figure><img src="../assets/vocab/cheese.jpg" alt=""><figcaption>cheese</figcaption></figure>
+      <figure><img src="../assets/vocab/water.jpg" alt=""><figcaption>water</figcaption></figure>
+      <figure><img src="../assets/vocab/juice.jpg" alt=""><figcaption>juice</figcaption></figure>
+      <figure><img src="../assets/vocab/coffee.jpg" alt=""><figcaption>coffee</figcaption></figure>
+      <figure><img src="../assets/vocab/tea.jpg" alt=""><figcaption>tea</figcaption></figure>
+      <figure><img src="../assets/vocab/sugar.jpg" alt=""><figcaption>sugar</figcaption></figure>
+      <figure><img src="../assets/vocab/meat.jpg" alt=""><figcaption>meat</figcaption></figure>
+      <figure><img src="../assets/vocab/fish.jpg" alt=""><figcaption>fish</figcaption></figure>
+      <figure><img src="../assets/vocab/fruit.jpg" alt=""><figcaption>fruit</figcaption></figure>
+      <figure><img src="../assets/vocab/vegetable.jpg" alt=""><figcaption>vegetables</figcaption></figure>
+      <figure><img src="../assets/vocab/egg.jpg" alt=""><figcaption>eggs</figcaption></figure>
+      <figure><img src="../assets/vocab/apple.jpg" alt=""><figcaption>apples</figcaption></figure>
+      <figure><img src="../assets/vocab/banana.jpg" alt=""><figcaption>bananas</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow">7.1 · Can I count it?</div>
+    <h2>an apple, two apples · <span class="no">two rices ✗</span></h2>
+    <div class="two">
+      <div>
+        <h3 class="ok" style="font-size:clamp(1.2rem,2.8vw,1.9rem)">YES ✅ countable</h3>
+        <ul class="lab"><li>an egg → three eggs</li><li>a banana → two bananas</li><li>How <b>many</b>?</li></ul>
+      </div>
+      <div>
+        <h3 class="no" style="font-size:clamp(1.2rem,2.8vw,1.9rem)">NO ❌ uncountable</h3>
+        <ul><li>rice · milk · water · bread</li><li>no -s · no a / an</li><li>How <b>much</b>?</li></ul>
+      </div>
+    </div>
+    <div class="tag"><span class="pill">CCQ</span> Can I count rice? · Do we say "a water"? · A glass of water: can I count the glasses?</div>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow">7.1 · some / any</div>
+    <h2>Look in the fridge</h2>
+    <div class="two">
+      <div class="pics sm">
+        <figure><img src="../assets/vocab/milk.jpg" alt=""><figcaption>✅ milk</figcaption></figure>
+        <figure><img src="../assets/vocab/egg.jpg" alt=""><figcaption>✅ eggs</figcaption></figure>
+        <figure><img src="../assets/vocab/bread.jpg" alt=""><figcaption>❌ bread</figcaption></figure>
+        <figure><img src="../assets/vocab/juice.jpg" alt=""><figcaption>❓ juice</figcaption></figure>
+      </div>
+      <table class="g">
+        <tr><th>➕</th><td>There's <b>some</b> milk.<br>There are <b>some</b> eggs.</td></tr>
+        <tr><th>➖</th><td>There isn't <b>any</b> bread.</td></tr>
+        <tr><th>❓</th><td>Is there <b>any</b> juice?</td></tr>
+      </table>
+    </div>
+    <div class="tag"><span class="pill">CCQ</span> "There isn't any bread." Is there bread? (No.) Question: some or any? (Any.)</div>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow">7.1 · How much? How many?</div>
+    <h2>Look at the -s</h2>
+    <table class="g">
+      <tr><th></th><th>can't count (milk)</th><th>can count (eggs)</th></tr>
+      <tr><td>Question</td><td>How <b>much</b> milk is there?</td><td>How <b>many</b> eggs are there?</td></tr>
+      <tr><td>👍 a big amount</td><td colspan="2" style="text-align:center">There's <b>a lot of</b> milk. · There are <b>a lot of</b> eggs.</td></tr>
+      <tr><td>👎 a small amount</td><td>There isn't <b>much</b> milk.</td><td>There aren't <b>many</b> eggs.</td></tr>
+    </table>
+    <div class="tag"><span class="pill warn">WATCH</span> "There's much water" ✗ → "There's a lot of water" ✓</div>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow">7.1 · Pair task · 12 min</div>
+    <h2>The fridge: find 6 differences</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>A and B: don't show your card</li>
+        <li>Ask: <em>Is there any…? Are there any…?</em></li>
+        <li>Ask: <em>How much…? How many…?</em></li>
+        <li>Write one shopping list (5 things)</li>
+      </ul>
+      <ul>
+        <li>Can you show your card? <span class="ok">(No.)</span></li>
+        <li>Milk: "Is there" or "Are there"? <span class="ok">(Is there.)</span></li>
+        <li>What do you write at the end? <span class="ok">(A list.)</span></li>
+      </ul>
+    </div>
+    <div class="tag"><span class="pill lab">ICQs</span> Check before you start.</div>
+  </section>
+
+  <!-- 7.2 -->
+  <section class="slide">
+    <div class="eyebrow">7.2 · At a café</div>
+    <h2>What can I get you?</h2>
+    <div class="pics sm">
+      <figure><img src="../assets/vocab/coffee.jpg" alt=""><figcaption>a coffee</figcaption></figure>
+      <figure><img src="../assets/vocab/tea.jpg" alt=""><figcaption>a tea</figcaption></figure>
+      <figure><img src="../assets/vocab/chocolate.jpg" alt=""><figcaption>a hot chocolate</figcaption></figure>
+      <figure><img src="../assets/vocab/juice.jpg" alt=""><figcaption>an orange juice</figcaption></figure>
+      <figure><img src="../assets/vocab/water.jpg" alt=""><figcaption>a bottle of water</figcaption></figure>
+      <figure><img src="../assets/vocab/cake.jpg" alt=""><figcaption>a piece of cake</figcaption></figure>
+      <figure><img src="../assets/vocab/muffin.jpg" alt=""><figcaption>a muffin</figcaption></figure>
+      <figure><img src="../assets/vocab/sandwich.jpg" alt=""><figcaption>a sandwich</figcaption></figure>
+      <figure><img src="../assets/vocab/salad.jpg" alt=""><figcaption>a salad</figcaption></figure>
+      <figure><img src="../assets/vocab/menu.jpg" alt=""><figcaption>the menu</figcaption></figure>
+      <figure><img src="../assets/vocab/bill.jpg" alt=""><figcaption>the check</figcaption></figure>
+      <figure><img src="../assets/vocab/waiter.jpg" alt=""><figcaption>a server</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow">7.2 · Ordering politely</div>
+    <h2>I'd like a coffee, please.</h2>
+    <table class="g">
+      <tr><th>😐 direct</th><th>🙂 polite</th></tr>
+      <tr><td>I want a coffee.</td><td><b>I'd like</b> a coffee, please. ↘</td></tr>
+      <tr><td>Give me a sandwich.</td><td><b>Can I have</b> a sandwich, please? ↗</td></tr>
+    </table>
+    <ul><li><b>I'd</b> = I would · say the <b>d</b>: "I'd like"</li></ul>
+    <div class="tag"><span class="pill">CCQ</span> "I'd like a coffee" = "I like coffee"? (No!) Which one is ordering now? (I'd like.)</div>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow">7.2 · Model dialogue · listen &amp; repeat</div>
+    <h2>At the café</h2>
+    <div class="dlg">
+      <p><b>Leo:</b> Hi there! What can I get you?</p>
+      <p class="b"><b>Maya:</b> Hello. I'd like a coffee, please.</p>
+      <p><b>Leo:</b> Would you like some milk with that?</p>
+      <p class="b"><b>Maya:</b> Yes, please. And can I have a cheese sandwich, please?</p>
+      <p><b>Leo:</b> Anything else? … For here or to go?</p>
+      <p class="b"><b>Maya:</b> For here, please. How much is that?</p>
+      <p><b>Leo:</b> That's $8.50, please.</p>
+      <p class="b"><b>Maya:</b> Here you are. Keep the change.</p>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow">7.2 · Offers &amp; paying</div>
+    <h2>Yes, please. · No, thank you.</h2>
+    <div class="two">
+      <ul>
+        <li>Would you like <b>some</b> milk?</li>
+        <li>Anything else? → No, thanks. <b>That's all.</b></li>
+        <li>For here or to go? <span style="color:var(--ink2)">(UK: eat in / take away)</span></li>
+      </ul>
+      <ul class="lab">
+        <li>How much is that?</li>
+        <li>It's <b>$4.50</b>: "four <b>FIF</b>ty"</li>
+        <li><b>$4.15</b>: "four fif<b>TEEN</b>"</li>
+        <li>Here you are. · Keep the change.</li>
+      </ul>
+    </div>
+    <div class="tag"><span class="pill warn">WATCH</span> "How much it is?" ✗ → "How much is it?" ✓</div>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow">7.2 · Role-play · 16 min</div>
+    <h2>The classroom café</h2>
+    <div class="two">
+      <ul class="lab">
+        <li><b>Server:</b> order pad · greet · offer · price</li>
+        <li><b>Customer:</b> card + menu · order · pay</li>
+        <li>Swap roles at the bell</li>
+      </ul>
+      <ul>
+        <li>Customers: what do you say first? <span class="ok">(I'd like… please.)</span></li>
+        <li>Servers: what do you write? <span class="ok">(The order.)</span></li>
+        <li>An offer: what do you answer? <span class="ok">(Yes, please / No, thank you.)</span></li>
+      </ul>
+    </div>
+    <div class="tag"><span class="pill lab">ICQs</span> Check before you open the café.</div>
+  </section>
+
+  <!-- 7.3 -->
+  <section class="slide">
+    <div class="eyebrow">7.3 · Clothes</div>
+    <h2>What are you wearing?</h2>
+    <div class="pics sm">
+      <figure><img src="../assets/vocab/shirt.jpg" alt=""><figcaption>a shirt</figcaption></figure>
+      <figure><img src="../assets/vocab/t-shirt.jpg" alt=""><figcaption>a T-shirt</figcaption></figure>
+      <figure><img src="../assets/vocab/trousers.jpg" alt=""><figcaption>pants</figcaption></figure>
+      <figure><img src="../assets/vocab/jeans.jpg" alt=""><figcaption>jeans</figcaption></figure>
+      <figure><img src="../assets/vocab/dress.jpg" alt=""><figcaption>a dress</figcaption></figure>
+      <figure><img src="../assets/vocab/skirt.jpg" alt=""><figcaption>a skirt</figcaption></figure>
+      <figure><img src="../assets/vocab/jacket.jpg" alt=""><figcaption>a jacket</figcaption></figure>
+      <figure><img src="../assets/vocab/coat.jpg" alt=""><figcaption>a coat</figcaption></figure>
+      <figure><img src="../assets/vocab/shoes.jpg" alt=""><figcaption>shoes</figcaption></figure>
+      <figure><img src="../assets/vocab/boots.jpg" alt=""><figcaption>boots</figcaption></figure>
+      <figure><img src="../assets/vocab/socks.jpg" alt=""><figcaption>socks</figcaption></figure>
+      <figure><img src="../assets/vocab/hat.jpg" alt=""><figcaption>a hat</figcaption></figure>
+      <figure><img src="../assets/vocab/scarf.jpg" alt=""><figcaption>a scarf</figcaption></figure>
+      <figure><img src="../assets/vocab/gloves.jpg" alt=""><figcaption>gloves</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow">7.3 · Weather</div>
+    <h2>What's the weather like?</h2>
+    <div class="pics sm">
+      <figure><img src="../assets/vocab/sunny.jpg" alt=""><figcaption>It's sunny.</figcaption></figure>
+      <figure><img src="../assets/vocab/hot.jpg" alt=""><figcaption>It's hot.</figcaption></figure>
+      <figure><img src="../assets/vocab/cold.jpg" alt=""><figcaption>It's cold.</figcaption></figure>
+      <figure><img src="../assets/vocab/umbrella.jpg" alt=""><figcaption>It's raining.</figcaption></figure>
+      <figure><div class="emo">☁️</div><figcaption>It's cloudy.</figcaption></figure>
+      <figure><div class="emo">🌬️</div><figcaption>It's windy.</figcaption></figure>
+      <figure><div class="emo">❄️</div><figcaption>It's snowing.</figcaption></figure>
+      <figure><img src="../assets/vocab/spring.jpg" alt=""><figcaption>spring</figcaption></figure>
+      <figure><img src="../assets/vocab/summer.jpg" alt=""><figcaption>summer</figcaption></figure>
+      <figure><img src="../assets/vocab/winter.jpg" alt=""><figcaption>winter</figcaption></figure>
+    </div>
+    <div class="tag"><span class="pill warn">WATCH</span> Always <b>It's</b>: "Is cold" ✗ → "It's cold" ✓</div>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow">7.3 · this / these · shopping</div>
+    <h2>I like <u>this</u> jacket. I like <u>these</u> shoes.</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>☝️ one</th><th>✌️ two or more</th></tr>
+        <tr><td><b>This</b> hat <b>is</b> nice.</td><td><b>These</b> jeans <b>are</b> nice.</td></tr>
+        <tr><td colspan="2">Always plural: pants · jeans · shoes · socks · gloves</td></tr>
+      </table>
+      <ul class="lab">
+        <li>What size are you? → I'm a medium.</li>
+        <li>Can I <b>try it on</b>?</li>
+        <li>It's too big / too small.</li>
+        <li>How much is it? → I'll take it.</li>
+      </ul>
+    </div>
+    <div class="tag"><span class="pill">CCQ</span> "These jeans": one pair or two? (One pair.) Why "these"? (Jeans are always plural.)</div>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow">7.3 · What to wear</div>
+    <h2>Wear a coat when it's cold.</h2>
+    <table class="g">
+      <tr><td>🥶 It's cold.</td><td>Wear a coat, a scarf, and gloves.</td></tr>
+      <tr><td>🌧️ It's raining.</td><td>Take an umbrella.</td></tr>
+      <tr><td>🥵 It's hot.</td><td>Wear a T-shirt.</td></tr>
+      <tr><td>❄️ It's snowing.</td><td>Wear boots.</td></tr>
+      <tr><td>☀️ It's sunny.</td><td>Wear a hat.</td></tr>
+    </table>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow">7.3 · Role-play · 16 min</div>
+    <h2>The clothing store</h2>
+    <div class="two">
+      <ul class="lab">
+        <li><b>Shoppers:</b> read your card: weather · size · money</li>
+        <li>Visit 2 stores · try on · ask the price</li>
+        <li>Buy what the weather needs</li>
+        <li><b>Assistants:</b> help · give sizes and prices</li>
+      </ul>
+      <ul>
+        <li>How much money do you have? <span class="ok">(Look at your card.)</span></li>
+        <li>Can you buy everything? <span class="ok">(No, only what you need.)</span></li>
+        <li>Before you buy, you ask…? <span class="ok">(Can I try it on? How much is it?)</span></li>
+      </ul>
+    </div>
+    <div class="tag"><span class="pill lab">ICQs</span> Then swap roles after 7 minutes.</div>
+  </section>
+
+  <section class="slide section">
+    <div class="eyebrow">Module 7 · you can now</div>
+    <h2>Out in the world</h2>
+    <ul class="lab">
+      <li>There's some milk. There isn't any bread. How many eggs?</li>
+      <li>I'd like a coffee, please. · Yes, please. · How much is that?</li>
+      <li>I like these shoes. Can I try them on? · It's cold, so wear a coat.</li>
+    </ul>
+    <p class="lead" style="margin-top:10px">Next: Module 8, the doctor and my week. Then the final class.</p>
+  </section>
+
+</div>
+
+<div class="count" id="count">1 / 18</div>
+<div class="nav"><button id="prev" aria-label="Previous slide"></button><button id="next" aria-label="Next slide"></button></div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const bar=document.getElementById('bar'), count=document.getElementById('count');
+  let i=0;
+  function show(n){ i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+    bar.style.width=((i+1)/slides.length*100)+'%'; count.textContent=(i+1)+' / '+slides.length; }
+  document.getElementById('next').onclick=()=>show(i+1);
+  document.getElementById('prev').onclick=()=>show(i-1);
+  addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}
+    else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+  });
+  show(0);
+</script>
+</body>
+</html>

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slides — Module 5</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root{--bg:#0b1220;--ink:#edf2fb;--ink2:#a9b8d3;--accent:#7fb2ff;--accent2:#2563eb;--lab:#34d3bd;--warn:#fbbf24;--line:#223355;--code:#0f1a30;color-scheme:dark}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;overflow:hidden}
+  .deck{height:100%;width:100%;position:relative}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:6vh 8vw;gap:20px}
+  .slide.on{display:flex}
+  h1,h2,h3{font-family:"Archivo",sans-serif;line-height:1.1;text-wrap:balance}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  .slide h1{font-size:clamp(2rem,6vw,4rem);font-weight:800;letter-spacing:-.02em}
+  .slide h2{font-size:clamp(1.5rem,4.2vw,2.8rem);font-weight:800;letter-spacing:-.01em}
+  .slide p.lead{font-size:clamp(1.05rem,2.4vw,1.5rem);color:var(--ink2);max-width:26ch}
+  ul{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:6px}
+  ul li{position:relative;padding-left:34px;font-size:clamp(1.05rem,2.3vw,1.6rem)}
+  ul li::before{content:"";position:absolute;left:0;top:.55em;width:12px;height:12px;border-radius:3px;background:var(--accent);transform:rotate(45deg)}
+  ul.lab li::before{background:var(--lab)}
+  code.k{font-family:"JetBrains Mono",monospace;color:#bcd6ff;font-size:.92em}
+  .tag{display:inline-flex;align-items:center;gap:10px;font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);color:var(--ink2)}
+  .tag .pill{background:var(--accent2);color:#fff;font-weight:700;border-radius:999px;padding:3px 12px;letter-spacing:.06em}
+  .tag .pill.lab{background:var(--lab);color:#062b26} .tag .pill.warn{background:var(--warn);color:#3a2a05}
+  .section{background:linear-gradient(135deg,#13254a,#0b1220)}
+  .section .big{font-size:clamp(3rem,12vw,8rem);font-family:"Archivo";font-weight:800;color:var(--accent2);line-height:.9}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+  @media (max-width:760px){.two{grid-template-columns:1fr}}
+  .bar{position:fixed;left:0;top:0;height:4px;background:var(--accent2);width:0;transition:width .25s;z-index:5}
+  .count{position:fixed;right:16px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink2);z-index:5}
+  .nav{position:fixed;inset:auto 0 0 0;display:flex;justify-content:space-between;pointer-events:none;z-index:4}
+  .nav button{pointer-events:auto;background:transparent;border:none;color:transparent;width:22vw;height:100vh;cursor:pointer}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+  /* ESL: picture vocabulary, grammar tables, dialogue */
+  .pics{display:grid;grid-template-columns:repeat(auto-fit,minmax(clamp(90px,12vw,150px),1fr));gap:14px;max-width:100%}
+  .pics figure{display:flex;flex-direction:column;align-items:center;gap:6px}
+  .pics img,.pics svg{width:100%;max-width:150px;aspect-ratio:1/1;height:auto;object-fit:cover;border-radius:12px;background:#FFF3E0}
+  .pics svg{background:#f8fafc;aspect-ratio:auto;padding:4px}
+  .pics figcaption{font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(.95rem,2vw,1.4rem)}
+  table.g{border-collapse:collapse;font-size:clamp(.95rem,2vw,1.35rem)}
+  table.g th,table.g td{border:1px solid var(--line);padding:8px 16px;text-align:left}
+  table.g th{background:var(--code);color:var(--accent);font-family:"JetBrains Mono",monospace;font-size:.8em;letter-spacing:.06em}
+  .no{color:#fca5a5;text-decoration:line-through}
+  .yes{color:#86efac}
+  b.hl{color:var(--warn)}
+  .dlg{display:flex;flex-direction:column;gap:8px;font-size:clamp(1rem,2.1vw,1.45rem);max-width:60ch}
+  .dlg p span{display:inline-block;min-width:4.6em;font-weight:700;color:var(--accent)}
+  .dlg p.b span{color:#d8b4fe}
+  .ccq{border:1px dashed var(--line);border-radius:12px;padding:12px 18px;font-size:clamp(.95rem,2vw,1.3rem);color:var(--ink2)}
+  .ccq b{color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="deck" id="deck">
+
+  <!-- 1 -->
+  <section class="slide on section">
+    <div class="eyebrow">English Foundations · A1 · Classes 14–16</div>
+    <h1>Module 5<br>Describing the World Around Me</h1>
+    <p class="lead">Colors, places, and people. Two red bags · under the table · long dark hair.</p>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide">
+    <div class="eyebrow">Welcome back · Progress Test 1</div>
+    <h2>Four modules. You did it! 🎉</h2>
+    <ul class="lab">
+      <li>You can say hello, spell, and give your information</li>
+      <li>You can talk about your family, your day, and your home</li>
+      <li>You can say what you can do and what you are doing now</li>
+    </ul>
+    <p class="lead" style="max-width:40ch">A test is a map. It shows where we are. It doesn't show who we are.</p>
+    <div class="tag"><span class="pill">GOAL</span> I want to practice ______.</div>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide section"><div class="big">5.1</div><h2>Plurals, Colors &amp; Adjectives</h2><p class="lead">One car · two red cars.</p></section>
+
+  <!-- 4 -->
+  <section class="slide">
+    <div class="eyebrow">One → two or more</div>
+    <h2>Plurals</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>RULE</th><th>EXAMPLE</th></tr>
+        <tr><td>+ s</td><td>car → car<b class="hl">s</b></td></tr>
+        <tr><td>s · x · ch · sh + es</td><td>bus → bus<b class="hl">es</b> · box<b class="hl">es</b></td></tr>
+        <tr><td>consonant + y → ies</td><td>city → cit<b class="hl">ies</b></td></tr>
+        <tr><td>f / fe → ves</td><td>knife → kni<b class="hl">ves</b></td></tr>
+      </table>
+      <table class="g">
+        <tr><th>ONE</th><th>TWO +</th></tr>
+        <tr><td>man · woman</td><td><b class="hl">men · women</b></td></tr>
+        <tr><td>child</td><td><b class="hl">children</b></td></tr>
+        <tr><td>person</td><td><b class="hl">people</b></td></tr>
+        <tr><td>foot · tooth</td><td><b class="hl">feet · teeth</b></td></tr>
+      </table>
+    </div>
+    <div class="tag"><span class="pill">SAY IT</span> bus (1 clap) → bus‑es (2 claps) · box‑es · watch‑es</div>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide">
+    <div class="eyebrow">What color is it? — It's blue.</div>
+    <h2>Colors</h2>
+    <div class="pics">
+      <figure><img src="../assets/vocab/red.jpg" alt=""><figcaption>red</figcaption></figure>
+      <figure><img src="../assets/vocab/blue.jpg" alt=""><figcaption>blue</figcaption></figure>
+      <figure><img src="../assets/vocab/green.jpg" alt=""><figcaption>green</figcaption></figure>
+      <figure><img src="../assets/vocab/yellow.jpg" alt=""><figcaption>yellow</figcaption></figure>
+      <figure><img src="../assets/vocab/black.jpg" alt=""><figcaption>black</figcaption></figure>
+      <figure><img src="../assets/vocab/white.jpg" alt=""><figcaption>white</figcaption></figure>
+      <figure><img src="../assets/vocab/orange.jpg" alt=""><figcaption>orange</figcaption></figure>
+      <figure><img src="../assets/vocab/brown.jpg" alt=""><figcaption>brown</figcaption></figure>
+      <figure><img src="../assets/vocab/pink.jpg" alt=""><figcaption>pink</figcaption></figure>
+    </div>
+    <div class="tag"><span class="pill">+</span> gray (British: grey)</div>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide">
+    <div class="eyebrow">Adjective + noun</div>
+    <h2>a <b class="hl">red</b> car → two <b class="hl">red</b> cars</h2>
+    <ul>
+      <li>Color <b>before</b> the thing: <span class="yes">a red car</span> · <span class="no">a car red</span></li>
+      <li>No <b>s</b> on the color: <span class="yes">two red cars</span> · <span class="no">two reds cars</span></li>
+      <li>opinion → size → color: <span class="yes">a nice big red bag</span></li>
+    </ul>
+    <div class="ccq"><b>CCQ:</b> Which word is the feeling? (nice) · Which is the size? (big) · Where is the color? (last, next to "bag") · Which word gets the s in "two red cars"? (cars)</div>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide">
+    <div class="eyebrow">👂 Listen · 🗣️ Read with a partner</div>
+    <h2>In a shop</h2>
+    <div class="dlg">
+      <p><span>Maya:</span> Look at these bags! They're nice.</p>
+      <p class="b"><span>Leo:</span> There are red bags, blue bags, and black bags. Which one do you like?</p>
+      <p><span>Maya:</span> I like the big red bag. But it's expensive.</p>
+      <p class="b"><span>Leo:</span> What about this small green one? It's cheap.</p>
+      <p><span>Maya:</span> I don't like green. What colors are the other ones?</p>
+      <p class="b"><span>Leo:</span> There are two brown bags and one gray bag.</p>
+      <p><span>Maya:</span> A nice small gray bag. Perfect!</p>
+    </div>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide">
+    <div class="eyebrow">👥 Groups of 3–4 · 15 min</div>
+    <h2>Describe &amp; Guess</h2>
+    <ul class="lab">
+      <li>Take a card. <b>Don't show it!</b></li>
+      <li>Say 3 clues: "It's yellow. It's long. It's a fruit."</li>
+      <li>Others ask: "Is it a banana?" — "Yes, it is!"</li>
+      <li>Boots, socks, gloves → "They're brown."</li>
+    </ul>
+    <div class="ccq"><b>ICQs:</b> Do you show your card? (No) · Do you say the word? (No!) · How many clues? (Three) · What do the others ask? ("Is it a…?")</div>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide section"><div class="big">5.2</div><h2>Where Things Are</h2><p class="lead">Where are my keys? — They're in your bag.</p></section>
+
+  <!-- 10 -->
+  <section class="slide">
+    <div class="eyebrow">Prepositions of place</div>
+    <h2>Where is the ball?</h2>
+    <div class="pics">
+      <figure><svg viewBox="0 0 120 90" width="120" height="90" role="img" aria-label="the ball is in the box" style="max-width:100%;height:auto"><line x1="4" y1="80" x2="116" y2="80" stroke="#64748b" stroke-width="2"/><rect x="38" y="36" width="44" height="44" fill="#cfe0fb" stroke="#334155" stroke-width="2"/><circle cx="60" cy="62" r="11" fill="#f59e0b" stroke="#7c4a03" stroke-width="2"/><path d="M38 36 L46 28 M82 36 L74 28" stroke="#334155" stroke-width="2"/></svg><figcaption>in</figcaption></figure>
+      <figure><svg viewBox="0 0 120 90" width="120" height="90" role="img" aria-label="the ball is on the box" style="max-width:100%;height:auto"><line x1="4" y1="80" x2="116" y2="80" stroke="#64748b" stroke-width="2"/><rect x="38" y="36" width="44" height="44" fill="#cfe0fb" stroke="#334155" stroke-width="2"/><circle cx="60" cy="25" r="11" fill="#f59e0b" stroke="#7c4a03" stroke-width="2"/></svg><figcaption>on</figcaption></figure>
+      <figure><svg viewBox="0 0 120 90" width="120" height="90" role="img" aria-label="the ball is under the table" style="max-width:100%;height:auto"><line x1="4" y1="80" x2="116" y2="80" stroke="#64748b" stroke-width="2"/><rect x="26" y="34" width="68" height="7" rx="2" fill="#b7791f" stroke="#5b3a0e" stroke-width="2"/><line x1="32" y1="41" x2="32" y2="80" stroke="#5b3a0e" stroke-width="4"/><line x1="88" y1="41" x2="88" y2="80" stroke="#5b3a0e" stroke-width="4"/><circle cx="60" cy="69" r="11" fill="#f59e0b" stroke="#7c4a03" stroke-width="2"/></svg><figcaption>under</figcaption></figure>
+      <figure><svg viewBox="0 0 120 90" width="120" height="90" role="img" aria-label="the ball is next to the box" style="max-width:100%;height:auto"><line x1="4" y1="80" x2="116" y2="80" stroke="#64748b" stroke-width="2"/><rect x="22" y="36" width="44" height="44" fill="#cfe0fb" stroke="#334155" stroke-width="2"/><circle cx="84" cy="69" r="11" fill="#f59e0b" stroke="#7c4a03" stroke-width="2"/></svg><figcaption>next to</figcaption></figure>
+      <figure><svg viewBox="0 0 120 90" width="120" height="90" role="img" aria-label="the ball is between the boxes" style="max-width:100%;height:auto"><line x1="4" y1="80" x2="116" y2="80" stroke="#64748b" stroke-width="2"/><rect x="8" y="44" width="34" height="36" fill="#cfe0fb" stroke="#334155" stroke-width="2"/><rect x="78" y="44" width="34" height="36" fill="#cfe0fb" stroke="#334155" stroke-width="2"/><circle cx="60" cy="69" r="11" fill="#f59e0b" stroke="#7c4a03" stroke-width="2"/></svg><figcaption>between</figcaption></figure>
+      <figure><svg viewBox="0 0 120 90" width="120" height="90" role="img" aria-label="the ball is behind the box" style="max-width:100%;height:auto"><line x1="4" y1="80" x2="116" y2="80" stroke="#64748b" stroke-width="2"/><circle cx="74" cy="40" r="12" fill="#f59e0b" stroke="#7c4a03" stroke-width="2"/><rect x="36" y="36" width="44" height="44" fill="#cfe0fb" stroke="#334155" stroke-width="2"/></svg><figcaption>behind</figcaption></figure>
+      <figure><svg viewBox="0 0 120 90" width="120" height="90" role="img" aria-label="the ball is in front of the box" style="max-width:100%;height:auto"><line x1="4" y1="80" x2="116" y2="80" stroke="#64748b" stroke-width="2"/><rect x="38" y="30" width="44" height="44" fill="#cfe0fb" stroke="#334155" stroke-width="2" transform="translate(0,6)"/><circle cx="60" cy="67" r="13" fill="#f59e0b" stroke="#7c4a03" stroke-width="2"/></svg><figcaption>in front of</figcaption></figure>
+      <figure><svg viewBox="0 0 120 90" width="120" height="90" role="img" aria-label="the ball is above the box" style="max-width:100%;height:auto"><line x1="4" y1="80" x2="116" y2="80" stroke="#64748b" stroke-width="2"/><rect x="38" y="44" width="44" height="36" fill="#cfe0fb" stroke="#334155" stroke-width="2"/><circle cx="60" cy="16" r="10" fill="#f59e0b" stroke="#7c4a03" stroke-width="2"/><line x1="60" y1="29" x2="60" y2="41" stroke="#64748b" stroke-width="1.5" stroke-dasharray="3 3"/></svg><figcaption>above</figcaption></figure>
+    </div>
+    <div class="tag"><span class="pill warn">WATCH</span> in front <b>of</b> = 3 words · on = touching · above = higher, not touching</div>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide">
+    <div class="eyebrow">Where is…? · Where are…?</div>
+    <h2>One → <b class="hl">is / It's</b> · Many → <b class="hl">are / They're</b></h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>QUESTION</th><th>ANSWER</th></tr>
+        <tr><td>Where <b class="hl">is</b> my phone?</td><td><b class="hl">It's</b> on the table.</td></tr>
+        <tr><td>Where <b class="hl">are</b> my keys?</td><td><b class="hl">They're</b> in your bag.</td></tr>
+        <tr><td>Where's the remote?</td><td>Between the cushions.</td></tr>
+      </table>
+      <div class="pics">
+        <figure><img src="../assets/vocab/kitchen.jpg" alt=""><figcaption>kitchen</figcaption></figure>
+        <figure><img src="../assets/vocab/living-room.jpg" alt=""><figcaption>living room</figcaption></figure>
+        <figure><img src="../assets/vocab/shelf.jpg" alt=""><figcaption>shelf</figcaption></figure>
+        <figure><img src="../assets/vocab/drawer.jpg" alt=""><figcaption>drawer</figcaption></figure>
+      </div>
+    </div>
+    <div class="tag"><span class="pill">AT</span> at home · at work · at school (not "in home")</div>
+  </section>
+
+  <!-- 12 -->
+  <section class="slide">
+    <div class="eyebrow">👥 Pairs · A and B · 15 min</div>
+    <h2>Spot the Difference</h2>
+    <ul class="lab">
+      <li>A has Room A. B has Room B. <b>Don't show your picture!</b></li>
+      <li>Ask: "Where is the cat?" "Where are the books?"</li>
+      <li>"In my room, it's under the table." — "Me too!" / "Oh! In my room, it's on the sofa."</li>
+      <li>Find <b>6 differences</b>. Write them in the table.</li>
+    </ul>
+    <div class="ccq"><b>ICQs:</b> Do you show your picture? (No!) · Are the rooms the same? (No, a little different) · How many differences? (Six) · Talk or point? (Talk)</div>
+  </section>
+
+  <!-- 13 -->
+  <section class="slide section"><div class="big">5.3</div><h2>Have Got — People &amp; Belongings</h2><p class="lead">What have you got? · She's got long hair.</p></section>
+
+  <!-- 14 -->
+  <section class="slide">
+    <div class="eyebrow">have got = have</div>
+    <h2>I've got · She's got</h2>
+    <table class="g">
+      <tr><th></th><th>✅</th><th>❌</th></tr>
+      <tr><td>I · you · we · they</td><td><b class="hl">have got</b> = 've got</td><td><b class="hl">haven't got</b></td></tr>
+      <tr><td>he · she · it</td><td><b class="hl">has got</b> = 's got</td><td><b class="hl">hasn't got</b></td></tr>
+    </table>
+    <ul>
+      <li>I've got a new phone. · She's got a brother.</li>
+      <li>I haven't got a car. · He hasn't got glasses.</li>
+    </ul>
+    <div class="tag"><span class="pill">🇺🇸 US</span> I have a phone. · I don't have a car. (also correct)</div>
+  </section>
+
+  <!-- 15 -->
+  <section class="slide">
+    <div class="eyebrow">Questions &amp; short answers</div>
+    <h2>Have you got a pen? — Yes, I have.</h2>
+    <table class="g">
+      <tr><th>QUESTION</th><th>YES</th><th>NO</th></tr>
+      <tr><td><b class="hl">Have</b> you <b class="hl">got</b> a pen?</td><td>Yes, I have.</td><td>No, I haven't.</td></tr>
+      <tr><td><b class="hl">Has</b> she <b class="hl">got</b> long hair?</td><td>Yes, she has.</td><td>No, she hasn't.</td></tr>
+    </table>
+    <div class="ccq"><b>CCQ:</b> "Yes, I have got": OK? (No, just "Yes, I have") · "She's got glasses": 's = is or has? (has) · "She's happy": 's = ? (is) · How do you know? (got!)</div>
+  </section>
+
+  <!-- 16 -->
+  <section class="slide">
+    <div class="eyebrow">Describing people</div>
+    <h2>She's got long dark hair.</h2>
+    <div class="two">
+      <div class="pics">
+        <figure><img src="../assets/vocab/mother.jpg" alt=""><figcaption>long dark hair</figcaption></figure>
+        <figure><img src="../assets/vocab/grandmother.jpg" alt=""><figcaption>gray hair · no glasses</figcaption></figure>
+        <figure><img src="../assets/vocab/grandfather.jpg" alt=""><figcaption>short gray hair · glasses</figcaption></figure>
+      </div>
+      <ul>
+        <li><b>hair:</b> long · short · curly · straight · dark · blond · gray</li>
+        <li><b>eyes:</b> blue · brown · green</li>
+        <li>glasses · a beard · a moustache</li>
+        <li>He's <b>tall</b>. (= he <b>is</b>)</li>
+      </ul>
+    </div>
+    <div class="tag"><span class="pill warn">WATCH</span> long hair, not "long hairs"</div>
+  </section>
+
+  <!-- 17 -->
+  <section class="slide">
+    <div class="eyebrow">👂 Listen · 🗣️ Read with a partner</div>
+    <h2>At the station</h2>
+    <div class="dlg">
+      <p><span>Sam:</span> I'm at the station. How can I find your brother?</p>
+      <p class="b"><span>Nadia:</span> He's tall, and he's got short dark hair.</p>
+      <p><span>Sam:</span> Has he got a beard?</p>
+      <p class="b"><span>Nadia:</span> Yes, he has. And he's got glasses too.</p>
+      <p><span>Sam:</span> Has he got a bag?</p>
+      <p class="b"><span>Nadia:</span> Yes — he's got a big blue backpack.</p>
+      <p><span>Sam:</span> Tall, dark hair, glasses… Is that him?</p>
+      <p class="b"><span>Nadia:</span> That's him! His name is Omar.</p>
+    </div>
+  </section>
+
+  <!-- 18 -->
+  <section class="slide">
+    <div class="eyebrow">👥 Pairs · A and B · 15 min</div>
+    <h2>What's in your bag?</h2>
+    <ul class="lab">
+      <li>Look at your bag card. <b>Don't show it!</b></li>
+      <li>Ask: "Have you got a key?" — "Yes, I have." / "No, I haven't." ✓ ✗</li>
+      <li>Find 2 things you've <b>both</b> got.</li>
+      <li>Tell another pair: "She's got a passport. She hasn't got a phone."</li>
+    </ul>
+    <div class="ccq"><b>ICQs:</b> Do you show your card? (No) · "Have you got" or "Has you got"? (Have you got) · Partner says "Yes, I have": what do you do? (Tick ✓) · How many things have you both got? (Two)</div>
+    <div class="tag"><span class="pill lab">THEN</span> Who is it? · "Has she got glasses?"</div>
+  </section>
+
+  <!-- 19 -->
+  <section class="slide section">
+    <div class="eyebrow">You can now describe the world around you</div>
+    <h2>Module 5 done</h2>
+    <ul class="lab">
+      <li>two small red bags</li>
+      <li>My keys are on the table, next to the cup.</li>
+      <li>She's got long dark hair and glasses.</li>
+    </ul>
+    <p class="lead" style="margin-top:10px">At home: the online lessons 5.1–5.3 with 🔊. Next: Module 6, habits &amp; free time.</p>
+  </section>
+
+</div>
+
+<div class="count" id="count">1 / 19</div>
+<div class="nav"><button id="prev" aria-label="Previous slide"></button><button id="next" aria-label="Next slide"></button></div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const bar=document.getElementById('bar'), count=document.getElementById('count');
+  let i=0;
+  function show(n){ i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+    bar.style.width=((i+1)/slides.length*100)+'%'; count.textContent=(i+1)+' / '+slides.length; }
+  document.getElementById('next').onclick=()=>show(i+1);
+  document.getElementById('prev').onclick=()=>show(i-1);
+  addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}
+    else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+  });
+  show(0);
+</script>
+</body>
+</html>

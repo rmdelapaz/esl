@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Placement Test</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="./kit.css">
+<style>
+.who-pages{display:inline-block;font-family:"JetBrains Mono",monospace;font-size:.64rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;border-radius:999px;padding:3px 10px;margin-bottom:6px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.who-pages.t{background:var(--accent-soft);color:var(--accent)}
+.who-pages.l{background:var(--lab-soft);color:var(--lab)}
+.pb{break-before:page}
+.namebox{display:grid;grid-template-columns:2fr 1fr 1fr;gap:10px 18px;border:1.5px solid var(--line-strong);border-radius:10px;padding:12px 16px;margin:12px 0 16px}
+.namebox div{font-size:.9rem;color:var(--ink-2)}
+.namebox .blank{min-width:0;width:100%;display:block;height:1.5em}
+.band-h{font-family:"JetBrains Mono",monospace;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin:14px 0 4px}
+ol.items{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:4px 26px}
+ol.items li{break-inside:avoid;padding:6px 0;border-bottom:1px dotted var(--line)}
+ol.items .n{font-family:"JetBrains Mono",monospace;font-weight:600;color:var(--accent);font-size:.8rem;margin-right:4px}
+ol.items .st{font-weight:500}
+ol.items .ch{display:flex;flex-wrap:wrap;gap:2px 14px;margin-top:3px;font-size:.9rem;color:var(--ink-2)}
+ol.items .ch span b{font-family:"JetBrains Mono",monospace;font-size:.78rem;color:var(--ink-3);margin-right:3px}
+.reading{border:1px solid var(--line);border-radius:10px;padding:10px 18px;background:var(--surface-2);margin:10px 0;break-inside:avoid}
+.reading .rtitle{font-family:"Archivo",sans-serif;font-weight:700;font-size:1.02rem}
+ol.rq{padding-left:1.4em}
+ol.rq li{margin:8px 0;break-inside:avoid}
+ol.rq .ch{display:flex;flex-wrap:wrap;gap:2px 16px;color:var(--ink-2);font-size:.92rem;margin-top:2px}
+.pics{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:10px 0}
+.pics div{border:1.5px dashed var(--line-strong);text-align:center;padding:14px 6px;font-size:3.4rem;line-height:1.1}
+.pics div small{display:block;font-family:"JetBrains Mono",monospace;font-size:.62rem;color:var(--ink-3);margin-top:4px}
+.nums{display:flex;justify-content:space-around;border:1.5px dashed var(--line-strong);padding:14px;font-family:"Archivo",sans-serif;font-weight:800;font-size:2.6rem;margin:10px 0}
+table.timing td.band{font-family:"Archivo",sans-serif;font-weight:800;color:var(--accent);white-space:nowrap}
+.tally{width:100%;border-collapse:collapse;font-size:.9rem;margin:10px 0}
+.tally th,.tally td{border:1px solid var(--line-strong);padding:7px 9px;text-align:left}
+.tally th{background:var(--surface-2);font-family:"JetBrains Mono",monospace;font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.tally td.box{width:18%}
+.sp-band{border:1px solid var(--line);border-radius:10px;margin:10px 0;break-inside:avoid;overflow:hidden}
+.sp-band .hd{display:flex;gap:10px;align-items:center;background:var(--surface-2);border-bottom:1px solid var(--line);padding:7px 14px}
+.sp-band .hd b{font-family:"Archivo",sans-serif}
+.sp-band .bd{padding:6px 14px 10px}
+.sp-band ul{margin:.2rem 0;padding-left:1.2em}
+.sp-band li{margin:3px 0}
+.sp-band .look{font-size:.86rem;color:var(--ink-2);border-top:1px dotted var(--line);margin-top:6px;padding-top:5px}
+.lcode.alt{background:var(--lab)}
+@media (max-width:680px){ol.items{grid-template-columns:1fr}.namebox{grid-template-columns:1fr}.pics{grid-template-columns:repeat(2,1fr)}}
+@media print{ol.items li{padding:4px 0}.sec.pb{margin-top:0}}
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="lbl">Placement test (teacher + learner pages) —</span>
+  <button type="button" onclick="window.print()">🖨 Print / Save as PDF</button>
+  <span class="hint">print single-sided · learner pages start on page 3 · key in placement-test-key.html</span>
+</div>
+
+<div class="sheet">
+<header class="mast">
+    <div class="kit-eyebrow">ESL Instructor Toolkit · Placement</div>
+    <h1>Placement Test, Pre-A1 to C2</h1>
+    <p class="sub">One test for placing adult learners into the right course, from English Foundations (A1) to Mastery English (C2). Learners do a written part (grammar and vocabulary, reading, writing) and have a short one-to-one speaking interview with you. You combine the two results into one recommended course.</p>
+    <div class="meta-row">
+      <span class="chip">Part A <b>50</b> multiple choice</span>
+      <span class="chip">Part B <b>2</b> reading texts</span>
+      <span class="chip">Part C <b>writing</b></span>
+      <span class="chip">Part D <b>5-min</b> interview</span>
+      <span class="chip">About <b>75 min</b> + interviews</span>
+    </div>
+  </header>
+
+  <span class="who-pages t">Teacher pages</span>
+  <div class="note">
+    <div class="t">Before you start: this is a placement, not an exam</div>
+    <p>Many adult learners have bad memories of tests, and some have had little or no schooling. Say it plainly, with gestures or a shared language if you have one: <b>"This test is to find the right class for you. You can't pass or fail. Stop when it's too difficult. That's OK."</b> Nobody should sit for an hour in front of questions they can't read.</p>
+  </div>
+
+  <div class="sec"><h2>Administering the test</h2><span class="rule"></span></div>
+  <table class="timing">
+    <tr><th>Part</th><th>Time</th><th>Who</th><th>What happens</th></tr>
+    <tr><td><b>Welcome</b></td><td class="t">5 min</td><td>T–S</td><td>Explain the purpose (see above). Give out the learner pages. Show how to circle an answer, using the example on the board. Learners write their name, or a first name only.</td></tr>
+    <tr><td><b>A · Grammar &amp; vocabulary</b></td><td class="t">30 min</td><td>S</td><td>50 questions, easy to hard. Learners circle <b>a, b, c</b> or <b>d</b>. <b>Tell them not to guess:</b> "If you don't know, leave it empty." Learners may stop early.</td></tr>
+    <tr><td><b>B · Reading</b></td><td class="t">20 min</td><td>S</td><td>Text 1 (A2 level, 5 questions) for everyone who reached Section 2 of Part A. Text 2 (B2 level, 5 questions) only if Text 1 felt easy.</td></tr>
+    <tr><td><b>C · Writing</b></td><td class="t">20 min</td><td>S</td><td>Task 1 (a short form) for everyone. Task 2 if they can. Task 3 if Task 2 was easy.</td></tr>
+    <tr><td><b>D · Speaking interview</b></td><td class="t">5 min each</td><td>T–S</td><td>One to one, in a quiet corner, while the others write. Follow the script below. <b>Pre-literate and low-literacy learners start here</b> (see the literacy note).</td></tr>
+  </table>
+  <div class="grid2">
+    <div class="blk"><div class="h">You need</div>
+      <ul class="tick">
+        <li>One copy of the learner pages (Parts A–C) per learner</li>
+        <li>One copy of the interview script (Part D), with the picture card, for you</li>
+        <li>The answer key and band descriptors (<code class="inline">placement-test-key.html</code>)</li>
+        <li>Pencils, and a clock the learners can see</li>
+      </ul>
+    </div>
+    <div class="blk"><div class="h">Ground rules</div>
+      <ul class="tick">
+        <li>No dictionaries or phones during Parts A–C.</li>
+        <li>Explain <b>instructions</b> in any language that helps; don't explain the <b>questions</b>.</li>
+        <li>Let learners stop at any point. Collect their pages with a smile.</li>
+        <li>Personal questions are always optional. A learner may give a "new identity": a made-up name, town or job.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="pb"></div>
+  <span class="who-pages l">Learner pages</span>
+  <div class="sec"><h2>Part A · Grammar and vocabulary</h2><span class="rule"></span></div>
+  <div class="namebox">
+    <div>Name<span class="blank"></span></div>
+    <div>Date<span class="blank"></span></div>
+    <div>Class / group<span class="blank"></span></div>
+  </div>
+  <p><b>✏️ Circle the best answer: a, b, c or d.</b> Example: <i>I ___ a student.</i> &nbsp; a) am &nbsp; b) is &nbsp; c) are &nbsp; d) be → circle <b>a</b>.</p>
+  <p>The questions start easy and get harder. <b>Don't know? Leave it empty.</b> You can stop when it is too difficult. That is OK.</p>
+  <div class="band-h">Section 1 · questions 1–10</div>
+<ol class="items">
+<li><span class="n">1.</span><span class="st">Hello! My name ___ Ana.</span><div class="ch"><span><b>a)</b>am</span><span><b>b)</b>is</span><span><b>c)</b>are</span><span><b>d)</b>be</span></div></li>
+<li><span class="n">2.</span><span class="st">Where ___ you from?</span><div class="ch"><span><b>a)</b>is</span><span><b>b)</b>am</span><span><b>c)</b>are</span><span><b>d)</b>do</span></div></li>
+<li><span class="n">3.</span><span class="st">I want ___ apple, please.</span><div class="ch"><span><b>a)</b>a</span><span><b>b)</b>an</span><span><b>c)</b>two</span><span><b>d)</b>these</span></div></li>
+<li><span class="n">4.</span><span class="st">My sister ___ 25 years old.</span><div class="ch"><span><b>a)</b>has</span><span><b>b)</b>have</span><span><b>c)</b>is</span><span><b>d)</b>are</span></div></li>
+<li><span class="n">5.</span><span class="st">___ you like coffee?</span><div class="ch"><span><b>a)</b>Are</span><span><b>b)</b>Do</span><span><b>c)</b>Does</span><span><b>d)</b>Is</span></div></li>
+<li><span class="n">6.</span><span class="st">She ___ in a hospital.</span><div class="ch"><span><b>a)</b>work</span><span><b>b)</b>works</span><span><b>c)</b>working</span><span><b>d)</b>is work</span></div></li>
+<li><span class="n">7.</span><span class="st">There ___ two chairs in the kitchen.</span><div class="ch"><span><b>a)</b>is</span><span><b>b)</b>are</span><span><b>c)</b>be</span><span><b>d)</b>has</span></div></li>
+<li><span class="n">8.</span><span class="st">My mother's brother is my ___.</span><div class="ch"><span><b>a)</b>uncle</span><span><b>b)</b>aunt</span><span><b>c)</b>cousin</span><span><b>d)</b>son</span></div></li>
+<li><span class="n">9.</span><span class="st">Look! It ___ now.</span><div class="ch"><span><b>a)</b>rains</span><span><b>b)</b>is raining</span><span><b>c)</b>rain</span><span><b>d)</b>raining</span></div></li>
+<li><span class="n">10.</span><span class="st">What time is it? — It's half ___ seven.</span><div class="ch"><span><b>a)</b>past</span><span><b>b)</b>to</span><span><b>c)</b>at</span><span><b>d)</b>on</span></div></li>
+</ol>
+<div class="band-h">Section 2 · questions 11–19</div>
+<ol class="items">
+<li><span class="n">11.</span><span class="st">I ___ to the doctor yesterday.</span><div class="ch"><span><b>a)</b>go</span><span><b>b)</b>goes</span><span><b>c)</b>went</span><span><b>d)</b>gone</span></div></li>
+<li><span class="n">12.</span><span class="st">___ you see the game last night?</span><div class="ch"><span><b>a)</b>Do</span><span><b>b)</b>Did</span><span><b>c)</b>Were</span><span><b>d)</b>Are</span></div></li>
+<li><span class="n">13.</span><span class="st">My brother is ___ than me.</span><div class="ch"><span><b>a)</b>tall</span><span><b>b)</b>taller</span><span><b>c)</b>more tall</span><span><b>d)</b>tallest</span></div></li>
+<li><span class="n">14.</span><span class="st">We ___ visit my aunt next weekend.</span><div class="ch"><span><b>a)</b>going to</span><span><b>b)</b>are going to</span><span><b>c)</b>go to</span><span><b>d)</b>will to</span></div></li>
+<li><span class="n">15.</span><span class="st">Have you ever ___ sushi?</span><div class="ch"><span><b>a)</b>eat</span><span><b>b)</b>ate</span><span><b>c)</b>eaten</span><span><b>d)</b>eating</span></div></li>
+<li><span class="n">16.</span><span class="st">I was cooking dinner when the phone ___.</span><div class="ch"><span><b>a)</b>ring</span><span><b>b)</b>rang</span><span><b>c)</b>was ringing</span><span><b>d)</b>rings</span></div></li>
+<li><span class="n">17.</span><span class="st">She has lived here ___ 2019.</span><div class="ch"><span><b>a)</b>for</span><span><b>b)</b>since</span><span><b>c)</b>ago</span><span><b>d)</b>from</span></div></li>
+<li><span class="n">18.</span><span class="st">It's the ___ restaurant in town.</span><div class="ch"><span><b>a)</b>better</span><span><b>b)</b>goodest</span><span><b>c)</b>best</span><span><b>d)</b>most good</span></div></li>
+<li><span class="n">19.</span><span class="st">I need to ___ an appointment with the dentist.</span><div class="ch"><span><b>a)</b>do</span><span><b>b)</b>make</span><span><b>c)</b>take</span><span><b>d)</b>have</span></div></li>
+</ol>
+<div class="band-h">Section 3 · questions 20–28</div>
+<ol class="items">
+<li><span class="n">20.</span><span class="st">If it rains tomorrow, we ___ at home.</span><div class="ch"><span><b>a)</b>stay</span><span><b>b)</b>will stay</span><span><b>c)</b>would stay</span><span><b>d)</b>stayed</span></div></li>
+<li><span class="n">21.</span><span class="st">I ___ English for two years now.</span><div class="ch"><span><b>a)</b>study</span><span><b>b)</b>am studying</span><span><b>c)</b>have been studying</span><span><b>d)</b>studied</span></div></li>
+<li><span class="n">22.</span><span class="st">If I ___ more money, I would buy a car.</span><div class="ch"><span><b>a)</b>have</span><span><b>b)</b>had</span><span><b>c)</b>will have</span><span><b>d)</b>would have</span></div></li>
+<li><span class="n">23.</span><span class="st">This bridge ___ in 1920.</span><div class="ch"><span><b>a)</b>built</span><span><b>b)</b>was built</span><span><b>c)</b>is building</span><span><b>d)</b>has built</span></div></li>
+<li><span class="n">24.</span><span class="st">He asked me where ___.</span><div class="ch"><span><b>a)</b>did I live</span><span><b>b)</b>I lived</span><span><b>c)</b>do I live</span><span><b>d)</b>lived I</span></div></li>
+<li><span class="n">25.</span><span class="st">I used to ___ in the countryside when I was a child.</span><div class="ch"><span><b>a)</b>live</span><span><b>b)</b>living</span><span><b>c)</b>lived</span><span><b>d)</b>lives</span></div></li>
+<li><span class="n">26.</span><span class="st">The woman ___ lives next door is a nurse.</span><div class="ch"><span><b>a)</b>who</span><span><b>b)</b>which</span><span><b>c)</b>what</span><span><b>d)</b>whose</span></div></li>
+<li><span class="n">27.</span><span class="st">I'm really looking forward ___ you.</span><div class="ch"><span><b>a)</b>to see</span><span><b>b)</b>seeing</span><span><b>c)</b>to seeing</span><span><b>d)</b>see</span></div></li>
+<li><span class="n">28.</span><span class="st">Can you ___ my cat while I'm on vacation?</span><div class="ch"><span><b>a)</b>look after</span><span><b>b)</b>look for</span><span><b>c)</b>look up</span><span><b>d)</b>look out</span></div></li>
+</ol>
+<div class="band-h">Section 4 · questions 29–37</div>
+<ol class="items">
+<li><span class="n">29.</span><span class="st">By the time we arrived, the movie ___.</span><div class="ch"><span><b>a)</b>already started</span><span><b>b)</b>had already started</span><span><b>c)</b>has already started</span><span><b>d)</b>was already starting</span></div></li>
+<li><span class="n">30.</span><span class="st">If I had known about the traffic, I ___ earlier.</span><div class="ch"><span><b>a)</b>would leave</span><span><b>b)</b>will leave</span><span><b>c)</b>would have left</span><span><b>d)</b>had left</span></div></li>
+<li><span class="n">31.</span><span class="st">I wish I ___ so much last night. I feel terrible.</span><div class="ch"><span><b>a)</b>didn't eat</span><span><b>b)</b>hadn't eaten</span><span><b>c)</b>wouldn't eat</span><span><b>d)</b>don't eat</span></div></li>
+<li><span class="n">32.</span><span class="st">She ___ have left already — her coat is still here.</span><div class="ch"><span><b>a)</b>can't</span><span><b>b)</b>must</span><span><b>c)</b>should</span><span><b>d)</b>needn't</span></div></li>
+<li><span class="n">33.</span><span class="st">He denied ___ the money.</span><div class="ch"><span><b>a)</b>to take</span><span><b>b)</b>taking</span><span><b>c)</b>take</span><span><b>d)</b>that take</span></div></li>
+<li><span class="n">34.</span><span class="st">The report ___ by Friday.</span><div class="ch"><span><b>a)</b>must finish</span><span><b>b)</b>must be finished</span><span><b>c)</b>must have finish</span><span><b>d)</b>must finishing</span></div></li>
+<li><span class="n">35.</span><span class="st">The new rule had a big ___ on small businesses.</span><div class="ch"><span><b>a)</b>affect</span><span><b>b)</b>impact</span><span><b>c)</b>result</span><span><b>d)</b>cause</span></div></li>
+<li><span class="n">36.</span><span class="st">___ the rain, the game went ahead.</span><div class="ch"><span><b>a)</b>Although</span><span><b>b)</b>Despite</span><span><b>c)</b>However</span><span><b>d)</b>Even</span></div></li>
+<li><span class="n">37.</span><span class="st">The meeting has been ___ until next Tuesday.</span><div class="ch"><span><b>a)</b>put off</span><span><b>b)</b>put up</span><span><b>c)</b>put out</span><span><b>d)</b>put through</span></div></li>
+</ol>
+<div class="band-h">Section 5 · questions 38–44</div>
+<ol class="items">
+<li><span class="n">38.</span><span class="st">Not only ___ late, but he also forgot the tickets.</span><div class="ch"><span><b>a)</b>he was</span><span><b>b)</b>was he</span><span><b>c)</b>he is</span><span><b>d)</b>did he be</span></div></li>
+<li><span class="n">39.</span><span class="st">Had I realized how difficult it was, I ___ it.</span><div class="ch"><span><b>a)</b>wouldn't attempt</span><span><b>b)</b>wouldn't have attempted</span><span><b>c)</b>hadn't attempted</span><span><b>d)</b>won't have attempted</span></div></li>
+<li><span class="n">40.</span><span class="st">It's high time the city ___ something about housing.</span><div class="ch"><span><b>a)</b>does</span><span><b>b)</b>did</span><span><b>c)</b>will do</span><span><b>d)</b>has done</span></div></li>
+<li><span class="n">41.</span><span class="st">Her argument was so ___ that nobody could find a flaw in it.</span><div class="ch"><span><b>a)</b>cogent</span><span><b>b)</b>cordial</span><span><b>c)</b>candid</span><span><b>d)</b>copious</span></div></li>
+<li><span class="n">42.</span><span class="st">The findings, ___ were published last month, have been widely criticized.</span><div class="ch"><span><b>a)</b>that</span><span><b>b)</b>which</span><span><b>c)</b>what</span><span><b>d)</b>who</span></div></li>
+<li><span class="n">43.</span><span class="st">The company is facing ___ criticism over its safety record.</span><div class="ch"><span><b>a)</b>mounting</span><span><b>b)</b>climbing</span><span><b>c)</b>rising up</span><span><b>d)</b>growing up</span></div></li>
+<li><span class="n">44.</span><span class="st">___ you need any further information, please do not hesitate to contact me.</span><div class="ch"><span><b>a)</b>Should</span><span><b>b)</b>Would</span><span><b>c)</b>Were</span><span><b>d)</b>Unless</span></div></li>
+</ol>
+<div class="band-h">Section 6 · questions 45–50</div>
+<ol class="items">
+<li><span class="n">45.</span><span class="st">The minister's remarks were widely seen as an attempt to ___ the issue.</span><div class="ch"><span><b>a)</b>sidestep</span><span><b>b)</b>sidetrack</span><span><b>c)</b>sideline</span><span><b>d)</b>sideswipe</span></div></li>
+<li><span class="n">46.</span><span class="st">Scarcely ___ the stage when the lights went out.</span><div class="ch"><span><b>a)</b>she had reached</span><span><b>b)</b>had she reached</span><span><b>c)</b>she reached</span><span><b>d)</b>did she reached</span></div></li>
+<li><span class="n">47.</span><span class="st">His apology struck many as ___ — polite, but clearly insincere.</span><div class="ch"><span><b>a)</b>perfunctory</span><span><b>b)</b>punctilious</span><span><b>c)</b>prodigious</span><span><b>d)</b>precocious</span></div></li>
+<li><span class="n">48.</span><span class="st">She is by no means the only one ___ for the delay.</span><div class="ch"><span><b>a)</b>to blame</span><span><b>b)</b>blaming</span><span><b>c)</b>to be blaming</span><span><b>d)</b>blamed</span></div></li>
+<li><span class="n">49.</span><span class="st">The plan, ___, proved unworkable in practice.</span><div class="ch"><span><b>a)</b>sound as it seemed on paper</span><span><b>b)</b>as it seemed sound on paper</span><span><b>c)</b>seeming as sound on paper</span><span><b>d)</b>though it seemed as sound on paper</span></div></li>
+<li><span class="n">50.</span><span class="st">I'd sooner you ___ mention this to anyone just yet.</span><div class="ch"><span><b>a)</b>don't</span><span><b>b)</b>didn't</span><span><b>c)</b>won't</span><span><b>d)</b>wouldn't</span></div></li>
+</ol>
+
+  <div class="pb"></div>
+  <div class="sec"><h2>Part B · Reading</h2><span class="rule"></span></div>
+  <p><b>📖 Text 1.</b> Read the email. Circle the best answer: a, b or c.</p>
+  <div class="reading"><p class="rtitle">From: Sam &nbsp;·&nbsp; To: Lina &nbsp;·&nbsp; Subject: Next week</p>
+<p>Hi Lina,</p>
+<p>Thanks for your email. I'm sorry I didn't come to class on Tuesday. My daughter was sick, so I stayed at home with her. She's better now, and she went back to school yesterday.</p>
+<p>I have some news! Next week I'm starting a new job at a supermarket near the train station. I'm going to work in the mornings, from 6 a.m. to 12, so I can't come to the morning English class any more. I'm going to change to the evening class on Mondays and Thursdays. Is the evening class bigger than the morning class?</p>
+<p>Can we meet for coffee on Saturday? I'm free after 2 o'clock.</p>
+<p>See you soon,<br>Sam</p></div>
+  <ol class="rq" start="1">
+<li>Why didn't Sam come to class on Tuesday?<div class="ch"><span><b>a)</b> He was sick.</span><span><b>b)</b> His daughter was sick.</span><span><b>c)</b> He started his new job.</span></div></li>
+<li>Where is Sam's new job?<div class="ch"><span><b>a)</b> At a school.</span><span><b>b)</b> At a train station.</span><span><b>c)</b> At a supermarket.</span></div></li>
+<li>When is Sam going to work?<div class="ch"><span><b>a)</b> In the mornings.</span><span><b>b)</b> In the evenings.</span><span><b>c)</b> On Saturdays.</span></div></li>
+<li>Which days is the evening class?<div class="ch"><span><b>a)</b> Tuesdays and Thursdays.</span><span><b>b)</b> Mondays and Thursdays.</span><span><b>c)</b> Mondays and Saturdays.</span></div></li>
+<li>When can Sam meet Lina on Saturday?<div class="ch"><span><b>a)</b> In the morning.</span><span><b>b)</b> Before 2 o'clock.</span><span><b>c)</b> After 2 o'clock.</span></div></li>
+</ol>
+
+  <p style="margin-top:22px"><b>📖 Text 2.</b> Only read this text if Text 1 was easy for you. Read the article and circle the best answer: a, b, c or d.</p>
+  <div class="reading"><p class="rtitle">Could a shorter week make us better workers?</p>
+<p>When a group of companies agreed to try a four-day working week for six months, few observers expected the results to be so striking. Employees kept the same salary but worked roughly 20 percent fewer hours, on the condition that they maintained their usual output. By the end of the trial, most of the participating firms reported that productivity had either stayed the same or improved, and the vast majority chose to continue with the new schedule.</p>
+<p>Supporters argue that the benefits go beyond the office. Staff in the trial reported sleeping better, feeling less stressed and having more time for their families, and many companies found it easier to recruit and keep good people. Critics, however, point out that the firms taking part were volunteers — organizations that already believed the idea would work — and that a four-day week is far harder to arrange in hospitals, schools or factories, where someone has to be present at all times.</p>
+<p>What seems clear is that the traditional five-day week is not a law of nature. It was itself a reform, introduced about a century ago. Whether the next change comes quickly or slowly, the debate is no longer about <i>whether</i> working time can change, but <i>how</i>.</p></div>
+  <ol class="rq" start="6">
+<li>During the trial, employees…<div class="ch"><span><b>a)</b> earned less money for fewer hours.</span><span><b>b)</b> worked fewer hours for the same pay.</span><span><b>c)</b> worked longer days but only four days a week.</span><span><b>d)</b> chose their own hours.</span></div></li>
+<li>At the end of the trial, most companies…<div class="ch"><span><b>a)</b> returned to the five-day week.</span><span><b>b)</b> reduced salaries.</span><span><b>c)</b> decided to keep the four-day week.</span><span><b>d)</b> asked the government for help.</span></div></li>
+<li>What is one criticism mentioned in the text?<div class="ch"><span><b>a)</b> Workers felt more stressed.</span><span><b>b)</b> Productivity fell sharply.</span><span><b>c)</b> The companies already believed the idea would work.</span><span><b>d)</b> Hospitals refused to take part.</span></div></li>
+<li>The word <i>striking</i> (paragraph 1) is closest in meaning to…<div class="ch"><span><b>a)</b> violent.</span><span><b>b)</b> surprising and impressive.</span><span><b>c)</b> disappointing.</span><span><b>d)</b> expected.</span></div></li>
+<li>The writer's main point in the last paragraph is that…<div class="ch"><span><b>a)</b> the five-day week will end very soon.</span><span><b>b)</b> working time has changed before and can change again.</span><span><b>c)</b> the four-day week is a failed experiment.</span><span><b>d)</b> governments should make a new law.</span></div></li>
+</ol>
+
+  <div class="pb"></div>
+  <div class="sec"><h2>Part C · Writing</h2><span class="rule"></span></div>
+  <p><b>✏️ Task 1 (everyone).</b> Fill in the form. You can leave a line empty. You can write a different name or town if you prefer.</p>
+  <table class="tally">
+    <tr><td style="width:40%">First name</td><td></td></tr>
+    <tr><td>Country or city (from)</td><td></td></tr>
+    <tr><td>Languages I speak</td><td></td></tr>
+    <tr><td>I want to learn English because…</td><td style="height:3.2em"></td></tr>
+  </table>
+  <p style="margin-top:18px"><b>✏️ Task 2 (if you can).</b> Write about <b>your day or your week</b> in 3 to 6 sentences. What do you do? What do you like?</p>
+  <div class="write"></div>
+  <p style="margin-top:18px"><b>✏️ Task 3 (if Task 2 was easy).</b> Write <b>120–180 words</b>. Choose <b>one</b>:</p>
+  <ul class="tick">
+    <li><b>A.</b> Describe a time when you learned something new, at work, at school or in your life. How did you learn it, what was difficult, and what advice would you give to someone learning it now?</li>
+    <li><b>B.</b> "Everyone should learn a second language." How far do you agree? Give reasons and examples.</li>
+  </ul>
+  <div class="write tall"></div>
+  <div class="write tall"></div>
+
+  <div class="pb"></div>
+  <span class="who-pages t">Teacher pages</span>
+  <div class="sec"><h2>Part D · Speaking interview (5 minutes)</h2><span class="rule"></span></div>
+  <p>Interview one learner at a time. <b>Start at the A1 band and move up.</b> Spend about a minute on each band the learner handles comfortably; you won't use every band with every learner. Rephrase once if a question isn't understood. <b>Stop rule:</b> when the learner can't manage <b>two prompts in a band</b>, even after rephrasing, stop there, finish with a friendly closing question they <i>can</i> answer, and thank them. Take notes as you go; rate afterwards with the speaking descriptors in the key.</p>
+  <div class="note warn">
+    <div class="t">Keep it safe and respectful</div>
+    <p>Don't ask why someone left their country, about family members who aren't with them, or about immigration status. If a learner seems uncomfortable with a personal question, move on straight away ("No problem! Next question…"). Every personal prompt below has a neutral alternative in brackets.</p>
+  </div>
+
+  <div class="sp-band"><div class="hd"><span class="lcode">Pre-A1 / A1</span><b>Simple facts, pictures, numbers</b><span class="dur">~1–1½ min</span></div><div class="bd">
+    <div class="say">Hello! My name is ___. What's your name? · How do you spell it?</div>
+    <div class="say">Where are you from? [or: What languages do you speak?]</div>
+    <div class="say">(Picture card) What's this? … And this? · What color is it? · What is he/she doing?</div>
+    <div class="say">(Number card) Can you read these numbers?</div>
+    <div class="say">What do you do every day? · Do you like coffee?</div>
+    <div class="look"><b>Listen for:</b> single words vs. short sentences · names of common things · numbers · <i>I'm / I like / I work</i>. A learner who answers only by pointing, nodding or with single L1 words is <b>Pre-A1</b>.</div>
+  </div></div>
+
+  <div class="sp-band"><div class="hd"><span class="lcode">A2</span><b>Past, future, everyday descriptions</b><span class="dur">~1 min</span></div><div class="bd">
+    <div class="say">What did you do last weekend?</div>
+    <div class="say">What are you going to do next weekend?</div>
+    <div class="say">Tell me about your town [or: this town]. Is it big or small? What do you like about it?</div>
+    <div class="say">What job do you do, or what job would you like to do?</div>
+    <div class="look"><b>Listen for:</b> past forms (<i>went, visited</i>) · <i>going to</i> · linked sentences with <i>and, but, because</i> · simple comparisons.</div>
+  </div></div>
+
+  <div class="sp-band"><div class="hd"><span class="lcode">B1</span><b>Experiences, opinions, hypotheticals</b><span class="dur">~1 min</span></div><div class="bd">
+    <div class="say">Tell me about a time when something went wrong, like a trip or a day at work. What happened, and what did you do?</div>
+    <div class="say">If you could live anywhere in the world, where would you live? Why?</div>
+    <div class="say">What advice would you give someone who has just moved to this area?</div>
+    <div class="look"><b>Listen for:</b> a connected story with a beginning, middle and end · reasons and simple opinions · <i>would</i> · keeping going without long pauses, even with errors.</div>
+  </div></div>
+
+  <div class="sp-band"><div class="hd"><span class="lcode">B2</span><b>Arguing a view, pros and cons</b><span class="dur">~1 min</span></div><div class="bd">
+    <div class="say">Some people say that smartphones make our lives more stressful. What do you think? Give me some reasons and examples.</div>
+    <div class="say">What are the advantages and disadvantages of working from home?</div>
+    <div class="say">How has your town or country [or: the place you know best] changed in recent years? Why do you think that is?</div>
+    <div class="look"><b>Listen for:</b> a clear position developed with reasons · balancing two sides (<i>on the other hand, although</i>) · few errors that cause misunderstanding · a range of vocabulary beyond everyday words.</div>
+  </div></div>
+
+  <div class="sp-band"><div class="hd"><span class="lcode">C1</span><b>Abstract topics, explanation, challenge</b><span class="dur">~1 min</span></div><div class="bd">
+    <div class="say">Explain something from your work or studies, a process or an idea, as if I knew nothing about it.</div>
+    <div class="say">What do you think are the main reasons housing has become so expensive in many cities, and what could realistically be done about it?</div>
+    <div class="say">(Push back politely) I'm not sure I agree. Couldn't you argue the opposite?</div>
+    <div class="look"><b>Listen for:</b> fluent, well-organized explanation · hedging and precise vocabulary · handling a challenge without losing the thread · errors rare and usually self-corrected.</div>
+  </div></div>
+
+  <div class="sp-band"><div class="hd"><span class="lcode">C2</span><b>Nuance, register, persuasion</b><span class="dur">~1 min</span></div><div class="bd">
+    <div class="say">Some would argue that tradition holds societies back. How far would you go along with that?</div>
+    <div class="say">What, for you, is the difference between persuading someone and manipulating them?</div>
+    <div class="say">Now explain your answer again, but as you would to a twelve-year-old.</div>
+    <div class="look"><b>Listen for:</b> subtle distinctions and exact word choice · idiomatic, natural phrasing · shifting register at will · effortless flow, with a fully convincing argument.</div>
+  </div></div>
+
+  <div class="blk lab"><div class="h">Picture card (show the learner)</div>
+    <div class="pics">
+      <div>🍎<small>apple</small></div><div>🚌<small>bus</small></div><div>☕<small>coffee</small></div><div>🏠<small>house</small></div>
+      <div>👩‍⚕️<small>doctor</small></div><div>🌧️<small>rain</small></div><div>👟<small>shoes</small></div><div>🧑‍🍳<small>cooking</small></div>
+    </div>
+    <div class="nums"><span>7</span><span>15</span><span>42</span><span>100</span></div>
+    <p style="font-size:.84rem;color:var(--ink-3)">The small labels are for you. Cover them, or fold the card, when you show it. For the "What is he/she doing?" prompt, point to 🧑‍🍳 ("He's cooking") or 🌧️ ("It's raining").</p>
+  </div>
+
+  <div class="blk"><div class="h">Interview record</div>
+    <table class="tally">
+      <tr><th>Learner</th><th>Highest band handled comfortably</th><th>Notes: strengths, errors, pronunciation, confidence</th></tr>
+      <tr><td style="height:3.4em"></td><td>Pre-A1 · A1 · A2 · B1 · B2 · C1 · C2</td><td></td></tr>
+      <tr><td style="height:3.4em"></td><td>Pre-A1 · A1 · A2 · B1 · B2 · C1 · C2</td><td></td></tr>
+      <tr><td style="height:3.4em"></td><td>Pre-A1 · A1 · A2 · B1 · B2 · C1 · C2</td><td></td></tr>
+    </table>
+  </div>
+
+  <div class="pb"></div>
+  <div class="sec"><h2>Scoring and placement</h2><span class="rule"></span></div>
+  <p>Mark Parts A and B with the key. For each section of Part A, count the correct answers and check whether the learner <b>secured</b> it (reached the target). Then choose a course with the two steps below.</p>
+  <table class="tally">
+    <tr><th>Part A section</th><th>Items</th><th>Target (secured)</th><th>Score</th><th>Secured?</th></tr>
+    <tr><td>Section 1 · A1</td><td>1–10</td><td>7 / 10</td><td class="box"></td><td class="box">☐</td></tr>
+    <tr><td>Section 2 · A2</td><td>11–19</td><td>6 / 9</td><td class="box"></td><td class="box">☐</td></tr>
+    <tr><td>Section 3 · B1</td><td>20–28</td><td>6 / 9</td><td class="box"></td><td class="box">☐</td></tr>
+    <tr><td>Section 4 · B2</td><td>29–37</td><td>6 / 9</td><td class="box"></td><td class="box">☐</td></tr>
+    <tr><td>Section 5 · C1</td><td>38–44</td><td>5 / 7</td><td class="box"></td><td class="box">☐</td></tr>
+    <tr><td>Section 6 · C2</td><td>45–50</td><td>4 / 6</td><td class="box"></td><td class="box">☐</td></tr>
+    <tr><td><b>Total Part A</b></td><td></td><td></td><td class="box">/ 50</td><td></td></tr>
+    <tr><td>Part B · Text 1 (A2)</td><td>1–5</td><td>4 / 5</td><td class="box"></td><td class="box">☐</td></tr>
+    <tr><td>Part B · Text 2 (B2)</td><td>6–10</td><td>4 / 5</td><td class="box"></td><td class="box">☐</td></tr>
+    <tr><td>Part C · Writing band</td><td colspan="2">see writing descriptors</td><td class="box"></td><td></td></tr>
+    <tr><td>Part D · Speaking band</td><td colspan="2">see speaking descriptors</td><td class="box"></td><td></td></tr>
+  </table>
+
+  <div class="blk"><div class="h">Step 1 · The written result</div>
+    <p>The <b>written band</b> is the highest Part A section the learner secured, <b>with every easier section secured too</b>. A lucky score in Section 5 doesn't count if Section 3 wasn't secured. Use Part B to confirm: a secured A2 or B2 band should come with Text 1 or Text 2 at 4/5 or better. If the reading disagrees, trust the lower result and look closely at the interview. Then read off the course:</p>
+    <table class="timing">
+      <tr><th>Recommended course</th><th>Level</th><th>Written result</th></tr>
+      <tr><td class="band">English Foundations</td><td><b>A1</b> · A1 Beginner</td><td>Nothing secured, or Section 1 not yet secured. Includes true beginners and learners with limited literacy.</td></tr><tr><td class="band">Everyday English</td><td><b>A2</b> · A2 Elementary</td><td>Section 1 (A1) secured; Section 2 not yet.</td></tr><tr><td class="band">Independent English</td><td><b>B1</b> · B1 Intermediate</td><td>Sections 1–2 secured; Section 3 not yet.</td></tr><tr><td class="band">Confident English</td><td><b>B2</b> · B2 Upper-Intermediate</td><td>Sections 1–3 secured; Section 4 not yet.</td></tr><tr><td class="band">Advanced English</td><td><b>C1</b> · C1 Advanced</td><td>Sections 1–4 secured; Section 5 not yet.</td></tr><tr><td class="band">Mastery English</td><td><b>C2</b> · C2 Proficiency</td><td>Sections 1–5 secured (with or without Section 6).</td></tr>
+    </table>
+    <p style="font-size:.9rem;color:var(--ink-2)">Quick check on the total (Part A): <b>0–12</b> Foundations A1 · <b>13–21</b> Everyday A2 · <b>22–30</b> Independent B1 · <b>31–38</b> Confident B2 · <b>39–45</b> Advanced C1 · <b>46–50</b> Mastery C2. If the total and the section rule disagree, the section rule wins, because totals are pushed up by guessing.</p>
+  </div>
+
+  <div class="blk"><div class="h">Step 2 · Combine with the speaking band</div>
+    <p>The <b>speaking band</b> is the highest band the learner handled comfortably in the interview. Pre-A1 counts as "nothing secured." As with the written result, the recommended course is the <b>next level up</b>: a learner comfortable at A2 goes into Independent English (B1).</p>
+    <table class="timing">
+      <tr><th>If…</th><th>Then…</th></tr>
+      <tr><td>Written and speaking bands <b>match</b></td><td>Place in the next course up. Done.</td></tr>
+      <tr><td>They differ by <b>one band</b></td><td>Place by the <b>lower</b> band, note the stronger skill on the learner profile, and do a move-up check after two weeks. At B2 and above you may place by the higher band if the learner's goals are mostly in their stronger skill.</td></tr>
+      <tr><td>Speaking is <b>two or more bands higher</b> than writing</td><td>Usually a literacy or schooling gap, not a language gap. Don't put a fluent speaker in a beginner class. Do the literacy check below, then place <b>one course below</b> the speaking result, with literacy support, or alongside a literacy class.</td></tr>
+      <tr><td>Writing is <b>two or more bands higher</b> than speaking</td><td>Often a learner who studied grammar at school but rarely speaks. Place <b>one course above</b> the speaking result, and flag speaking fluency as their focus.</td></tr>
+    </table>
+  </div>
+
+  <div class="note lab">
+    <div class="t">Specialist courses: IELTS Academic Preparation and Business English</div>
+    <p>Both are 12-lesson skills courses for learners at about <b>B1 and above</b>. Recommend them when a learner's result points to Confident English (B2) or higher and their goal matches: a university or registration band score (IELTS), or work communication (Business). Learners can take them alongside a general course. Below B1, raise the general level first.</p>
+  </div>
+
+  <div class="sec"><h2>Placing learners with limited literacy</h2><span class="rule"></span></div>
+  <div class="note warn">
+    <div class="t">Don't rely on the written test</div>
+    <p>A written test measures reading and writing in English <i>and</i> familiarity with tests. For a learner who had little schooling, reads slowly in their own language, or uses a non-Latin script (Arabic, Amharic, Chinese, Tigrinya and others), the written score says very little about their English. Some of these learners speak quite a lot of English.</p>
+  </div>
+  <ol class="steps">
+    <li><b>Watch the first minute of Part A.</b> If a learner can't write their name, holds the pencil uncertainly, or looks at the page without starting, quietly collect the paper ("Thank you, let's talk instead") and go straight to the interview. No one should be left to struggle.</li>
+    <li><b>Use the oral interview and the picture card.</b> Rate speaking as usual. Many learners reach A1 or A2 in speaking with no reading at all.</li>
+    <li><b>Do a two-minute literacy check.</b> Can they: write their first name? copy a short sentence (<i>I like tea.</i>)? read a few common signs (<b>EXIT · OPEN · STOP · BUS · PUSH</b>)? read numbers and a clock? recognize upper- and lower-case letters? Note what they can and can't do. Don't mark it as a score.</li>
+    <li><b>Place by speaking, and plan literacy support.</b> Pre-literate and low-literacy learners at Pre-A1 or A1 speaking go into English Foundations (A1), using the literacy-support strand in each lesson (picture cues, tracing and copying, fewer items). A learner who speaks at A2 or above but reads at a very low level should not start again at A1 for speaking. See Step 2, and if your program has one, combine the class with a literacy class.</li>
+    <li><b>Record it kindly.</b> On the learner profile, write what the learner <i>can</i> do ("reads numbers, copies words, speaks in short sentences"), not a list of gaps.</li>
+  </ol>
+
+  <div class="foot">
+    <div class="who"><b>Ray de la Paz</b><span class="bio">© 2026 Ray de la Paz · ESL Instructor Toolkit (all levels, A1–C2)</span></div>
+    <div class="ver">Toolkit · Placement Test · v1.0</div>
+  </div>
+
+</div>
+</body>
+</html>

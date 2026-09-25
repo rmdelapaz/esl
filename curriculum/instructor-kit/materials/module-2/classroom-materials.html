@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Classroom Materials — Module 2</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../../kit.css">
+<style>
+  /* Module 2 print pieces */
+  .pb{break-before:page}
+  .card-cut p{margin:.2rem 0;font-size:.92rem}
+  .card-cut .say-line{font-style:italic;color:var(--ink-2);font-size:.86rem}
+  .cards.three{grid-template-columns:repeat(3,1fr)}
+  .matchcards{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:10px 0}
+  .matchcards span{border:1.5px dashed var(--line-strong);padding:16px 6px;text-align:center;font-family:"Archivo",sans-serif;font-weight:700;font-size:1.05rem;break-inside:avoid}
+  .matchcards .n{background:var(--accent-soft);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  /* desk information gap */
+  .desk{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:8px 0}
+  .dcell{border:1px solid var(--line);border-radius:8px;padding:6px;text-align:center;position:relative;min-height:1.35in;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px}
+  .dcell img{width:.8in;height:.8in;object-fit:cover;border-radius:6px;background:#FFF3E0}
+  .dcell .num{position:absolute;top:4px;left:7px;font-family:"JetBrains Mono",monospace;font-size:.7rem;color:var(--ink-3);font-weight:600}
+  .dcell .lab{font-weight:600;font-size:.9rem}
+  .dcell.miss .lab{font-weight:400;font-size:.8rem;color:var(--ink-2)}
+  .dcell .qbox{width:.8in;height:.8in;border:2px dashed var(--line-strong);border-radius:6px;display:flex;align-items:center;justify-content:center;font-family:"Archivo",sans-serif;font-size:1.8rem;color:var(--ink-3)}
+  .x3{font-family:"JetBrains Mono",monospace;font-size:.72rem;color:var(--accent);font-weight:600}
+  /* family tree */
+  .tree{display:flex;flex-direction:column;align-items:center;gap:4px;margin:8px 0}
+  .tree .gen{display:flex;align-items:center;justify-content:center;gap:6px}
+  .tree .two-fam{gap:22px;align-items:flex-start}
+  .tree .fam{display:flex;flex-direction:column;align-items:center;gap:4px}
+  .pbox{border:1.5px solid var(--accent);border-radius:8px;padding:4px 10px;text-align:center;min-width:74px}
+  .pbox b{display:block;font-family:"Archivo",sans-serif;font-size:.98rem}
+  .pbox span{font-family:"JetBrains Mono",monospace;font-size:.6rem;color:var(--ink-3)}
+  .pbox.miss{border-style:dashed;border-color:var(--line-strong)}
+  .pbox.miss b{color:var(--ink-3)}
+  .plus{font-weight:700;color:var(--ink-3)}
+  .down{font-family:"JetBrains Mono",monospace;font-size:.66rem;color:var(--ink-3)}
+  /* blank templates */
+  .tmpl{border:1px solid var(--line);border-radius:10px;padding:14px;margin:10px 0}
+  .trow{display:flex;justify-content:center;gap:14px;margin:12px 0;flex-wrap:wrap}
+  .tb{width:1.25in;height:.75in;border:1.5px dashed var(--line-strong);border-radius:8px;position:relative}
+  .tb.me{border:2px solid var(--accent)}
+  .tb.me::after{content:"me";position:absolute;bottom:3px;right:7px;font-family:"JetBrains Mono",monospace;font-size:.62rem;color:var(--accent)}
+  .circle-map{position:relative;height:3.6in;margin:6px auto;max-width:5.6in}
+  .circle-map .ring{position:absolute;border:1.5px dashed var(--line-strong);border-radius:50%;width:1.05in;height:1.05in}
+  .circle-map .ring.me{left:calc(50% - .6in);top:calc(50% - .6in);width:1.2in;height:1.2in;border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;font-family:"Archivo",sans-serif;font-weight:700;color:var(--accent)}
+  /* bingo */
+  .bingo-wrap{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .bingo-card{border:2px solid var(--ink-2);border-radius:10px;padding:8px;break-inside:avoid}
+  .bhead{font-family:"Archivo",sans-serif;font-weight:800;text-align:center;margin-bottom:6px}
+  .bgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+  .bcell{border:1px solid var(--line-strong);padding:4px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:2px}
+  .bcell img{width:.72in;height:.72in;object-fit:cover;border-radius:5px;background:#FFF3E0}
+  .bcell span{font-size:.72rem;font-weight:600}
+  .pic-hint{color:var(--ink-3);font-size:.82rem}
+  ul.calls{columns:2;column-gap:28px;list-style:none;padding:0;margin:8px 0;font-size:.9rem}
+  ul.calls li{break-inside:avoid;padding:2px 0}
+  @media (max-width:680px){.cards.three,.flashcards{grid-template-columns:1fr 1fr}.matchcards{grid-template-columns:1fr 1fr}.bingo-wrap{grid-template-columns:1fr}.desk{grid-template-columns:1fr 1fr}ul.calls{columns:1}.tree .two-fam{flex-direction:column;align-items:center}}
+  @media print{.bingo-card,.tmpl{break-inside:avoid}}
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="lbl">Classroom materials —</span>
+  <button type="button" onclick="window.print()">🖨 Print / Save as PDF</button>
+  <span class="hint">print on card stock · cut on the dashed lines</span>
+</div>
+
+<div class="sheet">
+
+  <header class="mast">
+    <div class="kit-eyebrow">English Foundations · Module 2 Classroom Materials</div>
+    <h1>People, Places &amp; Things: Print Pack</h1>
+    <p class="sub">Everything you print for Classes 4–6: picture flashcards, country–nationality match cards, identity cards for the world-map mingle, three information-gap activities (A/B), blank family-tree templates, listening scripts, and a picture bingo game for review.</p>
+    <div class="meta-row">
+      <span class="chip">Lessons <b>2.1–2.3</b></span>
+      <span class="chip">Classes <b>C4–C6</b></span>
+      <span class="chip"><b>37</b> flashcards</span>
+      <span class="chip"><b>12</b> identity cards</span>
+      <span class="chip"><b>4</b> bingo cards</span>
+    </div>
+  </header>
+
+  <div class="sec"><h2>What to Print</h2><span class="rule"></span></div>
+  <table class="timing">
+    <thead><tr><th>Piece</th><th>Class</th><th>Copies</th><th>Use</th></tr></thead>
+    <tbody>
+      <tr><td>Picture flashcards</td><td class="t">C5, C6</td><td>1 set for the room (card stock)</td><td>Presenting and drilling vocabulary; bingo calls</td></tr>
+      <tr><td>Country–nationality match cards</td><td class="t">C4</td><td>1 set per 4 learners</td><td>Pelmanism (memory) or matching race</td></tr>
+      <tr><td>Identity cards</td><td class="t">C4</td><td>1 set; offer to everyone</td><td>World-map mingle "new identity" option</td></tr>
+      <tr><td>Info gap 2.1 · 2.2 · 2.3 (A/B)</td><td class="t">C4–C6</td><td>1 A + 1 B per pair</td><td>Pair speaking</td></tr>
+      <tr><td>Family-tree templates</td><td class="t">C6</td><td>1 per learner (both versions on the table)</td><td>Freer speaking; learners choose</td></tr>
+      <tr><td>Listening scripts</td><td class="t">C4–C6</td><td>Teacher only</td><td>Read aloud; dictation</td></tr>
+      <tr><td>Picture bingo + call list</td><td class="t">C6 / C7</td><td>1 card per learner (4 versions)</td><td>Module review game</td></tr>
+    </tbody>
+  </table>
+
+  <!-- ================= FLASHCARDS ================= -->
+  <div class="sec pb"><h2>Picture Flashcards · Everyday Objects (2.2)</h2><span class="rule"></span></div>
+  <div class="flashcards">
+      <div class="flashcard"><img src="../../assets/vocab/pen.jpg" alt=""><div class="w">a pen</div></div>
+      <div class="flashcard"><img src="../../assets/vocab/pencil.jpg" alt=""><div class="w">a pencil</div></div>
+      <div class="flashcard"><img src="../../assets/vocab/book.jpg" alt=""><div class="w">a book</div></div>
+      <div class="flashcard"><img src="../../assets/vocab/notebook.jpg" alt=""><div class="w">a notebook</div></div>
+      <div class="flashcard"><img src="../../assets/vocab/mobile-phone.jpg" alt=""><div class="w">a phone</div></div>
+      <div class="flashcard"><img src="../../assets/vocab/bag.jpg" alt=""><div class="w">a bag</div></div>
+      <div class="flashcard"><img src="../../assets/vocab/key.jpg" alt=""><div class="w">a key</div></div>
+      <div class="flashcard"><img src="../../assets/vocab/cup.jpg" alt=""><div class="w">a cup</div></div>
+      <div class="flashcard"><img src="../../assets/vocab/table.jpg" alt=""><div class="w">a table</div></div>
+      <div class="flashcard"><img src="../../assets/vocab/chair.jpg" alt=""><div class="w">a chair</div></div>
+      <div class="flashcard"><img src="../../assets/vocab/door.jpg" alt=""><div class="w">a door</div></div>
+      <div class="flashcard"><img src="../../assets/vocab/window.jpg" alt=""><div class="w">a window</div></div>
+      <div class="flashcard"><img src="../../assets/vocab/box.jpg" alt=""><div class="w">a box</div></div>
+      <div class="flashcard"><img src="../../assets/vocab/bus.jpg" alt=""><div class="w">a bus</div></div>
+      <div class="flashcard"><img src="../../assets/vocab/apple.jpg" alt=""><div class="w">an apple</div></div>
+      <div class="flashcard"><img src="../../assets/vocab/umbrella.jpg" alt=""><div class="w">an umbrella</div></div>
+      <div class="flashcard"><img src="../../assets/vocab/egg.jpg" alt=""><div class="w">an egg</div></div>
+  </div>
+
+  <div class="sec pb"><h2>Picture Flashcards · Family (2.3)</h2><span class="rule"></span></div>
+  <div class="flashcards">
+      <div class="flashcard"><img src="../../assets/vocab/mother.jpg" alt=""><div class="w">mother</div></div>
+      <div class="flashcard"><img src="../../assets/vocab/father.jpg" alt=""><div class="w">father</div></div>
+      <div class="flashcard"><img src="../../assets/vocab/sister.jpg" alt=""><div class="w">sister</div></div>
+      <div class="flashcard"><img src="../../assets/vocab/brother.jpg" alt=""><div class="w">brother</div></div>
+      <div class="flashcard"><img src="../../assets/vocab/son.jpg" alt=""><div class="w">son</div></div>
+      <div class="flashcard"><img src="../../assets/vocab/daughter.jpg" alt=""><div class="w">daughter</div></div>
+      <div class="flashcard"><img src="../../assets/vocab/grandmother.jpg" alt=""><div class="w">grandmother</div></div>
+      <div class="flashcard"><img src="../../assets/vocab/grandfather.jpg" alt=""><div class="w">grandfather</div></div>
+      <div class="flashcard"><img src="../../assets/vocab/aunt.jpg" alt=""><div class="w">aunt</div></div>
+      <div class="flashcard"><img src="../../assets/vocab/uncle.jpg" alt=""><div class="w">uncle</div></div>
+  </div>
+  <div class="sec"><h2>Word Cards (no picture)</h2><span class="rule"></span></div>
+  <div class="flashcards">
+      <div class="flashcard word-only"><div class="w">an orange</div></div>
+      <div class="flashcard word-only"><div class="w">a watch</div></div>
+      <div class="flashcard word-only"><div class="w">cousin</div></div>
+      <div class="flashcard word-only"><div class="w">parents</div></div>
+      <div class="flashcard word-only"><div class="w">wife</div></div>
+      <div class="flashcard word-only"><div class="w">husband</div></div>
+      <div class="flashcard word-only"><div class="w">partner</div></div>
+      <div class="flashcard word-only"><div class="w">children</div></div>
+      <div class="flashcard word-only"><div class="w">baby</div></div>
+      <div class="flashcard word-only"><div class="w">friend</div></div>
+  </div>
+  <div class="note"><div class="t">Teaching tip</div><p>The <em>a / an</em> is printed on the object cards on purpose. Learners should learn the article with the noun. For a no-article drill, fold the bottom of the card back. For "a watch" and "an orange", use the real things from the realia bag.</p></div>
+
+  <!-- ================= 2.1 ================= -->
+  <div class="sec pb"><h2>2.1 · Country–Nationality Match Cards</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">Cut out. Shaded cards = nationality. <b>Memory game:</b> all cards face down; turn two over and say <em>"Brazil – Brazilian. I'm from Brazil. I'm Brazilian."</em> A match keeps the pair. Add blank cards for the countries in your class.</p>
+  <div class="matchcards">
+      <span class="c">Brazil</span><span class="n">Brazilian</span>
+      <span class="c">Japan</span><span class="n">Japanese</span>
+      <span class="c">Mexico</span><span class="n">Mexican</span>
+      <span class="c">France</span><span class="n">French</span>
+      <span class="c">China</span><span class="n">Chinese</span>
+      <span class="c">Egypt</span><span class="n">Egyptian</span>
+      <span class="c">Italy</span><span class="n">Italian</span>
+      <span class="c">Spain</span><span class="n">Spanish</span>
+      <span class="c">Germany</span><span class="n">German</span>
+      <span class="c">the USA</span><span class="n">American</span>
+      <span class="c">the UK</span><span class="n">British</span>
+      <span class="c">Korea</span><span class="n">Korean</span>
+      <span class="c">India</span><span class="n">Indian</span>
+      <span class="c">&nbsp;</span><span class="n">&nbsp;</span><span class="c">&nbsp;</span><span class="n">&nbsp;</span><span class="c">&nbsp;</span><span class="n">&nbsp;</span>
+  </div>
+
+  <div class="sec pb"><h2>2.1 · Identity Cards (World-Map Mingle)</h2><span class="rule"></span></div>
+  <div class="note warn"><div class="t">Offer these to everyone</div><p>Put the cards on a table and say: <em>"You can be you, or you can be a new person."</em> Take one yourself. No learner has to explain why they chose a card. These names and places are fictional examples.</p></div>
+  <div class="cards three">
+      <div class="card-cut"><div class="ct">Identity card · 1</div><h4>Leo</h4>
+        <p>City: <b>Rome</b><br>Country: <b>Italy</b><br>Nationality: <b>Italian</b></p>
+        <p class="say-line">"Hi, I'm Leo. I'm from Italy. I'm Italian."</p></div>
+      <div class="card-cut"><div class="ct">Identity card · 2</div><h4>Sofia</h4>
+        <p>City: <b>Mexico City</b><br>Country: <b>Mexico</b><br>Nationality: <b>Mexican</b></p>
+        <p class="say-line">"Hi, I'm Sofia. I'm from Mexico. I'm Mexican."</p></div>
+      <div class="card-cut"><div class="ct">Identity card · 3</div><h4>Kenji</h4>
+        <p>City: <b>Osaka</b><br>Country: <b>Japan</b><br>Nationality: <b>Japanese</b></p>
+        <p class="say-line">"Hi, I'm Kenji. I'm from Japan. I'm Japanese."</p></div>
+      <div class="card-cut"><div class="ct">Identity card · 4</div><h4>Amira</h4>
+        <p>City: <b>Cairo</b><br>Country: <b>Egypt</b><br>Nationality: <b>Egyptian</b></p>
+        <p class="say-line">"Hi, I'm Amira. I'm from Egypt. I'm Egyptian."</p></div>
+      <div class="card-cut"><div class="ct">Identity card · 5</div><h4>Lucas</h4>
+        <p>City: <b>São Paulo</b><br>Country: <b>Brazil</b><br>Nationality: <b>Brazilian</b></p>
+        <p class="say-line">"Hi, I'm Lucas. I'm from Brazil. I'm Brazilian."</p></div>
+      <div class="card-cut"><div class="ct">Identity card · 6</div><h4>Priya</h4>
+        <p>City: <b>Mumbai</b><br>Country: <b>India</b><br>Nationality: <b>Indian</b></p>
+        <p class="say-line">"Hi, I'm Priya. I'm from India. I'm Indian."</p></div>
+      <div class="card-cut"><div class="ct">Identity card · 7</div><h4>Ana</h4>
+        <p>City: <b>Madrid</b><br>Country: <b>Spain</b><br>Nationality: <b>Spanish</b></p>
+        <p class="say-line">"Hi, I'm Ana. I'm from Spain. I'm Spanish."</p></div>
+      <div class="card-cut"><div class="ct">Identity card · 8</div><h4>Wei</h4>
+        <p>City: <b>Shanghai</b><br>Country: <b>China</b><br>Nationality: <b>Chinese</b></p>
+        <p class="say-line">"Hi, I'm Wei. I'm from China. I'm Chinese."</p></div>
+      <div class="card-cut"><div class="ct">Identity card · 9</div><h4>Hana</h4>
+        <p>City: <b>Seoul</b><br>Country: <b>Korea</b><br>Nationality: <b>Korean</b></p>
+        <p class="say-line">"Hi, I'm Hana. I'm from Korea. I'm Korean."</p></div>
+      <div class="card-cut"><div class="ct">Identity card · 10</div><h4>Marie</h4>
+        <p>City: <b>Paris</b><br>Country: <b>France</b><br>Nationality: <b>French</b></p>
+        <p class="say-line">"Hi, I'm Marie. I'm from France. I'm French."</p></div>
+      <div class="card-cut"><div class="ct">Identity card · 11</div><h4>Jonas</h4>
+        <p>City: <b>Berlin</b><br>Country: <b>Germany</b><br>Nationality: <b>German</b></p>
+        <p class="say-line">"Hi, I'm Jonas. I'm from Germany. I'm German."</p></div>
+      <div class="card-cut"><div class="ct">Identity card · 12</div><h4>Emma</h4>
+        <p>City: <b>London</b><br>Country: <b>the UK</b><br>Nationality: <b>British</b></p>
+        <p class="say-line">"Hi, I'm Emma. I'm from the UK. I'm British."</p></div>
+  </div>
+
+  <div class="sec pb"><h2>2.1 · Information Gap: Where Are They From?</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">Pairs. Don't show your card. Ask: <em>"Where is Kenji from?" "Is he Japanese?" "What's her nationality?"</em> Write the answers.</p>
+  <div class="cards">
+    <div class="card-cut"><div class="ct">Student A</div><h4>Where are they from?</h4>
+      <table class="grammar">
+        <tr><th>Name</th><th>Country</th><th>Nationality</th></tr>
+        <tr><td>Kenji</td><td>Japan</td><td>Japanese</td></tr>
+        <tr><td>Amira</td><td><span class="blank"></span></td><td><span class="blank"></span></td></tr>
+        <tr><td>Lucas</td><td>Brazil</td><td>Brazilian</td></tr>
+        <tr><td>Priya</td><td><span class="blank"></span></td><td><span class="blank"></span></td></tr>
+      </table>
+      <p>Ask about <b>Amira</b> and <b>Priya</b>. Answer about Kenji and Lucas.</p></div>
+    <div class="card-cut b"><div class="ct">Student B</div><h4>Where are they from?</h4>
+      <table class="grammar">
+        <tr><th>Name</th><th>Country</th><th>Nationality</th></tr>
+        <tr><td>Kenji</td><td><span class="blank"></span></td><td><span class="blank"></span></td></tr>
+        <tr><td>Amira</td><td>Egypt</td><td>Egyptian</td></tr>
+        <tr><td>Lucas</td><td><span class="blank"></span></td><td><span class="blank"></span></td></tr>
+        <tr><td>Priya</td><td>India</td><td>Indian</td></tr>
+      </table>
+      <p>Ask about <b>Kenji</b> and <b>Lucas</b>. Answer about Amira and Priya.</p></div>
+  </div>
+
+  <div class="sec"><h2>2.1 · Listening Scripts</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem"><b>A. The dialogue (workbook page).</b> Read it twice at natural speed, with two voices. First time: learners' books are closed. Ask: <em>"Where is Sofia from? Is Leo's friend Italian?"</em> Second time: books open, learners read along.</p>
+  <div class="script">A: Hi! I'm Leo. — B: Hello, Leo. I'm Sofia. Nice to meet you. — A: Nice to meet you too. Where are you from, Sofia? — B: I'm from Mexico. I'm Mexican. And you? — A: I'm from Italy. I'm Italian. — B: Oh, nice! Is your friend Italian too? — A: No, he isn't. He's from France. He's French.</div>
+  <p style="font-size:.92rem"><b>B. Listen and circle ✅ or ❌.</b> Learners write 1–6 and circle. Read each twice. (Answers: 1 ✅ 2 ❌ 3 ✅ 4 ❌ 5 ✅ 6 ❌)</p>
+  <div class="script">1. She is from Japan. She is Japanese. · 2. I'm from Spain. I'm Spain. · 3. They are from Brazil. · 4. He are from China. · 5. Are you Korean? — Yes, I am. · 6. Are you Egyptian? — Yes, I'm.</div>
+  <p style="font-size:.92rem"><b>C. Dictation.</b> Read each sentence three times: normal, slow (in chunks), normal. Learners write. Check capitals!</p>
+  <div class="script">1. Where are you from? · 2. I'm from Mexico. · 3. She is Italian. · 4. They aren't from the USA. · 5. Is he Brazilian?</div>
+
+  <!-- ================= 2.2 ================= -->
+  <div class="sec pb"><h2>2.2 · Information Gap: What's on the Desk?</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">Pairs. Don't show your card. Ask about the <b>?</b> boxes: <em>"Number 2. What are these?" — "They're keys." "Number 4. What's this?" — "It's an umbrella."</em> Write the answer with <em>a / an</em> or a plural. <b>×3</b> = many.</p>
+  <div class="cards">
+    <div class="card-cut"><div class="ct">Student A</div><h4>My desk</h4>
+      <div class="desk">
+          <div class="dcell"><span class="num">1</span><img src="../../assets/vocab/cup.jpg" alt=""><div class="lab">a cup</div></div>
+          <div class="dcell miss"><span class="num">2</span><div class="qbox">?</div><div class="lab">What are these?<br>______________</div></div>
+          <div class="dcell miss"><span class="num">3</span><div class="qbox">?</div><div class="lab">What's this?<br>______________</div></div>
+          <div class="dcell"><span class="num">4</span><img src="../../assets/vocab/umbrella.jpg" alt=""><div class="lab">an umbrella</div></div>
+          <div class="dcell miss"><span class="num">5</span><div class="qbox">?</div><div class="lab">What's this?<br>______________</div></div>
+          <div class="dcell"><span class="num">6</span><img src="../../assets/vocab/pencil.jpg" alt=""> <span class="x3">×3</span><div class="lab">pencils</div></div>
+          <div class="dcell"><span class="num">7</span><img src="../../assets/vocab/mobile-phone.jpg" alt=""><div class="lab">a phone</div></div>
+          <div class="dcell"><span class="num">8</span><img src="../../assets/vocab/apple.jpg" alt=""><div class="lab">an apple</div></div>
+          <div class="dcell"><span class="num">9</span><img src="../../assets/vocab/book.jpg" alt=""><div class="lab">a book</div></div>
+      </div></div>
+    <div class="card-cut b"><div class="ct">Student B</div><h4>My desk</h4>
+      <div class="desk">
+          <div class="dcell miss"><span class="num">1</span><div class="qbox">?</div><div class="lab">What's this?<br>______________</div></div>
+          <div class="dcell"><span class="num">2</span><img src="../../assets/vocab/key.jpg" alt=""> <span class="x3">×3</span><div class="lab">keys</div></div>
+          <div class="dcell"><span class="num">3</span><img src="../../assets/vocab/notebook.jpg" alt=""><div class="lab">a notebook</div></div>
+          <div class="dcell miss"><span class="num">4</span><div class="qbox">?</div><div class="lab">What's this?<br>______________</div></div>
+          <div class="dcell"><span class="num">5</span><img src="../../assets/vocab/egg.jpg" alt=""><div class="lab">an egg</div></div>
+          <div class="dcell miss"><span class="num">6</span><div class="qbox">?</div><div class="lab">What are these?<br>______________</div></div>
+          <div class="dcell"><span class="num">7</span><img src="../../assets/vocab/mobile-phone.jpg" alt=""><div class="lab">a phone</div></div>
+          <div class="dcell"><span class="num">8</span><img src="../../assets/vocab/apple.jpg" alt=""><div class="lab">an apple</div></div>
+          <div class="dcell"><span class="num">9</span><img src="../../assets/vocab/book.jpg" alt=""><div class="lab">a book</div></div>
+      </div></div>
+  </div>
+
+  <div class="sec"><h2>2.2 · Listening Scripts</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem"><b>A. The guessing game.</b> Two voices, with a real cup, keys, and an orange in your hands. Read it twice, then learners read it in pairs.</p>
+  <div class="script">A: What's this? — B: It's a cup. — A: And what's that, over there? — B: That's a window. — A: Okay. What are these? — B: They're keys. — A: Is this an apple? — B: No, it isn't! It's an orange. — A: Ha! You're right. Thank you!</div>
+  <p style="font-size:.92rem"><b>B. <em>a</em> or <em>an</em>? Listen and write.</b> Say only the noun. Learners write <em>a</em> or <em>an</em> + the word. (Answers: an egg, a bag, an umbrella, a door, an orange, a watch, an apple, a notebook)</p>
+  <div class="script">egg · bag · umbrella · door · orange · watch · apple · notebook</div>
+  <p style="font-size:.92rem"><b>C. One or many?</b> Learners hold up one finger (one thing) or open the whole hand (many). This trains the ear for the final <em>-s</em> and for <em>this / these</em>.</p>
+  <div class="script">1. This is a pen. · 2. These are pens. · 3. Those are boxes. · 4. That is a box. · 5. These are keys. · 6. This is a key. · 7. Those are buses. · 8. That's a bus.</div>
+  <p style="font-size:.92rem"><b>D. Dictation.</b></p>
+  <div class="script">1. What's this? · 2. It's an apple. · 3. These are my keys. · 4. Those are windows. · 5. Is that a book?</div>
+
+  <!-- ================= 2.3 ================= -->
+  <div class="sec pb"><h2>2.3 · Information Gap: The Rivera Family</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">Pairs. Don't show your card. Ask: <em>"Who is Rosa's husband?" "What's Maria's husband's name?" "Who is Luis's daughter?"</em> Write the names. Then say 3 sentences: <em>"Leo is Maria's son. His grandmother is Rosa."</em></p>
+  <div class="cards">
+    <div class="card-cut"><div class="ct">Student A</div><h4>The Rivera family</h4>
+        <div class="tree">
+          <div class="gen"><div class="pbox"><b>Rosa</b><span>woman</span></div><span class="plus">+</span><div class="pbox miss"><b>?</b><span>man</span></div></div>
+          <div class="down">│ their children │</div>
+          <div class="gen two-fam">
+            <div class="fam"><div class="gen"><div class="pbox"><b>Maria</b><span>woman</span></div><span class="plus">+</span><div class="pbox miss"><b>?</b><span>man</span></div></div><div class="down">│ son</div><div class="gen"><div class="pbox"><b>Leo</b><span>boy</span></div></div></div>
+            <div class="fam"><div class="gen"><div class="pbox"><b>Luis</b><span>man</span></div><span class="plus">+</span><div class="pbox"><b>Sam</b><span>partner</span></div></div><div class="down">│ daughter</div><div class="gen"><div class="pbox miss"><b>?</b><span>girl</span></div></div></div>
+          </div>
+        </div>
+      <p style="font-size:.84rem">Find: Rosa's husband · Maria's husband · Luis's daughter</p></div>
+    <div class="card-cut b"><div class="ct">Student B</div><h4>The Rivera family</h4>
+        <div class="tree">
+          <div class="gen"><div class="pbox miss"><b>?</b><span>woman</span></div><span class="plus">+</span><div class="pbox"><b>Carlos</b><span>man</span></div></div>
+          <div class="down">│ their children │</div>
+          <div class="gen two-fam">
+            <div class="fam"><div class="gen"><div class="pbox"><b>Maria</b><span>woman</span></div><span class="plus">+</span><div class="pbox"><b>David</b><span>man</span></div></div><div class="down">│ son</div><div class="gen"><div class="pbox miss"><b>?</b><span>boy</span></div></div></div>
+            <div class="fam"><div class="gen"><div class="pbox miss"><b>?</b><span>man</span></div><span class="plus">+</span><div class="pbox"><b>Sam</b><span>partner</span></div></div><div class="down">│ daughter</div><div class="gen"><div class="pbox"><b>Nina</b><span>girl</span></div></div></div>
+          </div>
+        </div>
+      <p style="font-size:.84rem">Find: Carlos's wife · Maria's brother · Maria's son</p></div>
+  </div>
+  <div class="note"><div class="t">About this family</div><p>The Riveras are a ready-made family for any learner who prefers not to talk about their own. Sam is Luis's <b>partner</b>. The card deliberately doesn't say more. If learners ask, "partner" is a useful A1 word for any couple.</p></div>
+
+  <div class="sec pb"><h2>2.3 · Blank Family-Tree Templates</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">Put both versions on the table and let learners choose. Any family shape works: leave boxes empty, add boxes, draw extra lines. The tree can be the learner's family, a famous or TV family, or an invented family.</p>
+  <div class="tmpl">
+    <p style="font-weight:700;margin:0">Version 1 · Family tree</p>
+    <div class="trow"><div class="tb"></div><div class="tb"></div><div class="tb"></div><div class="tb"></div></div>
+    <div class="trow"><div class="tb"></div><div class="tb"></div><div class="tb me"></div><div class="tb"></div></div>
+    <div class="trow"><div class="tb"></div><div class="tb"></div><div class="tb"></div></div>
+    <p style="font-size:.86rem;color:var(--ink-2);margin:0">Write the name and the family word in each box: <em>Rosa — grandmother</em>.</p>
+  </div>
+  <div class="tmpl">
+    <p style="font-weight:700;margin:0">Version 2 · My people (a circle map: family, friends, anyone important)</p>
+    <div class="circle-map">
+      <div class="ring me">me</div>
+      <div class="ring" style="left:4%;top:4%"></div><div class="ring" style="left:calc(50% - .52in);top:0"></div><div class="ring" style="right:4%;top:4%"></div>
+      <div class="ring" style="left:0;top:calc(50% - .52in)"></div><div class="ring" style="right:0;top:calc(50% - .52in)"></div>
+      <div class="ring" style="left:4%;bottom:4%"></div><div class="ring" style="left:calc(50% - .52in);bottom:0"></div><div class="ring" style="right:4%;bottom:4%"></div>
+    </div>
+    <p style="font-size:.86rem;color:var(--ink-2);margin:0">🗣️ "This is my friend. Her name is… She is from…"</p>
+  </div>
+
+  <div class="sec"><h2>2.3 · Listening Scripts</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem"><b>A. The family photo.</b> Two voices; show any photo on your phone (it doesn't need to be your family). Ask first: <em>"What's the father's name? How many brothers?"</em></p>
+  <div class="script">A: Is that a photo of your family? — B: Yes! Look, here's a picture. — A: Oh, nice! Who's this? — B: This is my sister, Maria. Her son is next to her. — A: And this man? — B: That's my father. His name is Carlos. — A: Do you have any brothers? — B: Yes, I have one brother. His name is Luis. — A: What a lovely family!</div>
+  <p style="font-size:.92rem"><b>B. Listen and draw.</b> Learners draw boxes and write the names as they hear them. Read slowly, twice. (Answer: Mei + Tom → children Lily and Ben; Lily has a daughter, Rose; Grandma Kim lives with them.)</p>
+  <div class="script">Hi, I'm Mei. This is my family. My husband's name is Tom. We have two children. Our daughter's name is Lily, and our son's name is Ben. Lily has a baby. Her name is Rose. My mother lives with us. Her name is Kim. The children call her Grandma Kim.</div>
+  <p style="font-size:.92rem"><b>C. His or her?</b> Learners hold up a card: <b>HIS</b> or <b>HER</b>. Read the first part, pause, and learners show the card; then say the answer. (Answers: his, her, his, her, their)</p>
+  <div class="script">1. Tom has a sister. … <em>his</em> sister. · 2. Anna has a brother. … <em>her</em> brother. · 3. Carlos has a daughter. … <em>his</em> daughter. · 4. Maria has a son. … <em>her</em> son. · 5. Rosa and Carlos have a house. … <em>their</em> house.</div>
+  <p style="font-size:.92rem"><b>D. Dictation.</b></p>
+  <div class="script">1. This is my mother. · 2. Her name is Rosa. · 3. My brother has two children. · 4. Anna's husband is from Brazil. · 5. These are my parents.</div>
+
+  <!-- ================= GAME ================= -->
+  <div class="sec pb"><h2>Game · Module 2 Picture Bingo</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem"><b>How to play (10–15 min).</b> Each learner gets a card (four versions: A–D) and 16 small markers (paper squares, beans, coins). You read a sentence from the call list and tick it. Learners cover the matching picture. First to cover a line (across, down, or diagonal) calls <b>"Bingo!"</b> To win, they read back each covered square as a sentence: <em>"These are keys." "This is my aunt."</em> Play again for a full card. <b>Stretch:</b> a fast learner becomes the caller.</p>
+  <div class="bingo-wrap">
+    <div class="bingo-card"><div class="bhead">Module 2 Bingo · Card A</div><div class="bgrid"><div class="bcell"><img src="../../assets/vocab/mobile-phone.jpg" alt=""><span>a phone</span></div><div class="bcell"><img src="../../assets/vocab/table.jpg" alt=""><span>a table</span></div><div class="bcell"><img src="../../assets/vocab/pen.jpg" alt=""><span>a pen</span></div><div class="bcell"><img src="../../assets/vocab/grandfather.jpg" alt=""><span>grandfather</span></div><div class="bcell"><img src="../../assets/vocab/mother.jpg" alt=""><span>mother</span></div><div class="bcell"><img src="../../assets/vocab/bag.jpg" alt=""><span>a bag</span></div><div class="bcell"><img src="../../assets/vocab/cup.jpg" alt=""><span>a cup</span></div><div class="bcell"><img src="../../assets/vocab/bus.jpg" alt=""><span>a bus</span></div><div class="bcell"><img src="../../assets/vocab/key.jpg" alt=""><span>keys</span></div><div class="bcell"><img src="../../assets/vocab/brother.jpg" alt=""><span>brother</span></div><div class="bcell"><img src="../../assets/vocab/daughter.jpg" alt=""><span>daughter</span></div><div class="bcell"><img src="../../assets/vocab/uncle.jpg" alt=""><span>uncle</span></div><div class="bcell"><img src="../../assets/vocab/grandmother.jpg" alt=""><span>grandmother</span></div><div class="bcell"><img src="../../assets/vocab/egg.jpg" alt=""><span>an egg</span></div><div class="bcell"><img src="../../assets/vocab/father.jpg" alt=""><span>father</span></div><div class="bcell"><img src="../../assets/vocab/umbrella.jpg" alt=""><span>an umbrella</span></div></div></div>
+    <div class="bingo-card"><div class="bhead">Module 2 Bingo · Card B</div><div class="bgrid"><div class="bcell"><img src="../../assets/vocab/uncle.jpg" alt=""><span>uncle</span></div><div class="bcell"><img src="../../assets/vocab/chair.jpg" alt=""><span>chairs</span></div><div class="bcell"><img src="../../assets/vocab/book.jpg" alt=""><span>a book</span></div><div class="bcell"><img src="../../assets/vocab/grandmother.jpg" alt=""><span>grandmother</span></div><div class="bcell"><img src="../../assets/vocab/pen.jpg" alt=""><span>a pen</span></div><div class="bcell"><img src="../../assets/vocab/aunt.jpg" alt=""><span>aunt</span></div><div class="bcell"><img src="../../assets/vocab/umbrella.jpg" alt=""><span>an umbrella</span></div><div class="bcell"><img src="../../assets/vocab/egg.jpg" alt=""><span>an egg</span></div><div class="bcell"><img src="../../assets/vocab/son.jpg" alt=""><span>son</span></div><div class="bcell"><img src="../../assets/vocab/cup.jpg" alt=""><span>a cup</span></div><div class="bcell"><img src="../../assets/vocab/key.jpg" alt=""><span>keys</span></div><div class="bcell"><img src="../../assets/vocab/daughter.jpg" alt=""><span>daughter</span></div><div class="bcell"><img src="../../assets/vocab/sister.jpg" alt=""><span>sister</span></div><div class="bcell"><img src="../../assets/vocab/brother.jpg" alt=""><span>brother</span></div><div class="bcell"><img src="../../assets/vocab/bus.jpg" alt=""><span>a bus</span></div><div class="bcell"><img src="../../assets/vocab/grandfather.jpg" alt=""><span>grandfather</span></div></div></div>
+    <div class="bingo-card"><div class="bhead">Module 2 Bingo · Card C</div><div class="bgrid"><div class="bcell"><img src="../../assets/vocab/son.jpg" alt=""><span>son</span></div><div class="bcell"><img src="../../assets/vocab/box.jpg" alt=""><span>boxes</span></div><div class="bcell"><img src="../../assets/vocab/grandfather.jpg" alt=""><span>grandfather</span></div><div class="bcell"><img src="../../assets/vocab/daughter.jpg" alt=""><span>daughter</span></div><div class="bcell"><img src="../../assets/vocab/umbrella.jpg" alt=""><span>an umbrella</span></div><div class="bcell"><img src="../../assets/vocab/bag.jpg" alt=""><span>a bag</span></div><div class="bcell"><img src="../../assets/vocab/window.jpg" alt=""><span>windows</span></div><div class="bcell"><img src="../../assets/vocab/egg.jpg" alt=""><span>an egg</span></div><div class="bcell"><img src="../../assets/vocab/mobile-phone.jpg" alt=""><span>a phone</span></div><div class="bcell"><img src="../../assets/vocab/father.jpg" alt=""><span>father</span></div><div class="bcell"><img src="../../assets/vocab/chair.jpg" alt=""><span>chairs</span></div><div class="bcell"><img src="../../assets/vocab/mother.jpg" alt=""><span>mother</span></div><div class="bcell"><img src="../../assets/vocab/aunt.jpg" alt=""><span>aunt</span></div><div class="bcell"><img src="../../assets/vocab/key.jpg" alt=""><span>keys</span></div><div class="bcell"><img src="../../assets/vocab/apple.jpg" alt=""><span>an apple</span></div><div class="bcell"><img src="../../assets/vocab/pen.jpg" alt=""><span>a pen</span></div></div></div>
+    <div class="bingo-card"><div class="bhead">Module 2 Bingo · Card D</div><div class="bgrid"><div class="bcell"><img src="../../assets/vocab/box.jpg" alt=""><span>boxes</span></div><div class="bcell"><img src="../../assets/vocab/brother.jpg" alt=""><span>brother</span></div><div class="bcell"><img src="../../assets/vocab/book.jpg" alt=""><span>a book</span></div><div class="bcell"><img src="../../assets/vocab/chair.jpg" alt=""><span>chairs</span></div><div class="bcell"><img src="../../assets/vocab/umbrella.jpg" alt=""><span>an umbrella</span></div><div class="bcell"><img src="../../assets/vocab/sister.jpg" alt=""><span>sister</span></div><div class="bcell"><img src="../../assets/vocab/egg.jpg" alt=""><span>an egg</span></div><div class="bcell"><img src="../../assets/vocab/grandmother.jpg" alt=""><span>grandmother</span></div><div class="bcell"><img src="../../assets/vocab/aunt.jpg" alt=""><span>aunt</span></div><div class="bcell"><img src="../../assets/vocab/apple.jpg" alt=""><span>an apple</span></div><div class="bcell"><img src="../../assets/vocab/daughter.jpg" alt=""><span>daughter</span></div><div class="bcell"><img src="../../assets/vocab/key.jpg" alt=""><span>keys</span></div><div class="bcell"><img src="../../assets/vocab/mobile-phone.jpg" alt=""><span>a phone</span></div><div class="bcell"><img src="../../assets/vocab/son.jpg" alt=""><span>son</span></div><div class="bcell"><img src="../../assets/vocab/bag.jpg" alt=""><span>a bag</span></div><div class="bcell"><img src="../../assets/vocab/mother.jpg" alt=""><span>mother</span></div></div></div>
+  </div>
+
+  <div class="sec"><h2>Bingo Call List (teacher)</h2><span class="rule"></span></div>
+  <ul class="calls">
+        <li>☐ This is a pen. <span class="pic-hint">(a pen)</span></li>
+        <li>☐ That is a book. <span class="pic-hint">(a book)</span></li>
+        <li>☐ These are my keys. <span class="pic-hint">(keys)</span></li>
+        <li>☐ Is this a cup? Yes, it is. <span class="pic-hint">(a cup)</span></li>
+        <li>☐ This is my phone. <span class="pic-hint">(a phone)</span></li>
+        <li>☐ That's Anna's bag. <span class="pic-hint">(a bag)</span></li>
+        <li>☐ This is an apple. <span class="pic-hint">(an apple)</span></li>
+        <li>☐ That's a table. <span class="pic-hint">(a table)</span></li>
+        <li>☐ That is an umbrella. <span class="pic-hint">(an umbrella)</span></li>
+        <li>☐ This is an egg. <span class="pic-hint">(an egg)</span></li>
+        <li>☐ Those are boxes. <span class="pic-hint">(boxes)</span></li>
+        <li>☐ That is a bus. <span class="pic-hint">(a bus)</span></li>
+        <li>☐ Those are windows. <span class="pic-hint">(windows)</span></li>
+        <li>☐ These are chairs. <span class="pic-hint">(chairs)</span></li>
+        <li>☐ This is my mother. Her name is Rosa. <span class="pic-hint">(mother)</span></li>
+        <li>☐ This is my father. His name is Carlos. <span class="pic-hint">(father)</span></li>
+        <li>☐ She's my sister. <span class="pic-hint">(sister)</span></li>
+        <li>☐ Luis is Maria's brother. <span class="pic-hint">(brother)</span></li>
+        <li>☐ My mother's mother is my grandmother. <span class="pic-hint">(grandmother)</span></li>
+        <li>☐ This is my grandfather. He's from Italy. <span class="pic-hint">(grandfather)</span></li>
+        <li>☐ My mother's sister is my aunt. <span class="pic-hint">(aunt)</span></li>
+        <li>☐ My father's brother is my uncle. <span class="pic-hint">(uncle)</span></li>
+        <li>☐ Leo is Maria's son. <span class="pic-hint">(son)</span></li>
+        <li>☐ Nina is Luis's daughter. <span class="pic-hint">(daughter)</span></li>
+  </ul>
+
+  <div class="foot">
+    <div class="who"><b>Ray de la Paz</b><span class="bio">© 2026 Ray de la Paz · English Foundations (A1 Beginner)</span></div>
+    <div class="ver">Module 2 · Classroom Materials · v1.0</div>
+  </div>
+
+</div>
+</body>
+</html>

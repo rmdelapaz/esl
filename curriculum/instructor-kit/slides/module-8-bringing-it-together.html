@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slides — Module 8</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root{--bg:#0b1220;--ink:#eef3fc;--ink2:#a9b8d3;--accent:#7fb2ff;--accent2:#2563eb;--lab:#34d3bd;--warn:#fbbf24;--line:#223253;--code:#0f1a30;color-scheme:dark}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;overflow:hidden}
+  .deck{height:100%;width:100%;position:relative}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:6vh 8vw;gap:20px}
+  .slide.on{display:flex}
+  h1,h2,h3{font-family:"Archivo",sans-serif;line-height:1.1;text-wrap:balance}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  .slide h1{font-size:clamp(2rem,6vw,4rem);font-weight:800;letter-spacing:-.02em}
+  .slide h2{font-size:clamp(1.5rem,4.2vw,2.8rem);font-weight:800;letter-spacing:-.01em}
+  .slide p.lead{font-size:clamp(1.05rem,2.4vw,1.5rem);color:var(--ink2);max-width:26ch}
+  ul{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:6px}
+  ul li{position:relative;padding-left:34px;font-size:clamp(1.05rem,2.3vw,1.6rem)}
+  ul li::before{content:"";position:absolute;left:0;top:.55em;width:12px;height:12px;border-radius:3px;background:var(--accent);transform:rotate(45deg)}
+  ul.lab li::before{background:var(--lab)}
+  code.k{font-family:"JetBrains Mono",monospace;color:#c7dcff;font-size:.92em}
+  pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:22px 26px;font-family:"JetBrains Mono",monospace;font-size:clamp(.85rem,1.9vw,1.3rem);line-height:1.55;overflow:auto;max-width:100%}
+  pre .k{color:#7dd3fc} pre .s{color:#86efac} pre .c{color:#7183a3;font-style:italic}
+  .tag{display:inline-flex;align-items:center;gap:10px;font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);color:var(--ink2)}
+  .tag .pill{background:var(--accent2);color:#fff;font-weight:700;border-radius:999px;padding:3px 12px;letter-spacing:.06em}
+  .tag .pill.lab{background:var(--lab);color:#062b26} .tag .pill.warn{background:var(--warn);color:#3a2a05}
+  .section{background:linear-gradient(135deg,#132a52,#0b1220)}
+  .section .big{font-size:clamp(3rem,12vw,8rem);font-family:"Archivo";font-weight:800;color:var(--accent2);line-height:.9}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+  @media (max-width:760px){.two{grid-template-columns:1fr}}
+  .bar{position:fixed;left:0;top:0;height:4px;background:var(--accent2);width:0;transition:width .25s;z-index:5}
+  .count{position:fixed;right:16px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink2);z-index:5}
+  .nav{position:fixed;inset:auto 0 0 0;display:flex;justify-content:space-between;pointer-events:none;z-index:4}
+  .nav button{pointer-events:auto;background:transparent;border:none;color:transparent;width:22vw;height:100vh;cursor:pointer}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+</style>
+<style>
+  /* ESL additions: picture vocabulary + dialogue lines (sized for projection) */
+  .pics{display:grid;grid-template-columns:repeat(auto-fill,minmax(clamp(110px,13vw,170px),1fr));gap:14px;margin-top:4px}
+  .pics figure{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:10px 8px 8px;text-align:center}
+  .pics img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px;background:#FFF3E0;display:block}
+  .pics figcaption{font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(.9rem,1.9vw,1.3rem);margin-top:6px}
+  .pics.sm{grid-template-columns:repeat(auto-fill,minmax(clamp(90px,10vw,130px),1fr))}
+  .pics .emo{font-size:clamp(2.6rem,6vw,4.4rem);line-height:1;aspect-ratio:1;display:flex;align-items:center;justify-content:center;border-radius:10px;background:#1b2340}
+  .dlg{display:flex;flex-direction:column;gap:8px;font-size:clamp(1rem,2.2vw,1.45rem)}
+  .dlg p b{display:inline-block;min-width:4.2em;color:var(--accent)}
+  .dlg p.b b{color:#c4a1ff}
+  table.g{border-collapse:collapse;font-size:clamp(.95rem,2vw,1.35rem)}
+  table.g th,table.g td{border:1px solid var(--line);padding:8px 14px;text-align:left}
+  table.g th{color:var(--accent);font-family:"Archivo",sans-serif}
+  .ok{color:var(--lab)} .no{color:#ff8a8a}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="deck" id="deck">
+  <section class="slide on section">
+    <div class="eyebrow">English Foundations (A1) · Instructor Kit</div>
+    <h1>Module 8<br>Bringing It All Together</h1>
+    <p class="lead">The doctor's office, my week, and a look at our last class.</p>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow">8.1 · C23 · today</div>
+    <h2>Two real tasks. Use all your English!</h2>
+    <ul>
+      <li><b>Task 1</b> 🩺 The doctor's office: appointment, problem, advice</li>
+      <li><b>Task 2</b> 📆 My Week: every week + next week</li>
+      <li><b>Then</b> 🎉 What happens in our last class</li>
+    </ul>
+    <div class="tag"><span class="pill warn">ACTORS</span> Today we use role cards. Nobody talks about their real health.</div>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow">Pre-task · the body</div>
+    <h2>Touch your head!</h2>
+    <div class="pics sm">
+      <figure><img src="../assets/vocab/head.jpg" alt=""><figcaption>head</figcaption></figure>
+      <figure><img src="../assets/vocab/hand.jpg" alt=""><figcaption>hand</figcaption></figure>
+      <figure><img src="../assets/vocab/leg.jpg" alt=""><figcaption>leg</figcaption></figure>
+      <figure><img src="../assets/vocab/foot.jpg" alt=""><figcaption>foot → feet</figcaption></figure>
+      <figure><img src="../assets/vocab/stomach.jpg" alt=""><figcaption>stomach</figcaption></figure>
+      <figure><img src="../assets/vocab/throat.jpg" alt=""><figcaption>throat</figcaption></figure>
+      <figure><div class="emo">💪</div><figcaption>arm</figcaption></figure>
+      <figure><div class="emo">🦷</div><figcaption>tooth → teeth</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow">Pre-task · what's the matter?</div>
+    <h2>I have a headache.</h2>
+    <table class="g">
+      <tr><th>I have a… = I've got a…</th><td>headache 🤕 · cold 🤧 · cough 😷 · sore throat · temperature 🌡️</td></tr>
+      <tr><th>My … hurts. (one)</th><td>My back hurts. My tooth hurts.</td></tr>
+      <tr><th>My … hurt. (two +)</th><td>My feet hurt. My eyes hurt.</td></tr>
+      <tr><th>I feel…</th><td>sick · tired · better</td></tr>
+    </table>
+    <div class="tag"><span class="pill">CCQ</span> "I have a cold." Am I cold, like winter? (No, I'm sick.) · "My feet ___": hurt or hurts? (Hurt.)</div>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow">Pre-task · advice</div>
+    <h2>You should rest.</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>You <b>should</b> rest.</li>
+        <li>You <b>should</b> drink water.</li>
+        <li>You <b>should</b> see a doctor.</li>
+      </ul>
+      <ul>
+        <li>You <b>shouldn't</b> go to work.</li>
+        <li>You <b>shouldn't</b> drink coffee.</li>
+        <li>Should I take medicine?</li>
+      </ul>
+    </div>
+    <div class="tag"><span class="pill warn">WATCH</span> should + verb · "should <s>to</s> rest" ✗ · "should <s>rests</s>" ✗ · the <b>l</b> is silent: "shood"</div>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow">Listening · at the doctor</div>
+    <h2>What's the matter?</h2>
+    <div class="dlg">
+      <p><b>Doctor:</b> Good morning. What's the matter?</p>
+      <p class="b"><b>Patient:</b> I don't feel well. I have a headache and a sore throat.</p>
+      <p><b>Doctor:</b> Does your stomach hurt?</p>
+      <p class="b"><b>Patient:</b> No, it doesn't. But my back hurts a little.</p>
+      <p><b>Doctor:</b> It's a cold. You should rest and drink a lot of water.</p>
+      <p class="b"><b>Patient:</b> Should I take some medicine?</p>
+      <p><b>Doctor:</b> Yes. And you shouldn't go to work for two days.</p>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow">Pre-task · on the phone</div>
+    <h2>I'd like to make an appointment.</h2>
+    <div class="dlg">
+      <p><b>Reception:</b> Good morning, Riverside Health Center. How can I help you?</p>
+      <p class="b"><b>Sam:</b> Hello. I'd like to make an appointment, please.</p>
+      <p><b>Reception:</b> Can you come <u>on</u> Tuesday <u>at</u> 10:30?</p>
+      <p class="b"><b>Sam:</b> Sorry, I work on Tuesday. What about Wednesday?</p>
+      <p><b>Reception:</b> Wednesday at 2:15? · How do you spell your name?</p>
+      <p class="b"><b>Sam:</b> S-A-M, L-E-E.</p>
+    </div>
+    <div class="tag"><span class="pill">REVIEW</span> on + day · at + time · spelling · I'd like…</div>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow">Task 1 · groups of 3 · 14 min</div>
+    <h2>The doctor's office</h2>
+    <div class="two">
+      <ul class="lab">
+        <li><b>Patient:</b> phone → problem → listen</li>
+        <li><b>Receptionist:</b> day + time · spell the name</li>
+        <li><b>Doctor:</b> one question · two pieces of advice</li>
+        <li>Clap = change roles</li>
+      </ul>
+      <ul>
+        <li>Your real problems? <span class="ok">(No! From the card.)</span></li>
+        <li>Who talks first on the phone? <span class="ok">(The receptionist.)</span></li>
+        <li>How much advice? <span class="ok">(Two.)</span></li>
+      </ul>
+    </div>
+    <div class="tag"><span class="pill lab">HELP</span> Sorry, can you say that again, please?</div>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow">Pre-task · two time frames</div>
+    <h2>Every week · Next week</h2>
+    <table class="g">
+      <tr><th>📆 Every week</th><th>➡️ Next week</th></tr>
+      <tr><td>I <b>usually</b> work on Mondays.</td><td>I'm <b>going to</b> visit my sister.</td></tr>
+      <tr><td>I <b>often</b> cook dinner.</td><td>I'm <b>going to</b> start a class.</td></tr>
+      <tr><td>My son <b>plays</b> football.</td><td>We're <b>going to</b> relax.</td></tr>
+      <tr><td>usually · always · often · every day · on Saturdays</td><td>next week · tomorrow · on Friday night</td></tr>
+    </table>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow">Model talk · listen: one hand or two?</div>
+    <h2>My week</h2>
+    <p class="lead" style="max-width:52ch">"Let me tell you about my week. I usually get up at six thirty. From Monday to Friday I work at a supermarket. In the evening I often cook dinner with my daughter. I never work on Sundays. Next week is different. On Monday I'm going to see the doctor. On Wednesday I'm going to meet my friend for coffee. And on Saturday I'm going to buy a warm coat!"</p>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow">Task 2 · plan 6 min · tell 10 min</div>
+    <h2>My Week talk</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>Plan: <b>4</b> every-week + <b>4</b> next-week sentences</li>
+        <li>Groups of 3: talk 1–2 minutes each</li>
+        <li>Listeners: ask <b>one</b> question</li>
+        <li>Your week <b>or</b> a week card. Both are great!</li>
+      </ul>
+      <ul>
+        <li>How many sentences? <span class="ok">(8 or more.)</span></li>
+        <li>Next week: which grammar? <span class="ok">(I'm going to…)</span></li>
+        <li>Listeners: what do you do? <span class="ok">(Ask a question.)</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow">Language focus · let's fix it together</div>
+    <h2>Good English, better English</h2>
+    <ul>
+      <li>You should <span class="no">to</span> rest. → You should rest. <span class="ok">✓</span></li>
+      <li>My legs <span class="no">hurts</span>. → My legs hurt. <span class="ok">✓</span></li>
+      <li>I have <span class="no">cold</span>. → I have <b>a</b> cold. <span class="ok">✓</span></li>
+      <li>I <span class="no">going</span> to visit… → I<b>'m</b> going to visit… <span class="ok">✓</span></li>
+      <li>My son <span class="no">play</span> football. → My son play<b>s</b> football. <span class="ok">✓</span></li>
+    </ul>
+    <div class="tag"><span class="pill">TEACHER</span> Replace these with the errors you heard today.</div>
+  </section>
+
+  <section class="slide section">
+    <div class="eyebrow">Looking ahead · C24 · our last class</div>
+    <h2>Final check + celebration 🎉</h2>
+    <ul class="lab">
+      <li><b>Speaking check</b> with your teacher (about 5 minutes): questions about you and your week, and one role-play (café, store, or doctor)</li>
+      <li>Short listening, reading &amp; writing tasks</li>
+      <li><b>Celebration:</b> certificates and next steps: the A2 course</li>
+    </ul>
+    <p class="lead" style="margin-top:10px">No surprises. It's everything we practiced today.</p>
+  </section>
+
+  <section class="slide section">
+    <div class="eyebrow">A1 · look how far you've come</div>
+    <h2>Week 1: "Hello, my name is…"<br>Week 12: all of this!</h2>
+    <ul class="lab">
+      <li>I have a sore throat. Can I come on Wednesday at 2:15?</li>
+      <li>I usually work on Mondays, and next week I'm going to start a new job.</li>
+    </ul>
+    <p class="lead" style="margin-top:10px">Homework: say your My Week talk out loud twice. See you at our last class!</p>
+  </section>
+
+</div>
+
+<div class="count" id="count">1 / 14</div>
+<div class="nav"><button id="prev" aria-label="Previous slide"></button><button id="next" aria-label="Next slide"></button></div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const bar=document.getElementById('bar'), count=document.getElementById('count');
+  let i=0;
+  function show(n){ i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+    bar.style.width=((i+1)/slides.length*100)+'%'; count.textContent=(i+1)+' / '+slides.length; }
+  document.getElementById('next').onclick=()=>show(i+1);
+  document.getElementById('prev').onclick=()=>show(i-1);
+  addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}
+    else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+  });
+  show(0);
+</script>
+</body>
+</html>

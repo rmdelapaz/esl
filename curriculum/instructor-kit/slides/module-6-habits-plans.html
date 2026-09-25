@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slides — Module 6</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root{--bg:#0b1220;--ink:#eef3fb;--ink2:#a9b8d0;--accent:#7fb2ff;--accent2:#2563eb;--lab:#34d3bd;--warn:#fbbf24;--line:#22314f;--code:#0e1830;color-scheme:dark}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;overflow:hidden}
+  .deck{height:100%;width:100%;position:relative}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:6vh 8vw;gap:20px}
+  .slide.on{display:flex}
+  h1,h2,h3{font-family:"Archivo",sans-serif;line-height:1.1;text-wrap:balance}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  .slide h1{font-size:clamp(2rem,6vw,4rem);font-weight:800;letter-spacing:-.02em}
+  .slide h2{font-size:clamp(1.5rem,4.2vw,2.8rem);font-weight:800;letter-spacing:-.01em}
+  .slide p.lead{font-size:clamp(1.05rem,2.4vw,1.5rem);color:var(--ink2);max-width:26ch}
+  ul{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:6px}
+  ul li{position:relative;padding-left:34px;font-size:clamp(1.05rem,2.3vw,1.6rem)}
+  ul li::before{content:"";position:absolute;left:0;top:.55em;width:12px;height:12px;border-radius:3px;background:var(--accent);transform:rotate(45deg)}
+  ul.lab li::before{background:var(--lab)}
+  code.k{font-family:"JetBrains Mono",monospace;color:#cfe0ff;font-size:.92em}
+  .tag{display:inline-flex;align-items:center;gap:10px;font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);color:var(--ink2)}
+  .tag .pill{background:var(--accent2);color:#fff;font-weight:700;border-radius:999px;padding:3px 12px;letter-spacing:.06em}
+  .tag .pill.lab{background:var(--lab);color:#062b26} .tag .pill.warn{background:var(--warn);color:#3a2a05}
+  .section{background:linear-gradient(135deg,#132a52,#0b1220)}
+  .section .big{font-size:clamp(3rem,12vw,8rem);font-family:"Archivo";font-weight:800;color:var(--accent2);line-height:.9}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+  @media (max-width:760px){.two{grid-template-columns:1fr}}
+  .bar{position:fixed;left:0;top:0;height:4px;background:var(--accent2);width:0;transition:width .25s;z-index:5}
+  .count{position:fixed;right:16px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink2);z-index:5}
+  .nav{position:fixed;inset:auto 0 0 0;display:flex;justify-content:space-between;pointer-events:none;z-index:4}
+  .nav button{pointer-events:auto;background:transparent;border:none;color:transparent;width:22vw;height:100vh;cursor:pointer}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+  /* ESL: picture vocabulary, tables, dialogues (sized for projection) */
+  .pics{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(130px,40vw),1fr));gap:16px;max-width:100%}
+  .pics figure{text-align:center}
+  .pics img{width:100%;max-width:170px;aspect-ratio:1;object-fit:cover;border-radius:14px;background:#FFF3E0;display:block;margin:0 auto}
+  .pics figcaption{font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(1rem,2.2vw,1.5rem);margin-top:6px}
+  .pics.small{grid-template-columns:repeat(auto-fit,minmax(min(110px,30vw),1fr))}
+  .pics.small img{max-width:120px}
+  table.t{border-collapse:collapse;font-size:clamp(.95rem,2vw,1.4rem);width:100%;max-width:1000px}
+  table.t th,table.t td{border-bottom:1px solid var(--line);padding:8px 14px;text-align:left}
+  table.t th{font-family:"JetBrains Mono",monospace;font-size:.7em;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)}
+  .hl{color:var(--warn);font-weight:700}
+  .ok{color:var(--lab);font-weight:700}
+  .dlg{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:18px 24px;font-size:clamp(1rem,2.1vw,1.4rem);line-height:1.5;max-width:1000px}
+  .dlg b{color:var(--accent)} .dlg b.b{color:#c4a5ff}
+  .scale{display:flex;flex-wrap:wrap;gap:8px}
+  .scale span{background:var(--code);border:1px solid var(--line);border-radius:10px;padding:10px 14px;font-family:"Archivo";font-weight:700;font-size:clamp(1rem,2.2vw,1.6rem)}
+  .scale small{display:block;font-family:"JetBrains Mono",monospace;font-weight:500;font-size:.55em;color:var(--ink2)}
+  .ans{font-size:clamp(1rem,2.1vw,1.45rem);line-height:1.6}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="deck" id="deck">
+
+  <!-- 1 -->
+  <section class="slide on section">
+    <div class="eyebrow">English Foundations (A1) · Instructor Kit</div>
+    <h1>Module 6<br>Habits, Free Time &amp; Plans</h1>
+    <p class="lead">How often? Do you like it? When are you free?</p>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide">
+    <div class="eyebrow">Classes 17–19 · the map</div>
+    <h2>Talk about your real life</h2>
+    <ul>
+      <li><b>6.1</b> How often? I <u>always</u> drink coffee.</li>
+      <li><b>6.2</b> Likes &amp; dislikes: I love cook<u>ing</u>.</li>
+      <li><b>6.3</b> Times, dates &amp; plans: Are you free <u>on</u> Saturday?</li>
+    </ul>
+    <div class="tag"><span class="pill">NOTE</span> A new identity card is always okay.</div>
+  </section>
+
+  <!-- ===================== 6.1 ===================== -->
+  <!-- 3 -->
+  <section class="slide section"><div class="big">6.1</div><h2>How Often? — Adverbs of Frequency</h2><p class="lead">always · usually · often · sometimes · hardly ever · never</p></section>
+
+  <!-- 4 -->
+  <section class="slide">
+    <div class="eyebrow">Jobs · who works at night?</div>
+    <div class="pics small" style="grid-template-columns:repeat(5,minmax(0,1fr))">
+      <figure><img src="../assets/vocab/nurse.jpg" alt=""><figcaption>nurse</figcaption></figure>
+      <figure><img src="../assets/vocab/doctor.jpg" alt=""><figcaption>doctor</figcaption></figure>
+      <figure><img src="../assets/vocab/teacher.jpg" alt=""><figcaption>teacher</figcaption></figure>
+      <figure><img src="../assets/vocab/driver.jpg" alt=""><figcaption>driver</figcaption></figure>
+      <figure><img src="../assets/vocab/chef.jpg" alt=""><figcaption>chef</figcaption></figure>
+      <figure><img src="../assets/vocab/waiter.jpg" alt=""><figcaption>waiter</figcaption></figure>
+      <figure><img src="../assets/vocab/mechanic.jpg" alt=""><figcaption>mechanic</figcaption></figure>
+      <figure><img src="../assets/vocab/cleaner.jpg" alt=""><figcaption>cleaner</figcaption></figure>
+      <figure><img src="../assets/vocab/shop-assistant.jpg" alt=""><figcaption>shop assistant</figcaption></figure>
+    </div>
+    <div class="tag"><span class="pill">SAY</span> A nurse usually works at night. · He is <b>a</b> driver.</div>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide">
+    <div class="eyebrow">Meaning · the scale</div>
+    <h2>From 100% to 0%</h2>
+    <div class="scale">
+      <span>always<small>100% ●●●●●●●</small></span>
+      <span>usually<small>90% ●●●●●●○</small></span>
+      <span>often<small>70% ●●●●●○○</small></span>
+      <span>sometimes<small>40% ●●●○○○○</small></span>
+      <span>hardly ever<small>10% ●○○○○○○</small></span>
+      <span>never<small>0% ○○○○○○○</small></span>
+    </div>
+    <ul><li>I <b>always</b> have breakfast. · I <b>hardly ever</b> eat fast food.</li><li><b>never</b> = no. "I never smoke." <span class="hl">Not</span> "I don't never smoke."</li></ul>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide">
+    <div class="eyebrow">Form · where does it go?</div>
+    <h2>Be after, verb before</h2>
+    <table class="t">
+      <tr><th>Normal verb → before</th><th>be (am / is / are) → after</th></tr>
+      <tr><td>I <b>always</b> drink coffee.</td><td>She is <b>always</b> late.</td></tr>
+      <tr><td>They <b>usually</b> work late.</td><td>We are <b>often</b> busy.</td></tr>
+      <tr><td><span class="hl">✗</span> I drink always coffee.</td><td><span class="hl">✗</span> She always is late.</td></tr>
+    </table>
+    <div class="tag"><span class="pill warn">CHECK</span> "I hardly ever eat fast food." Every week? (No.) Zero? (No, almost zero.)</div>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide">
+    <div class="eyebrow">Ask &amp; answer</div>
+    <h2>How often do you cook?</h2>
+    <div class="two">
+      <ul>
+        <li>How often <b>do</b> you cook?</li>
+        <li>How often <b>does</b> she work at night?</li>
+      </ul>
+      <ul class="lab">
+        <li><b>once</b> a week (1)</li>
+        <li><b>twice</b> a day (2)</li>
+        <li><b>three times</b> a month</li>
+        <li>every morning · on Fridays</li>
+      </ul>
+    </div>
+    <div class="tag"><span class="pill">SAY</span> I usually cook. / I cook every evening.</div>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide">
+    <div class="eyebrow">Workbook 6.1 · check your answers</div>
+    <h2>Answers</h2>
+    <div class="ans">
+      <p><b>Ex 1:</b> I <b>always</b> get up… · She is <b>never</b> late. · We <b>sometimes</b> eat… · They are <b>usually</b> tired. · He <b>hardly ever</b> drinks… · My bus is <b>often</b> on time.</p>
+      <p><b>Ex 2:</b> always · never · hardly ever · once · twice · usually</p>
+      <p><b>Ex 3:</b> I often cook at home. · She is usually busy. · How often do you swim? · A nurse usually works at night. · I go to the gym twice a week.</p>
+    </div>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide">
+    <div class="eyebrow">Speaking · 17 min</div>
+    <h2>Class survey + bar chart</h2>
+    <ul class="lab">
+      <li>Read <b>your</b> question: How often do you…?</li>
+      <li>Ask <b>6–8</b> people. Make a mark | for each answer.</li>
+      <li>Color the bars. One square = one person.</li>
+      <li>Report: "<b>Five</b> people always cook. <b>Two</b> people never cook."</li>
+    </ul>
+    <div class="tag"><span class="pill lab">ICQ</span> How many people? · Do you write names? (No, a mark.) · How long? (9 min)</div>
+  </section>
+
+  <!-- ===================== 6.2 ===================== -->
+  <!-- 10 -->
+  <section class="slide section"><div class="big">6.2</div><h2>Likes &amp; Dislikes — love / like / hate + -ing</h2><p class="lead">What do you do in your free time?</p></section>
+
+  <!-- 11 -->
+  <section class="slide">
+    <div class="eyebrow">Hobbies</div>
+    <div class="pics">
+      <figure><img src="../assets/vocab/cook.jpg" alt=""><figcaption>cooking</figcaption></figure>
+      <figure><img src="../assets/vocab/read.jpg" alt=""><figcaption>reading</figcaption></figure>
+      <figure><img src="../assets/vocab/dance.jpg" alt=""><figcaption>dancing</figcaption></figure>
+      <figure><img src="../assets/vocab/hike.jpg" alt=""><figcaption>hiking</figcaption></figure>
+      <figure><img src="../assets/vocab/swim.jpg" alt=""><figcaption>swimming</figcaption></figure>
+      <figure><img src="../assets/vocab/sing.jpg" alt=""><figcaption>singing</figcaption></figure>
+      <figure><img src="../assets/vocab/play-the-guitar.jpg" alt=""><figcaption>playing the guitar</figcaption></figure>
+      <figure><img src="../assets/vocab/football.jpg" alt=""><figcaption>playing football</figcaption></figure>
+    </div>
+    <div class="tag"><span class="pill">ALSO</span> painting · gardening · gaming · shopping</div>
+  </section>
+
+  <!-- 12 -->
+  <section class="slide">
+    <div class="eyebrow">Meaning &amp; form</div>
+    <h2>I love cook<u>ing</u></h2>
+    <div class="two">
+      <div class="scale" style="flex-direction:column;align-items:flex-start">
+        <span>♥♥ love</span><span>♥ like · 🙂 enjoy</span><span>😐 don't mind <small>it's okay</small></span><span>☹️ don't like · ✗ hate</span>
+      </div>
+      <table class="t">
+        <tr><th>Spelling</th><th>Example</th></tr>
+        <tr><td>+ ing</td><td>cook → cooking</td></tr>
+        <tr><td>drop <b>e</b></td><td>dance → dancing</td></tr>
+        <tr><td>double</td><td>swim → swi<b>mm</b>ing</td></tr>
+      </table>
+    </div>
+    <div class="tag"><span class="pill warn">CHECK</span> "I don't mind cleaning." Do I love it? (No.) Is it a problem? (No, it's okay.)</div>
+  </section>
+
+  <!-- 13 -->
+  <section class="slide">
+    <div class="eyebrow">Do you like…? · it / them</div>
+    <div class="dlg">
+      <p><b>Nina:</b> What do you do in your free time, Omar?</p>
+      <p><b class="b">Omar:</b> I love cooking. Do you like cooking?</p>
+      <p><b>Nina:</b> No, I don't. I hate <u>it</u>! But I don't mind washing the dishes.</p>
+      <p><b class="b">Omar:</b> Do you like swimming?</p>
+      <p><b>Nina:</b> Not really. The water is too cold for me.</p>
+    </div>
+    <div class="tag"><span class="pill">SAY</span> one thing → <b>it</b> · many things → <b>them</b> · She love<b>s</b> danc<b>ing</b>.</div>
+  </section>
+
+  <!-- 14 -->
+  <section class="slide">
+    <div class="eyebrow">Workbook 6.2 · check your answers</div>
+    <h2>Answers</h2>
+    <div class="ans">
+      <p><b>Ex 1:</b> playing · writing · shopping · painting · making · running · dancing · listening</p>
+      <p><b>Ex 2:</b> it · them · him · her · us · me</p>
+      <p><b>Ex 3:</b> I love dancing. · She hates waiting. · We don't mind cleaning. · He doesn't like swimming. · They enjoy reading.</p>
+    </div>
+  </section>
+
+  <!-- 15 -->
+  <section class="slide">
+    <div class="eyebrow">Game · 15 min</div>
+    <h2>Find someone who…</h2>
+    <ul class="lab">
+      <li>Stand up. Ask: "<b>Do you like</b> dancing?"</li>
+      <li>"Yes, I do. I love it!" → write the <b>name</b>.</li>
+      <li>Then ask: "<b>How often</b> do you dance?"</li>
+      <li>One person = <b>2 boxes</b> maximum.</li>
+    </ul>
+    <div class="tag"><span class="pill lab">ICQ</span> Sit or stand? · What do you write? · Can you show your paper? (No.)</div>
+  </section>
+
+  <!-- ===================== 6.3 ===================== -->
+  <!-- 16 -->
+  <section class="slide section"><div class="big">6.3</div><h2>Times &amp; Dates — Making Plans</h2><p class="lead">Are you free on Saturday?</p></section>
+
+  <!-- 17 -->
+  <section class="slide">
+    <div class="eyebrow">Seasons · months · dates</div>
+    <div class="pics small">
+      <figure><img src="../assets/vocab/spring.jpg" alt=""><figcaption>spring</figcaption></figure>
+      <figure><img src="../assets/vocab/summer.jpg" alt=""><figcaption>summer</figcaption></figure>
+      <figure><img src="../assets/vocab/winter.jpg" alt=""><figcaption>winter</figcaption></figure>
+      <figure><img src="../assets/vocab/cake.jpg" alt=""><figcaption>birthday</figcaption></figure>
+    </div>
+    <table class="t">
+      <tr><th>We write</th><td>1st</td><td>2nd</td><td>3rd</td><td>4th</td><td>5th</td><td>21st</td></tr>
+      <tr><th>We say</th><td>first</td><td>second</td><td>third</td><td>fourth</td><td>fifth</td><td>twenty-first</td></tr>
+    </table>
+    <div class="tag"><span class="pill">SAY</span> June 1st = "June first" / "the first of June" · also: fall (autumn)</div>
+  </section>
+
+  <!-- 18 -->
+  <section class="slide">
+    <div class="eyebrow">at · in · on</div>
+    <h2>Big → in · one day → on · a point → at</h2>
+    <table class="t">
+      <tr><th>at</th><td>7 o'clock · noon · <span class="hl">at night</span></td></tr>
+      <tr><th>in</th><td>July · winter · 2026 · <span class="hl">in the morning</span> / afternoon / evening</td></tr>
+      <tr><th>on</th><td>Monday · June 1st · my birthday · on the weekend (US)</td></tr>
+    </table>
+    <div class="tag"><span class="pill warn">CHECK</span> "The party is on June 3rd." A month, a day, or a time? (A day → on.)</div>
+  </section>
+
+  <!-- 19 -->
+  <section class="slide">
+    <div class="eyebrow">Plans · going to · inviting</div>
+    <div class="dlg">
+      <p><b>Maya:</b> Hi Leo! Are you free <u>on</u> Saturday?</p>
+      <p><b class="b">Leo:</b> Yes, I think so. Why?</p>
+      <p><b>Maya:</b> Would you like to have lunch? Let's meet <u>at</u> one o'clock.</p>
+      <p><b class="b">Leo:</b> Sure, that sounds great! I'm meeting my brother <u>in</u> the morning, but I'm free in the afternoon.</p>
+      <p><b>Maya:</b> Great. I'm <u>going to</u> walk there. See you then!</p>
+    </div>
+    <div class="tag"><span class="pill">FORM</span> am / is / are + going to + verb · No? "Sorry, I'm busy. Maybe another day?"</div>
+  </section>
+
+  <!-- 20 -->
+  <section class="slide">
+    <div class="eyebrow">Workbook 6.3 · check your answers</div>
+    <h2>Answers</h2>
+    <div class="ans">
+      <p><b>Ex 1:</b> at · in · on · in · on · at · in · on <span style="color:var(--ink2)">(UK: at the weekend)</span></p>
+      <p><b>Ex 2:</b> am · are · to · are · going</p>
+      <p><b>Ex 3:</b> first · second · third · fourth · twenty-fifth · thirty-first</p>
+    </div>
+  </section>
+
+  <!-- 21 -->
+  <section class="slide">
+    <div class="eyebrow">Information gap · 16 min</div>
+    <h2>Find a time to meet</h2>
+    <ul class="lab">
+      <li>A and B: <b>don't show</b> your diary!</li>
+      <li>Ask: "Are you free on <b>Monday morning</b>?"</li>
+      <li>"Sorry, I'm busy. I'm working." → mark <b>✗</b></li>
+      <li>Find <b>3</b> free times. Plan 3 things: "Let's go to the park on Saturday afternoon!"</li>
+    </ul>
+    <div class="tag"><span class="pill lab">ICQ</span> Can you show your card? (No.) How many free times? (Three.)</div>
+  </section>
+
+  <!-- 22 -->
+  <section class="slide section">
+    <div class="eyebrow">You can now</div>
+    <h2>Module 6 done</h2>
+    <ul class="lab">
+      <li>I <b>usually</b> cook dinner. I go swimming <b>twice a week</b>.</li>
+      <li>I <b>love</b> hik<b>ing</b>. Do you like it?</li>
+      <li>Are you free <b>on</b> Saturday? Let's meet <b>at</b> one. I'm <b>going to</b> bring a cake!</li>
+    </ul>
+    <p class="lead" style="margin-top:10px">Homework: the online lessons 6.1–6.3. Next: Module 7, Out in the World.</p>
+  </section>
+
+</div>
+
+<div class="count" id="count">1 / 22</div>
+<div class="nav"><button id="prev" aria-label="Previous slide"></button><button id="next" aria-label="Next slide"></button></div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const bar=document.getElementById('bar'), count=document.getElementById('count');
+  let i=0;
+  function show(n){ i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+    bar.style.width=((i+1)/slides.length*100)+'%'; count.textContent=(i+1)+' / '+slides.length; }
+  document.getElementById('next').onclick=()=>show(i+1);
+  document.getElementById('prev').onclick=()=>show(i-1);
+  addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}
+    else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+  });
+  show(0);
+</script>
+</body>
+</html>

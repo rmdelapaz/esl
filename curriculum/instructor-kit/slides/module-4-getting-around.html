@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slides — Module 4</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root{--bg:#0b1220;--ink:#eef3fc;--ink2:#a9b8d3;--accent:#7fb2ff;--accent2:#2563eb;--lab:#34d3bd;--warn:#fbbf24;--line:#223253;--code:#0f1a30;color-scheme:dark}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;overflow:hidden}
+  .deck{height:100%;width:100%;position:relative}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:6vh 8vw;gap:20px}
+  .slide.on{display:flex}
+  h1,h2,h3{font-family:"Archivo",sans-serif;line-height:1.1;text-wrap:balance}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  .slide h1{font-size:clamp(2rem,6vw,4rem);font-weight:800;letter-spacing:-.02em}
+  .slide h2{font-size:clamp(1.5rem,4.2vw,2.8rem);font-weight:800;letter-spacing:-.01em}
+  .slide p.lead{font-size:clamp(1.05rem,2.4vw,1.5rem);color:var(--ink2);max-width:26ch}
+  ul{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:6px}
+  ul li{position:relative;padding-left:34px;font-size:clamp(1.05rem,2.3vw,1.6rem)}
+  ul li::before{content:"";position:absolute;left:0;top:.55em;width:12px;height:12px;border-radius:3px;background:var(--accent);transform:rotate(45deg)}
+  ul.lab li::before{background:var(--lab)}
+  code.k{font-family:"JetBrains Mono",monospace;color:#c7dcff;font-size:.92em}
+  .tag{display:inline-flex;align-items:center;gap:10px;font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);color:var(--ink2)}
+  .tag .pill{background:var(--accent2);color:#fff;font-weight:700;border-radius:999px;padding:3px 12px;letter-spacing:.06em}
+  .tag .pill.lab{background:var(--lab);color:#062b26} .tag .pill.warn{background:var(--warn);color:#3a2a05}
+  .section{background:linear-gradient(135deg,#132a52,#0b1220)}
+  .section .big{font-size:clamp(3rem,12vw,8rem);font-family:"Archivo";font-weight:800;color:var(--accent2);line-height:.9}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+  @media (max-width:760px){.two{grid-template-columns:1fr}}
+  .bar{position:fixed;left:0;top:0;height:4px;background:var(--accent2);width:0;transition:width .25s;z-index:5}
+  .count{position:fixed;right:16px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink2);z-index:5}
+  .nav{position:fixed;inset:auto 0 0 0;display:flex;justify-content:space-between;pointer-events:none;z-index:4}
+  .nav button{pointer-events:auto;background:transparent;border:none;color:transparent;width:22vw;height:100vh;cursor:pointer}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+  /* ESL additions: picture vocabulary, grammar tables, dialogues */
+  .pics{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:18px;max-width:1100px}
+  .pic{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:12px;text-align:center}
+  .pic img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px;background:#FFF3E0;display:block}
+  .pic .w{font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(1rem,2.2vw,1.5rem);margin-top:8px}
+  .pic.word{display:flex;flex-direction:column;justify-content:center;min-height:120px}
+  .pic.word .e{font-size:clamp(2rem,5vw,3.2rem)}
+  table.g{border-collapse:collapse;font-size:clamp(1rem,2.2vw,1.5rem);max-width:100%}
+  table.g th,table.g td{border:1px solid var(--line);padding:10px 18px;text-align:left}
+  table.g th{background:var(--code);color:var(--accent);font-family:"JetBrains Mono",monospace;font-size:.7em;letter-spacing:.08em;text-transform:uppercase}
+  table.g b{color:var(--warn)}
+  .dlg{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:20px 26px;display:grid;grid-template-columns:max-content 1fr;gap:10px 14px;max-width:1000px;font-size:clamp(1.05rem,2.3vw,1.55rem)}
+  .dlg p{display:contents}
+  .dlg .sp{font-weight:700;color:var(--accent)}
+  .dlg .b .sp{color:#9fc3ff}
+  .ccq{border:2px dashed var(--line);border-radius:12px;padding:12px 18px;font-size:clamp(1rem,2.2vw,1.45rem)}
+  .ccq i{color:var(--lab);font-style:normal;font-weight:600}
+  s{color:#f87171}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="deck" id="deck">
+
+  <!-- 1 -->
+  <section class="slide on section">
+    <div class="eyebrow">English Foundations · A1 · Instructor Kit</div>
+    <h1>Module 4<br>Getting Around &amp; Doing Things</h1>
+    <p class="lead">What you can do, what you're doing now, and a day out in town.</p>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide">
+    <div class="eyebrow">Classes 10–12 · weeks 5–6</div>
+    <h2>Our map for Module 4</h2>
+    <ul>
+      <li><b>4.1</b> Can / can't: abilities &amp; food · <i>I can cook. I like tea.</i></li>
+      <li><b>4.2</b> Right now: <i>I'm reading. She's cooking.</i></li>
+      <li><b>4.3</b> Review project: shopping &amp; directions 🎓</li>
+    </ul>
+    <div class="tag"><span class="pill">NEXT</span> Class 13: Progress Test 1 (Modules 1–4). Short and friendly.</div>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide section"><div class="big">4.1</div><h2>Can / Can't: Abilities &amp; Food</h2><p class="lead">One small, strong word: can.</p></section>
+
+  <!-- 4 -->
+  <section class="slide">
+    <div class="eyebrow">What can you do?</div>
+    <h2>I can… ✅ &nbsp; I can't… ❌</h2>
+    <div class="pics">
+      <div class="pic"><img src="../assets/vocab/swim.jpg" alt="swim"><div class="w">swim</div></div>
+      <div class="pic"><img src="../assets/vocab/cook.jpg" alt="cook"><div class="w">cook</div></div>
+      <div class="pic"><img src="../assets/vocab/dance.jpg" alt="dance"><div class="w">dance</div></div>
+      <div class="pic"><img src="../assets/vocab/sing.jpg" alt="sing"><div class="w">sing</div></div>
+      <div class="pic"><img src="../assets/vocab/play-the-guitar.jpg" alt="play the guitar"><div class="w">play the guitar</div></div>
+      <div class="pic"><img src="../assets/vocab/football.jpg" alt="play football"><div class="w">play football</div></div>
+      <div class="pic word"><div class="e">🚗</div><div class="w">drive</div></div>
+      <div class="pic word"><div class="e">🚲</div><div class="w">ride a bike</div></div>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide">
+    <div class="eyebrow">Form · can / can't + verb</div>
+    <h2>Same for everyone</h2>
+    <table class="g">
+      <tr><th>Subject</th><th>can / can't</th><th>verb</th></tr>
+      <tr><td>I · You · We · They</td><td><b>can</b></td><td>swim.</td></tr>
+      <tr><td>He · She</td><td><b>can</b></td><td>sing.</td></tr>
+      <tr><td>They</td><td><b>can't</b></td><td>drive.</td></tr>
+    </table>
+    <ul><li>She <s>cans</s> swim → She <b>can</b> swim.</li><li>I can <s>to</s> swim → I can swim.</li><li>He can <s>swims</s> → He can <b>swim</b>.</li></ul>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide">
+    <div class="eyebrow">Check · meaning &amp; sound</div>
+    <h2>"She can swim."</h2>
+    <div class="two">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div class="ccq">Is she able to swim? <i>Yes.</i></div>
+        <div class="ccq">Is she swimming now? <i>We don't know.</i></div>
+        <div class="ccq">"She cans swim." OK? <i>No!</i></div>
+      </div>
+      <ul>
+        <li>I <b>c'n</b> SWIM. <span style="color:var(--ink2)">(short, quiet)</span></li>
+        <li>I <b>CAN'T</b> SWIM. <span style="color:var(--ink2)">(long, strong)</span></li>
+        <li>Yes, I <b>CAN</b>!</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide">
+    <div class="eyebrow">Questions &amp; short answers</div>
+    <h2>Can you swim?</h2>
+    <table class="g">
+      <tr><th>Question</th><th>Yes</th><th>No</th></tr>
+      <tr><td><b>Can</b> you swim?</td><td>Yes, I can.</td><td>No, I can't.</td></tr>
+      <tr><td><b>Can</b> she cook?</td><td>Yes, she can.</td><td>No, she can't.</td></tr>
+      <tr><td><b>Can</b> they dance?</td><td>Yes, they can.</td><td>No, they can't.</td></tr>
+    </table>
+    <div class="tag"><span class="pill">ALSO</span> What can you do? · I can… a little. · I can't… very well.</div>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide">
+    <div class="eyebrow">Speaking · 9 minutes · everyone stands</div>
+    <h2>Find someone who can…</h2>
+    <div class="two">
+      <ul class="lab"><li>Ask: <b>Can you…?</b> / <b>Do you like…?</b></li><li>"Yes" → write the name</li><li>One name in each box</li><li>Ask one more question: <i>What can you cook?</i></li></ul>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div class="ccq">Your name or your partner's name? <i>Partner's.</i></div>
+        <div class="ccq">Sit or stand? <i>Stand.</i></div>
+        <div class="ccq">Show your paper? <i>No, ask!</i></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide">
+    <div class="eyebrow">Food &amp; drink</div>
+    <h2>What do you like?</h2>
+    <div class="pics">
+      <div class="pic"><img src="../assets/vocab/rice.jpg" alt="rice"><div class="w">rice</div></div>
+      <div class="pic"><img src="../assets/vocab/bread.jpg" alt="bread"><div class="w">bread</div></div>
+      <div class="pic"><img src="../assets/vocab/chicken.jpg" alt="chicken"><div class="w">chicken</div></div>
+      <div class="pic"><img src="../assets/vocab/fish.jpg" alt="fish"><div class="w">fish</div></div>
+      <div class="pic"><img src="../assets/vocab/vegetable.jpg" alt="vegetables"><div class="w">vegetables</div></div>
+      <div class="pic"><img src="../assets/vocab/chocolate.jpg" alt="chocolate"><div class="w">chocolate</div></div>
+      <div class="pic"><img src="../assets/vocab/coffee.jpg" alt="coffee"><div class="w">coffee</div></div>
+      <div class="pic"><img src="../assets/vocab/tea.jpg" alt="tea"><div class="w">tea</div></div>
+      <div class="pic"><img src="../assets/vocab/milk.jpg" alt="milk"><div class="w">milk</div></div>
+      <div class="pic"><img src="../assets/vocab/juice.jpg" alt="juice"><div class="w">juice</div></div>
+    </div>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide">
+    <div class="eyebrow">like · love · don't like · hate</div>
+    <h2>😍 🙂 😐 😖</h2>
+    <table class="g">
+      <tr><td>😍 I <b>love</b> chocolate.</td><td>🙂 I <b>like</b> tea.</td></tr>
+      <tr><td>😐 I <b>don't like</b> fish.</td><td>😖 I <b>hate</b> onions.</td></tr>
+    </table>
+    <ul><li><b>Do</b> you like tea? → Yes, I <b>do</b>. / No, I <b>don't</b>.</li><li>an apple 🔢 · some water 💧 &nbsp;(I like rice, not <s>a rice</s>)</li></ul>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide">
+    <div class="eyebrow">Model dialogue · then role-play A/B</div>
+    <h2>At the café ☕</h2>
+    <div class="dlg">
+      <p class="a"><span class="sp">Server:</span> Hello! Would you like a coffee?</p>
+      <p class="b"><span class="sp">Customer:</span> Yes, please. And I'd like some water, too.</p>
+      <p class="a"><span class="sp">Server:</span> Of course. Would you like some cake?</p>
+      <p class="b"><span class="sp">Customer:</span> No, thank you. I don't like cake, but I love chocolate!</p>
+      <p class="a"><span class="sp">Server:</span> Here you are.</p>
+      <p class="b"><span class="sp">Customer:</span> Thank you!</p>
+    </div>
+    <div class="tag"><span class="pill warn">POLITE</span> "Yes, please." · "No, thank you." Just "yes" or "no" can sound rude.</div>
+  </section>
+
+  <!-- 12 -->
+  <section class="slide section"><div class="big">4.2</div><h2>Present Continuous: Right Now</h2><p class="lead">What is happening at this moment?</p></section>
+
+  <!-- 13 -->
+  <section class="slide">
+    <div class="eyebrow">What are they doing?</div>
+    <h2>Right now…</h2>
+    <div class="pics">
+      <div class="pic"><img src="../assets/vocab/read.jpg" alt="reading"><div class="w">reading</div></div>
+      <div class="pic"><img src="../assets/vocab/cook.jpg" alt="cooking"><div class="w">cooking</div></div>
+      <div class="pic"><img src="../assets/vocab/drink.jpg" alt="drinking"><div class="w">drinking</div></div>
+      <div class="pic"><img src="../assets/vocab/tv.jpg" alt="watching TV"><div class="w">watching TV</div></div>
+      <div class="pic"><img src="../assets/vocab/mobile-phone.jpg" alt="using a phone"><div class="w">using a phone</div></div>
+      <div class="pic"><img src="../assets/vocab/swim.jpg" alt="swimming"><div class="w">swimming</div></div>
+      <div class="pic"><img src="../assets/vocab/sing.jpg" alt="singing"><div class="w">singing</div></div>
+      <div class="pic"><img src="../assets/vocab/dance.jpg" alt="dancing"><div class="w">dancing</div></div>
+    </div>
+  </section>
+
+  <!-- 14 -->
+  <section class="slide">
+    <div class="eyebrow">Form · two parts, always</div>
+    <h2>am / is / are + verb-ing</h2>
+    <table class="g">
+      <tr><th>Subject</th><th>be</th><th>verb-ing</th><th>Short form</th></tr>
+      <tr><td>I</td><td><b>am</b></td><td>eating</td><td>I'm eating.</td></tr>
+      <tr><td>He / She / It</td><td><b>is</b></td><td>reading</td><td>She's reading.</td></tr>
+      <tr><td>You / We / They</td><td><b>are</b></td><td>playing</td><td>They're playing.</td></tr>
+    </table>
+    <ul><li>read → reading · writ<s>e</s> → writing · run → ru<b style="color:var(--warn)">nn</b>ing · sit → si<b style="color:var(--warn)">tt</b>ing</li><li>❌ He's <b style="color:var(--warn)">not</b>… / isn't… · ❓ <b style="color:var(--warn)">Is</b> she working? → Yes, she is. / No, she isn't.</li></ul>
+    <div class="tag"><span class="pill warn">WATCH</span> <s>I eating</s> → I'm eating.</div>
+  </section>
+
+  <!-- 15 -->
+  <section class="slide">
+    <div class="eyebrow">Habit or this second?</div>
+    <h2>Every day 📅 vs right now ⏰</h2>
+    <table class="g">
+      <tr><th>Every day</th><th>Right now</th></tr>
+      <tr><td>I <b>work</b> in a bank.</td><td>I'<b>m working</b> at home now.</td></tr>
+      <tr><td>She usually <b>walks</b> to school.</td><td>Today she'<b>s taking</b> the bus.</td></tr>
+      <tr><td>every day · usually · always</td><td>now · right now · at the moment</td></tr>
+    </table>
+    <div class="ccq">"I'm working at home now." Is it every day? <i>No.</i> Is it now? <i>Yes.</i> Where do I work every day? <i>In a bank.</i></div>
+  </section>
+
+  <!-- 16 -->
+  <section class="slide">
+    <div class="eyebrow">Speaking · teams of 4–5 · 11 minutes</div>
+    <h2>The mime game 🎭</h2>
+    <div class="two">
+      <ul class="lab"><li>Take a card. Don't show it!</li><li>Act it. No words.</li><li>Team: <b>Are you cooking?</b></li><li>Actor: <b>Yes, I am. / No, I'm not.</b></li><li>Point: <b>"She's cooking pasta!"</b></li></ul>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div class="ccq">Show your card? <i>No!</i></div>
+        <div class="ccq">Actor, can you talk? <i>Only "Yes, I am / No, I'm not."</i></div>
+        <div class="ccq">How do you get a point? <i>The full sentence.</i></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 17 -->
+  <section class="slide section"><div class="big">4.3</div><h2>Review Project: Shopping &amp; Directions</h2><p class="lead">Halfway through A1. Let's go out in town! 🎓</p></section>
+
+  <!-- 18 -->
+  <section class="slide">
+    <div class="eyebrow">Shopping · how much?</div>
+    <h2>How much is it? · How much are they?</h2>
+    <div class="two">
+      <div class="dlg">
+        <p class="a"><span class="sp">Server:</span> Hi! What would you like?</p>
+        <p class="b"><span class="sp">You:</span> I'd like a coffee, please.</p>
+        <p class="a"><span class="sp">Server:</span> Anything else?</p>
+        <p class="b"><span class="sp">You:</span> A cookie, too. How much is that altogether?</p>
+        <p class="a"><span class="sp">Server:</span> That's four dollars fifty.</p>
+        <p class="b"><span class="sp">You:</span> Here you are. Can I pay by card?</p>
+      </div>
+      <ul><li>1 thing → How much <b>is it</b>? → It's $5.</li><li>2+ → How much <b>are they</b>? → They're $10.</li><li>thir<b>TEEN</b> $13 · <b>THIR</b>ty $30</li><li>receipt = ri-SEET</li></ul>
+    </div>
+  </section>
+
+  <!-- 19 -->
+  <section class="slide">
+    <div class="eyebrow">Directions · the imperative</div>
+    <h2>Excuse me, where's the station?</h2>
+    <div class="two">
+      <ul><li>⬆ Go straight on.</li><li>⬅ Turn left. ➡ Turn right.</li><li>Take the <b>first</b> left / the <b>second</b> right.</li><li>Go past the school.</li></ul>
+      <ul><li>It's on <b>your</b> left / right.</li><li>It's next to the bank.</li><li>It's opposite the café.</li><li>It's on the corner.</li></ul>
+    </div>
+    <div class="tag"><span class="pill warn">WATCH</span> <s>in the right</s> → on your right · <s>turn to the left</s> → turn left</div>
+  </section>
+
+  <!-- 20 -->
+  <section class="slide">
+    <div class="eyebrow">Task 1 · pairs · back to back · 15 minutes</div>
+    <h2>Map A ⇄ Map B</h2>
+    <div class="two">
+      <ul class="lab"><li>Start at the ★</li><li>Ask: <b>"Excuse me, where's the pharmacy?"</b></li><li>Listen. Write the place in the <b>?</b> box.</li><li>Say it back: <i>"So, first left, on my right?"</i></li><li>Then swap.</li></ul>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div class="ccq">See your partner's map? <i>No.</i></div>
+        <div class="ccq">First word? <i>"Excuse me…"</i></div>
+        <div class="ccq">Where do you start? <i>At the star.</i></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 21 -->
+  <section class="slide">
+    <div class="eyebrow">Task 2 · classroom shop · 2 rounds</div>
+    <h2>The Corner Shop &amp; the Market Stall 🛒</h2>
+    <div class="two">
+      <ul class="lab"><li>Customers: buy the things on your card</li><li><b>I'd like…, please.</b></li><li><b>How much is it / are they?</b></li><li>Pay. Write the <b>total</b>.</li><li>Round 2: swap jobs</li></ul>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div class="ccq">What do you buy? <i>The things on my card.</i></div>
+        <div class="ccq">Shopkeeper, just "$4"? <i>No, "It's four dollars."</i></div>
+        <div class="ccq">What do you write at the end? <i>The total.</i></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 22 -->
+  <section class="slide">
+    <div class="eyebrow">Task 3 · A Day Out</div>
+    <h2>Hello → shop → directions → goodbye</h2>
+    <div class="pics" style="max-width:900px">
+      <div class="pic word"><div class="e">👋</div><div class="w">Hi! I'm…</div></div>
+      <div class="pic"><img src="../assets/vocab/shop.jpg" alt="shop"><div class="w">I'd like…</div></div>
+      <div class="pic"><img src="../assets/vocab/station.jpg" alt="station"><div class="w">Where's the…?</div></div>
+      <div class="pic word"><div class="e">😊</div><div class="w">Have a nice day!</div></div>
+    </div>
+    <div class="tag"><span class="pill">TIP</span> Look at the card, then look at your partner and speak.</div>
+  </section>
+
+  <!-- 23 -->
+  <section class="slide section">
+    <div class="eyebrow">Halfway through A1 🎓</div>
+    <h2>Module 4 done</h2>
+    <ul class="lab">
+      <li>I can cook. I can't drive. I like tea.</li>
+      <li>She's reading. They're playing football.</li>
+      <li>How much are they? · Turn left. It's on your right.</li>
+    </ul>
+    <p class="lead" style="margin-top:10px">Next class: Progress Test 1 (Modules 1–4). It shows what we know, so we know what to practice.</p>
+  </section>
+
+</div>
+
+<div class="count" id="count">1 / 23</div>
+<div class="nav"><button id="prev" aria-label="Previous slide"></button><button id="next" aria-label="Next slide"></button></div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const bar=document.getElementById('bar'), count=document.getElementById('count');
+  let i=0;
+  function show(n){ i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+    bar.style.width=((i+1)/slides.length*100)+'%'; count.textContent=(i+1)+' / '+slides.length; }
+  document.getElementById('next').onclick=()=>show(i+1);
+  document.getElementById('prev').onclick=()=>show(i-1);
+  addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}
+    else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+  });
+  show(0);
+</script>
+</body>
+</html>

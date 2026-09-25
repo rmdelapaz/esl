@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slides — Module 2</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root{--bg:#0b1220;--ink:#eef3fc;--ink2:#a9b8d0;--accent:#7fb2ff;--accent2:#2563eb;--lab:#34d3bd;--warn:#fbbf24;--line:#223352;--code:#0f1a2e;color-scheme:dark}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;overflow:hidden}
+  .deck{height:100%;width:100%;position:relative}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:6vh 8vw;gap:20px}
+  .slide.on{display:flex}
+  h1,h2,h3{font-family:"Archivo",sans-serif;line-height:1.1;text-wrap:balance}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  .slide h1{font-size:clamp(2rem,6vw,4rem);font-weight:800;letter-spacing:-.02em}
+  .slide h2{font-size:clamp(1.5rem,4.2vw,2.8rem);font-weight:800;letter-spacing:-.01em}
+  .slide p.lead{font-size:clamp(1.05rem,2.4vw,1.5rem);color:var(--ink2);max-width:26ch}
+  ul{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:6px}
+  ul li{position:relative;padding-left:34px;font-size:clamp(1.05rem,2.3vw,1.6rem)}
+  ul li::before{content:"";position:absolute;left:0;top:.55em;width:12px;height:12px;border-radius:3px;background:var(--accent);transform:rotate(45deg)}
+  ul.lab li::before{background:var(--lab)}
+  code.k{font-family:"JetBrains Mono",monospace;color:#cfe0ff;font-size:.92em}
+  pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:22px 26px;font-family:"JetBrains Mono",monospace;font-size:clamp(.85rem,1.9vw,1.3rem);line-height:1.55;overflow:auto;max-width:100%}
+  pre .k{color:#7dd3fc} pre .s{color:#86efac} pre .c{color:#7183a3;font-style:italic}
+  .tag{display:inline-flex;align-items:center;gap:10px;font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);color:var(--ink2)}
+  .tag .pill{background:var(--accent2);color:#fff;font-weight:700;border-radius:999px;padding:3px 12px;letter-spacing:.06em}
+  .tag .pill.lab{background:var(--lab);color:#062b26} .tag .pill.warn{background:var(--warn);color:#3a2a05}
+  .section{background:linear-gradient(135deg,#15264a,#0b1220)}
+  .section .big{font-size:clamp(3rem,12vw,8rem);font-family:"Archivo";font-weight:800;color:var(--accent2);line-height:.9}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+  @media (max-width:760px){.two{grid-template-columns:1fr}}
+  .bar{position:fixed;left:0;top:0;height:4px;background:var(--accent2);width:0;transition:width .25s;z-index:5}
+  .count{position:fixed;right:16px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink2);z-index:5}
+  .nav{position:fixed;inset:auto 0 0 0;display:flex;justify-content:space-between;pointer-events:none;z-index:4}
+  .nav button{pointer-events:auto;background:transparent;border:none;color:transparent;width:22vw;height:100vh;cursor:pointer}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+  /* ESL additions: picture vocabulary, grammar grids, dialogues */
+  .pics{display:grid;grid-template-columns:repeat(auto-fill,minmax(clamp(80px,11vw,150px),1fr));gap:14px;max-width:100%}
+  .pic{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center}
+  .pic img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px;background:#FFF3E0;display:block}
+  .pic span{display:block;font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(.8rem,1.55vw,1.3rem);margin-top:6px;overflow-wrap:anywhere}
+  .pic span i{font-style:normal;color:var(--accent)}
+  table.g{border-collapse:collapse;font-size:clamp(1rem,2.2vw,1.5rem);max-width:100%}
+  table.g th,table.g td{border:1px solid var(--line);padding:10px 18px;text-align:left}
+  table.g th{background:var(--code);color:var(--accent);font-family:"JetBrains Mono",monospace;font-size:.7em;letter-spacing:.08em;text-transform:uppercase}
+  table.g b{color:var(--accent)}
+  .dlg{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:16px 24px;display:flex;flex-direction:column;gap:6px;font-size:clamp(1rem,2.2vw,1.45rem);max-width:900px}
+  .dlg .a b{color:var(--accent)} .dlg .b b{color:#d8b4fe}
+  .stress b{color:var(--warn)}
+  .bad{color:#fca5a5;text-decoration:line-through;text-decoration-thickness:2px}
+  .good{color:#86efac}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="deck" id="deck">
+
+  <!-- 1 -->
+  <section class="slide on section">
+    <div class="eyebrow">English Foundations · A1 · Module 2</div>
+    <h1>People, Places<br>&amp; Things</h1>
+    <p class="lead">Who we are, what we see, and the people in our lives.</p>
+  </section>
+
+  <!-- 2 · 2.1 -->
+  <section class="slide section">
+    <div class="big">2.1</div>
+    <h2>Where are you from?</h2>
+    <p class="lead">I'm from ____. I live in ____.</p>
+    <div class="tag"><span class="pill">YOU CHOOSE</span> Talk about you, or about a new person. Both are OK.</div>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide">
+    <div class="eyebrow">The verb "to be"</div>
+    <h2>I am · he-she-it is · you-we-they are</h2>
+    <table class="g">
+      <tr><th>am</th><th>is</th><th>are</th></tr>
+      <tr><td>I <b>am</b> Ray.<br>I<b>'m</b> from the USA.</td><td>She <b>is</b> from Japan.<br>He<b>'s</b> Mexican.</td><td>They <b>are</b> from Italy.<br>We<b>'re</b> students.</td></tr>
+    </table>
+    <div class="tag"><span class="pill">CCQ</span> She is from Japan. Is Japan a place or a person? · "She are"? No!</div>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide">
+    <div class="eyebrow">No · questions · short answers</div>
+    <h2>Is he from Mexico?</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>No (not)</th></tr>
+        <tr><td>I<b>'m not</b> from Spain.</td></tr>
+        <tr><td>He <b>isn't</b> French.</td></tr>
+        <tr><td>They <b>aren't</b> American.</td></tr>
+      </table>
+      <table class="g">
+        <tr><th>Question</th><th>Short answer</th></tr>
+        <tr><td><b>Are</b> you Brazilian? ↗</td><td>Yes, I <b>am</b>. / No, I'm not.</td></tr>
+        <tr><td><b>Is</b> she a student? ↗</td><td>Yes, she <b>is</b>. / No, she isn't.</td></tr>
+      </table>
+    </div>
+    <div class="tag"><span class="pill warn">WATCH</span> <span class="bad">Yes, I'm.</span> → <span class="good">Yes, I am.</span></div>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide">
+    <div class="eyebrow">Country → nationality · clap the stress</div>
+    <h2>I'm from Brazil. I'm Brazilian.</h2>
+    <table class="g stress">
+      <tr><th>Country</th><th>Nationality</th><th>Country</th><th>Nationality</th></tr>
+      <tr><td><b>BRA</b>zil</td><td>Bra<b>ZIL</b>ian</td><td><b>I</b>taly</td><td>I<b>TAL</b>ian</td></tr>
+      <tr><td>Ja<b>PAN</b></td><td>Japa<b>NESE</b></td><td><b>CHI</b>na</td><td>Chi<b>NESE</b></td></tr>
+      <tr><td><b>MEX</b>ico</td><td><b>MEX</b>ican</td><td><b>E</b>gypt</td><td>E<b>GYP</b>tian</td></tr>
+      <tr><td><b>SPAIN</b></td><td><b>SPAN</b>ish</td><td>the US<b>A</b></td><td>A<b>MER</b>ican</td></tr>
+    </table>
+    <div class="tag"><span class="pill warn">WATCH</span> from + country · I'm + nationality · <b>C</b>apital letters · <span class="bad">I'm from Spanish</span></div>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide">
+    <div class="eyebrow">Listen · then read with a partner</div>
+    <h2>Nice to meet you!</h2>
+    <div class="dlg">
+      <div class="a"><b>A:</b> Hi! I'm Leo.</div>
+      <div class="b"><b>B:</b> Hello, Leo. I'm Sofia. Nice to meet you.</div>
+      <div class="a"><b>A:</b> Nice to meet you too. Where are you from, Sofia?</div>
+      <div class="b"><b>B:</b> I'm from Mexico. I'm Mexican. And you?</div>
+      <div class="a"><b>A:</b> I'm from Italy. I'm Italian.</div>
+      <div class="b"><b>B:</b> Oh, nice! Is your friend Italian too?</div>
+      <div class="a"><b>A:</b> No, he isn't. He's from France. He's French.</div>
+    </div>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide">
+    <div class="eyebrow">Pair task · 15 min</div>
+    <h2>The world-map mingle</h2>
+    <ul class="lab">
+      <li>Put a dot on <b>any</b> country: home, a country you love, a dream country</li>
+      <li>Be you, or take an identity card</li>
+      <li>Stand up. Meet 5 people: <em>Where are you from? — I'm from… I'm…</em></li>
+      <li>Write the names and countries. Then tell your group: <em>This is… She's from…</em></li>
+    </ul>
+    <div class="tag"><span class="pill lab">ICQ</span> Your real country? (Not necessary.) · How many people? (5) · Sit or stand? (Stand.)</div>
+  </section>
+
+  <!-- 8 · 2.2 -->
+  <section class="slide section">
+    <div class="big">2.2</div>
+    <h2>What's this?</h2>
+    <p class="lead">The mystery bag: point, ask, and name it.</p>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide">
+    <div class="eyebrow">Everyday objects · a / an</div>
+    <h2>a pen · an apple</h2>
+    <div class="pics">
+      <div class="pic"><img src="../assets/vocab/pen.jpg" alt=""><span>a pen</span></div>
+      <div class="pic"><img src="../assets/vocab/book.jpg" alt=""><span>a book</span></div>
+      <div class="pic"><img src="../assets/vocab/key.jpg" alt=""><span>a key</span></div>
+      <div class="pic"><img src="../assets/vocab/cup.jpg" alt=""><span>a cup</span></div>
+      <div class="pic"><img src="../assets/vocab/mobile-phone.jpg" alt=""><span>a phone</span></div>
+      <div class="pic"><img src="../assets/vocab/bag.jpg" alt=""><span>a bag</span></div>
+      <div class="pic"><img src="../assets/vocab/apple.jpg" alt=""><span><i>an</i> apple</span></div>
+      <div class="pic"><img src="../assets/vocab/pencil.jpg" alt=""><span>a pencil</span></div>
+      <div class="pic"><img src="../assets/vocab/umbrella.jpg" alt=""><span><i>an</i> umbrella</span></div>
+      <div class="pic"><img src="../assets/vocab/egg.jpg" alt=""><span><i>an</i> egg</span></div>
+    </div>
+    <div class="tag"><span class="pill">RULE</span> an + vowel <b>sound</b> (a, e, i, o, u) · say it: an‿apple</div>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide">
+    <div class="eyebrow">Near or far? One or many?</div>
+    <h2>this · that · these · those</h2>
+    <table class="g">
+      <tr><th></th><th>Near 👉</th><th>Far 👉👉</th></tr>
+      <tr><th>One</th><td><b>This is</b> a pen.</td><td><b>That is</b> a door.</td></tr>
+      <tr><th>Many</th><td><b>These are</b> keys.</td><td><b>Those are</b> windows.</td></tr>
+    </table>
+    <div class="tag"><span class="pill">CCQ</span> "These are keys." Near or far? (Near.) One or many? (Many.) · this /ðɪs/ ≠ these /ðiːz/ 😊</div>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide">
+    <div class="eyebrow">One → many</div>
+    <h2>pens · boxes · babies</h2>
+    <table class="g">
+      <tr><th>+ s</th><th>+ es (s, x, ch, sh)</th><th>y → ies</th></tr>
+      <tr><td>pen → pen<b>s</b><br>key → key<b>s</b></td><td>box → box<b>es</b><br>bus → bus<b>es</b><br>watch → watch<b>es</b></td><td>baby → bab<b>ies</b><br>city → cit<b>ies</b></td></tr>
+    </table>
+    <ul><li>books /s/ · pens /z/ · box-es /ɪz/ (one more syllable)</li><li><span class="bad">a pens</span> → <span class="good">pens</span> · a/an = one</li></ul>
+  </section>
+
+  <!-- 12 -->
+  <section class="slide">
+    <div class="eyebrow">Listen · then read with a partner</div>
+    <h2>The guessing game</h2>
+    <div class="dlg">
+      <div class="a"><b>A:</b> What's this?</div>
+      <div class="b"><b>B:</b> It's a cup.</div>
+      <div class="a"><b>A:</b> And what's that, over there?</div>
+      <div class="b"><b>B:</b> That's a window.</div>
+      <div class="a"><b>A:</b> Okay. What are these?</div>
+      <div class="b"><b>B:</b> They're keys.</div>
+      <div class="a"><b>A:</b> Is this an apple?</div>
+      <div class="b"><b>B:</b> No, it isn't! It's an orange.</div>
+    </div>
+  </section>
+
+  <!-- 13 -->
+  <section class="slide">
+    <div class="eyebrow">Group &amp; pair task · 15 min</div>
+    <h2>Mystery bag · What's on the desk?</h2>
+    <ul class="lab">
+      <li><b>Bag:</b> eyes closed, touch one thing. Group asks: <em>Is this a key?</em> → <em>Yes, it is. / No, it isn't. It's a…</em></li>
+      <li><b>Desk cards:</b> A and B. Ask <em>What's this? What are these?</em> Write the missing words.</li>
+    </ul>
+    <div class="tag"><span class="pill lab">ICQ</span> Can you look in the bag? (No.) · Show your card? (Not until the end.) · Speak and write? (Yes.)</div>
+  </section>
+
+  <!-- 14 · 2.3 -->
+  <section class="slide section">
+    <div class="big">2.3</div>
+    <h2>This is my family</h2>
+    <p class="lead">Your family, a famous family, or a family on a card. You choose.</p>
+  </section>
+
+  <!-- 15 -->
+  <section class="slide">
+    <div class="eyebrow">Family words</div>
+    <h2>mother · father · sister · brother…</h2>
+    <div class="pics">
+      <div class="pic"><img src="../assets/vocab/grandmother.jpg" alt=""><span>grandmother</span></div>
+      <div class="pic"><img src="../assets/vocab/grandfather.jpg" alt=""><span>grandfather</span></div>
+      <div class="pic"><img src="../assets/vocab/mother.jpg" alt=""><span>mother</span></div>
+      <div class="pic"><img src="../assets/vocab/father.jpg" alt=""><span>father</span></div>
+      <div class="pic"><img src="../assets/vocab/aunt.jpg" alt=""><span>aunt</span></div>
+      <div class="pic"><img src="../assets/vocab/uncle.jpg" alt=""><span>uncle</span></div>
+      <div class="pic"><img src="../assets/vocab/sister.jpg" alt=""><span>sister</span></div>
+      <div class="pic"><img src="../assets/vocab/brother.jpg" alt=""><span>brother</span></div>
+      <div class="pic"><img src="../assets/vocab/daughter.jpg" alt=""><span>daughter</span></div>
+      <div class="pic"><img src="../assets/vocab/son.jpg" alt=""><span>son</span></div>
+    </div>
+    <div class="tag"><span class="pill">+</span> cousin · parents · wife · husband · partner · children · mom · dad</div>
+  </section>
+
+  <!-- 16 -->
+  <section class="slide">
+    <div class="eyebrow">Possessive adjectives · look at the OWNER 👀</div>
+    <h2>his sister · her brother</h2>
+    <table class="g">
+      <tr><th>I</th><th>you</th><th>he</th><th>she</th><th>it</th><th>we</th><th>they</th></tr>
+      <tr><td><b>my</b></td><td><b>your</b></td><td><b>his</b></td><td><b>her</b></td><td><b>its</b></td><td><b>our</b></td><td><b>their</b></td></tr>
+    </table>
+    <ul><li>Tom has a sister → <b>his</b> sister</li><li>Anna has a brother → <b>her</b> brother</li></ul>
+    <div class="tag"><span class="pill">CCQ</span> "Tom and his sister." Who is the owner? (Tom.) Man or woman? (Man.) So… his!</div>
+  </section>
+
+  <!-- 17 -->
+  <section class="slide">
+    <div class="eyebrow">'s · have / has</div>
+    <h2>Anna's brother has a son.</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>Owner + 's + thing</th></tr>
+        <tr><td>Anna<b>'s</b> brother</td></tr>
+        <tr><td>Tom<b>'s</b> phone</td></tr>
+        <tr><td>my parent<b>s'</b> house (2)</td></tr>
+      </table>
+      <table class="g">
+        <tr><th>have</th><th>has</th></tr>
+        <tr><td>I / you / we / they</td><td>he / she / it</td></tr>
+        <tr><td>I <b>have</b> two sisters.</td><td>She <b>has</b> a son.</td></tr>
+      </table>
+    </div>
+    <div class="tag"><span class="pill warn">WATCH</span> <span class="bad">the mother of me</span> → <span class="good">my mother</span> · <span class="bad">She have</span> → <span class="good">She has</span></div>
+  </section>
+
+  <!-- 18 -->
+  <section class="slide">
+    <div class="eyebrow">Pair task · 17 min</div>
+    <h2>Family trees</h2>
+    <ul class="lab">
+      <li><b>Rivera family cards:</b> A and B. Ask <em>Who is Rosa's husband?</em> Write the missing names.</li>
+      <li><b>Your tree:</b> choose my family (big or small, friends OK), a famous family, or a new family</li>
+      <li>4+ people. Tell a partner 5 sentences: <em>This is my… Her name is… He has…</em></li>
+    </ul>
+    <div class="tag"><span class="pill lab">ICQ</span> Must it be your real family? (No.) · How many people? (4+) · Which words? (my, his, her)</div>
+  </section>
+
+  <!-- 19 -->
+  <section class="slide section">
+    <div class="eyebrow">Module 2 · you can now…</div>
+    <h2>People, places &amp; things ✔</h2>
+    <ul class="lab">
+      <li>I'm from Mexico. I'm Mexican. Are you…? Yes, I am.</li>
+      <li>This is an apple. Those are windows. What are these?</li>
+      <li>This is my sister. Her name is Maria. She has a son.</li>
+    </ul>
+    <p class="lead" style="margin-top:10px">Homework: online lessons 2.1–2.3 (🔊). Next: Module 3, Everyday Life.</p>
+  </section>
+
+</div>
+
+<div class="count" id="count">1 / 19</div>
+<div class="nav"><button id="prev" aria-label="Previous slide"></button><button id="next" aria-label="Next slide"></button></div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const bar=document.getElementById('bar'), count=document.getElementById('count');
+  let i=0;
+  function show(n){ i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+    bar.style.width=((i+1)/slides.length*100)+'%'; count.textContent=(i+1)+' / '+slides.length; }
+  document.getElementById('next').onclick=()=>show(i+1);
+  document.getElementById('prev').onclick=()=>show(i-1);
+  addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}
+    else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+  });
+  show(0);
+</script>
+</body>
+</html>

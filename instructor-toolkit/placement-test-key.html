@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Placement Test Key</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="./kit.css">
+<style>
+.who-pages{display:inline-block;font-family:"JetBrains Mono",monospace;font-size:.64rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;border-radius:999px;padding:3px 10px;margin-bottom:6px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.who-pages.t{background:var(--accent-soft);color:var(--accent)}
+.who-pages.l{background:var(--lab-soft);color:var(--lab)}
+.pb{break-before:page}
+.namebox{display:grid;grid-template-columns:2fr 1fr 1fr;gap:10px 18px;border:1.5px solid var(--line-strong);border-radius:10px;padding:12px 16px;margin:12px 0 16px}
+.namebox div{font-size:.9rem;color:var(--ink-2)}
+.namebox .blank{min-width:0;width:100%;display:block;height:1.5em}
+.band-h{font-family:"JetBrains Mono",monospace;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin:14px 0 4px}
+ol.items{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:4px 26px}
+ol.items li{break-inside:avoid;padding:6px 0;border-bottom:1px dotted var(--line)}
+ol.items .n{font-family:"JetBrains Mono",monospace;font-weight:600;color:var(--accent);font-size:.8rem;margin-right:4px}
+ol.items .st{font-weight:500}
+ol.items .ch{display:flex;flex-wrap:wrap;gap:2px 14px;margin-top:3px;font-size:.9rem;color:var(--ink-2)}
+ol.items .ch span b{font-family:"JetBrains Mono",monospace;font-size:.78rem;color:var(--ink-3);margin-right:3px}
+.reading{border:1px solid var(--line);border-radius:10px;padding:10px 18px;background:var(--surface-2);margin:10px 0;break-inside:avoid}
+.reading .rtitle{font-family:"Archivo",sans-serif;font-weight:700;font-size:1.02rem}
+ol.rq{padding-left:1.4em}
+ol.rq li{margin:8px 0;break-inside:avoid}
+ol.rq .ch{display:flex;flex-wrap:wrap;gap:2px 16px;color:var(--ink-2);font-size:.92rem;margin-top:2px}
+.pics{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:10px 0}
+.pics div{border:1.5px dashed var(--line-strong);text-align:center;padding:14px 6px;font-size:3.4rem;line-height:1.1}
+.pics div small{display:block;font-family:"JetBrains Mono",monospace;font-size:.62rem;color:var(--ink-3);margin-top:4px}
+.nums{display:flex;justify-content:space-around;border:1.5px dashed var(--line-strong);padding:14px;font-family:"Archivo",sans-serif;font-weight:800;font-size:2.6rem;margin:10px 0}
+table.timing td.band{font-family:"Archivo",sans-serif;font-weight:800;color:var(--accent);white-space:nowrap}
+.tally{width:100%;border-collapse:collapse;font-size:.9rem;margin:10px 0}
+.tally th,.tally td{border:1px solid var(--line-strong);padding:7px 9px;text-align:left}
+.tally th{background:var(--surface-2);font-family:"JetBrains Mono",monospace;font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.tally td.box{width:18%}
+.sp-band{border:1px solid var(--line);border-radius:10px;margin:10px 0;break-inside:avoid;overflow:hidden}
+.sp-band .hd{display:flex;gap:10px;align-items:center;background:var(--surface-2);border-bottom:1px solid var(--line);padding:7px 14px}
+.sp-band .hd b{font-family:"Archivo",sans-serif}
+.sp-band .bd{padding:6px 14px 10px}
+.sp-band ul{margin:.2rem 0;padding-left:1.2em}
+.sp-band li{margin:3px 0}
+.sp-band .look{font-size:.86rem;color:var(--ink-2);border-top:1px dotted var(--line);margin-top:6px;padding-top:5px}
+.lcode.alt{background:var(--lab)}
+@media (max-width:680px){ol.items{grid-template-columns:1fr}.namebox{grid-template-columns:1fr}.pics{grid-template-columns:repeat(2,1fr)}}
+@media print{ol.items li{padding:4px 0}.sec.pb{margin-top:0}}
+
+table.desc{width:100%;border-collapse:collapse;font-size:.86rem;margin:10px 0}
+table.desc th,table.desc td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}
+table.desc th{background:var(--surface-2);font-family:"JetBrains Mono",monospace;font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+table.desc td.b{font-family:"Archivo",sans-serif;font-weight:800;color:var(--accent);white-space:nowrap}
+table.desc tr{break-inside:avoid}
+@media (max-width:680px){table.desc,table.timing{display:block;overflow-x:auto}}
+@media print{.lesson{break-inside:auto}table.timing tr{break-inside:avoid}}
+.compact{font-family:"JetBrains Mono",monospace;font-size:.8rem;line-height:1.9;border:1px solid var(--line);border-radius:9px;padding:10px 14px;background:var(--surface-2)}
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="lbl">Teacher only —</span>
+  <button type="button" onclick="window.print()">🖨 Print / Save as PDF</button>
+  <span class="hint">confidential · keep with the placement test</span>
+</div>
+
+<div class="sheet">
+<header class="mast">
+    <div class="kit-eyebrow">ESL Instructor Toolkit · Placement · Teacher only</div>
+    <h1>Placement Test: Answer Key and Descriptors</h1>
+    <p class="sub">Answers for Parts A and B, the section targets that decide the written band, and band descriptors for rating the writing and the speaking interview. The descriptors are aligned to the CEFR and written in plain teacher language.</p>
+    <div class="meta-row">
+      <span class="chip">Part A <b>50</b> answers</span>
+      <span class="chip">Part B <b>10</b> answers</span>
+      <span class="chip">Speaking <b>Pre-A1–C2</b></span>
+      <span class="chip">Writing <b>Pre-A1–C2</b></span>
+      <span class="chip"><b>Confidential</b>: don't hand out</span>
+    </div>
+  </header>
+
+  <div class="sec"><h2>Quick-mark strip · Part A</h2><span class="rule"></span></div>
+  <p class="compact">1&nbsp;b · 2&nbsp;c · 3&nbsp;b · 4&nbsp;c · 5&nbsp;b · 6&nbsp;b · 7&nbsp;b · 8&nbsp;a · 9&nbsp;b · 10&nbsp;a · 11&nbsp;c · 12&nbsp;b · 13&nbsp;b · 14&nbsp;b · 15&nbsp;c · 16&nbsp;b · 17&nbsp;b · 18&nbsp;c · 19&nbsp;b · 20&nbsp;b · 21&nbsp;c · 22&nbsp;b · 23&nbsp;b · 24&nbsp;b · 25&nbsp;a · 26&nbsp;a · 27&nbsp;c · 28&nbsp;a · 29&nbsp;b · 30&nbsp;c · 31&nbsp;b · 32&nbsp;a · 33&nbsp;b · 34&nbsp;b · 35&nbsp;b · 36&nbsp;b · 37&nbsp;a · 38&nbsp;b · 39&nbsp;b · 40&nbsp;b · 41&nbsp;a · 42&nbsp;b · 43&nbsp;a · 44&nbsp;a · 45&nbsp;a · 46&nbsp;b · 47&nbsp;a · 48&nbsp;a · 49&nbsp;a · 50&nbsp;b</p>
+
+  <div class="sec"><h2>Cut-scores</h2><span class="rule"></span></div>
+  <table class="timing">
+    <tr><th>Section</th><th>Items</th><th>Secured at</th><th>Total-score guide (Part A)</th><th>Recommended course</th></tr>
+    <tr><td>none / Section 1 not secured</td><td>–</td><td>–</td><td class="t">0–12</td><td>English Foundations (A1)</td></tr>
+    <tr><td>Section 1 · A1</td><td class="t">1–10</td><td class="t">7/10</td><td class="t">13–21</td><td>Everyday English (A2)</td></tr>
+    <tr><td>Section 2 · A2</td><td class="t">11–19</td><td class="t">6/9</td><td class="t">22–30</td><td>Independent English (B1)</td></tr>
+    <tr><td>Section 3 · B1</td><td class="t">20–28</td><td class="t">6/9</td><td class="t">31–38</td><td>Confident English (B2)</td></tr>
+    <tr><td>Section 4 · B2</td><td class="t">29–37</td><td class="t">6/9</td><td class="t">39–45</td><td>Advanced English (C1)</td></tr>
+    <tr><td>Section 5 · C1 (± Section 6)</td><td class="t">38–50</td><td class="t">5/7</td><td class="t">46–50</td><td>Mastery English (C2)</td></tr>
+  </table>
+  <p style="font-size:.9rem;color:var(--ink-2)">The course is decided by the highest section secured with all easier sections also secured. The total-score column is a quick cross-check only. With four options, a learner who guesses every item scores about 12, which is why the Foundations band runs to 12. Secured Section 6 (C2) confirms Mastery English; it's also a sign the learner may be better served by a specialist course (IELTS, Business) or by C2 modules chosen to fit their goals.</p>
+
+  <div class="sec"><h2>Part A · Answers and explanations</h2><span class="rule"></span></div>
+  <div class="lesson"><div class="lesson-head"><span class="lcode">A1</span><h3>Section 1 · items 1–10</h3><span class="dur">secured = 7/10</span></div>
+<div class="lesson-body"><table class="timing"><tr><th>#</th><th>Sentence</th><th>Ans</th><th>Why</th></tr><tr><td class="t">1</td><td>Hello! My name <b>is</b> Ana.</td><td class="t"><b>b</b></td><td><i>be</i> with he/she/it/name → <b>is</b>.</td></tr><tr><td class="t">2</td><td>Where <b>are</b> you from?</td><td class="t"><b>c</b></td><td><i>you</i> takes <b>are</b>.</td></tr><tr><td class="t">3</td><td>I want <b>an</b> apple, please.</td><td class="t"><b>b</b></td><td><b>an</b> before a vowel sound; <i>two/these</i> need a plural.</td></tr><tr><td class="t">4</td><td>My sister <b>is</b> 25 years old.</td><td class="t"><b>c</b></td><td>Age uses <b>be</b>. Watch for Spanish/Portuguese/French/Arabic speakers choosing <i>has</i>.</td></tr><tr><td class="t">5</td><td><b>Do</b> you like coffee?</td><td class="t"><b>b</b></td><td>Present simple question with <i>you</i> → <b>Do</b>.</td></tr><tr><td class="t">6</td><td>She <b>works</b> in a hospital.</td><td class="t"><b>b</b></td><td>Third person <b>-s</b>.</td></tr><tr><td class="t">7</td><td>There <b>are</b> two chairs in the kitchen.</td><td class="t"><b>b</b></td><td>Plural → <b>there are</b>.</td></tr><tr><td class="t">8</td><td>My mother's brother is my <b>uncle</b>.</td><td class="t"><b>a</b></td><td>Family vocabulary: <b>uncle</b>.</td></tr><tr><td class="t">9</td><td>Look! It <b>is raining</b> now.</td><td class="t"><b>b</b></td><td>Happening now → present continuous <b>is raining</b>.</td></tr><tr><td class="t">10</td><td>What time is it? — It's half <b>past</b> seven.</td><td class="t"><b>a</b></td><td><b>half past</b> seven = 7:30.</td></tr></table></div></div><div class="lesson"><div class="lesson-head"><span class="lcode">A2</span><h3>Section 2 · items 11–19</h3><span class="dur">secured = 6/9</span></div>
+<div class="lesson-body"><table class="timing"><tr><th>#</th><th>Sentence</th><th>Ans</th><th>Why</th></tr><tr><td class="t">11</td><td>I <b>went</b> to the doctor yesterday.</td><td class="t"><b>c</b></td><td>Past simple irregular: <b>went</b>.</td></tr><tr><td class="t">12</td><td><b>Did</b> you see the game last night?</td><td class="t"><b>b</b></td><td>Past simple question → <b>Did</b> + base verb.</td></tr><tr><td class="t">13</td><td>My brother is <b>taller</b> than me.</td><td class="t"><b>b</b></td><td>Short adjective comparative → <b>taller</b>.</td></tr><tr><td class="t">14</td><td>We <b>are going to</b> visit my aunt next weekend.</td><td class="t"><b>b</b></td><td>Plan → <b>are going to</b> + verb (needs <i>be</i>).</td></tr><tr><td class="t">15</td><td>Have you ever <b>eaten</b> sushi?</td><td class="t"><b>c</b></td><td>Present perfect → past participle <b>eaten</b>.</td></tr><tr><td class="t">16</td><td>I was cooking dinner when the phone <b>rang</b>.</td><td class="t"><b>b</b></td><td>Short action interrupting a longer one → past simple <b>rang</b>.</td></tr><tr><td class="t">17</td><td>She has lived here <b>since</b> 2019.</td><td class="t"><b>b</b></td><td>Point in time → <b>since</b>.</td></tr><tr><td class="t">18</td><td>It's the <b>best</b> restaurant in town.</td><td class="t"><b>c</b></td><td>Irregular superlative → <b>best</b>.</td></tr><tr><td class="t">19</td><td>I need to <b>make</b> an appointment with the dentist.</td><td class="t"><b>b</b></td><td>Collocation: <b>make an appointment</b>.</td></tr></table></div></div><div class="lesson"><div class="lesson-head"><span class="lcode">B1</span><h3>Section 3 · items 20–28</h3><span class="dur">secured = 6/9</span></div>
+<div class="lesson-body"><table class="timing"><tr><th>#</th><th>Sentence</th><th>Ans</th><th>Why</th></tr><tr><td class="t">20</td><td>If it rains tomorrow, we <b>will stay</b> at home.</td><td class="t"><b>b</b></td><td>First conditional → <b>will stay</b>.</td></tr><tr><td class="t">21</td><td>I <b>have been studying</b> English for two years now.</td><td class="t"><b>c</b></td><td>Continuing from past to now → <b>have been studying</b>.</td></tr><tr><td class="t">22</td><td>If I <b>had</b> more money, I would buy a car.</td><td class="t"><b>b</b></td><td>Second conditional → <b>had</b>.</td></tr><tr><td class="t">23</td><td>This bridge <b>was built</b> in 1920.</td><td class="t"><b>b</b></td><td>Past passive → <b>was built</b>.</td></tr><tr><td class="t">24</td><td>He asked me where <b>I lived</b>.</td><td class="t"><b>b</b></td><td>Reported question → statement word order: <b>I lived</b>.</td></tr><tr><td class="t">25</td><td>I used to <b>live</b> in the countryside when I was a child.</td><td class="t"><b>a</b></td><td><i>used to</i> + base verb → <b>live</b>.</td></tr><tr><td class="t">26</td><td>The woman <b>who</b> lives next door is a nurse.</td><td class="t"><b>a</b></td><td>Relative pronoun for a person → <b>who</b> (<i>that</i> also possible, not offered).</td></tr><tr><td class="t">27</td><td>I'm really looking forward <b>to seeing</b> you.</td><td class="t"><b>c</b></td><td><i>look forward to</i> + -ing → <b>to seeing</b>.</td></tr><tr><td class="t">28</td><td>Can you <b>look after</b> my cat while I'm on vacation?</td><td class="t"><b>a</b></td><td>Phrasal verb: <b>look after</b> = take care of.</td></tr></table></div></div><div class="lesson"><div class="lesson-head"><span class="lcode">B2</span><h3>Section 4 · items 29–37</h3><span class="dur">secured = 6/9</span></div>
+<div class="lesson-body"><table class="timing"><tr><th>#</th><th>Sentence</th><th>Ans</th><th>Why</th></tr><tr><td class="t">29</td><td>By the time we arrived, the movie <b>had already started</b>.</td><td class="t"><b>b</b></td><td>Earlier past → past perfect <b>had already started</b>.</td></tr><tr><td class="t">30</td><td>If I had known about the traffic, I <b>would have left</b> earlier.</td><td class="t"><b>c</b></td><td>Third conditional → <b>would have left</b>.</td></tr><tr><td class="t">31</td><td>I wish I <b>hadn't eaten</b> so much last night. I feel terrible.</td><td class="t"><b>b</b></td><td>Regret about the past → <i>wish</i> + past perfect <b>hadn't eaten</b>.</td></tr><tr><td class="t">32</td><td>She <b>can't</b> have left already — her coat is still here.</td><td class="t"><b>a</b></td><td>Logical deduction (impossible) → <b>can't have</b>.</td></tr><tr><td class="t">33</td><td>He denied <b>taking</b> the money.</td><td class="t"><b>b</b></td><td><i>deny</i> + -ing → <b>taking</b>.</td></tr><tr><td class="t">34</td><td>The report <b>must be finished</b> by Friday.</td><td class="t"><b>b</b></td><td>Modal passive → <b>must be finished</b>.</td></tr><tr><td class="t">35</td><td>The new rule had a big <b>impact</b> on small businesses.</td><td class="t"><b>b</b></td><td>Noun collocation <b>have an impact on</b>; <i>affect</i> is a verb.</td></tr><tr><td class="t">36</td><td><b>Despite</b> the rain, the game went ahead.</td><td class="t"><b>b</b></td><td><i>despite</i> + noun → <b>Despite</b>; <i>although</i> needs a clause.</td></tr><tr><td class="t">37</td><td>The meeting has been <b>put off</b> until next Tuesday.</td><td class="t"><b>a</b></td><td><b>put off</b> = postpone.</td></tr></table></div></div><div class="lesson"><div class="lesson-head"><span class="lcode">C1</span><h3>Section 5 · items 38–44</h3><span class="dur">secured = 5/7</span></div>
+<div class="lesson-body"><table class="timing"><tr><th>#</th><th>Sentence</th><th>Ans</th><th>Why</th></tr><tr><td class="t">38</td><td>Not only <b>was he</b> late, but he also forgot the tickets.</td><td class="t"><b>b</b></td><td>Negative adverbial → inversion <b>was he</b>.</td></tr><tr><td class="t">39</td><td>Had I realized how difficult it was, I <b>wouldn't have attempted</b> it.</td><td class="t"><b>b</b></td><td>Inverted third conditional → <b>wouldn't have attempted</b>.</td></tr><tr><td class="t">40</td><td>It's high time the city <b>did</b> something about housing.</td><td class="t"><b>b</b></td><td><i>It's high time</i> + past form → <b>did</b>.</td></tr><tr><td class="t">41</td><td>Her argument was so <b>cogent</b> that nobody could find a flaw in it.</td><td class="t"><b>a</b></td><td><b>cogent</b> = clear, logical and convincing.</td></tr><tr><td class="t">42</td><td>The findings, <b>which</b> were published last month, have been widely criticized.</td><td class="t"><b>b</b></td><td>Non-defining relative clause (commas) → <b>which</b>, never <i>that</i>.</td></tr><tr><td class="t">43</td><td>The company is facing <b>mounting</b> criticism over its safety record.</td><td class="t"><b>a</b></td><td>Collocation <b>mounting criticism</b>.</td></tr><tr><td class="t">44</td><td><b>Should</b> you need any further information, please do not hesitate to contact me.</td><td class="t"><b>a</b></td><td>Formal inverted conditional → <b>Should</b> you need…</td></tr></table></div></div><div class="lesson"><div class="lesson-head"><span class="lcode">C2</span><h3>Section 6 · items 45–50</h3><span class="dur">secured = 4/6</span></div>
+<div class="lesson-body"><table class="timing"><tr><th>#</th><th>Sentence</th><th>Ans</th><th>Why</th></tr><tr><td class="t">45</td><td>The minister's remarks were widely seen as an attempt to <b>sidestep</b> the issue.</td><td class="t"><b>a</b></td><td><b>sidestep</b> an issue = avoid dealing with it.</td></tr><tr><td class="t">46</td><td>Scarcely <b>had she reached</b> the stage when the lights went out.</td><td class="t"><b>b</b></td><td><i>Scarcely … when</i> → inversion <b>had she reached</b>.</td></tr><tr><td class="t">47</td><td>His apology struck many as <b>perfunctory</b> — polite, but clearly insincere.</td><td class="t"><b>a</b></td><td><b>perfunctory</b> = done only as a duty, without real feeling.</td></tr><tr><td class="t">48</td><td>She is by no means the only one <b>to blame</b> for the delay.</td><td class="t"><b>a</b></td><td>Fixed pattern <b>to blame</b> (= responsible).</td></tr><tr><td class="t">49</td><td>The plan, <b>sound as it seemed on paper</b>, proved unworkable in practice.</td><td class="t"><b>a</b></td><td>Concessive fronting: adjective + <i>as</i> + clause → <b>sound as it seemed</b>.</td></tr><tr><td class="t">50</td><td>I'd sooner you <b>didn't</b> mention this to anyone just yet.</td><td class="t"><b>b</b></td><td><i>I'd sooner/rather</i> + subject + past form → <b>didn't</b>.</td></tr></table></div></div>
+
+  <div class="sec"><h2>Part B · Reading answers</h2><span class="rule"></span></div>
+  <table class="timing">
+    <tr><th>#</th><th>Question</th><th>Ans</th><th>Answer</th></tr>
+    <tr><td colspan="4"><b>Text 1 · A2 email</b>: secured at 4/5</td></tr>
+    <tr><td class="t">1</td><td>Why didn't Sam come to class on Tuesday?</td><td class="t"><b>b</b></td><td>His daughter was sick.</td></tr><tr><td class="t">2</td><td>Where is Sam's new job?</td><td class="t"><b>c</b></td><td>At a supermarket.</td></tr><tr><td class="t">3</td><td>When is Sam going to work?</td><td class="t"><b>a</b></td><td>In the mornings.</td></tr><tr><td class="t">4</td><td>Which days is the evening class?</td><td class="t"><b>b</b></td><td>Mondays and Thursdays.</td></tr><tr><td class="t">5</td><td>When can Sam meet Lina on Saturday?</td><td class="t"><b>c</b></td><td>After 2 o'clock.</td></tr>
+    <tr><td colspan="4"><b>Text 2 · B2 article</b>: secured at 4/5</td></tr>
+    <tr><td class="t">6</td><td>During the trial, employees…</td><td class="t"><b>b</b></td><td>worked fewer hours for the same pay.</td></tr><tr><td class="t">7</td><td>At the end of the trial, most companies…</td><td class="t"><b>c</b></td><td>decided to keep the four-day week.</td></tr><tr><td class="t">8</td><td>What is one criticism mentioned in the text?</td><td class="t"><b>c</b></td><td>The companies already believed the idea would work.</td></tr><tr><td class="t">9</td><td>The word <i>striking</i> (paragraph 1) is closest in meaning to…</td><td class="t"><b>b</b></td><td>surprising and impressive.</td></tr><tr><td class="t">10</td><td>The writer's main point in the last paragraph is that…</td><td class="t"><b>b</b></td><td>working time has changed before and can change again.</td></tr>
+  </table>
+  <div class="note"><div class="t">Using Part B</div>
+    <p>Text 1 at 4–5/5 supports an A2 written band or higher. Text 2 at 4–5/5 supports B2 or higher. If Part A says B2 but Text 2 is 2/5, treat the written band as B1 and let the interview decide.</p></div>
+
+  <div class="sec"><h2>Writing descriptors (Part C)</h2><span class="rule"></span></div>
+  <p>Read all the tasks the learner attempted and choose the <b>best-fit</b> band: the description that matches most of the writing. Don't count errors; ask whether a reader could follow it and how much the learner can say.</p>
+  <table class="desc"><tr><th>Band</th><th>What the writing looks like</th></tr><tr><td class="b">Pre-A1</td><td>Can't yet complete Task 1, or copies/writes only their name. <b>Literacy flag:</b> do the literacy check before placing.</td></tr><tr><td class="b">A1</td><td>Completes the Task 1 form with single words or short phrases. Task 2, if attempted, is 1–3 very simple sentences (<i>I work. I like coffee.</i>) with basic errors in word order and spelling.</td></tr><tr><td class="b">A2</td><td>Task 2: 3–6 short sentences on daily life, linked with <i>and, but, because</i>. Present simple mostly correct; past forms attempted. Errors frequent but meaning clear.</td></tr><tr><td class="b">B1</td><td>Task 2 easy; Task 3 attempted: a connected text with paragraphs or clear sequencing, simple opinions and reasons. Range of tenses; errors noticeable but rarely block meaning. May be shorter than 120 words.</td></tr><tr><td class="b">B2</td><td>Task 3: clear, organized text of the required length that develops ideas with examples and linking (<i>however, as a result</i>). Good control of grammar; errors occasional and minor. Vocabulary varied, with some less common words.</td></tr><tr><td class="b">C1</td><td>Task 3: well-structured, fluent text with a clear line of argument, precise vocabulary and a consistent, appropriate register. Complex sentences used naturally; errors rare.</td></tr><tr><td class="b">C2</td><td>Task 3: polished, persuasive and nuanced. Wide, exact vocabulary and idiom; varied sentence structure used for effect; virtually error-free. Reads like a skilled writer.</td></tr></table>
+
+  <div class="sec"><h2>Speaking descriptors (Part D)</h2><span class="rule"></span></div>
+  <p>Rate the <b>highest band the learner handled comfortably</b>: most of the prompts in that band answered with the features below, without breakdown. If you hesitate between two bands, choose the lower and note "borderline" on the profile.</p>
+  <table class="desc"><tr><th>Band</th><th>Range &amp; accuracy</th><th>Fluency</th><th>Interaction</th><th>Pronunciation</th></tr><tr><td class="b">Pre-A1</td><td>Responds with gestures, single words or L1. May recognize a few words (<i>hello, yes, no</i>, numbers) but can't yet build a sentence.</td><td>Speech limited to isolated words; long silences.</td><td>Needs the interviewer to point, mime and wait.</td><td>Hard to understand beyond a few words.</td></tr><tr><td class="b">A1</td><td>Short, memorized phrases and simple sentences about self and surroundings (<i>I'm from…, I like…, It's a bus</i>). Basic words for everyday things, numbers, time.</td><td>Many pauses to search for words; relies on set phrases.</td><td>Answers simple questions if they are slow and clear; rarely asks questions back.</td><td>Understandable with effort; strong L1 accent.</td></tr><tr><td class="b">A2</td><td>Simple sentences joined with <i>and, but, because</i>. Talks about past events and plans using basic forms; describes home, work and routine. Frequent errors, but meaning usually clear.</td><td>Short turns; noticeable pauses, but keeps going on familiar topics.</td><td>Handles short exchanges; asks simple follow-up questions.</td><td>Generally understandable; errors sometimes cause confusion.</td></tr><tr><td class="b">B1</td><td>Tells a connected story; gives opinions and reasons; uses a reasonable range of tenses, including simple conditionals. Can say most things they want to on familiar topics, with some circumlocution.</td><td>Keeps talking at length with pauses to plan and repair.</td><td>Starts, maintains and closes a conversation on familiar topics.</td><td>Clearly understandable; accent evident; occasional mispronunciation.</td></tr><tr><td class="b">B2</td><td>Develops an argument with reasons, examples and a balanced view. Good grammatical control; errors don't cause misunderstanding and are often self-corrected. Varied vocabulary on general topics.</td><td>Even tempo; few noticeable long pauses.</td><td>Interacts naturally; takes turns, checks understanding, responds to challenge.</td><td>Clear, natural intonation; accent doesn't hinder.</td></tr><tr><td class="b">C1</td><td>Explains complex ideas fluently and precisely, using a broad vocabulary, idiomatic expressions and complex structures. Errors rare and hard to spot.</td><td>Fluent and spontaneous; searches for words only on abstract topics.</td><td>Uses language flexibly for social and professional purposes; handles disagreement smoothly.</td><td>Varies intonation and stress to express finer meaning.</td></tr><tr><td class="b">C2</td><td>Conveys fine shades of meaning with precision; uses idiom and register naturally and switches style at will. Grammar consistently accurate.</td><td>Effortless; any hesitation is for thinking, not for language.</td><td>Leads and shapes the conversation; persuades, qualifies and concedes with ease.</td><td>Pronunciation fully natural for a proficient speaker; accent irrelevant to communication.</td></tr></table>
+  <div class="note warn"><div class="t">Accent isn't level</div>
+    <p>Rate how easy the speech is to understand, not how "native" it sounds. A strong accent with clear, flexible language can still be C1. Be especially careful with learners whose pronunciation is affected by L1 sounds (for example, final consonants dropped by Vietnamese speakers, or <i>p/b</i> for Arabic speakers). Those are teaching points, not placement evidence.</p></div>
+
+  <div class="sec"><h2>Worked examples</h2><span class="rule"></span></div>
+  <table class="timing">
+    <tr><th>Learner</th><th>Evidence</th><th>Decision</th></tr>
+    <tr><td>Learner 1</td><td>S1 9/10, S2 3/9, total 17 · Text 1 2/5 · writes 3 simple sentences · speaking A1</td><td>Written A1 = speaking A1 → <b>Everyday English (A2)</b></td></tr>
+    <tr><td>Learner 2</td><td>Stopped after item 4 · couldn't copy a sentence · speaking A2 (fluent short stories about work)</td><td>Speaking two bands above writing: literacy gap → one course below speaking, with literacy support → <b>English Foundations (A1)</b>, flag for fast move-up in speaking tasks</td></tr>
+    <tr><td>Learner 3</td><td>S1–S3 secured, S4 7/9 (secured) · Text 2 4/5 · speaking B1</td><td>Written B2, speaking B1, one band apart → lower → <b>Confident English (B2)</b>; review after 2 weeks</td></tr>
+    <tr><td>Learner 4</td><td>S1–S4 secured, S5 4/7, total 41 · speaking B2 · wants a university place</td><td>Written B2 = speaking B2 → <b>Advanced English (C1)</b>, and recommend <b>IELTS Academic Preparation</b> alongside</td></tr>
+  </table>
+
+  <div class="foot">
+    <div class="who"><b>Ray de la Paz</b><span class="bio">© 2026 Ray de la Paz · ESL Instructor Toolkit (all levels, A1–C2)</span></div>
+    <div class="ver">Toolkit · Placement Test Key · v1.0</div>
+  </div>
+
+</div>
+</body>
+</html>

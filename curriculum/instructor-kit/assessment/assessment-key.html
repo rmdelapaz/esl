@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Assessment Key &amp; Rubrics</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../kit.css">
+<style>
+  table.rubric { width:100%; border-collapse:collapse; margin:12px 0; font-size:.85rem; }
+  table.rubric th, table.rubric td { border:1px solid var(--line); padding:8px 10px; vertical-align:top; text-align:left; }
+  table.rubric thead th { background:var(--surface-2); font-family:"JetBrains Mono",monospace; font-size:.66rem; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-3); font-weight:600; }
+  table.rubric td.crit { font-weight:600; color:var(--ink); width:18%; }
+  table.rubric td .pts { display:block; font-family:"JetBrains Mono",monospace; font-size:.66rem; color:var(--accent); margin-top:3px; }
+  table.rubric tbody tr:nth-child(even) td { background:var(--surface); }
+  table.rubric tr.part td { background:var(--accent-soft); font-family:"JetBrains Mono",monospace; font-size:.7rem; letter-spacing:.06em; text-transform:uppercase; color:var(--accent); font-weight:600; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  table.ans { width:100%; border-collapse:collapse; margin:8px 0 12px; font-size:.9rem; }
+  table.ans th, table.ans td { border-bottom:1px solid var(--line); padding:6px 9px; text-align:left; vertical-align:top; }
+  table.ans th { font-family:"JetBrains Mono",monospace; font-size:.64rem; letter-spacing:.07em; text-transform:uppercase; color:var(--ink-3); font-weight:600; }
+  table.ans td.n { font-family:"JetBrains Mono",monospace; color:var(--accent); font-weight:600; width:2.6em; }
+  table.ans td.a { font-weight:700; color:var(--lab); white-space:nowrap; }
+  table.ans td.l { font-family:"JetBrains Mono",monospace; font-size:.76rem; color:var(--ink-3); white-space:nowrap; }
+  .band { display:inline-block; font-family:"JetBrains Mono",monospace; font-size:.7rem; font-weight:700; border-radius:999px; padding:2px 10px; color:#fff; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  .band.go { background:var(--lab); } .band.mid { background:var(--accent); } .band.rep { background:var(--warn); }
+  @media (max-width:680px){ table.rubric{display:block;overflow-x:auto} }
+  @media print { table.rubric, table.ans { break-inside:auto; } table.rubric tr, table.ans tr { break-inside:avoid; } }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="lbl">Teacher copy —</span>
+  <button type="button" onclick="window.print()">🖨 Print / Save as PDF</button>
+  <span class="hint">answers · rubrics · placement guidance · not for learners</span>
+</div>
+
+<div class="sheet">
+
+  <header class="mast">
+    <div class="kit-eyebrow">English Foundations (A1) · Assessment Key</div>
+    <h1>Answer Keys, Rubrics &amp; Next Steps</h1>
+    <p class="sub">Everything you need to score <b>Progress Test 1</b> (Class 13) and the <b>Final Test</b> (Class 24): answers and point values, acceptable alternatives, the errors to expect, CEFR-aligned speaking and writing rubrics, what the scores mean for each learner's next class, and how to give the news kindly.</p>
+    <div class="meta-row">
+      <span class="chip">Progress Test 1 <b>/70</b></span>
+      <span class="chip">Final Test <b>/100</b></span>
+      <span class="chip">Rubric bands: <b>Not yet A1 · A1 · A1+</b></span>
+      <span class="chip">Confidential · teacher only</span>
+    </div>
+  </header>
+
+  <div class="note">
+    <div class="t">Scoring principles</div>
+    <p><b>Score meaning, not spelling</b>, in Listening and Reading: an answer that shows understanding gets the point, even if it is misspelled ("sicks o'clok" for <i>six o'clock</i> is correct). In Vocabulary, the word must be recognizable, so a small spelling slip (<i>chiar</i>) earns the point, but a different word does not. Grammar items are circle-only, so they are either right or wrong. Speaking and extended writing use the rubrics. Half points are not used.</p>
+  </div>
+
+  <div class="sec"><h2>At a Glance</h2><span class="rule"></span></div>
+  <table class="ans">
+    <thead><tr><th>Section</th><th>Progress Test 1 (Modules 1–4)</th><th>Final Test (Modules 1–8)</th></tr></thead>
+    <tbody>
+      <tr><td>👂 Listening</td><td>12 items · 1 pt each · <b>/12</b></td><td>15 items · 1 pt each · <b>/15</b></td></tr>
+      <tr><td>✏️ Vocabulary</td><td>10 pictures · <b>/10</b></td><td>12 pictures + 3 odd-one-out · <b>/15</b></td></tr>
+      <tr><td>⭕ Grammar</td><td>15 items · <b>/15</b></td><td>20 items · <b>/20</b></td></tr>
+      <tr><td>📖 Reading</td><td>6 yes/no + 2 short answers · <b>/8</b></td><td>8 yes/no + 7 menu questions · <b>/15</b></td></tr>
+      <tr><td>✏️ Writing</td><td>Form 5 + 3 sentences 5 · <b>/10</b></td><td>Form 8 + "My week" rubric 12 · <b>/20</b></td></tr>
+      <tr><td>🗣️ Speaking</td><td>Pair task, rubric 5 × 0–3 · <b>/15</b></td><td>Interview, rubric 5 × 0–3 · <b>/15</b></td></tr>
+      <tr><td><b>Total</b></td><td><b>/70</b> (written /55)</td><td><b>/100</b> (written /85)</td></tr>
+    </tbody>
+  </table>
+
+  <!-- ═════════════ PROGRESS TEST 1 ═════════════ -->
+  <div class="sec"><h2>Progress Test 1 · Answer Key</h2><span class="rule"></span></div>
+
+  <div class="grid2">
+    <div class="blk"><div class="h">Part 1 · Listening /12</div>
+      <table class="ans">
+        <tr><td class="n">1</td><td class="a">15</td><td>fifteen: stress on <i>-TEEN</i></td></tr>
+        <tr><td class="n">2</td><td class="a">30</td><td>thirty: stress on <i>THIR-</i></td></tr>
+        <tr><td class="n">3</td><td class="a">67</td><td>sixty-seven</td></tr>
+        <tr><td class="n">4</td><td class="a">078 442 190</td><td>"oh" = 0, "double four"</td></tr>
+        <tr><td class="n">5</td><td class="a">KARIM</td><td>any case; all 5 letters in order</td></tr>
+        <tr><td class="n">6</td><td class="a">JONES</td><td>any case; all 5 letters in order</td></tr>
+        <tr><td class="n">7</td><td class="a">umbrella</td><td>picture 1</td></tr>
+        <tr><td class="n">8</td><td class="a">grandfather</td><td>picture 3</td></tr>
+        <tr><td class="n">9</td><td class="a">sofa</td><td>picture 3</td></tr>
+        <tr><td class="n">10</td><td class="a">Mexico</td><td></td></tr>
+        <tr><td class="n">11</td><td class="a">32</td><td></td></tr>
+        <tr><td class="n">12</td><td class="a">swim</td><td>picture 2 (she <i>can</i> cook and sing)</td></tr>
+      </table>
+    </div>
+    <div class="blk"><div class="h">Part 2 · Vocabulary /10</div>
+      <table class="ans">
+        <tr><td class="n">1</td><td class="a">pen</td><td class="n">6</td><td class="a">fish</td></tr>
+        <tr><td class="n">2</td><td class="a">cup</td><td class="n">7</td><td class="a">chair</td></tr>
+        <tr><td class="n">3</td><td class="a">apple</td><td class="n">8</td><td class="a">bed</td></tr>
+        <tr><td class="n">4</td><td class="a">egg</td><td class="n">9</td><td class="a">window</td></tr>
+        <tr><td class="n">5</td><td class="a">bread</td><td class="n">10</td><td class="a">kitchen</td></tr>
+      </table>
+      <p style="font-size:.86rem;color:var(--ink-2)">Accept <i>an apple / an egg / a pen</i> (article added). Accept a recognizable slip (<i>kichen</i>). Plural forms (<i>eggs</i>) are fine.</p>
+      <div class="blk"><div class="h">Part 4 · Reading /8</div>
+        <table class="ans">
+          <tr><td class="n">1</td><td class="a">Yes</td><td class="n">5</td><td class="a">Yes</td></tr>
+          <tr><td class="n">2</td><td class="a">No</td><td class="n">6</td><td class="a">Yes</td></tr>
+          <tr><td class="n">3</td><td class="a">No</td><td class="n">7</td><td>At six (o'clock) / 6:00 / six</td></tr>
+          <tr><td class="n">4</td><td class="a">No</td><td class="n">8</td><td>(She's) eight / 8</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="blk"><div class="h">Part 3 · Grammar /15 · with the lesson to revisit</div>
+    <table class="ans">
+      <thead><tr><th>#</th><th>Answer</th><th>Why / typical wrong answer</th><th>Lesson</th></tr></thead>
+      <tbody>
+        <tr><td class="n">1</td><td class="a">am</td><td>I → am</td><td class="l">2.1</td></tr>
+        <tr><td class="n">2</td><td class="a">are</td><td>they → are; <i>is</i> is the common error</td><td class="l">2.1</td></tr>
+        <tr><td class="n">3</td><td class="a">an</td><td><i>orange</i> starts with a vowel <b>sound</b></td><td class="l">2.2</td></tr>
+        <tr><td class="n">4</td><td class="a">These</td><td>plural + near</td><td class="l">2.2</td></tr>
+        <tr><td class="n">5</td><td class="a">His</td><td>owner = brother (a man)</td><td class="l">2.3</td></tr>
+        <tr><td class="n">6</td><td class="a">Her</td><td>owner = Anna. The noun <i>mother</i> doesn't decide it. Tagalog, Chinese, and Turkish speakers often mix these up.</td><td class="l">2.3</td></tr>
+        <tr><td class="n">7</td><td class="a">don't</td><td>I → don't</td><td class="l">3.1</td></tr>
+        <tr><td class="n">8</td><td class="a">works</td><td>he/she/it + -s</td><td class="l">3.2</td></tr>
+        <tr><td class="n">9</td><td class="a">Do</td><td>you → Do</td><td class="l">3.1</td></tr>
+        <tr><td class="n">10</td><td class="a">doesn't</td><td>he → doesn't + base verb</td><td class="l">3.2</td></tr>
+        <tr><td class="n">11</td><td class="a">are</td><td>two + plural noun</td><td class="l">3.3</td></tr>
+        <tr><td class="n">12</td><td class="a">any</td><td>questions → any</td><td class="l">3.3</td></tr>
+        <tr><td class="n">13</td><td class="a">at</td><td>clock times → at</td><td class="l">3.2</td></tr>
+        <tr><td class="n">14</td><td class="a">swim</td><td>can + base verb (no -s, no to, no -ing)</td><td class="l">4.1</td></tr>
+        <tr><td class="n">15</td><td class="a">are watching</td><td><i>Look! … now</i> → present continuous</td><td class="l">4.2</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="blk"><div class="h">Part 5 · Writing /10</div>
+    <ul class="tick">
+      <li><b>A. Form (5 × 1 pt).</b> One point per box that has the right <i>kind</i> of information: a name in the name boxes, a country (not a nationality) under Country, digits under Phone, something with <b>@</b> and a dot under Email. Names and country need a <b>capital letter</b> for the point. Invented details score the same as real ones.</li>
+      <li><b>B. Three sentences (5 pts).</b> <b>+1</b> for each sentence (max 3) that is an understandable sentence about the writer, with a subject and a verb (<i>I from Syria</i> = 0; <i>I am from Syria</i> = 1). <b>+1</b> if all sentences start with a capital letter and end with a period. <b>+1</b> if the verb forms are correct in at least two sentences (<i>I have two children, I get up at 6, I can cook</i>).</li>
+    </ul>
+    <p style="font-size:.88rem;color:var(--ink-2)"><b>Model answer (5/5):</b> I am from Colombia. I live in a small flat with my son. I can cook, but I can't drive.</p>
+  </div>
+
+  <div class="blk warn"><div class="h">Errors to expect (Progress Test 1)</div>
+    <ul class="tick">
+      <li><b>13 vs 30, 15 vs 50</b> in Part 1A. The stress pattern is the whole clue, so drill it again in a warmer.</li>
+      <li><b>G/J and E/I</b> when spelling names (1B). Spanish and French speakers often swap them, so recycle the alphabet chant.</li>
+      <li><b>"I have 32 years"</b> in speaking (Spanish, Portuguese, French, Arabic L1). Recycle <i>I'm 32 (years old)</i>.</li>
+      <li><b>Dropped <i>be</i></b>: "I from Egypt" (Arabic, Chinese, Russian L1). This shows up in Part 5B and in speaking.</li>
+      <li><b>his/her</b> (item 5–6), <b>third-person -s</b> (8, 10), and <b>can to / can swims</b> (14). These are the three most common grammar misses at this point.</li>
+    </ul>
+  </div>
+
+  <!-- ═════════════ FINAL TEST ═════════════ -->
+  <div class="sec"><h2>Final Test · Answer Key</h2><span class="rule"></span></div>
+
+  <div class="grid2">
+    <div class="blk"><div class="h">Part 1 · Listening /15</div>
+      <table class="ans">
+        <tr><td class="n">1</td><td class="a">3:30</td><td class="n">9</td><td class="a">nurse</td></tr>
+        <tr><td class="n">2</td><td class="a">3 May</td><td class="n">10</td><td class="a">coat</td></tr>
+        <tr><td class="n">3</td><td class="a">Tuesday</td><td class="n">11</td><td class="a">a coffee</td></tr>
+        <tr><td class="n">4</td><td class="a">$12.50</td><td class="n">12</td><td class="a">milk</td></tr>
+        <tr><td class="n">5</td><td class="a">7:45</td><td class="n">13</td><td class="a">cheese</td></tr>
+        <tr><td class="n">6</td><td class="a">umbrella</td><td class="n">14</td><td class="a">Take away</td></tr>
+        <tr><td class="n">7</td><td class="a">tea</td><td class="n">15</td><td class="a">$6.50</td></tr>
+        <tr><td class="n">8</td><td class="a">foot</td><td></td><td></td></tr>
+      </table>
+      <p style="font-size:.86rem;color:var(--ink-2)">Picture positions: 6 = middle, 7 = right, 8 = left, 9 = right, 10 = middle.</p>
+    </div>
+    <div class="blk"><div class="h">Part 2 · Vocabulary /15</div>
+      <table class="ans">
+        <tr><td class="n">1</td><td class="a">banana</td><td class="n">7</td><td class="a">teacher</td></tr>
+        <tr><td class="n">2</td><td class="a">cheese</td><td class="n">8</td><td class="a">chef</td></tr>
+        <tr><td class="n">3</td><td class="a">sandwich</td><td class="n">9</td><td class="a">driver</td></tr>
+        <tr><td class="n">4</td><td class="a">cake</td><td class="n">10</td><td class="a">jacket</td></tr>
+        <tr><td class="n">5</td><td class="a">lamp</td><td class="n">11</td><td class="a">trousers</td></tr>
+        <tr><td class="n">6</td><td class="a">fridge</td><td class="n">12</td><td class="a">boots</td></tr>
+        <tr><td class="n">13</td><td class="a">July</td><td colspan="2">a month; the others are days</td></tr>
+        <tr><td class="n">14</td><td class="a">bread</td><td colspan="2">food; the others are clothes</td></tr>
+        <tr><td class="n">15</td><td class="a">kitchen</td><td colspan="2">a room; the others are family</td></tr>
+      </table>
+      <p style="font-size:.86rem;color:var(--ink-2)">Accept <i>pants</i> for 11 and <i>cook</i> for 8 (both are real alternatives, even though they aren't in the box).</p>
+    </div>
+  </div>
+
+  <div class="blk"><div class="h">Part 3 · Grammar /20 · with the lesson to revisit</div>
+    <table class="ans">
+      <thead><tr><th>#</th><th>Answer</th><th>Why / typical wrong answer</th><th>Lesson</th></tr></thead>
+      <tbody>
+        <tr><td class="n">1</td><td class="a">are</td><td>we → are</td><td class="l">2.1</td></tr>
+        <tr><td class="n">2</td><td class="a">an</td><td><i>umbrella</i> starts with a vowel sound</td><td class="l">2.2</td></tr>
+        <tr><td class="n">3</td><td class="a">brother's</td><td>possessive 's</td><td class="l">2.3</td></tr>
+        <tr><td class="n">4</td><td class="a">gets up</td><td>he + -s on the verb, not the particle</td><td class="l">3.2</td></tr>
+        <tr><td class="n">5</td><td class="a">Does</td><td>she → Does + base verb</td><td class="l">3.2</td></tr>
+        <tr><td class="n">6</td><td class="a">is</td><td>one sofa</td><td class="l">3.3</td></tr>
+        <tr><td class="n">7</td><td class="a">drive</td><td>can't + base verb</td><td class="l">4.1</td></tr>
+        <tr><td class="n">8</td><td class="a">is sleeping</td><td><i>Shh!</i> = right now</td><td class="l">4.2</td></tr>
+        <tr><td class="n">9</td><td class="a">children</td><td>irregular plural</td><td class="l">5.1</td></tr>
+        <tr><td class="n">10</td><td class="a">red bag</td><td>adjective before noun, no plural -s</td><td class="l">5.1</td></tr>
+        <tr><td class="n">11</td><td class="a">in</td><td>inside the bag</td><td class="l">5.2</td></tr>
+        <tr><td class="n">12</td><td class="a">Have</td><td>you → Have … got</td><td class="l">5.3</td></tr>
+        <tr><td class="n">13</td><td class="a">has</td><td>he → has got</td><td class="l">5.3</td></tr>
+        <tr><td class="n">14</td><td class="a">am never</td><td>adverb <b>after</b> <i>be</i></td><td class="l">6.1</td></tr>
+        <tr><td class="n">15</td><td class="a">cooking</td><td>love + -ing</td><td class="l">6.2</td></tr>
+        <tr><td class="n">16</td><td class="a">in</td><td>months → in</td><td class="l">6.3</td></tr>
+        <tr><td class="n">17</td><td class="a">am going to</td><td><i>be</i> is needed (a common drop)</td><td class="l">6.3</td></tr>
+        <tr><td class="n">18</td><td class="a">any</td><td>question → any</td><td class="l">7.1</td></tr>
+        <tr><td class="n">19</td><td class="a">many</td><td>eggs = countable</td><td class="l">7.1</td></tr>
+        <tr><td class="n">20</td><td class="a">should</td><td>should + base verb (no <i>to</i>)</td><td class="l">8.1</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="grid2">
+    <div class="blk"><div class="h">Part 4 · Reading /15</div>
+      <table class="ans">
+        <tr><td class="n">1</td><td class="a">No</td><td>"It's small"</td></tr>
+        <tr><td class="n">2</td><td class="a">Yes</td><td></td></tr>
+        <tr><td class="n">3</td><td class="a">No</td><td>in a café</td></tr>
+        <tr><td class="n">4</td><td class="a">No</td><td>Monday to Friday</td></tr>
+        <tr><td class="n">5</td><td class="a">Yes</td><td></td></tr>
+        <tr><td class="n">6</td><td class="a">Yes</td><td></td></tr>
+        <tr><td class="n">7</td><td class="a">No</td><td>on Saturday</td></tr>
+        <tr><td class="n">8</td><td class="a">Yes</td><td>"Would you like to have lunch…?"</td></tr>
+        <tr><td class="n">9</td><td class="a">$2.00</td><td>accept "two dollars", "2"</td></tr>
+        <tr><td class="n">10</td><td class="a">$7.00</td><td></td></tr>
+        <tr><td class="n">11</td><td class="a">No</td><td></td></tr>
+        <tr><td class="n">12</td><td class="a">Yes</td><td>orange juice</td></tr>
+        <tr><td class="n">13</td><td class="a">$1.50</td><td>accept "one fifty"</td></tr>
+        <tr><td class="n">14</td><td class="a">$6.00</td><td>2.50 + 3.50</td></tr>
+        <tr><td class="n">15</td><td class="a">any menu item</td><td>e.g. "a cheese sandwich". The item must be on the menu. The article is optional.</td></tr>
+      </table>
+    </div>
+    <div class="blk"><div class="h">Part 5 · Writing /20</div>
+      <ul class="tick">
+        <li><b>A. Form (8 × 1 pt).</b> Same rule as the progress test. Country vs nationality must be the right type (<i>Mexico</i> / <i>Mexican</i>). The birthday needs a day and a month in any clear format (<i>3 May, May 3, 3/5</i>). For Job, accept "student", "at home", "I don't work", or a job title.</li>
+        <li><b>B. My week (12).</b> Score with the <b>writing rubric</b> below: four criteria × 0–3.</li>
+      </ul>
+      <p style="font-size:.88rem;color:var(--ink-2)"><b>Model answer (A1+, 12/12):</b> Every day I get up at six and take the bus to work. I usually cook dinner, but I never cook on Fridays. I love walking in the park. I can speak Arabic and a little English. In my home there are two bedrooms and a small kitchen. Next week I'm going to visit my cousin.</p>
+    </div>
+  </div>
+
+  <div class="blk warn"><div class="h">Errors to expect (Final Test)</div>
+    <ul class="tick">
+      <li><b>Items 4, 5, 13</b>, the he/she forms (<i>gets, Does, has</i>), stay the most frequent misses at A1 exit. It's normal, and A2 recycles them.</li>
+      <li><b>"I never am late"</b> (14), <b>"I going to"</b> (17), <b>"How much eggs"</b> (19), <b>"should to"</b> (20).</li>
+      <li><b>Listening 2</b>: <i>third</i> vs <i>thirteenth</i> vs <i>thirtieth</i>. <b>Listening 5</b>: <i>quarter to</i> is often read as <i>quarter past</i>. Accept only the right answer, but note it as a next step.</li>
+      <li><b>Writing</b>: <i>I like cook</i> (no -ing), <i>There is two…</i>, a missing <i>be</i> in <i>I'm going to</i>, lowercase <i>i</i> and lowercase days.</li>
+    </ul>
+  </div>
+
+  <!-- ═════════════ RUBRICS ═════════════ -->
+  <div class="sec"><h2>Speaking Rubric · Both Tests</h2><span class="rule"></span></div>
+  <p style="font-size:.9rem;color:var(--ink-2)">Five criteria, each <b>0–3</b> (total /15). <b>0</b> = no response, or only L1. The bands follow the CEFR qualitative aspects of spoken language (range, accuracy, fluency, interaction, phonological control). The <b>A1</b> column paraphrases the Council of Europe's A1 descriptors (<i>CEFR Companion Volume</i>, 2020). For the progress test, judge against Modules 1–4 language only.</p>
+  <table class="rubric">
+    <thead><tr><th>Criterion</th><th>Not yet A1 (1)</th><th>A1 (2)</th><th>A1+ strong (3)</th></tr></thead>
+    <tbody>
+      <tr><td class="crit">Task &amp; social language <span class="pts">/3</span></td>
+        <td>Answers some prompts with single words or gestures; greetings or goodbyes are missing or need a model.</td>
+        <td>Handles every stage with memorized phrases: greets, introduces self, gives personal details, and uses <i>please / thank you / I'd like</i> in the role-play.</td>
+        <td>Completes every stage and adds something without being asked (a reason, a second detail, a follow-up question).</td></tr>
+      <tr><td class="crit">Range (words) <span class="pts">/3</span></td>
+        <td>Very few words. Gaps stop the task, and the learner falls back on L1 or pointing.</td>
+        <td>A basic repertoire of words and simple phrases for personal details and familiar, concrete situations (home, food, routine, clothes).</td>
+        <td>Enough words to vary answers. Can say the same thing another way when a word is missing.</td></tr>
+      <tr><td class="crit">Accuracy (grammar) <span class="pts">/3</span></td>
+        <td>Few correct patterns. Often drops <i>be</i> or the verb, so the meaning is often unclear.</td>
+        <td>Limited control of a few simple structures from a learned repertoire (<i>I'm…, I have…, I can…, There is…</i>). Errors are frequent but the meaning is usually clear.</td>
+        <td>Mostly correct basic patterns, including <i>he/she -s</i>, <i>going to</i>, and <i>like + -ing</i> (final test). Errors rarely affect meaning.</td></tr>
+      <tr><td class="crit">Interaction <span class="pts">/3</span></td>
+        <td>Answers only when helped. Cannot ask a question, even from the card.</td>
+        <td>Asks and answers simple questions on familiar topics. Relies on repetition, a slower pace, and help, and can ask for it (<i>Sorry? Slowly, please.</i>).</td>
+        <td>Asks questions naturally, keeps the exchange going, and repairs a breakdown alone.</td></tr>
+      <tr><td class="crit">Pronunciation &amp; fluency <span class="pts">/3</span></td>
+        <td>Often hard to understand, even for a teacher who knows the learner. Long silences.</td>
+        <td>Learned words and phrases can be understood with some effort. Short, mainly pre-packaged utterances with pauses to search for words.</td>
+        <td>Easy to understand for a sympathetic listener. Short turns flow with few long pauses, and numbers and times are clear.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="sec"><h2>Writing Rubric · Final Test Part 5B</h2><span class="rule"></span></div>
+  <p style="font-size:.9rem;color:var(--ink-2)">Four criteria, each <b>0–3</b> (total /12). <b>0</b> = nothing written, or nothing in English. At A1 the learner can fill in forms with personal details and write simple, isolated phrases and sentences about themselves (paraphrased from the CEFR).</p>
+  <table class="rubric">
+    <thead><tr><th>Criterion</th><th>Not yet A1 (1)</th><th>A1 (2)</th><th>A1+ strong (3)</th></tr></thead>
+    <tbody>
+      <tr><td class="crit">Task <span class="pts">/3</span></td>
+        <td>1–2 sentences, or words and phrases that aren't sentences. Mostly copied from the prompts.</td>
+        <td>4–6 simple sentences about the writer's week that follow most prompts.</td>
+        <td>All 6 prompts covered, with some extra detail (time words, <i>and / but</i>).</td></tr>
+      <tr><td class="crit">Range <span class="pts">/3</span></td>
+        <td>Repeats the same few words.</td>
+        <td>Basic words for routine, likes, home, and plans.</td>
+        <td>Some variety: frequency adverbs, several activities, <i>next week / tomorrow</i>.</td></tr>
+      <tr><td class="crit">Accuracy <span class="pts">/3</span></td>
+        <td>Most sentences lack a verb or <i>be</i>, and the meaning is often unclear.</td>
+        <td>Simple patterns mostly correct (<i>I get up…, I can…, There are…</i>). Errors in <i>-ing</i>, <i>going to</i>, and adverb position.</td>
+        <td>Nearly all sentences are correct, including <i>like + -ing</i>, <i>going to</i>, and adverb position.</td></tr>
+      <tr><td class="crit">Spelling &amp; punctuation <span class="pts">/3</span></td>
+        <td>Many words hard to recognize; no capitals or periods.</td>
+        <td>Familiar words spelled well enough to read; capital <i>I</i> and sentence capitals mostly used.</td>
+        <td>Few slips; capitals for <i>I</i>, names, and days; periods throughout.</td></tr>
+    </tbody>
+  </table>
+
+  <!-- ═════════════ WHAT THE SCORES MEAN ═════════════ -->
+  <div class="sec"><h2>What the Scores Mean</h2><span class="rule"></span></div>
+
+  <div class="blk"><div class="h">Progress Test 1 (/70): a diagnosis, not a verdict</div>
+    <table class="ans">
+      <thead><tr><th>Score</th><th>What it tells you</th><th>What to do in Weeks 7–12</th></tr></thead>
+      <tbody>
+        <tr><td><span class="band go">56–70</span></td><td>Strong. Modules 1–4 are secure.</td><td>Give the <b>stretch</b> task in every lesson. Pair with a learner who needs support, as a helper, not a teacher.</td></tr>
+        <tr><td><span class="band mid">42–55</span></td><td>On track, with gaps in one or two sections.</td><td>Point the learner to the <b>online lessons</b> behind their missed items (use the lesson column above). Recycle those points in warmers.</td></tr>
+        <tr><td><span class="band mid">28–41</span></td><td>Needs targeted support.</td><td>A short one-to-one: which part felt hard? Agree on <b>two</b> online lessons to redo with 🔊 Listen. Use the literacy-support options in every class. Check attendance.</td></tr>
+        <tr><td><span class="band rep">0–27</span></td><td>Something is getting in the way.</td><td>Talk privately and gently. Check vision, hearing, literacy in L1 and in the Latin alphabet, attendance, and life stress. Consider a <b>literacy class</b> alongside this one, or re-checking level with the shared <b>placement test</b>. Keep them in the class and keep them welcome.</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:.88rem;color:var(--ink-2)"><b>Class analysis:</b> add up each section for the whole class and divide by the number of learners. A section average under 60% is a class problem, not an individual one. Build a 5–10 minute recycle into the warmers of Classes 14–19 (for example, a numbers bingo if Part 1A is weak, or a <i>his/her</i> photo chain if item 5–6 is weak).</p>
+  </div>
+
+  <div class="blk"><div class="h">Final Test (/100): grade to outcome</div>
+    <table class="rubric">
+      <thead><tr><th>Outcome</th><th>Guideline</th><th>What to tell the learner and program</th></tr></thead>
+      <tbody>
+        <tr><td class="crit"><span class="band go">Ready for A2</span></td>
+          <td><b>70+</b> total <b>and</b> Speaking <b>10+/15</b> (mostly A1 or A1+ on the rubric).</td>
+          <td>Recommend <b>Everyday English (A2 Elementary)</b>. Learners at <b>88+</b> with Speaking <b>13+</b> are strong A1+ and can move quickly through the first A2 module.</td></tr>
+        <tr><td class="crit"><span class="band mid">A2 with a review plan</span></td>
+          <td><b>55–69</b> total with Speaking <b>8+</b>, or <b>70+</b> with Speaking 8–9.</td>
+          <td>Move on to A2 with a written <b>review plan</b>: the 3–4 A1 online lessons behind their weakest items (see the lesson column), done with 🔊 Listen before A2 Week 3.</td></tr>
+        <tr><td class="crit"><span class="band rep">Repeat A1 with support</span></td>
+          <td>Below <b>55</b> total, or Speaking <b>7 or below</b>.</td>
+          <td>Recommend a <b>second lap</b> of A1, framed as consolidation and not failure ("The second time is faster and easier."). Add literacy support, a conversation group, or a volunteer tutor if your program has them.</td></tr>
+        <tr><td class="crit">Literacy pathway</td>
+          <td>Speaking <b>10+</b> and Listening <b>11+/15</b>, but Reading + Writing under <b>18/35</b>.</td>
+          <td>Oral English is ready for A2 and literacy is the barrier. <b>Don't hold them back for literacy alone.</b> Recommend A2 <b>plus</b> a literacy class or tutor. If A2 can't support low-literate learners, repeat A1 with a literacy focus and say clearly why.</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:.88rem;color:var(--ink-2)">These are <b>guidelines</b>. Your twelve weeks of observation count as much as one test on one day. A learner who was ill, anxious, or grieving on test day deserves a re-test or a quick re-check with the shared placement test before any "repeat" recommendation. Record the outcome and a one-line reason for your program.</p>
+  </div>
+
+  <!-- ═════════════ FEEDBACK ═════════════ -->
+  <div class="sec"><h2>Giving Feedback Kindly</h2><span class="rule"></span></div>
+  <div class="grid2">
+    <div class="blk lab"><div class="h">Principles</div>
+      <ul class="tick lab">
+        <li><b>Private, always.</b> Never read scores aloud or return papers in score order.</li>
+        <li><b>Strength first, then one next step.</b> One concrete step, not a list of errors.</li>
+        <li><b>Name the progress.</b> Compare with Week 1, not with classmates.</li>
+        <li><b>Simple English, plus L1 if you share it.</b> Say the key message twice and check that it landed: "Next class: A2 or A1?"</li>
+        <li><b>Written note to take home</b>, because family members may help read it.</li>
+        <li><b>Adults decide.</b> Offer the recommendation and the reason, and let the learner choose when the program allows it.</li>
+      </ul>
+    </div>
+    <div class="blk"><div class="h">Phrases that work at A1</div>
+      <div class="phrase-bank">
+        <span class="phrase">Great job! 🌟</span>
+        <span class="phrase">Your listening is very good.</span>
+        <span class="phrase">You can order in a café now!</span>
+        <span class="phrase">Practice this: he <b>works</b>, she <b>gets up</b>.</span>
+        <span class="phrase">Do Lesson 3.2 at home. Click 🔊 Listen.</span>
+        <span class="phrase">Next class: Everyday English (A2). 🎉</span>
+        <span class="phrase">One more A1 class. It's easier the second time.</span>
+        <span class="phrase">I'm proud of you.</span>
+      </div>
+      <div class="say">Twelve weeks ago you said "hello". Today you talked to a doctor in English!</div>
+      <div class="say">Your speaking is ready. Reading and writing need more time. Let's find a reading class too.</div>
+    </div>
+  </div>
+  <div class="note warn">
+    <div class="t">Avoid</div>
+    <p>Red ink everywhere, percentages without meaning ("62%"), the word "fail", comparisons ("Maria got 90"), and correcting a learner's L1 accent as though it were an error. If a learner cries or goes quiet, pause the conversation and come back to it. The number can wait.</p>
+  </div>
+
+  <div class="foot">
+    <div class="who"><b>Ray de la Paz</b><span class="bio">© 2026 Ray de la Paz · English Foundations (A1 Beginner)</span></div>
+    <div class="ver">Assessment · Answer Key &amp; Rubrics · v1.0</div>
+  </div>
+
+</div>
+</body>
+</html>
