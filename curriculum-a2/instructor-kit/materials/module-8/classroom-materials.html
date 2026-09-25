@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Classroom Materials — Module 8</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../../kit.css">
+<style>
+  /* Module 8 print extras (this sheet only) */
+  .pb{break-before:page}
+  .sort{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:10px 0}
+  .sort span{border:1.5px dashed var(--line-strong);padding:16px 6px;text-align:center;font-family:"Archivo",sans-serif;font-weight:700;font-size:1.15rem;break-inside:avoid}
+  .sort span.hd{background:var(--accent-soft);font-size:1.05rem;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .sort span.hd.g{background:var(--lab-soft)}
+  .sort span.hd.y{background:var(--warn-soft)}
+  .card-cut p{font-size:.88rem;margin:.25rem 0}
+  .card-cut ul{margin:.2rem 0;padding-left:1.1rem;font-size:.88rem}
+  .card-cut table.grammar{font-size:.82rem;margin:6px 0}
+  .card-cut table.grammar td,.card-cut table.grammar th{padding:3px 6px}
+  .tl{width:100%;height:auto;display:block;margin:6px 0 2px}
+  table.fill{width:100%;border-collapse:collapse;margin:8px 0;font-size:.92rem}
+  table.fill th,table.fill td{border:1px solid var(--line-strong);padding:8px 10px;text-align:left}
+  table.fill th{background:var(--surface-2)}
+  table.fill td{height:34px}
+  /* board game */
+  .board-game{display:grid;grid-template-columns:repeat(6,1fr);gap:0;margin:10px 0;border:2px solid var(--ink)}
+  .board-game .sq{border:1px solid var(--line-strong);min-height:1.05in;padding:6px 6px 5px;font-size:.8rem;line-height:1.25;position:relative;break-inside:avoid;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .board-game .sq .n{font-family:"JetBrains Mono",monospace;font-weight:600;font-size:.7rem;color:var(--ink-3);display:block}
+  .board-game .sq b{font-family:"Archivo",sans-serif;font-size:1rem;display:block;margin:2px 0}
+  .board-game .ing{background:var(--lab-soft)}
+  .board-game .to{background:var(--accent-soft)}
+  .board-game .both{background:var(--warn-soft)}
+  .board-game .star{background:#fff7c2}
+  .board-game .jump{background:#f1e7fb}
+  .board-game .end{background:#16202e;color:#fff}
+  .board-game .end .n{color:#c8d3e3}
+  .key{display:flex;flex-wrap:wrap;gap:8px;font-size:.82rem;margin:4px 0}
+  .key span{border:1px solid var(--line-strong);border-radius:6px;padding:2px 8px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .dice{width:100%;border-collapse:collapse;font-size:.9rem;margin:8px 0}
+  .dice th,.dice td{border:1px solid var(--line-strong);padding:6px 8px;text-align:left}
+  .dice th{background:var(--surface-2);font-family:"JetBrains Mono",monospace;font-size:.72rem}
+  .qcards{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:8px 0}
+  .qcards span{border:1.5px dashed var(--line-strong);padding:14px 10px;text-align:center;font-family:"Archivo",sans-serif;font-weight:600;font-size:.98rem;min-height:.95in;display:flex;align-items:center;justify-content:center;break-inside:avoid}
+  /* observation checklist */
+  .obs{width:100%;border-collapse:collapse;margin:8px 0;font-size:.82rem;table-layout:fixed}
+  .obs th,.obs td{border:1px solid var(--line-strong);padding:5px 4px;text-align:center;vertical-align:middle}
+  .obs th{background:var(--surface-2);font-family:"JetBrains Mono",monospace;font-size:.62rem;letter-spacing:.04em;color:var(--ink-2);font-weight:600}
+  .obs th.nm,.obs td.nm{width:19%;text-align:left}
+  .obs th.nt,.obs td.nt{width:25%;text-align:left}
+  .obs td{height:30px}
+  .crit{list-style:none;margin:6px 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:4px 18px;font-size:.88rem}
+  .crit b{font-family:"JetBrains Mono",monospace;color:var(--accent);margin-right:4px}
+  @media print{.obs td{height:26px}}
+  @media (max-width:680px){.flashcards{grid-template-columns:1fr 1fr}.sort{grid-template-columns:1fr 1fr}.cards{grid-template-columns:1fr}
+    .board-game{grid-template-columns:repeat(3,1fr)}.qcards{grid-template-columns:1fr 1fr}.crit{grid-template-columns:1fr}.obs{font-size:.7rem}}
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="lbl">Classroom materials —</span>
+  <button type="button" onclick="window.print()">🖨 Print / Save as PDF</button>
+  <span class="hint">print on card stock · cut on the dashed lines</span>
+</div>
+
+<div class="sheet">
+
+  <header class="mast">
+    <div class="kit-eyebrow">Everyday English · Module 8 Materials</div>
+    <h1>Experiences, Plans &amp; Review — Classroom Materials</h1>
+    <p class="sub">Everything to print for Classes C23–C25: picture flashcards, for/since sort cards, the "How long have you…?" timeline sheet, the to-do list information gap, verb-pattern sort cards, the Verb Pattern Race board game, life-story cards and story-circle questions, the teacher's listening scripts, and the observation checklist that feeds the C26 final speaking assessment.</p>
+    <div class="meta-row">
+      <span class="chip">Lessons <b>8.1–8.3</b></span>
+      <span class="chip">Classes <b>C23–C25</b></span>
+      <span class="chip"><b>10</b> print sets</span>
+      <span class="chip">CEFR <b>A2</b></span>
+    </div>
+  </header>
+
+  <div class="sec"><h2>What to Print</h2><span class="rule"></span></div>
+  <table class="timing">
+    <thead><tr><th>Set</th><th>What</th><th>How many</th><th>Used in</th></tr></thead>
+    <tbody>
+      <tr><td class="t">A</td><td>Picture flashcards (to-do list, hobbies &amp; plans) + time-signal word cards</td><td>1 set for the board</td><td>C23, C24, C25</td></tr>
+      <tr><td class="t">B</td><td>for / since sort cards (2 headers + 18)</td><td>1 set per group of 3</td><td>C23</td></tr>
+      <tr><td class="t">C</td><td>"How long have you…?" timeline sheet + 3 new identity timelines</td><td>1 sheet per learner · cards on a side table</td><td>C23 (keep for C25)</td></tr>
+      <tr><td class="t">D</td><td>To-do list information gap A/B (Set 1 trip · Set 2 party)</td><td>1 page per pair</td><td>C23</td></tr>
+      <tr><td class="t">E</td><td>Verb-pattern sort cards (3 headers + 17)</td><td>1 set per group of 3</td><td>C24</td></tr>
+      <tr><td class="t">F</td><td>Game: Verb Pattern Race (board + dice-free variant)</td><td>1 board per group of 3–4 (A3 if possible) + 1 die</td><td>C24 (dice variant: C25 warmer)</td></tr>
+      <tr><td class="t">G</td><td>Life-story cards (4 fictional people)</td><td>2 sets, on a side table</td><td>C25 (and C26)</td></tr>
+      <tr><td class="t">H</td><td>Story-circle question cards (12)</td><td>1 set per group of 3</td><td>C25</td></tr>
+      <tr><td class="t">I</td><td>Listening &amp; dictation scripts</td><td>Teacher only</td><td>C23, C24, C25</td></tr>
+      <tr><td class="t">J</td><td>Teacher observation checklist (C25 → C26)</td><td>1–2 copies (teacher)</td><td>C25</td></tr>
+    </tbody>
+  </table>
+
+  <!-- ===================== A. FLASHCARDS ===================== -->
+  <div class="sec pb"><h2>A · Picture Flashcards — My To-Do List (8.1)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">Use for the just / already / yet drill: hold up a card, then show ✓ (thumb up) or ✗ (shake your head). "Have you paid the bill yet?" — "Yes, I've already paid it." / "No, I haven't paid it yet."</p>
+  <div class="flashcards">
+    <div class="flashcard"><img src="../../assets/vocab/email.jpg" alt=""><div class="w">send an email</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/bill.jpg" alt=""><div class="w">pay the bill</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/ticket.jpg" alt=""><div class="w">buy the tickets</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/passport.jpg" alt=""><div class="w">renew my passport</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/supermarket.jpg" alt=""><div class="w">go to the supermarket</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/doctor.jpg" alt=""><div class="w">call the doctor</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/luggage.jpg" alt=""><div class="w">pack my suitcase</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/post-office.jpg" alt=""><div class="w">mail a package</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/key.jpg" alt=""><div class="w">return the keys</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/mechanic.jpg" alt=""><div class="w">fix the car</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/bank.jpg" alt=""><div class="w">go to the bank</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/mobile-phone.jpg" alt=""><div class="w">charge my phone</div></div>
+  </div>
+
+  <div class="sec pb"><h2>A · Picture Flashcards — Hobbies &amp; Plans (8.2)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">Say the -ing form for hobbies (<i>swimming</i>), and <i>to</i> + verb for plans (<i>to swim</i>). The first verb on the board decides.</p>
+  <div class="flashcards">
+    <div class="flashcard"><img src="../../assets/vocab/swim.jpg" alt=""><div class="w">swim</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/dance.jpg" alt=""><div class="w">dance</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/cook.jpg" alt=""><div class="w">cook</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/read.jpg" alt=""><div class="w">read</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/sing.jpg" alt=""><div class="w">sing</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/hike.jpg" alt=""><div class="w">hike</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/play-the-guitar.jpg" alt=""><div class="w">play the guitar</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/football.jpg" alt=""><div class="w">play soccer</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/flight.jpg" alt=""><div class="w">travel</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/driver.jpg" alt=""><div class="w">drive</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/notebook.jpg" alt=""><div class="w">take a class</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/tv.jpg" alt=""><div class="w">watch movies</div></div>
+  </div>
+
+  <div class="sec pb"><h2>A · Word Cards — Time Signals (8.1 · 8.3)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">Stick these above the three parts of the board timeline in C25: <b>past</b> · <b>up to now</b> · <b>future</b>. Learners come up and move each card to the right part. In C23, use the middle six for the time-word clue.</p>
+  <div class="flashcards">
+    <div class="flashcard word-only"><div class="w">when I was a child</div></div>
+    <div class="flashcard word-only"><div class="w">used to</div></div>
+    <div class="flashcard word-only"><div class="w">in 2019</div></div>
+    <div class="flashcard word-only"><div class="w">two years ago</div></div>
+    <div class="flashcard word-only"><div class="w">for</div></div>
+    <div class="flashcard word-only"><div class="w">since</div></div>
+    <div class="flashcard word-only"><div class="w">just</div></div>
+    <div class="flashcard word-only"><div class="w">already</div></div>
+    <div class="flashcard word-only"><div class="w">yet</div></div>
+    <div class="flashcard word-only"><div class="w">next year</div></div>
+    <div class="flashcard word-only"><div class="w">one day</div></div>
+    <div class="flashcard word-only"><div class="w">If…, I'll…</div></div>
+  </div>
+
+  <!-- ===================== B. FOR / SINCE SORT ===================== -->
+  <div class="sec pb"><h2>B · for / since Sort Cards (8.1)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">Groups of 3. Put the two header cards on the table. Sort the 18 time cards under <b>for</b> (a length of time: can you count it?) or <b>since</b> (a start point: a day, a date, an event). Then each learner picks 2 cards and says a true sentence: "I've lived here <b>since</b> January."</p>
+  <div class="sort">
+    <span class="hd">for ⏳</span><span class="hd">since 📅</span><span>three years</span><span>2019</span>
+    <span>Monday</span><span>a long time</span><span>I was a child</span><span>ten minutes</span>
+    <span>last summer</span><span>six months</span><span>9 o'clock</span><span>two weeks</span>
+    <span>my birthday</span><span>an hour</span><span>January</span><span>ages</span>
+    <span>I started this class</span><span>a few days</span><span>yesterday</span><span>a year</span>
+  </div>
+  <p style="font-size:.86rem;color:var(--ink-2)"><b>Answers:</b> <b>for</b> three years · a long time · ten minutes · six months · two weeks · an hour · ages · a few days · a year. <b>since</b> 2019 · Monday · I was a child · last summer · 9 o'clock · my birthday · January · I started this class · yesterday. (<i>ages</i> = a very long time, informal.)</p>
+
+  <!-- ===================== C. TIMELINE ===================== -->
+  <div class="sec pb"><h2>C · "How long have you…?" — My Timeline (8.1)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem"><b>1.</b> Write 4–5 start points on the arrow: <b>when</b> (a year, a month, a day, an event) and <b>what</b> (a picture or a word). You choose: your real life, a new identity card, or easy things (my phone, my shoes, my hobby). <b>2.</b> Give your sheet to your partner. Your partner asks "How long have you…?" and writes your answer. <b>3.</b> Keep this sheet for your life story in C25.</p>
+  <svg class="tl" viewBox="0 0 760 170" role="img" aria-label="An empty timeline arrow with five start points and NOW at the right end">
+    <line x1="20" y1="85" x2="700" y2="85" stroke="#16202e" stroke-width="3"/>
+    <polygon points="700,73 730,85 700,97" fill="#16202e"/>
+    <g fill="#ffffff" stroke="#1f5fc9" stroke-width="3">
+      <circle cx="80" cy="85" r="10"/><circle cx="210" cy="85" r="10"/><circle cx="340" cy="85" r="10"/><circle cx="470" cy="85" r="10"/><circle cx="600" cy="85" r="10"/>
+    </g>
+    <g stroke="#bcc7d6" stroke-width="1.5" stroke-dasharray="4 4">
+      <line x1="35" y1="45" x2="125" y2="45"/><line x1="165" y1="45" x2="255" y2="45"/><line x1="295" y1="45" x2="385" y2="45"/><line x1="425" y1="45" x2="515" y2="45"/><line x1="555" y1="45" x2="645" y2="45"/>
+      <line x1="35" y1="135" x2="125" y2="135"/><line x1="165" y1="135" x2="255" y2="135"/><line x1="295" y1="135" x2="385" y2="135"/><line x1="425" y1="135" x2="515" y2="135"/><line x1="555" y1="135" x2="645" y2="135"/>
+    </g>
+    <text x="20" y="20" font-family="Source Sans 3, sans-serif" font-size="15" fill="#45536a">WHEN? (2021 · last May · I was 20 · Monday)</text>
+    <text x="20" y="162" font-family="Source Sans 3, sans-serif" font-size="15" fill="#45536a">WHAT? (this city · my job · my phone · my best friend · English class)</text>
+    <text x="712" y="66" font-family="Archivo, sans-serif" font-size="18" font-weight="800" fill="#1f5fc9">NOW</text>
+  </svg>
+  <table class="fill">
+    <thead><tr><th style="width:44%">My partner asks: How long have you…?</th><th>for… / since… (my partner writes)</th></tr></thead>
+    <tbody>
+      <tr><td>1.</td><td></td></tr>
+      <tr><td>2.</td><td></td></tr>
+      <tr><td>3.</td><td></td></tr>
+      <tr><td>4.</td><td></td></tr>
+      <tr><td>5.</td><td></td></tr>
+    </tbody>
+  </table>
+  <div class="phrase-bank"><span class="phrase">How long have you lived in…?</span><span class="phrase">How long have you had…?</span><span class="phrase">How long have you known…?</span><span class="phrase">How long have you worked at…?</span><span class="phrase">How long have you studied…?</span><span class="phrase">How long have you been a…?</span></div>
+  <p style="font-size:.9rem">⭐ Stretch: ask one more question in the past simple. "How long have you had your phone?" — "Since 2024." — "Where <b>did</b> you <b>buy</b> it?"</p>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">New identity timelines <span style="font-weight:500;color:var(--ink-3)">(cut out; any learner can take one)</span></h3>
+  <div class="cards">
+    <div class="card-cut"><div class="ct">Timeline 1</div><h4>Karim — cook</h4>
+      <ul><li><b>2015</b> — started work as a cook</li><li><b>2020</b> — moved to this city</li><li><b>2022</b> — met my best friend, Tom</li><li><b>last spring</b> — bought a bike</li><li><b>September</b> — started English class</li></ul></div>
+    <div class="card-cut b"><div class="ct">Timeline 2</div><h4>Rosa — nurse's aide</h4>
+      <ul><li><b>2019</b> — moved to this city</li><li><b>2021</b> — got my job at the hospital</li><li><b>2023</b> — adopted my cat, Luna</li><li><b>January</b> — got a new phone</li><li><b>last week</b> — started a first-aid course</li></ul></div>
+    <div class="card-cut"><div class="ct">Timeline 3</div><h4>Mei — hotel receptionist</h4>
+      <ul><li><b>I was a child</b> — started dancing</li><li><b>2018</b> — met my husband</li><li><b>2021</b> — started working at the hotel</li><li><b>last summer</b> — moved to a new apartment</li><li><b>Monday</b> — had a cold 🤧</li></ul></div>
+    <div class="card-cut b"><div class="ct">How to use a card</div><h4>Answer as the card person</h4>
+      <p>"How long have you worked at the hotel?"</p><p>"<b>Since</b> 2021. / <b>For</b> five years."</p><p>Count the years <b>to this year</b> for <i>for</i>. Not sure? Use <i>since</i>. It's always right!</p></div>
+  </div>
+
+  <!-- ===================== D. TO-DO INFO GAP ===================== -->
+  <div class="sec pb"><h2>D · To-Do List Information Gap — Set 1: The Trip (8.1)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">Pairs sit face to face and don't show their cards. You and your partner are going on a trip <b>tomorrow</b>. Ask about your partner's list: "Have you <b>printed the tickets</b> yet?" Answer from your card: ✓ + "10 min ago" → "Yes, I've <b>just</b>…" · ✓ + "early!" → "Yes, I've <b>already</b>…" · ✗ → "No, I haven't… <b>yet</b>." Write ✓ / ✗ and <i>just</i> / <i>already</i>. At the end: what haven't you done yet? Make a plan: "I'll… / I'm going to…"</p>
+  <div class="cards">
+    <div class="card-cut"><div class="ct">Student A · Set 1</div><h4>My list (Sam)</h4>
+      <table class="grammar">
+        <tr><th>To do</th><th>Done?</th></tr>
+        <tr><td>book the hotel</td><td>✓ last week — early!</td></tr>
+        <tr><td>pack my suitcase</td><td>✓ 5 min ago</td></tr>
+        <tr><td>change money</td><td>✗</td></tr>
+        <tr><td>print the tickets</td><td>✓ on Monday — early!</td></tr>
+        <tr><td>call my mom</td><td>✗</td></tr>
+        <tr><td>water the plants</td><td>✓ 10 min ago</td></tr>
+        <tr><td>buy sunscreen</td><td>✗</td></tr>
+        <tr><td>charge my phone</td><td>✓ 2 min ago</td></tr>
+      </table>
+      <h4>My partner's list (Jo)</h4>
+      <table class="grammar">
+        <tr><th>Has Jo…?</th><th>✓ / ✗</th><th>just / already</th></tr>
+        <tr><td>renew the passport</td><td></td><td></td></tr>
+        <tr><td>do the laundry</td><td></td><td></td></tr>
+        <tr><td>pay the phone bill</td><td></td><td></td></tr>
+        <tr><td>book a taxi to the airport</td><td></td><td></td></tr>
+        <tr><td>take out the trash</td><td></td><td></td></tr>
+        <tr><td>give the keys to the neighbor</td><td></td><td></td></tr>
+        <tr><td>download the boarding passes</td><td></td><td></td></tr>
+        <tr><td>eat the food in the fridge</td><td></td><td></td></tr>
+      </table></div>
+    <div class="card-cut b"><div class="ct">Student B · Set 1</div><h4>My list (Jo)</h4>
+      <table class="grammar">
+        <tr><th>To do</th><th>Done?</th></tr>
+        <tr><td>renew the passport</td><td>✓ last month — early!</td></tr>
+        <tr><td>do the laundry</td><td>✓ 10 min ago</td></tr>
+        <tr><td>pay the phone bill</td><td>✗</td></tr>
+        <tr><td>book a taxi to the airport</td><td>✓ yesterday — early!</td></tr>
+        <tr><td>take out the trash</td><td>✗</td></tr>
+        <tr><td>give the keys to the neighbor</td><td>✓ 5 min ago</td></tr>
+        <tr><td>download the boarding passes</td><td>✗</td></tr>
+        <tr><td>eat the food in the fridge</td><td>✓ 1 min ago 😋</td></tr>
+      </table>
+      <h4>My partner's list (Sam)</h4>
+      <table class="grammar">
+        <tr><th>Has Sam…?</th><th>✓ / ✗</th><th>just / already</th></tr>
+        <tr><td>book the hotel</td><td></td><td></td></tr>
+        <tr><td>pack the suitcase</td><td></td><td></td></tr>
+        <tr><td>change money</td><td></td><td></td></tr>
+        <tr><td>print the tickets</td><td></td><td></td></tr>
+        <tr><td>call Mom</td><td></td><td></td></tr>
+        <tr><td>water the plants</td><td></td><td></td></tr>
+        <tr><td>buy sunscreen</td><td></td><td></td></tr>
+        <tr><td>charge the phone</td><td></td><td></td></tr>
+      </table></div>
+  </div>
+  <p style="font-size:.86rem;color:var(--ink-2)"><b>Past participles to pre-teach:</b> booked · packed · changed · printed · called · watered · bought · charged · renewed · done · paid · taken · given · downloaded · eaten. The full answers are in the Answer Key.</p>
+
+  <div class="sec pb"><h2>D · To-Do List Information Gap — Set 2: The Party (new partner)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">Same rules. You're having a birthday party <b>tonight</b> for a friend. Ask: "Have you <b>bought the cake</b> yet?"</p>
+  <div class="cards">
+    <div class="card-cut"><div class="ct">Student A · Set 2</div><h4>My list</h4>
+      <table class="grammar">
+        <tr><th>To do</th><th>Done?</th></tr>
+        <tr><td>buy the cake</td><td>✓ this morning — early!</td></tr>
+        <tr><td>clean the living room</td><td>✓ 5 min ago</td></tr>
+        <tr><td>send the invitations</td><td>✓ two weeks ago — early!</td></tr>
+        <tr><td>cook the rice</td><td>✗</td></tr>
+        <tr><td>buy drinks</td><td>✓ 10 min ago</td></tr>
+        <tr><td>choose the music</td><td>✗</td></tr>
+        <tr><td>wrap the present</td><td>✓ 1 min ago</td></tr>
+        <tr><td>put up the balloons</td><td>✗</td></tr>
+      </table>
+      <h4>My partner's list</h4>
+      <table class="grammar">
+        <tr><th>Has my partner…?</th><th>✓ / ✗</th><th>just / already</th></tr>
+        <tr><td>make the salad</td><td></td><td></td></tr>
+        <tr><td>borrow chairs</td><td></td><td></td></tr>
+        <tr><td>buy candles</td><td></td><td></td></tr>
+        <tr><td>tell the neighbors</td><td></td><td></td></tr>
+        <tr><td>iron a shirt</td><td></td><td></td></tr>
+        <tr><td>call Grandma</td><td></td><td></td></tr>
+        <tr><td>clean the bathroom</td><td></td><td></td></tr>
+        <tr><td>find the camera</td><td></td><td></td></tr>
+      </table></div>
+    <div class="card-cut b"><div class="ct">Student B · Set 2</div><h4>My list</h4>
+      <table class="grammar">
+        <tr><th>To do</th><th>Done?</th></tr>
+        <tr><td>make the salad</td><td>✓ 5 min ago</td></tr>
+        <tr><td>borrow chairs</td><td>✓ yesterday — early!</td></tr>
+        <tr><td>buy candles</td><td>✗</td></tr>
+        <tr><td>tell the neighbors</td><td>✓ last week — early!</td></tr>
+        <tr><td>iron a shirt</td><td>✗</td></tr>
+        <tr><td>call Grandma</td><td>✓ 2 min ago</td></tr>
+        <tr><td>clean the bathroom</td><td>✗</td></tr>
+        <tr><td>find the camera</td><td>✓ 10 min ago</td></tr>
+      </table>
+      <h4>My partner's list</h4>
+      <table class="grammar">
+        <tr><th>Has my partner…?</th><th>✓ / ✗</th><th>just / already</th></tr>
+        <tr><td>buy the cake</td><td></td><td></td></tr>
+        <tr><td>clean the living room</td><td></td><td></td></tr>
+        <tr><td>send the invitations</td><td></td><td></td></tr>
+        <tr><td>cook the rice</td><td></td><td></td></tr>
+        <tr><td>buy drinks</td><td></td><td></td></tr>
+        <tr><td>choose the music</td><td></td><td></td></tr>
+        <tr><td>wrap the present</td><td></td><td></td></tr>
+        <tr><td>put up the balloons</td><td></td><td></td></tr>
+      </table></div>
+  </div>
+  <p style="font-size:.86rem;color:var(--ink-2)"><b>Participles:</b> bought · cleaned · sent · cooked · chosen · wrapped · put · made · borrowed · told · ironed · called · found.</p>
+
+  <!-- ===================== E. VERB SORT ===================== -->
+  <div class="sec pb"><h2>E · Verb-Pattern Sort Cards (8.2)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">Groups of 3. Put the three header cards in a row. Sort the 17 verb cards (3 min). Then turn all the cards face down. Take turns: turn one card over and make a sentence: "<b>keep</b>: My son keeps losing his keys."</p>
+  <div class="sort">
+    <span class="hd g">+ -ing</span><span class="hd">+ to</span><span class="hd y">both</span><span>enjoy</span>
+    <span>don't mind</span><span>finish</span><span>keep</span><span>suggest</span>
+    <span>want</span><span>need</span><span>would like</span><span>decide</span>
+    <span>hope</span><span>plan</span><span>promise</span><span>learn</span>
+    <span>try</span><span>like</span><span>love</span><span>hate</span>
+  </div>
+  <p style="font-size:.86rem;color:var(--ink-2)"><b>Answers:</b> <b>+ -ing</b> enjoy · don't mind · finish · keep · suggest. <b>+ to</b> want · need · would like · decide · hope · plan · promise · learn · try. <b>both</b> like · love · hate. If a group puts <i>like</i> under <i>-ing</i> only, that's fine; ask "Can you say 'I like to swim'?" (Yes.) Watch for <i>would like</i> under "both": it is <b>to</b> only.</p>
+
+  <!-- ===================== F. BOARD GAME ===================== -->
+  <div class="sec pb"><h2>F · Game — Verb Pattern Race (8.2)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem"><b>3–4 players · 1 die · 1 counter each.</b> Roll and move. Make a <b>true</b> sentence with the verb on your square (or a sentence for your new identity). The group checks the second verb: <i>-ing</i> or <i>to</i>? Wrong → go back 1 square. <b>★</b> = ask the player on your left the question. Follow the arrows. First to FINISH wins.</p>
+  <div class="key"><span style="background:var(--lab-soft)">green = + -ing</span><span style="background:var(--accent-soft)">blue = + to</span><span style="background:var(--warn-soft)">amber = both</span><span style="background:#fff7c2">★ = ask a question</span><span style="background:#f1e7fb">arrow = move</span></div>
+  <div class="board-game">
+    <div class="sq end"><span class="n">1</span><b>START ▶</b></div>
+    <div class="sq ing"><span class="n">2</span><b>enjoy</b>… on the weekend</div>
+    <div class="sq to"><span class="n">3</span><b>want</b>… this year</div>
+    <div class="sq star"><span class="n">4</span>★ Ask: What do you enjoy doing after class?</div>
+    <div class="sq ing"><span class="n">5</span><b>don't mind</b>… at home</div>
+    <div class="sq to"><span class="n">6</span><b>hope</b>… next year ⤵</div>
+
+    <div class="sq star"><span class="n">12</span>★ Ask: What would you like to do this weekend?</div>
+    <div class="sq both"><span class="n">11</span><b>love / hate</b>… (you choose)</div>
+    <div class="sq to"><span class="n">10</span><b>decided</b>… last year</div>
+    <div class="sq ing"><span class="n">9</span><b>finish</b>… every day</div>
+    <div class="sq to"><span class="n">8</span><b>would like</b>… tonight</div>
+    <div class="sq jump"><span class="n">7</span>⬅ Oh no! Go back 2 ◀</div>
+
+    <div class="sq ing"><span class="n">13</span><b>keep</b>… (a bad habit! 😅)</div>
+    <div class="sq to"><span class="n">14</span><b>need</b>… this week</div>
+    <div class="sq to"><span class="n">15</span><b>plan</b>… this summer</div>
+    <div class="sq jump"><span class="n">16</span>➡ Great! Go forward 2</div>
+    <div class="sq ing"><span class="n">17</span><b>suggest</b>… (your friend is bored)</div>
+    <div class="sq to"><span class="n">18</span><b>I'm learning</b>… ⤵</div>
+
+    <div class="sq jump"><span class="n">24</span>⬅ Go back 3 ◀</div>
+    <div class="sq ing"><span class="n">23</span><b>enjoy</b>… with friends</div>
+    <div class="sq to"><span class="n">22</span><b>try</b>… every day</div>
+    <div class="sq ing"><span class="n">21</span><b>don't mind</b>… at work or school</div>
+    <div class="sq star"><span class="n">20</span>★ Ask: What have you decided to do this year?</div>
+    <div class="sq to"><span class="n">19</span><b>promise</b>… (to your family)</div>
+
+    <div class="sq to"><span class="n">25</span><b>would like</b>… one day</div>
+    <div class="sq both"><span class="n">26</span><b>hate</b>… (a job at home)</div>
+    <div class="sq star"><span class="n">27</span>★ Ask: What do you want to learn?</div>
+    <div class="sq to"><span class="n">28</span><b>hope</b>… in five years</div>
+    <div class="sq ing"><span class="n">29</span><b>finish</b>… before bed</div>
+    <div class="sq end"><span class="n">30</span><b>FINISH 🏁</b></div>
+  </div>
+  <p style="font-size:.86rem;color:var(--ink-2)">The path snakes: 1 → 6 left to right, 7 → 12 right to left, 13 → 18 left to right, 19 → 24 right to left, 25 → 30. Model sentences for every square are in the Answer Key.</p>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">No board? Dice-free / two-dice variant <span style="font-weight:500;color:var(--ink-3)">(also the C25 warmer)</span></h3>
+  <p style="font-size:.9rem">Roll two dice (or two players each call a number 1–6, or use a phone dice app). Die 1 = the first verb. Die 2 = the topic. Make a true sentence. Correct = 1 point. Play for 5 minutes.</p>
+  <table class="dice">
+    <thead><tr><th>⚀ Die 1: first verb</th><th>⚁ Die 2: topic</th></tr></thead>
+    <tbody>
+      <tr><td>1 · enjoy</td><td>1 · the weekend</td></tr>
+      <tr><td>2 · don't mind</td><td>2 · food and cooking</td></tr>
+      <tr><td>3 · want</td><td>3 · this year</td></tr>
+      <tr><td>4 · would like</td><td>4 · home</td></tr>
+      <tr><td>5 · have decided</td><td>5 · work or school</td></tr>
+      <tr><td>6 · hope</td><td>6 · one day in the future</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:.86rem;color:var(--ink-2)">Example: 3 + 2 → "I want <b>to learn</b> to cook Thai food." · 2 + 4 → "I don't mind <b>washing</b> the dishes." Stretch: roll a 6 on die 1 → use any verb from the two-column list.</p>
+
+  <!-- ===================== G. LIFE-STORY CARDS ===================== -->
+  <div class="sec pb"><h2>G · Life-Story Cards (8.3 · C26)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">For learners who want a <b>fully fictional</b> story. Any learner can take one: no reason needed. They can also mix: a card's past with their own future, or their own past with a card's future. Learners tell the card in the first person ("I grew up…") and can add details. They may use the same card in the C26 speaking check.</p>
+  <div class="cards">
+    <div class="card-cut"><div class="ct">Story card 1</div><h4>🌊 Rosa</h4>
+      <p><b>⬅️ Past:</b> I grew up in a fishing town by the sea. I used to help my father sell fish at the market. I was working in a bakery when I met my husband.</p>
+      <p><b>⏺️ Up to now:</b> I've lived in this city since 2019. I've worked as a nurse's aide for three years. I've just finished a first-aid course.</p>
+      <p><b>➡️ Future:</b> I'm going to apply to nursing school. I think I'll be a good nurse. If I pass the English test, I'll start in September.</p></div>
+    <div class="card-cut b"><div class="ct">Story card 2</div><h4>🚕 Karim</h4>
+      <p><b>⬅️ Past:</b> I grew up in a big, busy city. I used to play soccer in the street every evening. I was studying engineering, but I stopped.</p>
+      <p><b>⏺️ Up to now:</b> I've driven a taxi for four years. I've known my best friend since school. I haven't started my own business yet.</p>
+      <p><b>➡️ Future:</b> I'm going to buy a food truck. I'd like to cook food from my home city. If the food truck does well, I'll open a restaurant.</p></div>
+    <div class="card-cut"><div class="ct">Story card 3</div><h4>🐔 Mei</h4>
+      <p><b>⬅️ Past:</b> I grew up on a farm. I used to feed the chickens every morning. I was living with my grandparents, and I loved it.</p>
+      <p><b>⏺️ Up to now:</b> I've worked in a hotel since 2021. I've already learned to drive. I've just moved into a new apartment.</p>
+      <p><b>➡️ Future:</b> I'm going to take a computer class. I hope to work in an office one day. I think I'll visit my grandparents next summer.</p></div>
+    <div class="card-cut b"><div class="ct">Story card 4</div><h4>👨‍🍳 Tomás</h4>
+      <p><b>⬅️ Past:</b> I grew up in a small village in the mountains. I used to cook with my mother. I was working in a big restaurant when I won a cooking prize.</p>
+      <p><b>⏺️ Up to now:</b> I've been retired for two years. I've had my dog, Chico, since 2020. I've just started a cooking video channel.</p>
+      <p><b>➡️ Future:</b> I'm going to teach cooking classes. If my channel gets 1,000 followers, I'll have a party. I'd like to travel to Italy one day.</p></div>
+  </div>
+  <p style="font-size:.86rem;color:var(--ink-2)"><b>Literacy support:</b> read the card aloud to the learner twice, then let them retell it from the three emoji headings (⬅️ ⏺️ ➡️) and 2 sentences per part. <b>Stretch:</b> add 3 new sentences to the card, including one with <i>because</i> and one with <i>while</i>.</p>
+
+  <!-- ===================== H. STORY-CIRCLE QUESTIONS ===================== -->
+  <div class="sec pb"><h2>H · Story-Circle Question Cards (8.3)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">Cut out and put face down in the middle of each story circle. After a speaker finishes, each listener takes a card and asks the question (or asks their own). Rows: <b>past</b> · <b>up to now</b> · <b>future</b>. These are also good practice for the C26 interview.</p>
+  <div class="qcards">
+    <span>Where did you grow up?</span><span>What did you use to do when you were a child?</span><span>What were you doing five years ago?</span>
+    <span>What was your first job or school like?</span><span>How long have you lived here?</span><span>How long have you known your best friend?</span>
+    <span>What have you just started?</span><span>What haven't you done yet?</span><span>What are you going to do next year?</span>
+    <span>What will you do if you have a free weekend?</span><span>What would you like to learn?</span><span>What do you hope to do one day?</span>
+  </div>
+  <p style="font-size:.86rem;color:var(--ink-2)">Trauma-informed: a speaker can always say "Pass" or "That's a secret!" and the listener takes a new card. Model this before the circles start, so it feels normal.</p>
+
+  <!-- ===================== I. SCRIPTS ===================== -->
+  <div class="sec pb"><h2>I · Listening &amp; Dictation Scripts (teacher reads aloud)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">Read at a natural but slow speed, with pauses. Read each script twice: once for gist, once to check. The 🔊 buttons in the online lessons give learners extra listening at home.</p>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">8.1-A · Ana's timeline <span style="font-weight:500;color:var(--ink-3)">(Workbook 8.1, Ex 2: for or since + the time)</span></h3>
+  <div class="script">Hi, I'm Ana. I was born in Lima, in Peru. Before I came to this city, I lived with my aunt in Texas for two years. I've lived in this city since 2021. I work in a hotel. I've worked there for three years, and I love my job! I met my husband, David, at the hotel. We've known each other since 2022, and we've been married for one year. I've studied English since last September. Oh, and I have a new car! Well… a new <i>old</i> car. I've had it for two months.</div>
+  <p style="font-size:.86rem;color:var(--ink-2)">Answers: 1 since 2021 · 2 for three years · 3 since 2022 · 4 for one year · 5 since last September · 6 for two months · bonus: for two years (past simple: she doesn't live in Texas now).</p>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">8.1-B · Leo's moving day <span style="font-weight:500;color:var(--ink-3)">(Workbook 8.1, Ex 3: ✓ / ✗ + just / already)</span></h3>
+  <div class="script">It's Saturday, and I'm moving to a new apartment today. Let me look at my list. Pack the kitchen things. Yes, I've already done that. I did it on Thursday! Clean the bathroom. I've just finished it, five minutes ago. Call the electric company. Hmm, no. I haven't called them yet. Return the keys to my old landlord. Not yet. I'm going to do that tomorrow. Buy boxes. Yes, I've already bought them. Change my address. I've just done it, online. And… say goodbye to my neighbors. No, I haven't done that yet. I'm a little sad.</div>
+  <p style="font-size:.86rem;color:var(--ink-2)">Answers: pack ✓ already · clean the bathroom ✓ just · call the electric company ✗ · return the keys ✗ · buy boxes ✓ already · change my address ✓ just · say goodbye ✗.</p>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">8.1-C · Dictation <span style="font-weight:500;color:var(--ink-3)">(read each sentence 3 times; use in the feedback stage or as the C24 warmer)</span></h3>
+  <div class="script">1. I've lived here for three years. · 2. She has worked at the hospital since 2020. · 3. Have you paid the bill yet? · 4. We've just finished lunch.</div>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">8.2-A · Lena and Omar <span style="font-weight:500;color:var(--ink-3)">(Workbook 8.2, Ex 4: L or O)</span></h3>
+  <div class="script"><b>Omar:</b> Hi, Lena! What do you enjoy doing in your free time?<br><b>Lena:</b> I enjoy dancing. I go to a salsa class every Friday. And I don't mind cooking. I cook for my family every day. What about you?<br><b>Omar:</b> I love hiking. On the weekend, I go to the mountains. And I read a lot. I keep buying books, but I don't have time to read them all!<br><b>Lena:</b> Ha! Do you have any plans for this year?<br><b>Omar:</b> Yes. I hope to visit my brother in Chicago in the summer. And I'd like to learn to play the guitar.<br><b>Lena:</b> Great! I want to learn to swim. I can't swim at all! So I've decided to join the swimming pool near my house.<br><b>Omar:</b> Good for you! Let's promise to practice every week.</div>
+  <p style="font-size:.86rem;color:var(--ink-2)">Answers: 1 L · 2 O · 3 L · 4 O · 5 L · 6 O · 7 O · 8 L. Gist question "Who has a plan for this year?": both.</p>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">8.2-B · Dictation <span style="font-weight:500;color:var(--ink-3)">(read each sentence 3 times)</span></h3>
+  <div class="script">1. I enjoy cooking for my family. · 2. She wants to learn to drive. · 3. We've decided to move next year. · 4. Would you like to come with us?</div>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">8.3-A · Maya's life story <span style="font-weight:500;color:var(--ink-3)">(Workbook 8.3, Ex 1 · same as the online lesson: you can play the 🔊 lines instead)</span></h3>
+  <div class="script"><b>Sam:</b> So, Maya, tell me a little about yourself. Where did you grow up?<br><b>Maya:</b> I grew up in a small town by the sea. When I was young, my family used to run a little café.<br><b>Sam:</b> That sounds lovely! What was life like there?<br><b>Maya:</b> Busy and warm. Every summer, lots of tourists came to our town, and we cooked all day. I used to help my mother in the kitchen. One summer, I was helping her when my university letter arrived!<br><b>Sam:</b> And how long have you lived in the city now?<br><b>Maya:</b> I've lived here for four years — since I started university. I've studied design, and I've just finished my final project.<br><b>Sam:</b> Congratulations! Have you found a job yet?<br><b>Maya:</b> Not yet. But I'm going to apply to a design studio next week. I'm quite hopeful.<br><b>Sam:</b> I'm sure you'll do well. What are your plans after that?<br><b>Maya:</b> If I get the job, I'll stay in the city for a while. And one day I'm going to open my own studio — maybe back by the sea.<br><b>Sam:</b> That's a beautiful dream. I think you'll make it happen.<br><b>Maya:</b> Thank you! If I keep working hard, I think everything will be fine.</div>
+  <p style="font-size:.86rem;color:var(--ink-2)">Circled words (Ex 1 part 2): used to run · were cooking · I've lived · I've just finished · I'm going to apply · I'll stay · If I get. <b>Not</b> in the story: was working · I lived · If I will get.</p>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">8.3-B · The teacher's model life story <span style="font-weight:500;color:var(--ink-3)">(planning stage · better still: tell your own, real or invented, with the same three parts)</span></h3>
+  <div class="script">Let me tell you my story. I grew up in a small village in the mountains. When I was a child, I used to walk to school with my brother, and my parents were working on a farm. Life was simple and happy. After school, I moved to the city and got a job in a store. I've lived in this city for three years now — since I came here for work. I've learned a lot, and I've just started an evening English class. I haven't found my dream job yet. Next year, I'm going to look for a better job. I think I'll study more, too. If I improve my English, I'll apply for a job in an office. One day, I'd like to visit every country I've read about. That's my story!</div>
+  <p style="font-size:.86rem;color:var(--ink-2)">After reading, ask: "Which part was the past? Up to now? The future?" Learners raise 1, 2 or 3 fingers as you re-read three sentences. 13 sentences: a good length for C25.</p>
+
+  <!-- ===================== J. CHECKLIST ===================== -->
+  <div class="sec pb"><h2>J · Teacher Observation Checklist · C25 → C26</h2><span class="rule"></span></div>
+  <div class="note">
+    <div class="t">How to use it</div>
+    <p>Observe during the rehearsal and the story circles. Mark <b>✓</b> did it clearly · <b>~</b> did it with help, or errors that affect meaning · <b>○</b> not yet / not observed. You don't need a mark in every box. After class, use it to (1) plan each learner's C26 interview (start with the part they told best), (2) choose the C26 role-play, (3) choose the two weakest items for the C26 warm-up, and (4) note who needs encouragement. <b>This is not a grade.</b> The C26 interview asks about the same three parts, so these items are the same can-dos the final speaking check looks for.</p>
+  </div>
+  <ul class="crit">
+    <li><b>1</b> Past simple for finished events (<em>grew up, moved, started</em>), regular and irregular</li>
+    <li><b>2</b> Past background: <em>used to</em> + verb and/or past continuous</li>
+    <li><b>3</b> Present perfect + <em>for / since</em> (time up to now)</li>
+    <li><b>4</b> <em>just / already / yet</em> in the right place</li>
+    <li><b>5</b> Future: <em>going to</em> (plan) and/or <em>will</em> (prediction)</li>
+    <li><b>6</b> First conditional: <em>If</em> + present, <em>will</em> + verb</li>
+    <li><b>7</b> Verb patterns: <em>want / would like / hope to</em> · <em>enjoy</em> + -ing</li>
+    <li><b>8</b> Story is clear (time words, three parts); answers a follow-up question</li>
+  </ul>
+  <table class="obs">
+    <thead><tr><th class="nm">Learner</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th class="nt">C26 start · role-play · notes</th></tr></thead>
+    <tbody>
+      <tr><td class="nm"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="nt"></td></tr>
+      <tr><td class="nm"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="nt"></td></tr>
+      <tr><td class="nm"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="nt"></td></tr>
+      <tr><td class="nm"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="nt"></td></tr>
+      <tr><td class="nm"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="nt"></td></tr>
+      <tr><td class="nm"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="nt"></td></tr>
+      <tr><td class="nm"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="nt"></td></tr>
+      <tr><td class="nm"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="nt"></td></tr>
+      <tr><td class="nm"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="nt"></td></tr>
+      <tr><td class="nm"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="nt"></td></tr>
+      <tr><td class="nm"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="nt"></td></tr>
+      <tr><td class="nm"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="nt"></td></tr>
+      <tr><td class="nm"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="nt"></td></tr>
+      <tr><td class="nm"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="nt"></td></tr>
+      <tr><td class="nm"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="nt"></td></tr>
+      <tr><td class="nm"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="nt"></td></tr>
+    </tbody>
+  </table>
+  <div class="grid2">
+    <div class="note"><div class="t">Class summary → C26 warm-up</div><p>Two items with the most ~ / ○: ______ and ______</p><p>Review plan (10 min): ______________________</p></div>
+    <div class="note lab"><div class="t">C26 role-plays (Module 7)</div><p>Directions / travel (7.1): ______________</p><p>Café or store (7.2): ______________ &nbsp; Doctor (7.3): ______________</p></div>
+  </div>
+
+  <div class="foot">
+    <div class="who"><b>Ray de la Paz</b><span class="bio">© 2026 Ray de la Paz · Everyday English (A2 Elementary)</span></div>
+    <div class="ver">Module 8 · Classroom Materials · v1.0</div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slides — Module 4</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root{--bg:#0b1220;--ink:#edf2fb;--ink2:#a8b6cf;--accent:#7fb2ff;--accent2:#2563eb;--lab:#34d3bd;--warn:#fbbf24;--line:#233252;--code:#101a2e;color-scheme:dark}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;overflow:hidden}
+  .deck{height:100%;width:100%;position:relative}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:6vh 8vw;gap:20px}
+  .slide.on{display:flex}
+  h1,h2,h3{font-family:"Archivo",sans-serif;line-height:1.1;text-wrap:balance}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  .slide h1{font-size:clamp(2rem,6vw,4rem);font-weight:800;letter-spacing:-.02em}
+  .slide h2{font-size:clamp(1.5rem,4.2vw,2.8rem);font-weight:800;letter-spacing:-.01em}
+  .slide p.lead{font-size:clamp(1.05rem,2.4vw,1.5rem);color:var(--ink2);max-width:26ch}
+  ul{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:6px}
+  ul li{position:relative;padding-left:34px;font-size:clamp(1.05rem,2.3vw,1.6rem)}
+  ul li::before{content:"";position:absolute;left:0;top:.55em;width:12px;height:12px;border-radius:3px;background:var(--accent);transform:rotate(45deg)}
+  ul.lab li::before{background:var(--lab)}
+  code.k{font-family:"JetBrains Mono",monospace;color:#cfe0ff;font-size:.92em}
+  pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:22px 26px;font-family:"JetBrains Mono",monospace;font-size:clamp(.85rem,1.9vw,1.3rem);line-height:1.55;overflow:auto;max-width:100%}
+  pre .k{color:#7dd3fc} pre .s{color:#86efac} pre .c{color:#7183a3;font-style:italic}
+  .tag{display:inline-flex;align-items:center;gap:10px;font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);color:var(--ink2)}
+  .tag .pill{background:var(--accent2);color:#fff;font-weight:700;border-radius:999px;padding:3px 12px;letter-spacing:.06em}
+  .tag .pill.lab{background:var(--lab);color:#062b26} .tag .pill.warn{background:var(--warn);color:#3a2a05}
+  .section{background:linear-gradient(135deg,#132a52,#0b1220)}
+  .section .big{font-size:clamp(3rem,12vw,8rem);font-family:"Archivo";font-weight:800;color:var(--accent2);line-height:.9}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+  @media (max-width:760px){.two{grid-template-columns:1fr}}
+  .bar{position:fixed;left:0;top:0;height:4px;background:var(--accent2);width:0;transition:width .25s;z-index:5}
+  .count{position:fixed;right:16px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink2);z-index:5}
+  .nav{position:fixed;inset:auto 0 0 0;display:flex;justify-content:space-between;pointer-events:none;z-index:4}
+  .nav button{pointer-events:auto;background:transparent;border:none;color:transparent;width:22vw;height:100vh;cursor:pointer}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+  /* ESL extras (picture vocab, grammar tables, dialogue, clocks) */
+  .pics{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,1.6vw,18px)}
+  .pics.six{grid-template-columns:repeat(6,1fr)}
+  .pic{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center}
+  .pic img{width:100%;max-width:150px;aspect-ratio:1;object-fit:cover;border-radius:10px;background:#FFF3E0;display:block;margin:0 auto}
+  .pic .emo{font-size:clamp(2.6rem,7vw,5rem);line-height:1;aspect-ratio:1;max-width:150px;margin:0 auto;display:flex;align-items:center;justify-content:center}
+  .pic .w{font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(.9rem,2vw,1.35rem);margin-top:6px}
+  @media (max-width:760px){.pics,.pics.six{grid-template-columns:repeat(3,1fr)}}
+  table.g{border-collapse:collapse;font-size:clamp(.95rem,2.1vw,1.45rem);width:100%;max-width:1000px}
+  table.g th,table.g td{border:1px solid var(--line);padding:10px 16px;text-align:left}
+  table.g th{background:var(--code);color:var(--accent);font-family:"JetBrains Mono",monospace;font-size:.8em;letter-spacing:.04em}
+  table.g b{color:#ffd166}
+  .dlg{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:18px 24px;display:flex;flex-direction:column;gap:8px;font-size:clamp(1rem,2.2vw,1.45rem);max-width:1000px}
+  .dlg .sp{display:inline-block;min-width:3.6em;font-weight:700;color:var(--accent)}
+  .dlg .b .sp{color:#c4a1ff}
+  .ccq{font-size:clamp(1rem,2.2vw,1.45rem);border:1px dashed var(--line);border-radius:12px;padding:12px 18px;background:var(--code)}
+  .ccq i{color:var(--ink2)}
+  .clocks{display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,34px);align-items:flex-start}
+  .clocks figure{text-align:center}
+  .clocks svg{width:clamp(96px,14vw,170px);height:auto}
+  .clocks figcaption{font-size:clamp(.95rem,2vw,1.3rem);margin-top:6px}
+  .clocks figcaption small{display:block;color:var(--ink2);font-size:.8em}
+  .snd{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .snd div{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:clamp(1rem,2.2vw,1.5rem)}
+  .snd div b{display:block;font-family:"Archivo";font-size:1.5em;color:var(--accent)}
+  .snd div small{color:var(--ink2)}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="deck" id="deck">
+
+  <!-- 1 -->
+  <section class="slide on section">
+    <div class="eyebrow">Everyday English (A2) · Instructor Kit</div>
+    <h1>Module 4<br>Experiences &amp; Advice</h1>
+    <p class="lead">What I've done. What we have to do. Where I went.</p>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide">
+    <div class="eyebrow">Classes C10–C12 · the map</div>
+    <h2>Experience → rules → my trip</h2>
+    <ul>
+      <li><b>4.1</b> Life experiences: <i>Have you ever…? Yes, I have. When did you go?</i></li>
+      <li><b>4.2</b> Rules &amp; advice: <i>You have to… You don't have to… You should…</i></li>
+      <li><b>4.3</b> Review project: <i>my travel story</i>, with all the English you know</li>
+    </ul>
+    <div class="tag"><span class="pill">NOTE</span> Your real life, a card, or imagined: all are OK. You can always say "Pass!"</div>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide">
+    <div class="eyebrow">4.1 · New words · experiences</div>
+    <h2>Have you ever…?</h2>
+    <div class="pics six">
+      <div class="pic"><img src="../assets/vocab/flight.jpg" alt=""><div class="w">fly in a plane</div></div>
+      <div class="pic"><div class="emo">🐎</div><div class="w">ride a horse</div></div>
+      <div class="pic"><img src="../assets/vocab/swim.jpg" alt=""><div class="w">swim in the ocean</div></div>
+      <div class="pic"><img src="../assets/vocab/hike.jpg" alt=""><div class="w">climb a mountain</div></div>
+      <div class="pic"><img src="../assets/vocab/sing.jpg" alt=""><div class="w">sing karaoke</div></div>
+      <div class="pic"><img src="../assets/vocab/fish.jpg" alt=""><div class="w">eat sushi</div></div>
+      <div class="pic"><img src="../assets/vocab/cook.jpg" alt=""><div class="w">cook for ten people</div></div>
+      <div class="pic"><img src="../assets/vocab/mobile-phone.jpg" alt=""><div class="w">lose your phone</div></div>
+      <div class="pic"><img src="../assets/vocab/leg.jpg" alt=""><div class="w">break a bone</div></div>
+      <div class="pic"><div class="emo">⭐</div><div class="w">meet a famous person</div></div>
+      <div class="pic"><div class="emo">❄️</div><div class="w">see snow</div></div>
+      <div class="pic"><img src="../assets/vocab/passport.jpg" alt=""><div class="w">be to another country</div></div>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide">
+    <div class="eyebrow">4.1 · Present perfect · form</div>
+    <h2>have / has + past participle</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>✅</th><td>I / you / we / they <b>'ve been</b> to Canada.</td></tr>
+        <tr><th>✅</th><td>He / she <b>'s eaten</b> sushi.</td></tr>
+        <tr><th>❌</th><td>I <b>haven't</b> seen it. · I've <b>never</b> broken a bone.</td></tr>
+        <tr><th>❓</th><td><b>Have</b> you <b>ever</b> ridden a horse?</td></tr>
+        <tr><th>💬</th><td>Yes, I <b>have</b>. / No, I <b>haven't</b>. / No, <b>never</b>.</td></tr>
+      </table>
+      <table class="g">
+        <tr><th>base</th><th>past</th><th>participle</th></tr>
+        <tr><td>be / go</td><td>was · went</td><td><b>been</b></td></tr>
+        <tr><td>see</td><td>saw</td><td><b>seen</b></td></tr>
+        <tr><td>eat</td><td>ate</td><td><b>eaten</b></td></tr>
+        <tr><td>ride</td><td>rode</td><td><b>ridden</b></td></tr>
+        <tr><td>break</td><td>broke</td><td><b>broken</b></td></tr>
+        <tr><td>meet · try</td><td>met · tried</td><td><b>met · tried</b></td></tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide">
+    <div class="eyebrow">4.1 · The key idea · open, then explain</div>
+    <h2>No time → present perfect. A time → past simple.</h2>
+    <svg viewBox="0 0 900 230" width="100%" style="max-width:1000px" role="img" aria-label="Time line from born to now. A big box over the whole line is my life, no time: I've been to Mexico. One cross in 2019: I went to Mexico in 2019.">
+      <rect x="40" y="20" width="800" height="70" rx="12" fill="#132a52" stroke="#7fb2ff" stroke-width="2"/>
+      <text x="440" y="50" text-anchor="middle" fill="#edf2fb" font-family="Archivo,sans-serif" font-weight="700" font-size="24">MY LIFE — no time</text>
+      <text x="440" y="78" text-anchor="middle" fill="#ffd166" font-family="Source Sans 3,sans-serif" font-size="21">I've been to Mexico.</text>
+      <line x1="40" y1="140" x2="840" y2="140" stroke="#a8b6cf" stroke-width="3"/>
+      <polygon points="840,132 858,140 840,148" fill="#a8b6cf"/>
+      <text x="40" y="175" fill="#a8b6cf" font-family="JetBrains Mono,monospace" font-size="18">born 👶</text>
+      <text x="800" y="175" fill="#a8b6cf" font-family="JetBrains Mono,monospace" font-size="18">NOW 📍</text>
+      <text x="560" y="152" text-anchor="middle" fill="#fbbf24" font-family="Archivo,sans-serif" font-weight="800" font-size="34">✕</text>
+      <text x="560" y="190" text-anchor="middle" fill="#fbbf24" font-family="JetBrains Mono,monospace" font-size="18">2019</text>
+      <text x="560" y="220" text-anchor="middle" fill="#edf2fb" font-family="Source Sans 3,sans-serif" font-size="21">I went to Mexico in 2019.</text>
+    </svg>
+    <div class="dlg">
+      <p><span class="sp">A:</span> Have you ever been to Mexico? <i style="color:var(--ink2)">(open)</i></p>
+      <p class="b"><span class="sp">B:</span> Yes, I have.</p>
+      <p><span class="sp">A:</span> <b style="color:#ffd166">When did you go?</b> <i style="color:var(--ink2)">(explain → past simple)</i></p>
+      <p class="b"><span class="sp">B:</span> I <b style="color:#ffd166">went</b> in 2019. It <b style="color:#ffd166">was</b> great!</p>
+    </div>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide">
+    <div class="eyebrow">4.1 · Check the meaning</div>
+    <h2>"I've been to Mexico."</h2>
+    <div class="ccq">Did I go? <i>(Yes.)</i> &nbsp;·&nbsp; Do we know when? <i>(No.)</i> &nbsp;·&nbsp; Is the time important? <i>(No, only the experience.)</i></div>
+    <div class="ccq">"I went there in 2019." Do we know when? <i>(Yes.)</i> Present perfect or past simple? <i>(Past simple.)</i></div>
+    <div class="ccq">"I've never broken a bone." In my whole life? <i>(Yes, never.)</i> Do I need "not"? <i>(No!)</i></div>
+    <div class="ccq">"She's <b>gone</b> to the store." Is she here? <i>(No.)</i> "She's <b>been</b> to the store." Is she here? <i>(Yes, she's back.)</i></div>
+    <div class="tag"><span class="pill warn">WATCH</span> I have been there last year ❌ → I went there last year ✅</div>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide">
+    <div class="eyebrow">4.1 · Model dialogue</div>
+    <h2>Have you ever been to another country?</h2>
+    <div class="dlg">
+      <p><span class="sp">A:</span> Have you ever been to another country?</p>
+      <p class="b"><span class="sp">B:</span> Yes, I have! I've been to Thailand.</p>
+      <p><span class="sp">A:</span> Wow! When did you go?</p>
+      <p class="b"><span class="sp">B:</span> I went there in 2018. I ate amazing street food. Have you ever tried Thai food?</p>
+      <p><span class="sp">A:</span> No, I haven't. I've never eaten it. But I've been to Italy!</p>
+      <p class="b"><span class="sp">B:</span> Where's your brother today? I haven't seen him.</p>
+      <p><span class="sp">A:</span> Oh, he's gone to the airport. He's flying to Italy tonight!</p>
+    </div>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide">
+    <div class="eyebrow">4.1 · Mingle · 20 min</div>
+    <h2>Find someone who has ever…</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>Stand up. Ask: <b>Have you ever…?</b></li>
+        <li>"Yes, I have." → write the name</li>
+        <li>Then ask in the past: <b>When / Where did you…?</b></li>
+        <li>Report: "Amir <b>has ridden</b> a horse. He <b>rode</b> one in Morocco."</li>
+      </ul>
+      <div class="ccq">Sit or walk? <i>(Walk.)</i><br>First question: "Have you…" or "Did you…"? <i>("Have you ever…?")</i><br>The answer is "Yes." Next? <i>(A past question: When did you…?)</i><br>Do you have to answer? <i>(No. You can say "Pass!")</i></div>
+    </div>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide">
+    <div class="eyebrow">4.2 · What do the signs say?</div>
+    <h2>Where can you see these signs?</h2>
+    <div class="pics six">
+      <div class="pic"><div class="emo">🚭</div><div class="w">No smoking</div></div>
+      <div class="pic"><div class="emo">📵</div><div class="w">No phones</div></div>
+      <div class="pic"><div class="emo">🧼</div><div class="w">Staff must wash hands</div></div>
+      <div class="pic"><div class="emo">🦺</div><div class="w">Safety vest required</div></div>
+      <div class="pic"><div class="emo">🎟️</div><div class="w">FREE entry today</div></div>
+      <div class="pic"><div class="emo">🤫</div><div class="w">Quiet, please</div></div>
+      <div class="pic"><img src="../assets/vocab/doctor.jpg" alt=""><div class="w">see a doctor</div></div>
+      <div class="pic"><img src="../assets/vocab/water.jpg" alt=""><div class="w">drink water</div></div>
+      <div class="pic"><img src="../assets/vocab/bed.jpg" alt=""><div class="w">go to bed early</div></div>
+      <div class="pic"><img src="../assets/vocab/coffee.jpg" alt=""><div class="w">take a break</div></div>
+      <div class="pic"><img src="../assets/vocab/umbrella.jpg" alt=""><div class="w">take an umbrella</div></div>
+      <div class="pic"><img src="../assets/vocab/ticket.jpg" alt=""><div class="w">buy a ticket</div></div>
+    </div>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide">
+    <div class="eyebrow">4.2 · Rules, choices &amp; advice</div>
+    <h2>Three lights + one good idea</h2>
+    <table class="g">
+      <tr><th>🟢 do it</th><td>I <b>have to</b> wear a badge. · She <b>has to</b> work on Saturday. · You <b>must</b> stop.</td></tr>
+      <tr><th>🟡 your choice</th><td>You <b>don't have to</b> pay. It's free. · He <b>doesn't have to</b> cook.</td></tr>
+      <tr><th>🔴 not allowed</th><td>You <b>mustn't</b> smoke here. · (US speech: You <b>can't</b> smoke here.)</td></tr>
+      <tr><th>💡 advice</th><td>You <b>should</b> see a doctor. · You <b>shouldn't</b> worry. · <b>What should</b> I do?</td></tr>
+      <tr><th>❓</th><td><b>Do</b> I <b>have to</b> sign? — Yes, you do. / No, you don't.</td></tr>
+    </table>
+    <div class="tag"><span class="pill">+ BASE VERB</span> must go · should go · has to work — no "to" after must / should</div>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide">
+    <div class="eyebrow">4.2 · Check the meaning</div>
+    <h2>don't have to ≠ mustn't</h2>
+    <div class="two">
+      <div class="dlg">
+        <p>🟡 "You <b style="color:#ffd166">don't have to</b> come."</p>
+        <p style="color:var(--ink2)">= It's your choice. Come if you want. 🙂</p>
+        <p>🔴 "You <b style="color:#ffd166">mustn't</b> come."</p>
+        <p style="color:var(--ink2)">= Not allowed. Don't come! 🚫</p>
+      </div>
+      <div class="ccq">"You don't have to pay." Can I pay if I want? <i>(Yes.)</i> Do I need to? <i>(No.)</i><br>"You mustn't smoke here." Is it my choice? <i>(No. Not allowed.)</i><br>"You should see a doctor." A rule? <i>(No. A good idea.)</i><br>"She has to work." Does she need to? <i>(Yes. It's her job.)</i></div>
+    </div>
+    <div class="tag"><span class="pill warn">WATCH</span> You must to go ❌ · She have to work ❌ · Do you must…? ❌</div>
+  </section>
+
+  <!-- 12 -->
+  <section class="slide">
+    <div class="eyebrow">4.2 · Model dialogue · advice</div>
+    <h2>What should I do?</h2>
+    <div class="dlg">
+      <p><span class="sp">A:</span> I'm not feeling well, and I start my new job tomorrow.</p>
+      <p class="b"><span class="sp">B:</span> Oh no. You <b>should</b> drink some water and go to bed early.</p>
+      <p><span class="sp">A:</span> Good idea. <b>Do I have to</b> wear a suit?</p>
+      <p class="b"><span class="sp">B:</span> You <b>don't have to</b> wear a suit. But you <b>can't</b> be late on your first day!</p>
+      <p><span class="sp">A:</span> Got it. <b>Should I</b> bring anything?</p>
+      <p class="b"><span class="sp">B:</span> You <b>should</b> bring your ID. And you <b>have to</b> sign a form at reception.</p>
+    </div>
+    <div class="tag"><span class="pill lab">SOFT</span> Maybe you should… · I think you should…</div>
+  </section>
+
+  <!-- 13 -->
+  <section class="slide">
+    <div class="eyebrow">4.2 · Group task · 15 min</div>
+    <h2>The problem page: "Ask Ana"</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>Groups of 3: <b>1 reader</b>, <b>2 advisers</b></li>
+        <li>Reader: read the card: "Dear Ana, I'm always tired…"</li>
+        <li>Advisers: <b>You should… / You shouldn't…</b> + <b>You have to… / You don't have to…</b></li>
+        <li>Reader: choose the best advice. Swap roles!</li>
+      </ul>
+      <div class="ccq">Who reads the card? <i>(The reader.)</i><br>Advice word: "should" or "must"? <i>(Should.)</i><br>How many ideas from each adviser? <i>(One or two.)</i><br>Is it your real problem? <i>(No. It's on the card.)</i></div>
+    </div>
+  </section>
+
+  <!-- 14 -->
+  <section class="slide">
+    <div class="eyebrow">4.3 · New words · travel</div>
+    <h2>On a trip</h2>
+    <div class="pics six">
+      <div class="pic"><img src="../assets/vocab/airport.jpg" alt=""><div class="w">airport</div></div>
+      <div class="pic"><img src="../assets/vocab/flight.jpg" alt=""><div class="w">flight</div></div>
+      <div class="pic"><img src="../assets/vocab/ticket.jpg" alt=""><div class="w">ticket</div></div>
+      <div class="pic"><img src="../assets/vocab/station.jpg" alt=""><div class="w">station · platform</div></div>
+      <div class="pic"><img src="../assets/vocab/luggage.jpg" alt=""><div class="w">luggage</div></div>
+      <div class="pic"><img src="../assets/vocab/passport.jpg" alt=""><div class="w">passport</div></div>
+      <div class="pic"><img src="../assets/vocab/hotel.jpg" alt=""><div class="w">hotel · reservation</div></div>
+      <div class="pic"><img src="../assets/vocab/key.jpg" alt=""><div class="w">key card</div></div>
+      <div class="pic"><div class="emo">🧳</div><div class="w">check-in · check-out</div></div>
+      <div class="pic"><div class="emo">🗺️</div><div class="w">map · tour</div></div>
+      <div class="pic"><div class="emo">🎁</div><div class="w">souvenir</div></div>
+      <div class="pic"><img src="../assets/vocab/bill.jpg" alt=""><div class="w">How much is it?</div></div>
+    </div>
+  </section>
+
+  <!-- 15 -->
+  <section class="slide">
+    <div class="eyebrow">4.3 · Travel phrases · be polite</div>
+    <h2>Excuse me, … please.</h2>
+    <div class="two">
+      <div class="dlg">
+        <p><span class="sp">You:</span> Excuse me, a ticket to Denver, please. What time does it leave?</p>
+        <p class="b"><span class="sp">Clerk:</span> At 9:15, from platform 4.</p>
+        <p><span class="sp">You:</span> And what time does it arrive?</p>
+        <p class="b"><span class="sp">Clerk:</span> At 11:40. Here's your ticket.</p>
+      </div>
+      <div class="dlg">
+        <p><span class="sp">You:</span> Hello, I have a reservation. The name is Silva.</p>
+        <p class="b"><span class="sp">Desk:</span> Welcome! Here's your key card.</p>
+        <p><span class="sp">You:</span> Is breakfast included? What time is check-out?</p>
+        <p class="b"><span class="sp">Desk:</span> Yes, from 7 to 10. Check-out is at 11.</p>
+      </div>
+    </div>
+    <div class="tag"><span class="pill warn">WATCH</span> a luggage ❌ · luggages ❌ → some luggage · two bags ✅</div>
+  </section>
+
+  <!-- 16 -->
+  <section class="slide">
+    <div class="eyebrow">4.3 · Review · the story road</div>
+    <h2>Every tense has a job</h2>
+    <table class="g">
+      <tr><th>① scene</th><td>It <b>was</b> spring. The streets <b>were</b> busy.</td></tr>
+      <tr><th>② what I did</th><td>We <b>arrived</b> at night and <b>took</b> a taxi.</td></tr>
+      <tr><th>③ compare</th><td>The beach was <b>quieter than</b> the city. There were <b>a lot of</b> tourists.</td></tr>
+      <tr><th>④ experience</th><td>I<b>'ve never seen</b> the ocean before. It was the best trip I<b>'ve ever had</b>.</td></tr>
+      <tr><th>⑤ next time</th><td>Next year I<b>'m going to</b> go back. I think I<b>'ll</b> stay longer.</td></tr>
+    </table>
+    <div class="tag"><span class="pill lab">GLUE</span> first · then · after that · but · so · because · in the end</div>
+  </section>
+
+  <!-- 17 -->
+  <section class="slide">
+    <div class="eyebrow">4.3 · Plan → practice → tell</div>
+    <h2>My travel story</h2>
+    <div class="two">
+      <ul class="lab">
+        <li><b>Plan:</b> the story frame. <b>Notes</b>, not sentences. Real, a day trip, a trip card, or a dream</li>
+        <li><b>Practice:</b> tell a partner. Partner asks: Where did you go? What did you do? How was it? Have you ever…? What's next?</li>
+        <li><b>Tell again</b> to a new partner, faster</li>
+        <li><b>Story circle:</b> 3–4 minutes each. Listeners ask one question.</li>
+      </ul>
+      <div class="ccq">Notes or full sentences? <i>(Notes.)</i><br>Does it have to be a real trip? <i>(No.)</i><br>Which step uses "I've never…"? <i>(Step 4.)</i><br>What do listeners do? <i>(Listen, then ask one question.)</i></div>
+    </div>
+  </section>
+
+  <!-- 18 -->
+  <section class="slide section">
+    <div class="eyebrow">You're halfway through A2 🎉</div>
+    <h2>Module 4 done</h2>
+    <ul class="lab">
+      <li>Have you ever been to Mexico? Yes, I have. I went there in 2019.</li>
+      <li>You have to wear a badge. You don't have to pay. You should rest.</li>
+      <li>Last year I went to… It was the best trip I've ever had. Next year I'm going to…</li>
+    </ul>
+    <p class="lead" style="margin-top:10px;max-width:44ch">Homework: online lessons 4.1–4.3 with 🔊 + write "My Trip." Next class: a friendly check (Progress Test 1).</p>
+  </section>
+
+</div>
+
+<div class="count" id="count">1 / 18</div>
+<div class="nav"><button id="prev" aria-label="Previous slide"></button><button id="next" aria-label="Next slide"></button></div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const bar=document.getElementById('bar'), count=document.getElementById('count');
+  let i=0;
+  function show(n){ i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+    bar.style.width=((i+1)/slides.length*100)+'%'; count.textContent=(i+1)+' / '+slides.length; }
+  document.getElementById('next').onclick=()=>show(i+1);
+  document.getElementById('prev').onclick=()=>show(i-1);
+  addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}
+    else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+  });
+  show(0);
+</script>
+</body>
+</html>

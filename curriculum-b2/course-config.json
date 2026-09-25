@@ -2,7 +2,7 @@
   "course": {
     "title": "Confident English (B2 Upper-Intermediate)",
     "subtitle": "A complete self-paced upper-intermediate English curriculum",
-    "description": "Twelve real, sequenced B2 lessons building on B1 — narrative tenses, third & mixed conditionals, verb patterns, advanced passives, participle clauses, reporting verbs, discourse markers, and emphasis — so a learner can discuss abstract topics fluently, precisely, and with style.",
+    "description": "Twenty-four real, sequenced B2 lessons building on B1 — narrative tenses, third & mixed conditionals, verb patterns, advanced passives, participle clauses, reporting verbs, discourse markers, and emphasis — so a learner can discuss abstract topics fluently, precisely, and with style.",
     "author": {
       "name": "Ray de la Paz",
       "email": "contact via website",
@@ -10,14 +10,20 @@
       "bio": "Technical trainer and course developer."
     },
     "version": "1.0.0",
-    "lastUpdated": "2026-09-10",
+    "lastUpdated": "2026-09-24",
     "language": "en",
     "difficulty": "advanced",
     "cefr": "B2",
-    "estimatedHours": 13,
-    "tags": ["esl", "english", "b2", "upper-intermediate", "cefr", "curriculum"]
+    "estimatedHours": 24,
+    "tags": [
+      "esl",
+      "english",
+      "b2",
+      "upper-intermediate",
+      "cefr",
+      "curriculum"
+    ]
   },
-
   "branding": {
     "primaryColor": "#3b82f6",
     "secondaryColor": "#f8fafc",
@@ -25,7 +31,6 @@
     "fontFamily": "Segoe UI, system-ui, -apple-system, sans-serif",
     "favicon": "favicon.png"
   },
-
   "navigation": {
     "showBreadcrumbs": false,
     "showProgressBar": false,
@@ -34,21 +39,47 @@
     "showThemeToggle": true,
     "keyboardShortcuts": true,
     "externalLinks": [
-      { "label": "ESL Hub", "url": "/" },
-      { "label": "Independent English (B1)", "url": "/curriculum-b1/" },
-      { "label": "Ray's House of Fun", "url": "https://rays-home.netlify.app/" }
+      {
+        "label": "ESL Hub",
+        "url": "/"
+      },
+      {
+        "label": "Independent English (B1)",
+        "url": "/curriculum-b1/"
+      },
+      {
+        "label": "Ray's House of Fun",
+        "url": "https://rays-home.netlify.app/"
+      }
     ]
   },
-
   "modules": [
     {
       "id": "module-1",
       "title": "Narrating & Looking Back",
       "description": "Tell layered stories and talk about how the past could have been different.",
       "lessons": [
-        { "id": "lesson-1-1", "title": "Narrative Tenses — Past Perfect & Continuous", "filename": "lesson_01.html", "duration": "60 minutes", "difficulty": "upper-intermediate" },
-        { "id": "lesson-1-2", "title": "The Third Conditional — Past Hypotheticals", "filename": "lesson_02.html", "duration": "60 minutes", "difficulty": "upper-intermediate" },
-        { "id": "lesson-1-3", "title": "Past Regrets — Wish, If Only, Would Rather & It's Time", "filename": "lesson_03.html", "duration": "55 minutes", "difficulty": "upper-intermediate" }
+        {
+          "id": "lesson-1-1",
+          "title": "Narrative Tenses — Past Perfect & Continuous",
+          "filename": "lesson_01.html",
+          "duration": "55–65 minutes",
+          "difficulty": "upper-intermediate"
+        },
+        {
+          "id": "lesson-1-2",
+          "title": "The Third Conditional — Past Hypotheticals",
+          "filename": "lesson_02.html",
+          "duration": "55–65 minutes",
+          "difficulty": "upper-intermediate"
+        },
+        {
+          "id": "lesson-1-3",
+          "title": "Past Regrets — Wish, If Only, Would Rather & It's Time",
+          "filename": "lesson_03.html",
+          "duration": "~55 minutes",
+          "difficulty": "upper-intermediate"
+        }
       ]
     },
     {
@@ -56,9 +87,27 @@
       "title": "Verb Patterns & Modality",
       "description": "Master which form follows which verb, and talk about the past with modals.",
       "lessons": [
-        { "id": "lesson-2-1", "title": "Gerunds & Infinitives", "filename": "lesson_04.html", "duration": "60 minutes", "difficulty": "upper-intermediate" },
-        { "id": "lesson-2-2", "title": "Modals of Deduction in the Past", "filename": "lesson_05.html", "duration": "55 minutes", "difficulty": "upper-intermediate" },
-        { "id": "lesson-2-3", "title": "Used to / Be Used to / Get Used to", "filename": "lesson_06.html", "duration": "55 minutes", "difficulty": "upper-intermediate" }
+        {
+          "id": "lesson-2-1",
+          "title": "Gerunds & Infinitives",
+          "filename": "lesson_04.html",
+          "duration": "55–65 minutes",
+          "difficulty": "upper-intermediate"
+        },
+        {
+          "id": "lesson-2-2",
+          "title": "Modals of Deduction in the Past",
+          "filename": "lesson_05.html",
+          "duration": "~55 minutes",
+          "difficulty": "upper-intermediate"
+        },
+        {
+          "id": "lesson-2-3",
+          "title": "Used to / Be Used to / Get Used to",
+          "filename": "lesson_06.html",
+          "duration": "~55 minutes",
+          "difficulty": "upper-intermediate"
+        }
       ]
     },
     {
@@ -66,23 +115,170 @@
       "title": "Advanced Structures",
       "description": "Impersonal passives, compressed clauses, and precise reporting.",
       "lessons": [
-        { "id": "lesson-3-1", "title": "The Passive — Advanced & Impersonal", "filename": "lesson_07.html", "duration": "60 minutes", "difficulty": "upper-intermediate" },
-        { "id": "lesson-3-2", "title": "Relative & Participle Clauses", "filename": "lesson_08.html", "duration": "60 minutes", "difficulty": "upper-intermediate" },
-        { "id": "lesson-3-3", "title": "Reporting Verbs & Patterns", "filename": "lesson_09.html", "duration": "55 minutes", "difficulty": "upper-intermediate" }
+        {
+          "id": "lesson-3-1",
+          "title": "The Passive — Advanced & Impersonal",
+          "filename": "lesson_07.html",
+          "duration": "55–65 minutes",
+          "difficulty": "upper-intermediate"
+        },
+        {
+          "id": "lesson-3-2",
+          "title": "Relative & Participle Clauses",
+          "filename": "lesson_08.html",
+          "duration": "55–65 minutes",
+          "difficulty": "upper-intermediate"
+        },
+        {
+          "id": "lesson-3-3",
+          "title": "Reporting Verbs & Patterns",
+          "filename": "lesson_09.html",
+          "duration": "~55 minutes",
+          "difficulty": "upper-intermediate"
+        }
       ]
     },
     {
       "id": "module-4",
       "title": "Fluency & Style",
-      "description": "Connect, emphasise, and pull it all together in a confident final project.",
+      "description": "Connect, emphasise, and reach your halfway milestone with a confident review project.",
       "lessons": [
-        { "id": "lesson-4-1", "title": "Linking Ideas — Contrast, Cause & Result", "filename": "lesson_10.html", "duration": "60 minutes", "difficulty": "upper-intermediate" },
-        { "id": "lesson-4-2", "title": "Adding Emphasis — Cleft Sentences & Inversion", "filename": "lesson_11.html", "duration": "60 minutes", "difficulty": "upper-intermediate" },
-        { "id": "lesson-4-3", "title": "Review Project — Present, Argue & Discuss", "filename": "lesson_12.html", "duration": "65 minutes", "difficulty": "upper-intermediate" }
+        {
+          "id": "lesson-4-1",
+          "title": "Linking Ideas — Contrast, Cause & Result",
+          "filename": "lesson_10.html",
+          "duration": "~60 minutes",
+          "difficulty": "upper-intermediate"
+        },
+        {
+          "id": "lesson-4-2",
+          "title": "Adding Emphasis — Cleft Sentences & Inversion",
+          "filename": "lesson_11.html",
+          "duration": "~60 minutes",
+          "difficulty": "upper-intermediate"
+        },
+        {
+          "id": "lesson-4-3",
+          "title": "Review Project — Present, Argue & Discuss",
+          "filename": "lesson_12.html",
+          "duration": "~65 minutes",
+          "difficulty": "upper-intermediate"
+        }
+      ]
+    },
+    {
+      "id": "module-5",
+      "title": "Precision Grammar",
+      "description": "Command the future perfect and continuous, the causative, and precise determiners.",
+      "lessons": [
+        {
+          "id": "lesson-5-1",
+          "title": "Future Perfect & Future Continuous",
+          "filename": "lesson_13.html",
+          "duration": "55–65 minutes",
+          "difficulty": "upper-intermediate"
+        },
+        {
+          "id": "lesson-5-2",
+          "title": "The Causative — have/get something done",
+          "filename": "lesson_14.html",
+          "duration": "55–65 minutes",
+          "difficulty": "upper-intermediate"
+        },
+        {
+          "id": "lesson-5-3",
+          "title": "Determiners & Quantifiers — all, every, both & more",
+          "filename": "lesson_15.html",
+          "duration": "55–65 minutes",
+          "difficulty": "upper-intermediate"
+        }
+      ]
+    },
+    {
+      "id": "module-6",
+      "title": "Words & Questions",
+      "description": "Multiply your vocabulary with word formation, compare with nuance, and ask questions skilfully.",
+      "lessons": [
+        {
+          "id": "lesson-6-1",
+          "title": "Word Formation — prefixes, suffixes & word families",
+          "filename": "lesson_16.html",
+          "duration": "55–65 minutes",
+          "difficulty": "upper-intermediate"
+        },
+        {
+          "id": "lesson-6-2",
+          "title": "Advanced Comparison",
+          "filename": "lesson_17.html",
+          "duration": "55–65 minutes",
+          "difficulty": "upper-intermediate"
+        },
+        {
+          "id": "lesson-6-3",
+          "title": "Asking Skilfully — Indirect & Negative Questions",
+          "filename": "lesson_18.html",
+          "duration": "55–65 minutes",
+          "difficulty": "upper-intermediate"
+        }
+      ]
+    },
+    {
+      "id": "module-7",
+      "title": "Communicating with Style",
+      "description": "Shift register, tell a gripping anecdote (with listening practice), and make a persuasive case.",
+      "lessons": [
+        {
+          "id": "lesson-7-1",
+          "title": "Register — Formal vs Informal English",
+          "filename": "lesson_19.html",
+          "duration": "55–65 minutes",
+          "difficulty": "upper-intermediate"
+        },
+        {
+          "id": "lesson-7-2",
+          "title": "Telling Stories & Anecdotes",
+          "filename": "lesson_20.html",
+          "duration": "55–65 minutes",
+          "difficulty": "upper-intermediate"
+        },
+        {
+          "id": "lesson-7-3",
+          "title": "Making a Case — Presentations & Persuasion",
+          "filename": "lesson_21.html",
+          "duration": "55–65 minutes",
+          "difficulty": "upper-intermediate"
+        }
+      ]
+    },
+    {
+      "id": "module-8",
+      "title": "Fluency & the Final Project",
+      "description": "Decode fast speech, master natural vague language, and pull it all together in a structured debate.",
+      "lessons": [
+        {
+          "id": "lesson-8-1",
+          "title": "Understanding Natural Speech",
+          "filename": "lesson_22.html",
+          "duration": "55–70 minutes",
+          "difficulty": "upper-intermediate"
+        },
+        {
+          "id": "lesson-8-2",
+          "title": "Vague Language & Being Approximate",
+          "filename": "lesson_23.html",
+          "duration": "55–70 minutes",
+          "difficulty": "upper-intermediate"
+        },
+        {
+          "id": "lesson-8-3",
+          "title": "Review Project — A Structured Debate",
+          "filename": "lesson_24.html",
+          "duration": "60–70 minutes",
+          "difficulty": "upper-intermediate"
+        }
       ]
     }
   ],
-
   "features": {
     "codeHighlighting": false,
     "copyCodeButton": true,

@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slides — Module 3</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root{--bg:#0b1220;--ink:#edf2fb;--ink2:#a8b6cf;--accent:#7fb2ff;--accent2:#2563eb;--lab:#34d3bd;--warn:#fbbf24;--line:#233252;--code:#101a2e;color-scheme:dark}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;overflow:hidden}
+  .deck{height:100%;width:100%;position:relative}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:6vh 8vw;gap:20px}
+  .slide.on{display:flex}
+  h1,h2,h3{font-family:"Archivo",sans-serif;line-height:1.1;text-wrap:balance}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  .slide h1{font-size:clamp(2rem,6vw,4rem);font-weight:800;letter-spacing:-.02em}
+  .slide h2{font-size:clamp(1.5rem,4.2vw,2.8rem);font-weight:800;letter-spacing:-.01em}
+  .slide p.lead{font-size:clamp(1.05rem,2.4vw,1.5rem);color:var(--ink2);max-width:26ch}
+  ul{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:6px}
+  ul li{position:relative;padding-left:34px;font-size:clamp(1.05rem,2.3vw,1.6rem)}
+  ul li::before{content:"";position:absolute;left:0;top:.55em;width:12px;height:12px;border-radius:3px;background:var(--accent);transform:rotate(45deg)}
+  ul.lab li::before{background:var(--lab)}
+  code.k{font-family:"JetBrains Mono",monospace;color:#cfe0ff;font-size:.92em}
+  pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:22px 26px;font-family:"JetBrains Mono",monospace;font-size:clamp(.85rem,1.9vw,1.3rem);line-height:1.55;overflow:auto;max-width:100%}
+  pre .k{color:#7dd3fc} pre .s{color:#86efac} pre .c{color:#7183a3;font-style:italic}
+  .tag{display:inline-flex;align-items:center;gap:10px;font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);color:var(--ink2)}
+  .tag .pill{background:var(--accent2);color:#fff;font-weight:700;border-radius:999px;padding:3px 12px;letter-spacing:.06em}
+  .tag .pill.lab{background:var(--lab);color:#062b26} .tag .pill.warn{background:var(--warn);color:#3a2a05}
+  .section{background:linear-gradient(135deg,#132a52,#0b1220)}
+  .section .big{font-size:clamp(3rem,12vw,8rem);font-family:"Archivo";font-weight:800;color:var(--accent2);line-height:.9}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+  @media (max-width:760px){.two{grid-template-columns:1fr}}
+  .bar{position:fixed;left:0;top:0;height:4px;background:var(--accent2);width:0;transition:width .25s;z-index:5}
+  .count{position:fixed;right:16px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink2);z-index:5}
+  .nav{position:fixed;inset:auto 0 0 0;display:flex;justify-content:space-between;pointer-events:none;z-index:4}
+  .nav button{pointer-events:auto;background:transparent;border:none;color:transparent;width:22vw;height:100vh;cursor:pointer}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+  /* ESL extras (picture vocab, grammar tables, dialogue, clocks) */
+  .pics{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,1.6vw,18px)}
+  .pics.six{grid-template-columns:repeat(6,1fr)}
+  .pic{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center}
+  .pic img{width:100%;max-width:150px;aspect-ratio:1;object-fit:cover;border-radius:10px;background:#FFF3E0;display:block;margin:0 auto}
+  .pic .emo{font-size:clamp(2.6rem,7vw,5rem);line-height:1;aspect-ratio:1;max-width:150px;margin:0 auto;display:flex;align-items:center;justify-content:center}
+  .pic .w{font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(.9rem,2vw,1.35rem);margin-top:6px}
+  @media (max-width:760px){.pics,.pics.six{grid-template-columns:repeat(3,1fr)}}
+  table.g{border-collapse:collapse;font-size:clamp(.95rem,2.1vw,1.45rem);width:100%;max-width:1000px}
+  table.g th,table.g td{border:1px solid var(--line);padding:10px 16px;text-align:left}
+  table.g th{background:var(--code);color:var(--accent);font-family:"JetBrains Mono",monospace;font-size:.8em;letter-spacing:.04em}
+  table.g b{color:#ffd166}
+  .dlg{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:18px 24px;display:flex;flex-direction:column;gap:8px;font-size:clamp(1rem,2.2vw,1.45rem);max-width:1000px}
+  .dlg .sp{display:inline-block;min-width:3.6em;font-weight:700;color:var(--accent)}
+  .dlg .b .sp{color:#c4a1ff}
+  .ccq{font-size:clamp(1rem,2.2vw,1.45rem);border:1px dashed var(--line);border-radius:12px;padding:12px 18px;background:var(--code)}
+  .ccq i{color:var(--ink2)}
+  .clocks{display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,34px);align-items:flex-start}
+  .clocks figure{text-align:center}
+  .clocks svg{width:clamp(96px,14vw,170px);height:auto}
+  .clocks figcaption{font-size:clamp(.95rem,2vw,1.3rem);margin-top:6px}
+  .clocks figcaption small{display:block;color:var(--ink2);font-size:.8em}
+  .snd{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .snd div{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:clamp(1rem,2.2vw,1.5rem)}
+  .snd div b{display:block;font-family:"Archivo";font-size:1.5em;color:var(--accent)}
+  .snd div small{color:var(--ink2)}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="deck" id="deck">
+
+  <!-- 1 -->
+  <section class="slide on section">
+    <div class="eyebrow">Everyday English (A2) · Instructor Kit</div>
+    <h1>Module 3<br>Talking About the Future</h1>
+    <p class="lead">My plans. My guesses. Our plans.</p>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide">
+    <div class="eyebrow">Classes C7–C9 · the map</div>
+    <h2>Three futures</h2>
+    <ul>
+      <li><b>3.1</b> My plans: <i>I'm going to visit my sister. Look! It's going to rain.</i></li>
+      <li><b>3.2</b> Guesses &amp; quick decisions: <i>I think it'll be sunny. I might go. I'll get it!</i></li>
+      <li><b>3.3</b> Our plans: <i>I'm meeting Sara on Friday. Let's… / How about…?</i></li>
+    </ul>
+    <div class="tag"><span class="pill">NOTE</span> Your real plans, a future identity card, or a dream future: all are OK. You can say "Pass."</div>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide">
+    <div class="eyebrow">3.1 · New words · plans</div>
+    <h2>What are you going to do?</h2>
+    <div class="pics six">
+      <div class="pic"><div class="emo">👪</div><div class="w">visit my family</div></div>
+      <div class="pic"><div class="emo">🎬</div><div class="w">see a movie</div></div>
+      <div class="pic"><img src="../assets/vocab/hike.jpg" alt=""><div class="w">go hiking</div></div>
+      <div class="pic"><img src="../assets/vocab/swim.jpg" alt=""><div class="w">go swimming</div></div>
+      <div class="pic"><img src="../assets/vocab/football.jpg" alt=""><div class="w">play soccer</div></div>
+      <div class="pic"><img src="../assets/vocab/market.jpg" alt=""><div class="w">go to the market</div></div>
+      <div class="pic"><img src="../assets/vocab/restaurant.jpg" alt=""><div class="w">eat out</div></div>
+      <div class="pic"><img src="../assets/vocab/cook.jpg" alt=""><div class="w">cook something special</div></div>
+      <div class="pic"><img src="../assets/vocab/sofa.jpg" alt=""><div class="w">relax at home</div></div>
+      <div class="pic"><div class="emo">🧹</div><div class="w">clean the house</div></div>
+      <div class="pic"><img src="../assets/vocab/flight.jpg" alt=""><div class="w">travel</div></div>
+      <div class="pic"><img src="../assets/vocab/play-the-guitar.jpg" alt=""><div class="w">learn the guitar</div></div>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide">
+    <div class="eyebrow">3.1 · Future time words</div>
+    <h2>Now → tonight → tomorrow → this weekend → next week → next month → next year</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>next + a time name</th><th>in + how long</th></tr>
+        <tr><td><b>next</b> Monday</td><td><b>in</b> two days</td></tr>
+        <tr><td><b>next</b> week / month / year</td><td><b>in</b> an hour</td></tr>
+        <tr><td><b>next</b> summer</td><td><b>in</b> ten minutes</td></tr>
+      </table>
+      <div class="ccq">"I'm going to call you in an hour." Now? <i>(No.)</i> When? <i>(60 minutes from now.)</i><br>"<b>the</b> next week"? <i>(No! "next week.")</i><br>"next two days"? <i>(No! "in two days.")</i></div>
+    </div>
+    <div class="tag"><span class="pill lab">SAY IT</span> to<b>NIGHT</b> · to<b>MOR</b>row · this <b>WEEK</b>end · next <b>WEEK</b></div>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide">
+    <div class="eyebrow">3.1 · be going to + base verb</div>
+    <h2>Only the <i>be</i> verb changes</h2>
+    <table class="g">
+      <tr><th>✅</th><td>I<b>'m</b> going to visit my sister. · She<b>'s</b> going to study. · We<b>'re</b> going to travel.</td></tr>
+      <tr><th>❌</th><td>I<b>'m not</b> going to work. · He <b>isn't</b> going to come. · They <b>aren't</b> going to wait.</td></tr>
+      <tr><th>❓</th><td><b>Are</b> you going to cook tonight? · <b>What are</b> you going to do?</td></tr>
+      <tr><th>💬</th><td>Yes, I <b>am</b>. / No, I<b>'m not</b>. · Yes, she <b>is</b>. / No, she <b>isn't</b>.</td></tr>
+    </table>
+    <div class="tag"><span class="pill warn">WATCH</span> I going to ❌ · going to studying ❌ · going to to go ❌ · Yes, I'm ❌</div>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide">
+    <div class="eyebrow">3.1 · Two uses · check the meaning</div>
+    <h2>🧠 A plan or 👀 a prediction?</h2>
+    <div class="two">
+      <div class="ccq">🧠 <b>"I'm going to visit my sister this weekend."</b><br>Now or future? <i>(Future.)</i><br>Did I decide before? <i>(Yes. It's a plan.)</i></div>
+      <div class="ccq">👀 <b>"Look at those black clouds! It's going to rain."</b><br>Is it raining now? <i>(No.)</i><br>Can I see something? <i>(Yes, clouds.)</i><br>Did I plan the rain? <i>(No!)</i></div>
+    </div>
+    <div class="tag"><span class="pill lab">SAME FORM</span> The bus is full. We're going to be late! · Careful! You're going to drop that!</div>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide">
+    <div class="eyebrow">3.1 · Model dialogue</div>
+    <h2>What are you going to do this weekend?</h2>
+    <div class="dlg">
+      <p><span class="sp">A:</span> What are you going to do this weekend?</p>
+      <p class="b"><span class="sp">B:</span> I'm going to visit my sister. We're going to see a movie on Saturday.</p>
+      <p><span class="sp">A:</span> Nice! Are you going to stay the night?</p>
+      <p class="b"><span class="sp">B:</span> Yes, I am. I'm not going to drive back so late. What about you?</p>
+      <p><span class="sp">A:</span> I'm going to relax at home. Look at the forecast! It's going to rain all day Sunday.</p>
+    </div>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide">
+    <div class="eyebrow">3.1 · Mingle · 14 min</div>
+    <h2>Plans Mingle</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>Write 3 plans: this weekend · next month · this year</li>
+        <li>Walk and ask: <b>Are you going to…?</b></li>
+        <li>"Yes, I am." → write the name + ask the extra question</li>
+        <li>2+ names in each part. Then tell the class: "<b>Ana is going to</b>…"</li>
+      </ul>
+      <div class="ccq">Sit or walk? <i>(Walk.)</i><br>First word of the question? <i>("Are.")</i><br>"Yes, I am" → what do you do? <i>(Write the name, ask more.)</i><br>A future identity card is OK? <i>(Yes.)</i></div>
+    </div>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide">
+    <div class="eyebrow">3.2 · New words · the weather</div>
+    <h2>What will the weather be like?</h2>
+    <div class="pics">
+      <div class="pic"><img src="../assets/vocab/sunny.jpg" alt=""><div class="w">sunny</div></div>
+      <div class="pic"><img src="../assets/vocab/umbrella.jpg" alt=""><div class="w">rainy</div></div>
+      <div class="pic"><div class="emo">☁️</div><div class="w">cloudy</div></div>
+      <div class="pic"><div class="emo">💨</div><div class="w">windy</div></div>
+      <div class="pic"><div class="emo">❄️</div><div class="w">snowy</div></div>
+      <div class="pic"><div class="emo">⛈️</div><div class="w">stormy</div></div>
+      <div class="pic"><img src="../assets/vocab/hot.jpg" alt=""><div class="w">hot</div></div>
+      <div class="pic"><img src="../assets/vocab/cold.jpg" alt=""><div class="w">cold</div></div>
+    </div>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide">
+    <div class="eyebrow">3.2 · will · won't · might</div>
+    <h2>How sure are you?</h2>
+    <table class="g">
+      <tr><th>✔✔ 100%</th><th>? 50%</th><th>✘✘ 0%</th></tr>
+      <tr><td>It <b>will</b> ('ll) be sunny.</td><td>It <b>might</b> rain.</td><td>It <b>won't</b> snow.</td></tr>
+      <tr><td>I think she'<b>ll</b> come.</td><td>She <b>might not</b> come.</td><td>She <b>won't</b> be late.</td></tr>
+    </table>
+    <table class="g">
+      <tr><th>❓</th><td><b>Will</b> you be there? → Yes, I <b>will</b>. / No, I <b>won't</b>.</td></tr>
+    </table>
+    <div class="tag"><span class="pill warn">WATCH</span> same for everyone · she will comes ❌ · I will to help ❌ · might to go ❌</div>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide">
+    <div class="eyebrow">3.2 · I decide now · pair cards · 8 min</div>
+    <h2>"The phone's ringing!" — "I'll get it!"</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>🔮 I think</th><td>I think it<b>'ll</b> rain later.</td></tr>
+        <tr><th>⚡ Decide now</th><td>I'm tired. I<b>'ll</b> go to bed.</td></tr>
+        <tr><th>🤝 Offer</th><td>That bag looks heavy. I<b>'ll</b> carry it.</td></tr>
+        <tr><th>🤞 Promise</th><td>I'll call you. I <b>won't</b> forget!</td></tr>
+      </table>
+      <div class="ccq">Did I plan it yesterday? <i>(No!)</i><br>When did I decide? <i>(Now.)</i><br>A reads the card. B…? <i>(Answers fast: "I'll…")</i></div>
+    </div>
+  </section>
+
+  <!-- 12 -->
+  <section class="slide">
+    <div class="eyebrow">3.2 · Check the meaning · say it</div>
+    <h2>Plan → going to · Now → will</h2>
+    <div class="ccq">"I'm going to paint my room this weekend." Decided before or now? <i>(Before. A plan.)</i></div>
+    <div class="ccq">"Oh, you dropped your pen. I'll pick it up." Before or now? <i>(Now.)</i></div>
+    <div class="ccq">"I might go to the party." Yes or no? <i>(Maybe! Not sure.)</i></div>
+    <div class="tag"><span class="pill lab">SAY IT</span> 👎 won't /woʊnt/ (like "don't") · 👍 want /wɑnt/ — "I won't go." ≠ "I want to go."</div>
+  </section>
+
+  <!-- 13 -->
+  <section class="slide">
+    <div class="eyebrow">3.2 · Group game · 14 min</div>
+    <h2>🔮 Crystal Ball · 🌦️ Weather Forecaster</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>Take a card. Roll the die: <b>1–2 won't</b> · <b>3–4 might</b> · <b>5–6 will</b></li>
+        <li>Make a prediction + a reason</li>
+        <li>The group: "I agree!" / "I don't think so. I think…"</li>
+        <li>"You" cards: kind and light only. Say "Pass!" any time.</li>
+      </ul>
+      <div class="ccq">First? <i>(Take a card, roll.)</i><br>You roll a 3? <i>(Might.)</i> A 6? <i>(Will.)</i><br>A kind or a sad prediction? <i>(Kind!)</i><br>Don't like a card? <i>("Pass!")</i></div>
+    </div>
+  </section>
+
+  <!-- 14 -->
+  <section class="slide">
+    <div class="eyebrow">3.3 · Present continuous · my diary</div>
+    <h2>📅 I'm meeting Sara on Friday.</h2>
+    <table class="g">
+      <tr><th>Sentence</th><th>Time word</th><th>Meaning</th></tr>
+      <tr><td>I'm working <b>now</b>.</td><td>now</td><td>present</td></tr>
+      <tr><td>I'm working <b>tomorrow</b>.</td><td>tomorrow</td><td>future: in my diary</td></tr>
+      <tr><td>She's cooking <b>at the moment</b>.</td><td>at the moment</td><td>present</td></tr>
+      <tr><td>She's cooking for us <b>on Sunday</b>.</td><td>on Sunday</td><td>future: arranged</td></tr>
+    </table>
+    <div class="tag"><span class="pill">ASK</span> <b>Are</b> you do<b>ing</b> anything tonight? — Yes, I'm meeting a friend. / No, I'm free.</div>
+  </section>
+
+  <!-- 15 -->
+  <section class="slide">
+    <div class="eyebrow">3.3 · Suggestions &amp; replies</div>
+    <h2>Let's… / How about…?</h2>
+    <table class="g">
+      <tr><th>+ base verb</th><td><b>Let's</b> go to the park. · <b>Why don't we</b> eat out? · <b>Shall / Should we</b> meet at 7?</td></tr>
+      <tr><th>+ -ing / noun</th><td><b>How about</b> watch<b>ing</b> a movie? · <b>How about</b> Saturday?</td></tr>
+      <tr><th>invite</th><td><b>Would you like to</b> come to dinner?</td></tr>
+      <tr><th>👍</th><td>Good idea! · Sure, that sounds great. · Yes, I'd love to!</td></tr>
+      <tr><th>🙏</th><td>I'd <b>love</b> to, but I'm working. · Maybe another time.</td></tr>
+    </table>
+    <div class="tag"><span class="pill warn">WATCH</span> Let's to go ❌ · How about go ❌ · Why you don't come ❌ · just "No." 😬</div>
+  </section>
+
+  <!-- 16 -->
+  <section class="slide">
+    <div class="eyebrow">3.3 · Model dialogue</div>
+    <h2>Are you doing anything this weekend?</h2>
+    <div class="dlg">
+      <p><span class="sp">Mia:</span> Are you doing anything this weekend?</p>
+      <p class="b"><span class="sp">Ben:</span> Not really. Why?</p>
+      <p><span class="sp">Mia:</span> How about seeing a movie? There's a new comedy.</p>
+      <p class="b"><span class="sp">Ben:</span> Good idea! Shall we go on Saturday?</p>
+      <p><span class="sp">Mia:</span> Saturday's hard. I'm meeting my sister. Why don't we go on Sunday?</p>
+      <p class="b"><span class="sp">Ben:</span> Sure, that sounds great. So we're meeting at 6 on Sunday. See you then!</p>
+    </div>
+  </section>
+
+  <!-- 17 -->
+  <section class="slide">
+    <div class="eyebrow">3.3 · Information gap · 20 min</div>
+    <h2>Find a time to meet</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>A and B: <b>don't show</b> your diary</li>
+        <li>Ask: "Are you doing anything on Monday afternoon?"</li>
+        <li>Both free? Suggest: "Let's… / Why don't we…? / How about…?"</li>
+        <li>Confirm: "So we're meeting on … at … See you then!"</li>
+      </ul>
+      <div class="ccq">Show your diary? <i>(No!)</i><br>What are you looking for? <i>(A free time for both.)</i><br>A polite no? <i>("I'd love to, but…")</i><br>Last step? <i>(Confirm the plan.)</i></div>
+    </div>
+  </section>
+
+  <!-- 18 -->
+  <section class="slide section">
+    <div class="eyebrow">You can now talk about the future</div>
+    <h2>Module 3 done 🎉</h2>
+    <ul class="lab">
+      <li>🧠 I'm going to learn to drive next year. 👀 Look! It's going to rain.</li>
+      <li>🔮 I think it'll be sunny. I might go. ⚡ The phone's ringing! I'll get it.</li>
+      <li>📅 I'm meeting Sara on Friday. How about going to the park? So we're meeting at 7!</li>
+    </ul>
+    <p class="lead" style="margin-top:10px;max-width:40ch">Homework: online lessons 3.1–3.3 with 🔊. Next: Module 4, <i>Have you ever…?</i></p>
+  </section>
+
+
+</div>
+
+<div class="count" id="count">1 / 18</div>
+<div class="nav"><button id="prev" aria-label="Previous slide"></button><button id="next" aria-label="Next slide"></button></div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const bar=document.getElementById('bar'), count=document.getElementById('count');
+  let i=0;
+  function show(n){ i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+    bar.style.width=((i+1)/slides.length*100)+'%'; count.textContent=(i+1)+' / '+slides.length; }
+  document.getElementById('next').onclick=()=>show(i+1);
+  document.getElementById('prev').onclick=()=>show(i-1);
+  addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}
+    else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+  });
+  show(0);
+</script>
+</body>
+</html>

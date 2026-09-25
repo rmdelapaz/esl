@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slides — Module 7</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root{--bg:#0b1220;--ink:#edf2fb;--ink2:#a8b6cf;--accent:#7fb2ff;--accent2:#2563eb;--lab:#34d3bd;--warn:#fbbf24;--line:#233252;--code:#101a2e;color-scheme:dark}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;overflow:hidden}
+  .deck{height:100%;width:100%;position:relative}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:6vh 8vw;gap:20px}
+  .slide.on{display:flex}
+  h1,h2,h3{font-family:"Archivo",sans-serif;line-height:1.1;text-wrap:balance}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  .slide h1{font-size:clamp(2rem,6vw,4rem);font-weight:800;letter-spacing:-.02em}
+  .slide h2{font-size:clamp(1.5rem,4.2vw,2.8rem);font-weight:800;letter-spacing:-.01em}
+  .slide p.lead{font-size:clamp(1.05rem,2.4vw,1.5rem);color:var(--ink2);max-width:26ch}
+  ul{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:6px}
+  ul li{position:relative;padding-left:34px;font-size:clamp(1.05rem,2.3vw,1.6rem)}
+  ul li::before{content:"";position:absolute;left:0;top:.55em;width:12px;height:12px;border-radius:3px;background:var(--accent);transform:rotate(45deg)}
+  ul.lab li::before{background:var(--lab)}
+  code.k{font-family:"JetBrains Mono",monospace;color:#cfe0ff;font-size:.92em}
+  pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:22px 26px;font-family:"JetBrains Mono",monospace;font-size:clamp(.85rem,1.9vw,1.3rem);line-height:1.55;overflow:auto;max-width:100%}
+  pre .k{color:#7dd3fc} pre .s{color:#86efac} pre .c{color:#7183a3;font-style:italic}
+  .tag{display:inline-flex;align-items:center;gap:10px;font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);color:var(--ink2)}
+  .tag .pill{background:var(--accent2);color:#fff;font-weight:700;border-radius:999px;padding:3px 12px;letter-spacing:.06em}
+  .tag .pill.lab{background:var(--lab);color:#062b26} .tag .pill.warn{background:var(--warn);color:#3a2a05}
+  .section{background:linear-gradient(135deg,#132a52,#0b1220)}
+  .section .big{font-size:clamp(3rem,12vw,8rem);font-family:"Archivo";font-weight:800;color:var(--accent2);line-height:.9}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+  @media (max-width:760px){.two{grid-template-columns:1fr}}
+  .bar{position:fixed;left:0;top:0;height:4px;background:var(--accent2);width:0;transition:width .25s;z-index:5}
+  .count{position:fixed;right:16px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink2);z-index:5}
+  .nav{position:fixed;inset:auto 0 0 0;display:flex;justify-content:space-between;pointer-events:none;z-index:4}
+  .nav button{pointer-events:auto;background:transparent;border:none;color:transparent;width:22vw;height:100vh;cursor:pointer}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+  /* ESL extras (picture vocab, grammar tables, dialogue, clocks) */
+  .pics{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,1.6vw,18px)}
+  .pics.six{grid-template-columns:repeat(6,1fr)}
+  .pic{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center}
+  .pic img{width:100%;max-width:150px;aspect-ratio:1;object-fit:cover;border-radius:10px;background:#FFF3E0;display:block;margin:0 auto}
+  .pic .emo{font-size:clamp(2.6rem,7vw,5rem);line-height:1;aspect-ratio:1;max-width:150px;margin:0 auto;display:flex;align-items:center;justify-content:center}
+  .pic .w{font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(.9rem,2vw,1.35rem);margin-top:6px}
+  @media (max-width:760px){.pics,.pics.six{grid-template-columns:repeat(3,1fr)}}
+  table.g{border-collapse:collapse;font-size:clamp(.95rem,2.1vw,1.45rem);width:100%;max-width:1000px}
+  table.g th,table.g td{border:1px solid var(--line);padding:10px 16px;text-align:left}
+  table.g th{background:var(--code);color:var(--accent);font-family:"JetBrains Mono",monospace;font-size:.8em;letter-spacing:.04em}
+  table.g b{color:#ffd166}
+  .dlg{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:18px 24px;display:flex;flex-direction:column;gap:8px;font-size:clamp(1rem,2.2vw,1.45rem);max-width:1000px}
+  .dlg .sp{display:inline-block;min-width:3.6em;font-weight:700;color:var(--accent)}
+  .dlg .b .sp{color:#c4a1ff}
+  .ccq{font-size:clamp(1rem,2.2vw,1.45rem);border:1px dashed var(--line);border-radius:12px;padding:12px 18px;background:var(--code)}
+  .ccq i{color:var(--ink2)}
+  .clocks{display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,34px);align-items:flex-start}
+  .clocks figure{text-align:center}
+  .clocks svg{width:clamp(96px,14vw,170px);height:auto}
+  .clocks figcaption{font-size:clamp(.95rem,2vw,1.3rem);margin-top:6px}
+  .clocks figcaption small{display:block;color:var(--ink2);font-size:.8em}
+  .snd{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .snd div{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:clamp(1rem,2.2vw,1.5rem)}
+  .snd div b{display:block;font-family:"Archivo";font-size:1.5em;color:var(--accent)}
+  .snd div small{color:var(--ink2)}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="deck" id="deck">
+
+  <!-- 1 -->
+  <section class="slide on section">
+    <div class="eyebrow">Everyday English (A2) · Instructor Kit</div>
+    <h1>Module 7<br>Getting Things Done</h1>
+    <p class="lead">Get there. Get what you want. Get help.</p>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide">
+    <div class="eyebrow">Classes C20–C22 · the module map</div>
+    <h2>Real English for this week</h2>
+    <ul>
+      <li><b>7.1</b> Getting around: <i>Excuse me, how do I get to…? A round-trip to…, please.</i></li>
+      <li><b>7.2</b> Eating out &amp; shopping: <i>I'd like to book a table… I'm afraid there's a problem with…</i></li>
+      <li><b>7.3</b> Health &amp; appointments: <i>I'd like to make an appointment. You should rest.</i></li>
+    </ul>
+    <div class="tag"><span class="pill">NOTE</span> Every role-play has a customer and a staff side. Swap roles!</div>
+    <div class="tag"><span class="pill lab">CARDS</span> Pretend people, pretend numbers, pretend patients. Not your real life.</div>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide">
+    <div class="eyebrow">7.1 · New words · places in town</div>
+    <h2>Where do you want to go?</h2>
+    <div class="pics six">
+      <div class="pic"><img src="../assets/vocab/station.jpg" alt=""><div class="w">station</div></div>
+      <div class="pic"><img src="../assets/vocab/bus-stop.jpg" alt=""><div class="w">bus stop</div></div>
+      <div class="pic"><img src="../assets/vocab/bank.jpg" alt=""><div class="w">bank</div></div>
+      <div class="pic"><img src="../assets/vocab/post-office.jpg" alt=""><div class="w">post office</div></div>
+      <div class="pic"><img src="../assets/vocab/park.jpg" alt=""><div class="w">park</div></div>
+      <div class="pic"><img src="../assets/vocab/supermarket.jpg" alt=""><div class="w">supermarket</div></div>
+      <div class="pic"><img src="../assets/vocab/hotel.jpg" alt=""><div class="w">hotel</div></div>
+      <div class="pic"><img src="../assets/vocab/hospital.jpg" alt=""><div class="w">hospital</div></div>
+      <div class="pic"><img src="../assets/vocab/school.jpg" alt=""><div class="w">school</div></div>
+      <div class="pic"><img src="../assets/vocab/coffee.jpg" alt=""><div class="w">café</div></div>
+      <div class="pic"><div class="emo">💊</div><div class="w">pharmacy</div></div>
+      <div class="pic"><div class="emo">🏛️</div><div class="w">museum</div></div>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide">
+    <div class="eyebrow">7.1 · Ask the way · give directions</div>
+    <h2>Excuse me, how do I get to…?</h2>
+    <table class="g">
+      <tr><th>❓ ASK</th><td>Excuse me, how <b>do</b> I get to the bank? · Is there a pharmacy near here? · Is it far?</td></tr>
+      <tr><th>➡️ GIVE</th><td><b>Go</b> straight. <b>Turn</b> left at the traffic lights. <b>Take</b> the first right. <b>Go past</b> the bank.</td></tr>
+      <tr><th>📍 WHERE</th><td>It's <b>on your left</b>. It's <b>opposite</b> the park. It's <b>next to</b> the café. It's <b>on the corner</b>.</td></tr>
+      <tr><th>🆘 HELP</th><td>Sorry, could you say that again, please?</td></tr>
+    </table>
+    <div class="tag"><span class="pill warn">WATCH</span> Turn left ✅ · Turn to left ❌ · Go straight ✅ · Go to straight ❌ · UK: "go straight on"</div>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide">
+    <div class="eyebrow">7.1 · The Riverside map · listen and walk</div>
+    <h2>Where am I?</h2>
+    <div style="background:#fff;border-radius:14px;padding:8px;width:fit-content;max-width:100%">
+      <div style="max-height:56vh;display:flex;justify-content:center"><svg viewBox="0 0 640 510" style="height:54vh;width:auto;max-width:100%;display:block" role="img" aria-label="Map of Riverside: streets and places" style="font-family:Source Sans 3,Arial,sans-serif"><rect x="0" y="0" width="640" height="510" fill="#ffffff"/><rect x="0" y="96" width="640" height="28" fill="#cfd6e2"/><rect x="0" y="236" width="640" height="28" fill="#cfd6e2"/><rect x="0" y="376" width="640" height="28" fill="#cfd6e2"/><rect x="160" y="0" width="28" height="404" fill="#cfd6e2"/><rect x="306" y="0" width="28" height="470" fill="#cfd6e2"/><rect x="452" y="0" width="28" height="404" fill="#cfd6e2"/><text x="80" y="114" text-anchor="middle" font-size="11" font-weight="700" fill="#16202e" letter-spacing="1">HILL STREET</text><text x="566" y="114" text-anchor="middle" font-size="11" font-weight="700" fill="#16202e" letter-spacing="1">HILL STREET</text><text x="80" y="254" text-anchor="middle" font-size="11" font-weight="700" fill="#16202e" letter-spacing="1">MAIN STREET</text><text x="566" y="254" text-anchor="middle" font-size="11" font-weight="700" fill="#16202e" letter-spacing="1">MAIN STREET</text><text x="80" y="394" text-anchor="middle" font-size="11" font-weight="700" fill="#16202e" letter-spacing="1">RIVER ROAD</text><text x="566" y="394" text-anchor="middle" font-size="11" font-weight="700" fill="#16202e" letter-spacing="1">RIVER ROAD</text><text x="174" y="320" text-anchor="middle" font-size="10.5" font-weight="700" fill="#16202e" letter-spacing="1" transform="rotate(-90 174 320)" dy="4">OAK AVENUE</text><text x="320" y="320" text-anchor="middle" font-size="10.5" font-weight="700" fill="#16202e" letter-spacing="1" transform="rotate(-90 320 320)" dy="4">CENTER AVENUE</text><text x="466" y="320" text-anchor="middle" font-size="10.5" font-weight="700" fill="#16202e" letter-spacing="1" transform="rotate(-90 466 320)" dy="4">LAKE AVENUE</text><rect x="10" y="10" width="140" height="76" rx="6" fill="#eef3fb" stroke="#45536a" stroke-width="1.5"/><text x="80.0" y="53.0" text-anchor="middle" font-size="14" font-weight="700" fill="#16202e">café</text><rect x="198" y="10" width="98" height="76" rx="6" fill="#eef3fb" stroke="#45536a" stroke-width="1.5"/><text x="247.0" y="53.0" text-anchor="middle" font-size="14" font-weight="700" fill="#16202e">museum</text><rect x="344" y="10" width="98" height="76" rx="6" fill="#eef3fb" stroke="#45536a" stroke-width="1.5"/><text x="393.0" y="53.0" text-anchor="middle" font-size="14" font-weight="700" fill="#16202e">supermarket</text><rect x="490" y="10" width="140" height="76" rx="6" fill="#eef3fb" stroke="#45536a" stroke-width="1.5"/><text x="560.0" y="53.0" text-anchor="middle" font-size="14" font-weight="700" fill="#16202e">movie theater</text><rect x="10" y="134" width="140" height="92" rx="6" fill="#eef3fb" stroke="#45536a" stroke-width="1.5"/><text x="80.0" y="185.0" text-anchor="middle" font-size="14" font-weight="700" fill="#16202e">library</text><rect x="198" y="134" width="98" height="92" rx="6" fill="#eef3fb" stroke="#45536a" stroke-width="1.5"/><text x="247.0" y="185.0" text-anchor="middle" font-size="14" font-weight="700" fill="#16202e">post office</text><rect x="344" y="134" width="98" height="92" rx="6" fill="#cdebc5" stroke="#45536a" stroke-width="1.5"/><circle cx="364" cy="156" r="7" fill="#7cbf6b"/><circle cx="422" cy="156" r="7" fill="#7cbf6b"/><circle cx="364" cy="208" r="7" fill="#7cbf6b"/><circle cx="422" cy="208" r="7" fill="#7cbf6b"/><text x="393.0" y="185.0" text-anchor="middle" font-size="14" font-weight="700" fill="#16202e">park</text><rect x="490" y="134" width="140" height="92" rx="6" fill="#eef3fb" stroke="#45536a" stroke-width="1.5"/><text x="560.0" y="185.0" text-anchor="middle" font-size="14" font-weight="700" fill="#16202e">hospital</text><rect x="10" y="274" width="140" height="92" rx="6" fill="#eef3fb" stroke="#45536a" stroke-width="1.5"/><text x="80.0" y="325.0" text-anchor="middle" font-size="14" font-weight="700" fill="#16202e">school</text><rect x="198" y="274" width="98" height="92" rx="6" fill="#eef3fb" stroke="#45536a" stroke-width="1.5"/><text x="247.0" y="325.0" text-anchor="middle" font-size="14" font-weight="700" fill="#16202e">bank</text><rect x="344" y="274" width="98" height="92" rx="6" fill="#eef3fb" stroke="#45536a" stroke-width="1.5"/><text x="393.0" y="325.0" text-anchor="middle" font-size="14" font-weight="700" fill="#16202e">pharmacy</text><rect x="490" y="274" width="140" height="92" rx="6" fill="#eef3fb" stroke="#45536a" stroke-width="1.5"/><text x="560.0" y="325.0" text-anchor="middle" font-size="14" font-weight="700" fill="#16202e">hotel</text><rect x="10" y="414" width="286" height="48" rx="6" fill="#e5e7eb" stroke="#45536a" stroke-width="1.5"/><text x="153" y="443" text-anchor="middle" font-size="13" font-weight="700" fill="#16202e">parking lot</text><rect x="344" y="414" width="286" height="48" rx="6" fill="#fde9c8" stroke="#45536a" stroke-width="1.5"/><text x="487" y="443" text-anchor="middle" font-size="14" font-weight="700" fill="#16202e">Riverside Train Station</text><rect x="336" y="266" width="9" height="22" rx="2" fill="#16202e"/><circle cx="340.5" cy="270" r="2.6" fill="#ef4444"/><circle cx="340.5" cy="277" r="2.6" fill="#f59e0b"/><circle cx="340.5" cy="284" r="2.6" fill="#22c55e"/><rect x="296" y="212" width="9" height="22" rx="2" fill="#16202e"/><circle cx="300.5" cy="216" r="2.6" fill="#ef4444"/><circle cx="300.5" cy="223" r="2.6" fill="#f59e0b"/><circle cx="300.5" cy="230" r="2.6" fill="#22c55e"/><polygon points="320,432 323.5,441 333,441 325.5,447 328.5,456 320,450.5 311.5,456 314.5,447 307,441 316.5,441" fill="#dc2626" stroke="#7f1d1d" stroke-width="1"/><path d="M320 428 L320 410" stroke="#dc2626" stroke-width="2.5"/><path d="M314 416 L320 406 L326 416 Z" fill="#dc2626"/><line x1="0" y1="472" x2="640" y2="472" stroke="#cfd6e2"/><polygon points="20,480 22.6,487 30,487 24,491.5 26.3,498.5 20,494.3 13.7,498.5 16,491.5 10,487 17.4,487" fill="#dc2626"/><text x="36" y="495" font-size="12.5" fill="#16202e">You are here (walking north ↑)</text><rect x="246" y="479" width="8" height="20" rx="2" fill="#16202e"/><circle cx="250" cy="483" r="2.3" fill="#ef4444"/><circle cx="250" cy="489" r="2.3" fill="#f59e0b"/><circle cx="250" cy="495" r="2.3" fill="#22c55e"/><text x="262" y="495" font-size="12.5" fill="#16202e">traffic lights</text><text x="600" y="495" text-anchor="end" font-size="12.5" font-weight="700" fill="#16202e">N ↑</text></svg></div>
+    </div>
+    <div class="ccq">"Go straight to the traffic lights. Cross Main Street. It's on your right." <i>(The park.)</i></div>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide">
+    <div class="eyebrow">7.1 · Travel words</div>
+    <h2>At the station</h2>
+    <div class="pics">
+      <div class="pic"><img src="../assets/vocab/ticket.jpg" alt=""><div class="w">ticket</div></div>
+      <div class="pic"><div class="emo">🚉</div><div class="w">platform</div></div>
+      <div class="pic"><div class="emo">🕘</div><div class="w">timetable</div></div>
+      <div class="pic"><div class="emo">🔄</div><div class="w">change at…</div></div>
+      <div class="pic"><div class="emo">➡️</div><div class="w">one-way</div></div>
+      <div class="pic"><div class="emo">🔁</div><div class="w">round-trip</div></div>
+      <div class="pic"><img src="../assets/vocab/bus.jpg" alt=""><div class="w">get on / off</div></div>
+      <div class="pic"><div class="emo">🚕</div><div class="w">get in / out of</div></div>
+    </div>
+    <div class="tag"><span class="pill">UK</span> one-way = single · round-trip = return</div>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide">
+    <div class="eyebrow">7.1 · Model dialogue · the ticket office</div>
+    <h2>A round-trip, please.</h2>
+    <div class="dlg">
+      <p><span class="sp">Priya:</span> Hi. A round-trip to downtown, please.</p>
+      <p class="b"><span class="sp">Clerk:</span> Sure. That's eight fifty.</p>
+      <p><span class="sp">Priya:</span> What time is the next train?</p>
+      <p class="b"><span class="sp">Clerk:</span> The next one leaves at ten fifteen, from platform three.</p>
+      <p><span class="sp">Priya:</span> Platform three. Do I need to change?</p>
+      <p class="b"><span class="sp">Clerk:</span> No, it's direct.</p>
+    </div>
+    <div class="ccq">Round-trip: do I come back? <i>(Yes.)</i> &nbsp;·&nbsp; One-way: do I come back on this ticket? <i>(No.)</i> &nbsp;·&nbsp; Direct: do I change trains? <i>(No.)</i></div>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide">
+    <div class="eyebrow">7.1 · Pair task · 15 + 7 min</div>
+    <h2>Map game → ticket office</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>A and B: different maps. <b>Don't show!</b></li>
+        <li>Start at the ★ every time</li>
+        <li>Ask: <b>Excuse me, how do I get to…?</b></li>
+        <li>Follow and write the name in the box</li>
+        <li>Then: buy a ticket from the clerk</li>
+      </ul>
+      <div class="ccq">Show your map? <i>(No.)</i><br>Where do you start? <i>(The star.)</i><br>What do you write? <i>(The place name.)</i><br>Workbooks? <i>(Closed!)</i><br>Too fast? <i>("Could you say that again?")</i></div>
+    </div>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide">
+    <div class="eyebrow">7.2 · New words · restaurant &amp; store</div>
+    <h2>Eating out and shopping</h2>
+    <div class="pics six">
+      <div class="pic"><img src="../assets/vocab/restaurant.jpg" alt=""><div class="w">restaurant</div></div>
+      <div class="pic"><img src="../assets/vocab/menu.jpg" alt=""><div class="w">menu</div></div>
+      <div class="pic"><img src="../assets/vocab/waiter.jpg" alt=""><div class="w">server</div></div>
+      <div class="pic"><img src="../assets/vocab/salad.jpg" alt=""><div class="w">appetizer</div></div>
+      <div class="pic"><img src="../assets/vocab/chicken.jpg" alt=""><div class="w">main course</div></div>
+      <div class="pic"><img src="../assets/vocab/cake.jpg" alt=""><div class="w">dessert</div></div>
+      <div class="pic"><img src="../assets/vocab/bill.jpg" alt=""><div class="w">the check</div></div>
+      <div class="pic"><img src="../assets/vocab/shop-assistant.jpg" alt=""><div class="w">sales clerk</div></div>
+      <div class="pic"><img src="../assets/vocab/jacket.jpg" alt=""><div class="w">jacket</div></div>
+      <div class="pic"><img src="../assets/vocab/jeans.jpg" alt=""><div class="w">jeans</div></div>
+      <div class="pic"><img src="../assets/vocab/shoes.jpg" alt=""><div class="w">shoes</div></div>
+      <div class="pic"><div class="emo">🧾</div><div class="w">receipt</div></div>
+    </div>
+    <div class="tag"><span class="pill">UK</span> appetizer = starter · the check = the bill · dressing room = fitting room</div>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide">
+    <div class="eyebrow">7.2 · Model dialogue · booking by phone</div>
+    <h2>I'd like to book a table.</h2>
+    <div class="dlg">
+      <p class="b"><span class="sp">Host:</span> Good afternoon, Rosa's Kitchen. How can I help you?</p>
+      <p><span class="sp">Caller:</span> Hi. I'd like to book a table for four on Saturday, please.</p>
+      <p class="b"><span class="sp">Host:</span> Sure. What time?</p>
+      <p><span class="sp">Caller:</span> Seven thirty, if possible.</p>
+      <p class="b"><span class="sp">Host:</span> I'm sorry, we're fully booked at seven thirty. We have a table at eight.</p>
+      <p><span class="sp">Caller:</span> Eight is fine. Could we sit by the window?</p>
+      <p class="b"><span class="sp">Host:</span> No problem. What name is it under?</p>
+    </div>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide">
+    <div class="eyebrow">7.2 · Grammar · too &amp; enough</div>
+    <h2>It's too small. It isn't big enough.</h2>
+    <table class="g">
+      <tr><th>😟 too + adj</th><td>It's <b>too</b> expensive. The shoes are <b>too</b> small.</td></tr>
+      <tr><th>😟 + noun</th><td>too <b>much</b> salt · too <b>many</b> people</td></tr>
+      <tr><th>🙂 adj + enough</th><td>It's big <b>enough</b>. · 😟 It isn't long <b>enough</b>.</td></tr>
+      <tr><th>enough + noun</th><td>We don't have <b>enough</b> chairs.</td></tr>
+    </table>
+    <div class="ccq">"It's too expensive." Can I buy it? <i>(No.)</i> A problem? <i>(Yes.)</i> &nbsp;·&nbsp; "It's very expensive." Can I buy it? <i>(Maybe!)</i></div>
+    <div class="tag"><span class="pill warn">WATCH</span> big enough ✅ · enough big ❌ · too many people ✅ · too much people ❌</div>
+  </section>
+
+  <!-- 12 -->
+  <section class="slide">
+    <div class="eyebrow">7.2 · Polite problem-solving</div>
+    <h2>I'm afraid there's a problem with…</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>😊 CUSTOMER</th></tr>
+        <tr><td><b>1 Soften:</b> Excuse me. I'm afraid there's a problem with my soup.</td></tr>
+        <tr><td><b>2 Explain:</b> It's cold.</td></tr>
+        <tr><td><b>3 Ask:</b> Could I have a hot one, please?</td></tr>
+      </table>
+      <table class="g">
+        <tr><th>🧑‍🍳 STAFF</th></tr>
+        <tr><td><b>Sorry:</b> I'm so sorry about that.</td></tr>
+        <tr><td><b>Action:</b> I'll bring you a new one right away.</td></tr>
+        <tr><td><b>Store:</b> Would you like a refund or an exchange?</td></tr>
+      </table>
+    </div>
+    <div class="tag"><span class="pill warn">NOTE</span> "I'm afraid…" = a soft start for bad news. You are not scared!</div>
+  </section>
+
+  <!-- 13 -->
+  <section class="slide">
+    <div class="eyebrow">7.2 · Role-play · 12 + 13 min</div>
+    <h2>Book it. Fix it. Return it.</h2>
+    <div class="two">
+      <ul class="lab">
+        <li><b>Phone:</b> chairs back to back. Host has the book</li>
+        <li>First time full? Offer another time</li>
+        <li><b>Carousel:</b> 1 server, 1 sales clerk, 2 customers</li>
+        <li>Customer: soften → explain → ask</li>
+        <li>Staff: sorry → action. Swap after 6 minutes</li>
+      </ul>
+      <div class="ccq">Can you see your partner? <i>(No, it's a phone call.)</i><br>First sentence? <i>("I'm afraid there's a problem with…")</i><br>No receipt: a refund? <i>(No. Exchange or store credit.)</i><br>Real phone number? <i>(No, pretend.)</i></div>
+    </div>
+  </section>
+
+  <!-- 14 -->
+  <section class="slide">
+    <div class="eyebrow">7.3 · New words · the body &amp; how you feel</div>
+    <h2>What's the matter?</h2>
+    <div class="pics six">
+      <div class="pic"><img src="../assets/vocab/head.jpg" alt=""><div class="w">a headache</div></div>
+      <div class="pic"><img src="../assets/vocab/throat.jpg" alt=""><div class="w">a sore throat</div></div>
+      <div class="pic"><img src="../assets/vocab/stomach.jpg" alt=""><div class="w">a stomachache</div></div>
+      <div class="pic"><div class="emo">🦷</div><div class="w">a toothache</div></div>
+      <div class="pic"><div class="emo">🧍</div><div class="w">a backache</div></div>
+      <div class="pic"><div class="emo">🤒</div><div class="w">a fever</div></div>
+      <div class="pic"><div class="emo">😷</div><div class="w">a cough</div></div>
+      <div class="pic"><div class="emo">🤧</div><div class="w">a cold</div></div>
+      <div class="pic"><div class="emo">🛌</div><div class="w">the flu</div></div>
+      <div class="pic"><div class="emo">😵</div><div class="w">dizzy</div></div>
+      <div class="pic"><img src="../assets/vocab/doctor.jpg" alt=""><div class="w">doctor</div></div>
+      <div class="pic"><div class="emo">💊</div><div class="w">pharmacist</div></div>
+    </div>
+    <div class="tag"><span class="pill lab">TODAY</span> We are all pretend patients. We use cards, not our own health.</div>
+  </section>
+
+  <!-- 15 -->
+  <section class="slide">
+    <div class="eyebrow">7.3 · Describing symptoms · how long?</div>
+    <h2>I've had a cough since Monday.</h2>
+    <table class="g">
+      <tr><th>I've got / I have</th><td>a headache · a sore throat · a fever</td></tr>
+      <tr><th>I feel</th><td>dizzy · sick · tired · I don't feel well.</td></tr>
+      <tr><th>hurts</th><td>My back hurts. · It hurts when I <b>swallow</b>.</td></tr>
+      <tr><th>⏳ since</th><td>a <b>point</b>: since Monday · since last night · since 9 o'clock</td></tr>
+      <tr><th>⏳ for</th><td>a <b>length</b>: for three days · for a week · for two hours</td></tr>
+    </table>
+    <div class="ccq">"…since Monday." When did it start? <i>(Monday.)</i> Now too? <i>(Yes.)</i> &nbsp;·&nbsp; "since three days"? <i>(No! for three days.)</i></div>
+  </section>
+
+  <!-- 16 -->
+  <section class="slide">
+    <div class="eyebrow">7.3 · Giving advice · base verb</div>
+    <h2>You should rest.</h2>
+    <table class="g">
+      <tr><th>You should…</th><td>a good idea</td><td>You should <b>drink</b> lots of water.</td></tr>
+      <tr><th>You'd better…</th><td>strong: important!</td><td>You'd better <b>see</b> a doctor.</td></tr>
+      <tr><th>Why don't you…?</th><td>a friendly idea</td><td>Why don't you <b>take</b> a day off?</td></tr>
+    </table>
+    <div class="ccq">"You'd better see a doctor." Stronger than "should"? <i>(Yes.)</i> A problem if you don't? <i>(Maybe.)</i> &nbsp;·&nbsp; "Why don't you…?" A real "why" question? <i>(No. An idea.)</i></div>
+    <div class="tag"><span class="pill warn">WATCH</span> You should rest ✅ · You should to rest ❌ · Why don't you rest? ✅ · Why you don't rest? ❌</div>
+  </section>
+
+  <!-- 17 -->
+  <section class="slide">
+    <div class="eyebrow">7.3 · Model dialogue · phoning the clinic</div>
+    <h2>I'd like to make an appointment.</h2>
+    <div class="dlg">
+      <p><span class="sp">Ana:</span> Hello, I'd like to make an appointment, please.</p>
+      <p class="b"><span class="sp">Recep.:</span> Of course. What's it about?</p>
+      <p><span class="sp">Ana:</span> I've had a sore throat and a fever since Monday. It hurts when I swallow.</p>
+      <p class="b"><span class="sp">Recep.:</span> We have Friday at ten thirty.</p>
+      <p><span class="sp">Ana:</span> Is there anything earlier? I feel quite sick.</p>
+      <p class="b"><span class="sp">Recep.:</span> Dr. Lee can see you today at four fifteen.</p>
+      <p><span class="sp">Ana:</span> Today at four fifteen. Thank you!</p>
+    </div>
+    <div class="tag"><span class="pill">PHARMACY</span> Do you have something for a sore throat? · How often should I take it?</div>
+  </section>
+
+  <!-- 18 -->
+  <section class="slide">
+    <div class="eyebrow">7.3 · Pair task · 12 + 8 min</div>
+    <h2>Phone the clinic → the pharmacy</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>Take a <b>pretend patient</b> card</li>
+        <li>📞 Book a time that fits the card</li>
+        <li>Say how long: <b>since / for</b></li>
+        <li>💊 Ask: <b>Do you have something for…? How often…?</b></li>
+        <li>Swap: receptionist / pharmacist gives advice</li>
+      </ul>
+      <div class="ccq">Your real health? <i>(No! The card.)</i><br>First sentence? <i>("I'd like to make an appointment.")</i><br>Wrong time? <i>("Is there anything earlier?")</i><br>Pharmacist: how many kinds of advice? <i>(Three.)</i></div>
+    </div>
+  </section>
+
+  <!-- 19 -->
+  <section class="slide section">
+    <div class="eyebrow">You can now get things done in English</div>
+    <h2>Module 7 done 🎉</h2>
+    <ul class="lab">
+      <li>Excuse me, how do I get to the bank? Go straight and turn left. A round-trip, please.</li>
+      <li>I'd like to book a table for four. I'm afraid there's a problem with my soup. It isn't hot enough.</li>
+      <li>I'd like to make an appointment. I've had a cough for three days. You should rest.</li>
+    </ul>
+    <p class="lead" style="margin-top:10px;max-width:40ch">Homework: online lessons 7.1–7.3 with 🔊. Next: Module 8, <i>I've just… / already / yet</i>.</p>
+  </section>
+
+</div>
+
+<div class="count" id="count">1 / 19</div>
+<div class="nav"><button id="prev" aria-label="Previous slide"></button><button id="next" aria-label="Next slide"></button></div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const bar=document.getElementById('bar'), count=document.getElementById('count');
+  let i=0;
+  function show(n){ i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+    bar.style.width=((i+1)/slides.length*100)+'%'; count.textContent=(i+1)+' / '+slides.length; }
+  document.getElementById('next').onclick=()=>show(i+1);
+  document.getElementById('prev').onclick=()=>show(i-1);
+  addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}
+    else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+  });
+  show(0);
+</script>
+</body>
+</html>

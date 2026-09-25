@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slides — Module 5</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root{--bg:#0b1220;--ink:#edf2fb;--ink2:#a8b6cf;--accent:#7fb2ff;--accent2:#2563eb;--lab:#34d3bd;--warn:#fbbf24;--line:#233252;--code:#101a2e;color-scheme:dark}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;overflow:hidden}
+  .deck{height:100%;width:100%;position:relative}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:6vh 8vw;gap:20px}
+  .slide.on{display:flex}
+  h1,h2,h3{font-family:"Archivo",sans-serif;line-height:1.1;text-wrap:balance}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  .slide h1{font-size:clamp(2rem,6vw,4rem);font-weight:800;letter-spacing:-.02em}
+  .slide h2{font-size:clamp(1.5rem,4.2vw,2.8rem);font-weight:800;letter-spacing:-.01em}
+  .slide p.lead{font-size:clamp(1.05rem,2.4vw,1.5rem);color:var(--ink2);max-width:26ch}
+  ul{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:6px}
+  ul li{position:relative;padding-left:34px;font-size:clamp(1.05rem,2.3vw,1.6rem)}
+  ul li::before{content:"";position:absolute;left:0;top:.55em;width:12px;height:12px;border-radius:3px;background:var(--accent);transform:rotate(45deg)}
+  ul.lab li::before{background:var(--lab)}
+  code.k{font-family:"JetBrains Mono",monospace;color:#cfe0ff;font-size:.92em}
+  pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:22px 26px;font-family:"JetBrains Mono",monospace;font-size:clamp(.85rem,1.9vw,1.3rem);line-height:1.55;overflow:auto;max-width:100%}
+  pre .k{color:#7dd3fc} pre .s{color:#86efac} pre .c{color:#7183a3;font-style:italic}
+  .tag{display:inline-flex;align-items:center;gap:10px;font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);color:var(--ink2)}
+  .tag .pill{background:var(--accent2);color:#fff;font-weight:700;border-radius:999px;padding:3px 12px;letter-spacing:.06em}
+  .tag .pill.lab{background:var(--lab);color:#062b26} .tag .pill.warn{background:var(--warn);color:#3a2a05}
+  .section{background:linear-gradient(135deg,#132a52,#0b1220)}
+  .section .big{font-size:clamp(3rem,12vw,8rem);font-family:"Archivo";font-weight:800;color:var(--accent2);line-height:.9}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+  @media (max-width:760px){.two{grid-template-columns:1fr}}
+  .bar{position:fixed;left:0;top:0;height:4px;background:var(--accent2);width:0;transition:width .25s;z-index:5}
+  .count{position:fixed;right:16px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink2);z-index:5}
+  .nav{position:fixed;inset:auto 0 0 0;display:flex;justify-content:space-between;pointer-events:none;z-index:4}
+  .nav button{pointer-events:auto;background:transparent;border:none;color:transparent;width:22vw;height:100vh;cursor:pointer}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+  /* ESL extras (picture vocab, grammar tables, dialogue, clocks) */
+  .pics{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,1.6vw,18px)}
+  .pics.six{grid-template-columns:repeat(6,1fr)}
+  .pic{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center}
+  .pic img{width:100%;max-width:150px;aspect-ratio:1;object-fit:cover;border-radius:10px;background:#FFF3E0;display:block;margin:0 auto}
+  .pic .emo{font-size:clamp(2.6rem,7vw,5rem);line-height:1;aspect-ratio:1;max-width:150px;margin:0 auto;display:flex;align-items:center;justify-content:center}
+  .pic .w{font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(.9rem,2vw,1.35rem);margin-top:6px}
+  @media (max-width:760px){.pics,.pics.six{grid-template-columns:repeat(3,1fr)}}
+  table.g{border-collapse:collapse;font-size:clamp(.95rem,2.1vw,1.45rem);width:100%;max-width:1000px}
+  table.g th,table.g td{border:1px solid var(--line);padding:10px 16px;text-align:left}
+  table.g th{background:var(--code);color:var(--accent);font-family:"JetBrains Mono",monospace;font-size:.8em;letter-spacing:.04em}
+  table.g b{color:#ffd166}
+  .dlg{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:18px 24px;display:flex;flex-direction:column;gap:8px;font-size:clamp(1rem,2.2vw,1.45rem);max-width:1000px}
+  .dlg .sp{display:inline-block;min-width:3.6em;font-weight:700;color:var(--accent)}
+  .dlg .b .sp{color:#c4a1ff}
+  .ccq{font-size:clamp(1rem,2.2vw,1.45rem);border:1px dashed var(--line);border-radius:12px;padding:12px 18px;background:var(--code)}
+  .ccq i{color:var(--ink2)}
+  .clocks{display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,34px);align-items:flex-start}
+  .clocks figure{text-align:center}
+  .clocks svg{width:clamp(96px,14vw,170px);height:auto}
+  .clocks figcaption{font-size:clamp(.95rem,2vw,1.3rem);margin-top:6px}
+  .clocks figcaption small{display:block;color:var(--ink2);font-size:.8em}
+  .snd{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .snd div{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:clamp(1rem,2.2vw,1.5rem)}
+  .snd div b{display:block;font-family:"Archivo";font-size:1.5em;color:var(--accent)}
+  .snd div small{color:var(--ink2)}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="deck" id="deck">
+
+  <!-- 1 -->
+  <section class="slide on section">
+    <div class="eyebrow">Everyday English (A2) · Instructor Kit</div>
+    <h1>Module 5<br>Telling Stories</h1>
+    <p class="lead">A moment. A story. A life.</p>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide">
+    <div class="eyebrow">Welcome back · Progress Test 1</div>
+    <h2>Four modules. You did it! 🎉</h2>
+    <ul class="lab">
+      <li>You can talk about the past: <i>I went… Did you see…?</i></li>
+      <li>You can compare things and talk about plans: <i>bigger · I'm going to…</i></li>
+      <li>You can talk about experiences and give advice: <i>I've been to… You should…</i></li>
+    </ul>
+    <p class="lead" style="max-width:40ch">A test is a map. It shows where we are. It doesn't show who we are.</p>
+    <div class="tag"><span class="pill">GOAL</span> I want to practice ______. Every week I will ______.</div>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide">
+    <div class="eyebrow">Classes C14–C16 · the map</div>
+    <h2>A moment → a story → a life</h2>
+    <ul>
+      <li><b>5.1</b> A moment: <i>At eight I <b>was cooking</b>. What <b>were</b> you <b>doing</b>?</i></li>
+      <li><b>5.2</b> A story: <i>I <b>was walking</b> home <b>when</b> it <b>started</b> to rain.</i></li>
+      <li><b>5.3</b> A life: <i>I <b>used to</b> walk to work, but now I drive.</i></li>
+    </ul>
+    <div class="tag"><span class="pill">NOTE</span> Your stories: true, invented, or a character card. All are OK.</div>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide">
+    <div class="eyebrow">5.1 · Click! 📷 8 p.m. last night</div>
+    <h2>What was happening?</h2>
+    <div class="pics six">
+      <div class="pic"><img src="../assets/vocab/cook.jpg" alt=""><div class="w">was cooking</div></div>
+      <div class="pic"><img src="../assets/vocab/read.jpg" alt=""><div class="w">was reading</div></div>
+      <div class="pic"><img src="../assets/vocab/dance.jpg" alt=""><div class="w">were dancing</div></div>
+      <div class="pic"><img src="../assets/vocab/play-the-guitar.jpg" alt=""><div class="w">was playing the guitar</div></div>
+      <div class="pic"><img src="../assets/vocab/armchair.jpg" alt=""><div class="w">was sleeping</div></div>
+      <div class="pic"><img src="../assets/vocab/tv.jpg" alt=""><div class="w">were watching TV</div></div>
+      <div class="pic"><img src="../assets/vocab/shower.jpg" alt=""><div class="w">was taking a shower</div></div>
+      <div class="pic"><img src="../assets/vocab/notebook.jpg" alt=""><div class="w">was studying</div></div>
+      <div class="pic"><img src="../assets/vocab/sing.jpg" alt=""><div class="w">was singing</div></div>
+      <div class="pic"><img src="../assets/vocab/bus-stop.jpg" alt=""><div class="w">were waiting</div></div>
+      <div class="pic"><img src="../assets/vocab/mobile-phone.jpg" alt=""><div class="w">was talking</div></div>
+      <div class="pic"><img src="../assets/vocab/umbrella.jpg" alt=""><div class="w">was raining</div></div>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide">
+    <div class="eyebrow">5.1 · Past continuous · was / were + -ing</div>
+    <h2>Freeze a moment</h2>
+    <table class="g">
+      <tr><th>✅</th><td>I / he / she / it <b>was</b> cook<b>ing</b>. · You / we / they <b>were</b> cook<b>ing</b>.</td></tr>
+      <tr><th>❌</th><td>I <b>wasn't</b> sleeping. · They <b>weren't</b> working.</td></tr>
+      <tr><th>❓</th><td><b>Were</b> you sleeping? · <b>What were</b> you <b>doing</b> at nine?</td></tr>
+      <tr><th>💬</th><td>Yes, I <b>was</b>. / No, I <b>wasn't</b>.</td></tr>
+      <tr><th>👯</th><td><b>While</b> I was reading, she was cooking.</td></tr>
+    </table>
+    <div class="tag"><span class="pill">SAY</span> I <span style="color:var(--ink2)">wuz</span> COOKing · Yes, I WAS! &nbsp;<span class="pill warn">NOT</span> know · like · want · need · love → I <b>knew</b></div>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide">
+    <div class="eyebrow">5.1 · Check the meaning</div>
+    <h2>"At eight I was cooking dinner."</h2>
+    <div class="ccq">At eight, did I start cooking? <i>(No, before.)</i> &nbsp;·&nbsp; Was it finished? <i>(No.)</i> &nbsp;·&nbsp; In the middle? <i>(Yes!)</i></div>
+    <div class="ccq">"I cooked dinner." Finished? <i>(Yes.)</i> &nbsp;·&nbsp; "I was cooking at eight." Do we know it's finished? <i>(No.)</i></div>
+    <div class="ccq">"While I was reading, she was cooking." One after the other, or at the same time? <i>(Same time.)</i></div>
+    <div class="tag"><span class="pill warn">WATCH</span> I was cooking ✅ · I cooking ❌ · I was cook ❌ · They was ❌</div>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide">
+    <div class="eyebrow">5.1 · Model dialogue</div>
+    <h2>What were you doing?</h2>
+    <div class="dlg">
+      <p><span class="sp">Ana:</span> I called you at nine last night. What were you doing?</p>
+      <p class="b"><span class="sp">Ben:</span> Sorry! I was taking a shower. What were you doing so late?</p>
+      <p><span class="sp">Ana:</span> I was cooking a big dinner. My brother was helping me.</p>
+      <p class="b"><span class="sp">Ben:</span> Was your sister helping too?</p>
+      <p><span class="sp">Ana:</span> No, she wasn't. She was watching a movie while we were cooking!</p>
+    </div>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide section">
+    <div class="eyebrow">5.1 · A mystery! 🔍</div>
+    <h2>The Missing Birthday Cake 🎂</h2>
+    <p class="lead" style="max-width:34ch">Last night, between 7 and 9 p.m., someone ate the birthday cake in the school kitchen. Only crumbs!</p>
+    <p class="lead" style="max-width:34ch">Two people say: "We were together all evening." Is it true?</p>
+    <div class="tag"><span class="pill lab">GAME</span> It's not real. The evening is invented. Have fun!</div>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide">
+    <div class="eyebrow">5.1 · Group task · 22 min</div>
+    <h2>The Alibi Game</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>Groups of 4: <b>2 suspects</b> + <b>2 detectives</b></li>
+        <li>Suspects: plan your evening together (7:00 → 9:00)</li>
+        <li>Detectives: write questions: <b>What were you doing at…?</b></li>
+        <li>Ask each suspect <b>alone</b>. Compare the answers.</li>
+        <li>3 differences? <b>"You ate the cake!"</b> 🎂</li>
+      </ul>
+      <div class="ccq">A real crime? <i>(No! A game.)</i><br>Real or invented evening? <i>(Invented.)</i><br>Suspects plan together or alone? <i>(Together.)</i><br>Is the other suspect listening? <i>(No!)</i><br>How many differences? <i>(Three.)</i></div>
+    </div>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide">
+    <div class="eyebrow">5.2 · The long line and the dot</div>
+    <h2>I was walking home when it started to rain.</h2>
+    <svg viewBox="0 0 640 130" role="img" aria-label="A long line labeled was walking home, with a dot labeled it started to rain" style="width:100%;max-width:900px;height:auto">
+      <line x1="30" y1="55" x2="610" y2="55" stroke="#7fb2ff" stroke-width="8" stroke-linecap="round"/>
+      <circle cx="420" cy="55" r="15" fill="#fbbf24"/>
+      <text x="160" y="100" fill="#edf2fb" font-family="Source Sans 3, sans-serif" font-size="22" text-anchor="middle">was walking home (long) ———</text>
+      <text x="420" y="25" fill="#fbbf24" font-family="Source Sans 3, sans-serif" font-size="22" font-weight="700" text-anchor="middle">• it started to rain (short)</text>
+      <text x="30" y="125" fill="#a8b6cf" font-family="JetBrains Mono, monospace" font-size="15">past continuous = background</text>
+      <text x="610" y="125" fill="#a8b6cf" font-family="JetBrains Mono, monospace" font-size="15" text-anchor="end">past simple = sudden event</text>
+    </svg>
+    <div class="ccq">Which started first, the walking or the rain? <i>(The walking.)</i> &nbsp;·&nbsp; Was the rain starting long or short? <i>(Short, sudden.)</i></div>
+    <div class="ccq">"When the movie ended, we went home." Anything in progress? <i>(No.)</i> So both verbs are… <i>(past simple.)</i></div>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide">
+    <div class="eyebrow">5.2 · when vs while</div>
+    <h2>Two ways to tell it</h2>
+    <table class="g">
+      <tr><th>WORD</th><th>+ WHICH ACTION</th><th>EXAMPLE</th></tr>
+      <tr><td><b>when</b></td><td>the short action (past simple)</td><td>I was cooking <b>when</b> the phone <b>rang</b>.</td></tr>
+      <tr><td><b>while</b></td><td>the long action (past continuous)</td><td><b>While</b> I <b>was cooking</b>, the phone rang.</td></tr>
+    </table>
+    <div class="tag"><span class="pill">COMMA</span> When / While first → comma in the middle &nbsp;<span class="pill warn">PAST</span> rang · fell · began · broke · saw · woke up · met · went out</div>
+  </section>
+
+  <!-- 12 -->
+  <section class="slide">
+    <div class="eyebrow">5.2 · Picture story · check your order, then retell</div>
+    <h2>Lena's Rainy Saturday</h2>
+    <div class="pics">
+      <div class="pic"><img src="../assets/vocab/park.jpg" alt=""><div class="w">1 · walk in the park</div></div>
+      <div class="pic"><img src="../assets/vocab/read.jpg" alt=""><div class="w">2 · read on a bench</div></div>
+      <div class="pic"><img src="../assets/vocab/umbrella.jpg" alt=""><div class="w">3 · start to rain!</div></div>
+      <div class="pic"><div class="emo">🏃‍♀️</div><div class="w">4 · run to the bus stop</div></div>
+      <div class="pic"><img src="../assets/vocab/bus-stop.jpg" alt=""><div class="w">5 · wait · a man arrive</div></div>
+      <div class="pic"><img src="../assets/vocab/happy.jpg" alt=""><div class="w">6 · old friend Marco!</div></div>
+      <div class="pic"><img src="../assets/vocab/coffee.jpg" alt=""><div class="w">7 · drink coffee · talk</div></div>
+      <div class="pic"><img src="../assets/vocab/sunny.jpg" alt=""><div class="w">8 · sun shine again</div></div>
+    </div>
+    <div class="tag"><span class="pill lab">RETELL</span> Everyone: one <b>when</b> + one <b>while</b></div>
+  </section>
+
+  <!-- 13 -->
+  <section class="slide">
+    <div class="eyebrow">5.2 · Model dialogue · telling what happened</div>
+    <h2>You'll never guess what happened!</h2>
+    <div class="dlg">
+      <p><span class="sp">Sara:</span> I was carrying two cups of coffee when I tripped on the step.</p>
+      <p class="b"><span class="sp">Tom:</span> Oh no! Did you drop them?</p>
+      <p><span class="sp">Sara:</span> Yes! While I was falling, the coffee went everywhere. It landed on a man's shoes!</p>
+      <p class="b"><span class="sp">Tom:</span> That's terrible! Was he angry?</p>
+      <p><span class="sp">Sara:</span> No, he laughed! He helped me up while I was saying sorry.</p>
+    </div>
+    <div class="tag"><span class="pill lab">REACT</span> Oh no! Are you OK? · Really? · That's so funny! · And then what happened?</div>
+  </section>
+
+  <!-- 14 -->
+  <section class="slide">
+    <div class="eyebrow">5.2 · Pair task · 16 min</div>
+    <h2>Something happened!</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>True, invented, or a <b>story card</b></li>
+        <li><b>Scene</b> ——— I was… The sun was…</li>
+        <li><b>Event</b> • …when suddenly…</li>
+        <li><b>Then</b> + <b>the end</b></li>
+        <li>B reacts and asks: "And then what happened?"</li>
+      </ul>
+      <div class="ccq">Must it be true? <i>(No.)</i><br>How do you start? <i>(Set the scene.)</i><br>Tense for the sudden event? <i>(Past simple.)</i><br>What does B do? <i>(Listens, reacts, asks.)</i></div>
+    </div>
+  </section>
+
+  <!-- 15 -->
+  <section class="slide">
+    <div class="eyebrow">5.3 · Then and now · meet Max</div>
+    <h2>Max used to play soccer. Now he's a teacher.</h2>
+    <div class="two">
+      <div>
+        <p class="lead" style="margin-bottom:10px">THEN 🕰️</p>
+        <div class="pics" style="grid-template-columns:repeat(2,1fr)">
+          <div class="pic"><img src="../assets/vocab/football.jpg" alt=""><div class="w">used to play soccer</div></div>
+          <div class="pic"><img src="../assets/vocab/airport.jpg" alt=""><div class="w">used to travel a lot</div></div>
+        </div>
+      </div>
+      <div>
+        <p class="lead" style="margin-bottom:10px">NOW 📱</p>
+        <div class="pics" style="grid-template-columns:repeat(2,1fr)">
+          <div class="pic"><img src="../assets/vocab/teacher.jpg" alt=""><div class="w">is a teacher</div></div>
+          <div class="pic"><img src="../assets/vocab/read.jpg" alt=""><div class="w">reads every evening</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 16 -->
+  <section class="slide">
+    <div class="eyebrow">5.3 · used to + base verb</div>
+    <h2>Habits and states that changed</h2>
+    <table class="g">
+      <tr><th>✅</th><td>I / you / she / they <b>used to</b> walk to work.</td></tr>
+      <tr><th>❌</th><td>I <b>didn't use to</b> like coffee.</td></tr>
+      <tr><th>❓</th><td><b>Did</b> you <b>use to</b> play soccer? — Yes, I <b>did</b>. / No, I <b>didn't</b>.</td></tr>
+      <tr><th>🔄</th><td>I <b>used to</b> walk to work, <b>but now</b> I drive.</td></tr>
+    </table>
+    <div class="ccq">Many times or one time? <i>(Many.)</i> &nbsp;·&nbsp; True now? <i>(No.)</i> &nbsp;·&nbsp; "Yesterday I used to see a movie"? <i>(No! I saw.)</i></div>
+    <div class="tag"><span class="pill">SAY</span> "YOO-stuh" &nbsp;<span class="pill warn">WRITE</span> did / didn't + use to (no -d!)</div>
+  </section>
+
+  <!-- 17 -->
+  <section class="slide">
+    <div class="eyebrow">5.3 · Pair task · 20 min</div>
+    <h2>Then &amp; Now</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>Choose <b>one</b>: 🧒 my childhood · 💼 a job I used to have · 🎭 a character card</li>
+        <li>Notes: 4 THEN + 3 NOW</li>
+        <li>Tell your partner. Partner asks: <b>Did you use to…?</b></li>
+        <li>New partner: <b>two truths and a lie</b></li>
+      </ul>
+      <div class="ccq">How many topics? <i>(One.)</i><br>Real life only? <i>(No. A card is fine.)</i><br>Do you explain your choice? <i>(No.)</i><br>After "did": used or use? <i>(Use.)</i></div>
+    </div>
+  </section>
+
+  <!-- 18 -->
+  <section class="slide section">
+    <div class="eyebrow">You can now tell stories</div>
+    <h2>Module 5 done 🎉</h2>
+    <ul class="lab">
+      <li>At eight I was cooking. What were you doing?</li>
+      <li>I was walking home when it started to rain. While I was waiting, a friend arrived.</li>
+      <li>I used to walk to work, but now I drive. Did you use to…?</li>
+    </ul>
+    <p class="lead" style="margin-top:10px;max-width:40ch">Homework: online lessons 5.1–5.3 with 🔊. Next: Module 6, <i>If it rains, I'll stay home.</i></p>
+  </section>
+
+</div>
+
+<div class="count" id="count">1 / 18</div>
+<div class="nav"><button id="prev" aria-label="Previous slide"></button><button id="next" aria-label="Next slide"></button></div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const bar=document.getElementById('bar'), count=document.getElementById('count');
+  let i=0;
+  function show(n){ i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+    bar.style.width=((i+1)/slides.length*100)+'%'; count.textContent=(i+1)+' / '+slides.length; }
+  document.getElementById('next').onclick=()=>show(i+1);
+  document.getElementById('prev').onclick=()=>show(i-1);
+  addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}
+    else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+  });
+  show(0);
+</script>
+</body>
+</html>

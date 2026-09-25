@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slides — Module 2</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root{--bg:#0b1220;--ink:#edf2fb;--ink2:#a8b6cf;--accent:#7fb2ff;--accent2:#2563eb;--lab:#34d3bd;--warn:#fbbf24;--line:#233252;--code:#101a2e;color-scheme:dark}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;overflow:hidden}
+  .deck{height:100%;width:100%;position:relative}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:6vh 8vw;gap:20px}
+  .slide.on{display:flex}
+  h1,h2,h3{font-family:"Archivo",sans-serif;line-height:1.1;text-wrap:balance}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  .slide h1{font-size:clamp(2rem,6vw,4rem);font-weight:800;letter-spacing:-.02em}
+  .slide h2{font-size:clamp(1.5rem,4.2vw,2.8rem);font-weight:800;letter-spacing:-.01em}
+  .slide p.lead{font-size:clamp(1.05rem,2.4vw,1.5rem);color:var(--ink2);max-width:26ch}
+  ul{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:6px}
+  ul li{position:relative;padding-left:34px;font-size:clamp(1.05rem,2.3vw,1.6rem)}
+  ul li::before{content:"";position:absolute;left:0;top:.55em;width:12px;height:12px;border-radius:3px;background:var(--accent);transform:rotate(45deg)}
+  ul.lab li::before{background:var(--lab)}
+  code.k{font-family:"JetBrains Mono",monospace;color:#cfe0ff;font-size:.92em}
+  pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:22px 26px;font-family:"JetBrains Mono",monospace;font-size:clamp(.85rem,1.9vw,1.3rem);line-height:1.55;overflow:auto;max-width:100%}
+  pre .k{color:#7dd3fc} pre .s{color:#86efac} pre .c{color:#7183a3;font-style:italic}
+  .tag{display:inline-flex;align-items:center;gap:10px;font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);color:var(--ink2)}
+  .tag .pill{background:var(--accent2);color:#fff;font-weight:700;border-radius:999px;padding:3px 12px;letter-spacing:.06em}
+  .tag .pill.lab{background:var(--lab);color:#062b26} .tag .pill.warn{background:var(--warn);color:#3a2a05}
+  .section{background:linear-gradient(135deg,#132a52,#0b1220)}
+  .section .big{font-size:clamp(3rem,12vw,8rem);font-family:"Archivo";font-weight:800;color:var(--accent2);line-height:.9}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+  @media (max-width:760px){.two{grid-template-columns:1fr}}
+  .bar{position:fixed;left:0;top:0;height:4px;background:var(--accent2);width:0;transition:width .25s;z-index:5}
+  .count{position:fixed;right:16px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink2);z-index:5}
+  .nav{position:fixed;inset:auto 0 0 0;display:flex;justify-content:space-between;pointer-events:none;z-index:4}
+  .nav button{pointer-events:auto;background:transparent;border:none;color:transparent;width:22vw;height:100vh;cursor:pointer}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+  /* ESL extras (picture vocab, grammar tables, dialogue, clocks) */
+  .pics{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,1.6vw,18px)}
+  .pics.six{grid-template-columns:repeat(6,1fr)}
+  .pic{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center}
+  .pic img{width:100%;max-width:150px;aspect-ratio:1;object-fit:cover;border-radius:10px;background:#FFF3E0;display:block;margin:0 auto}
+  .pic .emo{font-size:clamp(2.6rem,7vw,5rem);line-height:1;aspect-ratio:1;max-width:150px;margin:0 auto;display:flex;align-items:center;justify-content:center}
+  .pic .w{font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(.9rem,2vw,1.35rem);margin-top:6px}
+  @media (max-width:760px){.pics,.pics.six{grid-template-columns:repeat(3,1fr)}}
+  table.g{border-collapse:collapse;font-size:clamp(.95rem,2.1vw,1.45rem);width:100%;max-width:1000px}
+  table.g th,table.g td{border:1px solid var(--line);padding:10px 16px;text-align:left}
+  table.g th{background:var(--code);color:var(--accent);font-family:"JetBrains Mono",monospace;font-size:.8em;letter-spacing:.04em}
+  table.g b{color:#ffd166}
+  .dlg{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:18px 24px;display:flex;flex-direction:column;gap:8px;font-size:clamp(1rem,2.2vw,1.45rem);max-width:1000px}
+  .dlg .sp{display:inline-block;min-width:3.6em;font-weight:700;color:var(--accent)}
+  .dlg .b .sp{color:#c4a1ff}
+  .ccq{font-size:clamp(1rem,2.2vw,1.45rem);border:1px dashed var(--line);border-radius:12px;padding:12px 18px;background:var(--code)}
+  .ccq i{color:var(--ink2)}
+  .clocks{display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,34px);align-items:flex-start}
+  .clocks figure{text-align:center}
+  .clocks svg{width:clamp(96px,14vw,170px);height:auto}
+  .clocks figcaption{font-size:clamp(.95rem,2vw,1.3rem);margin-top:6px}
+  .clocks figcaption small{display:block;color:var(--ink2);font-size:.8em}
+  .snd{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .snd div{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:clamp(1rem,2.2vw,1.5rem)}
+  .snd div b{display:block;font-family:"Archivo";font-size:1.5em;color:var(--accent)}
+  .snd div small{color:var(--ink2)}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="deck" id="deck">
+
+  <!-- 1 -->
+  <section class="slide on section">
+    <div class="eyebrow">Everyday English (A2) · Instructor Kit</div>
+    <h1>Module 2<br>Describing &amp; Comparing</h1>
+    <p class="lead">Which one? How much? How often, and how?</p>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide">
+    <div class="eyebrow">Classes C4–C6 · the module map</div>
+    <h2>Compare it → count it → describe it</h2>
+    <ul>
+      <li><b>2.1</b> Compare: <i>The bus is cheaper than the train. It's the best café.</i></li>
+      <li><b>2.2</b> Count: <i>There's some rice, a few eggs, and a little milk.</i></li>
+      <li><b>2.3</b> Describe: <i>I usually cook twice a week. I cook slowly and well.</i></li>
+    </ul>
+    <div class="tag"><span class="pill">NOTE</span> Your real life, a card, or an imagined one: all are OK.</div>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide">
+    <div class="eyebrow">2.1 · Words you know · adjectives</div>
+    <h2>Say the word. Say the opposite.</h2>
+    <div class="pics six">
+      <div class="pic"><img src="../assets/vocab/big.jpg" alt=""><div class="w">big</div></div>
+      <div class="pic"><img src="../assets/vocab/small.jpg" alt=""><div class="w">small</div></div>
+      <div class="pic"><img src="../assets/vocab/expensive.jpg" alt=""><div class="w">expensive</div></div>
+      <div class="pic"><div class="emo">🏷️</div><div class="w">cheap</div></div>
+      <div class="pic"><img src="../assets/vocab/hot.jpg" alt=""><div class="w">hot</div></div>
+      <div class="pic"><img src="../assets/vocab/cold.jpg" alt=""><div class="w">cold</div></div>
+      <div class="pic"><div class="emo">🐇</div><div class="w">fast</div></div>
+      <div class="pic"><div class="emo">🐢</div><div class="w">slow</div></div>
+      <div class="pic"><img src="../assets/vocab/tall.jpg" alt=""><div class="w">tall</div></div>
+      <div class="pic"><img src="../assets/vocab/beautiful.jpg" alt=""><div class="w">beautiful</div></div>
+      <div class="pic"><div class="emo">👍</div><div class="w">good</div></div>
+      <div class="pic"><div class="emo">👎</div><div class="w">bad</div></div>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide">
+    <div class="eyebrow">2.1 · Comparatives · compare TWO</div>
+    <h2>cheaper than · more expensive than</h2>
+    <table class="g">
+      <tr><th>1 syllable</th><td>cheap → <b>cheaper than</b></td><td>The bus is cheaper than the train.</td></tr>
+      <tr><th>1 syllable</th><td>fast → <b>faster than</b></td><td>A plane is faster than a car.</td></tr>
+      <tr><th>2+ syllables</th><td>expensive → <b>more expensive than</b></td><td>The hotel is more expensive than the hostel.</td></tr>
+      <tr><th>2+ syllables</th><td>difficult → <b>more difficult than</b></td><td>Chinese is more difficult than Spanish for me.</td></tr>
+    </table>
+    <div class="tag"><span class="pill lab">TEST</span> Clap it: <b>cheap</b> = 1 → -er · <b>ex-pen-sive</b> = 3 → more</div>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide">
+    <div class="eyebrow">2.1 · Spelling · irregular · bonus</div>
+    <h2>nicer · happier · bigger · better</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>-e</th><td>nice → nice<b>r</b> → the nice<b>st</b></td></tr>
+        <tr><th>-y</th><td>happy → happ<b>ier</b> → the happ<b>iest</b></td></tr>
+        <tr><th>double</th><td>big → bi<b>gg</b>er · hot → ho<b>tt</b>er</td></tr>
+        <tr><th>irregular</th><td>good → <b>better</b> → <b>the best</b></td></tr>
+        <tr><th>irregular</th><td>bad → <b>worse</b> → <b>the worst</b></td></tr>
+        <tr><th>irregular</th><td>far → <b>farther</b> → <b>the farthest</b></td></tr>
+      </table>
+      <div class="ccq"><b>Bonus: as … as</b><br>Tom is <b>as tall as</b> his father. <i>(the same)</i><br>The bus is <b>not as expensive as</b> the taxi. <i>(= the bus is cheaper)</i></div>
+    </div>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide">
+    <div class="eyebrow">2.1 · Superlatives · number ONE of 3+</div>
+    <h2>the cheapest · the most expensive</h2>
+    <div class="pics">
+      <div class="pic"><div class="emo">📱</div><div class="w">$199 · <span style="color:#ffd166">the cheapest</span></div></div>
+      <div class="pic"><div class="emo">📱</div><div class="w">$449</div></div>
+      <div class="pic"><div class="emo">📱</div><div class="w">$899 · <span style="color:#ffd166">the most expensive</span></div></div>
+      <div class="pic"><div class="emo">🏆</div><div class="w">the best</div></div>
+    </div>
+    <table class="g">
+      <tr><th>short</th><td><b>the</b> + adjective + <b>-est</b></td><td>It's the biggest city in the country.</td></tr>
+      <tr><th>long</th><td><b>the most</b> + adjective</td><td>It's the most beautiful beach I know.</td></tr>
+    </table>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide">
+    <div class="eyebrow">2.1 · Check the meaning</div>
+    <h2>"The bus is cheaper than the train."</h2>
+    <div class="ccq">How many things? <i>(Two.)</i> &nbsp;·&nbsp; Which one costs less? <i>(The bus.)</i></div>
+    <div class="ccq">"This is the cheapest phone in the shop." How many phones? <i>(Three or more.)</i> &nbsp;·&nbsp; Is there a cheaper phone? <i>(No.)</i></div>
+    <div class="ccq">"Tom is as tall as his father." Who is taller? <i>(Nobody. They are the same.)</i></div>
+    <div class="tag"><span class="pill warn">WATCH</span> cheaper ✅ · more cheaper ❌ · the biggest ✅ · the most biggest ❌ · than ✅ then ❌</div>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide">
+    <div class="eyebrow">2.1 · Model dialogue · listen and complete</div>
+    <h2>Where should we eat?</h2>
+    <div class="dlg">
+      <p><span class="sp">A:</span> Where should we eat? There are three places near here.</p>
+      <p class="b"><span class="sp">B:</span> Well, the pizza place is <b>the cheapest</b>, but the food isn't great.</p>
+      <p><span class="sp">A:</span> The Thai restaurant is <b>more expensive than</b> the pizza place, right?</p>
+      <p class="b"><span class="sp">B:</span> Yes, but it's much <b>better</b>. Honestly, it's <b>the best</b> food in the area.</p>
+      <p><span class="sp">A:</span> And the sushi bar?</p>
+      <p class="b"><span class="sp">B:</span> It's <b>the most expensive</b>, and it's <b>farther</b> away too. Let's go Thai: better than sushi and <b>cheaper</b>!</p>
+    </div>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide">
+    <div class="eyebrow">2.1 · Pair task · 12 min</div>
+    <h2>Compare two cities</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>A and B: <b>don't show</b> your card</li>
+        <li>Ask: <b>How many</b> people live in…? <b>How much</b> is a bus ticket? <b>How hot</b> is it in summer? <b>How old</b> is…? <b>How far</b> is the airport?</li>
+        <li>Write the numbers</li>
+        <li>Together: write <b>4 sentences</b> with <i>than</i></li>
+        <li>Which city is better for a family? Why?</li>
+      </ul>
+      <div class="ccq">Show your card? <i>(No.)</i><br>Ask or read? <i>(Ask.)</i><br>A question for money? <i>("How much…?")</i><br>How many sentences together? <i>(Four.)</i></div>
+    </div>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide">
+    <div class="eyebrow">2.2 · Can you count it? one, two, three…</div>
+    <h2>Countable or uncountable?</h2>
+    <div class="pics six">
+      <div class="pic"><img src="../assets/vocab/egg.jpg" alt=""><div class="w">eggs · C</div></div>
+      <div class="pic"><img src="../assets/vocab/apple.jpg" alt=""><div class="w">apples · C</div></div>
+      <div class="pic"><img src="../assets/vocab/banana.jpg" alt=""><div class="w">bananas · C</div></div>
+      <div class="pic"><div class="emo">🍅</div><div class="w">tomatoes · C</div></div>
+      <div class="pic"><img src="../assets/vocab/vegetable.jpg" alt=""><div class="w">vegetables · C</div></div>
+      <div class="pic"><img src="../assets/vocab/rice.jpg" alt=""><div class="w">rice · U</div></div>
+      <div class="pic"><img src="../assets/vocab/milk.jpg" alt=""><div class="w">milk · U</div></div>
+      <div class="pic"><img src="../assets/vocab/water.jpg" alt=""><div class="w">water · U</div></div>
+      <div class="pic"><img src="../assets/vocab/sugar.jpg" alt=""><div class="w">sugar · U</div></div>
+      <div class="pic"><img src="../assets/vocab/cheese.jpg" alt=""><div class="w">cheese · U</div></div>
+      <div class="pic"><img src="../assets/vocab/bread.jpg" alt=""><div class="w">bread · U 😮</div></div>
+      <div class="pic"><div class="emo">💵</div><div class="w">money · U 😮</div></div>
+    </div>
+    <div class="tag"><span class="pill lab">COUNT IT</span> a bottle of water · a bag of rice · a loaf of bread · a piece of cheese</div>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide">
+    <div class="eyebrow">2.2 · some &amp; any · A1 review + one new use</div>
+    <h2>some · any</h2>
+    <table class="g">
+      <tr><th>(+)</th><td><b>some</b></td><td>There's some cheese. We bought some eggs.</td></tr>
+      <tr><th>(−)</th><td><b>any</b></td><td>There isn't any bread. There aren't any eggs.</td></tr>
+      <tr><th>(?)</th><td><b>any</b></td><td>Is there any milk? Do you have any tomatoes?</td></tr>
+      <tr><th>offer / ask</th><td><b>some</b></td><td>Would you like some tea? Can I have some water?</td></tr>
+    </table>
+    <div class="ccq">"Would you like some tea?" A question? <i>(Yes.)</i> Why "some"? <i>(It's an offer. We think the answer is yes.)</i></div>
+  </section>
+
+  <!-- 12 -->
+  <section class="slide">
+    <div class="eyebrow">2.2 · How much? How many?</div>
+    <h2>many · much · a lot of · a few · a little</h2>
+    <table class="g">
+      <tr><th></th><th>Countable 🥚🥚🥚</th><th>Uncountable 🥛</th></tr>
+      <tr><th>(+) big</th><td><b>a lot of</b> eggs</td><td><b>a lot of</b> milk</td></tr>
+      <tr><th>(?)</th><td>How <b>many</b> eggs?</td><td>How <b>much</b> milk?</td></tr>
+      <tr><th>(−)</th><td>not <b>many</b> eggs</td><td>not <b>much</b> milk</td></tr>
+      <tr><th>small</th><td><b>a few</b> eggs</td><td><b>a little</b> milk</td></tr>
+    </table>
+    <div class="tag"><span class="pill warn">WATCH</span> How much eggs ❌ · I have much friends ❌ → a lot of friends ✅ · How much <b>is</b> it? = the price 💵</div>
+  </section>
+
+  <!-- 13 -->
+  <section class="slide">
+    <div class="eyebrow">2.2 · Model dialogue · at the shop</div>
+    <h2>How much rice?</h2>
+    <div class="dlg">
+      <p><span class="sp">Shopper:</span> Excuse me, do you have any fresh bread?</p>
+      <p class="b"><span class="sp">Seller:</span> Yes, we have some over here. How many loaves would you like?</p>
+      <p><span class="sp">Shopper:</span> Just one, please. And I need a few tomatoes and some rice.</p>
+      <p class="b"><span class="sp">Seller:</span> How much rice: a small bag or a big one?</p>
+      <p><span class="sp">Shopper:</span> A small bag is fine. We don't need much.</p>
+      <p class="b"><span class="sp">Seller:</span> Would you like some coffee too?</p>
+      <p><span class="sp">Shopper:</span> No, thanks. We have a lot of coffee at home!</p>
+    </div>
+  </section>
+
+  <!-- 14 -->
+  <section class="slide">
+    <div class="eyebrow">2.2 · Pair task · 18 min</div>
+    <h2>What's in the kitchen?</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>Same kitchen. Different <b>?</b> on A and B. <b>Don't show</b> your card.</li>
+        <li>"Is there any milk?" → "Yes, there's a little milk."</li>
+        <li>"How many eggs are there?" → "There are a lot of eggs. Twelve!"</li>
+        <li>"Are there any bananas?" → "No, there aren't any."</li>
+        <li>Then: choose a meal. Write a <b>shopping list</b>.</li>
+      </ul>
+      <div class="ccq">Show your card? <i>(No.)</i><br>Eggs: much or many? <i>(How many.)</i><br>Rice? <i>(How much.)</i><br>Your real kitchen? <i>(No, the card kitchen.)</i></div>
+    </div>
+  </section>
+
+  <!-- 15 -->
+  <section class="slide">
+    <div class="eyebrow">2.3 · How often?</div>
+    <h2>always → never</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>100%</th><td>always</td></tr>
+        <tr><th>90%</th><td>usually</td></tr>
+        <tr><th>70%</th><td>often</td></tr>
+        <tr><th>50%</th><td>sometimes</td></tr>
+        <tr><th>10%</th><td>hardly ever</td></tr>
+        <tr><th>0%</th><td>never</td></tr>
+      </table>
+      <div>
+        <div class="ccq">She <b>usually walks</b> to work. <i>(before the main verb)</i></div>
+        <div class="ccq" style="margin-top:12px">She <b>is usually</b> late. <i>(after be)</i></div>
+        <div class="ccq" style="margin-top:12px">How often do you exercise? → <b>once</b> a week · <b>twice</b> a month · <b>three times</b> a day · every day <i>(at the end)</i></div>
+      </div>
+    </div>
+    <div class="tag"><span class="pill warn">WATCH</span> I drink always ❌ · I don't never ❌ · one time a week → once a week</div>
+  </section>
+
+  <!-- 16 -->
+  <section class="slide">
+    <div class="eyebrow">2.3 · How? adverbs of manner</div>
+    <h2>quickly · carefully · well</h2>
+    <div class="pics six">
+      <div class="pic"><img src="../assets/vocab/happy.jpg" alt=""><div class="w">happily</div></div>
+      <div class="pic"><img src="../assets/vocab/sad.jpg" alt=""><div class="w">sadly</div></div>
+      <div class="pic"><img src="../assets/vocab/angry.jpg" alt=""><div class="w">angrily</div></div>
+      <div class="pic"><img src="../assets/vocab/nervous.jpg" alt=""><div class="w">nervously</div></div>
+      <div class="pic"><div class="emo">🐇</div><div class="w">quickly</div></div>
+      <div class="pic"><div class="emo">🐢</div><div class="w">slowly</div></div>
+    </div>
+    <table class="g">
+      <tr><th>+ly</th><td>quick → quick<b>ly</b> · careful → careful<b>ly</b> · easy → eas<b>ily</b> · simple → simp<b>ly</b></td></tr>
+      <tr><th>irregular</th><td>good → <b>well</b> · fast → <b>fast</b> · hard → <b>hard</b></td></tr>
+      <tr><th>good / well</th><td>She is a <b>good</b> singer. = She sings <b>well</b>. &nbsp;❌ She sings good.</td></tr>
+    </table>
+  </section>
+
+  <!-- 17 -->
+  <section class="slide">
+    <div class="eyebrow">2.3 · Group game · 13 min</div>
+    <h2>Adverb mime game</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>Take <b>2 cards</b>: one action + one adverb</li>
+        <li>Mime it. <b>Don't speak!</b> (At your desk is fine.)</li>
+        <li>Group guesses: "You're drinking coffee <b>nervously</b>!"</li>
+        <li>Right action + right adverb = keep the cards</li>
+      </ul>
+      <div class="ccq">How many cards? <i>(Two.)</i><br>Do you speak? <i>(No!)</i><br>What does the group say? <i>("You're …ing …ly!")</i><br>Must you stand up? <i>(No.)</i></div>
+    </div>
+  </section>
+
+  <!-- 18 -->
+  <section class="slide section">
+    <div class="eyebrow">You can now describe and compare</div>
+    <h2>Module 2 done 🎉</h2>
+    <ul class="lab">
+      <li>The bus is cheaper than the train. It's the best café in town.</li>
+      <li>There's some rice and a few eggs, but there isn't any milk. How much…? How many…?</li>
+      <li>I usually cook twice a week. I cook slowly, but I cook well.</li>
+    </ul>
+    <p class="lead" style="margin-top:10px;max-width:40ch">Homework: online lessons 2.1–2.3 with 🔊. Next: Module 3, plans with <i>going to</i>.</p>
+  </section>
+
+</div>
+
+<div class="count" id="count">1 / 18</div>
+<div class="nav"><button id="prev" aria-label="Previous slide"></button><button id="next" aria-label="Next slide"></button></div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const bar=document.getElementById('bar'), count=document.getElementById('count');
+  let i=0;
+  function show(n){ i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+    bar.style.width=((i+1)/slides.length*100)+'%'; count.textContent=(i+1)+' / '+slides.length; }
+  document.getElementById('next').onclick=()=>show(i+1);
+  document.getElementById('prev').onclick=()=>show(i-1);
+  addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}
+    else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+  });
+  show(0);
+</script>
+</body>
+</html>

@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slides — Module 8</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root{--bg:#0b1220;--ink:#edf2fb;--ink2:#a8b6cf;--accent:#7fb2ff;--accent2:#2563eb;--lab:#34d3bd;--warn:#fbbf24;--line:#233252;--code:#101a2e;color-scheme:dark}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;overflow:hidden}
+  .deck{height:100%;width:100%;position:relative}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:6vh 8vw;gap:20px}
+  .slide.on{display:flex}
+  h1,h2,h3{font-family:"Archivo",sans-serif;line-height:1.1;text-wrap:balance}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  .slide h1{font-size:clamp(2rem,6vw,4rem);font-weight:800;letter-spacing:-.02em}
+  .slide h2{font-size:clamp(1.5rem,4.2vw,2.8rem);font-weight:800;letter-spacing:-.01em}
+  .slide p.lead{font-size:clamp(1.05rem,2.4vw,1.5rem);color:var(--ink2);max-width:26ch}
+  ul{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:6px}
+  ul li{position:relative;padding-left:34px;font-size:clamp(1.05rem,2.3vw,1.6rem)}
+  ul li::before{content:"";position:absolute;left:0;top:.55em;width:12px;height:12px;border-radius:3px;background:var(--accent);transform:rotate(45deg)}
+  ul.lab li::before{background:var(--lab)}
+  code.k{font-family:"JetBrains Mono",monospace;color:#cfe0ff;font-size:.92em}
+  pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:22px 26px;font-family:"JetBrains Mono",monospace;font-size:clamp(.85rem,1.9vw,1.3rem);line-height:1.55;overflow:auto;max-width:100%}
+  pre .k{color:#7dd3fc} pre .s{color:#86efac} pre .c{color:#7183a3;font-style:italic}
+  .tag{display:inline-flex;align-items:center;gap:10px;font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);color:var(--ink2)}
+  .tag .pill{background:var(--accent2);color:#fff;font-weight:700;border-radius:999px;padding:3px 12px;letter-spacing:.06em}
+  .tag .pill.lab{background:var(--lab);color:#062b26} .tag .pill.warn{background:var(--warn);color:#3a2a05}
+  .section{background:linear-gradient(135deg,#132a52,#0b1220)}
+  .section .big{font-size:clamp(3rem,12vw,8rem);font-family:"Archivo";font-weight:800;color:var(--accent2);line-height:.9}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+  @media (max-width:760px){.two{grid-template-columns:1fr}}
+  .bar{position:fixed;left:0;top:0;height:4px;background:var(--accent2);width:0;transition:width .25s;z-index:5}
+  .count{position:fixed;right:16px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink2);z-index:5}
+  .nav{position:fixed;inset:auto 0 0 0;display:flex;justify-content:space-between;pointer-events:none;z-index:4}
+  .nav button{pointer-events:auto;background:transparent;border:none;color:transparent;width:22vw;height:100vh;cursor:pointer}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+  /* ESL extras (picture vocab, grammar tables, dialogue, clocks) */
+  .pics{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,1.6vw,18px)}
+  .pics.six{grid-template-columns:repeat(6,1fr)}
+  .pic{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center}
+  .pic img{width:100%;max-width:150px;aspect-ratio:1;object-fit:cover;border-radius:10px;background:#FFF3E0;display:block;margin:0 auto}
+  .pic .emo{font-size:clamp(2.6rem,7vw,5rem);line-height:1;aspect-ratio:1;max-width:150px;margin:0 auto;display:flex;align-items:center;justify-content:center}
+  .pic .w{font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(.9rem,2vw,1.35rem);margin-top:6px}
+  @media (max-width:760px){.pics,.pics.six{grid-template-columns:repeat(3,1fr)}}
+  table.g{border-collapse:collapse;font-size:clamp(.95rem,2.1vw,1.45rem);width:100%;max-width:1000px}
+  table.g th,table.g td{border:1px solid var(--line);padding:10px 16px;text-align:left}
+  table.g th{background:var(--code);color:var(--accent);font-family:"JetBrains Mono",monospace;font-size:.8em;letter-spacing:.04em}
+  table.g b{color:#ffd166}
+  .dlg{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:18px 24px;display:flex;flex-direction:column;gap:8px;font-size:clamp(1rem,2.2vw,1.45rem);max-width:1000px}
+  .dlg .sp{display:inline-block;min-width:3.6em;font-weight:700;color:var(--accent)}
+  .dlg .b .sp{color:#c4a1ff}
+  .ccq{font-size:clamp(1rem,2.2vw,1.45rem);border:1px dashed var(--line);border-radius:12px;padding:12px 18px;background:var(--code)}
+  .ccq i{color:var(--ink2)}
+  .clocks{display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,34px);align-items:flex-start}
+  .clocks figure{text-align:center}
+  .clocks svg{width:clamp(96px,14vw,170px);height:auto}
+  .clocks figcaption{font-size:clamp(.95rem,2vw,1.3rem);margin-top:6px}
+  .clocks figcaption small{display:block;color:var(--ink2);font-size:.8em}
+  .snd{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .snd div{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:clamp(1rem,2.2vw,1.5rem)}
+  .snd div b{display:block;font-family:"Archivo";font-size:1.5em;color:var(--accent)}
+  .snd div small{color:var(--ink2)}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="deck" id="deck">
+
+  <!-- 1 -->
+  <section class="slide on section">
+    <div class="eyebrow">Everyday English (A2) · Instructor Kit</div>
+    <h1>Module 8<br>Experiences, Plans &amp; Review</h1>
+    <p class="lead">Up to now. What I like and want. My whole story.</p>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide">
+    <div class="eyebrow">Classes C23–C25 · the last module of A2</div>
+    <h2>Up to now → hobbies &amp; plans → my life story</h2>
+    <ul>
+      <li><b>8.1</b> How long? <i>I've lived here since 2021. I've just eaten. Have you paid yet?</i></li>
+      <li><b>8.2</b> Two verbs: <i>I enjoy cooking. I want to cook.</i></li>
+      <li><b>8.3</b> Review project: <i>My Life Story &amp; Future Plans</i></li>
+    </ul>
+    <div class="tag"><span class="pill">NOTE</span> Your real story, a partly real story, or a story card: all are OK.</div>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide">
+    <div class="eyebrow">8.1 · for &amp; since · How long?</div>
+    <h2>Started in the past. Still true now.</h2>
+    <svg viewBox="0 0 900 190" style="width:100%;max-width:1000px;height:auto" role="img" aria-label="Timeline from 2021 to now. Since marks the start point; for covers the whole length.">
+      <line x1="60" y1="110" x2="800" y2="110" stroke="#a8b6cf" stroke-width="4"/>
+      <polygon points="800,96 836,110 800,124" fill="#a8b6cf"/>
+      <circle cx="120" cy="110" r="14" fill="#ffd166"/>
+      <circle cx="760" cy="110" r="14" fill="#7fb2ff"/>
+      <text x="150" y="160" text-anchor="middle" font-family="Archivo, sans-serif" font-size="30" font-weight="700" fill="#ffd166">since 2021</text>
+      <text x="760" y="160" text-anchor="middle" font-family="Archivo, sans-serif" font-size="30" font-weight="700" fill="#7fb2ff">NOW</text>
+      <path d="M120 80 Q 440 40 760 80" fill="none" stroke="#34d3bd" stroke-width="4" stroke-dasharray="10 8"/>
+      <text x="440" y="32" text-anchor="middle" font-family="Archivo, sans-serif" font-size="30" font-weight="700" fill="#34d3bd">for five years</text>
+    </svg>
+    <table class="g">
+      <tr><th>for ⏳ a length</th><td>for three years · for two weeks · for a long time</td></tr>
+      <tr><th>since 📅 a start</th><td>since 2021 · since Monday · since I was a child</td></tr>
+    </table>
+    <div class="tag"><span class="pill">TEST</span> Can you count it? → <b style="color:var(--warn)">for</b>. A date, a day, an event? → <b style="color:var(--warn)">since</b>.</div>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide">
+    <div class="eyebrow">8.1 · Pair task · 15 min</div>
+    <h2>How long have you…?</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>Write 4–5 start points on your timeline: <b>when</b> + <b>what</b></li>
+        <li>Your life, a card, or easy things: my phone, my shoes, my hobby</li>
+        <li>Swap sheets. Ask: <b>How long have you lived / had / known…?</b></li>
+        <li>Answer: <b>For</b> two years. / <b>Since</b> 2024.</li>
+      </ul>
+      <div class="ccq">Your real life only? <i>(No! A card or easy things.)</i><br>The question? <i>("How long have you…?")</i><br>Two words for the answer? <i>(For, since.)</i><br>Who writes the answer? <i>(My partner.)</i></div>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide">
+    <div class="eyebrow">8.1 · just · already · yet</div>
+    <h2>Done? Not done? When?</h2>
+    <table class="g">
+      <tr><th>⚡ just</th><td>a moment ago</td><td>I've <b>just</b> finished.</td></tr>
+      <tr><th>✅ already</th><td>done (maybe early)</td><td>She's <b>already</b> paid.</td></tr>
+      <tr><th>⏸️ yet ❓</th><td>question · at the end</td><td>Have you called <b>yet</b>?</td></tr>
+      <tr><th>⏸️ yet ❌</th><td>not done (up to now) · at the end</td><td>I haven't called <b>yet</b>.</td></tr>
+    </table>
+    <div class="tag"><span class="pill">ORDER</span> have + <b style="color:var(--warn)">just / already</b> + past participle · … <b style="color:var(--warn)">yet</b>.</div>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide">
+    <div class="eyebrow">8.1 · Check the meaning</div>
+    <h2>"I've lived here for five years."</h2>
+    <div class="ccq">Do I live here now? <i>(Yes.)</i> &nbsp;·&nbsp; Is it finished? <i>(No.)</i></div>
+    <div class="ccq">"I lived in Texas for two years." Do I live in Texas now? <i>(No. Finished → past simple.)</i></div>
+    <div class="ccq">"I've just eaten." A minute ago or a year ago? <i>(A minute ago.)</i> Am I hungry? <i>(No!)</i></div>
+    <div class="ccq">"I haven't called her yet." Did I call? <i>(No.)</i> Am I going to call? <i>(Probably, yes.)</i></div>
+    <div class="tag"><span class="pill warn">CLUE</span> yesterday · last week · in 2019 · ago → <b>past simple</b> &nbsp;|&nbsp; for · since · just · already · yet → <b>present perfect</b></div>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide">
+    <div class="eyebrow">8.1 · Model dialogue</div>
+    <h2>How long have you lived here?</h2>
+    <div class="dlg">
+      <p><span class="sp">A:</span> Hi! How long have you lived in this neighborhood?</p>
+      <p class="b"><span class="sp">B:</span> For about three years — since I started my new job. And you?</p>
+      <p><span class="sp">A:</span> Since last summer. I've just moved into the apartment on the corner.</p>
+      <p class="b"><span class="sp">B:</span> Nice! Have you found a good café yet?</p>
+      <p><span class="sp">A:</span> Not yet. I haven't explored much.</p>
+      <p class="b"><span class="sp">B:</span> I've already had breakfast, but I'd love a coffee. Let's go!</p>
+    </div>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide">
+    <div class="eyebrow">8.1 · Pair task · 12 min</div>
+    <h2>The to-do list: have you… yet?</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>A and B: don't show your card!</li>
+        <li>Ask: <b>Have you booked the hotel yet?</b></li>
+        <li>✓ 5 min ago → <b>Yes, I've just…</b> · ✓ early! → <b>Yes, I've already…</b></li>
+        <li>✗ → <b>No, I haven't… yet.</b></li>
+        <li>At the end: what haven't you done? <b>I'll… / I'm going to…</b></li>
+      </ul>
+      <div class="ccq">Can you show your card? <i>(No.)</i><br>Where is "yet"? <i>(At the end.)</i><br>"5 min ago" = ? <i>(Just.)</i><br>An ✗ = ? <i>("No, I haven't… yet.")</i></div>
+    </div>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide">
+    <div class="eyebrow">8.2 · New words · hobbies &amp; plans</div>
+    <h2>What do you enjoy doing?</h2>
+    <div class="pics six">
+      <div class="pic"><img src="../assets/vocab/swim.jpg" alt=""><div class="w">swimming</div></div>
+      <div class="pic"><img src="../assets/vocab/dance.jpg" alt=""><div class="w">dancing</div></div>
+      <div class="pic"><img src="../assets/vocab/cook.jpg" alt=""><div class="w">cooking</div></div>
+      <div class="pic"><img src="../assets/vocab/read.jpg" alt=""><div class="w">reading</div></div>
+      <div class="pic"><img src="../assets/vocab/sing.jpg" alt=""><div class="w">singing</div></div>
+      <div class="pic"><img src="../assets/vocab/hike.jpg" alt=""><div class="w">hiking</div></div>
+      <div class="pic"><img src="../assets/vocab/play-the-guitar.jpg" alt=""><div class="w">playing the guitar</div></div>
+      <div class="pic"><img src="../assets/vocab/football.jpg" alt=""><div class="w">playing soccer</div></div>
+      <div class="pic"><img src="../assets/vocab/flight.jpg" alt=""><div class="w">to travel</div></div>
+      <div class="pic"><img src="../assets/vocab/driver.jpg" alt=""><div class="w">to learn to drive</div></div>
+      <div class="pic"><img src="../assets/vocab/notebook.jpg" alt=""><div class="w">to take a class</div></div>
+      <div class="pic"><img src="../assets/vocab/bank.jpg" alt=""><div class="w">to save money</div></div>
+    </div>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide">
+    <div class="eyebrow">8.2 · Verb patterns · the two-column list</div>
+    <h2>-ing or to?</h2>
+    <table class="g">
+      <tr><th>verb + -ing</th><th>verb + to + verb</th></tr>
+      <tr><td>enjoy — I enjoy <b>dancing</b>.</td><td>want — I want <b>to dance</b>.</td></tr>
+      <tr><td>don't mind — I don't mind <b>cooking</b>.</td><td>need — I need <b>to cook</b>.</td></tr>
+      <tr><td>finish — She finished <b>eating</b>.</td><td>would like — She'd like <b>to eat</b>.</td></tr>
+      <tr><td>keep — He keeps <b>talking</b>.</td><td>decide — He decided <b>to talk</b>.</td></tr>
+      <tr><td>suggest — They suggested <b>leaving</b>.</td><td>hope · plan · promise · learn · try</td></tr>
+    </table>
+    <div class="tag"><span class="pill">BOTH</span> like · love · hate: I love cooking. = I love to cook.</div>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide">
+    <div class="eyebrow">8.2 · Check the meaning</div>
+    <h2>The FIRST verb decides.</h2>
+    <div class="ccq">"I don't mind waiting." Is waiting a problem? <i>(No. It's OK.)</i></div>
+    <div class="ccq">"He keeps forgetting his keys." One time or again and again? <i>(Again and again.)</i></div>
+    <div class="ccq">"I'd like to go home." = "I want to go home"? <i>(Yes, but polite.)</i> "I'd like going"? <i>(No!)</i></div>
+    <div class="tag"><span class="pill warn">WATCH</span> I enjoy reading ✅ · I enjoy to read ❌ · I enjoy read ❌ · I want to read ✅ · I want reading ❌</div>
+  </section>
+
+  <!-- 12 -->
+  <section class="slide">
+    <div class="eyebrow">8.2 · Model dialogue</div>
+    <h2>What do you enjoy doing?</h2>
+    <div class="dlg">
+      <p><span class="sp">A:</span> What do you enjoy doing on the weekend?</p>
+      <p class="b"><span class="sp">B:</span> I love cooking, and I don't mind cleaning up after! This year I want to learn to bake bread.</p>
+      <p><span class="sp">A:</span> Nice! I've decided to take a photography class. I hope to get better at it.</p>
+      <p class="b"><span class="sp">B:</span> Do you plan to travel and take photos?</p>
+      <p><span class="sp">A:</span> Yes — I'd like to visit the mountains in spring. I keep saving a little money every month.</p>
+    </div>
+  </section>
+
+  <!-- 13 -->
+  <section class="slide">
+    <div class="eyebrow">8.2 · Group game · 15 min</div>
+    <h2>Verb Pattern Race 🎲</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>Roll the die. Move your counter.</li>
+        <li>Make a <b>true</b> sentence with the verb: <i>enjoy… on the weekend</i> → "I enjoy sleeping late on the weekend."</li>
+        <li>The group checks: <b>-ing</b> or <b>to</b>? Wrong → back 1 square.</li>
+        <li>★ = ask the player on your left.</li>
+      </ul>
+      <div class="ccq">A sentence or one verb? <i>(A sentence.)</i><br>True? <i>(Yes, or for your card.)</i><br>Wrong pattern? <i>(Go back one.)</i><br>A star square? <i>(Ask the person on my left.)</i></div>
+    </div>
+  </section>
+
+  <!-- 14 -->
+  <section class="slide">
+    <div class="eyebrow">8.3 · Review · my A2 tense toolkit</div>
+    <h2>Past → up to now → future</h2>
+    <table class="g">
+      <tr><th>⬅️ Past</th><td>I <b>grew up</b> in a small town. · I <b>used to play</b> soccer. · I <b>was living</b> with my family.</td></tr>
+      <tr><th>⏺️ Up to now</th><td>I<b>'ve lived</b> here <b>for</b> six years / <b>since</b> 2020. · I<b>'ve just started</b> a class.</td></tr>
+      <tr><th>➡️ Future</th><td>I<b>'m going to</b> study nursing. · I think I<b>'ll</b> move. · <b>If</b> I pass, I<b>'ll</b> celebrate.</td></tr>
+    </table>
+    <div class="tag"><span class="pill lab">TIME WORDS</span> when I was young · in 2019 | for · since · just · yet | next year · one day · if…</div>
+  </section>
+
+  <!-- 15 -->
+  <section class="slide">
+    <div class="eyebrow">8.3 · Listening · Maya's story</div>
+    <h2>Where did you grow up?</h2>
+    <div class="dlg">
+      <p><span class="sp">Sam:</span> Where did you grow up?</p>
+      <p class="b"><span class="sp">Maya:</span> In a small town by the sea. My family used to run a little café.</p>
+      <p><span class="sp">Sam:</span> How long have you lived in the city now?</p>
+      <p class="b"><span class="sp">Maya:</span> For four years — since I started university. I've just finished my final project.</p>
+      <p><span class="sp">Sam:</span> Have you found a job yet?</p>
+      <p class="b"><span class="sp">Maya:</span> Not yet. But I'm going to apply to a design studio next week. If I get the job, I'll stay in the city.</p>
+    </div>
+  </section>
+
+  <!-- 16 -->
+  <section class="slide">
+    <div class="eyebrow">8.3 · Planning · 12 min</div>
+    <h2>Plan your story: three parts</h2>
+    <table class="g">
+      <tr><th>1 · Where I come from</th><th>2 · Up to now</th><th>3 · What's next</th></tr>
+      <tr><td>I grew up in… · I used to… · When I was young, I was…</td><td>I've lived here for… / since… · I've just… · I haven't… yet.</td><td>I'm going to… · I think I'll… · If I…, I'll… · I'd like to…</td></tr>
+    </table>
+    <ul class="lab">
+      <li>Choose: <b>my real story</b> · <b>partly real</b> (change or skip parts) · <b>a story card</b></li>
+      <li>Write <b>key words</b>, not full sentences</li>
+    </ul>
+  </section>
+
+  <!-- 17 -->
+  <section class="slide">
+    <div class="eyebrow">8.3 · The task · story circles · 15 min</div>
+    <h2>Tell your story</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>Groups of 3. Speak for about <b>2 minutes</b>.</li>
+        <li>Look at your key words. Don't read!</li>
+        <li>Listeners: tick <b>past · up to now · future</b>.</li>
+        <li>Each listener asks <b>one question</b>.</li>
+        <li>It's OK to say "Pass!"</li>
+      </ul>
+      <div class="ccq">Your real life only? <i>(No. Real, partly real, or a card.)</i><br>How many parts? <i>(Three.)</i><br>Read your frame? <i>(No, only key words.)</i><br>Listeners do what? <i>(Tick and ask one question.)</i></div>
+    </div>
+  </section>
+
+  <!-- 18 -->
+  <section class="slide">
+    <div class="eyebrow">Looking ahead · Class C26</div>
+    <h2>Our last class 🎉</h2>
+    <ul>
+      <li><b>1 · A friendly final check.</b> Talk with your teacher for a few minutes: your life (past, up to now, future) + one short role-play (directions, café or store, doctor).</li>
+      <li><b>2 · Short tasks:</b> listening, reading and writing.</li>
+      <li><b>3 · Celebration!</b> Certificates, and your next step: B1, <i>Independent English</i>.</li>
+    </ul>
+    <div class="tag"><span class="pill lab">TIP</span> Record your life story on your phone. Listen. You're ready!</div>
+  </section>
+
+  <!-- 19 -->
+  <section class="slide section">
+    <div class="eyebrow">You can now tell your whole story in English</div>
+    <h2>Module 8 done — A2 done 🎓</h2>
+    <ul class="lab">
+      <li>I've lived here since 2021. I've just finished. Have you called yet?</li>
+      <li>I enjoy cooking. I've decided to take a class. I'd like to travel.</li>
+      <li>I grew up by the sea… I've lived here for five years… Next year I'm going to…</li>
+    </ul>
+    <p class="lead" style="margin-top:10px;max-width:40ch">Homework: online lessons 8.1–8.3 with 🔊. Next: C26, the final class.</p>
+  </section>
+
+</div>
+
+<div class="count" id="count">1 / 19</div>
+<div class="nav"><button id="prev" aria-label="Previous slide"></button><button id="next" aria-label="Next slide"></button></div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const bar=document.getElementById('bar'), count=document.getElementById('count');
+  let i=0;
+  function show(n){ i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+    bar.style.width=((i+1)/slides.length*100)+'%'; count.textContent=(i+1)+' / '+slides.length; }
+  document.getElementById('next').onclick=()=>show(i+1);
+  document.getElementById('prev').onclick=()=>show(i-1);
+  addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}
+    else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+  });
+  show(0);
+</script>
+</body>
+</html>

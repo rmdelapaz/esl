@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Progress Test 1 — Modules 1–4</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../kit.css">
+<style>
+  /* ── Test-paper components (shared with final-test.html) ── */
+  .pagebreak{break-before:page}
+  .teacher-only{font-family:"JetBrains Mono",monospace;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+    color:#fff;background:var(--warn);border-radius:999px;padding:3px 11px;display:inline-block;margin-bottom:8px;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .paper{font-size:17px;line-height:1.5}
+  .paper-head{display:grid;grid-template-columns:2fr 1fr 1fr;gap:14px;margin:6px 0 14px;font-size:1.05rem}
+  .paper-head div{border-bottom:1.5px solid var(--ink-2);padding:6px 2px 4px}
+  .paper-head b{font-weight:700}
+  .key-icons{display:flex;flex-wrap:wrap;gap:8px 16px;margin:10px 0 4px;font-size:1rem;color:var(--ink-2)}
+  .key-icons span{border:1px solid var(--line);border-radius:999px;padding:3px 12px;background:var(--surface-2)}
+  .part-h{display:flex;align-items:center;gap:12px;margin:30px 0 6px;padding:10px 14px;background:var(--accent-soft);
+    border-radius:10px;break-after:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .part-h .ic{font-size:1.8rem;line-height:1}
+  .part-h h2{font-size:1.3rem;font-weight:800;flex:1}
+  .part-h .score{font-family:"JetBrains Mono",monospace;font-size:.95rem;font-weight:600;border:1.5px solid var(--ink-2);
+    border-radius:8px;padding:4px 10px;background:var(--surface);white-space:nowrap}
+  .inst{display:flex;gap:10px;align-items:baseline;font-size:1.12rem;font-weight:600;margin:16px 0 8px;break-after:avoid}
+  .inst .ic{font-size:1.35rem}
+  .inst .sub{font-weight:400;color:var(--ink-2);font-size:.95rem}
+  .item{display:flex;gap:12px;align-items:baseline;margin:10px 0;font-size:1.08rem;break-inside:avoid}
+  .item .n{font-family:"JetBrains Mono",monospace;font-weight:600;color:var(--accent);min-width:1.6em}
+  .item.ex{color:var(--ink-2)}
+  .item.ex .n::after{content:" e.g.";font-size:.7rem;color:var(--ink-3)}
+  .ch{display:inline-flex;flex-wrap:wrap;gap:10px}
+  .ch span{border:1.5px solid var(--line-strong);border-radius:999px;padding:2px 14px;background:var(--surface)}
+  .ch span.circled{border:2.5px solid var(--ink);font-weight:700}
+  .tbox{display:inline-block;width:24px;height:24px;border:2px solid var(--ink-2);border-radius:5px;vertical-align:middle;text-align:center;line-height:20px;font-weight:700}
+  .picrow{display:grid;grid-template-columns:2.2em repeat(3,1fr);gap:10px;align-items:center;margin:10px 0;break-inside:avoid}
+  .picrow .n{font-family:"JetBrains Mono",monospace;font-weight:600;color:var(--accent);font-size:1.05rem}
+  .picopt{border:1px solid var(--line);border-radius:10px;padding:8px;display:flex;flex-direction:column;align-items:center;gap:6px}
+  .picopt img{width:1.05in;height:1.05in;object-fit:cover;border-radius:8px;background:#FFF3E0}
+  .vgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:10px 0}
+  .vcard{border:1px solid var(--line);border-radius:10px;padding:8px;text-align:center;break-inside:avoid}
+  .vcard .n{font-family:"JetBrains Mono",monospace;font-weight:600;color:var(--accent);font-size:.85rem;text-align:left}
+  .vcard img{width:100%;max-width:1.2in;aspect-ratio:1;object-fit:cover;border-radius:8px;background:#FFF3E0}
+  .vcard .line{border-bottom:1.5px solid var(--ink-2);height:1.7em;margin:6px 4px 2px}
+  .bank{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px;padding:10px 12px;border:2px dashed var(--line-strong);border-radius:10px;font-size:1.1rem;font-weight:600}
+  .bank span{padding:2px 10px}
+  .text{border:1px solid var(--line);border-radius:10px;padding:14px 18px;background:var(--surface-2);font-size:1.1rem;line-height:1.7;margin:10px 0;break-inside:avoid}
+  .tfrow{display:grid;grid-template-columns:2em 1fr auto;gap:12px;align-items:center;padding:7px 0;border-bottom:1px solid var(--line);font-size:1.06rem;break-inside:avoid}
+  .tfrow .n{font-family:"JetBrains Mono",monospace;font-weight:600;color:var(--accent)}
+  .tfrow .tf{display:flex;gap:10px}
+  .tfrow .tf span{border:1.5px solid var(--line-strong);border-radius:8px;padding:1px 10px;font-weight:600}
+  .wline{border-bottom:1.5px solid var(--ink-2);height:2.1em}
+  table.form{width:100%;border-collapse:collapse;margin:10px 0;font-size:1.08rem}
+  table.form th{width:34%;text-align:left;font-weight:600;padding:10px 12px;border:1px solid var(--line-strong);background:var(--surface-2)}
+  table.form td{border:1px solid var(--line-strong);padding:10px 12px}
+  table.grid{width:100%;border-collapse:collapse;margin:10px 0;font-size:.9rem}
+  table.grid th,table.grid td{border:1px solid var(--line-strong);padding:8px 10px;text-align:left;vertical-align:top}
+  table.grid thead th{background:var(--surface-2);font-family:"JetBrains Mono",monospace;font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+  table.grid td.sc{width:17%;text-align:center;font-family:"JetBrains Mono",monospace;color:var(--ink-3)}
+  .done{margin-top:26px;text-align:center;font-size:1.2rem;font-weight:700}
+  @media (max-width:680px){
+    .vgrid{grid-template-columns:repeat(2,1fr)}
+    .paper-head{grid-template-columns:1fr}
+    .picopt img{width:.8in;height:.8in}
+    table.grid{display:block;overflow-x:auto}
+    .flashcards{grid-template-columns:1fr 1fr}
+    .flashcard img{width:1.2in;height:1.2in}
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="lbl">Test pack —</span>
+  <button type="button" onclick="window.print()">🖨 Print / Save as PDF</button>
+  <span class="hint">p.1 teacher · learner paper · scripts &amp; speaking (teacher only)</span>
+</div>
+
+<div class="sheet">
+
+  <header class="mast">
+    <div class="kit-eyebrow">Everyday English (A2) · Assessment · Class 13</div>
+    <h1>Progress Test 1 — Modules 1–4</h1>
+    <p class="sub">A friendly halfway check after Lesson 4.3. It covers the past simple (<i>was/were</i>, regular <i>-ed</i>, irregular verbs, <i>didn't</i> and <i>Did…?</i>), comparatives and superlatives, quantifiers, adverbs of frequency and manner, the three futures (<i>going to</i>, <i>will/might</i>, present continuous for arrangements) with suggestions, the present perfect for experiences, and <i>have to / must / should</i>. It tells you <b>what to recycle</b> in Weeks 7–13. It does not rank anyone.</p>
+    <div class="meta-row">
+      <span class="chip">⏱ <b>~45–50 min</b> written</span>
+      <span class="chip">+ <b>6 min</b> pair speaking</span>
+      <span class="chip">Written <b>/55</b> · Speaking <b>/15</b></span>
+      <span class="chip">CEFR <b>A2</b></span>
+    </div>
+  </header>
+
+  <div class="note">
+    <div class="t">Why a progress test, and how to frame it</div>
+    <p>Your learners have already done an A1 course or a placement test, so a test is not new to most of them, but it can still bring back bad memories of job screening or official interviews. Say it plainly: <b>"This is a check, not an exam. It shows me what to teach next, and it shows you how much you know now."</b> Go through the icons on the board, do every <i>example</i> item together, and tell the class they can ask you to repeat an instruction at any time. The listening is read twice, at a natural but unhurried pace.</p>
+  </div>
+
+  <div class="sec"><h2>Running Class 13 (90 min)</h2><span class="rule"></span></div>
+  <table class="timing">
+    <thead><tr><th>Stage</th><th>Time</th><th>Interaction</th><th>Procedure</th></tr></thead>
+    <tbody>
+      <tr><td>Warmer &amp; set-up</td><td class="t">8 min</td><td>S–S · T–S</td><td>A quick "How was your weekend?" mingle (two partners, 1 minute each), which warms up the past simple. Put the icons on the board and mime each one: 👂 listen, ✏️ write, 📖 read, ⭕ circle, ✔️ tick, 🗣️ say. Hand out the paper <b>face down</b>; learners write their name.</td></tr>
+      <tr><td>Part 1 · Listening</td><td class="t">12 min</td><td>T–S</td><td>The whole class together. Read each <code class="inline">.script</code> on the teacher pages <b>twice</b>, pausing about 10 seconds between readings. Do example item 0 together first.</td></tr>
+      <tr><td>Parts 2–5 · written</td><td class="t">35 min</td><td>S</td><td>Words, Grammar, Reading, and Writing, done individually. Walk around and read instructions aloud to anyone who asks. Early finishers check their work and then help set up the catch-up stations. They don't help classmates with the test.</td></tr>
+      <tr><td>Break</td><td class="t">5 min</td><td>—</td><td>Collect papers.</td></tr>
+      <tr><td>Speaking + catch-up stations</td><td class="t">30 min</td><td>S–S · T–S</td><td>Call learners to a quiet corner <b>in pairs</b> for the 6-minute speaking task (cards on the teacher pages) and score with the grid. Everyone else rotates through <b>catch-up stations</b>: ① irregular-verb and flashcard games from Modules 1–4, ② the online lessons on a phone (🔊 Listen, then say it), ③ workbook review pages. About 5 pairs fit in 30 minutes. With more learners, finish the speaking in the Class 14 warmer or ask a volunteer to run the stations.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="grid2">
+    <div class="blk"><div class="h">You need</div>
+      <ul class="tick">
+        <li>One learner paper per person (the middle section of this pack), printed large and <b>in color if possible</b> (Parts 1C and 2 use pictures)</li>
+        <li>The teacher pages: listening scripts, speaking cards (cut A/B), and one scoring grid per pair</li>
+        <li>Pencils and erasers, a clock the class can see</li>
+        <li>The answer key and rubrics: <code class="inline">assessment/assessment-key.html</code></li>
+      </ul>
+    </div>
+    <div class="blk"><div class="h">What each part checks</div>
+      <ul class="tick">
+        <li><b>Listening /12</b>: hearing past and future forms, times and prices, key words, a short story</li>
+        <li><b>Words /10</b>: travel and food words (pictures) + time expressions</li>
+        <li><b>Grammar /15</b>: one or two items for every lesson in Modules 1–4</li>
+        <li><b>Reading /8</b>: an email about a trip</li>
+        <li><b>Writing /10</b>: an invitation message + "my last weekend"</li>
+        <li><b>Speaking /15</b>: talk about the past and make a plan (pairs)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="note lab">
+    <div class="t">Literacy-adapted version (learners still building reading and writing)</div>
+    <p>Use the <b>same paper</b> and change how it is done, not what it tests. <b>Read every instruction and every item aloud</b>, one at a time, and enlarge the paper if you can. In <b>Part 2</b> learners may point to the picture while you say the word; mark it correct if they point correctly or <b>copy</b> the right word from the box. In <b>Part 3</b> read the choices aloud and let them circle the one that sounds right. Do <b>Part 4</b> orally: read the email aloud twice and ask the questions. In <b>Part 5</b> the learner may <b>say</b> the message and the weekend sentences while you scribe; score what they say. Give extra time, or split the paper over two sittings. Write <b>"Adapted"</b> at the top and note what changed. Report these learners' <b>listening and speaking</b> as the main evidence. Low literacy is not low ability. It points to a literacy-support need, and the key says how to act on it.</p>
+  </div>
+
+  <div class="note warn">
+    <div class="t">Personal information is always optional</div>
+    <p>The writing and speaking tasks ask about last weekend, trips, and plans. Learners can answer with a <b>"new identity"</b> (the cards on the teacher pages) or anything they invent. Say this before the test starts: <b>"Real or imagined, no problem."</b> We are testing the English, not the facts. Never ask follow-up questions about home country, family members who are absent, or immigration status.</p>
+  </div>
+
+  <!-- ═════════════════════ LEARNER PAPER ═════════════════════ -->
+  <div class="pagebreak"></div>
+  <div class="paper">
+    <header class="mast">
+      <div class="kit-eyebrow">Everyday English (A2) · Progress Test 1</div>
+      <h1>My English Check ✅</h1>
+      <div class="paper-head">
+        <div><b>Name:</b></div>
+        <div><b>Date:</b></div>
+        <div><b>Class:</b></div>
+      </div>
+      <div class="key-icons">
+        <span>👂 Listen</span><span>✏️ Write</span><span>📖 Read</span><span>⭕ Circle</span><span>✔️ Tick</span><span>🗣️ Say</span>
+      </div>
+      <p style="font-size:1.05rem;margin-top:10px">Take your time. Read the example first. It's OK to ask: <b>"Could you repeat that, please?"</b> 🙂</p>
+    </header>
+
+    <!-- PART 1 -->
+    <div class="part-h"><span class="ic">👂</span><h2>Part 1 · Listening</h2><span class="score">___ / 12</span></div>
+
+    <div class="inst"><span class="ic">👂⭕</span><span>A. Listen. Circle what you hear.</span></div>
+    <div class="item ex"><span class="n">0</span><span class="ch"><span>I walk to work.</span><span class="circled">I walked to work.</span></span></div>
+    <div class="item"><span class="n">1</span><span class="ch"><span>We play football.</span><span>We played football.</span></span></div>
+    <div class="item"><span class="n">2</span><span class="ch"><span>I go to the store.</span><span>I'll go to the store.</span></span></div>
+    <div class="item"><span class="n">3</span><span class="ch"><span>They were at home.</span><span>They weren't at home.</span></span></div>
+    <div class="item"><span class="n">4</span><span class="ch"><span>She saw that movie.</span><span>She's seen that movie.</span></span></div>
+
+    <div class="inst"><span class="ic">👂⭕</span><span>B. Listen. Circle the time or the price.</span></div>
+    <div class="item"><span class="n">5</span><span>The train leaves at … &nbsp;<span class="ch"><span>9:15</span><span>9:50</span><span>5:15</span></span></span></div>
+    <div class="item"><span class="n">6</span><span>The bread is … &nbsp;<span class="ch"><span>$3.40</span><span>$3.14</span><span>$4.30</span></span></span></div>
+
+    <div class="inst"><span class="ic">👂✔️</span><span>C. Listen. Tick ✔️ the picture.</span></div>
+    <div class="picrow">
+      <span class="n">7</span>
+      <div class="picopt"><img src="../assets/vocab/fish.jpg" alt="fish"><span class="tbox"></span></div>
+      <div class="picopt"><img src="../assets/vocab/pasta.jpg" alt="pasta"><span class="tbox"></span></div>
+      <div class="picopt"><img src="../assets/vocab/chicken.jpg" alt="chicken"><span class="tbox"></span></div>
+    </div>
+    <div class="picrow">
+      <span class="n">8</span>
+      <div class="picopt"><img src="../assets/vocab/hat.jpg" alt="hat"><span class="tbox"></span></div>
+      <div class="picopt"><img src="../assets/vocab/umbrella.jpg" alt="umbrella"><span class="tbox"></span></div>
+      <div class="picopt"><img src="../assets/vocab/scarf.jpg" alt="scarf"><span class="tbox"></span></div>
+    </div>
+    <div class="picrow">
+      <span class="n">9</span>
+      <div class="picopt"><img src="../assets/vocab/airport.jpg" alt="airport"><span class="tbox"></span></div>
+      <div class="picopt"><img src="../assets/vocab/station.jpg" alt="train station"><span class="tbox"></span></div>
+      <div class="picopt"><img src="../assets/vocab/bus.jpg" alt="bus"><span class="tbox"></span></div>
+    </div>
+
+    <div class="inst"><span class="ic">👂⭕</span><span>D. Listen to Leo. Circle.</span></div>
+    <div class="item"><span class="n">10</span><span>Leo went to the coast with his … &nbsp;<span class="ch"><span>brother</span><span>sister</span><span>friend</span></span></span></div>
+    <div class="item"><span class="n">11</span><span>The water was cold, so they … &nbsp;<span class="ch"><span>swam</span><span>didn't swim</span><span>went home</span></span></span></div>
+    <div class="item"><span class="n">12</span><span>Next month they're going to visit … &nbsp;<span class="ch"><span>the coast</span><span>the city</span><span>the mountains</span></span></span></div>
+
+    <!-- PART 2 -->
+    <div class="part-h"><span class="ic">✏️</span><h2>Part 2 · Words</h2><span class="score">___ / 10</span></div>
+    <div class="inst"><span class="ic">📖✏️</span><span>A. Look. Write the word. <span class="sub">Use the words in the box. There are 2 extra words.</span></span></div>
+    <div class="bank"><span>ticket</span><span>rice</span><span>hotel</span><span>passport</span><span>cheese</span><span>sugar</span><span>luggage</span><span>airport</span></div>
+    <div class="vgrid">
+      <div class="vcard"><div class="n">1</div><img src="../assets/vocab/passport.jpg" alt=""><div class="line"></div></div>
+      <div class="vcard"><div class="n">2</div><img src="../assets/vocab/ticket.jpg" alt=""><div class="line"></div></div>
+      <div class="vcard"><div class="n">3</div><img src="../assets/vocab/luggage.jpg" alt=""><div class="line"></div></div>
+      <div class="vcard"><div class="n">4</div><img src="../assets/vocab/airport.jpg" alt=""><div class="line"></div></div>
+      <div class="vcard"><div class="n">5</div><img src="../assets/vocab/rice.jpg" alt=""><div class="line"></div></div>
+      <div class="vcard"><div class="n">6</div><img src="../assets/vocab/cheese.jpg" alt=""><div class="line"></div></div>
+    </div>
+
+    <div class="inst"><span class="ic">📖✏️</span><span>B. Complete. Use a word from the box. <span class="sub">There is 1 extra word.</span></span></div>
+    <div class="bank"><span>ago</span><span>last</span><span>ever</span><span>next</span><span>tomorrow</span></div>
+    <div class="item ex"><span class="n">0</span><span>I was at work <b>yesterday</b>.</span></div>
+    <div class="item"><span class="n">7</span><span>I saw her two days <span class="blank"></span>.</span></div>
+    <div class="item"><span class="n">8</span><span>We were in Mexico <span class="blank"></span> summer. It was hot!</span></div>
+    <div class="item"><span class="n">9</span><span>Have you <span class="blank"></span> been to Canada?</span></div>
+    <div class="item"><span class="n">10</span><span>I'm going to visit my aunt <span class="blank"></span> week.</span></div>
+
+    <!-- PART 3 -->
+    <div class="part-h pagebreak"><span class="ic">⭕</span><h2>Part 3 · Grammar</h2><span class="score">___ / 15</span></div>
+    <div class="inst"><span class="ic">📖⭕</span><span>Circle the right word or words.</span></div>
+    <div class="item ex"><span class="n">0</span><span>I <span class="ch"><span class="circled">was</span><span>were</span><span>am</span></span> tired yesterday.</span></div>
+    <div class="item"><span class="n">1</span><span>They <span class="ch"><span>was</span><span>were</span></span> at home last night.</span></div>
+    <div class="item"><span class="n">2</span><span>She <span class="ch"><span>watch</span><span>watched</span><span>watches</span></span> a movie last Saturday.</span></div>
+    <div class="item"><span class="n">3</span><span>We <span class="ch"><span>go</span><span>goed</span><span>went</span></span> to the beach last summer.</span></div>
+    <div class="item"><span class="n">4</span><span>I didn't <span class="ch"><span>have</span><span>had</span><span>has</span></span> breakfast this morning.</span></div>
+    <div class="item"><span class="n">5</span><span>A car is <span class="ch"><span>faster</span><span>more faster</span><span>the fastest</span></span> than a bike.</span></div>
+    <div class="item"><span class="n">6</span><span>It's the <span class="ch"><span>more expensive</span><span>most expensive</span><span>expensivest</span></span> hotel in town.</span></div>
+    <div class="item"><span class="n">7</span><span>How <span class="ch"><span>much</span><span>many</span></span> eggs do we need?</span></div>
+    <div class="item"><span class="n">8</span><span>She <span class="ch"><span>is never</span><span>never is</span></span> late for class.</span></div>
+    <div class="item"><span class="n">9</span><span>He speaks English very <span class="ch"><span>good</span><span>well</span></span>.</span></div>
+    <div class="item"><span class="n">10</span><span>My sister <span class="ch"><span>is going to</span><span>going to</span><span>is going</span></span> start a new job.</span></div>
+    <div class="item"><span class="n">11</span><span>I'm hungry. I think I <span class="ch"><span>will</span><span>am</span><span>going to</span></span> make a sandwich.</span></div>
+    <div class="item"><span class="n">12</span><span>How about <span class="ch"><span>go</span><span>going</span><span>to go</span></span> to the movies on Friday?</span></div>
+    <div class="item"><span class="n">13</span><span>Have you ever <span class="ch"><span>ate</span><span>eaten</span><span>eat</span></span> sushi?</span></div>
+    <div class="item"><span class="n">14</span><span>The museum is free today. You <span class="ch"><span>don't have to</span><span>mustn't</span></span> pay.</span></div>
+    <div class="item"><span class="n">15</span><span>You have a bad cough. You <span class="ch"><span>should</span><span>should to</span><span>shoulds</span></span> see a doctor.</span></div>
+
+    <!-- PART 4 -->
+    <div class="part-h"><span class="ic">📖</span><h2>Part 4 · Reading</h2><span class="score">___ / 8</span></div>
+    <div class="inst"><span class="ic">📖</span><span>Read Nadia's email.</span></div>
+    <div class="text">
+      Hi Sam,<br>
+      I'm back from my trip to Chicago! I was there for five days with my cousin. We stayed in a small hotel near the lake. It was cheaper than the big hotels, and the people were very friendly.<br>
+      On the first day it rained, so we went to a museum. After that, the weather was better. We walked a lot and saw the famous tall buildings. I didn't buy many things because the stores were very expensive. I only bought a few postcards.<br>
+      I ate Chicago pizza for the first time. It was the best pizza I've ever eaten!<br>
+      Next year I'm going to visit New York. You should come with me!<br>
+      Love,<br>Nadia
+    </div>
+    <div class="inst"><span class="ic">⭕</span><span>Yes or No? Circle.</span></div>
+    <div class="tfrow"><span class="n">1</span><span>Nadia was in Chicago for a week.</span><span class="tf"><span>Yes</span><span>No</span></span></div>
+    <div class="tfrow"><span class="n">2</span><span>The hotel was cheaper than the big hotels.</span><span class="tf"><span>Yes</span><span>No</span></span></div>
+    <div class="tfrow"><span class="n">3</span><span>It rained on the first day.</span><span class="tf"><span>Yes</span><span>No</span></span></div>
+    <div class="tfrow"><span class="n">4</span><span>Nadia bought a lot of things.</span><span class="tf"><span>Yes</span><span>No</span></span></div>
+    <div class="tfrow"><span class="n">5</span><span>Nadia ate Chicago pizza before this trip.</span><span class="tf"><span>Yes</span><span>No</span></span></div>
+    <div class="tfrow"><span class="n">6</span><span>Nadia is going to visit New York next month.</span><span class="tf"><span>Yes</span><span>No</span></span></div>
+    <div class="inst"><span class="ic">✏️</span><span>Write the answer.</span></div>
+    <div class="item"><span class="n">7</span><span style="flex:1">Who did Nadia travel with? <div class="wline"></div></span></div>
+    <div class="item"><span class="n">8</span><span style="flex:1">Where did they go on the first day? <div class="wline"></div></span></div>
+
+    <!-- PART 5 -->
+    <div class="part-h pagebreak"><span class="ic">✏️</span><h2>Part 5 · Writing</h2><span class="score">___ / 10</span></div>
+    <div class="inst"><span class="ic">✏️</span><span>A. Write a message to a friend. <span class="sub">(2–3 sentences)</span></span></div>
+    <p style="font-size:1.05rem;margin:0 0 6px">Your friend is free on Saturday. Invite your friend to do something with you. Say <b>what</b>, <b>what day</b>, and <b>what time</b>.</p>
+    <div class="phrase-bank">
+      <span class="phrase">Hi …!</span><span class="phrase">Would you like to …?</span><span class="phrase">Let's …</span><span class="phrase">How about …ing?</span><span class="phrase">Shall we meet at …?</span><span class="phrase">See you soon!</span>
+    </div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+    <div class="wline"></div>
+
+    <div class="inst"><span class="ic">✏️</span><span>B. My last weekend. Write 5–6 sentences. <span class="sub">Real or imagined, no problem. 🙂</span></span></div>
+    <div class="phrase-bank">
+      <span class="phrase">1 · Where were you?</span>
+      <span class="phrase">2 · What did you do? (2 things)</span>
+      <span class="phrase">3 · What didn't you do?</span>
+      <span class="phrase">4 · How was it?</span>
+      <span class="phrase">5 · What are you going to do next weekend?</span>
+      <span class="phrase">Use: and · but · so · then</span>
+    </div>
+    <div class="item"><span class="n">1</span><div class="wline" style="flex:1"></div></div>
+    <div class="item"><span class="n">2</span><div class="wline" style="flex:1"></div></div>
+    <div class="item"><span class="n">3</span><div class="wline" style="flex:1"></div></div>
+    <div class="item"><span class="n">4</span><div class="wline" style="flex:1"></div></div>
+    <div class="item"><span class="n">5</span><div class="wline" style="flex:1"></div></div>
+    <div class="item"><span class="n">6</span><div class="wline" style="flex:1"></div></div>
+
+    <p class="done">Finished! Well done. 🎉 Now check your answers. ✔️</p>
+
+    <table class="grid" style="margin-top:22px">
+      <thead><tr><th>For the teacher</th><th>1 Listening</th><th>2 Words</th><th>3 Grammar</th><th>4 Reading</th><th>5 Writing</th><th>Written</th><th>Speaking</th></tr></thead>
+      <tbody><tr><td>Score</td><td>/12</td><td>/10</td><td>/15</td><td>/8</td><td>/10</td><td>/55</td><td>/15</td></tr></tbody>
+    </table>
+  </div>
+
+  <!-- ═════════════════════ TEACHER PAGES ═════════════════════ -->
+  <div class="pagebreak"></div>
+  <span class="teacher-only">Teacher only · do not copy for learners</span>
+  <div class="sec" style="margin-top:6px"><h2>Part 1 · Listening Scripts</h2><span class="rule"></span></div>
+  <p>Read each item <b>twice</b> at a natural pace (don't slow down so much that the <i>-ed</i> or <i>'ll</i> becomes extra loud), and pause about 10 seconds. Say the item number first ("Number one"). Don't mouth the answer or point. In Part A, say the sentence <b>exactly once per reading</b>: the contrast is the test.</p>
+
+  <div class="blk"><div class="h">A · Circle what you hear</div>
+    <div class="script">Example, number zero: <b>I walked to work.</b> (Show the circle on "I walked to work.")<br>
+    Number 1: <b>We played football.</b><br>
+    Number 2: <b>I'll go to the store.</b><br>
+    Number 3: <b>They weren't at home.</b><br>
+    Number 4: <b>She's seen that movie.</b></div>
+  </div>
+  <div class="blk"><div class="h">B · Circle the time or the price</div>
+    <div class="script">Number 5: The next train to the city leaves at <b>nine fifteen</b>, from platform four.<br>
+    Number 6: One loaf of bread? That's <b>three dollars forty</b>, please.</div>
+  </div>
+  <div class="blk"><div class="h">C · Tick the picture</div>
+    <div class="script">Number 7: Yesterday I cooked <b>chicken</b> for dinner. It was delicious.<br>
+    Number 8: Look at those dark clouds! It's going to rain. <b>Take your umbrella.</b><br>
+    Number 9: The <b>bus</b> is cheaper than the train, so let's take the bus.</div>
+  </div>
+  <div class="blk"><div class="h">D · Leo (read the whole text twice, then give 1 minute to circle)</div>
+    <div class="script">Hi, I'm Leo. Last weekend I went to the coast with my <b>sister</b>. We took the train on Saturday morning. The weather was sunny, but the water was very cold, so we <b>didn't swim</b>. We just walked on the beach. In the evening we ate fish at a small restaurant. It was the best fish in town! I've been to the coast three times now. Next month we're going to visit <b>the mountains</b>.</div>
+  </div>
+
+  <div class="sec"><h2>Pair Speaking Task · 6 minutes</h2><span class="rule"></span></div>
+  <p>Two learners sit with you. Give Card A to one and Card B to the other. Give them <b>one minute</b> to read the cards silently, then check the instructions:</p>
+  <div class="say">Do you only answer, or do you ask questions too? (Both.) Part 2: do you make a plan together? (Yes.) Real weekend or imagined? (Real or imagined, no problem.)</div>
+  <p>Part 1 (about 3 minutes): they ask and answer the card questions about the past and experiences. Part 2 (about 3 minutes): they make a plan together for next weekend and say it back to confirm. Step in only to restart a stuck pair ("Now ask about next weekend"). Don't correct during the task. Score each learner on the grid, using the rubric in the key. <b>Mixed-level pairs:</b> score each person on what <i>they</i> did, not on the pair's result.</p>
+
+  <div class="cards">
+    <div class="card-cut">
+      <div class="ct">Card A · Student A</div>
+      <h4>👥 Part 1 · Ask your partner</h4>
+      <ol class="steps">
+        <li><b>How was your weekend?</b></li>
+        <li><b>What did you do on Saturday?</b></li>
+        <li><b>Did you cook / go out / see friends?</b></li>
+        <li><b>Have you ever been to another city in this country?</b> → <b>When did you go?</b></li>
+        <li>Answer your partner's questions. Say 2–3 sentences for each one.</li>
+      </ol>
+      <h4>📅 Part 2 · Make a plan</h4>
+      <ol class="steps">
+        <li>Suggest something for next weekend: <b>How about …ing? / Let's …</b></li>
+        <li>Agree on a day and a time.</li>
+        <li>Say the plan again: <b>So we're meeting at … on …</b></li>
+      </ol>
+    </div>
+    <div class="card-cut b">
+      <div class="ct">Card B · Student B</div>
+      <h4>👥 Part 1 · Ask your partner</h4>
+      <ol class="steps">
+        <li><b>Where were you last Sunday?</b></li>
+        <li><b>What did you eat? Was it good?</b></li>
+        <li><b>What's the best place to eat in this town?</b></li>
+        <li><b>Have you ever eaten food from another country?</b> → <b>Did you like it?</b></li>
+        <li>Answer your partner's questions. Say 2–3 sentences for each one.</li>
+      </ol>
+      <h4>📅 Part 2 · Make a plan</h4>
+      <ol class="steps">
+        <li>Answer your partner's idea: say yes, or say <b>"I'd love to, but …"</b> and suggest another idea: <b>Why don't we …?</b></li>
+        <li>Agree on a day and a time: <b>Shall we meet at …?</b></li>
+      </ol>
+    </div>
+    <div class="card-cut">
+      <div class="ct">New identity card 1</div>
+      <h4>🪪 Sam Lee</h4>
+      <p>Last weekend: at the lake with a friend · Saturday: walked, took photos · didn't swim (cold!)<br>Has been to: Chicago, 2022 · Has eaten: Thai food, loved it<br>Best place to eat: "Rosa's Café"</p>
+    </div>
+    <div class="card-cut b">
+      <div class="ct">New identity card 2</div>
+      <h4>🪪 Maria Costa</h4>
+      <p>Last weekend: at home · Saturday: cleaned, cooked pasta, watched a movie · didn't go out<br>Has been to: Miami, last year · Has never eaten: sushi<br>Next weekend: free on Sunday</p>
+    </div>
+  </div>
+  <p style="font-size:.88rem;color:var(--ink-2)"><b>Stretch</b> (for a pair who finishes early): "Compare two places you know. Which is better? Why?" <b>Support</b>: a learner may read the question from the card, which is fine. Score the <i>answers</i> and the planning as normal. If one learner dominates, turn to the quieter one: "And you? What do you think?"</p>
+
+  <div class="sec"><h2>Speaking Scoring Grid</h2><span class="rule"></span></div>
+  <p style="font-size:.9rem;color:var(--ink-2)">Score each criterion <b>0–3</b>: 0 = no response · 1 = Not yet A2 · 2 = A2 · 3 = A2+ (strong). The descriptors are in the assessment key. Total /15.</p>
+  <p style="font-size:.95rem">Learner A: ______________________ &nbsp; Learner B: ______________________ &nbsp; Date: __________</p>
+  <table class="grid">
+    <thead><tr><th>Criterion</th><th>What to listen for</th><th>A (0–3)</th><th>B (0–3)</th></tr></thead>
+    <tbody>
+      <tr><td><b>Task &amp; social language</b></td><td>Talks about the weekend and an experience; suggests, accepts or declines politely (<i>I'd love to, but…</i>); agrees on a day and time and confirms the plan</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td></tr>
+      <tr><td><b>Range (words)</b></td><td>Enough words for weekend activities, food, places, and time expressions (<i>last, ago, next</i>)</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td></tr>
+      <tr><td><b>Accuracy (grammar)</b></td><td>Past simple (<i>went, didn't go, Did you…?</i>); <i>Have you ever…?</i>; <i>How about + -ing</i>; <i>going to</i> / <i>we're meeting</i></td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td></tr>
+      <tr><td><b>Interaction</b></td><td>Asks the card questions, adds a follow-up (<i>When did you go?</i>), reacts (<i>Really? Nice!</i>), repairs (<i>Sorry, could you repeat that?</i>)</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td></tr>
+      <tr><td><b>Pronunciation &amp; fluency</b></td><td>Understandable; <i>-ed</i> endings and <i>'ll</i> audible; answers of 2–3 sentences with some pausing</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td></tr>
+      <tr><td colspan="2"><b>Total /15</b> · one thing that went well · one next step</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td></tr>
+    </tbody>
+  </table>
+
+  <div class="note lab">
+    <div class="t">After the test: close the loop in Week 7</div>
+    <p>Score the papers before Class 14 with the key. Add up each <b>section</b> across the class, because the weakest section tells you what to recycle. Warmers in Classes 14–19 are a good place for it (for example, a 5-minute irregular-verb chain if many missed items 3–4, or a <i>was/were</i> story circle, which also prepares Lesson 5.1). Give each learner their paper back with <b>one thing they did well and one thing to practice</b>, plus the online lesson that practices it. The key has a class analysis grid and feedback phrases.</p>
+  </div>
+
+  <div class="foot">
+    <div class="who"><b>Ray de la Paz</b><span class="bio">© 2026 Ray de la Paz · Everyday English (A2 Elementary)</span></div>
+    <div class="ver">Assessment · Progress Test 1 · v1.0</div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Everyday English Syllabus</title>
+<meta name="description" content="13-week, 26-class instructor-led syllabus for Everyday English (A2 Elementary): adult elementary English, 90-minute classes twice a week.">
+<link rel="icon" href="favicon.png">
+<script>try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root{
+    --ground:#eef2f8;
+    --surface:#ffffff;
+    --surface-2:#f4f6fa;
+    --ink:#16202e;
+    --ink-2:#45536a;
+    --ink-3:#6f7c8e;
+    --line:#d6dee9;
+    --line-strong:#bcc7d6;
+    --accent:#1f5fc9;
+    --accent-2:#2563eb;
+    --accent-soft:#e6eefc;
+    --lab:#0f766e;
+    --lab-soft:#d7efe9;
+    --shadow:0 1px 2px rgba(20,30,45,.05),0 8px 26px rgba(20,30,45,.07);
+    --radius:14px;
+    --on-accent:#ffffff;
+    --on-lab:#ffffff;
+    color-scheme:light;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --ground:#0d131e;
+      --surface:#141c29;
+      --surface-2:#1a2433;
+      --ink:#e8eef6;
+      --ink-2:#9fadc1;
+      --ink-3:#7c899b;
+      --line:#26324a;
+      --line-strong:#33425e;
+      --accent:#7fb2ff;
+      --accent-2:#a9ccff;
+      --accent-soft:rgba(127,178,255,.14);
+      --lab:#4dd0be;
+      --lab-soft:rgba(77,208,190,.13);
+      --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.35);
+      --on-accent:#0b1a33;
+      --on-lab:#062521;
+      color-scheme:dark;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#0d131e;
+    --surface:#141c29;
+    --surface-2:#1a2433;
+    --ink:#e8eef6;
+    --ink-2:#9fadc1;
+    --ink-3:#7c899b;
+    --line:#26324a;
+    --line-strong:#33425e;
+    --accent:#7fb2ff;
+    --accent-2:#a9ccff;
+    --accent-soft:rgba(127,178,255,.14);
+    --lab:#4dd0be;
+    --lab-soft:rgba(77,208,190,.13);
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.35);
+    --on-accent:#0b1a33;
+    --on-lab:#062521;
+    color-scheme:dark;
+  }
+
+  *{box-sizing:border-box}
+  body{
+    margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Source Sans 3",system-ui,-apple-system,sans-serif;
+    font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:940px;margin:0 auto;padding-block:28px 64px;padding-left:20px;padding-right:20px}
+  h1,h2,h3{font-family:"Archivo","Source Sans 3",sans-serif;margin:0;line-height:1.12;text-wrap:balance}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  .topbar{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;margin-bottom:16px;font-size:.9rem}
+  .topbar a{font-weight:600}
+  .topbar .sp{flex:1}
+  .topbar button{font:inherit;font-size:.85rem;cursor:pointer;border:1px solid var(--line-strong);background:var(--surface);color:var(--ink-2);
+    border-radius:999px;padding:5px 12px}
+  .topbar button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+
+  /* ── Masthead ── */
+  .mast{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);padding:34px 34px 30px;position:relative;overflow:hidden}
+  .mast::before{content:"";position:absolute;inset:0 auto 0 0;width:6px;background:linear-gradient(180deg,var(--accent),var(--accent-2))}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+  .mast h1{font-size:clamp(1.9rem,5vw,2.7rem);font-weight:800;letter-spacing:-.02em;margin:12px 0 6px}
+  .mast .tag{font-size:1.05rem;color:var(--ink-2);font-weight:500;max-width:60ch}
+  .meta{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:26px}
+  .tile{background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:13px 15px}
+  .tile .k{font-family:"JetBrains Mono",monospace;font-size:.66rem;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3)}
+  .tile .v{font-family:"Archivo",sans-serif;font-weight:700;font-size:1.05rem;margin-top:3px;letter-spacing:-.01em}
+
+  .sec-label{display:flex;align-items:baseline;gap:12px;margin:44px 2px 16px}
+  .sec-label h2{font-size:1.02rem;font-weight:700;letter-spacing:.02em;text-transform:uppercase;color:var(--ink-2)}
+  .sec-label .rule{flex:1;height:1px;background:var(--line-strong)}
+  .lead-p{margin:-6px 2px 18px;color:var(--ink-2);font-size:.95rem}
+
+  /* ── Week card ── */
+  .day{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;margin-bottom:18px}
+  .day-head{display:flex;flex-wrap:wrap;align-items:center;gap:14px;padding:16px 22px;border-bottom:1px solid var(--line);background:var(--surface-2)}
+  .daynum{font-family:"Archivo",sans-serif;font-weight:800;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--on-accent);background:var(--accent);padding:5px 11px;border-radius:999px;white-space:nowrap}
+  .day-head h3{font-size:1.22rem;font-weight:700;letter-spacing:-.01em;flex:1;min-width:200px}
+  .obj{font-size:.9rem;color:var(--ink-2);width:100%;margin-top:-2px}
+  .obj b{color:var(--ink);font-weight:600}
+  .session{padding:4px 22px 8px}
+
+  .slot{display:grid;grid-template-columns:52px 52px 1fr;gap:12px;align-items:baseline;padding:10px 0;border-top:1px solid var(--line)}
+  .slot:first-of-type{border-top:none}
+  .slot .t{font-family:"JetBrains Mono",monospace;font-size:.82rem;color:var(--ink-2);font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .slot .code{font-family:"JetBrains Mono",monospace;font-size:.72rem;font-weight:600;color:var(--accent);background:var(--accent-soft);border-radius:6px;padding:2px 0;text-align:center}
+  .slot .desc{font-size:.99rem;color:var(--ink);font-weight:600}
+  .slot .desc .sub{color:var(--ink-3);font-size:.85rem;display:block;margin-top:2px;font-weight:400}
+  .slot .desc .cando{color:var(--lab);font-size:.88rem;display:block;margin-top:2px;font-weight:600}
+  .slot.break .t,.slot.break .desc{color:var(--ink-3)}
+  .slot.break .desc{font-style:italic;font-size:.9rem;font-weight:400}
+  .slot .code.none{visibility:hidden}
+  .slot.lab .code{color:var(--on-lab);background:var(--lab)}
+  .slot.lab .desc b{color:var(--lab);font-weight:700}
+
+  /* ── Info columns ── */
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 24px}
+  .panel h3{font-size:1.05rem;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:9px}
+  .panel h3 .dot{width:9px;height:9px;border-radius:3px;background:var(--accent);display:inline-block}
+  .panel.lab-accent h3 .dot{background:var(--lab)}
+  ul.clean{list-style:none;margin:0;padding:0}
+  ul.clean li{position:relative;padding:5px 0 5px 22px;font-size:.95rem;color:var(--ink-2);border-top:1px solid var(--line)}
+  ul.clean li:first-child{border-top:none}
+  ul.clean li::before{content:"";position:absolute;left:2px;top:12px;width:7px;height:7px;border-radius:2px;background:var(--accent);transform:rotate(45deg)}
+  ul.clean.lab-accent li::before{background:var(--lab)}
+  ul.clean li b{color:var(--ink);font-weight:600}
+
+  .outcomes{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:24px 26px;margin-top:22px}
+  .outcomes h3{font-size:1.15rem;font-weight:700;margin-bottom:4px}
+  .outcomes p.lead{color:var(--ink-2);font-size:.95rem;margin:0 0 14px}
+  .out-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 26px}
+  .out-grid div{position:relative;padding:6px 0 6px 26px;font-size:.95rem;border-top:1px solid var(--line)}
+  .out-grid div::before{content:"\2713";position:absolute;left:2px;top:6px;color:var(--lab);font-weight:700;font-family:"Archivo",sans-serif}
+
+  .foot{margin-top:34px;padding-top:20px;border-top:1px solid var(--line-strong);display:flex;flex-wrap:wrap;gap:12px 24px;align-items:baseline;justify-content:space-between}
+  .foot .who{font-size:.95rem;color:var(--ink-2)}
+  .foot .who b{color:var(--ink);font-weight:600}
+  .foot .who .bio{display:block;color:var(--ink-3);font-size:.82rem;margin-top:2px}
+  .foot .ver{font-family:"JetBrains Mono",monospace;font-size:.72rem;color:var(--ink-3);letter-spacing:.04em}
+
+  @media (max-width:720px){
+    .meta{grid-template-columns:1fr 1fr}
+    .cols{grid-template-columns:1fr}
+    .out-grid{grid-template-columns:1fr}
+    .slot{grid-template-columns:46px 48px 1fr;gap:10px}
+  }
+  @media (max-width:430px){
+    .wrap{padding-left:16px;padding-right:16px}
+    .mast{padding:26px 22px}
+    .session{padding:4px 14px 8px}
+    .day-head{padding:14px 14px}
+    .slot{grid-template-columns:40px 44px 1fr}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+  @media print{
+    :root{--shadow:none}
+    body{background:#fff}
+    .wrap{max-width:none;padding:0}
+    .topbar{display:none}
+    .mast,.day,.panel,.outcomes{border-color:#c9d2df;break-inside:avoid}
+    .foot{break-inside:avoid}
+    a{color:inherit}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="topbar" aria-label="Syllabus">
+    <a href="index.html">← Everyday English (A2)</a>
+    <span class="sp"></span>
+    <a href="syllabus-print.html">🖨 Print version</a>
+    <button type="button" id="themeBtn" aria-label="Toggle dark or light mode">🌙 Theme</button>
+  </nav>
+
+  <header class="mast">
+    <div class="eyebrow">Instructor-Led Course Syllabus</div>
+    <h1>Everyday English (A2 Elementary)</h1>
+    <p class="tag">A 13-week, 26-class English course for adults who know the basics. Twice a week for 90 minutes, you learn to tell stories about your past, talk about your experiences and plans, and handle everyday situations: directions and tickets, restaurants and stores, and the doctor’s office. Between classes, the free online lessons (with audio) are your homework.</p>
+    <div class="meta">
+      <div class="tile"><div class="k">Level</div><div class="v">CEFR A2 · Elementary</div></div>
+      <div class="tile"><div class="k">Duration</div><div class="v">13 weeks · 26 classes</div></div>
+      <div class="tile"><div class="k">Each class</div><div class="v">90 minutes · 2 × week</div></div>
+      <div class="tile"><div class="k">Content</div><div class="v">8 modules · 24 lessons</div></div>
+    </div>
+  </header>
+
+  <div class="sec-label"><h2>Class Schedule</h2><span class="rule"></span></div>
+  <p class="lead-p">Two classes a week, 90 minutes each. Every class has <b>one lesson</b> from the online course, except the two assessment classes. Lessons 4.3 and 8.3 are <b>review projects</b> that bring each half of the course together in a real-world story. Each class shows its lesson, its focus, and the <span style="color:var(--lab);font-weight:600">✓ can-do</span> goal learners reach by the end.</p>
+
+  <section class="day">
+    <div class="day-head">
+      <span class="daynum">Week 1</span>
+      <h3>Talking About the Past</h3>
+      <div class="obj"><b>Module 1:</b> <i>was / were</i> and regular past verbs, for talking about yesterday and last weekend.</div>
+    </div>
+    <div class="session">
+      <div class="slot"><span class="t">C1</span><span class="code">1.1</span><span class="desc">Past Simple — Was &amp; Were<span class="sub">was / were · wasn’t / weren’t · yesterday, last week, ago · there was / there were</span><span class="cando">✓ I can say where I was and how it was.</span></span></div>
+      <div class="slot"><span class="t">C2</span><span class="code">1.2</span><span class="desc">Past Simple — Regular Verbs (-ed)<span class="sub">-ed spelling rules · three sounds: /t/ /d/ /ɪd/ · a past day</span><span class="cando">✓ I can describe what I did yesterday.</span></span></div>
+    </div>
+  </section>
+
+  <section class="day">
+    <div class="day-head">
+      <span class="daynum">Week 2</span>
+      <h3>Past Stories &amp; Comparing</h3>
+      <div class="obj"><b>Modules 1–2:</b> irregular verbs, <i>did / didn’t</i>, and comparing things.</div>
+    </div>
+    <div class="session">
+      <div class="slot"><span class="t">C3</span><span class="code">1.3</span><span class="desc">Past Simple — Irregular Verbs &amp; Questions<span class="sub">went, had, saw, bought… · didn’t + base verb · Did you…? · What did you do?</span><span class="cando">✓ I can tell a short story about a day or a trip.</span></span></div>
+      <div class="slot"><span class="t">C4</span><span class="code">2.1</span><span class="desc">Comparatives &amp; Superlatives<span class="sub">cheaper than · more expensive · the best · (not) as … as</span><span class="cando">✓ I can compare places, prices, and things.</span></span></div>
+    </div>
+  </section>
+
+  <section class="day">
+    <div class="day-head">
+      <span class="daynum">Week 3</span>
+      <h3>How Much &amp; How Often</h3>
+      <div class="obj"><b>Module 2:</b> quantities, and saying how often and how well you do things.</div>
+    </div>
+    <div class="session">
+      <div class="slot"><span class="t">C5</span><span class="code">2.2</span><span class="desc">Quantifiers — some, any, much, many<span class="sub">countable / uncountable · a lot of · a few / a little · How much? How many?</span><span class="cando">✓ I can talk about what’s in my kitchen and make a shopping list.</span></span></div>
+      <div class="slot"><span class="t">C6</span><span class="code">2.3</span><span class="desc">Adverbs of Frequency &amp; Manner<span class="sub">always → never · once / twice a week · quickly, carefully · good vs well</span><span class="cando">✓ I can describe my habits and how I do things.</span></span></div>
+    </div>
+  </section>
+
+  <section class="day">
+    <div class="day-head">
+      <span class="daynum">Week 4</span>
+      <h3>Plans &amp; Predictions</h3>
+      <div class="obj"><b>Module 3:</b> two ways to talk about the future.</div>
+    </div>
+    <div class="session">
+      <div class="slot"><span class="t">C7</span><span class="code">3.1</span><span class="desc">“Going to” — Plans &amp; Intentions<span class="sub">am / is / are going to · plans vs predictions from evidence · next week, tonight</span><span class="cando">✓ I can talk about my plans for the weekend.</span></span></div>
+      <div class="slot"><span class="t">C8</span><span class="code">3.2</span><span class="desc">“Will” &amp; “Might” — Predictions &amp; Decisions<span class="sub">will / won’t · instant decisions, offers, promises · might · will vs going to</span><span class="cando">✓ I can make predictions and offer to help.</span></span></div>
+    </div>
+  </section>
+
+  <section class="day">
+    <div class="day-head">
+      <span class="daynum">Week 5</span>
+      <h3>Arrangements &amp; Experiences</h3>
+      <div class="obj"><b>Modules 3–4:</b> making plans with other people, and your life experiences.</div>
+    </div>
+    <div class="session">
+      <div class="slot"><span class="t">C9</span><span class="code">3.3</span><span class="desc">Future Arrangements &amp; Making Suggestions<span class="sub">I’m meeting Sara on Friday · Let’s… · How about -ing? · accepting &amp; declining</span><span class="cando">✓ I can make a plan with a friend and agree on a day and time.</span></span></div>
+      <div class="slot"><span class="t">C10</span><span class="code">4.1</span><span class="desc">Present Perfect — Life Experiences<span class="sub">have / has + past participle · ever / never · been vs gone · vs past simple</span><span class="cando">✓ I can ask “Have you ever…?” and talk about my experiences.</span></span></div>
+    </div>
+  </section>
+
+  <section class="day">
+    <div class="day-head">
+      <span class="daynum">Week 6</span>
+      <h3>Rules, Advice &amp; a Travel Story</h3>
+      <div class="obj"><b>Module 4:</b> obligation and advice, and the first review project.</div>
+    </div>
+    <div class="session">
+      <div class="slot"><span class="t">C11</span><span class="code">4.2</span><span class="desc">Have to / Must / Should — Obligation &amp; Advice<span class="sub">have to · don’t have to ≠ mustn’t · must · should / shouldn’t</span><span class="cando">✓ I can explain rules and give advice.</span></span></div>
+      <div class="slot"><span class="t">C12</span><span class="code">4.3</span><span class="desc">Review Project — Telling a Travel Story<span class="sub">at the airport, station &amp; hotel · Modules 1–4 grammar in one story</span><span class="cando">✓ I can tell the story of a trip, from plans to memories.</span></span></div>
+    </div>
+  </section>
+
+  <section class="day">
+    <div class="day-head">
+      <span class="daynum">Week 7</span>
+      <h3>Halfway Check &amp; Telling Stories</h3>
+      <div class="obj"><b>Module 5:</b> a friendly progress test, then the past continuous.</div>
+    </div>
+    <div class="session">
+      <div class="slot lab"><span class="t">C13</span><span class="code">TEST</span><span class="desc"><b>Progress Test 1 (Modules 1–4) + Catch-Up</b><span class="sub">~45–50-min written check · 6-min pair speaking · catch-up stations</span><span class="cando">✓ I know what I do well and what to practice.</span></span></div>
+      <div class="slot"><span class="t">C14</span><span class="code">5.1</span><span class="desc">Past Continuous — What Was Happening<span class="sub">was / were + -ing · setting the scene · while</span><span class="cando">✓ I can say what I was doing at a time in the past.</span></span></div>
+    </div>
+  </section>
+
+  <section class="day">
+    <div class="day-head">
+      <span class="daynum">Week 8</span>
+      <h3>Stories &amp; Life in the Past</h3>
+      <div class="obj"><b>Module 5:</b> telling what happened, and how life used to be.</div>
+    </div>
+    <div class="session">
+      <div class="slot"><span class="t">C15</span><span class="code">5.2</span><span class="desc">Past Continuous vs Past Simple — when &amp; while<span class="sub">background + interruption · I was walking home when it started to rain</span><span class="cando">✓ I can tell a “something happened” story.</span></span></div>
+      <div class="slot"><span class="t">C16</span><span class="code">5.3</span><span class="desc">used to — Life in the Past<span class="sub">used to + base verb · didn’t use to · Did you use to…? · then vs now</span><span class="cando">✓ I can describe how my life used to be different.</span></span></div>
+    </div>
+  </section>
+
+  <section class="day">
+    <div class="day-head">
+      <span class="daynum">Week 9</span>
+      <h3>If… &amp; Who, Which, Where</h3>
+      <div class="obj"><b>Module 6:</b> real possibilities, and adding detail to your sentences.</div>
+    </div>
+    <div class="session">
+      <div class="slot"><span class="t">C17</span><span class="code">6.1</span><span class="desc">First Conditional — Real Possibilities<span class="sub">If + present, … will / might · warnings &amp; promises · if vs when</span><span class="cando">✓ I can talk about what I will do if something happens.</span></span></div>
+      <div class="slot"><span class="t">C18</span><span class="code">6.2</span><span class="desc">Relative Clauses — who, which, that, where<span class="sub">the man who… · the café where… · joining two sentences</span><span class="cando">✓ I can describe people, places, and things in my life.</span></span></div>
+    </div>
+  </section>
+
+  <section class="day">
+    <div class="day-head">
+      <span class="daynum">Week 10</span>
+      <h3>Joining Ideas &amp; Getting Around</h3>
+      <div class="obj"><b>Modules 6–7:</b> linking words, then directions and tickets.</div>
+    </div>
+    <div class="session">
+      <div class="slot"><span class="t">C19</span><span class="code">6.3</span><span class="desc">Linking Words — and, but, so, because, although<span class="sub">reason vs result · although vs but · commas</span><span class="cando">✓ I can join my ideas into longer sentences.</span></span></div>
+      <div class="slot"><span class="t">C20</span><span class="code">7.1</span><span class="desc">Travel &amp; Directions — Getting Around<span class="sub">How do I get to…? · turn left, go past, opposite · buying a ticket</span><span class="cando">✓ I can ask for and give directions and buy a ticket.</span></span></div>
+    </div>
+  </section>
+
+  <section class="day">
+    <div class="day-head">
+      <span class="daynum">Week 11</span>
+      <h3>Eating Out, Shopping &amp; Health</h3>
+      <div class="obj"><b>Module 7:</b> restaurants, stores, and the doctor’s office.</div>
+    </div>
+    <div class="session">
+      <div class="slot"><span class="t">C21</span><span class="code">7.2</span><span class="desc">Eating Out &amp; Shopping — Ordering, Booking &amp; Problems<span class="sub">book a table · order a meal · the bill · sizes · too / enough · returns</span><span class="cando">✓ I can book, order, and return something politely.</span></span></div>
+      <div class="slot"><span class="t">C22</span><span class="code">7.3</span><span class="desc">Health &amp; Appointments<span class="sub">symptoms · make an appointment · I’ve had it since… · should, you’d better</span><span class="cando">✓ I can phone a clinic and explain a health problem.</span></span></div>
+    </div>
+  </section>
+
+  <section class="day">
+    <div class="day-head">
+      <span class="daynum">Week 12</span>
+      <h3>Up to Now &amp; Verb Patterns</h3>
+      <div class="obj"><b>Module 8:</b> life up to now, and verbs that go together.</div>
+    </div>
+    <div class="session">
+      <div class="slot"><span class="t">C23</span><span class="code">8.1</span><span class="desc">Present Perfect — for, since, just, already, yet<span class="sub">How long have you…? · for vs since · just / already / yet</span><span class="cando">✓ I can say how long I have lived, worked, or studied somewhere.</span></span></div>
+      <div class="slot"><span class="t">C24</span><span class="code">8.2</span><span class="desc">Verb Patterns — -ing or to-infinitive<span class="sub">enjoy -ing · want to · would like to · like / love / hate</span><span class="cando">✓ I can talk about my hobbies and my hopes.</span></span></div>
+    </div>
+  </section>
+
+  <section class="day">
+    <div class="day-head">
+      <span class="daynum">Week 13</span>
+      <h3>Bringing It Together</h3>
+      <div class="obj"><b>Module 8:</b> the capstone project, the final test, and a celebration.</div>
+    </div>
+    <div class="session">
+      <div class="slot"><span class="t">C25</span><span class="code">8.3</span><span class="desc">Review Project — My Life Story &amp; Future Plans<span class="sub">past, up to now, and future in one story · listening practice</span><span class="cando">✓ I can tell my life story and my plans.</span></span></div>
+      <div class="slot lab"><span class="t">C26</span><span class="code">TEST</span><span class="desc"><b>Final Test + Celebration</b><span class="sub">~60-min written test · individual speaking interview · certificates</span><span class="cando">✓ I can show what I can do in English. 🎉</span></span></div>
+    </div>
+  </section>
+
+  <div class="sec-label"><h2>Every Class, the Same Shape</h2><span class="rule"></span></div>
+  <p class="lead-p">A steady routine helps learners relax and speak. Timings flex a little from lesson to lesson.</p>
+  <section class="day">
+    <div class="session">
+      <div class="slot"><span class="t">0:00</span><span class="code none">—</span><span class="desc">Warmer &amp; review of the last class<span class="sub">A speaking game that recycles last class’s language</span></span></div>
+      <div class="slot"><span class="t">0:10</span><span class="code none">—</span><span class="desc">Presentation<span class="sub">A short story or dialogue · meaning, form &amp; pronunciation</span></span></div>
+      <div class="slot"><span class="t">0:30</span><span class="code none">—</span><span class="desc">Drill<span class="sub">Listen and repeat: all together, then one by one</span></span></div>
+      <div class="slot"><span class="t">0:40</span><span class="code none">—</span><span class="desc">Controlled practice<span class="sub">Workbook exercises, then check with a partner</span></span></div>
+      <div class="slot break"><span class="t">0:55</span><span class="code none">—</span><span class="desc">Break (5 min)</span></div>
+      <div class="slot"><span class="t">1:00</span><span class="code none">—</span><span class="desc">Speaking<span class="sub">Storytelling, role-plays, information gaps, and games in pairs and groups</span></span></div>
+      <div class="slot"><span class="t">1:20</span><span class="code none">—</span><span class="desc">Feedback &amp; “I can…”<span class="sub">Kind error correction · tick the can-do checklist</span></span></div>
+      <div class="slot"><span class="t">1:25</span><span class="code none">—</span><span class="desc">Homework set-up<span class="sub">The online lesson with 🔊 audio + one workbook page</span></span></div>
+    </div>
+  </section>
+
+  <div class="sec-label"><h2>Course Details</h2><span class="rule"></span></div>
+
+  <div class="cols">
+    <div class="panel">
+      <h3><span class="dot"></span>Prerequisites</h3>
+      <ul class="clean">
+        <li><b>CEFR A1.</b> You can introduce yourself, talk about your family and your daily routine, and use the present simple, <i>can</i>, and <i>there is / there are</i>.</li>
+        <li>Finished <b>English Foundations (A1)</b>? You’re ready. New to our program? Take the shared <b>placement test</b> first.</li>
+        <li>Learners who are still building basic reading and writing are welcome. Every lesson has literacy-support options, and the tests have an adapted version.</li>
+        <li>No computer needed in class. A phone helps for homework, but it isn’t required.</li>
+      </ul>
+    </div>
+    <div class="panel lab-accent">
+      <h3><span class="dot"></span>What’s Provided</h3>
+      <ul class="clean lab-accent">
+        <li>A <b>Student Workbook</b> for all 24 lessons, in clear A2 English with icon instructions (the learner keeps it)</li>
+        <li>A <b>welcome handout</b> with class rules, what to bring, and QR codes to the online lessons</li>
+        <li>For the teacher: a <b>Teacher’s Guide</b> (a 90-minute plan for every class), slides, picture flashcards, role-play cards, listening scripts, games, and answer keys</li>
+        <li>Free access to the companion online course: <a href="index.html">Everyday English (A2)</a>, with 🔊 audio</li>
+        <li>A free <a href="../curriculum/learning-tools.html">learning-tools page</a> that shows how to translate lessons into any language</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cols" style="margin-top:22px">
+    <div class="panel">
+      <h3><span class="dot"></span>Assessment</h3>
+      <ul class="clean">
+        <li><b>Every class:</b> an “I can…” checklist and short speaking checks, with no grades</li>
+        <li><b>Class 13 · Progress Test 1</b> (Modules 1–4): listening, vocabulary, grammar, reading, short writing tasks, and a 6-minute pair speaking task</li>
+        <li><b>Class 26 · Final Test</b> (all 8 modules): the same skills plus an individual speaking interview with a clinic, restaurant, or station role-play</li>
+        <li>Rubrics follow the CEFR A2 descriptors. Results decide the <b>next class</b>, never who gets to celebrate</li>
+        <li>Tasks about your life can always use a <b>“new identity”</b> or an imagined story instead of real details</li>
+      </ul>
+    </div>
+    <div class="panel lab-accent">
+      <h3><span class="dot"></span>Homework &amp; the Online Course</h3>
+      <ul class="clean lab-accent">
+        <li>After each class, do the matching <b>online lesson</b> at home: about <b>20–30 minutes</b>, with 🔊 Listen buttons for model sentences and dialogues</li>
+        <li>Plus one <b>workbook page</b> to review the class</li>
+        <li>Missed a class? The online lesson covers the same language, so you can catch up</li>
+        <li>After the course: <a href="../curriculum-b1/index.html">Independent English (B1)</a> continues the same free ladder, from A1 all the way to C2</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="outcomes">
+    <h3>What You’ll Be Able to Do</h3>
+    <p class="lead">By the end of the course, learners reach <b>CEFR A2</b> and can use English for everyday life:</p>
+    <div class="out-grid">
+        <div>Tell a story about yesterday, a trip, or something that happened</div>
+        <div>Describe your childhood and how your life used to be different</div>
+        <div>Talk about your experiences and how long you have lived, worked, or studied somewhere</div>
+        <div>Compare places, prices, and things, and say how much and how often</div>
+        <div>Make plans, suggestions, predictions, and promises</div>
+        <div>Explain rules and give simple advice</div>
+        <div>Ask for and follow directions, and buy a travel ticket</div>
+        <div>Book a table, order a meal, and return something to a store</div>
+        <div>Phone a clinic, make an appointment, and explain a health problem</div>
+        <div>Join your ideas with <i>and, but, so, because</i>, and <i>although</i></div>
+    </div>
+  </div>
+
+  <p style="margin:26px 2px 0;color:var(--ink-2);font-size:.92rem">Want to preview a lesson or catch up on a missed class? The full companion course is free online: <a href="index.html">Everyday English (A2)</a>. Previous level: <a href="../curriculum/index.html">English Foundations (A1)</a>. Next level: <a href="../curriculum-b1/index.html">Independent English (B1)</a>.</p>
+
+  <div class="foot">
+    <div class="who"><b>Ray de la Paz</b><span class="bio">© 2026 Ray de la Paz · Everyday English (A2 Elementary)</span></div>
+    <div class="ver">v1.0 · 13 weeks · 26 classes · 39 instructional hours</div>
+  </div>
+
+</div>
+<script>
+  (function(){
+    var btn=document.getElementById('themeBtn'); if(!btn) return;
+    function cur(){var a=document.documentElement.getAttribute('data-theme'); if(a) return a;
+      return (window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light';}
+    btn.addEventListener('click',function(){
+      var next=cur()==='dark'?'light':'dark';
+      document.documentElement.setAttribute('data-theme',next);
+      try{localStorage.setItem('theme',next);}catch(e){}
+    });
+  })();
+</script>
+</body>
+</html>

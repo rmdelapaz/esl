@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slides — Module 6</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root{--bg:#0b1220;--ink:#edf2fb;--ink2:#a8b6cf;--accent:#7fb2ff;--accent2:#2563eb;--lab:#34d3bd;--warn:#fbbf24;--line:#233252;--code:#101a2e;color-scheme:dark}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;overflow:hidden}
+  .deck{height:100%;width:100%;position:relative}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:6vh 8vw;gap:20px}
+  .slide.on{display:flex}
+  h1,h2,h3{font-family:"Archivo",sans-serif;line-height:1.1;text-wrap:balance}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  .slide h1{font-size:clamp(2rem,6vw,4rem);font-weight:800;letter-spacing:-.02em}
+  .slide h2{font-size:clamp(1.5rem,4.2vw,2.8rem);font-weight:800;letter-spacing:-.01em}
+  .slide p.lead{font-size:clamp(1.05rem,2.4vw,1.5rem);color:var(--ink2);max-width:26ch}
+  ul{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:6px}
+  ul li{position:relative;padding-left:34px;font-size:clamp(1.05rem,2.3vw,1.6rem)}
+  ul li::before{content:"";position:absolute;left:0;top:.55em;width:12px;height:12px;border-radius:3px;background:var(--accent);transform:rotate(45deg)}
+  ul.lab li::before{background:var(--lab)}
+  code.k{font-family:"JetBrains Mono",monospace;color:#cfe0ff;font-size:.92em}
+  pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:22px 26px;font-family:"JetBrains Mono",monospace;font-size:clamp(.85rem,1.9vw,1.3rem);line-height:1.55;overflow:auto;max-width:100%}
+  pre .k{color:#7dd3fc} pre .s{color:#86efac} pre .c{color:#7183a3;font-style:italic}
+  .tag{display:inline-flex;align-items:center;gap:10px;font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);color:var(--ink2)}
+  .tag .pill{background:var(--accent2);color:#fff;font-weight:700;border-radius:999px;padding:3px 12px;letter-spacing:.06em}
+  .tag .pill.lab{background:var(--lab);color:#062b26} .tag .pill.warn{background:var(--warn);color:#3a2a05}
+  .section{background:linear-gradient(135deg,#132a52,#0b1220)}
+  .section .big{font-size:clamp(3rem,12vw,8rem);font-family:"Archivo";font-weight:800;color:var(--accent2);line-height:.9}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+  @media (max-width:760px){.two{grid-template-columns:1fr}}
+  .bar{position:fixed;left:0;top:0;height:4px;background:var(--accent2);width:0;transition:width .25s;z-index:5}
+  .count{position:fixed;right:16px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink2);z-index:5}
+  .nav{position:fixed;inset:auto 0 0 0;display:flex;justify-content:space-between;pointer-events:none;z-index:4}
+  .nav button{pointer-events:auto;background:transparent;border:none;color:transparent;width:22vw;height:100vh;cursor:pointer}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+  /* ESL extras (picture vocab, grammar tables, dialogue, clocks) */
+  .pics{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,1.6vw,18px)}
+  .pics.six{grid-template-columns:repeat(6,1fr)}
+  .pic{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center}
+  .pic img{width:100%;max-width:150px;aspect-ratio:1;object-fit:cover;border-radius:10px;background:#FFF3E0;display:block;margin:0 auto}
+  .pic .emo{font-size:clamp(2.6rem,7vw,5rem);line-height:1;aspect-ratio:1;max-width:150px;margin:0 auto;display:flex;align-items:center;justify-content:center}
+  .pic .w{font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(.9rem,2vw,1.35rem);margin-top:6px}
+  @media (max-width:760px){.pics,.pics.six{grid-template-columns:repeat(3,1fr)}}
+  table.g{border-collapse:collapse;font-size:clamp(.95rem,2.1vw,1.45rem);width:100%;max-width:1000px}
+  table.g th,table.g td{border:1px solid var(--line);padding:10px 16px;text-align:left}
+  table.g th{background:var(--code);color:var(--accent);font-family:"JetBrains Mono",monospace;font-size:.8em;letter-spacing:.04em}
+  table.g b{color:#ffd166}
+  .dlg{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:18px 24px;display:flex;flex-direction:column;gap:8px;font-size:clamp(1rem,2.2vw,1.45rem);max-width:1000px}
+  .dlg .sp{display:inline-block;min-width:3.6em;font-weight:700;color:var(--accent)}
+  .dlg .b .sp{color:#c4a1ff}
+  .ccq{font-size:clamp(1rem,2.2vw,1.45rem);border:1px dashed var(--line);border-radius:12px;padding:12px 18px;background:var(--code)}
+  .ccq i{color:var(--ink2)}
+  .clocks{display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,34px);align-items:flex-start}
+  .clocks figure{text-align:center}
+  .clocks svg{width:clamp(96px,14vw,170px);height:auto}
+  .clocks figcaption{font-size:clamp(.95rem,2vw,1.3rem);margin-top:6px}
+  .clocks figcaption small{display:block;color:var(--ink2);font-size:.8em}
+  .snd{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .snd div{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:clamp(1rem,2.2vw,1.5rem)}
+  .snd div b{display:block;font-family:"Archivo";font-size:1.5em;color:var(--accent)}
+  .snd div small{color:var(--ink2)}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="deck" id="deck">
+
+  <!-- 1 -->
+  <section class="slide on section">
+    <div class="eyebrow">Everyday English (A2) · Instructor Kit</div>
+    <h1>Module 6<br>Joining Ideas Together</h1>
+    <p class="lead">If… · who, which, where · and, but, so, because.</p>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide">
+    <div class="eyebrow">Classes C17–C19 · today's map</div>
+    <h2>Join a result → a detail → a story</h2>
+    <ul>
+      <li><b>6.1</b> If…: <i>If it rains, I'll stay home.</i></li>
+      <li><b>6.2</b> Which one?: <i>the man who lives next door · the café where we met</i></li>
+      <li><b>6.3</b> Linking words: <i>I was tired, so I went to bed.</i> → your own paragraph ✍️</li>
+    </ul>
+    <div class="tag"><span class="pill">NOTE</span> Your real life, a new identity card, or an imagined life: all are OK.</div>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide">
+    <div class="eyebrow">6.1 · New words · it depends!</div>
+    <h2>What will you do this Saturday?</h2>
+    <div class="pics six">
+      <div class="pic"><img src="../assets/vocab/sunny.jpg" alt=""><div class="w">it's sunny</div></div>
+      <div class="pic"><div class="emo">🌧️</div><div class="w">it rains</div></div>
+      <div class="pic"><img src="../assets/vocab/umbrella.jpg" alt=""><div class="w">take an umbrella</div></div>
+      <div class="pic"><div class="emo">💧</div><div class="w">get wet</div></div>
+      <div class="pic"><div class="emo">🏠</div><div class="w">stay home</div></div>
+      <div class="pic"><img src="../assets/vocab/bus.jpg" alt=""><div class="w">miss the bus</div></div>
+      <div class="pic"><div class="emo">⏰</div><div class="w">be late</div></div>
+      <div class="pic"><img src="../assets/vocab/notebook.jpg" alt=""><div class="w">pass the test</div></div>
+      <div class="pic"><img src="../assets/vocab/mobile-phone.jpg" alt=""><div class="w">call / text you</div></div>
+      <div class="pic"><img src="../assets/vocab/hike.jpg" alt=""><div class="w">go hiking</div></div>
+      <div class="pic"><img src="../assets/vocab/park.jpg" alt=""><div class="w">go to the park</div></div>
+      <div class="pic"><img src="../assets/vocab/tv.jpg" alt=""><div class="w">watch a movie</div></div>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide">
+    <div class="eyebrow">6.1 · First conditional · the form</div>
+    <h2>If + present → will + verb</h2>
+    <table class="g">
+      <tr><th>If-clause (condition)</th><th>Result</th></tr>
+      <tr><td>If it <b>rains</b>,</td><td>we<b>'ll stay</b> home.</td></tr>
+      <tr><td>If you <b>study</b>,</td><td>you<b>'ll pass</b>.</td></tr>
+      <tr><td>If we <b>hurry</b>,</td><td>we <b>won't be</b> late.</td></tr>
+      <tr><td>If I <b>have</b> time,</td><td>I <b>might call</b> you.</td></tr>
+    </table>
+    <div class="tag"><span class="pill warn">WATCH</span> No <b style="color:var(--warn)">will</b> after <b style="color:var(--warn)">if</b>: If it will rain ❌ · I'll to help ❌</div>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide">
+    <div class="eyebrow">6.1 · Order · will / might · if / when</div>
+    <h2>Two orders. How sure are you?</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>If first</th><td>If you study<b>,</b> you'll pass.</td></tr>
+        <tr><th>If second</th><td>You'll pass if you study.</td></tr>
+        <tr><th>will ✅</th><td>If you ask him, he'll help.</td></tr>
+        <tr><th>might 🤷</th><td>If you ask him, he might help.</td></tr>
+      </table>
+      <table class="g">
+        <tr><th>when</th><td><b>When</b> I get home, I'll call you. <i style="color:var(--ink2)">(sure)</i></td></tr>
+        <tr><th>if</th><td><b>If</b> I get home early, I'll call you. <i style="color:var(--ink2)">(maybe)</i></td></tr>
+      </table>
+    </div>
+    <div class="tag"><span class="pill">SAY IT</span> If it RAINS ↗ | we'll stay HOME ↘ · I'll /aɪl/ · we'll /wil/ · won't ≠ want</div>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide">
+    <div class="eyebrow">6.1 · Check the meaning</div>
+    <h2>"If it rains, we'll stay home."</h2>
+    <div class="ccq">Is it raining now? <i>(No / we don't know.)</i> &nbsp;·&nbsp; Past or future? <i>(Future.)</i> &nbsp;·&nbsp; Is rain possible? <i>(Yes.)</i></div>
+    <div class="ccq">"If it rains, we <b>might</b> stay home." Sure? <i>(No. Maybe.)</i></div>
+    <div class="ccq">"<b>When</b> I get home, I'll call you." Will I get home? <i>(Yes, of course.)</i></div>
+    <div class="ccq">"If I <b>will</b> have time…" OK? <i>(No! If I <b>have</b> time…)</i></div>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide">
+    <div class="eyebrow">6.1 · Model dialogue</div>
+    <h2>Hiking on Saturday?</h2>
+    <div class="dlg">
+      <p><span class="sp">Maya:</span> Do you want to go hiking on Saturday?</p>
+      <p class="b"><span class="sp">Leo:</span> Maybe. If the weather is good, I'll come with you.</p>
+      <p><span class="sp">Maya:</span> And if it rains?</p>
+      <p class="b"><span class="sp">Leo:</span> If it rains, we'll stay home and watch a movie.</p>
+      <p><span class="sp">Maya:</span> Good plan. If we leave early, we won't be tired at the top.</p>
+      <p class="b"><span class="sp">Leo:</span> If you bring the map, I'll bring the snacks. Deal?</p>
+    </div>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide">
+    <div class="eyebrow">6.1 · Group game · 13 min</div>
+    <h2>The If-chain 🔗</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>If it rains, I'll <b>stay home</b>.</li>
+        <li>If I <b>stay home</b>, I'll <b>watch a movie</b>.</li>
+        <li>If I <b>watch a movie</b>, I'll… ?</li>
+        <li>Every 3rd turn: take a <b>twist card</b></li>
+        <li>"If I will…"? Say <b>Beep!</b> 🔔</li>
+      </ul>
+      <div class="ccq">Where does your if-clause come from? <i>(The last result.)</i><br>"If I will stay home" OK? <i>(No! Beep!)</i><br>When do you take a twist card? <i>(Every 3rd turn.)</i><br>Do you write? <i>(No. Only speak.)</i></div>
+    </div>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide">
+    <div class="eyebrow">6.2 · New words · people, places, things</div>
+    <h2>Which one? 👤 📍 🧰</h2>
+    <div class="pics six">
+      <div class="pic"><img src="../assets/vocab/nurse.jpg" alt=""><div class="w">nurse</div></div>
+      <div class="pic"><img src="../assets/vocab/mechanic.jpg" alt=""><div class="w">mechanic</div></div>
+      <div class="pic"><img src="../assets/vocab/chef.jpg" alt=""><div class="w">chef</div></div>
+      <div class="pic"><img src="../assets/vocab/driver.jpg" alt=""><div class="w">driver</div></div>
+      <div class="pic"><img src="../assets/vocab/airport.jpg" alt=""><div class="w">airport</div></div>
+      <div class="pic"><img src="../assets/vocab/post-office.jpg" alt=""><div class="w">post office</div></div>
+      <div class="pic"><img src="../assets/vocab/bank.jpg" alt=""><div class="w">bank</div></div>
+      <div class="pic"><img src="../assets/vocab/hotel.jpg" alt=""><div class="w">hotel</div></div>
+      <div class="pic"><img src="../assets/vocab/fridge.jpg" alt=""><div class="w">fridge</div></div>
+      <div class="pic"><img src="../assets/vocab/key.jpg" alt=""><div class="w">key</div></div>
+      <div class="pic"><img src="../assets/vocab/passport.jpg" alt=""><div class="w">passport</div></div>
+      <div class="pic"><img src="../assets/vocab/remote.jpg" alt=""><div class="w">remote</div></div>
+    </div>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide">
+    <div class="eyebrow">6.2 · Relative clauses · who, which, that, where</div>
+    <h2>Add the right detail</h2>
+    <table class="g">
+      <tr><th>👤 who</th><td>people</td><td>the man <b>who</b> lives next door</td></tr>
+      <tr><th>🧰 which</th><td>things</td><td>the phone <b>which</b> I bought</td></tr>
+      <tr><th>👤🧰 that</th><td>people or things</td><td>the song <b>that</b> I like</td></tr>
+      <tr><th>📍 where</th><td>places</td><td>the café <b>where</b> we met</td></tr>
+    </table>
+    <div class="tag"><span class="pill">JOIN</span> I know a woman. <s>She</s> speaks five languages. → I know a woman <b style="color:#ffd166">who</b> speaks five languages.</div>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide">
+    <div class="eyebrow">6.2 · Check the meaning</div>
+    <h2>"The man who lives next door is a doctor."</h2>
+    <div class="ccq">Which man? <i>(The man next door.)</i> &nbsp;·&nbsp; Who or which for a person? <i>(Who.)</i></div>
+    <div class="ccq">"That's the café. We met there." One sentence? <i>(That's the café <b>where</b> we met.)</i></div>
+    <div class="ccq">"the woman who <b>she</b> works at the bank" OK? <i>(No. who = she.)</i></div>
+    <div class="ccq">"the book I bought" OK? <i>(Yes: a new subject, I.)</i> · "the man lives here" OK? <i>(No: keep who.)</i></div>
+    <div class="tag"><span class="pill warn">WATCH</span> the man which ❌ · the book what ❌ · the town that I grew up ❌ → where</div>
+  </section>
+
+  <!-- 12 -->
+  <section class="slide">
+    <div class="eyebrow">6.2 · Model dialogue + pair task</div>
+    <h2>Who's that? Our apartment building</h2>
+    <div class="two">
+      <div class="dlg">
+        <p><span class="sp">Kofi:</span> Who's the woman who waved at you?</p>
+        <p class="b"><span class="sp">Lina:</span> That's Nadia, the neighbor who helped me move.</p>
+        <p><span class="sp">Kofi:</span> Is this the café that you told me about?</p>
+        <p class="b"><span class="sp">Lina:</span> Yes! This is the place where I study every morning.</p>
+      </div>
+      <div class="ccq"><b>Information gap (A / B)</b><br>Show your card? <i>(No.)</i><br>Question? <i>("Who is…? What is…?")</i><br>Answer? <i>(Full: "She's the woman who…")</i></div>
+    </div>
+  </section>
+
+  <!-- 13 -->
+  <section class="slide">
+    <div class="eyebrow">6.2 · Group game · 15 min</div>
+    <h2>Define it! 🃏</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>👤 It's a person <b>who</b>…</li>
+        <li>📍 It's a place <b>where</b>…</li>
+        <li>🧰 It's a thing <b>which / that</b>…</li>
+        <li>Don't say the word. No pointing. No mime.</li>
+        <li>Guess it? Say the full sentence, keep the card.</li>
+      </ul>
+      <div class="ccq">Can you say the word? <i>(No!)</i><br>"It's a place…" + who or where? <i>(Where.)</i><br>Point or mime? <i>(No.)</i><br>Who keeps the card? <i>(The person who guesses.)</i></div>
+    </div>
+  </section>
+
+  <!-- 14 -->
+  <section class="slide">
+    <div class="eyebrow">6.3 · Linking words · five jobs</div>
+    <h2>Sew your ideas together 🧵</h2>
+    <table class="g">
+      <tr><th>➕ and</th><td>add</td><td>I made tea <b>and</b> sat down.</td></tr>
+      <tr><th>↔️ but</th><td>contrast</td><td>I like tea<b>, but</b> I prefer coffee.</td></tr>
+      <tr><th>➡️ so</th><td>result</td><td>I was tired<b>, so</b> I went to bed.</td></tr>
+      <tr><th>❓ because</th><td>reason (Why?)</td><td>I went to bed <b>because</b> I was tired.</td></tr>
+      <tr><th>😮 although</th><td>surprise</td><td><b>Although</b> it rained<b>,</b> we went out.</td></tr>
+    </table>
+  </section>
+
+  <!-- 15 -->
+  <section class="slide">
+    <div class="eyebrow">6.3 · because ↔ so · although ↔ but</div>
+    <h2>Same story, two ways</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>because + reason</th><td>I went to bed <b>because</b> I was tired.</td></tr>
+        <tr><th>so + result</th><td>I was tired<b>, so</b> I went to bed.</td></tr>
+      </table>
+      <table class="g">
+        <tr><th>but</th><td>It rained<b>, but</b> we went out.</td></tr>
+        <tr><th>although</th><td><b>Although</b> it rained<b>,</b> we went out.</td></tr>
+      </table>
+    </div>
+    <div class="ccq">"Why did you go to bed?" — "<b>So</b> I was tired"? <i>(No! "Because I was tired.")</i></div>
+    <div class="tag"><span class="pill warn">WATCH</span> Although…, <s>but</s> ❌ · Because…, <s>so</s> ❌ · one linker for one link</div>
+  </section>
+
+  <!-- 16 -->
+  <section class="slide">
+    <div class="eyebrow">6.3 · Sentence builder · groups of 3 · 12 min</div>
+    <h2>Choppy → smooth</h2>
+    <div class="two">
+      <div class="ccq"><b>Choppy:</b> I was hungry. I made a sandwich. It was good.<br><br><b>Smooth:</b> I was hungry<b>, so</b> I made a sandwich<b>, and</b> it was good.</div>
+      <ul class="lab">
+        <li>1 · Match the sentence halves</li>
+        <li>2 · Open an envelope: <b>my job · my town · my weekend</b></li>
+        <li>3 · Join the idea cards with the linker cards</li>
+        <li>Use <b>every</b> linker once · one person reads it</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 17 -->
+  <section class="slide">
+    <div class="eyebrow">6.3 · Writing · 12 min</div>
+    <h2>My paragraph ✍️</h2>
+    <div class="dlg">
+      <p>I live in Riverside. It's a small town near a river. It's quiet<b style="color:#ffd166">, but</b> it's friendly. There's a big market on Saturday<b style="color:#ffd166">, so</b> I go there every weekend <b style="color:#ffd166">and</b> buy fresh fruit. I like my town <b style="color:#ffd166">because</b> the people are kind. <b style="color:#ffd166">Although</b> the winters are cold, the summers are beautiful.</p>
+    </div>
+    <div class="ccq">How many sentences? <i>(5–7.)</i> · Your real job or town only? <i>(No: real, a card, or imagined.)</i> · "Although… but" OK? <i>(No!)</i> · First sentence? <i>(The topic.)</i></div>
+  </section>
+
+  <!-- 18 -->
+  <section class="slide section">
+    <div class="eyebrow">You can now join your ideas</div>
+    <h2>Module 6 done 🎉</h2>
+    <ul class="lab">
+      <li>If it rains, I'll stay home. When I get home, I'll call you.</li>
+      <li>She's the neighbor who helped me move. That's the café where we met.</li>
+      <li>I was tired, so I went to bed. Although it rained, we went out.</li>
+    </ul>
+    <p class="lead" style="margin-top:10px;max-width:40ch">Homework: online lessons 6.1–6.3 with 🔊 + your paragraph. Next: Module 7, travel &amp; directions.</p>
+  </section>
+
+</div>
+
+<div class="count" id="count">1 / 18</div>
+<div class="nav"><button id="prev" aria-label="Previous slide"></button><button id="next" aria-label="Next slide"></button></div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const bar=document.getElementById('bar'), count=document.getElementById('count');
+  let i=0;
+  function show(n){ i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+    bar.style.width=((i+1)/slides.length*100)+'%'; count.textContent=(i+1)+' / '+slides.length; }
+  document.getElementById('next').onclick=()=>show(i+1);
+  document.getElementById('prev').onclick=()=>show(i-1);
+  addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}
+    else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+  });
+  show(0);
+</script>
+</body>
+</html>

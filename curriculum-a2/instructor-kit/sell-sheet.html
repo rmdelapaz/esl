@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teach Everyday English</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="kit.css">
+<style>
+  :root{ --shadow:0 1px 2px rgba(20,30,45,.05),0 8px 26px rgba(20,30,45,.07); }
+  .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin:18px 0 6px; }
+  .statcard { background:var(--surface-2); border:1px solid var(--line); border-radius:10px; padding:14px 12px; text-align:center; }
+  .statcard .n { font-family:"Archivo",sans-serif; font-weight:800; font-size:1.7rem; color:var(--accent); line-height:1; }
+  .statcard .l { font-size:.72rem; color:var(--ink-3); margin-top:5px; text-transform:uppercase; letter-spacing:.04em; }
+  .strip { display:flex; gap:8px; margin:14px 0 4px; overflow:hidden; }
+  .strip img { width:calc((100% - 56px)/8); aspect-ratio:1; object-fit:cover; border-radius:10px; background:#FFF3E0; border:1px solid var(--line); }
+  .tiers { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:14px 0; }
+  .tier { border:1px solid var(--line); border-radius:var(--radius); padding:18px 18px 20px; background:var(--surface); display:flex; flex-direction:column; }
+  .tier.feature { border:2px solid var(--accent); box-shadow:var(--shadow); }
+  .tier .name { font-family:"JetBrains Mono",monospace; font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3); }
+  .tier .price { font-family:"Archivo",sans-serif; font-weight:800; font-size:1.9rem; margin:6px 0 2px; letter-spacing:-.02em; }
+  .tier .price span { font-size:.8rem; font-weight:500; color:var(--ink-3); }
+  .tier ul { margin:10px 0 0; }
+  .tier .who { font-size:.82rem; color:var(--ink-2); margin-bottom:2px; }
+  .badge { display:inline-block; align-self:flex-start; font-family:"JetBrains Mono",monospace; font-size:.62rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:#fff; background:var(--accent); border-radius:999px; padding:2px 9px; margin-bottom:8px; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  @media (max-width:680px){ .stats{grid-template-columns:1fr 1fr} .tiers{grid-template-columns:1fr} .strip img{width:calc((100% - 24px)/4)} .strip img:nth-child(n+5){display:none} }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="lbl">Sell sheet —</span>
+  <button type="button" onclick="window.print()">🖨 Print / Save as PDF</button>
+  <span class="hint">for adult-ed programs, libraries &amp; community groups</span>
+</div>
+
+<div class="sheet">
+
+  <header class="mast">
+    <div class="kit-eyebrow">Course-in-a-Box · Instructor License · CEFR A2</div>
+    <h1>Teach Elementary English to Adults, Ready to Run from Day One</h1>
+    <p class="sub"><b>Everyday English (A2 Elementary)</b> is a complete 13-week classroom course for adults who have finished a beginner course or placed at A2: workers, parents, and newcomers who can manage the basics and now need to tell their story, make plans, and handle real situations in English. Every class is planned to the minute. It works for a trained ESL teacher and for a first-time volunteer.</p>
+    <div class="stats">
+      <div class="statcard"><div class="n">8</div><div class="l">Modules</div></div>
+      <div class="statcard"><div class="n">24</div><div class="l">Lessons</div></div>
+      <div class="statcard"><div class="n">26</div><div class="l">Classes × 90 min</div></div>
+      <div class="statcard"><div class="n">13</div><div class="l">Weeks · 2 classes / week</div></div>
+      <div class="statcard"><div class="n">154</div><div class="l">Picture flashcard illustrations</div></div>
+      <div class="statcard"><div class="n">2</div><div class="l">Tests: progress + final</div></div>
+      <div class="statcard"><div class="n">A2</div><div class="l">CEFR can-do aligned</div></div>
+      <div class="statcard"><div class="n">Free</div><div class="l">Online companion course with audio</div></div>
+    </div>
+    <div class="strip" aria-hidden="true">
+      <img src="assets/vocab/passport.jpg" alt=""><img src="assets/vocab/station.jpg" alt=""><img src="assets/vocab/restaurant.jpg" alt=""><img src="assets/vocab/doctor.jpg" alt="">
+      <img src="assets/vocab/luggage.jpg" alt=""><img src="assets/vocab/menu.jpg" alt=""><img src="assets/vocab/jacket.jpg" alt=""><img src="assets/vocab/airport.jpg" alt="">
+    </div>
+  </header>
+
+  <div class="sec"><h2>What You Get</h2><span class="rule"></span></div>
+  <div class="grid2">
+    <div class="blk"><div class="h">For every module (×8)</div>
+      <ul class="tick">
+        <li><b>Teacher's Guide</b>: one 90-minute plan per class with a board plan, a timed stage table, concept-check questions, drill scripts, instruction checks, differentiation for literacy and stretch, and L1 watch-outs</li>
+        <li><b>Student Workbook</b>: clear A2 English with icon instructions, word lists with illustrations, grammar boxes, practice, dialogues, speaking tasks, "I can…" checklists, and a journal</li>
+        <li><b>Answer Key</b>: every exercise answered, with acceptable alternatives and the errors to expect</li>
+        <li><b>Slide deck</b>: picture-vocabulary, grammar, dialogue, and pair-task slides. A single file with nothing to install</li>
+        <li><b>Classroom materials</b>: picture flashcards, A/B role-play and information-gap cards, listening and dictation scripts, and a game (bingo, find-someone-who, board game)</li>
+      </ul>
+    </div>
+    <div class="blk"><div class="h">Across the kit</div>
+      <ul class="tick">
+        <li>A <b>13-week, 26-class syllabus</b> in web and print versions</li>
+        <li><b>Progress Test 1</b> (Class 13) and a <b>Final Test</b> (Class 26): listening, picture vocabulary, grammar, reading, writing, and speaking</li>
+        <li>An <b>assessment key</b> with CEFR-aligned speaking and writing rubrics and clear <b>next-level guidance</b> (ready for B1, B1 with a review plan, or repeat A2 with support)</li>
+        <li>A shared <b>placement test</b> (Pre-A1 → C2) and <b>can-do checklists</b> for intake and progress, from the free ESL instructor toolkit</li>
+        <li>A <b>learner welcome handout</b> in simple English, with QR codes to the free online lessons</li>
+        <li>Combined, print-ready <b>Teacher's Guide, Student Workbook, and Answer Key</b> books</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec"><h2>Why Programs Choose It</h2><span class="rule"></span></div>
+  <ul class="tick">
+    <li><b>Zero prep to teach.</b> Every class adds up to 90 minutes: warmer, presentation, drill, controlled practice, speaking, and homework set-up. A volunteer can open the guide and teach.</li>
+    <li><b>Built for real adult classes.</b> Mixed first languages, mixed literacy, and adults with busy, sometimes difficult lives. Each lesson gives literacy support and stretch options. Tasks about the past, family, and home always offer a <b>"new identity"</b> or an imagined story, so nobody has to share what they'd rather keep private.</li>
+    <li><b>Proven communicative method.</b> Meaning, form, and pronunciation with concept checks, choral and individual drilling, pair work with instruction checks, and kind, delayed error correction. Good ESL practice runs through the whole course.</li>
+    <li><b>Storytelling at its heart.</b> The past simple and past continuous, <i>used to</i>, the present perfect, and three ways to talk about the future, so learners can tell their own story and plan the next chapter. Two review projects pull it all together: a travel story and "My Life Story &amp; Future Plans".</li>
+    <li><b>English for getting things done.</b> Directions and tickets, booking a table and ordering, returning an item, and phoning a clinic about a health problem: the situations adults face every week.</li>
+    <li><b>A free companion course.</b> Every lesson mirrors the free online course <b>Everyday English (A2)</b> (<a href="https://rays-esl.netlify.app/curriculum-a2/">rays-esl.netlify.app/curriculum-a2</a>) with 🔊 audio on every word and dialogue. It serves as homework and review, and lets learners catch up after a missed class. A free tools page shows learners how to translate lessons into their own language.</li>
+    <li><b>A clear path forward.</b> The course is the second step of a complete free CEFR ladder (A1 → C2). It follows <b>English Foundations (A1)</b>, and learners who finish move into <b>Independent English (B1)</b>.</li>
+  </ul>
+
+  <div class="sec"><h2>Who It's For</h2><span class="rule"></span></div>
+  <div class="meta-row">
+    <span class="chip">Adult education &amp; WIOA / literacy programs</span>
+    <span class="chip">Public libraries</span>
+    <span class="chip">Community organizations</span>
+    <span class="chip">Churches &amp; faith groups</span>
+    <span class="chip">Refugee-resettlement volunteers</span>
+    <span class="chip">Workplace ESL</span>
+    <span class="chip">Community colleges</span>
+  </div>
+
+  <div class="sec"><h2>License &amp; Pricing</h2><span class="rule"></span></div>
+  <div class="tiers">
+    <div class="tier">
+      <div class="name">Solo</div>
+      <div class="price">[$ ___ ]<span> one-time</span></div>
+      <div class="who">One teacher or volunteer · unlimited learners</div>
+      <ul class="tick">
+        <li>Full kit, all 8 modules</li>
+        <li>Print workbooks for your classes</li>
+        <li>Perpetual license</li>
+      </ul>
+    </div>
+    <div class="tier feature">
+      <div class="badge">Most popular</div>
+      <div class="name">Organization</div>
+      <div class="price">[$ ___ ]<span> one-time</span></div>
+      <div class="who">A library system, adult-ed program, or community organization</div>
+      <ul class="tick">
+        <li>Everything in Solo</li>
+        <li>Unlimited teachers and volunteers at one organization</li>
+        <li>Best value per class</li>
+      </ul>
+    </div>
+    <div class="tier">
+      <div class="name">White-label</div>
+      <div class="price">[$ ___ ]<span> one-time</span></div>
+      <div class="who">Rebrand &amp; adapt freely</div>
+      <ul class="tick">
+        <li>Everything in Organization</li>
+        <li>Add your own branding</li>
+        <li>Edit &amp; adapt the materials</li>
+      </ul>
+    </div>
+  </div>
+  <p style="font-size:.85rem;color:var(--ink-3)">Optional content-updates add-on: <b>[$ ___ / yr]</b>. A1 + A2 bundle: <b>[$ ___ ]</b>. Reduced pricing for non-profits, libraries, faith-based, and volunteer-led programs. Contact us for full license terms.</p>
+
+  <div class="note lab">
+    <div class="t">Ready to run it?</div>
+    <p>Get in touch for a free sample module (Teacher's Guide, workbook pages, and slides) and licensing details.<br><b>Ray de la Paz</b> · via the contact form on the site.</p>
+  </div>
+
+  <p style="font-size:.78rem;color:var(--ink-3)">The Common European Framework of Reference for Languages (CEFR) is published by the Council of Europe. This course is designed around the CEFR A2 can-do descriptors. It is an independent educational product and is not certified or endorsed by the Council of Europe or any exam board.</p>
+
+  <div class="foot">
+    <div class="who"><b>Ray de la Paz</b><span class="bio">© 2026 Ray de la Paz · Everyday English (A2 Elementary)</span></div>
+    <div class="ver">Instructor Sell Sheet · v1.0</div>
+  </div>
+
+</div>
+</body>
+</html>

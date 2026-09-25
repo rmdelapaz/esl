@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Classroom Materials — Module 1</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../../kit.css">
+<style>
+  /* Module 1 print extras (this sheet only) */
+  .flashcard .emo{font-size:4.2rem;line-height:1}
+  .card-cut table.grammar{font-size:.82rem;margin:6px 0}
+  .card-cut table.grammar td,.card-cut table.grammar th{padding:3px 6px}
+  .card-cut p{font-size:.88rem;margin:.25rem 0}
+  .card-cut ul{margin:.2rem 0;padding-left:1.1rem;font-size:.88rem}
+  .card-cut .fu{font-size:.78rem;color:var(--ink-3);margin-top:6px}
+  .qcards{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:10px 0}
+  .qcards .qc{border:1.5px dashed var(--line-strong);padding:12px 12px 10px;min-height:1.6in;break-inside:avoid;display:flex;flex-direction:column;gap:6px}
+  .qcards .qc .ct{font-family:"JetBrains Mono",monospace;font-size:.68rem;font-weight:600;letter-spacing:.12em;color:#fff;border-radius:999px;padding:2px 10px;align-self:flex-start;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .qcards .be .ct{background:#1f5fc9} .qcards .do .ct{background:#0f766e} .qcards .can .ct{background:#b45309}
+  .qcards .qc .qq{font-family:"Archivo",sans-serif;font-weight:700;font-size:1.05rem;line-height:1.25}
+  .qcards .qc .fu{font-size:.8rem;color:var(--ink-3);margin-top:auto}
+  table.diag{width:100%;border-collapse:collapse;margin:10px 0;font-size:.9rem}
+  table.diag th,table.diag td{border:1px solid var(--line-strong);padding:8px 8px;text-align:left;vertical-align:top}
+  table.diag th{background:var(--surface-2);font-size:.82rem}
+  table.diag td{height:2.1em}
+  .sort{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:10px 0}
+  .sort span{border:1.5px dashed var(--line-strong);padding:16px 6px;text-align:center;font-family:"Archivo",sans-serif;font-weight:700;font-size:1.2rem;break-inside:avoid}
+  .sort span.hd{background:var(--accent-soft);font-size:1rem;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .story{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:6px 0}
+  .story div{text-align:center;font-size:.8rem;line-height:1.2}
+  .story img{width:.8in;height:.8in;object-fit:cover;border-radius:6px;background:#FFF3E0;display:block;margin:0 auto 3px}
+  .story .emo{font-size:2.4rem;height:.8in;display:flex;align-items:center;justify-content:center}
+  .pgrid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin:10px 0}
+  .pgrid div{border:1.5px solid var(--line-strong);border-radius:8px;padding:6px;text-align:center;font-size:.85rem;position:relative}
+  .pgrid img{width:100%;max-width:.95in;aspect-ratio:1;object-fit:cover;border-radius:6px;background:#FFF3E0;display:block;margin:0 auto 4px}
+  .pgrid .emo{font-size:2.6rem;aspect-ratio:1;max-width:.95in;margin:0 auto 4px;display:flex;align-items:center;justify-content:center}
+  .pgrid .nb{display:block;width:26px;height:26px;border:1.5px solid var(--line-strong);border-radius:5px;margin:4px auto 0}
+  .mem{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:10px 0}
+  .mem div{border:1.5px dashed var(--line-strong);min-height:1.35in;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:8px;break-inside:avoid;text-align:center}
+  .mem div b{font-family:"Archivo",sans-serif;font-size:1.45rem}
+  .mem div img{width:.7in;height:.7in;object-fit:cover;border-radius:6px;background:#FFF3E0}
+  .mem div .emo{font-size:2.2rem;line-height:1}
+  .mem div small{font-family:"JetBrains Mono",monospace;font-size:.62rem;color:var(--ink-3);letter-spacing:.1em}
+  .mem div.p{background:var(--accent-soft);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .mem div.bonus{background:var(--warn-soft);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  table.fsw{width:100%;border-collapse:collapse;margin:10px 0;font-size:.95rem}
+  table.fsw th,table.fsw td{border:1px solid var(--line-strong);padding:9px 10px;text-align:left}
+  table.fsw th{background:var(--surface-2)}
+  table.fsw td.nm{width:24%} table.fsw td.ex{width:30%}
+  table.fsw.tall td{height:2.6em}
+  .pb{break-before:page}
+  @media (max-width:680px){.flashcards{grid-template-columns:1fr 1fr}.sort,.mem,.qcards{grid-template-columns:1fr 1fr}.pgrid{grid-template-columns:repeat(3,1fr)}.cards{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="lbl">Classroom materials —</span>
+  <button type="button" onclick="window.print()">🖨 Print / Save as PDF</button>
+  <span class="hint">print on card stock · cut on the dashed lines</span>
+</div>
+
+<div class="sheet">
+
+  <header class="mast">
+    <div class="kit-eyebrow">Everyday English · Module 1 Materials</div>
+    <h1>Talking About the Past — Classroom Materials</h1>
+    <p class="sub">Everything to print for Classes C1–C3: picture flashcards, the welcome question cards and the A1 diagnostic grid, new identity cards, the "Where were they?" information gap, the -ed sound sort, the picture-story cards, the irregular-verb memory game, the weekend mingle sheet, and the teacher's listening scripts.</p>
+    <div class="meta-row">
+      <span class="chip">Lessons <b>1.1–1.3</b></span>
+      <span class="chip">Classes <b>C1–C3</b></span>
+      <span class="chip"><b>10</b> print sets</span>
+      <span class="chip">CEFR <b>A2</b></span>
+    </div>
+  </header>
+
+  <div class="sec"><h2>What to Print</h2><span class="rule"></span></div>
+  <table class="timing">
+    <thead><tr><th>Set</th><th>What</th><th>How many</th><th>Used in</th></tr></thead>
+    <tbody>
+      <tr><td class="t">A</td><td>Picture flashcards (feelings &amp; places, regular verbs, irregular verbs)</td><td>1 set for the board</td><td>C1, C2, C3</td></tr>
+      <tr><td class="t">B</td><td>Welcome question cards (12: BE · DO · CAN) + A1 diagnostic grid</td><td>Cards: 1 set per 12 learners · grid: teacher only</td><td>C1</td></tr>
+      <tr><td class="t">C</td><td>New identity cards (3 A/B pairs: yesterday + last weekend)</td><td>1–2 sets, on a side table</td><td>C1, C2, C3</td></tr>
+      <tr><td class="t">D</td><td>Listening &amp; dictation scripts</td><td>Teacher only</td><td>C1, C2, C3</td></tr>
+      <tr><td class="t">E</td><td>"Where were they?" information gap A/B</td><td>1 page per pair</td><td>C1</td></tr>
+      <tr><td class="t">F</td><td>-ed sound sort cards (3 headers + 24 verbs)</td><td>1 set per group of 3–4</td><td>C2</td></tr>
+      <tr><td class="t">G</td><td>Picture-story cards A/B + listener grid</td><td>1 page per pair</td><td>C2</td></tr>
+      <tr><td class="t">H</td><td>Irregular-verb memory game (16 pairs + 4 bonus)</td><td>1 set per group of 3–4 (card stock)</td><td>C3</td></tr>
+      <tr><td class="t">I</td><td>"What did you do last weekend?" mingle sheet</td><td>1 per learner</td><td>C3</td></tr>
+      <tr><td class="t">—</td><td>Name tents (fold an A4 / letter sheet in three)</td><td>1 per learner</td><td>C1 (keep all term)</td></tr>
+    </tbody>
+  </table>
+
+  <!-- ===================== A. FLASHCARDS ===================== -->
+  <div class="sec pb"><h2>A · Picture Flashcards — How Was It? (1.1)</h2><span class="rule"></span></div>
+  <div class="flashcards">
+    <div class="flashcard"><img src="../../assets/vocab/happy.jpg" alt=""><div class="w">happy</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/sad.jpg" alt=""><div class="w">sad</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/angry.jpg" alt=""><div class="w">angry</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/excited.jpg" alt=""><div class="w">excited</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/nervous.jpg" alt=""><div class="w">nervous</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/worried.jpg" alt=""><div class="w">worried</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/sunny.jpg" alt=""><div class="w">sunny</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/cold.jpg" alt=""><div class="w">cold</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/hot.jpg" alt=""><div class="w">hot</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/park.jpg" alt=""><div class="w">at the park</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/market.jpg" alt=""><div class="w">at the market</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/restaurant.jpg" alt=""><div class="w">at a restaurant</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/airport.jpg" alt=""><div class="w">at the airport</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/hospital.jpg" alt=""><div class="w">at the hospital</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/supermarket.jpg" alt=""><div class="w">at the supermarket</div></div>
+    <div class="flashcard word-only"><div class="emo">😴</div><div class="w">tired</div></div>
+    <div class="flashcard word-only"><div class="emo">🏃</div><div class="w">busy</div></div>
+    <div class="flashcard word-only"><div class="emo">👥</div><div class="w">crowded</div></div>
+    <div class="flashcard word-only"><div class="emo">🏠</div><div class="w">at home</div></div>
+    <div class="flashcard word-only"><div class="w">yesterday</div></div>
+    <div class="flashcard word-only"><div class="w">last week</div></div>
+    <div class="flashcard word-only"><div class="w">two days ago</div></div>
+    <div class="flashcard word-only"><div class="w">was</div></div>
+    <div class="flashcard word-only"><div class="w">were</div></div>
+  </div>
+
+  <div class="sec pb"><h2>A · Picture Flashcards — Regular Verbs (1.2)</h2><span class="rule"></span></div>
+  <p style="font-size:.9rem;color:var(--ink-2)">The base verb is on the card; learners say the past. Write /t/, /d/ or /ɪd/ on the back if you like.</p>
+  <div class="flashcards">
+    <div class="flashcard"><img src="../../assets/vocab/football.jpg" alt=""><div class="w">play football</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/tv.jpg" alt=""><div class="w">watch TV</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/cook.jpg" alt=""><div class="w">cook dinner</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/cleaner.jpg" alt=""><div class="w">clean</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/park.jpg" alt=""><div class="w">walk in the park</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/notebook.jpg" alt=""><div class="w">study</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/mobile-phone.jpg" alt=""><div class="w">call</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/airport.jpg" alt=""><div class="w">arrive</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/grandmother.jpg" alt=""><div class="w">visit my grandmother</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/dance.jpg" alt=""><div class="w">dance</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/hike.jpg" alt=""><div class="w">hike</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/play-the-guitar.jpg" alt=""><div class="w">play the guitar</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/hotel.jpg" alt=""><div class="w">stay at a hotel</div></div>
+    <div class="flashcard word-only"><div class="emo">💼</div><div class="w">work</div></div>
+    <div class="flashcard word-only"><div class="emo">💬</div><div class="w">talk</div></div>
+    <div class="flashcard word-only"><div class="emo">🎧</div><div class="w">listen to music</div></div>
+    <div class="flashcard word-only"><div class="emo">🏁</div><div class="w">start</div></div>
+    <div class="flashcard word-only"><div class="emo">✅</div><div class="w">finish</div></div>
+    <div class="flashcard word-only"><div class="emo">💭</div><div class="w">want</div></div>
+    <div class="flashcard word-only"><div class="emo">🏠</div><div class="w">stay home</div></div>
+  </div>
+
+  <div class="sec pb"><h2>A · Picture Flashcards — Irregular Verbs (1.3)</h2><span class="rule"></span></div>
+  <div class="flashcards">
+    <div class="flashcard"><img src="../../assets/vocab/station.jpg" alt=""><div class="w">go → went</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/sandwich.jpg" alt=""><div class="w">have → had</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/pasta.jpg" alt=""><div class="w">eat → ate</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/juice.jpg" alt=""><div class="w">drink → drank</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/shop.jpg" alt=""><div class="w">buy → bought</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/cake.jpg" alt=""><div class="w">make → made</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/bus.jpg" alt=""><div class="w">take → took</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/email.jpg" alt=""><div class="w">write → wrote</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/read.jpg" alt=""><div class="w">read → read</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/key.jpg" alt=""><div class="w">find → found</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/box.jpg" alt=""><div class="w">give → gave</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/mobile-phone.jpg" alt=""><div class="w">get → got</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/swim.jpg" alt=""><div class="w">swim → swam</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/sing.jpg" alt=""><div class="w">sing → sang</div></div>
+    <div class="flashcard word-only"><div class="emo">🎬</div><div class="w">see → saw</div></div>
+    <div class="flashcard word-only"><div class="emo">🤝</div><div class="w">meet → met</div></div>
+    <div class="flashcard word-only"><div class="emo">🚪</div><div class="w">come → came</div></div>
+    <div class="flashcard word-only"><div class="emo">🤔</div><div class="w">think → thought</div></div>
+    <div class="flashcard word-only"><div class="emo">🗨️</div><div class="w">say → said</div></div>
+    <div class="flashcard word-only"><div class="emo">📢</div><div class="w">tell → told</div></div>
+    <div class="flashcard word-only"><div class="emo">💡</div><div class="w">know → knew</div></div>
+    <div class="flashcard word-only"><div class="emo">🧹</div><div class="w">do → did</div></div>
+  </div>
+
+  <!-- ===================== B. WELCOME + DIAGNOSTIC ===================== -->
+  <div class="sec pb"><h2>B · Welcome Question Cards (C1 mingle)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">One set per 12 learners (print two sets for a bigger class). Each learner takes one card of each color. They ask one question per partner, answer the partner's question, <b>swap cards</b>, and find a new partner. The small line is an extra question for stronger learners. Every card works with a new identity. None asks about the home country, age, family or migration, on purpose.</p>
+  <div class="qcards">
+    <div class="qc be"><span class="ct">BE</span><div class="qq">Are you a morning person or a night person?</div><div class="fu">+ What time are you sleepy?</div></div>
+    <div class="qc be"><span class="ct">BE</span><div class="qq">What's your favorite food? Is it sweet, salty or spicy?</div><div class="fu">+ Is it easy to cook?</div></div>
+    <div class="qc be"><span class="ct">BE</span><div class="qq">Who is your favorite singer or actor?</div><div class="fu">+ Why is he / she great?</div></div>
+    <div class="qc be"><span class="ct">BE</span><div class="qq">What's your favorite day of the week? Why?</div><div class="fu">+ Is today a good day?</div></div>
+    <div class="qc do"><span class="ct">DO</span><div class="qq">What do you do on Sundays?</div><div class="fu">+ Do you get up early on Sunday?</div></div>
+    <div class="qc do"><span class="ct">DO</span><div class="qq">Do you like coffee or tea? How many cups do you drink?</div><div class="fu">+ When do you drink it?</div></div>
+    <div class="qc do"><span class="ct">DO</span><div class="qq">How do you come to class? (bus, car, walk…)</div><div class="fu">+ How long does it take?</div></div>
+    <div class="qc do"><span class="ct">DO</span><div class="qq">Tell me about a friend. What does he / she do? What does he / she like?</div><div class="fu">+ Where do you meet?</div></div>
+    <div class="qc can"><span class="ct">CAN</span><div class="qq">What can you cook?</div><div class="fu">+ Can you cook it for 20 people?</div></div>
+    <div class="qc can"><span class="ct">CAN</span><div class="qq">Can you swim? Can you drive? Can you ride a bike?</div><div class="fu">+ Who taught you?</div></div>
+    <div class="qc can"><span class="ct">CAN</span><div class="qq">What can you do well?</div><div class="fu">+ What can't you do… yet?</div></div>
+    <div class="qc can"><span class="ct">CAN</span><div class="qq">Can you play an instrument or a sport?</div><div class="fu">+ Can you teach me?</div></div>
+  </div>
+
+  <div class="sec pb"><h2>B · A1 Diagnostic Grid (teacher only · C1)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">Listen during the welcome mingle and the report. Mark <b>✓</b> easy and accurate · <b>~</b> understands, some errors · <b>✗</b> not yet. Write one real example in Notes. Keep this page private; compare it with the Progress Test in C13.</p>
+  <table class="diag">
+    <thead><tr><th style="width:20%">Name</th><th style="width:16%">BE<br><span style="font-weight:400">I'm / she's / Are you…?</span></th><th style="width:20%">PRESENT SIMPLE<br><span style="font-weight:400">I work · Do you…? · she works</span></th><th style="width:16%">CAN<br><span style="font-weight:400">I can / Can you…?</span></th><th>Notes (an example I heard)</th></tr></thead>
+    <tbody>
+      <tr><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td></tr>
+    </tbody>
+  </table>
+  <div class="note"><div class="t">Listen for</div>
+    <p><b>BE:</b> "I tired" / "She teacher" (no be) · "I have 30 years" · "Are you…?" word order. <b>PRESENT SIMPLE:</b> "I no like" · "You like coffee?" (no <i>do</i>) · "She like tea" (no -s) in the report. <b>CAN:</b> "I can to swim" · "I can swimming" · "Can you to…?"</p>
+    <p><b>Mostly ✓/~</b> = ready for A2. <b>Many ~ in BE</b> = go slowly with was/were today. <b>✗ in two or three columns</b> = a private 5-minute oral placement interview this week (toolkit), and extra support from Day 1.</p>
+  </div>
+
+  <!-- ===================== C. NEW IDENTITY ===================== -->
+  <div class="sec pb"><h2>C · New Identity Cards (1.1 · 1.2 · 1.3)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">Any learner may use a card instead of their real life, in any task: no reason needed. In C1 use the <b>Yesterday</b> part (was / were). In C2 retell the <b>Last weekend</b> part with regular verbs only. In C3 use the whole weekend in the mingle. A and B cards in a pair share <b>two things</b> (for your monitoring, see the bottom of the page).</p>
+  <div class="cards">
+    <div class="card-cut"><div class="ct">Pair 1 · A</div><h4>Rosa — hospital cleaner</h4>
+      <p><b>Yesterday:</b> At 7 a.m. I was at the hospital. I was very busy. At 3 p.m. I was at the market. It was crowded. In the evening I was at home. I was tired!</p>
+      <p><b>Last weekend:</b> On Saturday I worked. On Sunday I went to the park with my son. We played football and had ice cream. It was sunny. I didn't cook: we ate at my sister's house.</p></div>
+    <div class="card-cut b"><div class="ct">Pair 1 · B</div><h4>Daniel — bus driver</h4>
+      <p><b>Yesterday:</b> At 5 a.m. I was on my bus. The streets were quiet. At noon I was at a café. The coffee was terrible! In the evening I was at my brother's house. It was fun.</p>
+      <p><b>Last weekend:</b> On Saturday I cleaned my apartment and cooked a big dinner. On Sunday I went to the park. I played football with friends. I didn't watch TV.</p></div>
+    <div class="card-cut"><div class="ct">Pair 2 · A</div><h4>Amina — student and mother</h4>
+      <p><b>Yesterday:</b> At 8 a.m. I was at my kids' school. At 10 I was in English class. It was great. At night I was at home with my family. We were happy.</p>
+      <p><b>Last weekend:</b> On Saturday I visited my aunt. We talked and cooked together. On Sunday I studied English and wrote emails. I didn't go out.</p></div>
+    <div class="card-cut b"><div class="ct">Pair 2 · B</div><h4>Chen — cook in a restaurant</h4>
+      <p><b>Yesterday:</b> At 9 a.m. I was in bed! At 11 I was at the restaurant. There were a lot of customers. At midnight I was at home. I was hungry.</p>
+      <p><b>Last weekend:</b> On Saturday I worked. I made 200 sandwiches! On Sunday I studied English, then I watched a movie. I didn't go out.</p></div>
+    <div class="card-cut"><div class="ct">Pair 3 · A</div><h4>Lucía — grandmother</h4>
+      <p><b>Yesterday:</b> In the morning I was in the garden. The weather was beautiful. In the afternoon I was at the doctor's. I wasn't sick; it was a checkup.</p>
+      <p><b>Last weekend:</b> My grandchildren came to my house. We made a cake and played cards. On Sunday we walked to the market. I bought fruit and flowers.</p></div>
+    <div class="card-cut b"><div class="ct">Pair 3 · B</div><h4>Yusuf — looking for a job</h4>
+      <p><b>Yesterday:</b> At 9 a.m. I was at the library. At 2 p.m. I was at a job interview. I was nervous! In the evening I was with friends. It was fun.</p>
+      <p><b>Last weekend:</b> On Saturday I went to the market and bought a new shirt for my interview. On Sunday I called my brother and we talked for two hours. I didn't cook.</p></div>
+  </div>
+  <p style="font-size:.86rem;color:var(--ink-2)"><b>Same (for your monitoring):</b> Pair 1: went to the park on Sunday, played football. Pair 2: studied English on Sunday, didn't go out. Pair 3: went to / walked to the market, were with other people (grandchildren / friends).</p>
+
+  <!-- ===================== D. SCRIPTS ===================== -->
+  <div class="sec pb"><h2>D · Listening &amp; Dictation Scripts (teacher reads aloud)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">Read at a natural but slow speed, with pauses. Read each script twice: once for gist, once to check. Use natural weak forms (<i>I w'z tired</i>) the second time. The 🔊 buttons in the online lessons give learners extra listening at home.</p>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">1.1-A · How was your weekend? <span style="font-weight:500;color:var(--ink-3)">(Workbook 1.1, Ex 3: true or false · two voices)</span></h3>
+  <div class="script"><b>Nora:</b> Hi, Sam! How was your weekend? · <b>Sam:</b> It was OK. On Saturday I was at work. It was very busy. There were a lot of customers. · <b>Nora:</b> Oh no! Were you tired? · <b>Sam:</b> Yes, I was! But Sunday was great. My brother and his kids were at my apartment. We were in the park all afternoon. It was sunny and warm. · <b>Nora:</b> Nice! · <b>Sam:</b> And you? Were you at home? · <b>Nora:</b> No, I wasn't. I was at my sister's house in the mountains. It was beautiful, but the weather wasn't good. It was cold and rainy!</div>
+  <p style="font-size:.86rem;color:var(--ink-2)">Answers: 1 T · 2 F (very busy) · 3 T · 4 T · 5 F (at her sister's house) · 6 T.</p>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">1.1-B · Dictation <span style="font-weight:500;color:var(--ink-3)">(optional; read each sentence 3 times · literacy support: sentences 1–2)</span></h3>
+  <div class="script">1. I was at home last night. · 2. We were very tired. · 3. Were you at work yesterday? · 4. There were a lot of people at the market. · 5. The movie wasn't very good.</div>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">1.2-A · The -ed sound: listen and show <span style="font-weight:500;color:var(--ink-3)">(1 finger = /t/, 2 = /d/, 3 = /ɪd/)</span></h3>
+  <div class="script">worked · played · wanted · cooked · cleaned · visited · watched · arrived · needed · walked · listened · started · talked · stayed · decided</div>
+  <p style="font-size:.86rem;color:var(--ink-2)">Answers: worked 1 · played 2 · wanted 3 · cooked 1 · cleaned 2 · visited 3 · watched 1 · arrived 2 · needed 3 · walked 1 · listened 2 · started 3 · talked 1 · stayed 2 · decided 3. Make /ɪd/ very clear; accept a small /t/ vs /d/ blur.</p>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">1.2-B · Rosa's day <span style="font-weight:500;color:var(--ink-3)">(Workbook 1.2, Ex 3: number the pictures)</span></h3>
+  <div class="script">Hi, I'm Rosa. Yesterday was a long day! I started work at seven in the morning. I worked at the hospital until three. After work, I walked to the market, and I shopped for vegetables. Then I went home, and I cooked dinner for my family. After dinner, my son helped me, and we cleaned the kitchen. At eight o'clock, I called my sister. We talked for an hour! Then I watched TV and listened to some music. I stayed up late. It was a good day.</div>
+  <p style="font-size:.86rem;color:var(--ink-2)">Answers: b hospital 1 · d market 2 · e cook 3 · f kitchen 4 · c phone 5 · a TV 6. <i>went</i> is the only irregular verb: don't stop for it.</p>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">1.3-A · Market day <span style="font-weight:500;color:var(--ink-3)">(Workbook 1.3, Ex 4: true or false)</span></h3>
+  <div class="script">Last Saturday, my friend Dina and I went to the city market. We took the bus at nine, and we arrived at ten. The market was very busy. There were a lot of people! I bought some fruit and a new scarf. Dina didn't buy anything. She only looked! At noon we ate lunch at a small restaurant. I had fish and rice, and Dina had a salad. We drank mango juice. Then we saw a street musician. He sang and played the guitar. We didn't go home until six. It was a great day!</div>
+  <p style="font-size:.86rem;color:var(--ink-2)">Answers: 1 T · 2 F (the bus) · 3 T · 4 F (she didn't buy anything) · 5 F (a small restaurant) · 6 T. Stretch: "Which verbs are irregular?" (went, took, bought, ate, had, drank, saw, sang).</p>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">1.3-B · Did you…? Listen and answer <span style="font-weight:500;color:var(--ink-3)">(Workbook 1.3, Ex 3b: write a short answer about you)</span></h3>
+  <div class="script">1. Did you have breakfast today? · 2. Did you come to class by bus? · 3. Did you watch TV last night? · 4. Did you cook yesterday? · 5. What did you eat for dinner last night?</div>
+  <p style="font-size:.86rem;color:var(--ink-2)">Answers are personal: <i>Yes, I did. / No, I didn't.</i> For 5, a short answer ("Rice and beans.") is fine. Listen for "Yes, I ate."</p>
+
+  <!-- ===================== E. INFO GAP ===================== -->
+  <div class="sec pb"><h2>E · "Where Were They?" Information Gap (1.1)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">One page per pair; cut A from B. Partners sit face to face and don't show their cards. They ask: "Where <b>was</b> Omar on Saturday? How was it?" (one person) or "Where <b>were</b> Rosa and Ben?" (two people) and write short answers. Part 2 is personal: real life, a new identity card, or an imagined weekend.</p>
+  <div class="cards">
+    <div class="card-cut"><div class="ct">Student A</div><h4>Last Saturday</h4>
+      <table class="grammar">
+        <tr><th>Who?</th><th>Where?</th><th>How was it?</th></tr>
+        <tr><td>1 Lina</td><td>at the park 🌳</td><td>sunny and beautiful · a lot of families</td></tr>
+        <tr><td>2 Omar</td><td>?</td><td>?</td></tr>
+        <tr><td>3 the Kim family</td><td>at the market 🛒</td><td>very busy · a lot of people</td></tr>
+        <tr><td>4 Mr. Díaz</td><td>?</td><td>?</td></tr>
+        <tr><td>5 Rosa and Ben</td><td>at a party 🎉</td><td>fun · a big cake</td></tr>
+        <tr><td>6 Kofi</td><td>?</td><td>?</td></tr>
+      </table>
+      <p>Ask: <b>Where was Omar on Saturday? How was it?</b></p>
+      <h4>Part 2 · You</h4>
+      <p>Ask your partner: <b>How was your weekend? Where were you on Saturday? Was it good?</b></p></div>
+    <div class="card-cut b"><div class="ct">Student B</div><h4>Last Saturday</h4>
+      <table class="grammar">
+        <tr><th>Who?</th><th>Where?</th><th>How was it?</th></tr>
+        <tr><td>1 Lina</td><td>?</td><td>?</td></tr>
+        <tr><td>2 Omar</td><td>at a restaurant 🍽️</td><td>expensive · the food was great</td></tr>
+        <tr><td>3 the Kim family</td><td>?</td><td>?</td></tr>
+        <tr><td>4 Mr. Díaz</td><td>at the airport ✈️</td><td>terrible · his flight was late · angry</td></tr>
+        <tr><td>5 Rosa and Ben</td><td>?</td><td>?</td></tr>
+        <tr><td>6 Kofi</td><td>at home 🏠</td><td>boring · sick · no food in the fridge</td></tr>
+      </table>
+      <p>Ask: <b>Where was Lina on Saturday? How was it?</b></p>
+      <h4>Part 2 · You</h4>
+      <p>Ask your partner: <b>How was your weekend? Where were you on Sunday? Were you busy?</b></p></div>
+  </div>
+  <p style="font-size:.86rem;color:var(--ink-2)"><b>Useful language:</b> Can you say that again, please? · How do you spell it? · <b>Stretch:</b> make a full sentence with <i>There was / There were</i>: "There were a lot of families at the park."</p>
+
+  <!-- ===================== F. -ED SORT ===================== -->
+  <div class="sec pb"><h2>F · The -ed Sound: Sort Cards (1.2)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">One set per group. Cut the cards and the answer strip. Put the three header cards on the table (the fourth card "?" is for "not sure yet"). Learners take turns: take a card, say it out loud with a hand on the throat, and put it under /t/, /d/ or /ɪd/. The group agrees or says "Say it again!"</p>
+  <div class="sort">
+    <span class="hd">/t/ 🤫<br><small>no buzz · 1 beat</small></span><span class="hd">/d/ 🐝<br><small>buzz · 1 beat</small></span><span class="hd">/ɪd/ 👏<br><small>after t / d · 2 beats</small></span><span class="hd">?<br><small>not sure</small></span>
+    <span>worked</span><span>played</span><span>started</span><span>watched</span>
+    <span>studied</span><span>wanted</span><span>cooked</span><span>cleaned</span>
+    <span>visited</span><span>walked</span><span>listened</span><span>needed</span>
+    <span>talked</span><span>arrived</span><span>waited</span><span>finished</span>
+    <span>stayed</span><span>decided</span><span>stopped</span><span>called</span>
+    <span>painted</span><span>danced</span><span>lived</span><span>ended</span>
+  </div>
+  <p style="font-size:.86rem;color:var(--ink-2)"><b>✂ Answer strip:</b> /t/ worked, watched, cooked, walked, talked, finished, stopped, danced · /d/ played, studied, cleaned, listened, arrived, stayed, called, lived · /ɪd/ started, wanted, visited, needed, waited, decided, painted, ended.</p>
+
+  <!-- ===================== G. PICTURE STORY ===================== -->
+  <div class="sec pb"><h2>G · Picture-Story Cards + Listener Grid (1.2)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">One page per pair. Cut the two story cards; both learners share the listener grid. A tells Maria's Saturday with the past forms ("First, Maria cleaned the kitchen. Then she…"). B listens and writes 1–6 in the boxes under Maria's pictures. Swap: B tells Sam's Sunday. Positive sentences only; <i>and, then, after that</i> are welcome.</p>
+  <div class="cards">
+    <div class="card-cut"><div class="ct">Card A · tell this story</div><h4>Maria's Saturday</h4>
+      <div class="story">
+        <div><img src="../../assets/vocab/kitchen.jpg" alt="">1 clean the kitchen</div>
+        <div><img src="../../assets/vocab/cook.jpg" alt="">2 cook lunch</div>
+        <div><img src="../../assets/vocab/mobile-phone.jpg" alt="">3 call her mother</div>
+        <div><img src="../../assets/vocab/park.jpg" alt="">4 walk in the park</div>
+        <div><img src="../../assets/vocab/tv.jpg" alt="">5 watch a movie</div>
+        <div><span class="emo">🎧</span>6 listen to music</div>
+      </div>
+      <p>Say the <b>past</b>: clean → clean<b>ed</b>!</p></div>
+    <div class="card-cut b"><div class="ct">Card B · tell this story</div><h4>Sam's Sunday</h4>
+      <div class="story">
+        <div><img src="../../assets/vocab/football.jpg" alt="">1 play football</div>
+        <div><img src="../../assets/vocab/grandmother.jpg" alt="">2 visit his grandmother</div>
+        <div><span class="emo">💬</span>3 talk for an hour</div>
+        <div><img src="../../assets/vocab/dance.jpg" alt="">4 dance at a party</div>
+        <div><img src="../../assets/vocab/notebook.jpg" alt="">5 study English</div>
+        <div><span class="emo">🏠</span>6 stay home</div>
+      </div>
+      <p>Say the <b>past</b>: play → play<b>ed</b>!</p></div>
+  </div>
+  <h3 style="font-size:1rem;margin:14px 0 4px">Listener grid · Listen. Number your partner's pictures 1–6.</h3>
+  <div class="pgrid">
+    <div><img src="../../assets/vocab/football.jpg" alt="">play<span class="nb"></span></div>
+    <div><img src="../../assets/vocab/kitchen.jpg" alt="">clean<span class="nb"></span></div>
+    <div><span class="emo">🎧</span>listen<span class="nb"></span></div>
+    <div><img src="../../assets/vocab/grandmother.jpg" alt="">visit<span class="nb"></span></div>
+    <div><img src="../../assets/vocab/park.jpg" alt="">walk<span class="nb"></span></div>
+    <div><span class="emo">🏠</span>stay<span class="nb"></span></div>
+    <div><img src="../../assets/vocab/cook.jpg" alt="">cook<span class="nb"></span></div>
+    <div><img src="../../assets/vocab/dance.jpg" alt="">dance<span class="nb"></span></div>
+    <div><img src="../../assets/vocab/mobile-phone.jpg" alt="">call<span class="nb"></span></div>
+    <div><img src="../../assets/vocab/notebook.jpg" alt="">study<span class="nb"></span></div>
+    <div><img src="../../assets/vocab/tv.jpg" alt="">watch<span class="nb"></span></div>
+    <div><span class="emo">💬</span>talk<span class="nb"></span></div>
+  </div>
+  <p style="font-size:.86rem;color:var(--ink-2)"><b>Answers:</b> Maria: clean 1 · cook 2 · call 3 · walk 4 · watch 5 · listen 6. Sam: play 1 · visit 2 · talk 3 · dance 4 · study 5 · stay 6. Each learner fills 6 boxes; the other 6 are their own story.</p>
+
+  <!-- ===================== H. MEMORY GAME ===================== -->
+  <div class="sec pb"><h2>H · Game — Irregular-Verb Memory (1.3)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">One set per group of 3–4, on card stock (learners must not see through the cards). Cut on the dashed lines. White = base verb · blue = past form · amber = bonus pairs for stronger groups. Shuffle; place face down in rows. Turn over two and <b>say both words</b>. A match = base + past. To keep the pair, say a past sentence: "Last weekend I <b>bought</b> shoes." After the game, turn your pairs into negatives: "I <b>didn't buy</b> shoes."</p>
+  <div class="mem">
+    <div><img src="../../assets/vocab/station.jpg" alt=""><b>go</b></div>
+    <div class="p"><b>went</b><small>PAST</small></div>
+    <div><img src="../../assets/vocab/sandwich.jpg" alt=""><b>have</b></div>
+    <div class="p"><b>had</b><small>PAST</small></div>
+    <div><span class="emo">🧹</span><b>do</b></div>
+    <div class="p"><b>did</b><small>PAST</small></div>
+    <div><span class="emo">🎬</span><b>see</b></div>
+    <div class="p"><b>saw</b><small>PAST</small></div>
+    <div><img src="../../assets/vocab/mobile-phone.jpg" alt=""><b>get</b></div>
+    <div class="p"><b>got</b><small>PAST</small></div>
+    <div><img src="../../assets/vocab/cake.jpg" alt=""><b>make</b></div>
+    <div class="p"><b>made</b><small>PAST</small></div>
+    <div><span class="emo">🚪</span><b>come</b></div>
+    <div class="p"><b>came</b><small>PAST</small></div>
+    <div><img src="../../assets/vocab/bus.jpg" alt=""><b>take</b></div>
+    <div class="p"><b>took</b><small>PAST</small></div>
+    <div><img src="../../assets/vocab/pasta.jpg" alt=""><b>eat</b></div>
+    <div class="p"><b>ate</b><small>PAST</small></div>
+    <div><img src="../../assets/vocab/juice.jpg" alt=""><b>drink</b></div>
+    <div class="p"><b>drank</b><small>PAST</small></div>
+    <div><img src="../../assets/vocab/shop.jpg" alt=""><b>buy</b></div>
+    <div class="p"><b>bought</b><small>PAST</small></div>
+    <div><img src="../../assets/vocab/box.jpg" alt=""><b>give</b></div>
+    <div class="p"><b>gave</b><small>PAST</small></div>
+    <div><img src="../../assets/vocab/key.jpg" alt=""><b>find</b></div>
+    <div class="p"><b>found</b><small>PAST</small></div>
+    <div><span class="emo">🤝</span><b>meet</b></div>
+    <div class="p"><b>met</b><small>PAST</small></div>
+    <div><img src="../../assets/vocab/email.jpg" alt=""><b>write</b></div>
+    <div class="p"><b>wrote</b><small>PAST</small></div>
+    <div><span class="emo">🤔</span><b>think</b></div>
+    <div class="p"><b>thought</b><small>PAST</small></div>
+    <div class="bonus"><span class="emo">💡</span><b>know</b><small>BONUS</small></div>
+    <div class="bonus"><b>knew</b><small>BONUS · PAST</small></div>
+    <div class="bonus"><span class="emo">🗨️</span><b>say</b><small>BONUS</small></div>
+    <div class="bonus"><b>said</b><small>BONUS · PAST</small></div>
+    <div class="bonus"><span class="emo">📢</span><b>tell</b><small>BONUS</small></div>
+    <div class="bonus"><b>told</b><small>BONUS · PAST</small></div>
+    <div class="bonus"><img src="../../assets/vocab/read.jpg" alt=""><b>read</b><small>BONUS · /rid/</small></div>
+    <div class="bonus"><b>read</b><small>BONUS · PAST /rɛd/</small></div>
+  </div>
+  <div class="note"><div class="t">Teacher note</div>
+    <p>The cards are printed in pairs so you can check sets quickly after class; always shuffle before play. <b>Easier:</b> 8 pairs, face up, as a matching race. <b>Harder:</b> all 20 pairs, and every sentence needs a time word (<i>last Sunday, two days ago</i>). For <i>read / read</i>, the learner must <b>say</b> /rid/ and /rɛd/ to keep the pair.</p>
+  </div>
+
+  <!-- ===================== I. MINGLE ===================== -->
+  <div class="sec pb"><h2>I · Mingle — What Did You Do Last Weekend? (C3)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">Photocopy one per learner. <b>Part 1:</b> learners stand, walk, and ask four classmates the three questions; notes only (2–3 words). <b>Part 2:</b> "Find someone who…": ask <b>Did you…?</b> If the answer is "Yes, I did," write the name. At the end, three learners tell the class about one person with <b>he / she + past</b>. Real weekend, a new identity card (Set C), or a dream weekend: all are fine.</p>
+  <table class="fsw tall">
+    <thead><tr><th>Name</th><th>Where did you go?</th><th>What did you do?</th><th>Did you have a good time?</th></tr></thead>
+    <tbody>
+      <tr><td class="nm"></td><td></td><td></td><td></td></tr>
+      <tr><td class="nm"></td><td></td><td></td><td></td></tr>
+      <tr><td class="nm"></td><td></td><td></td><td></td></tr>
+      <tr><td class="nm"></td><td></td><td></td><td></td></tr>
+    </tbody>
+  </table>
+  <table class="fsw">
+    <thead><tr><th>Find someone who… last weekend</th><th>Name</th><th>Extra question</th></tr></thead>
+    <tbody>
+      <tr><td>1. went to a market or a store</td><td class="nm"></td><td class="ex">What did you buy?</td></tr>
+      <tr><td>2. cooked a big meal</td><td class="nm"></td><td class="ex">What did you cook?</td></tr>
+      <tr><td>3. watched a movie or a game</td><td class="nm"></td><td class="ex">Was it good?</td></tr>
+      <tr><td>4. visited a friend or family</td><td class="nm"></td><td class="ex">Who did you visit?</td></tr>
+      <tr><td>5. didn't go out</td><td class="nm"></td><td class="ex">What did you do at home?</td></tr>
+      <tr><td>6. got up before seven</td><td class="nm"></td><td class="ex">Why?</td></tr>
+      <tr><td>7. worked</td><td class="nm"></td><td class="ex">Were you tired?</td></tr>
+      <tr><td>8. ate at a restaurant</td><td class="nm"></td><td class="ex">What did you eat?</td></tr>
+    </tbody>
+  </table>
+  <div class="note"><div class="t">Teacher note</div>
+    <p>Before the mingle, drill the question change on the board: <b>went</b> → Did you <b>go</b>…? · <b>ate</b> → Did you <b>eat</b>…? · <b>didn't go out</b> → Did you go out? ("No, I didn't" gets the name!). Question 7 mixes in <i>be</i>: <i>Did</i> you work? → <i>Were</i> you tired? Learners with a new identity card answer as their card person.</p>
+  </div>
+
+  <div class="foot">
+    <div class="who"><b>Ray de la Paz</b><span class="bio">© 2026 Ray de la Paz · Everyday English (A2 Elementary)</span></div>
+    <div class="ver">Module 1 · Classroom Materials · v1.0</div>
+  </div>
+
+</div>
+</body>
+</html>

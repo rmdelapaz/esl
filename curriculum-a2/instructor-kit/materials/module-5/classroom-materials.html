@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Classroom Materials — Module 5</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../../kit.css">
+<style>
+  /* Module 5 print extras (this sheet only) */
+  .flashcard .emo{font-size:4.2rem;line-height:1}
+  .seq{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:10px 0}
+  .seq .sc{border:1.5px dashed var(--line-strong);padding:8px;text-align:center;break-inside:avoid;min-height:1.9in;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;position:relative}
+  .seq .sc img{width:.95in;height:.95in;object-fit:cover;border-radius:8px;background:#FFF3E0}
+  .seq .sc .emo{font-size:3rem;line-height:1.1;height:.95in;display:flex;align-items:center}
+  .seq .sc .w{font-family:"Archivo",sans-serif;font-weight:700;font-size:.92rem;line-height:1.2}
+  .seq .sc .nb{position:absolute;top:6px;left:6px;width:22px;height:22px;border:1.5px solid var(--line-strong);border-radius:5px}
+  .seq.six{grid-template-columns:repeat(3,1fr)}
+  .card-cut p{font-size:.88rem;margin:.25rem 0}
+  .card-cut ul{margin:.2rem 0;padding-left:1.1rem;font-size:.88rem}
+  .card-cut table.grammar{font-size:.82rem;margin:6px 0}
+  .card-cut table.grammar td,.card-cut table.grammar th{padding:3px 6px}
+  .tn{display:flex;gap:10px;align-items:center;justify-content:center;margin:4px 0 6px}
+  .tn figure{margin:0;text-align:center;font-size:.72rem;font-family:"JetBrains Mono",monospace;color:var(--ink-2)}
+  .tn img{width:.8in;height:.8in;object-fit:cover;border-radius:8px;background:#FFF3E0;display:block}
+  .tn .arrow{font-size:1.4rem;color:var(--ink-3)}
+  .qcards{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:10px 0}
+  .qcards span{border:1.5px dashed var(--line-strong);padding:14px 10px;text-align:center;font-family:"Archivo",sans-serif;font-weight:600;font-size:1rem;break-inside:avoid;min-height:.9in;display:flex;align-items:center;justify-content:center}
+  table.plan{width:100%;border-collapse:collapse;margin:8px 0;font-size:.9rem}
+  table.plan th,table.plan td{border:1px solid var(--line-strong);padding:10px 8px;text-align:left;vertical-align:top}
+  table.plan th{background:var(--surface-2)}
+  table.plan td.tm{width:12%;font-family:"JetBrains Mono",monospace;font-weight:600}
+  .road{display:grid;grid-template-columns:repeat(6,1fr);gap:0;margin:10px 0;border:2px solid var(--line-strong)}
+  .road .sq{border:1px solid var(--line-strong);padding:6px 6px 8px;min-height:1.15in;font-size:.8rem;line-height:1.25;position:relative;break-inside:avoid}
+  .road .sq b.n{display:block;font-family:"JetBrains Mono",monospace;font-size:.78rem;color:var(--accent);margin-bottom:3px}
+  .road .sq.star{background:var(--accent-soft);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .road .sq.go{background:var(--surface-2);font-family:"Archivo",sans-serif;font-weight:700;font-size:.95rem;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .pb{break-before:page}
+  @media (max-width:680px){.flashcards{grid-template-columns:1fr 1fr}.seq,.seq.six,.qcards{grid-template-columns:1fr 1fr}.cards{grid-template-columns:1fr}.road{grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="lbl">Classroom materials —</span>
+  <button type="button" onclick="window.print()">🖨 Print / Save as PDF</button>
+  <span class="hint">print on card stock · cut on the dashed lines</span>
+</div>
+
+<div class="sheet">
+
+  <header class="mast">
+    <div class="kit-eyebrow">Everyday English · Module 5 Materials</div>
+    <h1>Telling Stories — Classroom Materials</h1>
+    <p class="sub">Everything to print for Classes C14–C16: picture flashcards, the Alibi Game (mysteries, planning sheets, detective questions), two picture stories for sequencing and retelling, "Something happened!" story cards, Then &amp; Now character cards, the teacher's listening scripts, and the Story Road board game.</p>
+    <div class="meta-row">
+      <span class="chip">Lessons <b>5.1–5.3</b></span>
+      <span class="chip">Classes <b>C14–C16</b></span>
+      <span class="chip"><b>7</b> print sets</span>
+      <span class="chip">CEFR <b>A2</b></span>
+    </div>
+  </header>
+
+  <div class="sec"><h2>What to Print</h2><span class="rule"></span></div>
+  <table class="timing">
+    <thead><tr><th>Set</th><th>What</th><th>How many</th><th>Used in</th></tr></thead>
+    <tbody>
+      <tr><td class="t">A</td><td>Flashcards (actions in progress, story events, then &amp; now)</td><td>1 set for the board</td><td>C14, C15, C16</td></tr>
+      <tr><td class="t">B</td><td>Alibi Game: mystery cards, suspect planning sheet, detective question cards, detective notes</td><td>1 mystery + 2 planning sheets + 1 question set + 2 notes per group of 4</td><td>C14 (C15 warmer)</td></tr>
+      <tr><td class="t">C</td><td>Picture-story cards: Story A (8) and Story B (6)</td><td>1 set of each per group of 3</td><td>C15</td></tr>
+      <tr><td class="t">D</td><td>"Something happened!" story cards (3 A/B pairs)</td><td>1 pair per 2 learners</td><td>C15</td></tr>
+      <tr><td class="t">E</td><td>Then &amp; Now character cards (3 A/B pairs)</td><td>1–2 sets, on a side table</td><td>C16</td></tr>
+      <tr><td class="t">F</td><td>Listening &amp; dictation scripts</td><td>Teacher only</td><td>C14, C15, C16</td></tr>
+      <tr><td class="t">G</td><td>Story Road (board game)</td><td>1 board per group of 3–4 + a die + counters</td><td>C16 (or C17 warmer)</td></tr>
+    </tbody>
+  </table>
+
+  <!-- ===================== A. FLASHCARDS ===================== -->
+  <div class="sec pb"><h2>A · Picture Flashcards — Actions in Progress (5.1)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">Hold up a card and say a subject: "They…" → "They were dancing." Use them for the substitution drill and on the table during the Alibi Game.</p>
+  <div class="flashcards">
+    <div class="flashcard"><img src="../../assets/vocab/cook.jpg" alt=""><div class="w">cooking</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/read.jpg" alt=""><div class="w">reading</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/tv.jpg" alt=""><div class="w">watching TV</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/shower.jpg" alt=""><div class="w">taking a shower</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/bed.jpg" alt=""><div class="w">sleeping</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/notebook.jpg" alt=""><div class="w">studying</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/dance.jpg" alt=""><div class="w">dancing</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/sing.jpg" alt=""><div class="w">singing</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/play-the-guitar.jpg" alt=""><div class="w">playing the guitar</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/bus-stop.jpg" alt=""><div class="w">waiting for the bus</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/mobile-phone.jpg" alt=""><div class="w">talking on the phone</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/umbrella.jpg" alt=""><div class="w">raining</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/swim.jpg" alt=""><div class="w">swimming</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/drink.jpg" alt=""><div class="w">drinking</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/driver.jpg" alt=""><div class="w">driving</div></div>
+  </div>
+
+  <div class="sec pb"><h2>A · Flashcards — Story Events (5.2)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">These are the "dots": short, sudden events in the past simple. Pair them with a Set A action card for instant drills: 📺 + 📱 → "I was watching TV when the phone rang."</p>
+  <div class="flashcards">
+    <div class="flashcard"><img src="../../assets/vocab/umbrella.jpg" alt=""><div class="w">it started to rain</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/mobile-phone.jpg" alt=""><div class="w">the phone rang</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/door.jpg" alt=""><div class="w">someone knocked</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/cup.jpg" alt=""><div class="w">I dropped a cup</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/lamp.jpg" alt=""><div class="w">the lights went out</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/happy.jpg" alt=""><div class="w">I met an old friend</div></div>
+    <div class="flashcard word-only"><div class="emo">🤕</div><div class="w">I fell</div></div>
+    <div class="flashcard word-only"><div class="emo">⏰</div><div class="w">I woke up</div></div>
+    <div class="flashcard word-only"><div class="emo">💥</div><div class="w">it broke</div></div>
+    <div class="flashcard word-only"><div class="emo">⚡</div><div class="w">suddenly</div></div>
+    <div class="flashcard word-only"><div class="emo">➡️</div><div class="w">after that</div></div>
+    <div class="flashcard word-only"><div class="emo">🏁</div><div class="w">in the end</div></div>
+  </div>
+
+  <div class="sec pb"><h2>A · Flashcards — Then &amp; Now (5.3)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">Show two cards side by side for the "used to…, but now…" drill: 🚌 + 🚗 → "I used to take the bus, but now I drive."</p>
+  <div class="flashcards">
+    <div class="flashcard"><img src="../../assets/vocab/school.jpg" alt=""><div class="w">when I was a child</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/football.jpg" alt=""><div class="w">play soccer</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/play-the-guitar.jpg" alt=""><div class="w">play the guitar</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/bus.jpg" alt=""><div class="w">take the bus</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/mobile-phone.jpg" alt=""><div class="w">have a phone</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/grandmother.jpg" alt=""><div class="w">tell stories</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/coffee.jpg" alt=""><div class="w">drink coffee</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/tea.jpg" alt=""><div class="w">drink tea</div></div>
+    <div class="flashcard word-only"><div class="emo">🚗</div><div class="w">drive</div></div>
+    <div class="flashcard word-only"><div class="emo">💇</div><div class="w">long hair / short hair</div></div>
+    <div class="flashcard word-only"><div class="emo">🕰️</div><div class="w">years ago</div></div>
+    <div class="flashcard word-only"><div class="emo">📱</div><div class="w">these days · nowadays</div></div>
+  </div>
+
+  <!-- ===================== B. ALIBI GAME ===================== -->
+  <div class="sec pb"><h2>B · The Alibi Game — Mystery Cards (5.1)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">One mystery per group of 4 (2 suspects, 2 detectives). Read the first one aloud to the whole class with a dramatic voice. Use the others for the role swap or the C15 warmer. <b>It's always a silly mystery and an invented evening.</b> Anyone may choose to be a detective instead of a suspect.</p>
+  <div class="cards">
+    <div class="card-cut"><div class="ct">Mystery 1 · 7–9 p.m.</div><h4>🎂 The Missing Birthday Cake</h4>
+      <p>Last night, between <b>7 and 9 p.m.</b>, someone ate the birthday cake in the school kitchen. Only crumbs!</p>
+      <p>The two suspects say: "We were together all evening. We didn't eat the cake!"</p>
+      <p><b>Detectives:</b> check the times 7:00 · 7:30 · 8:00 · 8:30 · 9:00.</p></div>
+    <div class="card-cut b"><div class="ct">Mystery 2 · 11 p.m.–1 a.m.</div><h4>🎤 The Midnight Singer</h4>
+      <p>Last night, around <b>midnight</b>, someone was singing very loudly in the hallway of our building. Nobody could sleep!</p>
+      <p>The two suspects say: "We were together all night. We weren't singing!"</p>
+      <p><b>Detectives:</b> check the times 11:00 · 11:30 · 12:00 · 12:30 · 1:00.</p></div>
+    <div class="card-cut"><div class="ct">Mystery 3 · 12–2 p.m.</div><h4>🍕 The Pizza Mystery</h4>
+      <p>Yesterday, between <b>12 and 2 p.m.</b>, someone took three pizzas from the office party. The boss is very hungry!</p>
+      <p>The two suspects say: "We were together the whole time. We were working!"</p>
+      <p><b>Detectives:</b> check the times 12:00 · 12:30 · 1:00 · 1:30 · 2:00.</p></div>
+    <div class="card-cut b"><div class="ct">Mystery 4 · your idea</div><h4>❓ The ______ Mystery</h4>
+      <p>Stretch groups invent their own silly mystery: a missing class hamster, a green car, a lost sandwich…</p>
+      <p>Write it here: <span class="blank long"></span></p>
+      <p><span class="blank long"></span></p></div>
+  </div>
+
+  <div class="sec pb"><h2>B · Suspect Planning Sheet (2 per group)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem"><b>Suspects:</b> plan your evening <b>together</b>. You have 5 minutes. Remember the details! The detectives will ask you <b>alone</b>. Use <b>We were…ing</b>.</p>
+  <table class="plan">
+    <thead><tr><th>Time</th><th>Where were we?</th><th>What were we doing?</th><th>Details: food, drinks, weather, TV, music, clothes</th></tr></thead>
+    <tbody>
+      <tr><td class="tm">____</td><td></td><td></td><td></td></tr>
+      <tr><td class="tm">____</td><td></td><td></td><td></td></tr>
+      <tr><td class="tm">____</td><td></td><td></td><td></td></tr>
+      <tr><td class="tm">____</td><td></td><td></td><td></td></tr>
+      <tr><td class="tm">____</td><td></td><td></td><td></td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:.9rem">Example: <i>8:00 · at my apartment · We were watching a soccer game. · We were eating popcorn. It was raining. My friend was wearing a red sweater.</i></p>
+  <p style="font-size:.9rem"><b>Stretch:</b> add one sentence with <b>while</b>: "While we were eating, the neighbor was playing music."</p>
+
+  <div class="sec pb"><h2>B · Detective Question Cards (1 set per group)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">Cut out. Detectives choose 6–8 cards and write the questions on their notes. Ask Suspect 1, then Suspect 2, the <b>same</b> questions.</p>
+  <div class="qcards">
+    <span>Where were you at ____?</span>
+    <span>What were you doing at ____?</span>
+    <span>Who were you with?</span>
+    <span>What was your friend wearing?</span>
+    <span>What were you eating?</span>
+    <span>What were you drinking?</span>
+    <span>Was it raining?</span>
+    <span>What was on TV?</span>
+    <span>Were you sitting or standing?</span>
+    <span>What music was playing?</span>
+    <span>What was your friend doing while you were ____?</span>
+    <span>Were you talking on the phone?</span>
+  </div>
+
+  <div class="sec"><h2>B · Detective Notes (2 per group)</h2><span class="rule"></span></div>
+  <table class="plan">
+    <thead><tr><th>Our question</th><th>Suspect 1 said…</th><th>Suspect 2 said…</th><th>Same? ✓ / ✗</th></tr></thead>
+    <tbody>
+      <tr><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:.9rem"><b>3 or more ✗ = "You ate the cake!"</b> Tell the class: "At eight, Ana <b>said</b> they <b>were watching</b> TV, but Omar <b>said</b> they <b>were eating</b> pizza!"</p>
+
+  <!-- ===================== C. PICTURE STORIES ===================== -->
+  <div class="sec pb"><h2>C · Picture Story A — "Lena's Rainy Saturday" (5.2)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">One set per group of three. Cut, shuffle, and hand out picture-up. Groups put the cards in order while you read <b>Script 5.2-A</b>, writing 1–8 in the small box in pencil. Then they retell the story, one card each, with <b>when</b> and <b>while</b>. The cards show verb cues only, so learners must build the sentences themselves.</p>
+  <div class="seq">
+    <div class="sc"><span class="nb"></span><img src="../../assets/vocab/coffee.jpg" alt=""><div class="w">drink coffee · talk and laugh</div></div>
+    <div class="sc"><span class="nb"></span><img src="../../assets/vocab/umbrella.jpg" alt=""><div class="w">start to rain! · no umbrella</div></div>
+    <div class="sc"><span class="nb"></span><img src="../../assets/vocab/park.jpg" alt=""><div class="w">walk in the park · sun / shine</div></div>
+    <div class="sc"><span class="nb"></span><img src="../../assets/vocab/happy.jpg" alt=""><div class="w">old friend Marco! · surprised</div></div>
+    <div class="sc"><span class="nb"></span><img src="../../assets/vocab/sunny.jpg" alt=""><div class="w">leave the café · sun / shine again</div></div>
+    <div class="sc"><span class="nb"></span><div class="emo">🏃‍♀️</div><div class="w">run to the bus stop</div></div>
+    <div class="sc"><span class="nb"></span><img src="../../assets/vocab/read.jpg" alt=""><div class="w">sit on a bench · read</div></div>
+    <div class="sc"><span class="nb"></span><img src="../../assets/vocab/bus-stop.jpg" alt=""><div class="w">wait for the bus · a man / arrive</div></div>
+  </div>
+  <p style="font-size:.86rem;color:var(--ink-2)"><b>Order (for your monitoring):</b> 1 park · 2 bench / read · 3 start to rain · 4 run · 5 bus stop · 6 Marco · 7 coffee · 8 sun again.</p>
+
+  <div class="sec"><h2>C · Picture Story B — "Omar's Kitchen" (stretch · no script)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">For fast groups. There is no script: groups agree the order by logic, then tell the story with <b>when</b>, <b>while</b>, <b>suddenly</b> and <b>in the end</b>.</p>
+  <div class="seq six">
+    <div class="sc"><span class="nb"></span><img src="../../assets/vocab/sofa.jpg" alt=""><div class="w">sit on the sofa · talk for 20 minutes</div></div>
+    <div class="sc"><span class="nb"></span><div class="emo">🍕</div><div class="w">order a pizza · laugh</div></div>
+    <div class="sc"><span class="nb"></span><img src="../../assets/vocab/pasta.jpg" alt=""><div class="w">cook pasta · sing</div></div>
+    <div class="sc"><span class="nb"></span><div class="emo">🚨</div><div class="w">smell smoke! · the alarm / start</div></div>
+    <div class="sc"><span class="nb"></span><img src="../../assets/vocab/mobile-phone.jpg" alt=""><div class="w">phone / ring · his mother</div></div>
+    <div class="sc"><span class="nb"></span><img src="../../assets/vocab/kitchen.jpg" alt=""><div class="w">run to the kitchen · the pasta / black!</div></div>
+  </div>
+  <p style="font-size:.86rem;color:var(--ink-2)"><b>Most logical order:</b> 1 cook pasta · 2 phone ring · 3 sofa · 4 smoke · 5 run to the kitchen · 6 pizza. (Accept sofa before phone if the group explains it.)</p>
+
+  <!-- ===================== D. STORY CARDS ===================== -->
+  <div class="sec pb"><h2>D · "Something Happened!" Story Cards (5.2)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">For learners who don't want to tell a true story, or can't think of one. Give a pair the matching A and B cards. A tells A's story in the first person ("I was…") and invents the ending; B listens, reacts, and asks the two questions. Then swap. Learners may change any detail.</p>
+  <div class="cards">
+    <div class="card-cut"><div class="ct">Pair 1 · A · you tell</div><h4>🛒 At the supermarket</h4>
+      <p><b>Scene:</b> you / shop · music / play · it / very busy</p>
+      <p><b>Event:</b> you / carry eggs <b>when</b> a child / run into you!</p>
+      <p><b>Then:</b> the eggs / fall … <b>The end:</b> invent it!</p>
+      <p style="color:var(--ink-2)"><b>When B tells:</b> say "Oh no!" · ask "What were you doing when…?" and "And then what happened?"</p></div>
+    <div class="card-cut b"><div class="ct">Pair 1 · B · you tell</div><h4>🚌 On the bus</h4>
+      <p><b>Scene:</b> you / go to work · you / very tired · the bus / warm</p>
+      <p><b>Event:</b> you / sleep <b>when</b> the bus / stop at the last stop!</p>
+      <p><b>Then:</b> you / wake up … <b>The end:</b> invent it!</p>
+      <p style="color:var(--ink-2)"><b>When A tells:</b> say "Really?" · ask "What were you carrying?" and "And then what happened?"</p></div>
+    <div class="card-cut"><div class="ct">Pair 2 · A · you tell</div><h4>📦 At work</h4>
+      <p><b>Scene:</b> you / carry boxes · your boss / talk on the phone</p>
+      <p><b>Event:</b> <b>while</b> you / work, the lights / go out!</p>
+      <p><b>Then:</b> you / drop the boxes … <b>The end:</b> invent it!</p>
+      <p style="color:var(--ink-2)"><b>When B tells:</b> say "That's so funny!" · ask "What were you singing?" and "Who was at the door?"</p></div>
+    <div class="card-cut b"><div class="ct">Pair 2 · B · you tell</div><h4>🚿 At home</h4>
+      <p><b>Scene:</b> you / take a shower · you / sing loudly</p>
+      <p><b>Event:</b> <b>while</b> you / sing, someone / knock at the door!</p>
+      <p><b>Then:</b> you / run to the door … <b>The end:</b> invent it!</p>
+      <p style="color:var(--ink-2)"><b>When A tells:</b> say "Oh no! Are you OK?" · ask "What was your boss doing?" and "And then what happened?"</p></div>
+    <div class="card-cut"><div class="ct">Pair 3 · A · you tell</div><h4>🌳 In the park</h4>
+      <p><b>Scene:</b> you / walk · children / play soccer · the sun / shine</p>
+      <p><b>Event:</b> you / eat an ice cream <b>when</b> a ball / hit it!</p>
+      <p><b>Then:</b> the ice cream / fall … <b>The end:</b> invent it!</p>
+      <p style="color:var(--ink-2)"><b>When B tells:</b> say "No way!" · ask "What were you wearing?" and "What did your friend say?"</p></div>
+    <div class="card-cut b"><div class="ct">Pair 3 · B · you tell</div><h4>🎉 At a party</h4>
+      <p><b>Scene:</b> you / dance · everyone / sing · the music / play loudly</p>
+      <p><b>Event:</b> <b>while</b> you / dance, you / see an old friend from school!</p>
+      <p><b>Then:</b> you / say hello … <b>The end:</b> invent it!</p>
+      <p style="color:var(--ink-2)"><b>When A tells:</b> say "Oh no!" · ask "What were the children doing?" and "And then what happened?"</p></div>
+  </div>
+
+  <!-- ===================== E. THEN & NOW ===================== -->
+  <div class="sec pb"><h2>E · Then &amp; Now Character Cards (5.3)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">Keep these on a side table: any learner may take one instead of talking about their own past, with no reason needed. <b>As an information gap:</b> give a pair the matching A and B cards. Each learner <em>is</em> their character, tells "then and now" in 6+ sentences, and answers the partner's "Did you use to…?" questions. Each card lists three questions to ask the partner.</p>
+  <div class="cards">
+    <div class="card-cut"><div class="ct">Pair 1 · A</div><h4>Captain Rosa</h4>
+      <div class="tn"><figure><div class="emo" style="font-size:2.6rem;height:.8in;display:flex;align-items:center">⛵</div>THEN</figure><span class="arrow">→</span><figure><img src="../../assets/vocab/chef.jpg" alt="">NOW</figure></div>
+      <ul><li>I used to be a sailor.</li><li>I used to live on a ship.</li><li>I used to eat fish every day.</li><li>I didn't use to have a phone.</li><li><b>Now</b> I'm a chef. I live in a small apartment. I have a mobile phone.</li></ul>
+      <p><b>Ask your partner:</b> Did you use to play soccer? · …travel a lot? · …read books?</p></div>
+    <div class="card-cut b"><div class="ct">Pair 1 · B</div><h4>Max Stone</h4>
+      <div class="tn"><figure><img src="../../assets/vocab/football.jpg" alt="">THEN</figure><span class="arrow">→</span><figure><img src="../../assets/vocab/teacher.jpg" alt="">NOW</figure></div>
+      <ul><li>I used to be a soccer player.</li><li>I used to train every morning.</li><li>I used to travel a lot.</li><li>I didn't use to read books.</li><li><b>Now</b> I'm a teacher. I read every evening. I walk to work.</li></ul>
+      <p><b>Ask your partner:</b> Did you use to live on a ship? · …eat fish? · …have a phone?</p></div>
+    <div class="card-cut"><div class="ct">Pair 2 · A</div><h4>Grandma Lu</h4>
+      <div class="tn"><figure><img src="../../assets/vocab/sing.jpg" alt="">THEN</figure><span class="arrow">→</span><figure><img src="../../assets/vocab/hike.jpg" alt="">NOW</figure></div>
+      <ul><li>I used to sing in a band.</li><li>I used to stay up very late.</li><li>I used to wear crazy hats.</li><li>I didn't use to cook.</li><li><b>Now</b> I hike every weekend. I get up at six. I cook for my family.</li></ul>
+      <p><b>Ask your partner:</b> Did you use to work at night? · …drink a lot of coffee? · …exercise?</p></div>
+    <div class="card-cut b"><div class="ct">Pair 2 · B</div><h4>Leo</h4>
+      <div class="tn"><figure><img src="../../assets/vocab/driver.jpg" alt="">THEN</figure><span class="arrow">→</span><figure><img src="../../assets/vocab/nurse.jpg" alt="">NOW</figure></div>
+      <ul><li>I used to be a taxi driver.</li><li>I used to work at night.</li><li>I used to drink five coffees a day.</li><li>I didn't use to exercise.</li><li><b>Now</b> I'm a nurse. I work in a hospital. I drink tea, and I swim twice a week.</li></ul>
+      <p><b>Ask your partner:</b> Did you use to sing? · …cook? · …go to bed early?</p></div>
+    <div class="card-cut"><div class="ct">Pair 3 · A</div><h4>Dina</h4>
+      <div class="tn"><figure><img src="../../assets/vocab/bank.jpg" alt="">THEN</figure><span class="arrow">→</span><figure><img src="../../assets/vocab/shop.jpg" alt="">NOW</figure></div>
+      <ul><li>I used to work in a bank.</li><li>I used to wear a suit every day.</li><li>I used to take the bus at 6 a.m.</li><li>I didn't use to have free time.</li><li><b>Now</b> I have a small flower shop. I wear jeans. I walk to work, and I have time for my garden.</li></ul>
+      <p><b>Ask your partner:</b> Did you use to be a mechanic? · …have long hair? · …dance?</p></div>
+    <div class="card-cut b"><div class="ct">Pair 3 · B</div><h4>Mr. Kim</h4>
+      <div class="tn"><figure><img src="../../assets/vocab/mechanic.jpg" alt="">THEN</figure><span class="arrow">→</span><figure><img src="../../assets/vocab/dance.jpg" alt="">NOW</figure></div>
+      <ul><li>I used to be a mechanic.</li><li>I used to have long hair.</li><li>I used to play the guitar in a band.</li><li>I didn't use to dance.</li><li><b>Now</b> I'm a grandfather. I have short gray hair. I dance salsa every Friday!</li></ul>
+      <p><b>Ask your partner:</b> Did you use to work in a bank? · …take the bus? · …have free time?</p></div>
+  </div>
+
+  <!-- ===================== F. SCRIPTS ===================== -->
+  <div class="sec pb"><h2>F · Listening &amp; Dictation Scripts (teacher reads aloud)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">Read at a natural but slow speed, with pauses. Read each script twice: once for gist, once to check. Use the weak forms (/wəz/, /wər/, "YOO-stuh") so learners hear real English. The 🔊 buttons in the online lessons give learners extra listening at home.</p>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">5.1-A · At eight o'clock last night <span style="font-weight:500;color:var(--ink-3)">(Workbook 5.1, Ex 1: match people and pictures)</span></h3>
+  <div class="script">Last night at eight o'clock, I was standing on my balcony with a cup of tea. I could see into all my neighbors' windows. Mr. Díaz was cooking dinner in his kitchen. Mrs. Okafor was reading a book on her sofa. Her son wasn't doing his homework. He was playing the guitar! The two students next door weren't studying. They were dancing to loud music. And old Mr. Chen upstairs was sleeping in his armchair. His TV was on, but he wasn't watching it! What was I doing? I was drinking my tea and watching everybody. Is that bad?</div>
+  <p style="font-size:.86rem;color:var(--ink-2)">Answers: 1 d · 2 a · 3 b · 4 c · 5 e · 6 f · g (swimming) extra. Follow-up questions: Were the students studying? (No, they weren't.) Was Mr. Chen watching TV? (No, he wasn't. He was sleeping.)</p>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">5.1-B · Dictation <span style="font-weight:500;color:var(--ink-3)">(read each sentence 3 times; learners check -ing spelling in pairs)</span></h3>
+  <div class="script">1. At nine o'clock I was taking a shower. · 2. They weren't watching TV. · 3. What were you doing last night? · 4. While I was reading, my sister was cooking.</div>
+  <p style="font-size:.86rem;color:var(--ink-2)">Spelling to check: <i>taking</i> (drop the e), <i>weren't</i> (apostrophe), <i>While</i> + comma.</p>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">5.2-A · Lena's Rainy Saturday <span style="font-weight:500;color:var(--ink-3)">(Workbook 5.2, Ex 1 + Set C Story A cards)</span></h3>
+  <div class="script">Last Saturday afternoon, Lena was walking in the park. The sun was shining and the birds were singing. She sat down on a bench. She was reading her book when suddenly it started to rain! She didn't have an umbrella. She closed her book and ran to the bus stop. While she was waiting for the bus, a man with a big umbrella arrived. Lena looked at him. It was her old friend Marco! They were both very surprised. "Let's get a coffee," said Marco. They went to a small café. While they were drinking their coffee, they talked and laughed for two hours. When they left the café, the rain was over and the sun was shining again. Lena was late for dinner, but she was very happy.</div>
+  <p style="font-size:.86rem;color:var(--ink-2)">Workbook answers: a 7 · b 1 · c 5 · d 8 · e 3 · f 2 · g 6 · h 4. Stretch questions: What was Lena doing when it started to rain? (She was reading.) What were they doing while they talked? (Drinking coffee.)</p>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">5.2-B · Dictation <span style="font-weight:500;color:var(--ink-3)">(read each sentence 3 times; learners underline the long action)</span></h3>
+  <div class="script">1. I was sleeping when the phone rang. · 2. While we were eating, the lights went out. · 3. She fell while she was running. · 4. What were you doing when I called you?</div>
+  <p style="font-size:.86rem;color:var(--ink-2)">Long actions: was sleeping · were eating · was running · were you doing. Check the comma in no. 2.</p>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">5.3-A · Carmen, then and now <span style="font-weight:500;color:var(--ink-3)">(Workbook 5.3, Ex 1: THEN or NOW)</span></h3>
+  <div class="script">My name is Carmen. When I was a child, I lived on a farm. Life was very different then. We didn't use to have a TV, so in the evening my father used to tell stories. I used to walk to school with my brothers. It took an hour! I used to have very long hair, and I used to hate vegetables. Now everything is different. I live in a big city, and I take the bus to work. My hair is short, and I love vegetables! I don't watch much TV. In the evening, I tell stories to my son… just like my father.</div>
+  <p style="font-size:.86rem;color:var(--ink-2)">Answers: THEN 1, 2, 3, 6 · NOW 4, 5, 7, 8 · Did her family use to have a TV? No, they didn't.</p>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">5.3-B · Dictation <span style="font-weight:500;color:var(--ink-3)">(read each sentence 3 times; the -d is the challenge)</span></h3>
+  <div class="script">1. I used to live in a small town. · 2. We didn't use to have a car. · 3. Did you use to play soccer? · 4. She used to have long hair, but now it's short.</div>
+  <p style="font-size:.86rem;color:var(--ink-2)">You can't hear the -d, so this dictation tests the rule: <b>used</b> in 1 and 4, <b>use</b> in 2 and 3.</p>
+
+  <!-- ===================== G. BOARD GAME ===================== -->
+  <div class="sec pb"><h2>G · Game — Story Road (Module 5 review)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">Groups of 3–4, one board, one die, a coin or counter for each player. Roll and move. Do the task on the square. The group decides: 👍 OK → stay; 🤔 not yet → the group helps, and you stay anyway. ⭐ squares: do the task and roll again. Play for 10 minutes; the player furthest along the road wins. <b>Personal questions can always be answered as a character or invented.</b></p>
+  <div class="road">
+    <div class="sq go"><b class="n">1</b>START 🚩</div>
+    <div class="sq"><b class="n">2</b>What were you doing at 7 a.m. yesterday?</div>
+    <div class="sq"><b class="n">3</b>Make it "No": They were sleeping.</div>
+    <div class="sq"><b class="n">4</b>Say 2 things people were doing in this room 5 minutes ago.</div>
+    <div class="sq"><b class="n">5</b>was or were? "My friends ___ waiting."</div>
+    <div class="sq star"><b class="n">6 ⭐</b>Finish: "I was walking home when…"</div>
+
+    <div class="sq"><b class="n">12</b>Say the past: ring · fall · begin · break</div>
+    <div class="sq"><b class="n">11</b>when or while? "___ she was sleeping, the phone rang."</div>
+    <div class="sq go"><b class="n">10</b>↩ Go back 2</div>
+    <div class="sq"><b class="n">9</b>Finish: "While I was cooking, …"</div>
+    <div class="sq"><b class="n">8</b>Fix it: "I was knowing the answer."</div>
+    <div class="sq"><b class="n">7</b>What were you doing at 9 last night?</div>
+
+    <div class="sq star"><b class="n">13 ⭐</b>Tell a "something happened" story in 3 sentences.</div>
+    <div class="sq"><b class="n">14</b>Ask the player on your left: "What were you doing when…?"</div>
+    <div class="sq"><b class="n">15</b>Fix it: "I was walking home when it was starting to rain."</div>
+    <div class="sq"><b class="n">16</b>One thing you (or a character) used to do as a child.</div>
+    <div class="sq"><b class="n">17</b>Make a question: you / use to / play soccer</div>
+    <div class="sq"><b class="n">18</b>use to or used to? "Did you ___ live here?"</div>
+
+    <div class="sq"><b class="n">24</b>Tell one picture from Lena's story with <b>while</b>.</div>
+    <div class="sq"><b class="n">23</b>Fix it: "Yesterday I used to see a movie."</div>
+    <div class="sq"><b class="n">22</b>A food you didn't use to like (true or invented).</div>
+    <div class="sq"><b class="n">21</b>Fix it: "I didn't used to like coffee."</div>
+    <div class="sq go"><b class="n">20</b>➜ Go forward 2</div>
+    <div class="sq star"><b class="n">19 ⭐</b>Then &amp; now: "I used to…, but now I…"</div>
+
+    <div class="sq"><b class="n">25</b>What was the weather doing this morning?</div>
+    <div class="sq star"><b class="n">26 ⭐</b>A character (Captain Rosa or anyone): 2 "used to" sentences.</div>
+    <div class="sq"><b class="n">27</b>Finish: "There used to be…, but now…"</div>
+    <div class="sq"><b class="n">28</b>Ask 2 "Did you use to…?" questions.</div>
+    <div class="sq star"><b class="n">29 ⭐</b>Tell a 4-sentence story: scene + event + end.</div>
+    <div class="sq go"><b class="n">30</b>FINISH 🎉</div>
+  </div>
+  <div class="note"><div class="t">Teacher note</div>
+    <p>The road snakes: 1→6 left to right, 7→12 right to left, and so on. Squares 2–15 review C14–C15 and most of squares 16–29 review C16 (24 and 25 bring the past continuous back), so a group that stops early has still reviewed the past continuous. Fixed answers are in the Answer Key (squares 3, 5, 8, 11, 12, 15, 17, 18, 21, 23). Walk around and listen for the three big errors: a missing <i>was/were</i>, a continuous "dot," and <i>didn't used to</i>. If you run out of time in C16, keep the boards for the C17 warmer.</p>
+  </div>
+
+  <div class="foot">
+    <div class="who"><b>Ray de la Paz</b><span class="bio">© 2026 Ray de la Paz · Everyday English (A2 Elementary)</span></div>
+    <div class="ver">Module 5 · Classroom Materials · v1.0</div>
+  </div>
+
+</div>
+</body>
+</html>
