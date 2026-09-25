@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slides — Module 8</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root{--bg:#0b1220;--ink:#edf2fb;--ink2:#a8b6cf;--accent:#7fb2ff;--accent2:#2563eb;--lab:#34d3bd;--warn:#fbbf24;--line:#233252;--code:#101a2e;color-scheme:dark}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;overflow:hidden}
+  .deck{height:100%;width:100%;position:relative}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:6vh 8vw;gap:20px}
+  .slide.on{display:flex}
+  h1,h2,h3{font-family:"Archivo",sans-serif;line-height:1.1;text-wrap:balance}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  .slide h1{font-size:clamp(2rem,6vw,4rem);font-weight:800;letter-spacing:-.02em}
+  .slide h2{font-size:clamp(1.5rem,4.2vw,2.8rem);font-weight:800;letter-spacing:-.01em}
+  .slide p.lead{font-size:clamp(1.05rem,2.4vw,1.5rem);color:var(--ink2);max-width:26ch}
+  ul{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:6px}
+  ul li{position:relative;padding-left:34px;font-size:clamp(1.05rem,2.3vw,1.6rem)}
+  ul li::before{content:"";position:absolute;left:0;top:.55em;width:12px;height:12px;border-radius:3px;background:var(--accent);transform:rotate(45deg)}
+  ul.lab li::before{background:var(--lab)}
+  code.k{font-family:"JetBrains Mono",monospace;color:#cfe0ff;font-size:.92em}
+  pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:22px 26px;font-family:"JetBrains Mono",monospace;font-size:clamp(.85rem,1.9vw,1.3rem);line-height:1.55;overflow:auto;max-width:100%}
+  pre .k{color:#7dd3fc} pre .s{color:#86efac} pre .c{color:#7183a3;font-style:italic}
+  .tag{display:inline-flex;align-items:center;gap:10px;font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);color:var(--ink2)}
+  .tag .pill{background:var(--accent2);color:#fff;font-weight:700;border-radius:999px;padding:3px 12px;letter-spacing:.06em}
+  .tag .pill.lab{background:var(--lab);color:#062b26} .tag .pill.warn{background:var(--warn);color:#3a2a05}
+  .section{background:linear-gradient(135deg,#132a52,#0b1220)}
+  .section .big{font-size:clamp(3rem,12vw,8rem);font-family:"Archivo";font-weight:800;color:var(--accent2);line-height:.9}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+  @media (max-width:760px){.two{grid-template-columns:1fr}}
+  .bar{position:fixed;left:0;top:0;height:4px;background:var(--accent2);width:0;transition:width .25s;z-index:5}
+  .count{position:fixed;right:16px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink2);z-index:5}
+  .nav{position:fixed;inset:auto 0 0 0;display:flex;justify-content:space-between;pointer-events:none;z-index:4}
+  .nav button{pointer-events:auto;background:transparent;border:none;color:transparent;width:22vw;height:100vh;cursor:pointer}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+  /* ESL extras (picture vocab, grammar tables, dialogue, clocks) */
+  .pics{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,1.6vw,18px)}
+  .pics.six{grid-template-columns:repeat(6,1fr)}
+  .pic{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center}
+  .pic img{width:100%;max-width:150px;aspect-ratio:1;object-fit:cover;border-radius:10px;background:#FFF3E0;display:block;margin:0 auto}
+  .pic .emo{font-size:clamp(2.6rem,7vw,5rem);line-height:1;aspect-ratio:1;max-width:150px;margin:0 auto;display:flex;align-items:center;justify-content:center}
+  .pic .w{font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(.9rem,2vw,1.35rem);margin-top:6px}
+  @media (max-width:760px){.pics,.pics.six{grid-template-columns:repeat(3,1fr)}}
+  table.g{border-collapse:collapse;font-size:clamp(.95rem,2.1vw,1.45rem);width:100%;max-width:1000px}
+  table.g th,table.g td{border:1px solid var(--line);padding:10px 16px;text-align:left}
+  table.g th{background:var(--code);color:var(--accent);font-family:"JetBrains Mono",monospace;font-size:.8em;letter-spacing:.04em}
+  table.g b{color:#ffd166}
+  .dlg{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:18px 24px;display:flex;flex-direction:column;gap:8px;font-size:clamp(1rem,2.2vw,1.45rem);max-width:1000px}
+  .dlg .sp{display:inline-block;min-width:3.6em;font-weight:700;color:var(--accent)}
+  .dlg .b .sp{color:#c4a1ff}
+  .ccq{font-size:clamp(1rem,2.2vw,1.45rem);border:1px dashed var(--line);border-radius:12px;padding:12px 18px;background:var(--code)}
+  .ccq i{color:var(--ink2)}
+  .clocks{display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,34px);align-items:flex-start}
+  .clocks figure{text-align:center}
+  .clocks svg{width:clamp(96px,14vw,170px);height:auto}
+  .clocks figcaption{font-size:clamp(.95rem,2vw,1.3rem);margin-top:6px}
+  .clocks figcaption small{display:block;color:var(--ink2);font-size:.8em}
+  .snd{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .snd div{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:clamp(1rem,2.2vw,1.5rem)}
+  .snd div b{display:block;font-family:"Archivo";font-size:1.5em;color:var(--accent)}
+  .snd div small{color:var(--ink2)}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="deck" id="deck">
+
+  <!-- 1 -->
+  <section class="slide on section">
+    <div class="eyebrow">Advanced English (C1) · Instructor Kit</div>
+    <h1>Module 8<br>Fluency, Craft &amp; the Final Project</h1>
+    <p class="lead">Keep going. Cut back. Stand your ground.</p>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide">
+    <div class="eyebrow">Classes C23–C25 · the map</div>
+    <h2>Three disciplines, one project</h2>
+    <ul>
+      <li><b>8.1</b> Fluency &amp; spontaneity: <i>That's a good question… · It's a kind of… · or rather…</i></li>
+      <li><b>8.2</b> Precision &amp; concision: <i>due to the fact that → because · make a decision → decide</i></li>
+      <li><b>8.3</b> A position paper &amp; its defense: <i>That's a fair point. That said, I'd still argue…</i></li>
+    </ul>
+    <div class="tag"><span class="pill">NOTE</span> Personal topics: your real life, a new identity card, or something invented. In the project, you may argue a side you drew.</div>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide">
+    <div class="eyebrow">8.1 · What fluency really is · check the meaning</div>
+    <h2>Fluency = keep going, not go fast</h2>
+    <div class="two">
+      <div class="ccq"><b>Freeze:</b> "The reason is… um… [long silence] … sorry, I don't know how to say it."</div>
+      <div class="ccq"><b>Flow:</b> "The reason is, well, how can I put this? It's partly about cost, and partly, I suppose, about habit."</div>
+    </div>
+    <div class="ccq">Was the second speaker faster? <i>(No.)</i> Why does she sound more fluent? <i>(No dead silence; the phrase filled the gap.)</i> Is pausing wrong? <i>(No. Frozen, silent pauses are the problem.)</i></div>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide">
+    <div class="eyebrow">8.1 · Buying time · phrases that carry meaning</div>
+    <h2>Fill the pause, then slow down</h2>
+    <table class="g">
+      <tr><th>Situation</th><th>Phrase</th><th>What it signals</th></tr>
+      <tr><td>a hard question</td><td><b>That's a good question…</b></td><td>acknowledges the asker</td></tr>
+      <tr><td>gathering thoughts</td><td><b>Let me think for a second…</b></td><td>open, honest thinking</td></tr>
+      <tr><td>a nuanced answer</td><td><b>Well, it depends…</b></td><td>a balanced answer is coming</td></tr>
+      <tr><td>choosing words</td><td><b>How can I put this?</b></td><td>careful phrasing</td></tr>
+      <tr><td>an opinion</td><td><b>The way I see it… / If you ask me…</b></td><td>a view, while you build it</td></tr>
+    </table>
+    <div class="tag"><span class="pill lab">SAY IT</span> That's a good <b>QUES</b>tion ↘ | … · <b>Well</b> ↘↗, it de<b>PENDS</b>…</div>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide">
+    <div class="eyebrow">8.1 · Fillers &amp; discourse markers</div>
+    <h2>Does it do a job?</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>Marker</th><th>Its job</th></tr>
+        <tr><td><b>well</b></td><td>starts a turn</td></tr>
+        <tr><td><b>actually</b></td><td>a surprise, a mild correction</td></tr>
+        <tr><td><b>I mean</b></td><td>a clarification</td></tr>
+        <tr><td><b>you know</b></td><td>shared feeling</td></tr>
+        <tr><td><b>sort of</b></td><td>an honest approximation</td></tr>
+      </table>
+      <div class="ccq"><b>Tic:</b> "So basically I sort of think that, like, we should, you know, actually just, um, wait."<br><br><b>Job:</b> "<b>Well</b>, I <b>actually</b> think we should just wait."<br><br>Aim for purpose, not zero.</div>
+    </div>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide">
+    <div class="eyebrow">8.1 · Circumlocution · talk around the word</div>
+    <h2>The word won't come? Describe it.</h2>
+    <div class="pics">
+      <div class="pic"><img src="../assets/vocab/remote.jpg" alt=""><div class="w">the thing you use to…</div></div>
+      <div class="pic"><img src="../assets/vocab/wardrobe.jpg" alt=""><div class="w">a kind of…</div></div>
+      <div class="pic"><img src="../assets/vocab/umbrella.jpg" alt=""><div class="w">it's like…, but…</div></div>
+      <div class="pic"><img src="../assets/vocab/mechanic.jpg" alt=""><div class="w">the person who…</div></div>
+    </div>
+    <div class="ccq">"It's the thing you use to open a wine bottle." Does she know the word? <i>(Not right now.)</i> Did the conversation stop? <i>(No.)</i> What often happens next? <i>(The listener says it: "A corkscrew!")</i> · Also: <b>it's when…</b> (a commute) · <b>the, oh, whatever it's called…</b></div>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide">
+    <div class="eyebrow">8.1 · Self-correction · repair on the move</div>
+    <h2>Fix it without stopping</h2>
+    <div class="dlg">
+      <p><span class="sp">✘</span> We arrived on Tuesday. No wait, sorry, that's wrong, um, it was Wednesday, sorry.</p>
+      <p class="b"><span class="sp">✔</span> We arrived on Tuesday, <b>or rather</b>, Wednesday, and got straight to work.</p>
+    </div>
+    <div class="ccq">Which day was it? <i>(Wednesday.)</i> Did she apologize? <i>(No.)</i> Do we trust her more or less? <i>(More: she's monitoring her own speech.)</i><br>Also: <b>what I mean is… · let me rephrase that · to put it another way…</b></div>
+    <div class="tag"><span class="pill lab">SAY IT</span> the repair is light and quick; stress the corrected word: "Tuesday, (or rather) <b>WED</b>nesday"</div>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide">
+    <div class="eyebrow">8.1 · Freer task · 25 min · groups of 3</div>
+    <h2>🎙️ Impromptu Talks</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>Draw a card · <b>15 s</b> to think (3 key words max)</li>
+        <li>Talk for <b>1 minute</b>: no silence, no restart, no "sorry"</li>
+        <li>Timekeeper asks <b>one</b> follow-up question</li>
+        <li>Spotter reports: time-buyers · talked around · repairs · silences</li>
+        <li>Round 1 Warm-up · Round 2 Opinion · Round 3 Stretch + 🃏 curveball</li>
+      </ul>
+      <div class="ccq">How long do you talk? <i>(One minute.)</i><br>Can you write a script? <i>(No, three words.)</i><br>Forget a word? <i>(Talk around it.)</i><br>Make a mistake? <i>("Or rather…" and keep going.)</i><br>Can you say "Pass"? <i>(Yes, once per round.)</i></div>
+    </div>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide">
+    <div class="eyebrow">8.2 · Why edit? · one pass</div>
+    <h2>"I didn't have time to write a short letter, so I wrote a long one."</h2>
+    <div class="ccq"><b>First draft (35 words):</b> Due to the fact that we did not have a sufficient amount of time, we made the decision to postpone the meeting until a later date in order to be able to prepare more fully.</div>
+    <div class="ccq"><b>Edited (16 words):</b> Because we lacked time, we decided to postpone the meeting so we could prepare more fully.</div>
+    <div class="tag"><span class="pill">ASK</span> Which ideas were lost? <i>(None.)</i> What exactly was cut? Name four cuts.</div>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide">
+    <div class="eyebrow">8.2 · Cut 1 · wordy phrases &amp; redundant pairs</div>
+    <h2>Fewer words, same meaning</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>Wordy</th><th>Lean</th></tr>
+        <tr><td>in order to</td><td><b>to</b></td></tr>
+        <tr><td>due to the fact that</td><td><b>because</b></td></tr>
+        <tr><td>at this point in time</td><td><b>now</b></td></tr>
+        <tr><td>in the event that</td><td><b>if</b></td></tr>
+        <tr><td>has the ability to</td><td><b>can</b></td></tr>
+        <tr><td>in spite of the fact that</td><td><b>although</b></td></tr>
+      </table>
+      <div class="ccq"><b>Redundant pairs:</b> <s>end</s> result · <s>free</s> gift · <s>past</s> history · each <s>and every</s> · <s>completely</s> eliminate<br><br>"a free gift": can a gift cost money? <i>(No: <b>free</b> adds nothing.)</i></div>
+    </div>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide">
+    <div class="eyebrow">8.2 · Cuts 2 &amp; 3 · intensifiers &amp; buried verbs · check the meaning</div>
+    <h2>Upgrade the word. Dig out the verb.</h2>
+    <div class="two">
+      <table class="g">
+        <tr><td>very tired</td><td><b>exhausted</b></td></tr>
+        <tr><td>really important</td><td><b>crucial</b></td></tr>
+        <tr><td>very surprised</td><td><b>astonished</b></td></tr>
+        <tr><td>make a decision</td><td><b>decide</b></td></tr>
+        <tr><td>carry out a review of</td><td><b>review</b></td></tr>
+        <tr><td>give consideration to</td><td><b>consider</b></td></tr>
+      </table>
+      <div class="ccq">"I'm <b>absolutely</b> certain." Cut? <i>(No: real emphasis.)</i><br>"<b>slightly</b> undercooked." Cut? <i>(No: a precise degree.)</i><br>Lesson 3.1: nominalization. Wrong? <i>(No! Formal reports, legal texts.)</i> An email to your team? <i>(Strong verbs.)</i> <b>Match the tool to the goal.</b></div>
+    </div>
+  </section>
+
+  <!-- 12 -->
+  <section class="slide">
+    <div class="eyebrow">8.2 · Cut 4 · double negatives &amp; tangles</div>
+    <h2>Can you say it in one breath?</h2>
+    <table class="g">
+      <tr><th>Tangled</th><th>Clear</th></tr>
+      <tr><td>It is <b>not uncommon</b> for delays to occur in the event that staff are absent.</td><td>Delays are <b>common</b> when staff are absent.</td></tr>
+      <tr><td>The report, which was written by the team that had been assembled in order to look into the matter that had been raised at the previous meeting, was well received.</td><td>A team was assembled to look into the matter raised at the last meeting. <b>Its report was well received.</b></td></tr>
+    </table>
+    <div class="tag"><span class="pill warn">DON'T OVER-CUT</span> "Committee will review proposal" ✘ (headline, not English) · keep numbers, names, sources, hedges</div>
+  </section>
+
+  <!-- 13 -->
+  <section class="slide">
+    <div class="eyebrow">8.2 · Freer task · 26 min</div>
+    <h2>✂️ The 30% Cut Challenge</h2>
+    <div class="two">
+      <ul class="lab">
+        <li><b>Round 1</b> · before/after cards: match them and <b>name every cut</b></li>
+        <li><b>Round 2</b> · groups of 3 · one text (~150 words) → <b>cut at least 30%</b></li>
+        <li><b>Editor</b> (pen) · <b>word-counter</b> · <b>meaning-keeper</b> (veto)</li>
+        <li><b>Round 3</b> · read it aloud: before / after / percent</li>
+      </ul>
+      <div class="ccq">How much do you cut? <i>(At least 30%.)</i><br>Can you cut an idea? <i>(Never.)</i><br>A number or a source? <i>(No.)</i><br>Who can say "No, that loses meaning"? <i>(The meaning-keeper.)</i><br>Shortest wins? <i>(No, the clearest.)</i></div>
+    </div>
+  </section>
+
+  <!-- 14 -->
+  <section class="slide">
+    <div class="eyebrow">8.3 · The position paper · six parts · about 500 words</div>
+    <h2>Take a stand, face the objection</h2>
+    <table class="g">
+      <tr><th>1 Thesis</th><td>This paper argues that…</td><th>4 Counter-argument</th><td>Admittedly, it might be objected that…</td></tr>
+      <tr><th>2 Argument A</th><td>The primary reason is…</td><th>5 Rebuttal</th><td>This concern, while valid, overlooks…</td></tr>
+      <tr><th>3 Argument B</th><td>A related consideration is…</td><th>6 Conclusion</th><td>On balance, the weight of evidence…</td></tr>
+    </table>
+    <div class="ccq"><b>Topics:</b> a later school start · a four-day week · AI tools for homework · cashless stores · portfolios instead of exams · paid trial days instead of interviews · … Choose one, or draw one. <b>Draw a side card</b> if you prefer: you argue the card, not your opinion.</div>
+  </section>
+
+  <!-- 15 -->
+  <section class="slide">
+    <div class="eyebrow">8.3 · Model · a defense under questioning</div>
+    <h2>Concede without collapsing</h2>
+    <div class="dlg">
+      <p class="b"><span class="sp">Q1:</span> What about residents with disabilities, or older people who can't walk far? Isn't a blanket ban unfair to them?</p>
+      <p><span class="sp">Priya:</span> That's a fair point, and I don't want to brush it aside. You're right that a blanket ban would be unfair. <b>That said</b>, the proposal I'd defend isn't a blanket one: it exempts accessible transportation and permit holders. So the principle stands, provided the exemptions are properly designed.</p>
+    </div>
+    <div class="ccq">What does she concede? <i>(A blanket ban would be unfair.)</i> What does she hold? <i>(The principle.)</i> Did she give a reason? <i>(Yes: the exemptions.)</i></div>
+  </section>
+
+  <!-- 16 -->
+  <section class="slide">
+    <div class="eyebrow">8.3 · The viva · questions and answers · check the meaning</div>
+    <h2>Concede → hold → hedge</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>Examiners ask…</th></tr>
+        <tr><td>🔍 <b>clarify</b>: What exactly do you mean by…?</td></tr>
+        <tr><td>📊 <b>evidence</b>: How do you know that…?</td></tr>
+        <tr><td>⚖️ <b>objection</b>: What about people who…?</td></tr>
+        <tr><td>🔮 <b>consequence</b>: If this were adopted, what might go wrong?</td></tr>
+        <tr><td>📏 <b>scope</b>: Where do you draw the line?</td></tr>
+      </table>
+      <div class="ccq">"Yes, you're right. My idea is bad." <i>(Collapse ✘)</i><br>"No, that's wrong." <i>(Stonewall ✘)</i><br>"That's a fair point. <b>That said</b>, … <b>So I'd put it slightly more cautiously</b>: …" <i>(Poised ✔)</i><br>"This proves that…" <i>(Overclaim → "This strongly suggests…")</i><br>Unsure of the question? <i>"If I've understood your question, you're asking whether…"</i></div>
+    </div>
+  </section>
+
+  <!-- 17 -->
+  <section class="slide">
+    <div class="eyebrow">8.3 · The task · 12 + 36 min · groups of 4</div>
+    <h2>🎓 The Vivas</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>Read your two papers · write your questions (at least one challenging)</li>
+        <li>🪑 Chair introduces · 🎤 <b>opening statement: 2 min</b>, from notes</li>
+        <li>❓ Lead examiner: 2 questions · second examiner: 1–2 · chair: 1</li>
+        <li>⭐ one star + 🎯 one wish · circle the rubric · <b>rotate every 9 min</b></li>
+      </ul>
+      <div class="ccq">Do you read your paper? <i>(No, notes only.)</i><br>A question about my family or country? <i>(No: the chair stops it.)</i><br>A fair point? <i>(Concede, then hold with a reason.)</i><br>Is this a grade? <i>(No: practice for C26.)</i></div>
+    </div>
+  </section>
+
+  <!-- 18 -->
+  <section class="slide section">
+    <div class="eyebrow">You can now keep going, cut back and stand your ground</div>
+    <h2>Module 8 done. C1 done 🎓</h2>
+    <ul class="lab">
+      <li>🎙️ That's a good question… It's a kind of… We met on Tuesday, <b>or rather</b>, Wednesday.</li>
+      <li>✂️ <s>due to the fact that</s> <b>because</b> · <s>make a decision</s> <b>decide</b> · <s>very tired</s> <b>exhausted</b></li>
+      <li>🎓 That's a fair point. <b>That said</b>, I'd still argue… <b>On balance</b>, …</li>
+    </ul>
+    <p class="lead" style="margin-top:10px;max-width:46ch"><b>C26:</b> the C1 final assessment (an individual speaking interview, about 10 minutes, plus listening, reading and writing), then we celebrate. Homework: online lesson 8.3 with 🔊 and your final C1 journal.</p>
+  </section>
+
+
+</div>
+
+<div class="count" id="count">1 / 18</div>
+<div class="nav"><button id="prev" aria-label="Previous slide"></button><button id="next" aria-label="Next slide"></button></div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const bar=document.getElementById('bar'), count=document.getElementById('count');
+  let i=0;
+  function show(n){ i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+    bar.style.width=((i+1)/slides.length*100)+'%'; count.textContent=(i+1)+' / '+slides.length; }
+  document.getElementById('next').onclick=()=>show(i+1);
+  document.getElementById('prev').onclick=()=>show(i-1);
+  addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}
+    else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+  });
+  show(0);
+</script>
+</body>
+</html>

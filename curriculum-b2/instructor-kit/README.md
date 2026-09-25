@@ -44,7 +44,7 @@ to regenerate the three books, then re-render their PDFs.** Don't hand-edit the 
 | `assessment/progress-test-1.{html,pdf}` | Learner + teacher | C13 test on Modules 1–4 (listening, vocabulary, grammar, reading, writing + pair speaking) |
 | `assessment/final-test.{html,pdf}` | Learner + teacher | C26 B2 exit test on all 8 modules + individual speaking interview |
 | `assessment/assessment-key.{html,pdf}` | Teacher | Keys, point values, speaking/writing rubrics, who is ready for C1, how to give feedback kindly |
-| `learner-welcome.{html,pdf}` | Learner | First-day handout in simple English: class times, what to bring, how to use the online lessons at home |
+| `learner-welcome.{html,pdf}` | Learner | First-day handout (B2 English): class times, what to bring, how to use the online lessons at home |
 | `sell-sheet.{html,pdf}` | Programs / funders | One-pager: what's inside, who it's for, license tiers |
 | `assets/vocab/` | — | The course's 154 vocabulary illustrations (used by the books, slides, and flashcards) |
 | `README.md` · `LICENSE.md` | — | This overview and the tiered license template |

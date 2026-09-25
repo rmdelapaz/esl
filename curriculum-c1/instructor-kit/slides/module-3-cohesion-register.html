@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slides — Module 3</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root{--bg:#0b1220;--ink:#edf2fb;--ink2:#a8b6cf;--accent:#7fb2ff;--accent2:#2563eb;--lab:#34d3bd;--warn:#fbbf24;--line:#233252;--code:#101a2e;color-scheme:dark}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;overflow:hidden}
+  .deck{height:100%;width:100%;position:relative}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:6vh 8vw;gap:20px}
+  .slide.on{display:flex}
+  h1,h2,h3{font-family:"Archivo",sans-serif;line-height:1.1;text-wrap:balance}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  .slide h1{font-size:clamp(2rem,6vw,4rem);font-weight:800;letter-spacing:-.02em}
+  .slide h2{font-size:clamp(1.5rem,4.2vw,2.8rem);font-weight:800;letter-spacing:-.01em}
+  .slide p.lead{font-size:clamp(1.05rem,2.4vw,1.5rem);color:var(--ink2);max-width:26ch}
+  ul{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:6px}
+  ul li{position:relative;padding-left:34px;font-size:clamp(1.05rem,2.3vw,1.6rem)}
+  ul li::before{content:"";position:absolute;left:0;top:.55em;width:12px;height:12px;border-radius:3px;background:var(--accent);transform:rotate(45deg)}
+  ul.lab li::before{background:var(--lab)}
+  code.k{font-family:"JetBrains Mono",monospace;color:#cfe0ff;font-size:.92em}
+  pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:22px 26px;font-family:"JetBrains Mono",monospace;font-size:clamp(.85rem,1.9vw,1.3rem);line-height:1.55;overflow:auto;max-width:100%}
+  pre .k{color:#7dd3fc} pre .s{color:#86efac} pre .c{color:#7183a3;font-style:italic}
+  .tag{display:inline-flex;align-items:center;gap:10px;font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);color:var(--ink2)}
+  .tag .pill{background:var(--accent2);color:#fff;font-weight:700;border-radius:999px;padding:3px 12px;letter-spacing:.06em}
+  .tag .pill.lab{background:var(--lab);color:#062b26} .tag .pill.warn{background:var(--warn);color:#3a2a05}
+  .section{background:linear-gradient(135deg,#132a52,#0b1220)}
+  .section .big{font-size:clamp(3rem,12vw,8rem);font-family:"Archivo";font-weight:800;color:var(--accent2);line-height:.9}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+  @media (max-width:760px){.two{grid-template-columns:1fr}}
+  .bar{position:fixed;left:0;top:0;height:4px;background:var(--accent2);width:0;transition:width .25s;z-index:5}
+  .count{position:fixed;right:16px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink2);z-index:5}
+  .nav{position:fixed;inset:auto 0 0 0;display:flex;justify-content:space-between;pointer-events:none;z-index:4}
+  .nav button{pointer-events:auto;background:transparent;border:none;color:transparent;width:22vw;height:100vh;cursor:pointer}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+  /* ESL extras (picture vocab, grammar tables, dialogue, clocks) */
+  .pics{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,1.6vw,18px)}
+  .pics.six{grid-template-columns:repeat(6,1fr)}
+  .pic{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center}
+  .pic img{width:100%;max-width:150px;aspect-ratio:1;object-fit:cover;border-radius:10px;background:#FFF3E0;display:block;margin:0 auto}
+  .pic .emo{font-size:clamp(2.6rem,7vw,5rem);line-height:1;aspect-ratio:1;max-width:150px;margin:0 auto;display:flex;align-items:center;justify-content:center}
+  .pic .w{font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(.9rem,2vw,1.35rem);margin-top:6px}
+  @media (max-width:760px){.pics,.pics.six{grid-template-columns:repeat(3,1fr)}}
+  table.g{border-collapse:collapse;font-size:clamp(.95rem,2.1vw,1.45rem);width:100%;max-width:1000px}
+  table.g th,table.g td{border:1px solid var(--line);padding:10px 16px;text-align:left}
+  table.g th{background:var(--code);color:var(--accent);font-family:"JetBrains Mono",monospace;font-size:.8em;letter-spacing:.04em}
+  table.g b{color:#ffd166}
+  .dlg{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:18px 24px;display:flex;flex-direction:column;gap:8px;font-size:clamp(1rem,2.2vw,1.45rem);max-width:1000px}
+  .dlg .sp{display:inline-block;min-width:3.6em;font-weight:700;color:var(--accent)}
+  .dlg .b .sp{color:#c4a1ff}
+  .ccq{font-size:clamp(1rem,2.2vw,1.45rem);border:1px dashed var(--line);border-radius:12px;padding:12px 18px;background:var(--code)}
+  .ccq i{color:var(--ink2)}
+  .clocks{display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,34px);align-items:flex-start}
+  .clocks figure{text-align:center}
+  .clocks svg{width:clamp(96px,14vw,170px);height:auto}
+  .clocks figcaption{font-size:clamp(.95rem,2vw,1.3rem);margin-top:6px}
+  .clocks figcaption small{display:block;color:var(--ink2);font-size:.8em}
+  .snd{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .snd div{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:clamp(1rem,2.2vw,1.5rem)}
+  .snd div b{display:block;font-family:"Archivo";font-size:1.5em;color:var(--accent)}
+  .snd div small{color:var(--ink2)}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="deck" id="deck">
+
+  <!-- 1 -->
+  <section class="slide on section">
+    <div class="eyebrow">Advanced English (C1) · Instructor Kit</div>
+    <h1>Module 3<br>Cohesion, Register &amp; Style</h1>
+    <p class="lead">Package it. Connect it. Soften it.</p>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide">
+    <div class="eyebrow">Classes C7–C9 · the map</div>
+    <h2>Same meaning, better packaging</h2>
+    <ul>
+      <li><b>3.1</b> Nominalization &amp; academic style: <i>they decided → the decision</i>, and back to plain English</li>
+      <li><b>3.2</b> Cohesion: <i>this trend · the latter · do so · I hope not · I'd love to</i></li>
+      <li><b>3.3</b> Hedging &amp; diplomatic English: <i>The data suggest… · I was wondering if… · I'm afraid…</i></li>
+    </ul>
+    <div class="tag"><span class="pill">NOTE</span> Your real life, a new identity card, or something invented: all are OK. In role-plays, play the card.</div>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide">
+    <div class="eyebrow">3.1 · Four rooms · which one are you writing for?</div>
+    <h2>Register = fit the room</h2>
+    <div class="pics">
+      <div class="pic"><img src="../assets/vocab/book.jpg" alt=""><div class="w">the essay</div></div>
+      <div class="pic"><img src="../assets/vocab/notebook.jpg" alt=""><div class="w">the report</div></div>
+      <div class="pic"><img src="../assets/vocab/email.jpg" alt=""><div class="w">the work email</div></div>
+      <div class="pic"><img src="../assets/vocab/coffee.jpg" alt=""><div class="w">the coffee chat</div></div>
+    </div>
+    <div class="ccq">"They decided to expand, which reduced their costs." · "The decision to expand led to a reduction in costs." Same facts? <i>(Yes.)</i> Which room? <i>(Chat · report.)</i> Where did "they" go? <i>(Hidden.)</i></div>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide">
+    <div class="eyebrow">3.1 · Form · actions and qualities become nouns</div>
+    <h2>Build the noun</h2>
+    <table class="g">
+      <tr><th>-tion / -sion</th><td>decide → <b>decision</b> · introduce → <b>introduction</b></td><th>-ity / -ness</th><td>stable → <b>stability</b> · aware → <b>awareness</b></td></tr>
+      <tr><th>-ment / -ance</th><td>assess → <b>assessment</b> · perform → <b>performance</b></td><th>-al / -ure / -th</th><td>approve → <b>approval</b> · fail → <b>failure</b> · grow → <b>growth</b></td></tr>
+      <tr><th>no suffix</th><td>in<b>CREASE</b> → an <b>IN</b>crease · a change · a rise</td><th>irregular</th><td><b>belief · choice · analysis</b> (not <s>analyst</s>)</td></tr>
+    </table>
+    <div class="tag"><span class="pill warn">WATCH</span> <s>the arrivement</s> ❌ <b>the arrival</b> · <s>an increase of prices</s> ❌ an increase <b>in</b> prices</div>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide">
+    <div class="eyebrow">3.1 · Meaning · why writers package ideas as nouns</div>
+    <h2>Concise · impersonal · abstract</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>Plain verb</th><th>Light verb + noun</th></tr>
+        <tr><td>investigate</td><td><b>carry out</b> an investigation <b>into</b></td></tr>
+        <tr><td>conclude</td><td><b>reach</b> a conclusion</td></tr>
+        <tr><td>threaten</td><td><b>pose</b> a threat <b>to</b></td></tr>
+        <tr><td>affect</td><td><b>have</b> an impact <b>on</b></td></tr>
+        <tr><td>change</td><td><b>bring about</b> a change <b>in</b></td></tr>
+      </table>
+      <div class="ccq">"We carried out an investigation into the cause." Did anyone carry anything? <i>(No.)</i> Where's the meaning? <i>(In the noun.)</i> Why use it? <i>(We can add: a <b>thorough</b> investigation.)</i><br>Partners: the passive · <i>there is</i> · long noun phrases.</div>
+    </div>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide">
+    <div class="eyebrow">3.1 · And back again · when NOT to nominalize</div>
+    <h2>Dense is not the same as clever</h2>
+    <table class="g">
+      <tr><th>Over-nominalized</th><td>The implementation of the utilization of renewable resources is a requirement for the achievement of a reduction in emissions.</td></tr>
+      <tr><th>Rebalanced</th><td>To <b>reduce</b> emissions, we must <b>use</b> renewable resources.</td></tr>
+      <tr><th>For a notice</th><td>Confirmation of attendance is required prior to commencement. → <b>Please confirm that you'll come before it starts.</b></td></tr>
+    </table>
+    <div class="ccq">The test: <b>Who does what?</b> Can you tell in three seconds? If not, turn a noun back into a verb. Is the short version less serious? <i>(No, just clearer.)</i></div>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide">
+    <div class="eyebrow">3.1 · Freer task · 25 min</div>
+    <h2>Register Workshop</h2>
+    <div class="two">
+      <ul class="lab">
+        <li><b>Round 1</b> Verbal → Academic: a chatty update becomes a 4–5 sentence report summary (4+ nouns · 2 light verbs · passive · no <i>we</i>)</li>
+        <li><b>Round 2</b> Academic → Plain: a bureaucratic notice becomes plain English for its real reader</li>
+        <li><b>Round 3</b> Peer review: "Who does what?" · one strength, one suggestion</li>
+      </ul>
+      <div class="ccq">Round 1 reader? <i>(A manager: a report.)</i><br>Can you use "we"? <i>(No.)</i><br>Round 2: more nouns or more verbs? <i>(Verbs.)</i><br>Change the facts? <i>(Never.)</i></div>
+    </div>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide">
+    <div class="eyebrow">3.2 · Cohesion · the thread between sentences</div>
+    <h2>Point to it · swap it · drop it</h2>
+    <div class="dlg">
+      <p><span class="sp">✘</span> The committee rejected the proposal. The committee felt the proposal was too expensive. The committee will review a new proposal next month, and the committee hopes the new proposal will be cheaper.</p>
+      <p class="b"><span class="sp">✔</span> The committee rejected the proposal; <b>they</b> felt <b>it</b> was too expensive. They'll review a new <b>one</b> next month and hope <b>it</b> will be cheaper.</p>
+    </div>
+    <div class="ccq">Same information? <i>(Yes.)</i> Which one sounds like a person thinking? <i>(The second.)</i> What did the speaker do? <i>(Pointed back, swapped in "one", left words out.)</i></div>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide">
+    <div class="eyebrow">3.2 · Reference · point to it</div>
+    <h2>Make every arrow land in one place</h2>
+    <table class="g">
+      <tr><th>this / that + noun</th><td>House prices rose sharply. <b>This increase</b> surprised economists.</td></tr>
+      <tr><th>such (a) + noun</th><td>He was rude to a customer. <b>Such behavior</b> is unacceptable.</td></tr>
+      <tr><th>the former / the latter</th><td>We can fly or take the train; <b>the former</b> is faster, <b>the latter</b> cheaper.</td></tr>
+      <tr><th>the above / as follows</th><td>For <b>the above</b> reasons, … · The steps are <b>as follows</b>: …</td></tr>
+    </table>
+    <div class="tag"><span class="pill warn">VAGUE</span> Sales fell and the manager resigned. <s>It</s> was unexpected. → <b>The resignation</b> was unexpected.</div>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide">
+    <div class="eyebrow">3.2 · Substitution &amp; ellipsis · check the meaning</div>
+    <h2>Swap it · drop it · keep the anchor</h2>
+    <div class="two">
+      <table class="g">
+        <tr><td>the red <b>one</b> · the old <b>ones</b> (count only)</td></tr>
+        <tr><td>She works harder than I <b>do</b>. · if you fail to <b>do so</b></td></tr>
+        <tr><td>I think <b>so</b> · I don't think so · I hope <b>not</b> · I'm afraid <b>so</b></td></tr>
+        <tr><td>I haven't finished, but Sam <b>has</b>. · I'd love <b>to</b>.</td></tr>
+      </table>
+      <div class="ccq">"Is there coffee?" "Yes, there's <s>a hot one</s>…" <i>(some)</i><br>"Will he fail?" "I <s>don't hope so</s>." <i>(I hope not.)</i><br>"I'd love." <i>(No! Keep "to".)</i><br><i>do so</i>: chat or notice? <i>(Notice: formal.)</i></div>
+    </div>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide">
+    <div class="eyebrow">3.2 · Model · count the devices</div>
+    <h2>Two reports</h2>
+    <div class="dlg">
+      <p><span class="sp">Anna:</span> Did you finish the two reports?</p>
+      <p class="b"><span class="sp">Ben:</span> The short <b>one</b>, yes; the long <b>one</b>, not yet.</p>
+      <p><span class="sp">Anna:</span> Will <b>it</b> be ready by Friday?</p>
+      <p class="b"><span class="sp">Ben:</span> I think <b>so</b>. I meant to start it yesterday, but I didn't get <b>to</b>.</p>
+      <p><span class="sp">Anna:</span> Can you send me the figures?</p>
+      <p class="b"><span class="sp">Ben:</span> I'll <b>do so</b> this afternoon. Well, I'll try <b>to</b>. <b>Such requests</b> always take longer than they look.</p>
+    </div>
+    <div class="ccq">Which device sounds a little formal for two colleagues? <i>("I'll do so" · "Such requests")</i></div>
+  </section>
+
+  <!-- 12 -->
+  <section class="slide">
+    <div class="eyebrow">3.2 · Freer task · 10 + 5 + 6 min</div>
+    <h2>Repair the Report + the two-minute talk</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>Groups of 3 · one repetitive report (~140 words)</li>
+        <li>Cut it to <b>90 words or fewer</b> · every fact kept · 2 × point · 2 × swap · 2 × drop</li>
+        <li>Swap: "Point at it": draw an arrow from every <i>it / this / one</i></li>
+        <li>Then talk for 2 minutes · the tally-keeper counts repeats and devices</li>
+      </ul>
+      <div class="ccq">Delete a fact? <i>(No.)</i><br>Chat or written report? <i>(Report.)</i><br>What does "?" mean? <i>(The arrow could land in two places.)</i><br>What does the tally-keeper count? <i>(Repeats and devices.)</i></div>
+    </div>
+  </section>
+
+  <!-- 13 -->
+  <section class="slide">
+    <div class="eyebrow">3.3 · "Your report is full of mistakes." · "This study proves…"</div>
+    <h2>Why soften? Three rooms, three toolkits</h2>
+    <table class="g">
+      <tr><th>Toolkit</th><th>Protects</th><th>Room</th><th>Sounds like</th></tr>
+      <tr><td><b>H</b> academic hedging</td><td>your claim</td><td>essay, report</td><td>The data <b>suggest</b>… <b>may</b>… <b>to some extent</b></td></tr>
+      <tr><td><b>D</b> diplomatic softening</td><td>the person</td><td>meeting, email</td><td><b>I was wondering if</b>… · <b>I'm afraid</b>…</td></tr>
+      <tr><td><b>V</b> vague language</td><td>rapport</td><td>coffee chat</td><td><b>eightish</b> · <b>twenty or so</b> · <b>sort of</b></td></tr>
+    </table>
+    <div class="tag"><span class="pill warn">WRONG ROOM</span> <s>The results were sort of significant.</s> (essay) → The results were <b>marginally</b> significant.</div>
+  </section>
+
+  <!-- 14 -->
+  <section class="slide">
+    <div class="eyebrow">3.3 · Academic hedging · match the claim to the evidence</div>
+    <h2>proves → shows → suggests → may suggest</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>Modals</th><td>may · might · could · tend to</td></tr>
+        <tr><th>Verbs</th><td>seem · appear · suggest · indicate</td></tr>
+        <tr><th>Adverbials</th><td>arguably · largely · to some extent</td></tr>
+        <tr><th>Frames</th><td>It would appear that… · There is some evidence that…</td></tr>
+      </table>
+      <div class="ccq">"These results suggest caffeine may improve memory." Proven? <i>(No.)</i> Weak or careful? <i>(Careful.)</i> Easier to attack: this or "proves"? <i>("Proves.")</i><br>Six hedges in one sentence? <i>(Too many: the claim disappears.)</i></div>
+    </div>
+  </section>
+
+  <!-- 15 -->
+  <section class="slide">
+    <div class="eyebrow">3.3 · Diplomatic softening · distance = politeness</div>
+    <h2>The distance ladder</h2>
+    <div class="two">
+      <table class="g">
+        <tr><td>Can you send it today?</td></tr>
+        <tr><td>Could you send it today?</td></tr>
+        <tr><td><b>Would it be possible</b> to send it today?</td></tr>
+        <tr><td><b>I was wondering if</b> you could send it today.</td></tr>
+      </table>
+      <div class="ccq">"I was wondering…": past or present request? <i>(Present: the past tense is softer.)</i><br>"It's not the cheapest option." <i>(= It's expensive.)</i><br>"I'm not entirely convinced." <i>(= I disagree.)</i><br>"Wouldn't it be safer to wait?" <i>(= Let's wait.)</i></div>
+    </div>
+    <div class="tag"><span class="pill">ALSO</span> a slight problem · not exactly ideal · With respect, … · That's a bit risky, isn't it?</div>
+  </section>
+
+  <!-- 16 -->
+  <section class="slide">
+    <div class="eyebrow">3.3 · Bad news &amp; refusals · model</div>
+    <h2>Preface → soften → reason → alternative</h2>
+    <div class="dlg">
+      <p><span class="sp">Carla:</span> Would it be possible for you to present our results on Thursday?</p>
+      <p class="b"><span class="sp">Omar:</span> <b>As much as I'd like to, I'm afraid</b> Thursday's <b>not going to work</b>. <b>The thing is</b>, I'm with a client all afternoon.</p>
+      <p class="b"><span class="sp">Omar:</span> <b>Perhaps we could</b> ask Jin instead? Or <b>couldn't we</b> record a short video?</p>
+    </div>
+    <div class="ccq">Yes or no? <i>(No.)</i> Clear? <i>(Yes.)</i> Reason? <i>(A client.)</i> What does Carla get instead? <i>(Two options.)</i> "Hmm, that might be a bit tricky…" and stop? <i>(Too soft: she might hear a yes.)</i></div>
+  </section>
+
+  <!-- 17 -->
+  <section class="slide">
+    <div class="eyebrow">3.3 · Freer task · 4 rounds × 5 min</div>
+    <h2>Diplomatic Role-Play Series</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>① Giving bad news · ② Disagreeing with a manager</li>
+        <li>③ Declining a request · ④ Softening criticism in feedback</li>
+        <li>A delivers · B receives · Observer checks · rotate every round</li>
+        <li>Test: B says in one sentence <b>what must change</b></li>
+      </ul>
+      <div class="ccq">Yourself or the card? <i>(The card.)</i><br>What does the observer count? <i>(Preface, softeners, reason, alternative.)</i><br>B can't say what changes? <i>(Too soft!)</i><br>Can you say "Pass"? <i>(Yes.)</i></div>
+    </div>
+  </section>
+
+  <!-- 18 -->
+  <section class="slide section">
+    <div class="eyebrow">You can now package, connect and soften</div>
+    <h2>Module 3 done</h2>
+    <ul class="lab">
+      <li><b>The decision to expand led to a reduction in costs.</b> And for the notice: <b>We cut costs.</b></li>
+      <li><b>This trend</b> · <b>the latter</b> · <b>I hope not</b> · <b>I'd love to</b> · <b>Those who fail to do so…</b></li>
+      <li><b>The data suggest…</b> · <b>I was wondering if…</b> · <b>I'm afraid… the thing is…</b></li>
+    </ul>
+    <p class="lead" style="margin-top:10px;max-width:40ch">Homework: online lessons 3.1–3.3 with 🔊. Next: Module 4, phrasal verbs, collocation &amp; idiom.</p>
+  </section>
+
+
+</div>
+
+<div class="count" id="count">1 / 18</div>
+<div class="nav"><button id="prev" aria-label="Previous slide"></button><button id="next" aria-label="Next slide"></button></div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const bar=document.getElementById('bar'), count=document.getElementById('count');
+  let i=0;
+  function show(n){ i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+    bar.style.width=((i+1)/slides.length*100)+'%'; count.textContent=(i+1)+' / '+slides.length; }
+  document.getElementById('next').onclick=()=>show(i+1);
+  document.getElementById('prev').onclick=()=>show(i-1);
+  addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}
+    else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+  });
+  show(0);
+</script>
+</body>
+</html>

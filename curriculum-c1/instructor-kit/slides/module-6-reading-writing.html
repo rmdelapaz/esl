@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slides — Module 6</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root{--bg:#0b1220;--ink:#edf2fb;--ink2:#a8b6cf;--accent:#7fb2ff;--accent2:#2563eb;--lab:#34d3bd;--warn:#fbbf24;--line:#233252;--code:#101a2e;color-scheme:dark}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;overflow:hidden}
+  .deck{height:100%;width:100%;position:relative}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:6vh 8vw;gap:20px}
+  .slide.on{display:flex}
+  h1,h2,h3{font-family:"Archivo",sans-serif;line-height:1.1;text-wrap:balance}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  .slide h1{font-size:clamp(2rem,6vw,4rem);font-weight:800;letter-spacing:-.02em}
+  .slide h2{font-size:clamp(1.5rem,4.2vw,2.8rem);font-weight:800;letter-spacing:-.01em}
+  .slide p.lead{font-size:clamp(1.05rem,2.4vw,1.5rem);color:var(--ink2);max-width:26ch}
+  ul{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:6px}
+  ul li{position:relative;padding-left:34px;font-size:clamp(1.05rem,2.3vw,1.6rem)}
+  ul li::before{content:"";position:absolute;left:0;top:.55em;width:12px;height:12px;border-radius:3px;background:var(--accent);transform:rotate(45deg)}
+  ul.lab li::before{background:var(--lab)}
+  code.k{font-family:"JetBrains Mono",monospace;color:#cfe0ff;font-size:.92em}
+  pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:22px 26px;font-family:"JetBrains Mono",monospace;font-size:clamp(.85rem,1.9vw,1.3rem);line-height:1.55;overflow:auto;max-width:100%}
+  pre .k{color:#7dd3fc} pre .s{color:#86efac} pre .c{color:#7183a3;font-style:italic}
+  .tag{display:inline-flex;align-items:center;gap:10px;font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);color:var(--ink2)}
+  .tag .pill{background:var(--accent2);color:#fff;font-weight:700;border-radius:999px;padding:3px 12px;letter-spacing:.06em}
+  .tag .pill.lab{background:var(--lab);color:#062b26} .tag .pill.warn{background:var(--warn);color:#3a2a05}
+  .section{background:linear-gradient(135deg,#132a52,#0b1220)}
+  .section .big{font-size:clamp(3rem,12vw,8rem);font-family:"Archivo";font-weight:800;color:var(--accent2);line-height:.9}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+  @media (max-width:760px){.two{grid-template-columns:1fr}}
+  .bar{position:fixed;left:0;top:0;height:4px;background:var(--accent2);width:0;transition:width .25s;z-index:5}
+  .count{position:fixed;right:16px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink2);z-index:5}
+  .nav{position:fixed;inset:auto 0 0 0;display:flex;justify-content:space-between;pointer-events:none;z-index:4}
+  .nav button{pointer-events:auto;background:transparent;border:none;color:transparent;width:22vw;height:100vh;cursor:pointer}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+  /* ESL extras (picture vocab, grammar tables, dialogue, clocks) */
+  .pics{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,1.6vw,18px)}
+  .pics.six{grid-template-columns:repeat(6,1fr)}
+  .pic{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center}
+  .pic img{width:100%;max-width:150px;aspect-ratio:1;object-fit:cover;border-radius:10px;background:#FFF3E0;display:block;margin:0 auto}
+  .pic .emo{font-size:clamp(2.6rem,7vw,5rem);line-height:1;aspect-ratio:1;max-width:150px;margin:0 auto;display:flex;align-items:center;justify-content:center}
+  .pic .w{font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(.9rem,2vw,1.35rem);margin-top:6px}
+  @media (max-width:760px){.pics,.pics.six{grid-template-columns:repeat(3,1fr)}}
+  table.g{border-collapse:collapse;font-size:clamp(.95rem,2.1vw,1.45rem);width:100%;max-width:1000px}
+  table.g th,table.g td{border:1px solid var(--line);padding:10px 16px;text-align:left}
+  table.g th{background:var(--code);color:var(--accent);font-family:"JetBrains Mono",monospace;font-size:.8em;letter-spacing:.04em}
+  table.g b{color:#ffd166}
+  .dlg{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:18px 24px;display:flex;flex-direction:column;gap:8px;font-size:clamp(1rem,2.2vw,1.45rem);max-width:1000px}
+  .dlg .sp{display:inline-block;min-width:3.6em;font-weight:700;color:var(--accent)}
+  .dlg .b .sp{color:#c4a1ff}
+  .ccq{font-size:clamp(1rem,2.2vw,1.45rem);border:1px dashed var(--line);border-radius:12px;padding:12px 18px;background:var(--code)}
+  .ccq i{color:var(--ink2)}
+  .clocks{display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,34px);align-items:flex-start}
+  .clocks figure{text-align:center}
+  .clocks svg{width:clamp(96px,14vw,170px);height:auto}
+  .clocks figcaption{font-size:clamp(.95rem,2vw,1.3rem);margin-top:6px}
+  .clocks figcaption small{display:block;color:var(--ink2);font-size:.8em}
+  .snd{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .snd div{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:clamp(1rem,2.2vw,1.5rem)}
+  .snd div b{display:block;font-family:"Archivo";font-size:1.5em;color:var(--accent)}
+  .snd div small{color:var(--ink2)}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="deck" id="deck">
+
+  <!-- 1 -->
+  <section class="slide on section">
+    <div class="eyebrow">Advanced English (C1) · Instructor Kit</div>
+    <h1>Module 6<br>Reading &amp; Writing at C1</h1>
+    <p class="lead" style="max-width:40ch">Take it apart. Build it. Put it to work.</p>
+    <ul class="lab">
+      <li><b>6.1</b> Critical reading: claims, evidence, bias, fallacies</li>
+      <li><b>6.2</b> The argument essay: thesis, PEEL, concede → rebut</li>
+      <li><b>6.3</b> Professional writing: email, report, cover letter</li>
+    </ul>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide">
+    <div class="eyebrow">6.1 · Lead-in · same company, same six months</div>
+    <h2>Which writer is for it? How do you know?</h2>
+    <div class="two">
+      <div class="ccq" style="font-size:clamp(1.3rem,3vw,2.1rem);font-family:Archivo,sans-serif;font-weight:800">FOUR-DAY WEEK DELIVERS</div>
+      <div class="ccq" style="font-size:clamp(1.3rem,3vw,2.1rem);font-family:Archivo,sans-serif;font-weight:800">FOUR-DAY WEEK: CUSTOMERS PAY THE PRICE</div>
+    </div>
+    <div class="ccq">Which word shows the stance? <i>(delivers · pay the price)</i> Could <b>both</b> headlines be factually true? <i>(Yes!)</i> So what is each one leaving out?</div>
+    <div class="tag"><span class="pill">NOTE</span> Harborview Logistics, its people and its figures are invented.</div>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide">
+    <div class="eyebrow">6.1 · The toolkit · the skeleton of an argument</div>
+    <h2>Evidence —(warrant)→ Claim</h2>
+    <table class="g">
+      <tr><th>Fact</th><td>can be checked</td><td>Complaints rose by <b>11 percent</b>.</td></tr>
+      <tr><th>Opinion</th><td>a judgment, openly signaled</td><td><b>Frankly</b>, it was a waste of time.</td></tr>
+      <tr><th>Opinion in disguise</th><td>a judgment in the grammar of fact</td><td>It is <b>clearly</b> the future of work.</td></tr>
+      <tr><th>Warrant</th><td>the <b>unstated</b> link</td><td>"The pilot, and nothing else, caused the fall."</td></tr>
+    </table>
+    <div class="ccq">"Sick days fell by 18%, so the pilot should be permanent." Claim or evidence: the 18%? <i>(Evidence.)</i> What must we assume? <i>(The pilot caused it.)</i> Could the figure be true and the argument still weak? <i>(Yes: winter, flu season…)</i></div>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide">
+    <div class="eyebrow">6.1 · Talking about a text · not just reacting to it</div>
+    <h2>What is the writer <i>doing</i>?</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>Verb</th><th>The move</th></tr>
+        <tr><td>as<b>SERT</b></td><td>state firmly, no proof</td></tr>
+        <tr><td>con<b>CEDE</b> · acknowledge</td><td>admit an opposing point</td></tr>
+        <tr><td>down<b>PLAY</b></td><td>make it seem smaller</td></tr>
+        <tr><td>dis<b>MISS</b></td><td>refuse to take it seriously</td></tr>
+        <tr><td>over<b>STATE</b></td><td>make it seem bigger</td></tr>
+        <tr><td>im<b>PLY</b> (reader: in<b>FER</b>)</td><td>suggest without saying</td></tr>
+      </table>
+      <div>
+        <div class="ccq"><b>Evidence types:</b> statistics · research finding · expert testimony · anecdote · analogy · bare assertion</div>
+        <div class="ccq" style="margin-top:14px">"She <b>concedes</b> that times slipped, but <b>downplays</b> it." Point for her side or against? <i>(Against.)</i> Bigger or smaller? <i>(Smaller.)</i> ✘ He dismisses <s>that</s> turnover fell → He dismisses <b>the fall</b> in turnover.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide">
+    <div class="eyebrow">6.1 · Fallacy card sort · check</div>
+    <h2>Nine ways an argument slips</h2>
+    <table class="g" style="font-size:clamp(.85rem,1.8vw,1.2rem)">
+      <tr><th>Fallacy</th><th>What it does</th><th>Fallacy</th><th>What it does</th></tr>
+      <tr><td><b>Unsupported generalization</b></td><td>sweeping claim, little evidence</td><td><b>Straw man</b></td><td>attacks a distorted version of the view</td></tr>
+      <tr><td><b>False cause</b></td><td>after it = because of it</td><td><b>Slippery slope</b></td><td>one step → inevitable disaster</td></tr>
+      <tr><td><b>Cherry-picking</b></td><td>only the data that fits</td><td><b>Bandwagon</b></td><td>popular = right</td></tr>
+      <tr><td><b>False dilemma</b></td><td>only two options</td><td><b>Attacking the person</b></td><td>the speaker, not the argument</td></tr>
+      <tr><td><b>Appeal to emotion</b></td><td>feeling instead of evidence</td><td colspan="2"><i>Round 3: find each one in Article A or B · write the sentence number</i></td></tr>
+    </table>
+    <div class="tag"><span class="pill warn">CAREFUL</span> Emotion, experts and predictions are not always fallacies. Relevant? Evidenced? Then they're fair.</div>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide">
+    <div class="eyebrow">6.1 · Freer task · 15 min · groups of 4</div>
+    <h2>The critical-reading seminar</h2>
+    <div class="two">
+      <ul class="lab">
+        <li><b>Chair</b>: runs the discussion, everyone speaks once before anyone speaks twice</li>
+        <li><b>Evidence Checker</b>: has the full pilot figures; shares a figure only when a claim is tested</li>
+        <li><b>Devil's Advocate</b>: argues against the group's view, twice</li>
+        <li><b>Reporter</b>: 60-second verdict for the group</li>
+      </ul>
+      <div class="ccq">1 Which article makes the <b>stronger case</b>?<br>2 Which article is <b>better argued</b>?<br><br>Same question? <i>(No!)</i><br>Are we deciding if the four-day week is good? <i>(No: if the articles argue well.)</i><br>Who has the figures? <i>(The Evidence Checker.)</i></div>
+    </div>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide">
+    <div class="eyebrow">From reading to writing · the writer's workshop</div>
+    <h2>Read it. Plan it. Draft it. Test it. Send it.</h2>
+    <div class="pics" style="grid-template-columns:repeat(5,1fr)">
+      <div class="pic"><img src="../assets/vocab/read.jpg" alt=""><div class="w">read critically</div></div>
+      <div class="pic"><img src="../assets/vocab/notebook.jpg" alt=""><div class="w">outline</div></div>
+      <div class="pic"><img src="../assets/vocab/pen.jpg" alt=""><div class="w">draft</div></div>
+      <div class="pic"><img src="../assets/vocab/desk.jpg" alt=""><div class="w">peer review</div></div>
+      <div class="pic"><img src="../assets/vocab/email.jpg" alt=""><div class="w">send</div></div>
+    </div>
+    <div class="ccq">The critical reader you were in 6.1 is the reader your essay must now survive.</div>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide">
+    <div class="eyebrow">6.2 · Lead-in · topic sentences only</div>
+    <h2>What's the question? What's the position?</h2>
+    <ul>
+      <li>…employers should set clear limits on out-of-hours email, because doing so protects employee well-being and… improves the quality of the work itself.</li>
+      <li>The most compelling reason for limiting after-hours email is its effect on recovery.</li>
+      <li>A second, less obvious benefit is that limits force clearer communication during the working day.</li>
+      <li>Admittedly, critics contend that rigid rules ignore the reality of modern work…</li>
+      <li>Limiting after-hours email, then, is not an attack on flexibility but a defense of…</li>
+    </ul>
+    <div class="tag"><span class="pill lab">SHAPE</span> hook → context → <b>thesis</b> · PEEL · PEEL · concede → rebut · restate → synthesize → implication</div>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide">
+    <div class="eyebrow">6.2 · Thesis clinic · check the meaning</div>
+    <h2>Could a reasonable person disagree?</h2>
+    <table class="g">
+      <tr><th>Weak</th><th>Why</th></tr>
+      <tr><td>"This essay is about training at work."</td><td><b>T</b> topic only</td></tr>
+      <tr><td>"Training is important for employees."</td><td><b>O</b> obvious</td></tr>
+      <tr><td>"There are good arguments on both sides."</td><td><b>F</b> on the fence</td></tr>
+      <tr><td>"Employees deserve higher salaries."</td><td><b>Q</b> a different question</td></tr>
+    </table>
+    <div class="ccq"><b>Strong:</b> "<b>Although</b> paid training time carries short-term costs, employers who offer it gain more skilled and more loyal staff, and should treat it as an investment." What does <i>Although</i> do? <i>(Concedes.)</i> Specific? Arguable? On the question? <i>(Yes · yes · yes.)</i></div>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide">
+    <div class="eyebrow">6.2 · Cohesion &amp; the fair rebuttal</div>
+    <h2>Match the connector to the logic</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>Job</th><th>Connector</th></tr>
+        <tr><td>add</td><td>Furthermore · Moreover</td></tr>
+        <tr><td>result</td><td>Consequently · Therefore</td></tr>
+        <tr><td>compare</td><td>By contrast · Whereas</td></tr>
+        <tr><td>concede</td><td>Admittedly · Granted</td></tr>
+        <tr><td>turn back</td><td>Nevertheless · Yet</td></tr>
+        <tr><td>example</td><td>For instance · A case in point</td></tr>
+      </table>
+      <div>
+        <div class="ccq"><b>Concede:</b> "Admittedly, critics contend that rigid rules ignore emergencies."<br><b>Rebut:</b> "Yet this objection targets a blanket ban, not the limits proposed here."</div>
+        <div class="ccq" style="margin-top:14px">"It saved money. <s>Consequently</s>, staff disliked it." Is that a result? <i>(No → Nevertheless.)</i><br>"Some people think workers should never learn anything." Does anyone argue that? <i>(No: a straw man.)</i></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide">
+    <div class="eyebrow">6.2 · Model · a peer review that helps</div>
+    <h2>Honest, specific, kind</h2>
+    <div class="dlg">
+      <p><span class="sp">Mei:</span> Can I check I've understood your thesis? You're arguing that open-plan offices cost more in concentration than they save in space.</p>
+      <p class="b"><span class="sp">Karim:</span> Yes, exactly.</p>
+      <p><span class="sp">Mei:</span> The strongest sentence, for me, is the one about "renting silence back by the hour." But I wasn't entirely sure how the second paragraph connects to the thesis. You might consider explaining why noise matters for your kind of work.</p>
+      <p class="b"><span class="sp">Karim:</span> So, finish the PEEL. What about the counter-argument?</p>
+      <p><span class="sp">Mei:</span> I'd question the rebuttal. You concede that new staff learn faster in open-plan offices, then just say it isn't important. That reads a little like dismissing it.</p>
+    </div>
+    <div class="tag"><span class="pill lab">ORDER</span> check the thesis → strongest sentence → one question · the writer listens, then decides</div>
+  </section>
+
+  <!-- 12 -->
+  <section class="slide">
+    <div class="eyebrow">6.2 · Workshop · 10 + 15 + 12 min</div>
+    <h2>Outline → draft → peer review</h2>
+    <div class="two">
+      <ul class="lab">
+        <li><b>Outline</b>: your card, your assigned side · thesis, 2 topic sentences, counter → rebuttal</li>
+        <li><b>Draft</b>: introduction + one PEEL paragraph</li>
+        <li><b>Review</b> a partner with a <b>different</b> question: reverse outline + checklist + strongest sentence + one question</li>
+        <li>2 min reviewer · 1 min writer's question · swap</li>
+      </ul>
+      <div class="ccq">Your view or the card's? <i>(The card's.)</i><br>Review the same question? <i>(No, a different one.)</i><br>Who speaks first? <i>(The reviewer.)</i><br>Can the writer defend? <i>(No, listen.)</i><br>Who decides what to change? <i>(The writer.)</i></div>
+    </div>
+  </section>
+
+  <!-- 13 -->
+  <section class="slide">
+    <div class="eyebrow">6.3 · Lead-in · the register ladder</div>
+    <h2>Same request. Which reader?</h2>
+    <table class="g" style="font-size:clamp(.85rem,1.8vw,1.2rem)">
+      <tr><th>A</th><td>"hey can we chat about that proposal thing sometime? cheers"</td></tr>
+      <tr><th>B</th><td>"Dear Professor Lin, I am writing to inquire whether it might be possible to arrange a brief meeting to discuss the research proposal."</td></tr>
+      <tr><th>C</th><td>"I hereby humbly beseech you to grant me the honor of your esteemed attention at your earliest possible convenience."</td></tr>
+      <tr><th>D</th><td>"Hi Sara, could we find twenty minutes this week to go over the proposal? I'd really value your input."</td></tr>
+    </table>
+    <div class="ccq">A senior stranger? <i>(B.)</i> A colleague you know? <i>(D.)</i> Anybody? <i>(Not A or C.)</i> Is the <b>ask</b> clearer in B or D? <i>(Equally clear: only the framing changes.)</i></div>
+  </section>
+
+  <!-- 14 -->
+  <section class="slide">
+    <div class="eyebrow">6.3 · The email · purpose first</div>
+    <h2>Direct is not rude. Vague is not polite.</h2>
+    <div class="two">
+      <div class="dlg" style="font-size:clamp(.9rem,1.9vw,1.25rem)">
+        <p><span class="sp">Subject:</span> Request for Q3 overtime figures — report due Friday</p>
+        <p>Dear Mr. Nguyen,</p>
+        <p>I am writing to request the overtime figures for the third quarter, which I need to complete the staffing report due this Friday.</p>
+        <p>Could you please send the spreadsheet by the end of the day on Wednesday? If that timeline is difficult, please let me know.</p>
+        <p>Thank you for your help.<br>Best regards,<br>Leila Haddad</p>
+      </div>
+      <ul>
+        <li><b>Clarity</b>: one idea per sentence</li>
+        <li><b>Concision</b>: no throat-clearing</li>
+        <li><b>Register</b>: matched to the reader</li>
+        <li><b>Reader-focus</b>: the ask is easy to find</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 15 -->
+  <section class="slide">
+    <div class="eyebrow">6.3 · The report · navigable, objective, actionable</div>
+    <h2>Findings → conclusions → recommendations</h2>
+    <table class="g">
+      <tr><th>Purpose</th><td>This report <b>examines</b> staff satisfaction with the shift-swap system.</td></tr>
+      <tr><th>Method</th><td>A survey <b>was distributed</b> to all 240 staff; 172 responses <b>were received</b>.</td></tr>
+      <tr><th>Findings</th><td>Swaps <b>were found to take</b> an average of four days to approve.</td></tr>
+      <tr><th>Conclusions</th><td>These findings <b>suggest</b> that the system is slow and perceived as unfair.</td></tr>
+      <tr><th>Recommendations</th><td><b>It is recommended that</b> the paper form <b>be</b> replaced.</td></tr>
+    </table>
+    <div class="ccq">"Sadly, 58% of staff…" Can an opinion go in Findings? <i>(No.)</i> "…that the form <b>be</b> replaced": which lesson? <i>(1.3, the subjunctive.)</i></div>
+  </section>
+
+  <!-- 16 -->
+  <section class="slide">
+    <div class="eyebrow">6.3 · The cover letter · evidence + relevance</div>
+    <h2>Let the achievement speak</h2>
+    <table class="g">
+      <tr><th>Boastful</th><td>"I am an outstanding communicator and a natural leader."</td></tr>
+      <tr><th>Over-humble</th><td>"I don't have much experience, but I hope I might be suitable."</td></tr>
+      <tr><th>Confident</th><td>"I introduced a troubleshooting guide that reduced repeat calls by <b>15 percent</b>, and I now train every new hire to use it. Your posting emphasizes coaching…"</td></tr>
+    </table>
+    <div class="ccq">Can the reader check "outstanding"? <i>(No: empty.)</i> Can they check "15 percent"? <i>(Yes: that's why it's confident.)</i> "I'm sorry if my English is not perfect": keep it? <i>(No: delete it.)</i></div>
+    <div class="tag"><span class="pill">US</span> Dear Ms. Carter, · Dear Hiring Manager, · Sincerely, · résumé · no photo, age or marital status</div>
+  </section>
+
+  <!-- 17 -->
+  <section class="slide">
+    <div class="eyebrow">6.3 · Writing lab · 12 + 22 + 11 min</div>
+    <h2>Write it. Then hear it.</h2>
+    <div class="two">
+      <ul class="lab">
+        <li><b>1</b> The email from Karen's voicemail (everyone)</li>
+        <li><b>2</b> Choose: the <b>report</b> (data card) or a <b>cover letter</b> (job posting · as yourself, a profile card, or a mix)</li>
+        <li><b>3</b> Reader panel: your partner reads your text <b>aloud</b>, then reacts as the reader on card B</li>
+        <li>Note one change you will make</li>
+      </ul>
+      <div class="ccq">Who reads your text aloud? <i>(My partner.)</i><br>As themselves? <i>(No: as the reader on the card.)</i><br>Can you explain what you meant? <i>(No, just listen.)</i><br>Cover letter too personal to share? <i>(Swap the email instead.)</i></div>
+    </div>
+  </section>
+
+  <!-- 18 -->
+  <section class="slide section">
+    <div class="eyebrow">You can now take it apart, build it and put it to work</div>
+    <h2>Module 6 done 🎉</h2>
+    <ul class="lab">
+      <li><b>Take it apart</b>: claim · evidence · warrant · "She concedes…, but downplays…"</li>
+      <li><b>Build it</b>: thesis · PEEL · concede → rebut · no new points in the conclusion</li>
+      <li><b>Put it to work</b>: purpose first · findings → recommendations · evidence + relevance</li>
+    </ul>
+    <p class="lead" style="margin-top:10px;max-width:40ch">Homework: online lessons 6.1–6.3 with 🔊. Next: Module 7, <i>lectures, note-taking and seminars</i>.</p>
+  </section>
+
+</div>
+
+<div class="count" id="count">1 / 18</div>
+<div class="nav"><button id="prev" aria-label="Previous slide"></button><button id="next" aria-label="Next slide"></button></div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const bar=document.getElementById('bar'), count=document.getElementById('count');
+  let i=0;
+  function show(n){ i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+    bar.style.width=((i+1)/slides.length*100)+'%'; count.textContent=(i+1)+' / '+slides.length; }
+  document.getElementById('next').onclick=()=>show(i+1);
+  document.getElementById('prev').onclick=()=>show(i-1);
+  addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}
+    else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+  });
+  show(0);
+</script>
+</body>
+</html>

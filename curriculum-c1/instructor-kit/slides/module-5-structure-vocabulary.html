@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slides — Module 5</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root{--bg:#0b1220;--ink:#edf2fb;--ink2:#a8b6cf;--accent:#7fb2ff;--accent2:#2563eb;--lab:#34d3bd;--warn:#fbbf24;--line:#233252;--code:#101a2e;color-scheme:dark}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;overflow:hidden}
+  .deck{height:100%;width:100%;position:relative}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:6vh 8vw;gap:20px}
+  .slide.on{display:flex}
+  h1,h2,h3{font-family:"Archivo",sans-serif;line-height:1.1;text-wrap:balance}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  .slide h1{font-size:clamp(2rem,6vw,4rem);font-weight:800;letter-spacing:-.02em}
+  .slide h2{font-size:clamp(1.5rem,4.2vw,2.8rem);font-weight:800;letter-spacing:-.01em}
+  .slide p.lead{font-size:clamp(1.05rem,2.4vw,1.5rem);color:var(--ink2);max-width:26ch}
+  ul{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:6px}
+  ul li{position:relative;padding-left:34px;font-size:clamp(1.05rem,2.3vw,1.6rem)}
+  ul li::before{content:"";position:absolute;left:0;top:.55em;width:12px;height:12px;border-radius:3px;background:var(--accent);transform:rotate(45deg)}
+  ul.lab li::before{background:var(--lab)}
+  code.k{font-family:"JetBrains Mono",monospace;color:#cfe0ff;font-size:.92em}
+  pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:22px 26px;font-family:"JetBrains Mono",monospace;font-size:clamp(.85rem,1.9vw,1.3rem);line-height:1.55;overflow:auto;max-width:100%}
+  pre .k{color:#7dd3fc} pre .s{color:#86efac} pre .c{color:#7183a3;font-style:italic}
+  .tag{display:inline-flex;align-items:center;gap:10px;font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);color:var(--ink2)}
+  .tag .pill{background:var(--accent2);color:#fff;font-weight:700;border-radius:999px;padding:3px 12px;letter-spacing:.06em}
+  .tag .pill.lab{background:var(--lab);color:#062b26} .tag .pill.warn{background:var(--warn);color:#3a2a05}
+  .section{background:linear-gradient(135deg,#132a52,#0b1220)}
+  .section .big{font-size:clamp(3rem,12vw,8rem);font-family:"Archivo";font-weight:800;color:var(--accent2);line-height:.9}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+  @media (max-width:760px){.two{grid-template-columns:1fr}}
+  .bar{position:fixed;left:0;top:0;height:4px;background:var(--accent2);width:0;transition:width .25s;z-index:5}
+  .count{position:fixed;right:16px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink2);z-index:5}
+  .nav{position:fixed;inset:auto 0 0 0;display:flex;justify-content:space-between;pointer-events:none;z-index:4}
+  .nav button{pointer-events:auto;background:transparent;border:none;color:transparent;width:22vw;height:100vh;cursor:pointer}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+  /* ESL extras (picture vocab, grammar tables, dialogue, clocks) */
+  .pics{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,1.6vw,18px)}
+  .pics.six{grid-template-columns:repeat(6,1fr)}
+  .pic{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center}
+  .pic img{width:100%;max-width:150px;aspect-ratio:1;object-fit:cover;border-radius:10px;background:#FFF3E0;display:block;margin:0 auto}
+  .pic .emo{font-size:clamp(2.6rem,7vw,5rem);line-height:1;aspect-ratio:1;max-width:150px;margin:0 auto;display:flex;align-items:center;justify-content:center}
+  .pic .w{font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(.9rem,2vw,1.35rem);margin-top:6px}
+  @media (max-width:760px){.pics,.pics.six{grid-template-columns:repeat(3,1fr)}}
+  table.g{border-collapse:collapse;font-size:clamp(.95rem,2.1vw,1.45rem);width:100%;max-width:1000px}
+  table.g th,table.g td{border:1px solid var(--line);padding:10px 16px;text-align:left}
+  table.g th{background:var(--code);color:var(--accent);font-family:"JetBrains Mono",monospace;font-size:.8em;letter-spacing:.04em}
+  table.g b{color:#ffd166}
+  .dlg{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:18px 24px;display:flex;flex-direction:column;gap:8px;font-size:clamp(1rem,2.2vw,1.45rem);max-width:1000px}
+  .dlg .sp{display:inline-block;min-width:3.6em;font-weight:700;color:var(--accent)}
+  .dlg .b .sp{color:#c4a1ff}
+  .ccq{font-size:clamp(1rem,2.2vw,1.45rem);border:1px dashed var(--line);border-radius:12px;padding:12px 18px;background:var(--code)}
+  .ccq i{color:var(--ink2)}
+  .clocks{display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,34px);align-items:flex-start}
+  .clocks figure{text-align:center}
+  .clocks svg{width:clamp(96px,14vw,170px);height:auto}
+  .clocks figcaption{font-size:clamp(.95rem,2vw,1.3rem);margin-top:6px}
+  .clocks figcaption small{display:block;color:var(--ink2);font-size:.8em}
+  .snd{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .snd div{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:clamp(1rem,2.2vw,1.5rem)}
+  .snd div b{display:block;font-family:"Archivo";font-size:1.5em;color:var(--accent)}
+  .snd div small{color:var(--ink2)}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="deck" id="deck">
+
+  <!-- 1 -->
+  <section class="slide on section">
+    <div class="eyebrow">Advanced English (C1) · Instructor Kit</div>
+    <h1>Module 5<br>Structure &amp; Advanced Vocabulary</h1>
+    <p class="lead">Compress the clause. Connect the chunk. Choose the word.</p>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide">
+    <div class="eyebrow">Classes C14–C16 · the map</div>
+    <h2>The quiet machinery of formal English</h2>
+    <ul>
+      <li><b>5.1</b> Participle &amp; absolute clauses: <i>Having reviewed the figures, … · The meeting over, …</i></li>
+      <li><b>5.2</b> Prepositions &amp; formal phrases: <i>comply with · an increase in · in light of · by virtue of</i></li>
+      <li><b>5.3</b> Academic vocabulary: <i>obtain · demonstrate · The data suggest…</i></li>
+    </ul>
+    <div class="tag"><span class="pill">NOTE</span> Every text is invented. Personal examples are always optional: a colleague's, a news item, or made up.</div>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide">
+    <div class="eyebrow">C14 · Welcome back · Progress Test 1</div>
+    <h2>A test is a map. It isn't who you are.</h2>
+    <div class="two">
+      <ul class="lab">
+        <li><b>We can…</b> speculate precisely · mix time frames · emphasize with inversion · hedge diplomatically</li>
+        <li>Papers back privately: one strength, one upgrade</li>
+        <li>Let's fix it: four anonymous errors</li>
+        <li>Write one goal in your workbook</li>
+      </ul>
+      <div class="ccq"><b>Let's fix it!</b><br>Not only she finished the report… <i>(did she finish)</i><br>It was in 2019 when she moved. <i>(that)</i><br>We need to make a research. <i>(do research)</i><br>If I had accepted, I would live in Boston by now. <i>(would be living … now)</i></div>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide">
+    <div class="eyebrow">5.1 · Why compress?</div>
+    <h2>Drop the conjunction. Drop the repeated subject.</h2>
+    <table class="g">
+      <tr><th>Full clause</th><th>Participle clause</th><th>Link the reader supplies</th></tr>
+      <tr><td>When she realized the risk, she paused.</td><td><b>Realizing</b> the risk, she paused.</td><td>time / reason</td></tr>
+      <tr><td>After they had signed the contract, they celebrated.</td><td><b>Having signed</b> the contract, they celebrated.</td><td>sequence</td></tr>
+      <tr><td>The novel was written in 1920, and it…</td><td><b>Written</b> in 1920, the novel…</td><td>background</td></tr>
+      <tr><td>Members who wish to attend must register.</td><td>Members <b>wishing</b> to attend must register.</td><td>reduced relative</td></tr>
+    </table>
+    <div class="tag"><span class="pill lab">SAY IT</span> <b>Hav</b>ing re<b>viewed</b> the figures ↗ | the <b>board</b> approved the <b>plan</b> ↘ — pause at the comma</div>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide">
+    <div class="eyebrow">5.1 · Choose by voice, not by tense</div>
+    <h2>Does the subject do it, or receive it?</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>Form</th><th>Meaning</th></tr>
+        <tr><td><b>-ing</b></td><td>does it · same time, reason, result</td></tr>
+        <tr><td><b>having + p.p.</b></td><td>did it · earlier</td></tr>
+        <tr><td><b>having been + p.p.</b></td><td>had it done to it · earlier</td></tr>
+        <tr><td><b>p.p.</b></td><td>has it done to it · passive</td></tr>
+      </table>
+      <div class="ccq">"<b>Building</b> in 1920, the museum…" Can a museum build? <i>(No! Built in 1920.)</i><br>"The storm hit the coast, <b>flattening</b> homes." What flattened them? <i>(The storm: a result.)</i><br>"<b>Having been warned</b> twice, the driver slowed down." Did the driver warn anyone? <i>(No, he was warned.)</i></div>
+    </div>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide">
+    <div class="eyebrow">5.1 · Absolute clauses · the different-subject fix</div>
+    <h2>Give the participle its own subject</h2>
+    <table class="g">
+      <tr><th>Two clauses, two subjects</th><th>Absolute</th></tr>
+      <tr><td>Because the road was blocked, the drivers turned back.</td><td><b>The road blocked</b>, the drivers turned back.</td></tr>
+      <tr><td>The meeting had ended, so the staff went home.</td><td><b>The meeting over</b>, the staff went home.</td></tr>
+      <tr><td>Because the funds had run out, the project stopped.</td><td><b>The funds having run out</b>, the project stopped.</td></tr>
+      <tr><td>She waited at the gate while her heart was pounding.</td><td>She waited at the gate, <b>her heart pounding</b>.</td></tr>
+    </table>
+    <div class="ccq">"The weather being fine, we set off." Was <i>we</i> fine? <i>(No, the weather.)</i> How many subjects? <i>(Two.)</i> "Being fine, we set off"? <i>(Dangles!)</i> Formal or casual? <i>(Formal, written.)</i></div>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide">
+    <div class="eyebrow">5.1 · Fixed participial phrases · they work in speech too</div>
+    <h2>Compress it with the phrase</h2>
+    <div class="pics six">
+      <div class="pic"><img src="../assets/vocab/umbrella.jpg" alt=""><div class="w">weather permitting</div></div>
+      <div class="pic"><img src="../assets/vocab/flight.jpg" alt=""><div class="w">all flights having been canceled</div></div>
+      <div class="pic"><img src="../assets/vocab/book.jpg" alt=""><div class="w">written in 1920</div></div>
+      <div class="pic"><img src="../assets/vocab/email.jpg" alt=""><div class="w">with regard to your email</div></div>
+      <div class="pic"><img src="../assets/vocab/hospital.jpg" alt=""><div class="w">in the event of an emergency</div></div>
+      <div class="pic"><img src="../assets/vocab/notebook.jpg" alt=""><div class="w">having reviewed the notes</div></div>
+    </div>
+    <div class="ccq">having said that · all things considered · generally speaking · given that · provided that · judging by · barring any delays · time permitting</div>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide">
+    <div class="eyebrow">5.1 · The one-question test</div>
+    <h2>Who is doing this -ing?</h2>
+    <div class="two">
+      <div class="ccq"><b>"Walking into the room, the noise was overwhelming."</b><br>Who is walking, grammatically? <i>(The noise!)</i><br>Repair ①: change the subject <i>("…, I found the noise overwhelming.")</i><br>Repair ②: its own subject / a full clause <i>("As I walked into the room, …")</i></div>
+      <div class="ccq"><b>"Having finished the exam, the results came quickly."</b><br>Who finished the exam? <i>(The students, not the results.)</i><br>Fix? <i>("…, the students got their results quickly." / "The exam finished, the results came quickly.")</i><br><b>"Having said that, …"</b> <i>(Fixed phrase: fine.)</i></div>
+    </div>
+    <div class="tag"><span class="pill warn">CHECK</span> the answer to "who is doing this?" must be the very next subject</div>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide">
+    <div class="eyebrow">5.1 · Workshop · 22 min</div>
+    <h2>✂️ Condense the Report</h2>
+    <div class="two">
+      <ul class="lab">
+        <li><b>Round 1</b> · Dangler Hunt: 8 strips, find the 5 that dangle, fix 2</li>
+        <li><b>Round 2</b> · your report: ~125 words → <b>90 or fewer</b></li>
+        <li>Every fact stays · 4+ constructions (1 absolute) · 1 fixed phrase</li>
+        <li><b>Round 3</b> · swap: Praise · Question · Polish · danglers?</li>
+      </ul>
+      <div class="ccq">Is <i>Having said that</i> a dangler? <i>(No.)</i><br>Maximum words? <i>(Ninety.)</i><br>Delete a fact? <i>(Never.)</i><br>Who writes? <i>(The scribe.)</i><br>Do you rewrite their report? <i>(No, comment on the card.)</i></div>
+    </div>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide">
+    <div class="eyebrow">C15 · 5.2 · Dependent prepositions · learn them in families</div>
+    <h2>The small word is fixed by the word in front</h2>
+    <table class="g">
+      <tr><th>of</th><td>aware · capable · devoid · indicative · a lack</td><td>She's fully <b>aware of</b> the risks.</td></tr>
+      <tr><th>with</th><td>comply · consistent · compatible · familiar</td><td>Staff must <b>comply with</b> the code.</td></tr>
+      <tr><th>to</th><td>subject · prone · conducive · object · resort</td><td>Prices are <b>subject to</b> change.</td></tr>
+      <tr><th>on · from</th><td>depend · reliant · refrain · benefit</td><td>Please <b>refrain from</b> smoking.</td></tr>
+      <tr><th>in / from</th><td>result <b>in</b> (cause) · result <b>from</b> (be caused by)</td><td>Cuts <b>resulted in</b> layoffs.</td></tr>
+    </table>
+    <div class="tag"><span class="pill warn">WHICH SOUNDS WRONG?</span> comply <s>to</s> · aware <s>about</s> · depend <s>of</s> · married <s>with</s> · discuss <s>about</s> the plan</div>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide">
+    <div class="eyebrow">5.2 · Nouns · check the meaning</div>
+    <h2>Verb → noun: the preposition can switch</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>Verb</th><th>Noun</th></tr>
+        <tr><td>increase prices</td><td>an increase <b>in</b> prices</td></tr>
+        <tr><td>solve a problem</td><td>a solution <b>to</b> a problem</td></tr>
+        <tr><td>demand housing</td><td>a demand <b>for</b> housing</td></tr>
+        <tr><td>affect health</td><td>an effect <b>on</b> health</td></tr>
+        <tr><td>discuss the plan</td><td>a discussion <b>of / about</b> the plan</td></tr>
+      </table>
+      <div class="ccq">"an increase <b>in</b> unemployment <b>of</b> 3%."<br>What does <i>in</i> introduce? <i>(What changed.)</i><br>And <i>of</i>? <i>(How much.)</i><br>"We will discuss about it"? <i>(No: discuss it.)</i><br>"capable to manage"? <i>(capable of managing)</i></div>
+    </div>
+  </section>
+
+  <!-- 12 -->
+  <section class="slide">
+    <div class="eyebrow">5.2 · Fixed formal phrases · match the register</div>
+    <h2>Report voice ↔ conversation voice</h2>
+    <table class="g">
+      <tr><th>Formal</th><th>Plain</th><th>Example</th></tr>
+      <tr><td><b>in light of</b></td><td>considering (new information)</td><td>In light of the findings, we'll revise it.</td></tr>
+      <tr><td><b>with regard to</b></td><td>about</td><td>With regard to your inquiry, …</td></tr>
+      <tr><td><b>by virtue of</b></td><td>because of (a quality, a position)</td><td>She chairs it by virtue of her seniority.</td></tr>
+      <tr><td><b>in the event of</b></td><td>if</td><td>In the event of fire, use the stairs.</td></tr>
+      <tr><td><b>on behalf of · in the wake of</b></td><td>for / representing · after</td><td>In the wake of the merger, roles were cut.</td></tr>
+    </table>
+    <div class="tag"><span class="pill warn">FIT</span> "In the event of you being hungry, we could eat." → to a friend: "If you're hungry, let's eat."</div>
+  </section>
+
+  <!-- 13 -->
+  <section class="slide">
+    <div class="eyebrow">5.2 · Model · find the chunks</div>
+    <h2>The quarterly figures</h2>
+    <div class="dlg">
+      <p><span class="sp">Manager:</span> With regard to the quarterly figures, how do you account for the drop in sales?</p>
+      <p class="b"><span class="sp">Analyst:</span> It largely results from the supply delays. The dip is consistent with last winter's.</p>
+      <p><span class="sp">Manager:</span> Are we still reliant on a single supplier?</p>
+      <p class="b"><span class="sp">Analyst:</span> For now. We need an alternative to them. In the event of another delay, we have no buffer.</p>
+      <p><span class="sp">Manager:</span> Draft a proposal, in accordance with the procurement policy.</p>
+    </div>
+    <div class="ccq">Does "results from" name the cause or the effect first? <i>(Effect first: the drop.)</i> Which phrase would you drop in a hallway chat? <i>("With regard to" → "About")</i></div>
+  </section>
+
+  <!-- 14 -->
+  <section class="slide">
+    <div class="eyebrow">5.2 · Workshop · 21 min</div>
+    <h2>📧 The Formal Email Correction Challenge</h2>
+    <div class="two">
+      <ul class="lab">
+        <li><b>Round 1</b> · 12 errors + 5 correct chunks that look wrong</li>
+        <li>+1 each fix · −1 if you "fix" a correct one · ? = 0</li>
+        <li><b>Round 2</b> · reply card A or B: 80–100 words, 4 chunks, 2 fixed phrases</li>
+        <li><b>Round 3</b> · swap: read <b>only</b> for prepositions</li>
+      </ul>
+      <div class="ccq">How many errors? <i>(Twelve.)</i><br>Change a correct chunk? <i>(Minus one.)</i><br>Not sure? <i>(Question mark.)</i><br>How many fixed phrases in the reply? <i>(Two.)</i><br>Proofread for what? <i>(Prepositions only.)</i></div>
+    </div>
+  </section>
+
+  <!-- 15 -->
+  <section class="slide">
+    <div class="eyebrow">C16 · 5.3 · Same meaning, different world</div>
+    <h2>Upgrade the word, and check the fit</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>Everyday</th><th>Academic</th></tr>
+        <tr><td>get · show · look at</td><td><b>obtain · demonstrate · examine</b></td></tr>
+        <tr><td>big</td><td><b>substantial</b> (amount) · <b>significant</b> (importance)</td></tr>
+        <tr><td>about</td><td><b>approximately</b> (number) · <b>regarding</b> (topic)</td></tr>
+        <tr><td>find out · go up · get worse</td><td><b>determine · increase · deteriorate</b></td></tr>
+      </table>
+      <table class="g">
+        <tr><th>AWL family</th></tr>
+        <tr><td><b>an</b>alyze · a<b>nal</b>ysis · ana<b>lyt</b>ical</td></tr>
+        <tr><td>sig<b>nif</b>icant · sig<b>nif</b>icance · sig<b>nif</b>icantly</td></tr>
+        <tr><td><b>ev</b>ident · <b>ev</b>idence · <b>ev</b>idently</td></tr>
+        <tr><td>e<b>stab</b>lish · e<b>stab</b>lishment</td></tr>
+      </table>
+    </div>
+    <div class="ccq">"We got a lot of data and found something big." → <i>"We obtained substantial data and identified a significant finding."</i> Did the grammar change? <i>(Hardly: the words did.)</i></div>
+  </section>
+
+  <!-- 16 -->
+  <section class="slide">
+    <div class="eyebrow">5.3 · Stance verbs · don't over-claim, don't over-formalize</div>
+    <h2>How strongly does the source say it?</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>Strength</th><th>Verbs</th></tr>
+        <tr><td>treated as proven</td><td><b>demonstrate · show</b></td></tr>
+        <tr><td>a position</td><td><b>argue · claim · maintain</b></td></tr>
+        <tr><td>tentative</td><td><b>suggest · indicate · imply</b></td></tr>
+        <tr><td>neutral fact</td><td><b>note · observe</b></td></tr>
+        <tr><td>admits a limit</td><td><b>acknowledge · concede</b></td></tr>
+      </table>
+      <div class="dlg">
+        <p><span class="sp">Ana:</span> We looked at the survey and found out a lot of people got put off by the price.</p>
+        <p class="b"><span class="sp">Report:</span> An examination of the survey <b>indicated</b> that a substantial proportion of respondents were deterred by the price.</p>
+      </div>
+    </div>
+    <div class="tag"><span class="pill warn">USE / UTILIZE TEST</span> Does the long word add meaning, or only length? · <s>I shall endeavor to commence</s> → I'll start</div>
+  </section>
+
+  <!-- 17 -->
+  <section class="slide">
+    <div class="eyebrow">5.3 · Workshop · 26 min</div>
+    <h2>📄 Abstract to Summary</h2>
+    <div class="two">
+      <ul class="lab">
+        <li><b>Read</b> · box the hedges · circle the result that was <b>not</b> significant</li>
+        <li><b>Explain it to a friend</b> · plain English only · then swap</li>
+        <li><b>Write</b> · 70–90 words for the "Research Roundup": 6 academic items, 2 stance verbs, 1 family shift</li>
+        <li><b>Review</b> · Praise · Question · Polish · does it claim more than the abstract?</li>
+      </ul>
+      <div class="ccq">Academic words when you explain to a friend? <i>(No!)</i><br>How many words? <i>(70 to 90.)</i><br>Can you write "proves"? <i>(Only if the abstract does, and it doesn't.)</i><br>Copy the abstract's sentences? <i>(No, summarize.)</i></div>
+    </div>
+  </section>
+
+  <!-- 18 -->
+  <section class="slide section">
+    <div class="eyebrow">You can now compress, connect and choose</div>
+    <h2>Module 5 done 🎉</h2>
+    <ul class="lab">
+      <li>✂️ <b>Having reviewed</b> the figures, the board approved the plan. <b>The meeting over</b>, the staff went home.</li>
+      <li>📧 Staff must <b>comply with</b> the code. <b>In light of</b> the data, there has been <b>an increase in</b> demand.</li>
+      <li>📄 The researchers <b>obtained</b> substantial data. The findings <b>suggest</b>, rather than prove, a link.</li>
+    </ul>
+    <p class="lead" style="margin-top:10px;max-width:40ch">Homework: online lessons 5.1–5.3 with 🔊. Next: Module 6, reading critically and writing at C1.</p>
+  </section>
+
+
+</div>
+
+<div class="count" id="count">1 / 18</div>
+<div class="nav"><button id="prev" aria-label="Previous slide"></button><button id="next" aria-label="Next slide"></button></div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const bar=document.getElementById('bar'), count=document.getElementById('count');
+  let i=0;
+  function show(n){ i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+    bar.style.width=((i+1)/slides.length*100)+'%'; count.textContent=(i+1)+' / '+slides.length; }
+  document.getElementById('next').onclick=()=>show(i+1);
+  document.getElementById('prev').onclick=()=>show(i-1);
+  addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}
+    else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+  });
+  show(0);
+</script>
+</body>
+</html>

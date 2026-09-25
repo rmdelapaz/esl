@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Classroom Materials — Module 4</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../../kit.css">
+<style>
+  /* Module 4 print extras (this sheet only) */
+  .flashcard .emo{font-size:3.4rem;line-height:1}
+  .flashcard .sub{font-size:.9rem;color:var(--ink-2)}
+  .card-cut p{font-size:.88rem;margin:.25rem 0}
+  .card-cut ul{margin:.2rem 0;padding-left:1.1rem;font-size:.88rem}
+  .card-cut .model{font-size:.76rem;color:var(--ink-3);border-top:1px dotted var(--line-strong);margin-top:6px;padding-top:4px}
+  .qd{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:10px 0}
+  .qd.two{grid-template-columns:repeat(2,1fr)}
+  .qd.four{grid-template-columns:repeat(4,1fr)}
+  .qd .c{border:1.5px dashed var(--line-strong);padding:10px;text-align:center;break-inside:avoid;min-height:1.1in;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px}
+  .qd .c .emo{font-size:2.2rem;line-height:1.1}
+  .qd .c .s{font-family:"Archivo",sans-serif;font-weight:700;font-size:1rem}
+  .qd .c .o{font-size:.9rem}
+  .qd .c .h{font-size:.74rem;color:var(--ink-3)}
+  .qd .c .n{font-family:"JetBrains Mono",monospace;font-size:.66rem;color:var(--accent);letter-spacing:.1em}
+  .qd .c.for{background:var(--accent-soft);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .cline{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin:8px 0;border:2px solid var(--line-strong)}
+  .cline div{padding:10px 6px;text-align:center;font-family:"Archivo",sans-serif;font-weight:700;border-right:1px dashed var(--line-strong);min-height:.8in;display:flex;align-items:center;justify-content:center}
+  .cline div:last-child{border-right:none}
+  table.chk{width:100%;border-collapse:collapse;margin:10px 0;font-size:.84rem}
+  table.chk th,table.chk td{border:1px solid var(--line-strong);padding:6px 7px;text-align:left;vertical-align:top}
+  table.chk th{background:var(--surface-2);font-size:.78rem}
+  table.chk td.sc{width:5%;text-align:center}
+  table.chk td.mk{width:4%;text-align:center;color:var(--ink-3)}
+  table.chk.grid td{height:1.9em}
+  table.bingo{width:100%;border-collapse:collapse;margin:8px 0;table-layout:fixed}
+  table.bingo td{border:1.5px solid var(--line-strong);height:.8in;text-align:center;vertical-align:middle;font-size:.84rem;padding:4px}
+  table.bingo td.free{background:var(--surface-2);color:var(--ink-3);font-size:.74rem}
+  .slips{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:10px 0}
+  .slips .slip{border:1.5px dashed var(--line-strong);padding:10px 12px;font-size:.84rem;break-inside:avoid}
+  .slips .slip p{margin:.25rem 0}
+  .race{display:grid;grid-template-columns:repeat(6,1fr);gap:0;margin:10px 0;border:2px solid var(--line-strong)}
+  .race .sq{border:1px solid var(--line-strong);min-height:1.15in;padding:6px;font-size:.78rem;line-height:1.25;position:relative;break-inside:avoid}
+  .race .sq .num{display:block;font-family:"JetBrains Mono",monospace;font-size:.7rem;color:var(--accent);font-weight:600}
+  .race .sq.end{background:var(--accent-soft);font-weight:700;font-size:.95rem;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .race .sq.sp b{color:var(--warn)}
+  .tokens{display:grid;grid-template-columns:repeat(8,1fr);gap:0;margin:8px 0}
+  .tokens div{border:1.5px dashed var(--line-strong);aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:1.6rem}
+  .pb{break-before:page}
+  @media (max-width:680px){.flashcards{grid-template-columns:1fr 1fr}.qd,.qd.four{grid-template-columns:1fr 1fr}.cards{grid-template-columns:1fr}.slips{grid-template-columns:1fr}.race{grid-template-columns:repeat(3,1fr)}.tokens{grid-template-columns:repeat(4,1fr)}.cline{grid-template-columns:1fr 1fr}table.chk{display:block;overflow-x:auto}table.bingo td{font-size:.72rem;height:auto}}
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="lbl">Classroom materials —</span>
+  <button type="button" onclick="window.print()">🖨 Print / Save as PDF</button>
+  <span class="hint">print on card stock · cut on the dashed lines</span>
+</div>
+
+<div class="sheet">
+
+  <header class="mast">
+    <div class="kit-eyebrow">Advanced English · Module 4 Materials</div>
+    <h1>Lexical Range &amp; Fluency — Classroom Materials</h1>
+    <p class="sub">Everything to print for Classes C10–C12: flashcards (multi-word verb types, register pairs, literal senses, collocation pictures), new identity cards, the Register Swap A/B story cards and "Which fits?" context cards, the connotation cline envelopes, the idiom cards, "Use it or lose it" discussion cards and chunk-bingo cards, the Advanced Communicator topic, side, persona and challenge cards, the C12 speaking &amp; writing checklist that feeds C13, the Register Ladder review game and the teacher's listening scripts.</p>
+    <div class="meta-row">
+      <span class="chip">Lessons <b>4.1–4.3</b></span>
+      <span class="chip">Classes <b>C10–C12</b></span>
+      <span class="chip"><b>9</b> print sets</span>
+      <span class="chip">CEFR <b>C1</b></span>
+    </div>
+  </header>
+
+  <div class="sec"><h2>What to Print</h2><span class="rule"></span></div>
+  <table class="timing">
+    <thead><tr><th>Set</th><th>What</th><th>How many</th><th>Used in</th></tr></thead>
+    <tbody>
+      <tr><td class="t">A</td><td>Flashcards: four-type cards, register-pair cards, literal-sense pictures (4.1); collocation pictures (4.2)</td><td>1 set for the board (+1 set of register-pair cards per pair for the C11 warmer)</td><td>C10, C11</td></tr>
+      <tr><td class="t">B</td><td>New identity cards (6)</td><td>1–2 sets, on a side table</td><td>C10, C11, C12</td></tr>
+      <tr><td class="t">C</td><td>Register Swap A/B story cards (6 stories) + "Which fits?" context cards (8)</td><td>1 story per pair · 1 context set per group of 3</td><td>C10</td></tr>
+      <tr><td class="t">D</td><td>Connotation cline envelopes (6 sets + cline strip)</td><td>1 envelope per pair</td><td>C11 (C13 lexis station)</td></tr>
+      <tr><td class="t">E</td><td>Idiom + meaning cards, "Use it or lose it" discussion cards, chunk-bingo listener cards</td><td>1 idiom set + 1 discussion card per group · 1 bingo card per learner</td><td>C11</td></tr>
+      <tr><td class="t">F</td><td>Advanced Communicator: topic cards (10), side cards, persona cards, challenge starters, talking tokens</td><td>Topic cards on a side table from the end of C11 · 1 challenge card per listener</td><td>C12</td></tr>
+      <tr><td class="t">G</td><td>C12 speaking &amp; writing checklist: descriptors, module ticks, class grid, learner score slips</td><td>Teacher: 1 grid · slips: 1 per learner</td><td>C12 → C13</td></tr>
+      <tr><td class="t">H</td><td>Game: the Register Ladder (Modules 1–4 review)</td><td>1 board per group of 3–4 + a die and counters</td><td>C12 warmer · C13 station</td></tr>
+      <tr><td class="t">I</td><td>Listening &amp; dictation scripts</td><td>Teacher only</td><td>C10, C11, C12</td></tr>
+    </tbody>
+  </table>
+
+  <!-- ===================== A. FLASHCARDS ===================== -->
+  <div class="sec pb"><h2>A · Flashcards — Types, Register Pairs &amp; Literal Senses (4.1)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">Sort the eight type cards into four boxes on the board with the class. Hold the register-pair cards so learners see only the phrasal verb; they say the formal twin (printed small), then the reverse. The picture cards anchor the <em>literal</em> sense before you move to the idiomatic one ("The plane took off" → "Sales took off").</p>
+  <div class="flashcards">
+    <div class="flashcard word-only"><div class="emo">①</div><div class="w">break down · set off</div><div class="sub">intransitive · no object</div></div>
+    <div class="flashcard word-only"><div class="emo">①</div><div class="w">fall through · grow up</div><div class="sub">intransitive · no object</div></div>
+    <div class="flashcard word-only"><div class="emo">②</div><div class="w">turn it off · fill it in</div><div class="sub">separable · pronoun in the middle</div></div>
+    <div class="flashcard word-only"><div class="emo">②</div><div class="w">throw them away · call it off</div><div class="sub">separable · pronoun in the middle</div></div>
+    <div class="flashcard word-only"><div class="emo">③</div><div class="w">look after it · deal with it</div><div class="sub">inseparable · object after</div></div>
+    <div class="flashcard word-only"><div class="emo">③</div><div class="w">rely on her · get over it</div><div class="sub">inseparable · object after</div></div>
+    <div class="flashcard word-only"><div class="emo">④</div><div class="w">put up with it</div><div class="sub">three-part · never split</div></div>
+    <div class="flashcard word-only"><div class="emo">④</div><div class="w">run out of it · cut down on it</div><div class="sub">three-part · never split</div></div>
+  </div>
+  <div class="flashcards">
+    <div class="flashcard word-only"><div class="w">put off</div><div class="sub">postpone</div></div>
+    <div class="flashcard word-only"><div class="w">find out</div><div class="sub">discover</div></div>
+    <div class="flashcard word-only"><div class="w">look into</div><div class="sub">investigate</div></div>
+    <div class="flashcard word-only"><div class="w">go up</div><div class="sub">increase · rise</div></div>
+    <div class="flashcard word-only"><div class="w">set up</div><div class="sub">establish</div></div>
+    <div class="flashcard word-only"><div class="w">give up</div><div class="sub">abandon · relinquish</div></div>
+    <div class="flashcard word-only"><div class="w">put up with</div><div class="sub">tolerate</div></div>
+    <div class="flashcard word-only"><div class="w">carry out</div><div class="sub">conduct · perform</div></div>
+    <div class="flashcard word-only"><div class="w">get rid of</div><div class="sub">eliminate · remove</div></div>
+    <div class="flashcard word-only"><div class="w">come across</div><div class="sub">encounter</div></div>
+    <div class="flashcard word-only"><div class="w">pull out</div><div class="sub">withdraw</div></div>
+    <div class="flashcard word-only"><div class="w">take over</div><div class="sub">acquire</div></div>
+  </div>
+  <div class="flashcards">
+    <div class="flashcard"><img src="../../assets/vocab/flight.jpg" alt=""><div class="w">take off (leave the ground)</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/coat.jpg" alt=""><div class="w">take off (remove)</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/luggage.jpg" alt=""><div class="w">set off (start a journey)</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/mechanic.jpg" alt=""><div class="w">break down (stop working)</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/hotel.jpg" alt=""><div class="w">check in · check out</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/bus-stop.jpg" alt=""><div class="w">pick someone up</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/passport.jpg" alt=""><div class="w">fill in / fill out a form</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/remote.jpg" alt=""><div class="w">turn it off · turn it down</div></div>
+  </div>
+
+  <div class="sec pb"><h2>A · Flashcards — Collocation Pictures (4.2)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">Show the picture only and ask "Which partner?": learners supply the collocation. Then show the weak version and ask for the upgrade ("very worried" → "deeply concerned"). The eight pictures also work for the C11 drill ("Finish the chunk").</p>
+  <div class="flashcards">
+    <div class="flashcard"><img src="../../assets/vocab/coffee.jpg" alt=""><div class="w">strong coffee</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/umbrella.jpg" alt=""><div class="w">heavy rain</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/winter.jpg" alt=""><div class="w">bitterly cold</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/worried.jpg" alt=""><div class="w">deeply concerned</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/nervous.jpg" alt=""><div class="w">get cold feet</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/mobile-phone.jpg" alt=""><div class="w">take a photo</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/angry.jpg" alt=""><div class="w">a surge of anger</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/sad.jpg" alt=""><div class="w">a bitter disappointment</div></div>
+  </div>
+  <div class="flashcards">
+    <div class="flashcard word-only"><div class="w">make a decision</div><div class="sub">not "do"</div></div>
+    <div class="flashcard word-only"><div class="w">do research</div><div class="sub">not "make"</div></div>
+    <div class="flashcard word-only"><div class="w">meet a deadline</div><div class="sub">not "reach"</div></div>
+    <div class="flashcard word-only"><div class="w">raise an issue</div><div class="sub">bring it up</div></div>
+    <div class="flashcard word-only"><div class="w">highly unlikely</div><div class="sub">not "strongly"</div></div>
+    <div class="flashcard word-only"><div class="w">apologize profusely</div><div class="sub">verb + adverb</div></div>
+    <div class="flashcard word-only"><div class="w">a round of applause</div><div class="sub">noun + noun</div></div>
+    <div class="flashcard word-only"><div class="w">heavy traffic</div><div class="sub">not "big" or "strong"</div></div>
+  </div>
+
+  <!-- ===================== B. NEW IDENTITY ===================== -->
+  <div class="sec pb"><h2>B · New Identity Cards (4.1 · 4.2 · 4.3)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">Any learner may use a card instead of their own life, in any task: no reason needed. In 4.1 they tell the <b>story</b> (Register Swap planner and homework). In 4.2 they give the Precise Talk on the <b>place or trend</b> and describe the <b>invented colleague</b> with a cline. In 4.3 the <b>point of view</b> works like a persona card.</p>
+  <div class="cards">
+    <div class="card-cut"><div class="ct">New identity · 1</div><h4>Sofia — hotel operations manager</h4>
+      <p><b>A story:</b> the booking system went down on the busiest weekend of the year; she set up a paper backup and sorted it out.</p>
+      <p><b>A place or trend:</b> the harbor district, renowned for its seafood, notorious for parking</p>
+      <p><b>An invented colleague:</b> Marco, who questions every decision (determined? stubborn?)</p>
+      <p><b>Point of view in C12:</b> "Speaking as someone who manages 40 staff…"</p></div>
+    <div class="card-cut b"><div class="ct">New identity · 2</div><h4>Daniel — secondary-school science teacher</h4>
+      <p><b>A story:</b> the school science fair nearly fell through when the sponsor pulled out; parents stepped in.</p>
+      <p><b>A place or trend:</b> AI tools in homework: a real concern or a passing panic?</p>
+      <p><b>An invented colleague:</b> Ms. Hart, who never spends a cent of the budget (thrifty? stingy?)</p>
+      <p><b>Point of view in C12:</b> "In my classroom, what I see is…"</p></div>
+    <div class="card-cut"><div class="ct">New identity · 3</div><h4>Aisha — pharmacist in a community clinic</h4>
+      <p><b>A story:</b> the clinic took on two new pharmacists and cut down on waiting times by half.</p>
+      <p><b>A place or trend:</b> the rise of online prescriptions</p>
+      <p><b>An invented colleague:</b> Ben, who speaks first in every meeting (self-assured? arrogant?)</p>
+      <p><b>Point of view in C12:</b> "From a health professional's perspective…"</p></div>
+    <div class="card-cut b"><div class="ct">New identity · 4</div><h4>Luis — logistics coordinator</h4>
+      <p><b>A story:</b> a new route plan was brought in; drivers put up with 6 a.m. starts, and delivery times went down.</p>
+      <p><b>A place or trend:</b> the warehouse by the highway: a flurry of activity at 5 a.m.</p>
+      <p><b>An invented colleague:</b> Greta, who reads everyone's schedule (curious? nosy?)</p>
+      <p><b>Point of view in C12:</b> "On the road every day, I'm deeply concerned about…"</p></div>
+    <div class="card-cut"><div class="ct">New identity · 5</div><h4>Mei — software tester</h4>
+      <p><b>A story:</b> she came across a serious bug the night before a launch; the team put the launch off by a week.</p>
+      <p><b>A place or trend:</b> remote work: why her team never went back to the office</p>
+      <p><b>An invented colleague:</b> Oskar, who celebrates every small win (childlike? childish?)</p>
+      <p><b>Point of view in C12:</b> "Having worked remotely for five years, I…"</p></div>
+    <div class="card-cut b"><div class="ct">New identity · 6</div><h4>Samuel — retired librarian and volunteer</h4>
+      <p><b>A story:</b> the food bank had to move out; volunteers packed up and set everything up in one weekend.</p>
+      <p><b>A place or trend:</b> public libraries turning into community hubs</p>
+      <p><b>An invented colleague:</b> Rita, who runs the book club with an iron will (firm? pig-headed?)</p>
+      <p><b>Point of view in C12:</b> "After forty years behind a library desk…"</p></div>
+  </div>
+
+  <!-- ===================== C. REGISTER SWAP ===================== -->
+  <div class="sec pb"><h2>C · The Register Swap — A/B Story Cards (4.1)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">One story per pair. <b>A</b> gets the informal voice note (tell it from memory, like a coworker at the coffee machine; B notes every phrasal verb). The pair then writes a <b>70–90-word formal update</b>, keeping at least one phrasal verb on purpose (<b>K</b>). <b>B</b> gets a formal memo from a later stage of the same story and turns it into a <b>30-second spoken update</b>. The small gray model under each A card is for you: fold it back or cut it off before class.</p>
+  <div class="cards">
+    <div class="card-cut"><div class="ct">Story 1 · A · Voice note (informal)</div><h4>The community center leak</h4>
+      <p>"Hey, it's Dev from facilities. So, we looked into the water in the main hall on Monday, and it turns out a pipe under the kitchen has worn out. We've had to put off the repairs till Thursday, because the plumber can't come any sooner. Can you let people know the hall's shut till then? We've moved Saturday's classes over to the library. Oh, and we'll write the whole thing up next week."</p>
+      <div class="model">Model formal update: see Answer Key 4.1, "Speaking — the Register Swap."</div></div>
+    <div class="card-cut b"><div class="ct">Story 1 · B · Memo (formal)</div><h4>The community center leak</h4>
+      <p>"The repairs to the main hall were completed on Thursday. An inspection conducted on Friday revealed no further damage, and the hall will reopen on Monday. Users are requested to report any recurrence of dampness immediately. The committee wishes to acknowledge the assistance of the library staff."</p>
+      <p><i>→ Tell it in 30 seconds, as you would to a friend.</i></p></div>
+    <div class="card-cut"><div class="ct">Story 2 · A · Voice note (informal)</div><h4>The library app pilot</h4>
+      <p>"Hi all, Mia here. Quick one on the library app. We tried it out with fifty users last month, and honestly it went down really well: people picked it up in minutes. A few folks ran into problems logging in, so we're sorting that out. We want to roll it out to everyone in May, as long as the budget doesn't fall through."</p>
+      <div class="model">Model: "A pilot of the library app was conducted with fifty users last month and was very well received; most participants learned to use it within minutes. A small number encountered difficulties logging in, and these are currently being resolved. Subject to budget approval, the app will be made available to all members in May." (K option: <i>carried out</i> for <i>conducted</i>.)</div></div>
+    <div class="card-cut b"><div class="ct">Story 2 · B · Memo (formal)</div><h4>The library app pilot</h4>
+      <p>"Following the successful pilot, the board has approved the full launch of the library app. Implementation will commence on May 1. Staff are required to attend a one-hour training session prior to the launch. Members who encounter difficulties should contact the help desk."</p>
+      <p><i>→ Tell it in 30 seconds, as you would to a friend.</i></p></div>
+    <div class="card-cut"><div class="ct">Story 3 · A · Voice note (informal)</div><h4>The clinic's new booking system</h4>
+      <p>"Hey, it's Tomás at the front desk. So the new booking system: we set it up over the weekend, but on Monday it kept crashing, so we had to switch back to the old one. IT is looking into it. Patients are putting up with it pretty well, but the phone lines are going crazy. Can someone help out on the phones tomorrow morning?"</p>
+      <div class="model">Model: "The new booking system was installed over the weekend but repeatedly failed on Monday, and the previous system has been temporarily restored. The IT department is investigating the fault. Although patients have been very tolerant, call volumes remain exceptionally high, and additional staff are requested for telephone duty tomorrow morning." (K option: <i>set up</i> for <i>installed</i>.)</div></div>
+    <div class="card-cut b"><div class="ct">Story 3 · B · Memo (formal)</div><h4>The clinic's new booking system</h4>
+      <p>"The online booking system has been restored following a software update. Patients may now schedule appointments online. Staff are asked to discontinue the paper waiting list with immediate effect and to direct all inquiries to the reception supervisor."</p>
+      <p><i>→ Tell it in 30 seconds, as you would to a friend.</i></p></div>
+    <div class="card-cut"><div class="ct">Story 4 · A · Voice note (informal)</div><h4>The school bake sale</h4>
+      <p>"Hi everyone, it's Grace from the PTA. The bake sale's been called off because of the weather, sorry! We're going to put it off to the 18th. The good news is that tons of parents have signed up to help, and the bakery on Main Street offered to give us bread for free. Can someone look after the cash box this time? Last time it nearly went missing."</p>
+      <div class="model">Model: "Owing to adverse weather, the bake sale has been postponed until the 18th. We are pleased to report that a large number of parents have volunteered to assist, and the Main Street bakery has generously offered to donate bread. A volunteer is requested to take responsibility for the cash box." (K option: <i>signed up</i>.)</div></div>
+    <div class="card-cut b"><div class="ct">Story 4 · B · Memo (formal)</div><h4>The school bake sale</h4>
+      <p>"The Parent-Teacher Association is pleased to report that the rescheduled bake sale raised $1,240. The proceeds will be allocated to the purchase of library books. The Association wishes to thank the volunteers and local businesses who contributed."</p>
+      <p><i>→ Tell it in 30 seconds, as you would to a friend.</i></p></div>
+    <div class="card-cut"><div class="ct">Story 5 · A · Voice note (informal)</div><h4>The delivery schedule</h4>
+      <p>"Hey team, Kwame here. Heads-up: from next week they're bringing in a new route plan, and the early shift's getting moved up to 6 a.m. I know, I know. They've worked out that it'll cut down on traffic delays. If anyone can't make it, talk to Jess, and she'll sort something out. Just don't not turn up!"</p>
+      <div class="model">Model: "A new route plan will be introduced next week, and the early shift will consequently begin at 6 a.m. Management anticipates that the change will reduce delays caused by traffic. Employees who are unable to attend at the revised time should contact Jess Moreno to discuss alternative arrangements. Attendance without prior notice of absence is expected."</div></div>
+    <div class="card-cut b"><div class="ct">Story 5 · B · Memo (formal)</div><h4>The delivery schedule</h4>
+      <p>"Following a review of delivery performance, the revised schedule has reduced average delivery times by 14 percent. The company will therefore retain the 6 a.m. start. Employees who wish to request an alternative shift should submit a written application to Human Resources."</p>
+      <p><i>→ Tell it in 30 seconds, as you would to a friend.</i></p></div>
+    <div class="card-cut"><div class="ct">Story 6 · A · Voice note (informal)</div><h4>The food bank move</h4>
+      <p>"Hi volunteers, it's Lena. So, we're moving out of the old community hall at the end of the month: the rent went up again, and we just can't keep up with it. We've come across a great space above the hardware store. We need people to help pack up on Saturday and set everything up on Sunday. Pizza's on me!"</p>
+      <div class="model">Model: "The food bank will vacate the community hall at the end of the month, as the rent has increased beyond what the organization can sustain. Suitable premises have been identified above the hardware store on Grant Street. Volunteers are needed to assist with packing on Saturday and with setting up <b>(K)</b> the new site on Sunday. Refreshments will be provided."</div></div>
+    <div class="card-cut b"><div class="ct">Story 6 · B · Memo (formal)</div><h4>The food bank move</h4>
+      <p>"The food bank has relocated to 12 Grant Street (second floor). Opening hours remain unchanged. Clients with mobility requirements are advised that an elevator is available at the rear entrance. The committee extends its gratitude to the 40 volunteers who assisted with the relocation."</p>
+      <p><i>→ Tell it in 30 seconds, as you would to a friend.</i></p></div>
+  </div>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">"Which fits?" context cards <span style="font-weight:500;color:var(--ink-3)">(the register judge holds these; early finishers deal three and say one sentence in each register)</span></h3>
+  <div class="qd four">
+    <div class="c"><div class="emo">📱</div><div class="s">A text to a friend</div><div class="h">spoken · phrasal verbs · contractions</div></div>
+    <div class="c"><div class="emo">💼</div><div class="s">A job interview</div><div class="h">neutral-to-formal · careful, warm</div></div>
+    <div class="c"><div class="emo">✉️</div><div class="s">A complaint letter to a company</div><div class="h">formal · firm, polite</div></div>
+    <div class="c"><div class="emo">☕</div><div class="s">A team stand-up meeting</div><div class="h">spoken · quick, direct</div></div>
+    <div class="c"><div class="emo">🎓</div><div class="s">A university essay</div><div class="h">formal · no idioms, no contractions</div></div>
+    <div class="c"><div class="emo">🎙️</div><div class="s">A podcast interview</div><div class="h">neutral-to-informal · lively</div></div>
+    <div class="c"><div class="emo">🦺</div><div class="s">A safety report</div><div class="h">formal · precise · passive OK</div></div>
+    <div class="c"><div class="emo">🥂</div><div class="s">A toast at a coworker's farewell</div><div class="h">warm · informal · one idiom OK</div></div>
+  </div>
+
+  <!-- ===================== D. CLINES ===================== -->
+  <div class="sec pb"><h2>D · Connotation Cline Envelopes (4.2)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">Cut the word cards and put each set in an envelope with its <b>character card</b>. Pairs lay the words on the cline strip from most positive to most negative, then decide which word <em>each speaker</em> on the character card would choose. All characters are invented. Never ask learners to describe classmates or real people.</p>
+  <h3 style="font-size:1rem;margin:14px 0 4px">Cline strip (1 per pair)</h3>
+  <div class="cline"><div>🙂 most positive</div><div>🙂</div><div>😐 neutral</div><div>🙁</div><div>🙁 most negative</div></div>
+
+  <div class="cards">
+    <div class="card-cut"><div class="ct">Envelope 1 · shape (objects &amp; animals)</div><h4>slender · slim · thin · skinny · scrawny</h4>
+      <p><b>Character card:</b> Describe (a) a designer vase in a gift-shop ad, (b) a young tree after a dry summer, in a neutral garden report, (c) a stray cat found in the rain, in a text to a friend.</p>
+      <div class="model">Likely: (a) slender · (b) thin · (c) skinny / scrawny (sympathy, not admiration).</div></div>
+    <div class="card-cut b"><div class="ct">Envelope 2 · money</div><h4>thrifty · frugal · economical · tight · stingy</h4>
+      <p><b>Character card:</b> Leon never pays for anyone's coffee, but he quietly gave $500 to the school fund. What does his coworker say about the coffee? What does the school principal say?</p>
+      <div class="model">Coworker: tight / stingy · principal: thrifty / frugal ("careful, and generous where it matters").</div></div>
+    <div class="card-cut"><div class="ct">Envelope 3 · confidence</div><h4>self-assured · confident · arrogant · cocky</h4>
+      <p><b>Character card:</b> Nina, a new manager, speaks first in every meeting and rarely asks for input. How would her boss describe her in a reference? How might her team describe her after work?</p>
+      <div class="model">Reference: self-assured / confident · team: arrogant / cocky.</div></div>
+    <div class="card-cut b"><div class="ct">Envelope 4 · fame</div><h4>renowned · famous · well-known · notorious · infamous</h4>
+      <p><b>Character card:</b> Port Riley, an invented seaside town, is famous for its oysters and for its summer traffic jams. Write one sentence for a tourist brochure and one for a complaint to the town council.</p>
+      <div class="model">Brochure: renowned for its oysters · complaint: notorious for its traffic.</div></div>
+    <div class="card-cut"><div class="ct">Envelope 5 · curiosity</div><h4>inquisitive · curious · interested · nosy</h4>
+      <p><b>Character card:</b> Mr. Brandt, an invented neighbor, reads every package label on the doorstep, but he also asks brilliant questions at the library talks. Describe both habits.</p>
+      <div class="model">Packages: nosy · library talks: curious / inquisitive.</div></div>
+    <div class="card-cut b"><div class="ct">Envelope 6 · determination</div><h4>determined · firm · stubborn · pig-headed</h4>
+      <p><b>Character card:</b> Coach Ruiz won't change the training plan, even after three losses. Her supporters speak first, then her critics.</p>
+      <div class="model">Supporters: determined / firm · critics: stubborn / pig-headed (very informal).</div></div>
+  </div>
+  <p style="font-size:.9rem"><b>Bonus pairs</b> (stretch or early finishers): childlike (+) / childish (−) · inexpensive · affordable (+) / cheap (±) / tacky (−) · youthful (+) / immature (−) · assertive (+) / pushy (−).</p>
+
+  <!-- ===================== E. IDIOMS, USE IT, BINGO ===================== -->
+  <div class="sec pb"><h2>E · Idioms, "Use It or Lose It" &amp; Chunk Bingo (4.2)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem"><b>Idiom cards:</b> groups match idioms to meanings face up, then play "context": one learner reads a meaning, the others say a natural <em>spoken</em> sentence with the idiom, and a second learner rephrases it for a formal report.</p>
+  <div class="qd four">
+    <div class="c for"><div class="s">a blessing in disguise</div></div>
+    <div class="c for"><div class="s">the last straw</div></div>
+    <div class="c for"><div class="s">hit the nail on the head</div></div>
+    <div class="c for"><div class="s">bite the bullet</div></div>
+    <div class="c for"><div class="s">cut corners</div></div>
+    <div class="c for"><div class="s">on the same page</div></div>
+    <div class="c for"><div class="s">a gray area</div></div>
+    <div class="c for"><div class="s">get cold feet</div></div>
+    <div class="c for"><div class="s">the tip of the iceberg</div></div>
+    <div class="c for"><div class="s">food for thought</div></div>
+    <div class="c for"><div class="s">use it or lose it</div></div>
+    <div class="c for"><div class="s">a false economy</div></div>
+  </div>
+  <div class="qd four">
+    <div class="c"><div class="o">something that seems bad but turns out well</div></div>
+    <div class="c"><div class="o">the final problem that makes a situation unbearable</div></div>
+    <div class="c"><div class="o">describe a problem exactly right</div></div>
+    <div class="c"><div class="o">make yourself do something difficult or unpleasant</div></div>
+    <div class="c"><div class="o">do something cheaply or quickly and lose quality</div></div>
+    <div class="c"><div class="o">sharing the same understanding</div></div>
+    <div class="c"><div class="o">a situation with no clear rules</div></div>
+    <div class="c"><div class="o">become nervous and hesitate before a big step</div></div>
+    <div class="c"><div class="o">a small visible part of a much bigger problem</div></div>
+    <div class="c"><div class="o">something worth thinking about seriously</div></div>
+    <div class="c"><div class="o">if you don't practice a skill, you lose it</div></div>
+    <div class="c"><div class="o">a saving that ends up costing more</div></div>
+  </div>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">"Use it or lose it" — discussion cards <span style="font-weight:500;color:var(--ink-3)">(1 per group of 3 · 4 minutes)</span></h3>
+  <div class="cards">
+    <div class="card-cut"><div class="ct">Discussion · 1</div><h4>Is it true of vocabulary?</h4><ul><li>Which English words did you know well a few years ago but rarely use now?</li><li>Are some words "safe" because you meet them every day?</li><li>What would a realistic weekly "use it" plan look like?</li></ul></div>
+    <div class="card-cut b"><div class="ct">Discussion · 2</div><h4>Are idioms more fragile?</h4><ul><li>Why might an idiom be easier to lose than a collocation?</li><li>Is it better to own ten idioms perfectly or recognize fifty?</li><li>Which idiom from today would you actually say this week, and to whom?</li></ul></div>
+    <div class="card-cut"><div class="ct">Discussion · 3</div><h4>Skills beyond language</h4><ul><li>Name a skill (a sport, an instrument, a recipe, a software tool) that faded when you stopped. Real or invented.</li><li>How long did it take to come back?</li><li>Does the same thing happen with a language?</li></ul></div>
+    <div class="card-cut b"><div class="ct">Discussion · 4</div><h4>Making chunks stick</h4><ul><li>Phrasebook, flashcards, or real conversations: which works best for you?</li><li>Is "use it or lose it" too pessimistic? What stays even without practice?</li><li>Choose three chunks and a real place to use each one.</li></ul></div>
+  </div>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">Chunk bingo — listener cards <span style="font-weight:500;color:var(--ink-3)">(1 per learner · tick what you hear · it is feedback, not a race)</span></h3>
+  <div class="grid2">
+    <div>
+      <p style="font-size:.84rem;margin:.2rem 0"><b>Card A</b> · Register slip heard: ____________</p>
+      <table class="bingo">
+        <tr><td>heavy traffic</td><td>make a decision</td><td>deeply concerned</td><td>highly unlikely</td></tr>
+        <tr><td>a key issue</td><td>meet a deadline</td><td class="free">a strong collocation not on the card</td><td>a bitter disappointment</td></tr>
+        <tr><td>raise an issue</td><td class="free">a strong collocation not on the card</td><td>widely regarded</td><td>take a risk</td></tr>
+        <tr><td>an idiom used well</td><td>fully aware</td><td>a round of applause</td><td class="free">a precise near-synonym</td></tr>
+      </table>
+    </div>
+    <div>
+      <p style="font-size:.84rem;margin:.2rem 0"><b>Card B</b> · Register slip heard: ____________</p>
+      <table class="bingo">
+        <tr><td>bitterly cold</td><td>do research</td><td>a valid point</td><td>pay attention</td></tr>
+        <tr><td class="free">a strong collocation not on the card</td><td>apologize profusely</td><td>a pressing concern</td><td>strong argument</td></tr>
+        <tr><td>a calculated risk</td><td>an idiom used well</td><td class="free">a strong collocation not on the card</td><td>paid off</td></tr>
+        <tr><td>a flurry of activity</td><td class="free">a precise near-synonym</td><td>highly regarded</td><td>fail miserably</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- ===================== F. ADVANCED COMMUNICATOR ===================== -->
+  <div class="sec pb"><h2>F · The Advanced Communicator — Topics, Sides, Personas, Challenges, Tokens (4.3)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">Put the topic cards on a side table at the end of C11 so learners can choose early. Speakers may argue either side; the side is not their personal opinion unless they want it to be. Each card has two starter reasons for each side so nobody begins from zero.</p>
+  <div class="cards">
+    <div class="card-cut"><div class="ct">Topic · 1</div><h4>Employers should give every employee one paid learning day a month.</h4><p><b>For:</b> skills keep pace with technology · staff stay longer. <b>Against:</b> lost working time · hard for small teams.</p></div>
+    <div class="card-cut b"><div class="ct">Topic · 2</div><h4>Office jobs should move to a four-day week.</h4><p><b>For:</b> rested staff are more productive · easier recruiting. <b>Against:</b> customers expect five days · longer days are tiring.</p></div>
+    <div class="card-cut"><div class="ct">Topic · 3</div><h4>Phones should be locked away during the school day for students under 16.</h4><p><b>For:</b> better focus · less online bullying. <b>Against:</b> safety contact with parents · a missed chance to teach digital habits.</p></div>
+    <div class="card-cut b"><div class="ct">Topic · 4</div><h4>An apprenticeship is a better start than a university degree.</h4><p><b>For:</b> earn while you learn · no debt. <b>Against:</b> fewer options later · some careers require degrees.</p></div>
+    <div class="card-cut"><div class="ct">Topic · 5</div><h4>Town centers should be car-free on Sundays.</h4><p><b>For:</b> cleaner air · busier cafés and markets. <b>Against:</b> harder for older and disabled visitors · deliveries and shift workers.</p></div>
+    <div class="card-cut b"><div class="ct">Topic · 6</div><h4>Students should be allowed to use AI tools for homework.</h4><p><b>For:</b> it's a workplace skill · faster feedback. <b>Against:</b> less real thinking · unfair assessment.</p></div>
+    <div class="card-cut"><div class="ct">Topic · 7</div><h4>Soft drinks with added sugar should cost more than water in every workplace cafeteria.</h4><p><b>For:</b> healthier habits · cheaper water. <b>Against:</b> adults should choose · punishes low earners.</p></div>
+    <div class="card-cut b"><div class="ct">Topic · 8</div><h4>Public libraries should become community hubs, not just book collections.</h4><p><b>For:</b> classes, repair cafés, job help · more visitors. <b>Against:</b> less quiet study space · staff aren't trained for everything.</p></div>
+    <div class="card-cut"><div class="ct">Topic · 9</div><h4>Remote work should be the default for office jobs.</h4><p><b>For:</b> no commute · a wider talent pool. <b>Against:</b> weaker teamwork · harder for new staff to learn.</p></div>
+    <div class="card-cut b"><div class="ct">Topic · 10</div><h4>Every adult should complete basic first-aid training.</h4><p><b>For:</b> saves lives in the first minutes · confidence. <b>Against:</b> cost and time · skills fade (use it or lose it!).</p></div>
+  </div>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">Side cards <span style="font-weight:500;color:var(--ink-3)">(optional: deal face down if a learner prefers an assigned side)</span></h3>
+  <div class="qd four">
+    <div class="c"><div class="emo">👍</div><div class="s">FOR</div><div class="h">I'd like to make the case that…</div></div>
+    <div class="c"><div class="emo">👎</div><div class="s">AGAINST</div><div class="h">I'd like to argue that we should not…</div></div>
+    <div class="c"><div class="emo">⚖️</div><div class="s">A MIDDLE WAY</div><div class="h">Propose a compromise: "…but only if…"</div></div>
+    <div class="c"><div class="emo">⏱️</div><div class="s">TIMEKEEPER</div><div class="h">3 min talk · 2 min Q&amp;A · warn at 30 seconds</div></div>
+  </div>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">Persona cards <span style="font-weight:500;color:var(--ink-3)">(optional; speak from a point of view that is not your own)</span></h3>
+  <div class="qd">
+    <div class="c"><div class="emo">🏥</div><div class="s">A hospital night-shift nurse</div><div class="h">"Working nights, what I'm deeply concerned about is…"</div></div>
+    <div class="c"><div class="emo">🏪</div><div class="s">A small-business owner</div><div class="h">"Speaking as someone who meets a payroll every month…"</div></div>
+    <div class="c"><div class="emo">🎓</div><div class="s">A university student</div><div class="h">"For students like me, what matters most is…"</div></div>
+    <div class="c"><div class="emo">👨‍👩‍👧‍👦</div><div class="s">A parent of three</div><div class="h">"With three children, the bottom line is…"</div></div>
+    <div class="c"><div class="emo">📚</div><div class="s">A retired teacher</div><div class="h">"Having taught for thirty years, I would argue…"</div></div>
+    <div class="c"><div class="emo">🚌</div><div class="s">A city bus driver</div><div class="h">"On the road every day, I've come across…"</div></div>
+  </div>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">Challenge starters <span style="font-weight:500;color:var(--ink-3)">(one per listener · on the back: the speaker's main claim in one sentence + the best challenge)</span></h3>
+  <div class="qd">
+    <div class="c"><div class="s">Isn't there a risk that…?</div><div class="h">Main claim: ____________ · Best challenge: ____________</div></div>
+    <div class="c"><div class="s">How would that work for…?</div><div class="h">Main claim: ____________ · Best challenge: ____________</div></div>
+    <div class="c"><div class="s">You said…, but surely…?</div><div class="h">Main claim: ____________ · Best challenge: ____________</div></div>
+    <div class="c"><div class="s">What would you say to someone who…?</div><div class="h">Main claim: ____________ · Best challenge: ____________</div></div>
+    <div class="c"><div class="s">Had this been tried in…, would it have worked?</div><div class="h">Main claim: ____________ · Best challenge: ____________</div></div>
+    <div class="c"><div class="s">What evidence is there that…?</div><div class="h">Main claim: ____________ · Best challenge: ____________</div></div>
+  </div>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">Talking tokens <span style="font-weight:500;color:var(--ink-3)">(2 per listener in the Q&amp;A; coins or paper clips also work)</span></h3>
+  <div class="tokens">
+    <div>💬</div><div>💬</div><div>💬</div><div>💬</div><div>💬</div><div>💬</div><div>💬</div><div>💬</div>
+    <div>💬</div><div>💬</div><div>💬</div><div>💬</div><div>💬</div><div>💬</div><div>💬</div><div>💬</div>
+  </div>
+
+  <!-- ===================== G. CHECKLIST ===================== -->
+  <div class="sec pb"><h2>G · C12 Speaking &amp; Writing Checklist — The Advanced Communicator (feeds C13)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">Score each learner's <b>spoken performance</b> across the talk and the Q&amp;A (five criteria, 0–3 each, <b>/15</b>) and the <b>written summary</b> after class (four criteria, 0–3 each, <b>/12</b>). 0 = no response · 1 = not yet C1 · 2 = C1 · 3 = strong C1 (moving toward C2). Score what a patient, expert listener understands, not an accent. Tick <b>M1–M4</b> when you hear or read a structure from that module used correctly. Write one sentence you heard or read in the notes column; it makes the slip easy to write.</p>
+  <table class="chk">
+    <thead><tr><th>Speaking</th><th>3</th><th>2</th><th>1</th><th>0</th></tr></thead>
+    <tbody>
+      <tr><td><b>S1 · Task &amp; organization</b></td><td>Compelling opening, preview, 2–3 developed points with evidence, memorable close; signposted at every join; within time</td><td>Clear structure but thin support, or signposts missing in places</td><td>A list of ideas with little structure; no real close</td><td>No talk yet</td></tr>
+      <tr><td><b>S2 · Range (Modules 1–4)</b></td><td>Structures from 3–4 modules, natural and unprompted; strong collocations; 1–2 well-placed devices</td><td>Structures from 2 modules; some precise lexis</td><td>1 module; mostly B2 structures and weak collocations</td><td>Very limited range</td></tr>
+      <tr><td><b>S3 · Accuracy</b></td><td>Consistent control of complex grammar; rare, minor errors, often self-corrected</td><td>Some errors in complex structures; meaning always clear</td><td>Frequent errors; the listener must work hard</td><td>Meaning often lost</td></tr>
+      <tr><td><b>S4 · Register &amp; interaction</b></td><td>Register consistent and fitted to the audience, shifted on purpose; Q&amp;A: clarifies, concedes before countering, stays calm</td><td>Mostly consistent register; answers questions relevantly</td><td>Register clashes; blunt or evasive answers</td><td>No response to questions</td></tr>
+      <tr><td><b>S5 · Fluency &amp; delivery</b></td><td>Even pace, pauses at signposts; stress highlights contrast and key points; little searching</td><td>Some hesitation; mostly easy to follow</td><td>Many pauses; reads from notes</td><td>Can't continue without help</td></tr>
+    </tbody>
+  </table>
+  <table class="chk">
+    <thead><tr><th>Writing (summary)</th><th>3</th><th>2</th><th>1</th><th>0</th></tr></thead>
+    <tbody>
+      <tr><td><b>W1 · Content</b></td><td>Proposal and main reasons summarized accurately; strongest objection reported fairly; response given; 130–170 words</td><td>Clear proposal and reasons; objection mentioned but thin or one-sided</td><td>Reasons unclear or objection missing; far off the word count</td><td>Not attempted</td></tr>
+      <tr><td><b>W2 · Organization &amp; cohesion</b></td><td>Logical order; reference, linkers and substitution make it one text</td><td>Clear order; some mechanical linking</td><td>Hard to follow; list-like</td><td>—</td></tr>
+      <tr><td><b>W3 · Register &amp; lexis</b></td><td>Consistently formal: nominalization, hedging, precise collocations, Latinate verbs where they fit; no idioms, contractions or clashes</td><td>Mostly formal; one or two slips</td><td>Frequent informal features; idioms or contractions</td><td>—</td></tr>
+      <tr><td><b>W4 · Accuracy</b></td><td>Complex sentences controlled; rare errors; punctuation supports structure</td><td>Some errors; meaning clear</td><td>Frequent errors that affect meaning</td><td>—</td></tr>
+    </tbody>
+  </table>
+  <table class="chk">
+    <thead><tr><th>Tick</th><th>What counts (correct use, spoken or written)</th></tr></thead>
+    <tbody>
+      <tr><td><b>M1</b></td><td>future perfect / continuous (<i>will have paid for itself</i>) · modals of speculation and nuance (<i>may well, might as well, must have, needn't have</i>) · the subjunctive (<i>It is essential that it be…</i>)</td></tr>
+      <tr><td><b>M2</b></td><td>mixed conditionals and <i>if</i>-alternatives (<i>Had we…, But for…, Supposing…</i>) · inversion (<i>Not only…, Rarely…, Never has…</i>) · clefts and fronting (<i>What we need is…, It was… that…</i>)</td></tr>
+      <tr><td><b>M3</b></td><td>nominalization (<i>the introduction of…</i>) · cohesion: reference, substitution, ellipsis (<i>the former, others did not</i>) · hedging and diplomatic language (<i>would appear to, to some extent</i>)</td></tr>
+      <tr><td><b>M4</b></td><td>phrasal verbs chosen by register, pronouns placed correctly · strong collocations · precise connotation · an idiom used well in speech (and rephrased in writing)</td></tr>
+    </tbody>
+  </table>
+  <div class="note"><div class="t">How the results feed Progress Test 1 (C13)</div>
+    <p>Copy each learner's totals and module ticks to the class register. In C13, after the test, send each learner to the <b>catch-up station</b> for any module with no tick, or for their lowest criterion: <b>no M1</b> → time &amp; modality station · <b>no M2</b> → conditionals &amp; emphasis station · <b>no M3</b> → cohesion &amp; hedging station · <b>no M4</b> → lexis station (Sets C and D of this pack) · <b>S4 or W3 ≤ 1</b> → register-shift station (Workbook 4.3 Ex 2 and 4 + a "three rungs" round) · <b>S5 ≤ 1</b> → shadowing station (the 🔊 model sentences in online lessons 4.1–4.3) or the Register Ladder (Set H) · <b>W4 ≤ 1</b> → editing station (two sentences of the learner's own summary, rewritten with your correction codes). Learners you didn't hear in C12 present to you at a station in C13.</p>
+  </div>
+
+  <h3 style="font-size:1rem;margin:16px 0 4px">Class grid</h3>
+  <table class="chk grid">
+    <thead><tr><th>Name</th><th>S1</th><th>S2</th><th>S3</th><th>S4</th><th>S5</th><th>/15</th><th>W1</th><th>W2</th><th>W3</th><th>W4</th><th>/12</th><th>M1</th><th>M2</th><th>M3</th><th>M4</th><th>C13 station</th><th>Notes (a sentence I heard / read)</th></tr></thead>
+    <tbody>
+      <tr><td></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td></td><td></td></tr>
+      <tr><td></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td></td><td></td></tr>
+      <tr><td></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td></td><td></td></tr>
+      <tr><td></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td></td><td></td></tr>
+      <tr><td></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td></td><td></td></tr>
+      <tr><td></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td></td><td></td></tr>
+      <tr><td></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td></td><td></td></tr>
+      <tr><td></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td></td><td></td></tr>
+      <tr><td></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td></td><td></td></tr>
+      <tr><td></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td></td><td></td></tr>
+      <tr><td></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td></td><td></td></tr>
+      <tr><td></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td></td><td></td></tr>
+      <tr><td></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td></td><td></td></tr>
+      <tr><td></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td></td><td></td></tr>
+      <tr><td></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td></td><td></td></tr>
+      <tr><td></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td class="mk">☐</td><td></td><td></td></tr>
+    </tbody>
+  </table>
+
+  <h3 style="font-size:1rem;margin:16px 0 4px">Learner score slips <span style="font-weight:500;color:var(--ink-3)">(cut; give one to each learner in C13)</span></h3>
+  <div class="slips">
+    <div class="slip"><p><b>My C1 Speaking &amp; Writing Check (C12)</b> · Name: ______________</p><p>Speaking: Task ☐ · Range ☐ · Accuracy ☐ · Register ☐ · Fluency ☐ &nbsp; Total: ____ /15</p><p>Writing: Content ☐ · Cohesion ☐ · Register ☐ · Accuracy ☐ &nbsp; Total: ____ /12</p><p>Toolkit I used: M1 ☐ · M2 ☐ · M3 ☐ · M4 ☐</p><p>⭐ Well done: ___________________________</p><p>➡️ My next step: ________________________</p></div>
+    <div class="slip"><p><b>My C1 Speaking &amp; Writing Check (C12)</b> · Name: ______________</p><p>Speaking: Task ☐ · Range ☐ · Accuracy ☐ · Register ☐ · Fluency ☐ &nbsp; Total: ____ /15</p><p>Writing: Content ☐ · Cohesion ☐ · Register ☐ · Accuracy ☐ &nbsp; Total: ____ /12</p><p>Toolkit I used: M1 ☐ · M2 ☐ · M3 ☐ · M4 ☐</p><p>⭐ Well done: ___________________________</p><p>➡️ My next step: ________________________</p></div>
+    <div class="slip"><p><b>My C1 Speaking &amp; Writing Check (C12)</b> · Name: ______________</p><p>Speaking: Task ☐ · Range ☐ · Accuracy ☐ · Register ☐ · Fluency ☐ &nbsp; Total: ____ /15</p><p>Writing: Content ☐ · Cohesion ☐ · Register ☐ · Accuracy ☐ &nbsp; Total: ____ /12</p><p>Toolkit I used: M1 ☐ · M2 ☐ · M3 ☐ · M4 ☐</p><p>⭐ Well done: ___________________________</p><p>➡️ My next step: ________________________</p></div>
+    <div class="slip"><p><b>My C1 Speaking &amp; Writing Check (C12)</b> · Name: ______________</p><p>Speaking: Task ☐ · Range ☐ · Accuracy ☐ · Register ☐ · Fluency ☐ &nbsp; Total: ____ /15</p><p>Writing: Content ☐ · Cohesion ☐ · Register ☐ · Accuracy ☐ &nbsp; Total: ____ /12</p><p>Toolkit I used: M1 ☐ · M2 ☐ · M3 ☐ · M4 ☐</p><p>⭐ Well done: ___________________________</p><p>➡️ My next step: ________________________</p></div>
+    <div class="slip"><p><b>My C1 Speaking &amp; Writing Check (C12)</b> · Name: ______________</p><p>Speaking: Task ☐ · Range ☐ · Accuracy ☐ · Register ☐ · Fluency ☐ &nbsp; Total: ____ /15</p><p>Writing: Content ☐ · Cohesion ☐ · Register ☐ · Accuracy ☐ &nbsp; Total: ____ /12</p><p>Toolkit I used: M1 ☐ · M2 ☐ · M3 ☐ · M4 ☐</p><p>⭐ Well done: ___________________________</p><p>➡️ My next step: ________________________</p></div>
+    <div class="slip"><p><b>My C1 Speaking &amp; Writing Check (C12)</b> · Name: ______________</p><p>Speaking: Task ☐ · Range ☐ · Accuracy ☐ · Register ☐ · Fluency ☐ &nbsp; Total: ____ /15</p><p>Writing: Content ☐ · Cohesion ☐ · Register ☐ · Accuracy ☐ &nbsp; Total: ____ /12</p><p>Toolkit I used: M1 ☐ · M2 ☐ · M3 ☐ · M4 ☐</p><p>⭐ Well done: ___________________________</p><p>➡️ My next step: ________________________</p></div>
+  </div>
+  <p style="font-size:.86rem;color:var(--ink-2)">Write the "Well done" in the learner's own words from your notes ("You said: <i>Had we offered this five years ago, we would not now be losing staff.</i> A precise mixed conditional at exactly the right moment."). Keep the "next step" to one small, doable thing ("In the summary, rephrase the idiom: <i>only a small fraction of the problem</i>." or "Concede before you counter: start with <i>I take your point…</i>").</p>
+
+  <!-- ===================== H. GAME ===================== -->
+  <div class="sec pb"><h2>H · Game — The Register Ladder (Modules 1–4 review · C12 warmer · C13 station)</h2><span class="rule"></span></div>
+  <div class="note lab"><div class="t">Rules</div>
+    <ol class="steps lab">
+      <li>Groups of 3–4, one board, one die, a counter for each player. Start on square 1. Follow the numbers: 1–6 left to right, 7–12 right to left, and so on.</li>
+      <li>Roll, move, and answer the square in <b>full sentences</b>. The group checks with the answer strip (fold it under the board). Correct: stay. Wrong: go back 1.</li>
+      <li><b style="color:var(--warn)">LADDER</b> squares: answer correctly and climb 3 squares. <b style="color:var(--warn)">SLIDE</b> squares: answer correctly or slide back 3.</li>
+      <li><b style="color:var(--warn)">USE IT</b> squares: report one of your "use it or lose it" chunks from the C11 homework: where you used it and how it went. (Didn't use one? Use it now, in a sentence about your week.)</li>
+      <li>Anyone can say "Pass!" and move back 1. First to FINISH, or nearest to it when the teacher stops the game, wins.</li>
+    </ol>
+  </div>
+  <div class="race">
+    <div class="sq end"><span class="num">1</span>START</div>
+    <div class="sq"><span class="num">2</span><b>M1</b> Finish with the future perfect: "By this time next year, I…"</div>
+    <div class="sq"><span class="num">3</span><b>M4</b> Formal twin: "We need to put off the meeting."</div>
+    <div class="sq"><span class="num">4</span><b>M2</b> Finish: "Had I known about this course earlier, I…"</div>
+    <div class="sq sp"><span class="num">5</span><b>USE IT</b> Report a chunk you used this week.</div>
+    <div class="sq"><span class="num">6</span><b>M3</b> Nominalize: "They decided quickly, which surprised everyone."</div>
+    <div class="sq"><span class="num">12</span><b>M1</b> Speculate twice: "The office lights were on all night."</div>
+    <div class="sq"><span class="num">11</span><b>M4</b> Upgrade: "I'm very worried about the deadline."</div>
+    <div class="sq"><span class="num">10</span><b>M2</b> Invert: "I have never seen such a mess."</div>
+    <div class="sq"><span class="num">9</span><b>M3</b> Soften: "Your figures are wrong."</div>
+    <div class="sq sp"><span class="num">8</span><b>LADDER</b> Say it in 3 registers: "We need more money."</div>
+    <div class="sq"><span class="num">7</span><b>M4</b> Pronoun: "Pick up the kids at six." → them</div>
+    <div class="sq"><span class="num">13</span><b>M1</b> Subjunctive: "It's essential / he / arrive / on time."</div>
+    <div class="sq"><span class="num">14</span><b>M2</b> Cleft: "The noise bothers me."</div>
+    <div class="sq sp"><span class="num">15</span><b>USE IT</b> Report a chunk you used this week.</div>
+    <div class="sq"><span class="num">16</span><b>M3</b> Cut the repetition: "Some people like the plan, and some people don't like the plan."</div>
+    <div class="sq"><span class="num">17</span><b>M4</b> Praise, then criticize: someone who is careful with money</div>
+    <div class="sq sp"><span class="num">18</span><b>SLIDE</b> Fix the clash: "Hey, pursuant to your email, what's up?"</div>
+    <div class="sq"><span class="num">24</span><b>M4</b> Explain "bite the bullet," then say the idea formally.</div>
+    <div class="sq"><span class="num">23</span><b>M1</b> "I took food to the party, but there was plenty." → needn't have…</div>
+    <div class="sq"><span class="num">22</span><b>M2</b> Rewrite with <i>But for</i>: "If you hadn't helped, I would have failed."</div>
+    <div class="sq sp"><span class="num">21</span><b>LADDER</b> Take this down two rungs: "The meeting will commence at 9."</div>
+    <div class="sq"><span class="num">20</span><b>M3</b> Formalize: "We looked at the data and found that sales went down."</div>
+    <div class="sq"><span class="num">19</span><b>M4</b> make, do or take? ___ a risk · ___ research · ___ a decision</div>
+    <div class="sq"><span class="num">25</span><b>M2</b> "Not only…, but…" about your town (real or invented)</div>
+    <div class="sq sp"><span class="num">26</span><b>USE IT</b> Report a chunk you used this week.</div>
+    <div class="sq"><span class="num">27</span><b>M3</b> Diplomatic "no": "No, that's impossible."</div>
+    <div class="sq"><span class="num">28</span><b>M4</b> Two meanings of "pick up," one sentence each</div>
+    <div class="sq"><span class="num">29</span><b>M1</b> "By December, I ___ (work) here for a decade."</div>
+    <div class="sq end"><span class="num">30</span>FINISH</div>
+  </div>
+  <div class="note lab">
+    <div class="t">Register Ladder answers (group checker)</div>
+    <p style="font-size:.86rem">2 …I will have finished / will have moved / will have been studying… · 3 We need to postpone the meeting. · 4 …I would have joined sooner / would be further ahead now · 6 Their swift decision surprised everyone. / The speed of their decision… · 7 Pick them up at six. · 8 formal: Additional funding is required. · neutral: We need more money. · informal: We could really use some more cash. · 9 There does appear to be a slight problem with the figures. / I'm not sure the figures are quite right. · 10 Never have I seen such a mess. · 11 I'm deeply concerned about the deadline. · 12 Someone must have been working late. / They may well have forgotten to switch them off. · 13 It's essential that he arrive on time. · 14 What bothers me is the noise. / It's the noise that bothers me. · 16 Some people like the plan; others don't. · 17 thrifty / frugal · stingy / tight · 18 Hi, thanks for your email. What's new? / Dear…, With reference to your email,… · 19 take a risk · do research · make a decision · 20 Our analysis of the data revealed a decline in sales. · 21 The meeting starts at 9. → We're kicking off at 9. · 22 But for your help, I would have failed. · 23 I needn't have taken food to the party. · 24 force yourself to do something unpleasant; formal: The board took the difficult decision to… · 25 Not only is our town affordable, but it's also close to the coast. · 27 I'm afraid that might not be entirely feasible. · 28 I'll pick you up at eight. / I picked up some Spanish on vacation. / Business is picking up. · 29 will have been working / will have worked</p>
+  </div>
+
+  <!-- ===================== I. SCRIPTS ===================== -->
+  <div class="sec pb"><h2>I · Listening &amp; Dictation Scripts (teacher reads aloud)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">Read at a natural speed. Read each script twice: once for the main idea, once to check. For the voice message, sound relaxed and conversational; for the model talk, slow down at the signposts and pause after each one. For dialogues, change your voice for each speaker, or give the lines to confident learners. The 🔊 buttons in the online lessons give learners extra listening at home.</p>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">4.1-A · The launch debrief, a voice message <span style="font-weight:500;color:var(--ink-3)">(Workbook 4.1, Ex 1)</span></h3>
+  <div class="script">Hi everyone, it's Priya. Quick update on the app launch before Monday's meeting. So, the launch nearly fell through last week. Two of our suppliers pulled out at the last minute, which meant we had to put it off by a week and set up new contracts from scratch. I know that was stressful, and honestly, you all held up brilliantly. The good news is that since the launch, things have really picked up. Downloads have taken off, and the reviews are great. Jonah's going to look into why the suppliers backed out, and going forward, we'll cut down on single-source deals so we don't get caught out again. Thanks, everyone. See you Monday.</div>
+  <p style="font-size:.86rem;color:var(--ink-2)">Answers: 1 fell through (①) · 2 pulled out (①) · 3 put it off (②) · 4 set up (②) · 5 held up (①) · 6 picked up (①) · 7 look into (③) · 8 cut down on (④). Extra phrasal verbs to notice: <i>taken off, backed out, caught out</i>. Follow-up: "Which three verbs would change in a formal email?"</p>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">4.1-B · Dictation <span style="font-weight:500;color:var(--ink-3)">(read each sentence 3 times)</span></h3>
+  <div class="script">1. We'll have to put off the launch until the software is ready. · 2. Could you fill it in and hand it back by Friday? · 3. The committee will investigate the complaint and respond in writing. · 4. The breakdown of the talks came as no surprise.</div>
+  <p style="font-size:.86rem;color:var(--ink-2)">Check: the pronoun position in 2 (<i>fill it in, hand it back</i>), <i>breakdown</i> as one word in 4. Ask: "Which sentence is spoken, and which is written?" (1–2 spoken · 3–4 written.)</p>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">4.2-A · The pilot program meeting <span style="font-weight:500;color:var(--ink-3)">(Workbook 4.2, Ex 1 · two voices)</span></h3>
+  <div class="script"><b>Dana:</b> So the pilot program flopped. Where do we stand? · <b>Sam:</b> Honestly? The launch date was the last straw. We cut corners to hit it, and users noticed. · <b>Dana:</b> You've hit the nail on the head. And the complaints we've seen are only the tip of the iceberg. · <b>Sam:</b> Maybe the delay is a blessing in disguise, then. Let's make sure we're all on the same page before round two. · <b>Dana:</b> Agreed. That's food for thought. I think we'll have to bite the bullet and tell the board we need another month. · <b>Sam:</b> I'll draft the email. Formally, of course. No idioms!</div>
+  <p style="font-size:.86rem;color:var(--ink-2)">Heard: the last straw · cut corners · hit the nail on the head · the tip of the iceberg · a blessing in disguise · on the same page · food for thought · bite the bullet. Not heard: get cold feet · a gray area. Follow-up: "Sam writes the email to the board. Rephrase <i>the tip of the iceberg</i> for it." (<i>only a small fraction of the problem</i>)</p>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">4.2-B · Dictation <span style="font-weight:500;color:var(--ink-3)">(read each sentence 3 times)</span></h3>
+  <div class="script">1. The proposal met with fierce resistance from the board. · 2. It's highly unlikely that we'll meet the deadline. · 3. She made a heartfelt apology and promised to do better. · 4. They're not stingy; they're simply thrifty.</div>
+  <p style="font-size:.86rem;color:var(--ink-2)">Check: the collocations <i>met with fierce resistance, highly unlikely, meet the deadline, made a heartfelt apology</i>. Ask: "In 4, what changes between the two words?" (the judgment, not the behavior).</p>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">4.3-A · The model talk and Q&amp;A: a paid learning day <span style="font-weight:500;color:var(--ink-3)">(Workbook 4.3, Ex 1 · three voices · about 3 minutes + Q&amp;A)</span></h3>
+  <div class="script"><b>Amara:</b> Ask yourself this: when did you last learn something new at work, not because you had to, but because someone gave you the time? For most of us, the honest answer is "I can't remember." I'd like to make the case that every employer in our region should offer staff one paid learning day a month. There are three points I want to raise: skills, loyalty and cost.
+Let me begin by looking at skills. The tools we use are changing faster than ever, and our training simply hasn't kept up. What we need is not another annual course, but a steady, regular habit of learning. A monthly learning day would allow people to take an online course, shadow a colleague in another department, or simply look into a new piece of software properly.
+This brings me to loyalty. Staff turnover remains a pressing concern for local employers. The evidence would appear to suggest that people stay where they feel they are growing. Not only does a learning day show staff that they are valued, but it also gives them a reason to build their future here rather than elsewhere. Had we offered something like this five years ago, we would not now be losing so many experienced people to larger firms.
+Turning now to cost, and I know this is where the objections will come from. Yes, one day a month is roughly five percent of working time. But recruiting and training a replacement costs far more. By the end of the second year, I'm confident the scheme will have paid for itself. For that to happen, however, it is essential that the day be protected: no meetings, no emails, no "just this once."
+In essence, then, the choice is a simple one. We can keep paying to replace people, or we can invest in the people we have. The introduction of a learning day is a small change with a large return. Thank you.
+<b>Leo:</b> Thanks, Amara. But isn't there a risk that small businesses simply can't spare people for a whole day? · <b>Amara:</b> I take your point, but I'd argue that the day doesn't have to be the same day for everyone. A team of five could stagger it, so only one person is out at a time. · <b>Grace:</b> What would you say to someone who thinks staff will just treat it as a day off? · <b>Amara:</b> That's a fair challenge. What I'd say is that each learning day should end with a short note on what was learned. Trust, but with a little structure.</div>
+  <p style="font-size:.86rem;color:var(--ink-2)">Signposts in order: Ask yourself this (1) · I'd like to make the case that (2) · There are three points I want to raise (3) · Let me begin by (4) · This brings me to (5) · Turning now to (6) · In essence (7) · I take your point, but I'd argue (8) · That's a fair challenge. What I'd say is (9). Structures: future perfect (<i>will have paid for itself</i>) · subjunctive (<i>that the day be protected</i>) · mixed conditional (<i>Had we offered…, we would not now be losing…</i>) · <i>not only</i> inversion · <i>what</i>-cleft (<i>What we need is…</i>) · nominalization (<i>The introduction of a learning day</i>) · hedging (<i>would appear to suggest</i>) · strong collocation (<i>a pressing concern</i>). Not heard: <i>needn't have</i>, ellipsis with <i>so / not</i>. Follow-up: "Which device opens the talk? Which one closes it?" (a rhetorical question · a contrast: <i>keep paying to replace people, or invest in the people we have</i>).</p>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">4.3-B · Clash or consistent? <span style="font-weight:500;color:var(--ink-3)">(learners say "Clash!" or "Consistent" · read each sentence twice · C12 clinic or C13 station)</span></h3>
+  <div class="script">1. The board will convene on Thursday to resolve the outstanding issues. · 2. Hey team, pursuant to our discussion, let's grab a coffee. · 3. We regret to inform you that your application has been, like, turned down. · 4. Any chance you could send me those documents? · 5. The committee will sort out the discrepancies. · 6. Should we commence? I'm starving. · 7. Additional funding will be required before the project can begin.</div>
+  <p style="font-size:.86rem;color:var(--ink-2)">Answers: consistent 1, 4, 7 · clash 2 (<i>Hey team</i> + <i>pursuant to</i>), 3 (<i>We regret to inform you</i> + <i>like, turned down</i>), 5 (<i>committee, discrepancies</i> + <i>sort out</i>), 6 (<i>commence</i> + <i>I'm starving</i>). Learners fix each clash both ways.</p>
+
+  <div class="foot">
+    <div class="who"><b>Ray de la Paz</b><span class="bio">© 2026 Ray de la Paz · Advanced English (C1 Advanced)</span></div>
+    <div class="ver">Module 4 · Classroom Materials · v1.0</div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -325,13 +325,13 @@ graph LR
                     <h3>🏋️ Exercise 3: Choose the better information flow</h3>
                     <p><strong>Objective:</strong> Pick the version that respects <em>given-before-new</em> / <em>end-weight</em>, given the sentence before it. Explain your choice.</p>
                     <ol>
-                        <li>Context: "We debated the fee for an hour."<br>(a) "The fee was what we couldn't agree on." &nbsp;(b) "What we couldn't agree on was the fee."</li>
+                        <li>Context: "We argued for an hour and still couldn't agree."<br>(a) "The fee was what we couldn't agree on." &nbsp;(b) "What we couldn't agree on was the fee."</li>
                         <li>Context: "You asked why the launch slipped."<br>(a) "That the supplier missed two shipments is the reason." &nbsp;(b) "The reason is that the supplier missed two shipments."</li>
                         <li>Context: "Everyone praised the design."<br>(a) "It was the design everyone praised." &nbsp;(b) "The engineering, though, nobody mentioned."</li>
                     </ol>
                     <details>
                         <summary>✅ Answer</summary>
-                        <p>1. <strong>(b)</strong> — "the fee" is <em>given</em> (just debated), so it shouldn't be the newsworthy end-point; the what-cleft keeps the given topic up front and lands on "the fee" only as the resolution. (a) awkwardly makes given info the focus.</p>
+                        <p>1. <strong>(b)</strong> — the disagreement is <em>given</em> (the context has just mentioned it), so it belongs up front in the what-clause; "the fee" is the <em>new</em> information, so it lands at the end, in the focus position. (a) opens with the new item and ends on information the listener already has.</p>
                         <p>2. <strong>(b)</strong> — end-weight: the heavy "that…" clause belongs at the end, not as a front-loaded subject. Extraposition/"the reason is that…" flows; (a) is grammatical but top-heavy.</p>
                         <p>3. <strong>(b)</strong> — cohesion &amp; contrast: fronting "the engineering" ties back to the praised design and sets up the contrast ("nobody mentioned"). (a) merely restates given information without advancing the point.</p>
                     </details>
@@ -375,7 +375,7 @@ graph LR
                         <p><strong>Question 2:</strong> Context: "We reviewed three designs." Which continuation best respects cohesion and end-weight?</p>
                         <div class="quiz-options">
                             <button class="quiz-option" data-correct="false" data-hint="This front-loads a heavy clause as subject and buries the link — it violates end-weight and reads top-heavy.">A) That we rejected the last one outright is what happened.</button>
-                            <button class="quiz-option" data-correct="false" data-hint="Grammatical, but it opens with brand-new 'we' rather than linking back to the three designs — the cohesion is weaker.">B) We rejected the last one outright.</button>
+                            <button class="quiz-option" data-correct="false" data-hint="This it-cleft puts contrastive focus on 'outright', as if correcting someone — nothing in the context calls for that contrast, and the link back to the three designs is buried mid-sentence.">B) It was outright that we rejected the last one.</button>
                             <button class="quiz-option" data-correct="true" data-explanation="Yes — 'The last' is given (one of the three just mentioned), so fronting it links back, while the new/heavy verdict lands at the end.">C) The last, we rejected outright.</button>
                         </div>
                         <div class="quiz-feedback"></div>

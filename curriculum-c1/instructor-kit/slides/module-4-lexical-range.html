@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slides — Module 4</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root{--bg:#0b1220;--ink:#edf2fb;--ink2:#a8b6cf;--accent:#7fb2ff;--accent2:#2563eb;--lab:#34d3bd;--warn:#fbbf24;--line:#233252;--code:#101a2e;color-scheme:dark}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;overflow:hidden}
+  .deck{height:100%;width:100%;position:relative}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:6vh 8vw;gap:20px}
+  .slide.on{display:flex}
+  h1,h2,h3{font-family:"Archivo",sans-serif;line-height:1.1;text-wrap:balance}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  .slide h1{font-size:clamp(2rem,6vw,4rem);font-weight:800;letter-spacing:-.02em}
+  .slide h2{font-size:clamp(1.5rem,4.2vw,2.8rem);font-weight:800;letter-spacing:-.01em}
+  .slide p.lead{font-size:clamp(1.05rem,2.4vw,1.5rem);color:var(--ink2);max-width:26ch}
+  ul{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:6px}
+  ul li{position:relative;padding-left:34px;font-size:clamp(1.05rem,2.3vw,1.6rem)}
+  ul li::before{content:"";position:absolute;left:0;top:.55em;width:12px;height:12px;border-radius:3px;background:var(--accent);transform:rotate(45deg)}
+  ul.lab li::before{background:var(--lab)}
+  code.k{font-family:"JetBrains Mono",monospace;color:#cfe0ff;font-size:.92em}
+  pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:22px 26px;font-family:"JetBrains Mono",monospace;font-size:clamp(.85rem,1.9vw,1.3rem);line-height:1.55;overflow:auto;max-width:100%}
+  pre .k{color:#7dd3fc} pre .s{color:#86efac} pre .c{color:#7183a3;font-style:italic}
+  .tag{display:inline-flex;align-items:center;gap:10px;font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);color:var(--ink2)}
+  .tag .pill{background:var(--accent2);color:#fff;font-weight:700;border-radius:999px;padding:3px 12px;letter-spacing:.06em}
+  .tag .pill.lab{background:var(--lab);color:#062b26} .tag .pill.warn{background:var(--warn);color:#3a2a05}
+  .section{background:linear-gradient(135deg,#132a52,#0b1220)}
+  .section .big{font-size:clamp(3rem,12vw,8rem);font-family:"Archivo";font-weight:800;color:var(--accent2);line-height:.9}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+  @media (max-width:760px){.two{grid-template-columns:1fr}}
+  .bar{position:fixed;left:0;top:0;height:4px;background:var(--accent2);width:0;transition:width .25s;z-index:5}
+  .count{position:fixed;right:16px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink2);z-index:5}
+  .nav{position:fixed;inset:auto 0 0 0;display:flex;justify-content:space-between;pointer-events:none;z-index:4}
+  .nav button{pointer-events:auto;background:transparent;border:none;color:transparent;width:22vw;height:100vh;cursor:pointer}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+  /* ESL extras (picture vocab, grammar tables, dialogue, clocks) */
+  .pics{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,1.6vw,18px)}
+  .pics.six{grid-template-columns:repeat(6,1fr)}
+  .pic{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center}
+  .pic img{width:100%;max-width:150px;aspect-ratio:1;object-fit:cover;border-radius:10px;background:#FFF3E0;display:block;margin:0 auto}
+  .pic .emo{font-size:clamp(2.6rem,7vw,5rem);line-height:1;aspect-ratio:1;max-width:150px;margin:0 auto;display:flex;align-items:center;justify-content:center}
+  .pic .w{font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(.9rem,2vw,1.35rem);margin-top:6px}
+  @media (max-width:760px){.pics,.pics.six{grid-template-columns:repeat(3,1fr)}}
+  table.g{border-collapse:collapse;font-size:clamp(.95rem,2.1vw,1.45rem);width:100%;max-width:1000px}
+  table.g th,table.g td{border:1px solid var(--line);padding:10px 16px;text-align:left}
+  table.g th{background:var(--code);color:var(--accent);font-family:"JetBrains Mono",monospace;font-size:.8em;letter-spacing:.04em}
+  table.g b{color:#ffd166}
+  .dlg{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:18px 24px;display:flex;flex-direction:column;gap:8px;font-size:clamp(1rem,2.2vw,1.45rem);max-width:1000px}
+  .dlg .sp{display:inline-block;min-width:3.6em;font-weight:700;color:var(--accent)}
+  .dlg .b .sp{color:#c4a1ff}
+  .ccq{font-size:clamp(1rem,2.2vw,1.45rem);border:1px dashed var(--line);border-radius:12px;padding:12px 18px;background:var(--code)}
+  .ccq i{color:var(--ink2)}
+  .clocks{display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,34px);align-items:flex-start}
+  .clocks figure{text-align:center}
+  .clocks svg{width:clamp(96px,14vw,170px);height:auto}
+  .clocks figcaption{font-size:clamp(.95rem,2vw,1.3rem);margin-top:6px}
+  .clocks figcaption small{display:block;color:var(--ink2);font-size:.8em}
+  .snd{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .snd div{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:clamp(1rem,2.2vw,1.5rem)}
+  .snd div b{display:block;font-family:"Archivo";font-size:1.5em;color:var(--accent)}
+  .snd div small{color:var(--ink2)}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="deck" id="deck">
+
+  <!-- 1 -->
+  <section class="slide on section">
+    <div class="eyebrow">Advanced English (C1) · Instructor Kit</div>
+    <h1>Module 4<br>Lexical Range &amp; Fluency</h1>
+    <p class="lead">Choose the verb. Choose the partner. Choose the voice.</p>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide">
+    <div class="eyebrow">Classes C10–C12 · the map</div>
+    <h2>From the right word to the right voice</h2>
+    <ul>
+      <li><b>4.1</b> Phrasal &amp; multi-word verbs: <i>Turn it off. · We'll look into it. / We will investigate the matter.</i></li>
+      <li><b>4.2</b> Collocation, idiom &amp; connotation: <i>heavy rain · deeply concerned · slender, not skinny</i></li>
+      <li><b>4.3</b> Review project, The Advanced Communicator: <i>present · take questions · write it up</i></li>
+    </ul>
+    <div class="tag"><span class="pill">NOTE</span> Your real life, a new identity card, or something invented: all are OK. Describe invented people, never classmates.</div>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide">
+    <div class="eyebrow">4.1 · Four types · test it with "it"</div>
+    <h2>Where does the object go?</h2>
+    <table class="g">
+      <tr><th>Type</th><th>Rule</th><th>Example</th></tr>
+      <tr><td>① intransitive</td><td>no object</td><td>The car <b>broke down</b>. · We <b>set off</b> at dawn.</td></tr>
+      <tr><td>② separable</td><td>noun: either place · pronoun: <b>middle</b></td><td>turn off the light · turn <b>it</b> off</td></tr>
+      <tr><td>③ inseparable</td><td>object always after</td><td>look after the kids · look after <b>them</b></td></tr>
+      <tr><td>④ three-part</td><td>never split</td><td>put up with the noise · put up with <b>it</b></td></tr>
+    </table>
+    <div class="ccq">"She looked after the cat." Did she look <i>behind</i> it? <i>(No, she took care of it.)</i> "Looked the cat after"? <i>(No: inseparable.)</i></div>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide">
+    <div class="eyebrow">4.1 · The pronoun rule · check the meaning</div>
+    <h2>Turn it off. Look after it.</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>✅</th><th>❌</th></tr>
+        <tr><td>Turn <b>it</b> off.</td><td>Turn off it.</td></tr>
+        <tr><td>Pick <b>her</b> up at six.</td><td>Pick up her at six.</td></tr>
+        <tr><td>Deal with <b>it</b>.</td><td>Deal it with.</td></tr>
+        <tr><td>Put up with <b>them</b>.</td><td>Put them up with.</td></tr>
+      </table>
+      <div class="ccq">"Fill in the form" or "fill the form in"? <i>(Both.)</i><br>With "it"? <i>(Only "fill it in.")</i><br>A long object? <i>(At the end: "She turned off every light in the house.")</i></div>
+    </div>
+    <div class="tag"><span class="pill lab">SAY IT</span> turn it <b>OFF</b> /tɜrnɪˈtɔf/ · <b>LOOK</b> after them · put it off /pʊɾɪˈɔf/</div>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide">
+    <div class="eyebrow">4.1 · One verb, many jobs · polysemy</div>
+    <h2>What took off?</h2>
+    <div class="pics">
+      <div class="pic"><img src="../assets/vocab/flight.jpg" alt=""><div class="w">The plane took off.</div></div>
+      <div class="pic"><img src="../assets/vocab/coat.jpg" alt=""><div class="w">She took off her coat.</div></div>
+      <div class="pic"><img src="../assets/vocab/luggage.jpg" alt=""><div class="w">We set off at six.</div></div>
+      <div class="pic"><img src="../assets/vocab/mechanic.jpg" alt=""><div class="w">The car broke down.</div></div>
+    </div>
+    <div class="ccq">"Sales took off after the launch." Did anything leave the ground? <i>(No: they grew fast.)</i> · "He picked up Portuguese." A class? <i>(No, informally.)</i> · Nouns: break <b>DOWN</b> → a <b>BREAK</b>down · turn <b>OUT</b> → an <b>OUT</b>come</div>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide">
+    <div class="eyebrow">4.1 · The register swap · a C1 key point</div>
+    <h2>Spoken ⇄ written</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>Spoken</th><th>Written</th></tr>
+        <tr><td>put off</td><td><b>postpone</b></td></tr>
+        <tr><td>find out</td><td><b>discover</b></td></tr>
+        <tr><td>look into</td><td><b>investigate</b></td></tr>
+        <tr><td>put up with</td><td><b>tolerate</b></td></tr>
+        <tr><td>get rid of</td><td><b>eliminate</b></td></tr>
+        <tr><td>come across</td><td><b>encounter</b></td></tr>
+      </table>
+      <div class="ccq">Text to a roommate: <i>look into</i> or <i>investigate</i> the leak? <i>(look into.)</i><br>Email to the property manager? <i>(investigate.)</i><br>"I shall relinquish caffeine" at lunch? <i>(No! "I'm giving up coffee.")</i></div>
+    </div>
+    <div class="tag"><span class="pill warn">DON'T OVER-CORRECT</span> <i>carry out · point out · set up</i> are fine in formal writing</div>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide">
+    <div class="eyebrow">4.1 · Model · same facts, two voices</div>
+    <h2>The launch</h2>
+    <div class="dlg">
+      <p><span class="sp">Leah:</span> So how did the launch go? I heard it nearly fell through.</p>
+      <p class="b"><span class="sp">Omar:</span> Two suppliers pulled out at the last minute, so we had to put it off by a week and set up new contracts from scratch.</p>
+      <p><span class="sp">Leah:</span> Did you ever find out why?</p>
+      <p class="b"><span class="sp">Omar:</span> We looked into it. A competitor had taken them over.</p>
+    </div>
+    <div class="ccq"><b>Written:</b> Two suppliers <b>withdrew</b> at short notice, obliging us to <b>postpone</b> the launch by a week and <b>establish</b> new contracts. On <b>investigating</b>, we <b>discovered</b> that a competitor had <b>acquired</b> them.</div>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide">
+    <div class="eyebrow">4.1 · Freer task · 15 min</div>
+    <h2>🔁 The Register Swap</h2>
+    <div class="two">
+      <ul class="lab">
+        <li><b>A</b> tells the voice note from memory · <b>B</b> notes every phrasal verb</li>
+        <li>Together: a <b>70–90-word</b> formal update · keep one phrasal verb on purpose (<b>K</b>) · no idioms</li>
+        <li><b>B</b> turns the formal memo into a <b>30-second</b> spoken update</li>
+        <li>Swap drafts: <b>Praise – Question – Polish</b></li>
+      </ul>
+      <div class="ccq">Read the card aloud? <i>(No, tell it.)</i><br>How many words? <i>(70 to 90.)</i><br>Change every phrasal verb? <i>(No, keep one, mark it K.)</i><br>B's update: formal or spoken? <i>(Spoken.)</i></div>
+    </div>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide">
+    <div class="eyebrow">4.2 · Which sounds English?</div>
+    <h2>Words that travel together</h2>
+    <div class="pics">
+      <div class="pic"><img src="../assets/vocab/coffee.jpg" alt=""><div class="w"><s>powerful</s> strong coffee</div></div>
+      <div class="pic"><img src="../assets/vocab/umbrella.jpg" alt=""><div class="w"><s>strong</s> heavy rain</div></div>
+      <div class="pic"><img src="../assets/vocab/winter.jpg" alt=""><div class="w">bitterly cold</div></div>
+      <div class="pic"><img src="../assets/vocab/mobile-phone.jpg" alt=""><div class="w"><s>make</s> take a photo</div></div>
+    </div>
+    <div class="ccq">"There was strong rain." Can you understand it? <i>(Yes.)</i> Is it English? <i>(Not quite: heavy rain.)</i> Is there a rule? <i>(No, it's convention: learn the pair.)</i></div>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide">
+    <div class="eyebrow">4.2 · Collocation types · weak → strong</div>
+    <h2>Precise, not just correct</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>Type</th><th>Strong collocation</th></tr>
+        <tr><td>adj + noun</td><td>a <b>bitter</b> disappointment</td></tr>
+        <tr><td>verb + noun</td><td><b>meet</b> a deadline</td></tr>
+        <tr><td>adv + adj</td><td><b>highly</b> unlikely</td></tr>
+        <tr><td>verb + adv</td><td>apologize <b>profusely</b></td></tr>
+        <tr><td>noun + noun</td><td>a <b>round</b> of applause</td></tr>
+      </table>
+      <div class="pics" style="grid-template-columns:1fr 1fr">
+        <div class="pic"><img src="../assets/vocab/worried.jpg" alt=""><div class="w"><s>very worried</s> deeply concerned</div></div>
+        <div class="pic"><img src="../assets/vocab/sad.jpg" alt=""><div class="w"><s>a big</s> a bitter disappointment</div></div>
+      </div>
+    </div>
+    <div class="ccq">"bitterly…" Can you guess the next word? <i>(cold / disappointed: a strong collocation.)</i> "very cold": wrong? <i>(No, just weak.)</i></div>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide">
+    <div class="eyebrow">4.2 · Connotation clines · check the meaning</div>
+    <h2>Praising or criticizing?</h2>
+    <table class="g">
+      <tr><th>🙂 positive</th><th>😐 neutral</th><th>🙁 negative</th></tr>
+      <tr><td>slender · slim</td><td>thin</td><td>skinny · scrawny</td></tr>
+      <tr><td>thrifty · frugal</td><td>economical</td><td>stingy · tight</td></tr>
+      <tr><td>self-assured</td><td>confident</td><td>arrogant · cocky</td></tr>
+      <tr><td>renowned</td><td>well-known</td><td>notorious</td></tr>
+      <tr><td>curious</td><td>interested</td><td>nosy</td></tr>
+    </table>
+    <div class="ccq">"She's slender." / "She's skinny." Same body? <i>(Yes.)</i> Same message? <i>(No.)</i> · "a childlike sense of wonder" vs "Stop being childish." <i>(+ / −)</i></div>
+    <div class="tag"><span class="pill warn">CARE</span> invented people, objects and animals only · never classmates</div>
+  </section>
+
+  <!-- 12 -->
+  <section class="slide">
+    <div class="eyebrow">4.2 · Idioms · appropriacy</div>
+    <h2>A pinch, not a plateful</h2>
+    <div class="two">
+      <ul>
+        <li><b>Spoken</b>: rephrase in formal writing · <i>the tip of the iceberg</i> → <i>only a small fraction of the problem</i></li>
+        <li><b>Sparingly</b>: one or two per talk</li>
+        <li><b>Exact form</b>: <s>hit the nail on its head</s> · <s>a blessing in the disguise</s></li>
+      </ul>
+      <div class="pics" style="grid-template-columns:1fr 1fr">
+        <div class="pic"><img src="../assets/vocab/nervous.jpg" alt=""><div class="w">get cold feet</div></div>
+        <div class="pic"><div class="emo">🧠</div><div class="w">use it or lose it</div></div>
+      </div>
+    </div>
+    <div class="ccq">"Use it or lose it." Is it true of vocabulary? Of idioms? Which three chunks will <i>you</i> use this week, and where?</div>
+  </section>
+
+  <!-- 13 -->
+  <section class="slide">
+    <div class="eyebrow">4.2 · Freer task · 12 min</div>
+    <h2>🎯 The Precise Talk</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>Plan (3 min): <b>6 collocations</b>, <b>1–2 idioms</b> only if they fit</li>
+        <li>Talk: <b>90 seconds</b> · listeners tick <b>chunk bingo</b></li>
+        <li>Shades: explain one near-synonym set for your topic</li>
+        <li>Praise – Question – Polish, one line each</li>
+      </ul>
+      <div class="ccq">How long? <i>(90 seconds.)</i><br>How many idioms? <i>(One or two, only if they fit.)</i><br>Bingo: a competition? <i>(No, feedback.)</i><br>Describe a classmate as "skinny"? <i>(No!)</i></div>
+    </div>
+  </section>
+
+  <!-- 14 -->
+  <section class="slide">
+    <div class="eyebrow">4.3 · The register spectrum · shift as a set</div>
+    <h2>One message, three costumes</h2>
+    <table class="g">
+      <tr><th>Formal</th><td>The initiative will <b>commence</b> next quarter and is <b>anticipated to yield</b> significant benefits.</td></tr>
+      <tr><th>Neutral</th><td>The project <b>starts</b> next quarter and should <b>bring</b> real benefits.</td></tr>
+      <tr><th>Informal</th><td>We're <b>kicking this off</b> next quarter, and it should <b>pay off</b> nicely.</td></tr>
+    </table>
+    <div class="ccq">"The committee will sort out the discrepancies." What's wrong? <i>(A register clash.)</i> Two fixes? <i>(…resolve the discrepancies / The committee's going to sort out the mess.)</i></div>
+  </section>
+
+  <!-- 15 -->
+  <section class="slide">
+    <div class="eyebrow">4.3 · Rhetoric &amp; signposts · at the hinges</div>
+    <h2>Better architecture, not louder</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>Device</th><th>Example</th></tr>
+        <tr><td>rhetorical question</td><td>Can we really afford to wait?</td></tr>
+        <tr><td>rule of three</td><td>cheaper, cleaner, and already here</td></tr>
+        <tr><td>contrast</td><td>not a lack of <b>money</b>, but a lack of <b>will</b></td></tr>
+        <tr><td>cleft / inversion</td><td>What we need is… · Never has…</td></tr>
+      </table>
+      <ul class="lab">
+        <li>I'd like to make the case that…</li>
+        <li>There are three points I want to raise.</li>
+        <li>This brings me to… · Turning now to…</li>
+        <li>In essence,… · The bottom line is this:…</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 16 -->
+  <section class="slide">
+    <div class="eyebrow">4.3 · Model · one point, two voices</div>
+    <h2>The deadline should move</h2>
+    <div class="dlg">
+      <p><span class="sp">Client:</span> Having reviewed the current timeline, I would respectfully suggest that a modest extension may well prove prudent.</p>
+      <p class="b"><span class="sp">Colleague:</span> Look, between us, there's no way we're hitting Friday without cutting corners. Let's just push it back a week, OK?</p>
+    </div>
+    <div class="ccq">Find five features that shift together: <i>would respectfully suggest ↔ Look, between us · may well prove ↔ there's no way · a modest extension ↔ push it back · full forms ↔ contractions · no idiom ↔ cutting corners</i></div>
+  </section>
+
+  <!-- 17 -->
+  <section class="slide">
+    <div class="eyebrow">4.3 · The Advanced Communicator · 20 + 15 min</div>
+    <h2>🎤 Present · take questions · write it up</h2>
+    <div class="two">
+      <ul class="lab">
+        <li><b>Talk</b>: up to <b>3 minutes</b>, signposted, one or two devices</li>
+        <li><b>Q&amp;A</b>: <b>2 minutes</b> · concede, then counter</li>
+        <li>Listeners: note the main claim + the best challenge</li>
+        <li><b>Summary</b>: ~<b>150 words</b>, formal, for a committee · include the objection · no idioms</li>
+      </ul>
+      <div class="ccq">Read your notes? <i>(A quick look only.)</i><br>How do you answer a challenge? <i>(Concede, then counter.)</i><br>Idioms in the summary? <i>(No.)</i><br>Present only to the teacher? <i>(Yes, if you prefer.)</i></div>
+    </div>
+  </section>
+
+  <!-- 18 -->
+  <section class="slide section">
+    <div class="eyebrow">Halfway through C1</div>
+    <h2>Module 4 done 🎉</h2>
+    <ul class="lab">
+      <li>🔁 We'll <b>look into it</b>. / We will <b>investigate</b> the matter. · Turn <b>it</b> off.</li>
+      <li>🎯 <b>heavy</b> traffic · <b>deeply</b> concerned · <b>slender</b>, not skinny · <b>thrifty</b>, not stingy</li>
+      <li>🎤 One argument, three voices: the talk, the Q&amp;A, the formal summary</li>
+    </ul>
+    <p class="lead" style="margin-top:10px;max-width:40ch">Homework: online lessons 4.1–4.3 with 🔊. Next: C13, Progress Test 1 (Modules 1–4) + catch-up.</p>
+  </section>
+
+
+</div>
+
+<div class="count" id="count">1 / 18</div>
+<div class="nav"><button id="prev" aria-label="Previous slide"></button><button id="next" aria-label="Next slide"></button></div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const bar=document.getElementById('bar'), count=document.getElementById('count');
+  let i=0;
+  function show(n){ i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+    bar.style.width=((i+1)/slides.length*100)+'%'; count.textContent=(i+1)+' / '+slides.length; }
+  document.getElementById('next').onclick=()=>show(i+1);
+  document.getElementById('prev').onclick=()=>show(i-1);
+  addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}
+    else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+  });
+  show(0);
+</script>
+</body>
+</html>

@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Classroom Materials — Module 8</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../../kit.css">
+<style>
+  /* Module 8 print extras (this sheet only) */
+  .flashcard .emo{font-size:4.2rem;line-height:1}
+  .flashcard .sub{font-size:.95rem;color:var(--ink-2)}
+  .card-cut p{font-size:.88rem;margin:.25rem 0}
+  .card-cut ul,.card-cut ol{margin:.2rem 0;padding-left:1.1rem;font-size:.88rem}
+  .card-cut .model{font-size:.76rem;color:var(--ink-3);border-top:1px dotted var(--line-strong);margin-top:6px;padding-top:4px}
+  .card-cut .hint{font-family:"JetBrains Mono",monospace;font-size:.74rem;color:var(--ink-2)}
+  .qd{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:10px 0}
+  .qd .c{border:1.5px dashed var(--line-strong);padding:10px;text-align:center;break-inside:avoid;min-height:1.35in;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px}
+  .qd .c .emo{font-size:2.2rem;line-height:1.1}
+  .qd .c .s{font-family:"Archivo",sans-serif;font-weight:700;font-size:1.02rem}
+  .qd .c .h{font-size:.76rem;color:var(--ink-3)}
+  .qd .c .n{font-family:"JetBrains Mono",monospace;font-size:.66rem;color:var(--accent);letter-spacing:.1em}
+  .qd.hdr .c{min-height:1.9in}
+  .qd.hdr .c .s{font-size:1.9rem}
+  .qd.two{grid-template-columns:1fr 1fr}
+  .qd.four{grid-template-columns:repeat(4,1fr)}
+  .qd.slips .c{min-height:1.05in;align-items:flex-start;text-align:left;font-size:.88rem}
+  table.board8{width:100%;border-collapse:collapse;margin:10px 0;table-layout:fixed}
+  table.board8 td{border:1.5px solid var(--line-strong);padding:6px;height:1.3in;vertical-align:top;font-size:.78rem;line-height:1.3}
+  table.board8 td .no{font-family:"JetBrains Mono",monospace;font-weight:600;color:var(--accent);font-size:.8rem;display:block}
+  table.board8 td .ty{font-family:"Archivo",sans-serif;font-weight:700;font-size:.82rem;display:block;margin-bottom:2px}
+  table.board8 td.pre{background:var(--surface-2)}
+  table.board8 td.end{text-align:center;vertical-align:middle;font-family:"Archivo",sans-serif;font-weight:800;font-size:1.05rem}
+  .obs{width:100%;border-collapse:collapse;margin:8px 0;font-size:.82rem;table-layout:fixed}
+  .obs th,.obs td{border:1px solid var(--line-strong);padding:5px 4px;text-align:center;vertical-align:middle}
+  .obs th{background:var(--surface-2);font-family:"JetBrains Mono",monospace;font-size:.62rem;letter-spacing:.04em;color:var(--ink-2);font-weight:600}
+  .obs th.nm,.obs td.nm{width:18%;text-align:left}
+  .obs th.nt,.obs td.nt{width:22%;text-align:left}
+  .obs td{height:30px}
+  .crit{list-style:none;margin:6px 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:4px 18px;font-size:.88rem}
+  .crit b{font-family:"JetBrains Mono",monospace;color:var(--accent);margin-right:4px}
+  table.rub{width:100%;border-collapse:collapse;font-size:.84rem;margin:8px 0}
+  table.rub th,table.rub td{border:1px solid var(--line-strong);padding:6px 8px;text-align:left;vertical-align:top}
+  table.rub th{background:var(--surface-2)}
+  table.spot{width:100%;border-collapse:collapse;font-size:.82rem;margin:6px 0 16px;table-layout:fixed}
+  table.spot th,table.spot td{border:1px solid var(--line-strong);padding:5px 6px;text-align:left;vertical-align:top}
+  table.spot th{background:var(--surface-2);font-size:.74rem}
+  table.spot td{height:28px}
+  .pb{break-before:page}
+  @media print{.obs td{height:26px}}
+  @media (max-width:680px){.flashcards{grid-template-columns:1fr 1fr}.qd,.qd.two,.qd.four{grid-template-columns:1fr 1fr}.cards{grid-template-columns:1fr}.crit{grid-template-columns:1fr}.obs{font-size:.7rem}table.board8 td{font-size:.66rem;height:auto}table.spot{font-size:.7rem}}
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="lbl">Classroom materials —</span>
+  <button type="button" onclick="window.print()">🖨 Print / Save as PDF</button>
+  <span class="hint">print on card stock · cut on the dashed lines</span>
+</div>
+
+<div class="sheet">
+
+  <header class="mast">
+    <div class="kit-eyebrow">Advanced English · Module 8 Materials</div>
+    <h1>Fluency, Craft &amp; the Final Project — Classroom Materials</h1>
+    <p class="sub">Everything to print for Classes C23–C25: the <b>Talk Around It</b> picture cards and phrase cards, new identity cards, <b>impromptu topic cards</b> and curveballs, <b>strategy spotter sheets</b>, <b>before/after</b> editing cards, the four <b>30% Cut Challenge</b> texts, the <b>Keep Talking</b> board game, the <b>position paper kit</b> (topic cards, side cards, viva roles, rotation sheet, chair's script, a spare planning frame), six <b>question-card sets</b>, the <b>paper rubric</b> and <b>defense rubric</b>, the <b>teacher observation checklist</b> that feeds C26, and the teacher's <b>listening scripts</b>.</p>
+    <div class="meta-row">
+      <span class="chip">Lessons <b>8.1–8.3</b></span>
+      <span class="chip">Classes <b>C23–C25</b></span>
+      <span class="chip"><b>12</b> print sets</span>
+      <span class="chip">CEFR <b>C1</b></span>
+    </div>
+  </header>
+
+  <div class="sec"><h2>What to Print</h2><span class="rule"></span></div>
+  <table class="timing">
+    <thead><tr><th>Set</th><th>What</th><th>How many</th><th>Used in</th></tr></thead>
+    <tbody>
+      <tr><td class="t">A</td><td>Flashcards: Talk Around It picture cards (16) + phrase cards (time-buyers, repairs, editing moves, defense moves)</td><td>1 set for the board; 1 picture set per pair (optional)</td><td>C23, C24, C25</td></tr>
+      <tr><td class="t">B</td><td>New identity cards (4)</td><td>1–2 sets, on a side table</td><td>C23</td></tr>
+      <tr><td class="t">C</td><td>Impromptu topic cards (18, three piles) + curveball cards (6)</td><td>1 set per group of 3</td><td>C23 (and C26 closing speeches)</td></tr>
+      <tr><td class="t">D</td><td>Strategy spotter sheets</td><td>1 per group of 3</td><td>C23</td></tr>
+      <tr><td class="t">E</td><td>Before/after editing cards (4 pairs)</td><td>1 set per pair</td><td>C24</td></tr>
+      <tr><td class="t">F</td><td>30% Cut Challenge texts A–D (ideas list on the back)</td><td>1 text per group of 3 (print double-sided)</td><td>C24</td></tr>
+      <tr><td class="t">G</td><td>Game: Keep Talking (board, 22 squares)</td><td>1 per group of 3–4 + a die or coin + counters</td><td>C23 early finishers, C24 warmer</td></tr>
+      <tr><td class="t">H</td><td>Position paper kit: topic cards (16), side cards, viva role cards, rotation sheet, chair's script, spare planning frame</td><td>see the set</td><td>end of C23, C24, C25</td></tr>
+      <tr><td class="t">I</td><td>Question-card sets (6 sets × 4 cards)</td><td>1 full set (24) per viva group</td><td>C25</td></tr>
+      <tr><td class="t">J</td><td>Paper rubric + defense rubric (peer / self / teacher)</td><td>1 of each per learner + teacher copies</td><td>C24 (frames), C25, after C25</td></tr>
+      <tr><td class="t">K</td><td>Teacher observation checklist (C25 → C26)</td><td>1–2 copies (teacher)</td><td>C25</td></tr>
+      <tr><td class="t">L</td><td>Listening scripts</td><td>Teacher only</td><td>C23, C24, C25</td></tr>
+    </tbody>
+  </table>
+
+  <!-- ===================== A. FLASHCARDS ===================== -->
+  <div class="sec pb"><h2>A · Flashcards — Talk Around It (8.1)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">Picture cards for circumlocution. Hold one up and describe it without naming it; learners call out the word. Then pairs draw three face down and describe each with a <b>different frame</b> (the suggested frame is under each word). Stretch: no "thing," no "stuff": a precise category and function instead ("a device for…", "a piece of furniture that…").</p>
+  <div class="flashcards">
+    <div class="flashcard"><img src="../../assets/vocab/remote.jpg" alt=""><div class="w">remote control</div><div class="sub">the thing you use to…</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/wardrobe.jpg" alt=""><div class="w">wardrobe</div><div class="sub">a kind of…</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/umbrella.jpg" alt=""><div class="w">umbrella</div><div class="sub">it's like…, but…</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/mechanic.jpg" alt=""><div class="w">mechanic</div><div class="sub">the person who…</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/mirror.jpg" alt=""><div class="w">mirror</div><div class="sub">the thing you use to…</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/passport.jpg" alt=""><div class="w">passport</div><div class="sub">a kind of document that…</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/luggage.jpg" alt=""><div class="w">luggage</div><div class="sub">it's what you…</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/fridge.jpg" alt=""><div class="w">fridge</div><div class="sub">it's like a cupboard, but…</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/sink.jpg" alt=""><div class="w">sink</div><div class="sub">it's where you…</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/lamp.jpg" alt=""><div class="w">lamp</div><div class="sub">the thing you use to…</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/drawer.jpg" alt=""><div class="w">drawer</div><div class="sub">it's a part of…</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/gloves.jpg" alt=""><div class="w">gloves</div><div class="sub">it's like socks, but…</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/key.jpg" alt=""><div class="w">key</div><div class="sub">the thing you use to…</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/notebook.jpg" alt=""><div class="w">notebook</div><div class="sub">a kind of…</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/waiter.jpg" alt=""><div class="w">waiter</div><div class="sub">the person who…</div></div>
+    <div class="flashcard"><img src="../../assets/vocab/nurse.jpg" alt=""><div class="w">nurse</div><div class="sub">the person who…</div></div>
+  </div>
+
+  <div class="sec pb"><h2>A · Phrase Cards — Time-Buyers, Repairs, Editing &amp; Defense Moves</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">Put the time-buyer and repair cards on the board in C23 and leave them up. Add the editing cards in C24 (as a "checklist" column) and the defense cards in C25 in order: check → concede → hold → hedge.</p>
+  <div class="flashcards">
+    <div class="flashcard word-only"><div class="emo">⏱</div><div class="w">That's a good question…</div><div class="sub">buy time</div></div>
+    <div class="flashcard word-only"><div class="emo">⏱</div><div class="w">Let me think for a second…</div><div class="sub">buy time</div></div>
+    <div class="flashcard word-only"><div class="emo">⏱</div><div class="w">Well, it depends…</div><div class="sub">buy time · a nuanced answer</div></div>
+    <div class="flashcard word-only"><div class="emo">⏱</div><div class="w">How can I put this?</div><div class="sub">buy time · careful wording</div></div>
+    <div class="flashcard word-only"><div class="emo">🔄</div><div class="w">It's a kind of… / the thing you use to…</div><div class="sub">talk around it</div></div>
+    <div class="flashcard word-only"><div class="emo">🔧</div><div class="w">…or rather…</div><div class="sub">repair · no "sorry"</div></div>
+    <div class="flashcard word-only"><div class="emo">🔧</div><div class="w">What I mean is…</div><div class="sub">repair · restate</div></div>
+    <div class="flashcard word-only"><div class="emo">🔧</div><div class="w">Let me rephrase that.</div><div class="sub">repair</div></div>
+    <div class="flashcard word-only"><div class="emo">✂️</div><div class="w">Fewer words?</div><div class="sub">in order to → to</div></div>
+    <div class="flashcard word-only"><div class="emo">✂️</div><div class="w">Is this intensifier earning its place?</div><div class="sub">very tired → exhausted</div></div>
+    <div class="flashcard word-only"><div class="emo">✂️</div><div class="w">A verb hiding in a noun?</div><div class="sub">make a decision → decide</div></div>
+    <div class="flashcard word-only"><div class="emo">✂️</div><div class="w">One breath?</div><div class="sub">split it · main idea first</div></div>
+    <div class="flashcard word-only"><div class="emo">🔍</div><div class="w">If I've understood your question…</div><div class="sub">check</div></div>
+    <div class="flashcard word-only"><div class="emo">🤝</div><div class="w">That's a fair point.</div><div class="sub">concede</div></div>
+    <div class="flashcard word-only"><div class="emo">🧱</div><div class="w">That said, I'd still argue…</div><div class="sub">hold</div></div>
+    <div class="flashcard word-only"><div class="emo">🪶</div><div class="w">So I'd put it more cautiously…</div><div class="sub">hedge</div></div>
+  </div>
+
+  <!-- ===================== B. IDENTITY ===================== -->
+  <div class="sec pb"><h2>B · New Identity Cards (8.1)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">Any learner may speak as a card character in the Warm-up round of the Impromptu Talks and in the Keep Talking game: no reason needed. Each card gives enough detail for a one-minute talk on a personal topic.</p>
+  <div class="cards">
+    <div class="card-cut"><div class="ct">New identity · 1</div><h4>Lena — hospital pharmacist</h4>
+      <p><b>Work:</b> checks prescriptions on a busy ward · 12-hour shifts, three days a week · trains new staff</p>
+      <p><b>A skill I'm glad I learned:</b> touch-typing, at 35, from a free online course</p>
+      <p><b>A small change I'd make:</b> quiet rooms for staff breaks</p></div>
+    <div class="card-cut b"><div class="ct">New identity · 2</div><h4>Rafael — logistics coordinator</h4>
+      <p><b>Work:</b> plans delivery routes for 40 trucks · lives on his headset · loves a good spreadsheet</p>
+      <p><b>A skill I'm glad I learned:</b> saying no politely to extra work</p>
+      <p><b>A small change I'd make:</b> no meetings before 10 a.m.</p></div>
+    <div class="card-cut"><div class="ct">New identity · 3</div><h4>Amara — graduate student in public health</h4>
+      <p><b>Work:</b> researching sleep and screen time in teenagers · tutors undergraduates twice a week</p>
+      <p><b>A skill I'm glad I learned:</b> cooking for a week in two hours on a Sunday</p>
+      <p><b>A small change I'd make:</b> longer library opening hours during exams</p></div>
+    <div class="card-cut b"><div class="ct">New identity · 4</div><h4>Joon — owner of a small bike-repair shop</h4>
+      <p><b>Work:</b> fixes 15–20 bikes a week · runs a free Saturday repair class · hates paperwork</p>
+      <p><b>A skill I'm glad I learned:</b> basic bookkeeping</p>
+      <p><b>A small change I'd make:</b> a protected bike lane on Main Street</p></div>
+  </div>
+
+  <!-- ===================== C. TOPIC CARDS ===================== -->
+  <div class="sec pb"><h2>C · Impromptu Topic Cards &amp; Curveballs (8.1)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">Three piles, face down. In Rounds 1 and 2 the speaker draws two cards and chooses one; anyone may say "Pass, next card" once per round. Personal topics may be answered with a new identity card or invented details. <b>Don't add</b> topics about politics, religion, immigration or home countries.</p>
+  <div class="qd">
+    <div class="c"><div class="n">WARM-UP 1</div><div class="s">A skill everyone should learn</div></div>
+    <div class="c"><div class="n">WARM-UP 2</div><div class="s">The most useful app on your phone</div></div>
+    <div class="c"><div class="n">WARM-UP 3</div><div class="s">A small change that would improve your street or building</div></div>
+    <div class="c"><div class="n">WARM-UP 4</div><div class="s">City life or small-town life?</div></div>
+    <div class="c"><div class="n">WARM-UP 5</div><div class="s">The best advice you've ever been given (real or invented)</div></div>
+    <div class="c"><div class="n">WARM-UP 6</div><div class="s">A perfect day off</div></div>
+    <div class="c"><div class="n">OPINION 1</div><div class="s">Are online reviews trustworthy?</div></div>
+    <div class="c"><div class="n">OPINION 2</div><div class="s">What makes a good manager?</div></div>
+    <div class="c"><div class="n">OPINION 3</div><div class="s">Should phones be banned in high-school classrooms?</div></div>
+    <div class="c"><div class="n">OPINION 4</div><div class="s">Is it better to be a specialist or a generalist?</div></div>
+    <div class="c"><div class="n">OPINION 5</div><div class="s">Is working from home good for teamwork?</div></div>
+    <div class="c"><div class="n">OPINION 6</div><div class="s">Is it worth learning to code today?</div></div>
+    <div class="c"><div class="n">STRETCH 1</div><div class="s">Is boredom useful?</div></div>
+    <div class="c"><div class="n">STRETCH 2</div><div class="s">Does technology really save us time?</div></div>
+    <div class="c"><div class="n">STRETCH 3</div><div class="s">What makes a city a good place to grow old?</div></div>
+    <div class="c"><div class="n">STRETCH 4</div><div class="s">Is it ever right to break a small rule at work?</div></div>
+    <div class="c"><div class="n">STRETCH 5</div><div class="s">Why do people trust experts less than they used to, if they do?</div></div>
+    <div class="c"><div class="n">STRETCH 6</div><div class="s">Is a good memory still important in the age of search engines?</div></div>
+  </div>
+  <p style="font-size:.92rem"><b>Curveball cards</b> (Round 3): the timekeeper reveals one at the 30-second mark.</p>
+  <div class="qd">
+    <div class="c"><div class="emo">🔁</div><div class="s">Now argue the opposite.</div><div class="h">"Let me come at this from another angle…"</div></div>
+    <div class="c"><div class="emo">🧒</div><div class="s">Explain it to a 12-year-old.</div><div class="h">change the register, keep going</div></div>
+    <div class="c"><div class="emo">❓</div><div class="s">Listener: "Sorry, what do you mean by that?"</div><div class="h">"What I mean is…"</div></div>
+    <div class="c"><div class="emo">🚫</div><div class="s">You may not say "thing" or "stuff."</div><div class="h">precise paraphrase only</div></div>
+    <div class="c"><div class="emo">🔧</div><div class="s">Use "or rather" twice.</div><div class="h">two smooth repairs</div></div>
+    <div class="c"><div class="emo">🎯</div><div class="s">Give one concrete example, now.</div><div class="h">"For instance…"</div></div>
+  </div>
+
+  <!-- ===================== D. SPOTTER ===================== -->
+  <div class="sec pb"><h2>D · Strategy Spotter Sheets (8.1)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">One sheet per group of 3. The spotter makes a tally mark for each strategy and each silence or restart, writes one example, and reports <b>numbers and an example</b> in 20 seconds, never a judgment. Three sheets per page: cut along the dashed lines.</p>
+  <div class="card-cut" style="min-height:auto">
+    <div class="ct">Strategy spotter · Group ____</div>
+    <table class="spot">
+      <tr><th style="width:17%">Speaker · round</th><th>⏱ Bought time</th><th>🔄 Talked around a word</th><th>🔧 Smooth repair</th><th>⛔ Silence (3 s+) / restart / "sorry"</th><th style="width:22%">One example I heard</th></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    </table>
+    <p class="hint">Filler the speaker used a lot: ______________ · Report: "You bought time __ times, talked around __ word(s), made __ smooth repair(s); one silence at about __ seconds."</p>
+  </div>
+  <div class="card-cut" style="min-height:auto">
+    <div class="ct">Strategy spotter · Group ____</div>
+    <table class="spot">
+      <tr><th style="width:17%">Speaker · round</th><th>⏱ Bought time</th><th>🔄 Talked around a word</th><th>🔧 Smooth repair</th><th>⛔ Silence (3 s+) / restart / "sorry"</th><th style="width:22%">One example I heard</th></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    </table>
+    <p class="hint">Filler the speaker used a lot: ______________ · Report: "You bought time __ times, talked around __ word(s), made __ smooth repair(s); one silence at about __ seconds."</p>
+  </div>
+  <div class="card-cut" style="min-height:auto">
+    <div class="ct">Strategy spotter · Group ____</div>
+    <table class="spot">
+      <tr><th style="width:17%">Speaker · round</th><th>⏱ Bought time</th><th>🔄 Talked around a word</th><th>🔧 Smooth repair</th><th>⛔ Silence (3 s+) / restart / "sorry"</th><th style="width:22%">One example I heard</th></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    </table>
+    <p class="hint">Filler the speaker used a lot: ______________ · Report: "You bought time __ times, talked around __ word(s), made __ smooth repair(s); one silence at about __ seconds."</p>
+  </div>
+
+  <!-- ===================== E. BEFORE / AFTER ===================== -->
+  <div class="sec pb"><h2>E · Before / After Editing Cards (8.2)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">Cut out the eight cards and shuffle them. Pairs match each BEFORE to its AFTER, then write the <b>name of every cut</b> in the margin: <i>wordy phrase · redundant pair · intensifier · buried verb · double negative · tangle</i>. The cuts are listed in small print on the AFTER cards: fold that strip under before class, or cut it off for a harder version.</p>
+  <div class="cards">
+    <div class="card-cut"><div class="ct">Before · 1 (24 words)</div><p>"We would like to take this opportunity to thank each and every one of you for the very important contribution that you have made."</p></div>
+    <div class="card-cut b"><div class="ct">After · ? (7 words)</div><p>"Thank you all for your vital contribution."</p><p class="model">Cuts: stock opener (<i>We would like to take this opportunity to</i>) · redundant pair (<i>each and every one of you</i> → <i>all</i>) · intensifier (<i>very important</i> → <i>vital</i>) · clause cut (<i>that you have made</i>)</p></div>
+    <div class="card-cut"><div class="ct">Before · 2 (20 words)</div><p>"The manager carried out an investigation into the complaint and came to the conclusion that the error was not unintentional."</p></div>
+    <div class="card-cut b"><div class="ct">After · ? (12 words)</div><p>"The manager investigated the complaint and concluded that the error was deliberate."</p><p class="model">Cuts: buried verbs ×2 (<i>carried out an investigation into → investigated · came to the conclusion → concluded</i>) · double negative (<i>not unintentional → deliberate</i>)</p></div>
+    <div class="card-cut"><div class="ct">Before · 3 (25 words)</div><p>"In spite of the fact that the new system is really quite complicated, the vast majority of staff members have the ability to use it."</p></div>
+    <div class="card-cut b"><div class="ct">After · ? (11 words)</div><p>"Although the new system is complex, most staff can use it."</p><p class="model">Cuts: wordy phrases (<i>in spite of the fact that → although · the vast majority of → most · have the ability to → can</i>) · intensifiers (<i>really quite complicated → complex</i>) · <i>staff members → staff</i></p></div>
+    <div class="card-cut"><div class="ct">Before · 4 (39 words)</div><p>"The meeting, which had been scheduled for Friday but which had to be postponed because the room that we had booked was needed for an event that had been organized at short notice, will now take place on Monday."</p></div>
+    <div class="card-cut b"><div class="ct">After · ? (22 words, 2 sentences)</div><p>"The meeting was scheduled for Friday, but our room was needed for a last-minute event. It will now take place on Monday."</p><p class="model">Cuts: tangle split into two sentences, main idea kept · <i>organized at short notice → last-minute</i> · relative clauses cut (<i>that we had booked → our</i>)</p></div>
+  </div>
+
+  <!-- ===================== F. CUT CHALLENGE ===================== -->
+  <div class="sec pb"><h2>F · The 30% Cut Challenge — Texts A &amp; B (8.2)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">One text per group of 3. Print the <b>ideas list</b> on the back of each card for the meaning-keeper (or fold it under). Model versions are in the Module 8 answer key.</p>
+  <div class="cards">
+    <div class="card-cut"><div class="ct">Text A · An email to front-desk staff · 151 words → target 105 or fewer</div>
+      <p>Dear all, I am writing this email in order to let you know about a number of changes that will be made to the schedule for the front desk in the near future. Due to the fact that a large number of customers have complained about very long wait times in the early morning, we have made the decision to carry out a review of the way in which shifts are organized. At this point in time, it seems to be the case that the busiest period is between 8 and 10 a.m., when there are actually only two people working at the desk. In the event that you have the ability to start earlier on one or more days, it would be really helpful if you could let me know. Each and every suggestion will be given careful consideration. Thank you very much in advance for your cooperation. Best, Maria</p>
+      <p class="model"><b>Ideas (meaning-keeper):</b> ☐ the front-desk schedule will change soon ☐ reason: many complaints about long early-morning waits ☐ decision: review how shifts are organized ☐ busiest time seems to be 8–10 a.m. ☐ only two people at the desk then ☐ request: tell Maria if you can start earlier on one or more days ☐ every suggestion will be considered carefully ☐ thanks in advance · stays an email</p></div>
+    <div class="card-cut b"><div class="ct">Text B · A community center newsletter item · 156 words → target 109 or fewer</div>
+      <p>It is not uncommon for residents of the Eastside neighborhood to be completely unaware of the fact that the community center, which is located on Park Street and which was renovated last year by a team of volunteers who had been recruited by the residents' association, offers a large number of free activities that are open to each and every member of the community. In addition to the very popular Saturday morning English conversation group, there are also classes in basic computer skills, a homework club for children of school age, and a repair café where people who have broken items can bring them in order to have them fixed by volunteers free of charge. Should you wish to obtain further information with regard to any of these activities, you are more than welcome to drop by at any point in time during opening hours, which are from 9 a.m. to 8 p.m., Monday through Saturday.</p>
+      <p class="model"><b>Ideas (meaning-keeper):</b> ☐ many Eastside residents don't know about it ☐ the center is on Park Street ☐ renovated last year by volunteers (recruited by the residents' association) ☐ many free activities, open to everyone ☐ popular Saturday morning English conversation group ☐ basic computer classes ☐ homework club for school-age children ☐ repair café: volunteers fix broken items free ☐ drop by for details ☐ hours 9 a.m.–8 p.m., Mon–Sat</p></div>
+  </div>
+
+  <div class="sec pb"><h2>F · The 30% Cut Challenge — Texts C &amp; D (8.2)</h2><span class="rule"></span></div>
+  <div class="cards">
+    <div class="card-cut"><div class="ct">Text C · An app description · 143 words → target 100 or fewer</div>
+      <p>FocusFlow is basically a really simple app that has the ability to help you to make improvements to the way in which you manage your time. The app gives you the opportunity to make a plan for your day, and it also sends you reminders at regular intervals of time so that you do not forget about the tasks that you have planned to do. Research that has been carried out by the team that developed the app shows that users who make use of the app on a daily basis for a period of four weeks report that they feel very much less stressed and that they are able to complete a larger number of tasks. At the present time, the app is available free of charge, but in the near future there will be a premium version with additional extra features.</p>
+      <p class="model"><b>Ideas (meaning-keeper):</b> ☐ a simple app ☐ helps you manage your time ☐ you can plan your day ☐ regular reminders so you don't forget tasks ☐ research by the app's own developers (the source!) ☐ daily use for four weeks ☐ users <i>report</i> feeling less stressed ☐ and completing more tasks ☐ currently free ☐ a premium version with extra features soon</p></div>
+    <div class="card-cut b"><div class="ct">Text D · From a student report on sleep · 159 words → target 111 or fewer</div>
+      <p>In this section of the report, I will attempt to give an explanation of the reasons why it is the case that teenagers very often find it really difficult to get up early in the morning. It is not untrue to say that many adults are of the opinion that teenagers are simply lazy. However, a large number of research studies have reached the conclusion that during the teenage years the body clock actually shifts, with the result that teenagers do not start to feel sleepy until approximately 11 p.m. or even later. Due to the fact that most high schools start their classes at a very early hour, a considerable number of students are, in actual fact, attending lessons at a point in time when their brains are still, in a sense, asleep. This lack of sleep has a negative effect on their ability to concentrate, on their mood, and on the results that they achieve in exams.</p>
+      <p class="model"><b>Ideas (meaning-keeper):</b> ☐ this section explains ☐ why teenagers often find it hard to get up early ☐ many adults think teenagers are lazy (the view being challenged) ☐ many studies conclude the body clock shifts in adolescence ☐ so teenagers aren't sleepy until about 11 p.m. or later ☐ most high schools start early ☐ many students attend lessons while still half asleep ☐ lack of sleep harms concentration ☐ mood ☐ exam results</p></div>
+  </div>
+
+  <!-- ===================== G. GAME ===================== -->
+  <div class="sec pb"><h2>G · Game — Keep Talking (8.1 → 8.2)</h2><span class="rule"></span></div>
+  <div class="note">
+    <div class="t">How to play (groups of 3–4 · 6–12 minutes)</div>
+    <p>Roll a die (or flip a coin: heads = 1, tails = 2) and move. Do what the square says for <b>about 30 seconds</b>; the player on your right times you. <b>⏱ BUY TIME</b>: start with a time-buyer, then answer. <b>🔄 TALK AROUND</b>: describe the word so the group guesses it, without saying it. <b>🔧 REPAIR</b>: say the sentence, including the mistake, and repair it smoothly. <b>✂️ SAY IT SHORTER</b>: say the wordy sentence in half the words. <b>⏸ STOP</b>: the player on your left asks you a follow-up question. If you freeze for more than three seconds or say "sorry," go back one square. Don't want to answer a personal prompt? Say "Pass" and answer the next square instead. New identity cards are fine.</p>
+  </div>
+  <table class="board8">
+    <tr>
+      <td class="end">START ▶</td>
+      <td><span class="no">1</span><span class="ty">⏱ Buy time</span>What's the hardest thing about learning English at an advanced level?</td>
+      <td><span class="no">2</span><span class="ty">🔄 Talk around</span><b>a stapler</b></td>
+      <td><span class="no">3</span><span class="ty">🔧 Repair</span>"The course lasts twelve weeks, <i>or rather</i>, thirteen…" (keep going)</td>
+      <td class="pre"><span class="no">4</span><span class="ty">✂️ Say it shorter</span>"In the event that it rains, the picnic will be moved to a later date."</td>
+      <td><span class="no">5</span><span class="ty">⏱ Buy time</span>Is it better to save money or to spend it on experiences?</td>
+    </tr>
+    <tr>
+      <td><span class="no">11</span><span class="ty">🔄 Talk around</span><b>a landlord</b></td>
+      <td class="pre"><span class="no">10</span><span class="ty">✂️ Say it shorter</span>"We made the decision to carry out a review of the budget."</td>
+      <td><span class="no">9</span><span class="ty">⏱ Buy time</span>What makes a good neighbor?</td>
+      <td><span class="no">8</span><span class="ty">🔧 Repair</span>"I've lived here for five years, <i>what I mean is</i>…" (keep going)</td>
+      <td><span class="no">7</span><span class="ty">🔄 Talk around</span><b>a traffic jam</b></td>
+      <td><span class="no">6</span><span class="ty">⏸ STOP</span>The player on your left asks you a follow-up question. ◀</td>
+    </tr>
+    <tr>
+      <td><span class="no">12</span><span class="ty">⏱ Buy time</span>Should people take a complete break from their phones once a week? ▶</td>
+      <td><span class="no">13</span><span class="ty">🔄 Talk around</span><b>a receipt</b></td>
+      <td><span class="no">14</span><span class="ty">⏸ STOP</span>The player on your left asks you a follow-up question.</td>
+      <td class="pre"><span class="no">15</span><span class="ty">✂️ Say it shorter</span>"Due to the fact that the bus was very late, a large number of us missed the start."</td>
+      <td><span class="no">16</span><span class="ty">🔧 Repair</span>"The best way to relax is sleeping, <i>let me rephrase that</i>…" (keep going)</td>
+      <td><span class="no">17</span><span class="ty">🔄 Talk around</span><b>a thermometer</b></td>
+    </tr>
+    <tr>
+      <td class="end">FINISH 🏁<br><span style="font-size:.75rem;font-weight:500">Talk for one minute: "What I've learned in C1." No freezing!</span></td>
+      <td><span class="no">22</span><span class="ty">⏱ Buy time</span>What would you change about the way your workplace or school runs meetings?</td>
+      <td><span class="no">21</span><span class="ty">🔄 Talk around</span><b>a deadline</b></td>
+      <td class="pre"><span class="no">20</span><span class="ty">✂️ Say it shorter</span>"It is not uncommon for people to be very surprised by the end result."</td>
+      <td><span class="no">19</span><span class="ty">🔧 Repair</span>"There were about twenty people, <i>or should I say</i>…" (keep going)</td>
+      <td><span class="no">18</span><span class="ty">⏱ Buy time</span>Are video calls as good as meeting in person? ◀</td>
+    </tr>
+  </table>
+  <p style="font-size:.86rem;color:var(--ink-2)">The path snakes: row 1 left → right (1–5), row 2 right → left (6–11), row 3 left → right (12–17), row 4 right → left (18–22), then FINISH. Model "shorter" answers: 4 "If it rains, the picnic will be postponed." · 10 "We decided to review the budget." · 15 "Because the bus was so late, many of us missed the start." · 20 "People are often astonished by the result."</p>
+
+  <!-- ===================== H. POSITION PAPER KIT ===================== -->
+  <div class="sec pb"><h2>H · Position Paper Kit — Topic Cards (8.3)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">Hand these out at the end of C23. Learners choose one or draw one. Each question is arguable from both sides, and learners may draw a <b>side card</b> so that they argue an assigned position. <b>Don't add</b> topics about party politics, religion, immigration, policing, war or national identity, and don't use the government-policy prompts from the online lesson in class. A learner may propose their own topic if it stays in this territory: approve it before they start.</p>
+  <div class="qd four">
+    <div class="c"><div class="n">EDUCATION 1</div><div class="s">Should high schools start at 9 a.m. or later?</div><div class="h">sleep science · families · buses</div></div>
+    <div class="c"><div class="n">EDUCATION 2</div><div class="s">Should students be allowed to use AI tools for homework and essays?</div><div class="h">learning · honesty · real-world skills</div></div>
+    <div class="c"><div class="n">EDUCATION 3</div><div class="s">Should final exams be replaced by portfolios assessed over the year?</div><div class="h">stress · fairness · workload</div></div>
+    <div class="c"><div class="n">EDUCATION 4</div><div class="s">Should every high-school student take a course in personal finance?</div><div class="h">life skills · crowded timetable</div></div>
+    <div class="c"><div class="n">WORKPLACE 1</div><div class="s">Should office jobs move to a four-day week without a cut in pay?</div><div class="h">productivity · customers · burnout</div></div>
+    <div class="c"><div class="n">WORKPLACE 2</div><div class="s">Should companies publish the salary range for every job they advertise?</div><div class="h">fairness · negotiation · privacy</div></div>
+    <div class="c"><div class="n">WORKPLACE 3</div><div class="s">Should job interviews be replaced by short paid trial days?</div><div class="h">fairness · cost · nerves</div></div>
+    <div class="c"><div class="n">WORKPLACE 4</div><div class="s">Should work emails be switched off outside working hours?</div><div class="h">rest · flexibility · time zones</div></div>
+    <div class="c"><div class="n">TECHNOLOGY 1</div><div class="s">Should children under 13 have their own smartphone?</div><div class="h">safety · independence · attention</div></div>
+    <div class="c"><div class="n">TECHNOLOGY 2</div><div class="s">Should stores be allowed to refuse cash?</div><div class="h">convenience · access · security</div></div>
+    <div class="c"><div class="n">TECHNOLOGY 3</div><div class="s">Do fitness trackers and health apps do more good than harm?</div><div class="h">motivation · data · anxiety</div></div>
+    <div class="c"><div class="n">TECHNOLOGY 4</div><div class="s">Is it better to repair old devices than to replace them?</div><div class="h">cost · waste · performance</div></div>
+    <div class="c"><div class="n">COMMUNITY 1</div><div class="s">Should our town's main street be car-free on weekends?</div><div class="h">air · shops · access</div></div>
+    <div class="c"><div class="n">COMMUNITY 2</div><div class="s">Is it better to rent a home than to buy one?</div><div class="h">freedom · security · cost</div></div>
+    <div class="c"><div class="n">COMMUNITY 3</div><div class="s">Should public libraries become community centers, with fewer books and more activities?</div><div class="h">purpose · quiet · inclusion</div></div>
+    <div class="c"><div class="n">COMMUNITY 4</div><div class="s">Should supermarkets stop selling fruit and vegetables in plastic packaging?</div><div class="h">waste · food loss · price</div></div>
+  </div>
+
+  <div class="sec pb"><h2>H · Position Paper Kit — Side Cards, Viva Roles &amp; Rotation</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem"><b>Side cards:</b> print several of each; learners who want an assigned position draw one with their topic. <b>Role cards:</b> one set per viva group; learners pass them on as the roles rotate.</p>
+  <div class="qd two hdr">
+    <div class="c"><div class="emo">✅</div><div class="s">YES</div><div class="h">Your paper argues FOR the question on your topic card. It's your card, not your opinion.</div></div>
+    <div class="c"><div class="emo">❌</div><div class="s">NO</div><div class="h">Your paper argues AGAINST the question on your topic card. It's your card, not your opinion.</div></div>
+  </div>
+  <div class="cards">
+    <div class="card-cut"><div class="ct">Role · Candidate 🎤</div><h4>Summarize, then defend.</h4><p>Give a 2-minute opening statement from 3–4 key words: your thesis, your arguments, the objection and your answer. Then answer the examiners' questions: check the question if needed, concede what is fair, hold what is sound.</p><p><i>My paper addresses the question of whether… · My case rests on… · If I've understood your question… · That's a fair point. That said, …</i></p></div>
+    <div class="card-cut b"><div class="ct">Role · Lead examiner ❓</div><h4>Read closely. Ask two questions.</h4><p>You have read this paper carefully. Ask two questions, at least one of them challenging (evidence, objection or consequence). You may ask one short follow-up. Question the argument, never the person.</p><p><i>You say that… What's your evidence? · Someone might object that… How would you respond? · So would you accept that…?</i></p></div>
+    <div class="card-cut"><div class="ct">Role · Second examiner ❓</div><h4>Ask one or two different questions.</h4><p>Choose a different question type from the lead examiner's: scope, clarification or a wildcard. Listen to the answers so far and build on them.</p><p><i>Building on that question… · Where would you draw the line between…? · Which of your arguments is the weakest?</i></p></div>
+    <div class="card-cut b"><div class="ct">Role · Chair &amp; timekeeper 🪑</div><h4>Keep it fair, keep it moving.</h4><p>Follow the chair's script. Show "30 SECONDS" and "TIME." Keep the Q&amp;A to about 5 minutes. <b>Stop any question that becomes personal.</b> Ask one question yourself if there is time.</p><p><i>Let's keep to the argument. Next question, please. · We have time for one more question.</i></p></div>
+  </div>
+  <div class="card-cut" style="min-height:auto">
+    <div class="ct">Rotation sheet · Group ____ (groups of 4: about 9 minutes per viva)</div>
+    <table class="grammar">
+      <tr><th>Viva</th><th>Candidate</th><th>Lead examiner</th><th>Second examiner</th><th>Chair &amp; timekeeper</th></tr>
+      <tr><td>1</td><td>A: ____________</td><td>B: ____________</td><td>C: ____________</td><td>D: ____________</td></tr>
+      <tr><td>2</td><td>B</td><td>C</td><td>D</td><td>A</td></tr>
+      <tr><td>3</td><td>C</td><td>D</td><td>A</td><td>B</td></tr>
+      <tr><td>4</td><td>D</td><td>A</td><td>B</td><td>C</td></tr>
+    </table>
+    <p class="hint">Groups of 3 (about 12 minutes per viva): 1 · A candidate, B lead, C second + chair · 2 · B, C, A · 3 · C, A, B. Read closely: the paper you lead-examine and the paper you second-examine.</p>
+  </div>
+
+  <div class="sec pb"><h2>H · Position Paper Kit — The Chair's Script</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">One copy per viva group. The chair changes every round; pass the script on.</p>
+  <div class="card-cut" style="min-height:auto">
+    <div class="ct">Chair's script · about 9 minutes</div>
+    <ol class="steps">
+      <li><b>Introduce (15 s):</b> "Welcome to this viva. Our candidate is <span class="blank"></span>. The paper addresses the question: <span class="blank long"></span>. <span class="blank"></span>, you have two minutes for your opening statement."</li>
+      <li><b>Time the statement (2 min):</b> show "30 SECONDS," then "TIME." → "Thank you."</li>
+      <li><b>Lead examiner (about 2½ min):</b> "<span class="blank"></span>, would you like to begin the questions?" (Two questions, one short follow-up allowed.)</li>
+      <li><b>Second examiner (about 1½–2 min):</b> "Thank you. <span class="blank"></span>, your questions, please."</li>
+      <li><b>Chair's question (if time):</b> "I have one question myself: …" or "We have time for one more question."</li>
+      <li><b>If a question becomes personal or unkind:</b> "Let's keep to the argument, please. Could you rephrase that as a question about the paper?"</li>
+      <li><b>Close (1 min):</b> "Thank you, <span class="blank"></span>. Examiners, one star and one wish, please." (Examiners circle the defense rubric.) "Please thank our candidate." → Rotate.</li>
+    </ol>
+  </div>
+
+  <div class="sec pb"><h2>H · Spare Planning Frame (for new or absent learners)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">The same frame as in Workbook 8.3. Notes only; the paper comes later.</p>
+  <div class="card-cut" style="min-height:auto">
+    <div class="ct">Planning frame · my position paper</div>
+    <table class="grammar">
+      <tr><th>Question (topic card)</th><td><span class="blank long"></span></td></tr>
+      <tr><th>Position</th><td>☐ my choice ☐ assigned (side card) → <span class="blank long"></span></td></tr>
+      <tr><th>1 · Thesis</th><td>This paper argues that <span class="blank long"></span></td></tr>
+      <tr><th>2 · Argument A + support</th><td><span class="blank long"></span><br><span class="blank long"></span></td></tr>
+      <tr><th>3 · Argument B + support</th><td><span class="blank long"></span><br><span class="blank long"></span></td></tr>
+      <tr><th>4 · Strongest objection</th><td>It might be objected that <span class="blank long"></span></td></tr>
+      <tr><th>5 · Rebuttal</th><td>This concern, while valid, <span class="blank long"></span></td></tr>
+      <tr><th>6 · Conclusion</th><td>On balance, <span class="blank long"></span></td></tr>
+      <tr><th>C1 tools</th><td>☐ hedging ☐ participle clause ☐ inversion / cleft ☐ conditional ☐ nominalization + cohesion ☐ academic collocation</td></tr>
+    </table>
+  </div>
+
+  <!-- ===================== I. QUESTION CARDS ===================== -->
+  <div class="sec pb"><h2>I · Question-Card Sets (8.3)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem">One full set (24 cards) per viva group, spread face up on the table during reading time. Examiners choose cards and <b>adapt</b> them to the paper on a sticky note: a question that names the paper's own claim is always stronger than a generic one. Lead examiners need at least one challenging card (📊, ⚖️ or 🔮).</p>
+  <div class="qd four slips">
+    <div class="c"><div class="n">🔍 CLARIFY 1</div>What exactly do you mean by "____"?</div>
+    <div class="c"><div class="n">🔍 CLARIFY 2</div>Could you give a concrete example of ____?</div>
+    <div class="c"><div class="n">🔍 CLARIFY 3</div>How would that work in practice for ____?</div>
+    <div class="c"><div class="n">🔍 CLARIFY 4</div>Who exactly would this apply to?</div>
+    <div class="c"><div class="n">📊 EVIDENCE 1</div>You say that ____. What's your evidence?</div>
+    <div class="c"><div class="n">📊 EVIDENCE 2</div>Is that true everywhere, or only in ____?</div>
+    <div class="c"><div class="n">📊 EVIDENCE 3</div>How do you know that ____ causes ____, and not something else?</div>
+    <div class="c"><div class="n">📊 EVIDENCE 4</div>How strong is that evidence: one study, or many?</div>
+    <div class="c"><div class="n">⚖️ OBJECTION 1</div>What about people who ____?</div>
+    <div class="c"><div class="n">⚖️ OBJECTION 2</div>Doesn't your argument overlook ____?</div>
+    <div class="c"><div class="n">⚖️ OBJECTION 3</div>Someone might object that ____. How would you respond?</div>
+    <div class="c"><div class="n">⚖️ OBJECTION 4</div>Isn't the objection you chose the easiest one to answer?</div>
+    <div class="c"><div class="n">🔮 CONSEQUENCE 1</div>If this were adopted, what might go wrong?</div>
+    <div class="c"><div class="n">🔮 CONSEQUENCE 2</div>Who would pay for ____?</div>
+    <div class="c"><div class="n">🔮 CONSEQUENCE 3</div>What would ____ look like five years from now?</div>
+    <div class="c"><div class="n">🔮 CONSEQUENCE 4</div>Could this have an effect you didn't intend?</div>
+    <div class="c"><div class="n">📏 SCOPE 1</div>Where would you draw the line between ____ and ____?</div>
+    <div class="c"><div class="n">📏 SCOPE 2</div>Would your position still hold if ____?</div>
+    <div class="c"><div class="n">📏 SCOPE 3</div>Does this apply to everyone, or are there exceptions?</div>
+    <div class="c"><div class="n">📏 SCOPE 4</div>Is your proposal all-or-nothing, or could it be introduced gradually?</div>
+    <div class="c"><div class="n">🃏 WILDCARD 1</div>Which of your arguments is the weakest, in your view?</div>
+    <div class="c"><div class="n">🃏 WILDCARD 2</div>If you could keep only one argument, which would it be?</div>
+    <div class="c"><div class="n">🃏 WILDCARD 3</div>What would change your mind?</div>
+    <div class="c"><div class="n">🃏 WILDCARD 4</div>What's the strongest objection you didn't include?</div>
+  </div>
+
+  <!-- ===================== J. RUBRICS ===================== -->
+  <div class="sec pb"><h2>J · Paper Rubric (self &amp; teacher)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem"><b>Self:</b> learners use the short version in Workbook 8.3 before they send the paper. <b>Teacher:</b> circle a level for each criterion and write one strength and one next step; return the paper with feedback at C26. Use it for feedback, <b>not</b> as a grade.</p>
+  <p style="font-size:.92rem">Writer: ____________________ &nbsp; Topic: ____________________ &nbsp; Words: ______</p>
+  <table class="rub">
+    <tr><th>Criterion</th><th>★★★ Strong C1 (toward C2)</th><th>★★ C1</th><th>★ Not yet</th></tr>
+    <tr><th>1 · Position &amp; thesis</th><td>A clear, arguable, specific thesis in the first paragraph; the position is maintained and sharpened to the end</td><td>Clear position, but the thesis comes late, is broad, or drifts in places</td><td>No clear position; a survey of views or a list of facts</td></tr>
+    <tr><th>2 · Arguments &amp; support</th><td>Two or three distinct arguments, each with convincing, relevant support (evidence, example, consequence); claims calibrated to the evidence</td><td>Arguments have reasons, but support is general or uneven; some overclaiming</td><td>Opinions without support; overclaiming throughout</td></tr>
+    <tr><th>3 · Counter-argument &amp; rebuttal</th><td>The strongest real objection, stated fairly, and a rebuttal that answers <em>that</em> objection</td><td>An objection and a rebuttal, but the objection is weak or the answer is thin</td><td>Missing, or a straw man</td></tr>
+    <tr><th>4 · Organization &amp; cohesion</th><td>Logical paragraphing with clear topic sentences; reference, linkers and nominalization knit ideas smoothly</td><td>Mostly clear; some mechanical linking or a weak paragraph</td><td>Hard to follow; ideas are not connected</td></tr>
+    <tr><th>5 · Range &amp; precision</th><td>Several C1 structures (hedging, participle clause, inversion/cleft, conditional, nominalization) and academic collocations used naturally, where the argument needs them</td><td>Some C1 structures; occasional forced or imprecise use</td><td>Mostly B2 language; vague word choice</td></tr>
+    <tr><th>6 · Accuracy, register &amp; concision</th><td>Few, minor errors; consistently formal but readable; tight, edited prose (450–550 words) with no padding</td><td>Some errors that don't block meaning; register mostly right; some padding</td><td>Frequent errors that affect meaning; too informal or stiff; padded or far over length</td></tr>
+  </table>
+  <div class="grid2">
+    <div class="note"><div class="t">★ Strength</div><div class="write"></div></div>
+    <div class="note lab"><div class="t">🎯 Next step</div><div class="write"></div></div>
+  </div>
+
+  <div class="sec pb"><h2>J · Defense Rubric (peer, self &amp; teacher)</h2><span class="rule"></span></div>
+  <p style="font-size:.92rem"><b>Examiners:</b> circle one level per criterion for your candidate, then write one star and one wish. <b>Self:</b> learners use the short version in Workbook 8.3. <b>Teacher:</b> use it with the observation checklist, <b>not</b> as a grade.</p>
+  <p style="font-size:.92rem">Candidate: ____________________ &nbsp; Examiner: ____________________ &nbsp; Topic: ____________________</p>
+  <table class="rub">
+    <tr><th>Criterion</th><th>★★★ Strong C1 (toward C2)</th><th>★★ C1</th><th>★ Not yet</th></tr>
+    <tr><th>1 · Opening statement</th><td>A clear 2-minute summary from notes: thesis, arguments, objection and answer, well signposted</td><td>Clear but partly read, or runs short/long</td><td>Reads the paper aloud, or loses the thread</td></tr>
+    <tr><th>2 · Understanding the questions</th><td>Answers exactly what was asked; checks the question when unsure</td><td>Mostly on target; one answer drifts to a prepared point</td><td>Often misunderstands, or answers a different question</td></tr>
+    <tr><th>3 · Concede &amp; hold</th><td>Concedes fair points genuinely, then holds the position with a reason; never collapses or stonewalls</td><td>Concedes and holds, but sometimes gives up too much or too little</td><td>Collapses at the first challenge, or refuses to concede anything</td></tr>
+    <tr><th>4 · Hedging &amp; calibration</th><td>Refines claims under pressure ("So I'd put it more cautiously…"); certainty matches the evidence</td><td>Some hedging; an occasional overclaim</td><td>Overclaims, or hedges everything until no position remains</td></tr>
+    <tr><th>5 · Fluency strategies</th><td>Keeps going smoothly: buys time, paraphrases, repairs; no freezing</td><td>One or two long pauses, recovered</td><td>Freezes or restarts often; needs rescuing</td></tr>
+    <tr><th>6 · Delivery &amp; interaction</th><td>Calm pace, clear stress and pausing, courteous register, engages each examiner</td><td>Mostly clear; sometimes hurried or flat</td><td>Hard to follow; defensive or hesitant</td></tr>
+  </table>
+  <div class="grid2">
+    <div class="note"><div class="t">★ Star — one thing that was strong</div><div class="write"></div></div>
+    <div class="note lab"><div class="t">🎯 Wish — one thing to try next time</div><div class="write"></div></div>
+  </div>
+
+  <!-- ===================== K. CHECKLIST ===================== -->
+  <div class="sec pb"><h2>K · Teacher Observation Checklist · C25 → C26</h2><span class="rule"></span></div>
+  <div class="note">
+    <div class="t">How to use it</div>
+    <p>Observe during the warmer, the reading and question preparation, and the vivas (you rotate between groups). Mark <b>✓</b> did it clearly · <b>~</b> did it with support, or with errors that affect meaning · <b>○</b> not yet / not observed. You don't need a mark in every box; add item 2 from the paper itself after class. Then use it to (1) plan each learner's C26 assessment. The C1 final assessment is <b>an individual speaking interview (about 10 minutes) plus listening, reading and writing tasks — see the kit's C1 final assessment</b>; match these notes to its speaking criteria and decide where each learner should start, (2) choose the two weakest items for a short C26 warm-up, (3) name one real strength for each learner on their returned paper, and (4) note who needs encouragement. <b>This is not a grade.</b></p>
+  </div>
+  <ul class="crit">
+    <li><b>1</b> Opening statement: summarizes from notes, signposted, on time</li>
+    <li><b>2</b> Paper: clear thesis, supported arguments, a real objection answered</li>
+    <li><b>3</b> Understands questions at natural speed; checks when unsure</li>
+    <li><b>4</b> Concedes and holds (<em>That's a fair point. That said…</em>)</li>
+    <li><b>5</b> Hedges and refines claims; no overclaiming or collapse</li>
+    <li><b>6</b> Fluency strategies: buys time, paraphrases, repairs; no freezing</li>
+    <li><b>7</b> C1 range in speech: inversion, cleft, conditional, participle clause, nominalization</li>
+    <li><b>8</b> Precision &amp; concision: strong verbs, exact words, no padding</li>
+    <li><b>9</b> Accuracy &amp; register: formal but natural, errors rarely affect meaning</li>
+    <li><b>10</b> As examiner / chair: asks a sharp, fair question; manages turns</li>
+  </ul>
+  <table class="obs">
+    <thead><tr><th class="nm">Learner</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th class="nt">Topic · strength · C26 notes</th></tr></thead>
+    <tbody>
+      <tr><td class="nm"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="nt"></td></tr>
+      <tr><td class="nm"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="nt"></td></tr>
+      <tr><td class="nm"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="nt"></td></tr>
+      <tr><td class="nm"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="nt"></td></tr>
+      <tr><td class="nm"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="nt"></td></tr>
+      <tr><td class="nm"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="nt"></td></tr>
+      <tr><td class="nm"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="nt"></td></tr>
+      <tr><td class="nm"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="nt"></td></tr>
+      <tr><td class="nm"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="nt"></td></tr>
+      <tr><td class="nm"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="nt"></td></tr>
+      <tr><td class="nm"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="nt"></td></tr>
+      <tr><td class="nm"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="nt"></td></tr>
+      <tr><td class="nm"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="nt"></td></tr>
+      <tr><td class="nm"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="nt"></td></tr>
+      <tr><td class="nm"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="nt"></td></tr>
+      <tr><td class="nm"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="nt"></td></tr>
+    </tbody>
+  </table>
+  <div class="grid2">
+    <div class="note"><div class="t">Class summary → C26 warm-up</div><p>Two items with the most ~ / ○: ______ and ______</p><p>Warm-up plan: ______________________</p></div>
+    <div class="note lab"><div class="t">Next steps · Needs reassurance</div><p>Ready for C2 / demanding academic or professional English: ______________________</p><p>More C1 consolidation first: ______________________</p><p>Quiet word before C26: ______________________</p></div>
+  </div>
+
+  <!-- ===================== L. SCRIPTS ===================== -->
+  <div class="sec pb"><h2>L · Listening Scripts (Teacher)</h2><span class="rule"></span></div>
+  <div class="note warn">
+    <div class="t">How to read these scripts</div>
+    <p>Read at <b>natural C1-appropriate speed</b>: the speed of a clear, thoughtful adult, not a newsreader and not a slowed-down "teacher voice." Pauses and time-buyers are part of the text: perform them. Where a script has two voices, use a small change of position or pitch, or ask a confident learner to read one part after rehearsing it with you.</p>
+  </div>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">8.1-A · Freeze or flow? <span style="font-weight:500;color:var(--ink-3)">(lead-in, Workbook 8.1 Ex 1: read Speaker 1, then Speaker 2)</span></h3>
+  <div class="script"><b>Interviewer:</b> What's the biggest challenge in your job right now? · <b>Speaker 1:</b> The biggest challenge? Um… [3-second pause] … it's… [pause] … I think it's time. We have a lot of… how do you say… sorry… the day when you must finish… sorry. And now I have three projects… no, wait, sorry, that's wrong, sorry. Four. Sorry.</div>
+  <div class="script"><b>Interviewer:</b> What's the biggest challenge in your job right now? · <b>Speaker 2:</b> That's a good question. Let me think for a second… I'd say the biggest challenge is time. We have a lot of, what's the word, the date when everything has to be finished, and right now I'm working on three projects, or rather, four, at the same time. So, well, it really comes down to managing priorities.</div>
+  <p style="font-size:.86rem;color:var(--ink-2)">Answers: wall 1 "That's a good question. Let me think for a second" · wall 2 "the date when everything has to be finished" (<i>deadline</i>) · wall 3 "three projects, or rather, four." Speaker 2 is not faster; she simply never stops.</p>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">8.1-B · The filler audit <span style="font-weight:500;color:var(--ink-3)">(Workbook 8.1 Ex 5: natural speed, fillers light and fast; then the clean version)</span></h3>
+  <div class="script"><b>Filler-heavy:</b> So, um, basically I think that, like, working from home is, you know, sort of good, actually, because, um, you don't have to, like, commute and stuff. I mean, it's, you know, basically really nice to, um, have, like, more time. But, actually, I sort of miss, you know, my colleagues, like, sometimes, I mean, not always, but, um, yeah.</div>
+  <div class="script"><b>Clean:</b> Working from home suits me, because I don't have to commute and I have more free time. But, actually, I miss my colleagues. Not all the time, I mean, but sometimes.</div>
+  <p style="font-size:.86rem;color:var(--ink-2)">About 23 fillers (accept 18–25). Ask: "Which version sounds more confident? Did the clean version lose any meaning?" (No.) "Which two markers survived, and why?" (<i>actually</i> = contrast; <i>I mean</i> = clarification.)</p>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">8.1-C · The interview with Maya <span style="font-weight:500;color:var(--ink-3)">(the workbook dialogue: two voices; learners underline strategies)</span></h3>
+  <div class="script"><b>Interviewer:</b> So, what would you say is the single biggest challenge facing your industry right now? · <b>Maya:</b> Hmm, that's a really good question. Let me think for a second… Well, it depends on how you look at it, but I'd say it comes down to, how can I put this, trust. · <b>Interviewer:</b> Trust in what sense? · <b>Maya:</b> Trust in the, um, what's the word, the whole system that checks whether information is accurate. You know, the process you use to verify a source. Fact-checking, essentially. Or rather, the lack of it. · <b>Interviewer:</b> And is that getting worse? · <b>Maya:</b> It's… well, it's sort of a mixed picture. I mean, the tools are better than ever, but so are the, let me rephrase that, the people trying to game them. To put it another way: we're in an arms race. · <b>Interviewer:</b> That's a striking way to put it. · <b>Maya:</b> Bear with me a second; I want to get this right. The way I see it, the technology isn't the problem. It's a kind of… trust gap. And you can't patch that with software.</div>
+  <p style="font-size:.86rem;color:var(--ink-2)">Ask: "Maya forgot a word, started to overstate, and paused twice. Did she sound weak?" (No: every wobble was filled.) Strategies are listed in the answer key.</p>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">8.1-D · What am I describing? <span style="font-weight:500;color:var(--ink-3)">(circumlocution stage: read each once; learners write the word)</span></h3>
+  <div class="script">1. It's the thing you use to fasten papers together with a small metal clip. · 2. It's the person who looks after your teeth. · 3. It's a kind of small stand that sells newspapers, magazines and snacks, usually at a station. · 4. It's like a bicycle, but it has a small motor. · 5. It's when you can't sleep at night, often for weeks at a time. · 6. It's where you leave your car when you go on vacation and fly from the airport.</div>
+  <p style="font-size:.86rem;color:var(--ink-2)">Answers: 1 a stapler · 2 a dentist · 3 a newsstand (a kiosk) · 4 a moped / a motor scooter / an e-bike · 5 insomnia · 6 long-term parking (the airport parking lot). Then ask: "Which frame did I use each time?" (function · role · category · comparison · situation · place.)</p>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">8.2-A · In the Editing Room <span style="font-weight:500;color:var(--ink-3)">(the workbook dialogue: two voices; learners list the four cuts)</span></h3>
+  <div class="script"><b>Editor:</b> Read me your opening line as it stands. · <b>Writer:</b> "Due to the fact that we are currently at a point where costs are very high, we have made the decision to carry out a review of our spending." · <b>Editor:</b> Right. First, "due to the fact that" is just "because." And "we are currently at a point where"? Cut it. · <b>Writer:</b> So: "Because costs are very high, we have made the decision to carry out a review of our spending." · <b>Editor:</b> Better. Now, "very high": is there one word for that? And there are two verbs hiding in nouns. · <b>Writer:</b> "Very high" could be "soaring." "Made the decision to" is "decided," and "carry out a review of" is "review." · <b>Editor:</b> Say the whole thing now. · <b>Writer:</b> "Because costs are soaring, we have decided to review our spending." Eleven words instead of twenty-nine, and it hits harder. · <b>Editor:</b> That's the craft. You didn't lose a single idea; you lost the padding around them.</div>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">8.2-B · Say it shorter <span style="font-weight:500;color:var(--ink-3)">(drill: read the wordy version; learners say the concise one)</span></h3>
+  <div class="script">1. In order to save money, we are going to walk. · 2. Due to the fact that it was raining, the game was canceled. · 3. At this point in time, we have the ability to deliver on Saturdays. · 4. The team made a decision to carry out a review of the process. · 5. It is not uncommon for new staff to feel very nervous. · 6. In spite of the fact that the room was really very small, a large number of people came. · 7. We would like to take this opportunity to thank each and every volunteer. · 8. In the event that you have any questions, please do not hesitate to contact me.</div>
+  <p style="font-size:.86rem;color:var(--ink-2)">Models: 1 To save money, we'll walk. · 2 Because it was raining, the game was canceled. · 3 We can now deliver on Saturdays. · 4 The team decided to review the process. · 5 New staff often feel nervous. · 6 Although the room was tiny, many people came. · 7 Thank you to every volunteer. · 8 If you have any questions, please contact me. (In a formal email, "please don't hesitate to contact me" is a fixed courtesy: accept it as a deliberate choice.)</p>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">8.3-A · Priya's defense <span style="font-weight:500;color:var(--ink-3)">(Workbook 8.3 Ex 1: four voices; adapted from the online lesson in American English)</span></h3>
+  <div class="script"><b>Priya:</b> This paper argues that city centers should be closed to private cars. The primary reason is public health: given the levels of air pollution now recorded in many cities, the case for action is, I'd suggest, difficult to dismiss. Furthermore, freeing that space transforms how a city feels: wider sidewalks, cleaner air, room for people rather than parking. Admittedly, it might be objected that such a ban would hurt local businesses. That concern, while valid, overlooks the evidence: car-free streets tend to see foot traffic rise, not fall. · <b>Chair:</b> Thank you. Let's open it up. First question. · <b>Questioner 1:</b> What about residents with disabilities, or older people who can't walk far? Isn't a blanket ban unfair to them? · <b>Priya:</b> That's a fair point, and I don't want to brush it aside. You're right that a blanket ban would be unfair. That said, the proposal I'd defend isn't a blanket one: it exempts accessible transportation and permit holders. So the principle stands, provided the exemptions are properly designed. · <b>Questioner 2:</b> You claim foot traffic rises. Isn't that just true in wealthy cities that could afford good public transportation anyway? · <b>Priya:</b> Hmm, that's a good challenge. Let me think for a second. To some extent, yes: the effect is clearest where transportation is strong. However, I'd argue the causation runs both ways: the ban itself creates the pressure to improve transportation. So I'd hedge my claim slightly: it works best alongside investment, not instead of it. · <b>Questioner 3:</b> I'd like to go back to the businesses. You mentioned evidence on foot traffic, but a lot of stores downtown depend on deliveries, and on customers who drive in from outside the city, especially for heavy shopping, so how can you be sure that, in a city like ours, the effect wouldn't be the opposite? · <b>Priya:</b> If I've understood your question, you're asking whether the evidence would hold here, for stores that rely on customers who drive. Honestly, I can't be certain; no study can guarantee that. What I'd propose is a trial: close the center for, say, a year, with delivery windows early in the morning, and compare sales before and after. If the figures went the wrong way, the city could adjust. That seems to me the responsible way to test the idea. · <b>Chair:</b> A measured answer. Thank you all.</div>
+  <p style="font-size:.86rem;color:var(--ink-2)">Listen 1: "What's her position? Does she change it?" (Car-free centers. No, but she refines it twice.) Listen 2: Workbook Ex 1 (answers in the answer key). Point out the three moves: <b>concede</b> (a blanket ban would be unfair) → <b>hold</b> (the principle stands) → <b>hedge</b> (it works best alongside investment), and the <b>check</b> before answering Questioner 3.</p>
+
+  <h3 style="font-size:1rem;margin:14px 0 4px">8.3-B · A model opening statement and two model answers <span style="font-weight:500;color:var(--ink-3)">(defense language stage: about 3 minutes in all; based on the model paper in Workbook 8.3)</span></h3>
+  <div class="script"><b>Opening statement (about 2 minutes):</b> Thank you. My paper addresses the question of whether high schools should start later in the morning, and I argue that they should start no earlier than 9 a.m. My case rests on two points: health and learning. First, health. During adolescence the body clock shifts: teenagers get sleepy up to two hours later than younger children, but they still need eight to ten hours of sleep. So a 7:30 start means that many students are, in effect, in class during their biological night, with real consequences for mood, concentration and, for new drivers, safety on the road. Second, learning. Schools that have moved their start time later generally report better attendance, and some studies suggest modest gains in grades, especially in first-period classes. And it's the students with the longest commutes who lose the most sleep, so they would gain the most. Now, the strongest objection, I think, is that a later start would disrupt family routines: parents who start work early, bus routes, after-school jobs. My answer is that these are practical problems with practical solutions: schools can open early for supervised breakfast, and districts that have made the change have reorganized their buses. The cost is paid once; the benefit comes every school day. So, on balance, I'd argue that the case for a later start is strong. Thank you.</div>
+  <div class="script"><b>Examiner:</b> Wouldn't a later finish simply move the problem to the evening, when students do homework and part-time jobs? · <b>Candidate:</b> That's a fair point, and I don't want to brush it aside: some evening time would be lost. That said, the research suggests that teenagers fall asleep late whatever time school ends, because of the body clock, not because of homework. So a later finish costs an hour of the evening, but a later start gives back an hour of sleep. I'd put it this way: it's a trade, but a good one.</div>
+  <div class="script"><b>Examiner:</b> The pediatric organizations you cite recommend 8:30. Why do you go further, to 9? · <b>Candidate:</b> If I've understood your question, you're asking whether 9 a.m. is justified by the evidence, or just my preference. Honestly, the evidence is strongest for 8:30. So I'd put it slightly more cautiously: 8:30 is the minimum the research supports, and 9 is what I'd aim for, because it also allows for longer commutes. But I'd accept 8:30 as a first step.</div>
+  <p style="font-size:.86rem;color:var(--ink-2)">Ask: "How is the opening statement different from the paper?" (Shorter, spoken, signposted, "I think," contractions; it names the objection before the examiners do.) "What does the candidate do in the second answer?" (Checks the question, concedes the evidence is strongest for 8:30, refines the claim, keeps the position.)</p>
+
+  <div class="foot">
+    <div class="who"><b>Ray de la Paz</b><span class="bio">© 2026 Ray de la Paz · Advanced English (C1 Advanced)</span></div>
+    <div class="ver">Module 8 · Classroom Materials · v1.0</div>
+  </div>
+
+</div>
+</body>
+</html>

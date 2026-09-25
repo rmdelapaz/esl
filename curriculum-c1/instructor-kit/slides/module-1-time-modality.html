@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slides — Module 1</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root{--bg:#0b1220;--ink:#edf2fb;--ink2:#a8b6cf;--accent:#7fb2ff;--accent2:#2563eb;--lab:#34d3bd;--warn:#fbbf24;--line:#233252;--code:#101a2e;color-scheme:dark}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;overflow:hidden}
+  .deck{height:100%;width:100%;position:relative}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:6vh 8vw;gap:20px}
+  .slide.on{display:flex}
+  h1,h2,h3{font-family:"Archivo",sans-serif;line-height:1.1;text-wrap:balance}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  .slide h1{font-size:clamp(2rem,6vw,4rem);font-weight:800;letter-spacing:-.02em}
+  .slide h2{font-size:clamp(1.5rem,4.2vw,2.8rem);font-weight:800;letter-spacing:-.01em}
+  .slide p.lead{font-size:clamp(1.05rem,2.4vw,1.5rem);color:var(--ink2);max-width:26ch}
+  ul{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:6px}
+  ul li{position:relative;padding-left:34px;font-size:clamp(1.05rem,2.3vw,1.6rem)}
+  ul li::before{content:"";position:absolute;left:0;top:.55em;width:12px;height:12px;border-radius:3px;background:var(--accent);transform:rotate(45deg)}
+  ul.lab li::before{background:var(--lab)}
+  code.k{font-family:"JetBrains Mono",monospace;color:#cfe0ff;font-size:.92em}
+  pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:22px 26px;font-family:"JetBrains Mono",monospace;font-size:clamp(.85rem,1.9vw,1.3rem);line-height:1.55;overflow:auto;max-width:100%}
+  pre .k{color:#7dd3fc} pre .s{color:#86efac} pre .c{color:#7183a3;font-style:italic}
+  .tag{display:inline-flex;align-items:center;gap:10px;font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);color:var(--ink2)}
+  .tag .pill{background:var(--accent2);color:#fff;font-weight:700;border-radius:999px;padding:3px 12px;letter-spacing:.06em}
+  .tag .pill.lab{background:var(--lab);color:#062b26} .tag .pill.warn{background:var(--warn);color:#3a2a05}
+  .section{background:linear-gradient(135deg,#132a52,#0b1220)}
+  .section .big{font-size:clamp(3rem,12vw,8rem);font-family:"Archivo";font-weight:800;color:var(--accent2);line-height:.9}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+  @media (max-width:760px){.two{grid-template-columns:1fr}}
+  .bar{position:fixed;left:0;top:0;height:4px;background:var(--accent2);width:0;transition:width .25s;z-index:5}
+  .count{position:fixed;right:16px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink2);z-index:5}
+  .nav{position:fixed;inset:auto 0 0 0;display:flex;justify-content:space-between;pointer-events:none;z-index:4}
+  .nav button{pointer-events:auto;background:transparent;border:none;color:transparent;width:22vw;height:100vh;cursor:pointer}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+  /* ESL extras (picture vocab, grammar tables, dialogue, clocks) */
+  .pics{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,1.6vw,18px)}
+  .pics.six{grid-template-columns:repeat(6,1fr)}
+  .pic{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center}
+  .pic img{width:100%;max-width:150px;aspect-ratio:1;object-fit:cover;border-radius:10px;background:#FFF3E0;display:block;margin:0 auto}
+  .pic .emo{font-size:clamp(2.6rem,7vw,5rem);line-height:1;aspect-ratio:1;max-width:150px;margin:0 auto;display:flex;align-items:center;justify-content:center}
+  .pic .w{font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(.9rem,2vw,1.35rem);margin-top:6px}
+  @media (max-width:760px){.pics,.pics.six{grid-template-columns:repeat(3,1fr)}}
+  table.g{border-collapse:collapse;font-size:clamp(.95rem,2.1vw,1.45rem);width:100%;max-width:1000px}
+  table.g th,table.g td{border:1px solid var(--line);padding:10px 16px;text-align:left}
+  table.g th{background:var(--code);color:var(--accent);font-family:"JetBrains Mono",monospace;font-size:.8em;letter-spacing:.04em}
+  table.g b{color:#ffd166}
+  .dlg{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:18px 24px;display:flex;flex-direction:column;gap:8px;font-size:clamp(1rem,2.2vw,1.45rem);max-width:1000px}
+  .dlg .sp{display:inline-block;min-width:3.6em;font-weight:700;color:var(--accent)}
+  .dlg .b .sp{color:#c4a1ff}
+  .ccq{font-size:clamp(1rem,2.2vw,1.45rem);border:1px dashed var(--line);border-radius:12px;padding:12px 18px;background:var(--code)}
+  .ccq i{color:var(--ink2)}
+  .clocks{display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,34px);align-items:flex-start}
+  .clocks figure{text-align:center}
+  .clocks svg{width:clamp(96px,14vw,170px);height:auto}
+  .clocks figcaption{font-size:clamp(.95rem,2vw,1.3rem);margin-top:6px}
+  .clocks figcaption small{display:block;color:var(--ink2);font-size:.8em}
+  .snd{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .snd div{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:clamp(1rem,2.2vw,1.5rem)}
+  .snd div b{display:block;font-family:"Archivo";font-size:1.5em;color:var(--accent)}
+  .snd div small{color:var(--ink2)}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="deck" id="deck">
+
+  <!-- 1 -->
+  <section class="slide on section">
+    <div class="eyebrow">Advanced English (C1) · Instructor Kit</div>
+    <h1>Module 1<br>Precision in Time &amp; Modality</h1>
+    <p class="lead">Place it. Weigh it. Shape it.</p>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide">
+    <div class="eyebrow">Welcome to C1 · Classes C1–C3 · the map</div>
+    <h2>Say familiar things more exactly</h2>
+    <ul>
+      <li><b>1.1</b> The future in detail: <i>By June we'll have been testing for six months. The launch was to have taken place in March.</i></li>
+      <li><b>1.2</b> Certainty as a dial: <i>It may well be the backup. It can't possibly have been the cleaners.</i></li>
+      <li><b>1.3</b> The subjunctive: <i>It is essential that every new hire be assigned a mentor.</i></li>
+    </ul>
+    <div class="tag"><span class="pill">NOTE</span> 26 classes · 13 weeks · feedback on range, accuracy <b>and</b> appropriacy · your real life, a new identity, or something invented</div>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide">
+    <div class="eyebrow">1.1 · Welcome mingle · 4 rounds · 3 min each</div>
+    <h2>Meet the group</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>Take 4 cards: <b>LOOK BACK · WHAT IF · TAKE A POSITION · SAY IT TWO WAYS</b></li>
+        <li>Find a partner. Ask one question + <b>one follow-up</b></li>
+        <li>Answer in a long turn: about a minute</li>
+        <li>Swap one card. Find a new partner</li>
+      </ul>
+      <div class="ccq">How many cards? <i>(Four.)</i><br>How long is your answer? <i>(About a minute.)</i><br>After the answer? <i>(A follow-up question.)</i><br>Your real life? <i>(Only if you want: new identity, invented, or "Pass.")</i><br>Your real opinion? <i>(No: you can argue the side on the card.)</i></div>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide">
+    <div class="eyebrow">1.1 · Three vantage points</div>
+    <h2>Stand at a future moment and look</h2>
+    <table class="g">
+      <tr><th>At that moment</th><th>Form</th><th>Example</th></tr>
+      <tr><td>in progress</td><td><b>will be + -ing</b></td><td>This time tomorrow I'll <b>be flying</b> over the Atlantic.</td></tr>
+      <tr><td>completed by then</td><td><b>will have + pp</b></td><td>By 2030 we'll <b>have opened</b> ten offices.</td></tr>
+      <tr><td>duration up to then</td><td><b>will have been + -ing</b></td><td>By June I'll <b>have been working</b> here for a decade.</td></tr>
+    </table>
+    <div class="tag"><span class="pill warn">WATCH</span> By the time we <s>will open</s> <b>open</b>, we'll have… · will have <s>been knowing</s> <b>known</b> (stative)</div>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide">
+    <div class="eyebrow">1.1 · The future continuous · in progress &amp; tact</div>
+    <h2>This time tomorrow…</h2>
+    <div class="pics">
+      <div class="pic"><img src="../assets/vocab/flight.jpg" alt=""><div class="w">I'll be flying</div></div>
+      <div class="pic"><img src="../assets/vocab/luggage.jpg" alt=""><div class="w">I'll have packed</div></div>
+      <div class="pic"><img src="../assets/vocab/email.jpg" alt=""><div class="w">I'll have answered 50 emails</div></div>
+      <div class="pic"><img src="../assets/vocab/station.jpg" alt=""><div class="w">I'll have been waiting for an hour</div></div>
+    </div>
+    <div class="ccq">"Will you use the car tonight?" / "Will you <b>be using</b> the car tonight?" Which could sound like a challenge? <i>(The first.)</i> Why is the second more polite? <i>(It asks about the plan; no pressure to decide now.)</i></div>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide">
+    <div class="eyebrow">1.1 · Simple or continuous? · check the meaning</div>
+    <h2>Result or activity?</h2>
+    <div class="two">
+      <table class="g">
+        <tr><td>By Friday she'll <b>have written</b> three chapters.</td></tr>
+        <tr><td>By Friday she'll <b>have been writing</b> for a month.</td></tr>
+        <tr><td>By the launch we'll <b>have tested</b> every screen.</td></tr>
+        <tr><td>By the launch we'll <b>have been testing</b> for six months.</td></tr>
+      </table>
+      <div class="ccq">Which ones count results? <i>(1 and 3: simple.)</i><br>Which measure an activity? <i>(2 and 4: continuous.)</i><br>"In August they'll have been running the business for 20 years." Will they stop in August? <i>(Probably not.)</i></div>
+    </div>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide">
+    <div class="eyebrow">1.1 · The past looking forward · formal &amp; imminent futures</div>
+    <h2>Plans, near misses and announcements</h2>
+    <table class="g">
+      <tr><th>was going to</th><td>We <b>were going to</b> fly, but the strike changed everything.</td></tr>
+      <tr><th>was about to</th><td>I <b>was about to</b> sign when the phone rang.</td></tr>
+      <tr><th>was to have + pp</th><td>The launch <b>was to have taken</b> place in March. <i>(it didn't)</i></td></tr>
+      <tr><th>be to</th><td>The mayor <b>is to</b> open the site on May 12. · If we <b>are to</b> meet the deadline, …</td></tr>
+      <tr><th>verge · due · set</th><td>They're <b>on the verge of</b> signing. · The fix is <b>due to</b> arrive on the 20th. · The firm is <b>set to</b> expand.</td></tr>
+    </table>
+    <div class="tag"><span class="pill warn">WATCH</span> We're about to sign <s>next week</s> ❌ · <b>about to</b> = any moment now</div>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide">
+    <div class="eyebrow">1.1 · Freer task · 16 min</div>
+    <h2>Project Briefing</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>Groups of 3 · one invented project · a fixed <b>steering meeting</b> date</li>
+        <li>Plan: in progress · completed · duration · a plan that changed · imminent · <i>is to</i> · <i>If we are to…</i></li>
+        <li>Brief another group in <b>2 minutes</b>. Everyone speaks</li>
+        <li>Stakeholders ask tactful questions: <i>Will you be needing…?</i></li>
+      </ul>
+      <div class="ccq">Real project? <i>(No, invented.)</i><br>How long? <i>(Two minutes.)</i><br>"Will you use" or "Will you be using"? <i>(Will you be using.)</i><br>After "by the time"? <i>(Present.)</i></div>
+    </div>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide">
+    <div class="eyebrow">1.2 · Certainty is a dial, not a switch</div>
+    <h2>How sure are you, exactly?</h2>
+    <table class="g">
+      <tr><th>near-certain</th><td><b>must</b> (have) · is <b>bound to</b></td><td>She must be exhausted. · It's bound to happen again.</td></tr>
+      <tr><th>expected</th><td><b>should</b> · <b>ought to</b></td><td>They should be home by now.</td></tr>
+      <tr><th>quite likely</th><td>may / might / could <b>well</b></td><td>The update may well be the cause.</td></tr>
+      <tr><th>possible</th><td>may · might · could</td><td>Prices might fall.</td></tr>
+      <tr><th>slim chance</th><td>might <b>just</b> · could <b>conceivably</b></td><td>It could conceivably be the software.</td></tr>
+      <tr><th>ruled out</th><td><b>can't</b> · can't <b>possibly</b> (have)</td><td>They can't possibly have known.</td></tr>
+    </table>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide">
+    <div class="eyebrow">1.2 · False twins · check the meaning</div>
+    <h2>may well ≠ may as well</h2>
+    <div class="two">
+      <div class="ccq"><b>"The train may well be late."</b><br>Probability or decision? <i>(Probability: quite likely.)</i><br>Stress? <i>(may <b>well</b>)</i></div>
+      <div class="ccq"><b>"The train's late, so we may as well get a coffee."</b><br>Probability or decision? <i>(Decision: no better option.)</i><br>Any feeling? <i>(A little shrug.)</i></div>
+    </div>
+    <div class="tag"><span class="pill lab">TEST</span> "It's probably going to…" → <b>may well</b> · "We might as well just…" → <b>may as well</b></div>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide">
+    <div class="eyebrow">1.2 · The hidden jobs of will &amp; would</div>
+    <h2>Not always about the future</h2>
+    <table class="g">
+      <tr><th>deduction · now</th><td>There's the doorbell. That<b>'ll</b> be the courier.</td></tr>
+      <tr><th>refusal</th><td>He <b>won't</b> listen. · The lock <b>wouldn't</b> turn.</td></tr>
+      <tr><th>typical behavior</th><td>She<b>'ll</b> sit there for hours. · She <b>will</b> keep interrupting!</td></tr>
+      <tr><th>past habit</th><td>Every summer we<b>'d</b> drive to the coast. <i>(actions only)</i></td></tr>
+      <tr><th>criticism</th><td>You <b>would</b> say that!</td></tr>
+      <tr><th>politeness</th><td>I<b>'d</b> suggest a short break. · I <b>wouldn't</b> worry.</td></tr>
+    </table>
+  </section>
+
+  <!-- 12 -->
+  <section class="slide">
+    <div class="eyebrow">1.2 · Model · speculating about now and the past</div>
+    <h2>The dark office</h2>
+    <div class="dlg">
+      <p><span class="sp">Sam:</span> The office is dark and Priya's coat's gone. She <b>must have left</b> early.</p>
+      <p class="b"><span class="sp">Alex:</span> She <b>may well have</b>, though she <b>might just be</b> in the server room.</p>
+      <p><span class="sp">Sam:</span> She <b>won't answer</b> her phone when she's busy, so we <b>might as well</b> email her.</p>
+      <p class="b"><span class="sp">Alex:</span> She <b>should reply</b> by morning. She <b>could have been planning</b> this all week!</p>
+    </div>
+    <div class="ccq">now → must <b>be</b> joking · must <b>be</b> waiting &nbsp;|&nbsp; past → must <b>have</b> left · must <b>have been</b> waiting · <s>must of</s> ❌</div>
+  </section>
+
+  <!-- 13 -->
+  <section class="slide">
+    <div class="eyebrow">1.2 · Freer task · 22 min</div>
+    <h2>The Evidence Ladder</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>Groups of 4 · one invented case file · clues in <b>3 rounds</b></li>
+        <li>Say every idea with its rung: <i>could conceivably · may well · must have</i></li>
+        <li>New clue? Move it up or down, and say why</li>
+        <li>Verdict: 90 seconds + a softened recommendation</li>
+      </ul>
+      <div class="ccq">All clues at once? <i>(No, two per round.)</i><br>Can you say "maybe"? <i>(No: say the rung.)</i><br>The skeptic says…? <i>("But couldn't it be that…?")</i><br>Blame a person without evidence? <i>(No.)</i></div>
+    </div>
+  </section>
+
+  <!-- 14 -->
+  <section class="slide">
+    <div class="eyebrow">1.3 · The mandative subjunctive</div>
+    <h2>It is essential that he <i>be</i> present</h2>
+    <table class="g">
+      <tr><th>Verbs</th><td>recommend · insist · propose · request · require · demand</td><td>We recommend that she <b>chair</b> the meeting.</td></tr>
+      <tr><th>Adjectives</th><td>It is essential / vital / imperative that…</td><td>It is vital that the report <b>reach</b> them by Friday.</td></tr>
+      <tr><th>Nouns</th><td>our recommendation / proposal / requirement that…</td><td>a requirement that each applicant <b>submit</b> references</td></tr>
+      <tr><th>Negative · passive</th><td><b>not</b> + base · <b>be</b> + pp</td><td>that staff <b>not share</b> passwords · that it <b>be reviewed</b></td></tr>
+    </table>
+    <div class="tag"><span class="pill warn">NEVER</span> that he <s>goes</s> · that she <s>doesn't</s> attend · that he <s>to</s> leave</div>
+  </section>
+
+  <!-- 15 -->
+  <section class="slide">
+    <div class="eyebrow">1.3 · Three registers · the lookalike · check the meaning</div>
+    <h2>Formal, softer, informal</h2>
+    <div class="two">
+      <table class="g">
+        <tr><td>I suggest that she <b>be</b> promoted.</td><td>most formal · standard in US</td></tr>
+        <tr><td>…that she <b>should be</b> promoted.</td><td>British · softer</td></tr>
+        <tr><td>…that she <b>is</b> promoted.</td><td>informal</td></tr>
+      </table>
+      <div class="ccq">"The data <b>suggests</b> that he <b>is</b> right." Demand or fact? <i>(Fact: suggest = show.)</i><br>"She insisted that he <b>leave</b>." <i>(Demand.)</i><br>"She insisted that she <b>was</b> innocent." <i>(Fact: she asserted it.)</i></div>
+    </div>
+  </section>
+
+  <!-- 16 -->
+  <section class="slide">
+    <div class="eyebrow">1.3 · Unreal forms · check the meaning</div>
+    <h2>Stepping outside the real</h2>
+    <div class="two">
+      <table class="g">
+        <tr><td>If I <b>were</b> you… · <b>Were</b> we <b>to</b> delay…</td></tr>
+        <tr><td>I wish it <b>were</b> simpler.</td></tr>
+        <tr><td><b>Supposing</b> the budget <b>were</b> cut…</td></tr>
+        <tr><td>It's high time we <b>reviewed</b> this.</td></tr>
+        <tr><td>I'd rather you <b>didn't</b> mention it.</td></tr>
+      </table>
+      <div class="ccq">"He talks as if he <b>owned</b> the company." Does he own it? <i>(No.)</i> Past time? <i>(No, now: past = unreal.)</i><br>"It looks as if it's going to snow." Might it? <i>(Yes: present = possibly true.)</i><br><s>Was</s> I in charge… ❌ → <b>Were</b> I in charge…</div>
+    </div>
+  </section>
+
+  <!-- 17 -->
+  <section class="slide">
+    <div class="eyebrow">1.3 · Freer task · 12 + 8 + 3 min</div>
+    <h2>Policy Memo &amp; Peer Review</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>Groups of 3 · one issue brief · an <b>assigned</b> recommendation</li>
+        <li>120–160 words: background · 3 recommendations · rationale · next steps</li>
+        <li>3 trigger types · 1 negative · 1 passive · 1 unreal form</li>
+        <li>Peer review in 3 passes: <b>accuracy · range · appropriacy</b></li>
+      </ul>
+      <div class="ccq">Your own opinion? <i>(No, the brief's.)</i><br>"that he goes"? <i>(No: that he go.)</i><br>Rewrite their memo? <i>(No: pencil notes.)</i><br>Feedback = ? <i>(A strength, a question, a change.)</i><br>Who decides? <i>(The authors.)</i></div>
+    </div>
+  </section>
+
+  <!-- 18 -->
+  <section class="slide section">
+    <div class="eyebrow">You can now place, weigh and shape</div>
+    <h2>Module 1 done 🎉</h2>
+    <ul class="lab">
+      <li>⏳ By the launch we'll <b>have been testing</b> for six months. It <b>was to have gone</b> live in March.</li>
+      <li>⚖️ It <b>can't possibly have been</b> the cleaners. The update <b>may well</b> be clashing with the backup.</li>
+      <li>📝 It is essential that every new hire <b>be</b> assigned a mentor. <b>Were</b> we to delay, we'd lose good people.</li>
+    </ul>
+    <p class="lead" style="margin-top:10px;max-width:40ch">Homework: online lessons 1.1–1.3 with 🔊. Next: Module 2, mixed conditionals and inversion.</p>
+  </section>
+
+</div>
+
+<div class="count" id="count">1 / 18</div>
+<div class="nav"><button id="prev" aria-label="Previous slide"></button><button id="next" aria-label="Next slide"></button></div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const bar=document.getElementById('bar'), count=document.getElementById('count');
+  let i=0;
+  function show(n){ i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+    bar.style.width=((i+1)/slides.length*100)+'%'; count.textContent=(i+1)+' / '+slides.length; }
+  document.getElementById('next').onclick=()=>show(i+1);
+  document.getElementById('prev').onclick=()=>show(i-1);
+  addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}
+    else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+  });
+  show(0);
+</script>
+</body>
+</html>

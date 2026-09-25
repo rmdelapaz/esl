@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slides — Module 7</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root{--bg:#0b1220;--ink:#edf2fb;--ink2:#a8b6cf;--accent:#7fb2ff;--accent2:#2563eb;--lab:#34d3bd;--warn:#fbbf24;--line:#233252;--code:#101a2e;color-scheme:dark}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;overflow:hidden}
+  .deck{height:100%;width:100%;position:relative}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:6vh 8vw;gap:20px}
+  .slide.on{display:flex}
+  h1,h2,h3{font-family:"Archivo",sans-serif;line-height:1.1;text-wrap:balance}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  .slide h1{font-size:clamp(2rem,6vw,4rem);font-weight:800;letter-spacing:-.02em}
+  .slide h2{font-size:clamp(1.5rem,4.2vw,2.8rem);font-weight:800;letter-spacing:-.01em}
+  .slide p.lead{font-size:clamp(1.05rem,2.4vw,1.5rem);color:var(--ink2);max-width:26ch}
+  ul{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:6px}
+  ul li{position:relative;padding-left:34px;font-size:clamp(1.05rem,2.3vw,1.6rem)}
+  ul li::before{content:"";position:absolute;left:0;top:.55em;width:12px;height:12px;border-radius:3px;background:var(--accent);transform:rotate(45deg)}
+  ul.lab li::before{background:var(--lab)}
+  code.k{font-family:"JetBrains Mono",monospace;color:#cfe0ff;font-size:.92em}
+  pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:22px 26px;font-family:"JetBrains Mono",monospace;font-size:clamp(.85rem,1.9vw,1.3rem);line-height:1.55;overflow:auto;max-width:100%}
+  pre .k{color:#7dd3fc} pre .s{color:#86efac} pre .c{color:#7183a3;font-style:italic}
+  .tag{display:inline-flex;align-items:center;gap:10px;font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);color:var(--ink2)}
+  .tag .pill{background:var(--accent2);color:#fff;font-weight:700;border-radius:999px;padding:3px 12px;letter-spacing:.06em}
+  .tag .pill.lab{background:var(--lab);color:#062b26} .tag .pill.warn{background:var(--warn);color:#3a2a05}
+  .section{background:linear-gradient(135deg,#132a52,#0b1220)}
+  .section .big{font-size:clamp(3rem,12vw,8rem);font-family:"Archivo";font-weight:800;color:var(--accent2);line-height:.9}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+  @media (max-width:760px){.two{grid-template-columns:1fr}}
+  .bar{position:fixed;left:0;top:0;height:4px;background:var(--accent2);width:0;transition:width .25s;z-index:5}
+  .count{position:fixed;right:16px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink2);z-index:5}
+  .nav{position:fixed;inset:auto 0 0 0;display:flex;justify-content:space-between;pointer-events:none;z-index:4}
+  .nav button{pointer-events:auto;background:transparent;border:none;color:transparent;width:22vw;height:100vh;cursor:pointer}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+  /* ESL extras (picture vocab, grammar tables, dialogue, clocks) */
+  .pics{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,1.6vw,18px)}
+  .pics.six{grid-template-columns:repeat(6,1fr)}
+  .pic{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center}
+  .pic img{width:100%;max-width:150px;aspect-ratio:1;object-fit:cover;border-radius:10px;background:#FFF3E0;display:block;margin:0 auto}
+  .pic .emo{font-size:clamp(2.6rem,7vw,5rem);line-height:1;aspect-ratio:1;max-width:150px;margin:0 auto;display:flex;align-items:center;justify-content:center}
+  .pic .w{font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(.9rem,2vw,1.35rem);margin-top:6px}
+  @media (max-width:760px){.pics,.pics.six{grid-template-columns:repeat(3,1fr)}}
+  table.g{border-collapse:collapse;font-size:clamp(.95rem,2.1vw,1.45rem);width:100%;max-width:1000px}
+  table.g th,table.g td{border:1px solid var(--line);padding:10px 16px;text-align:left}
+  table.g th{background:var(--code);color:var(--accent);font-family:"JetBrains Mono",monospace;font-size:.8em;letter-spacing:.04em}
+  table.g b{color:#ffd166}
+  .dlg{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:18px 24px;display:flex;flex-direction:column;gap:8px;font-size:clamp(1rem,2.2vw,1.45rem);max-width:1000px}
+  .dlg .sp{display:inline-block;min-width:3.6em;font-weight:700;color:var(--accent)}
+  .dlg .b .sp{color:#c4a1ff}
+  .ccq{font-size:clamp(1rem,2.2vw,1.45rem);border:1px dashed var(--line);border-radius:12px;padding:12px 18px;background:var(--code)}
+  .ccq i{color:var(--ink2)}
+  .clocks{display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,34px);align-items:flex-start}
+  .clocks figure{text-align:center}
+  .clocks svg{width:clamp(96px,14vw,170px);height:auto}
+  .clocks figcaption{font-size:clamp(.95rem,2vw,1.3rem);margin-top:6px}
+  .clocks figcaption small{display:block;color:var(--ink2);font-size:.8em}
+  .snd{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .snd div{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:clamp(1rem,2.2vw,1.5rem)}
+  .snd div b{display:block;font-family:"Archivo";font-size:1.5em;color:var(--accent)}
+  .snd div small{color:var(--ink2)}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="deck" id="deck">
+
+  <!-- 1 -->
+  <section class="slide on section">
+    <div class="eyebrow">Advanced English (C1) · Instructor Kit</div>
+    <h1>Module 7<br>Listening, Speaking &amp; Delivery</h1>
+    <p class="lead">Take it in. Give it out. Share the floor.</p>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide">
+    <div class="eyebrow">Classes C20–C22 · the map</div>
+    <h2>Three workshops on live spoken English</h2>
+    <ul>
+      <li><b>7.1</b> Lecture lab: signposts, main idea vs detail, Cornell notes, <i>The upshot is…</i></li>
+      <li><b>7.2</b> Pronunciation workshop: stress, pausing, the tonic, <i>It's a good idea ↘↗…</i></li>
+      <li><b>7.3</b> Seminar: <i>Could I just come in here? · Building on what you said… · I take your point, but…</i></li>
+    </ul>
+    <div class="tag"><span class="pill">NOTE</span> Clear rhythm and melody, not a different accent. In the seminar, argue your card.</div>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide">
+    <div class="eyebrow">7.1 · How fluent listeners listen</div>
+    <h2>Read the blueprint, not every brick</h2>
+    <div class="two">
+      <ul>
+        <li>A talk has a shape: <b>preview → points → recap</b></li>
+        <li>The speaker <b>tells you</b> the shape as they go</li>
+        <li>Missed a word? Let it go. Rejoin at the next signpost</li>
+        <li>Main ideas come round <b>twice</b>: the recap is your safety net</li>
+      </ul>
+      <div class="ccq">You missed one word in point two. Disaster? <i>(No.)</i><br>What do you do? <i>(Listen for the next signpost.)</i><br>"This talk falls into three parts." What do you draw? <i>(1 · 2 · 3, with space.)</i></div>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide">
+    <div class="eyebrow">7.1 · Signposting · the speaker's road signs</div>
+    <h2>What does each sign tell you to do?</h2>
+    <table class="g">
+      <tr><th>Function</th><th>You hear…</th><th>You do…</th></tr>
+      <tr><td>Preview</td><td>This talk falls into three parts.</td><td>draw the map</td></tr>
+      <tr><td>Sequence</td><td>That brings me to my second point…</td><td>new heading</td></tr>
+      <tr><td>Example</td><td>A case in point is…</td><td>indent · keep it short</td></tr>
+      <tr><td>Emphasis</td><td>Crucially… · I can't stress this enough.</td><td>⭐ write it in full</td></tr>
+      <tr><td>Digression</td><td>As an aside… · I won't dwell on…</td><td>skip it</td></tr>
+      <tr><td>Recap</td><td>To recap… · <b>The upshot is…</b></td><td>the exam answer</td></tr>
+    </table>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide">
+    <div class="eyebrow">7.1 · Predict · catch the stance</div>
+    <h2>Hear it coming</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>Cue</th><th>Predict</th></tr>
+        <tr><td>It's widely believed that…</td><td>"…<b>but</b> in fact"</td></tr>
+        <tr><td>On the one hand…</td><td>on the other hand</td></tr>
+        <tr><td>There are two problems with this.</td><td>exactly two</td></tr>
+        <tr><td>Now, you might think…</td><td>objection + answer</td></tr>
+        <tr><td>So why does this matter?</td><td>a main idea</td></tr>
+      </table>
+      <div class="ccq">"<b>One explanation</b> is that…" Sure? <i>(No, a hedge.)</i><br>"<b>One of the most reliable</b> findings…" Sure? <i>(Yes, a booster.)</i><br>"this <b>so-called</b> solution" Enthusiastic? <i>(No, skeptical.)</i></div>
+    </div>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide">
+    <div class="eyebrow">7.1 · Notes · a map, not a transcript</div>
+    <h2>Keywords · symbols · hierarchy · Cornell</h2>
+    <div class="two">
+      <div>
+        <div class="pics" style="grid-template-columns:repeat(2,1fr);max-width:340px">
+          <div class="pic"><img src="../assets/vocab/notebook.jpg" alt=""><div class="w">take notes</div></div>
+          <div class="pic"><img src="../assets/vocab/pen.jpg" alt=""><div class="w">jot down</div></div>
+        </div>
+        <pre>climate change is causing an increase
+in migration
+<span class="c">→</span>  <span class="s">climate → migration ↑</span>
+
+→ leads to   ↑↓ rise/fall   = is
+≠ is not     ∴ therefore    b/c  w/
+⭐ stressed   ? check later</pre>
+      </div>
+      <table class="g">
+        <tr><th style="width:32%">CUES<br>(add after)</th><th>NOTES (live)</th></tr>
+        <tr><td>Thesis?<br>Why does spacing work?</td><td>1. forgetting<br>&nbsp;&nbsp;– &gt; ½ lost in 1 day<br>&nbsp;&nbsp;⭐ review → curve flattens</td></tr>
+        <tr><th colspan="2">SUMMARY (from memory)</th></tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide">
+    <div class="eyebrow">7.1 · The Listening Lab · about 35 min</div>
+    <h2>🎧 "Why Cramming Fails"</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>Key words: <b>to cram</b> · <b>retrieval</b> · <b>the spacing effect</b></li>
+        <li><b>Listen 1</b>: I stop 4 times · 30 seconds to write</li>
+        <li>Compare with a partner · add <b>cues</b> on the left</li>
+        <li><b>Listen 2</b>: natural speed, no stops · second color</li>
+        <li>Questions → a 3–4-sentence summary → peer review</li>
+      </ul>
+      <div class="ccq">How many times will you hear it? <i>(Twice.)</i><br>Stops the second time? <i>(No.)</i><br>Sentences or keywords? <i>(Keywords.)</i><br>Examples in the summary? <i>(No.)</i></div>
+    </div>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide">
+    <div class="eyebrow">7.2 · Stress-timing · tap the beats</div>
+    <h2>Strong beats, small words</h2>
+    <pre>  ●          ●         ●          ●          ●
+I'd <span class="k">LIKE</span> to <span class="k">BOOK</span> a <span class="k">TA</span>ble for <span class="k">TWO</span> at <span class="k">EIGHT</span>.
+
+<span class="c">same beats, more words squeezed in:</span>
+I'll <span class="k">TELL</span> you.
+I would have been going to <span class="k">TELL</span> you.</pre>
+    <div class="ccq">Which words carry the meaning? <i>(like, book, table, two, eight)</i> · Is a weak "to" lazy? <i>(No, it's standard.)</i> · Robot voice, every syllable equal: easier to follow? <i>(No!)</i></div>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide">
+    <div class="eyebrow">7.2 · Weak forms · American English</div>
+    <h2>Let the little words shrink</h2>
+    <table class="g">
+      <tr><th>Word</th><th>Weak</th><th>Example</th></tr>
+      <tr><td>to · of · and</td><td>/tə/ · /əv/ · /ən/</td><td>a <b>CUP</b> (ə)f <b>TEA</b> · <b>FISH</b> (ə)n <b>CHIPS</b></td></tr>
+      <tr><td>for · or · at</td><td>/fɚ/ · /ɚ/ · /ət/</td><td>a <b>TA</b>ble for <b>TWO</b></td></tr>
+      <tr><td>was · them · can</td><td>/wəz/ · /ðəm/ · /kən/</td><td>I (kən) <b>COME</b></td></tr>
+      <tr><td>can't</td><td><b>full</b>: /kænt/</td><td>I <b>CAN'T COME</b></td></tr>
+    </table>
+    <div class="tag"><span class="pill lab">LINK</span> turn‿it‿off → "tur-ni-toff" · an‿apple → "a-napple"</div>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide">
+    <div class="eyebrow">7.2 · Thought groups · pause at meaning</div>
+    <h2>Where you pause changes what you mean</h2>
+    <div class="two">
+      <div class="ccq"><b>"Let's eat / Grandma."</b> vs <b>"Let's eat Grandma."</b><br><i>(An invitation… or an alarming suggestion.)</i><br><br><b>"My brother / who lives in Rome / is a chef."</b> How many brothers? <i>(One.)</i><br><b>"My brother who lives in Rome / is a chef."</b> <i>(More than one.)</i></div>
+      <div class="ccq">When the meeting finishes / I'll send you the notes / and we can talk tomorrow.<br><br>Pause after "the" to breathe? <i>(No: pause at a joint, after a clause, before but / and / because.)</i></div>
+    </div>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide">
+    <div class="eyebrow">7.2 · The tonic · stress the new · contrast</div>
+    <h2>I didn't say she took it.</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>Meaning</th></tr>
+        <tr><td><b>A</b> Someone else said it, not me.</td></tr>
+        <tr><td><b>B</b> I deny saying it.</td></tr>
+        <tr><td><b>C</b> I implied it, but didn't say it aloud.</td></tr>
+        <tr><td><b>D</b> Someone took it, but not her.</td></tr>
+        <tr><td><b>E</b> She did something with it, but didn't take it.</td></tr>
+        <tr><td><b>F</b> She took something, but not this.</td></tr>
+      </table>
+      <div class="ccq">"Where's the report?" "It's on your <b>DESK</b>." Why not stress "report"? <i>(It's given: old information.)</i><br>"No, the <b>RED</b> one." What did the other person think? <i>(Another color.)</i><br>Listen: which meaning, A–F?</div>
+    </div>
+  </section>
+
+  <!-- 12 -->
+  <section class="slide">
+    <div class="eyebrow">7.2 · Intonation for attitude · check the meaning</div>
+    <h2>↘ &nbsp; ↗ &nbsp; ↘↗</h2>
+    <table class="g">
+      <tr><th>Tune</th><th>Means</th><th>Example</th></tr>
+      <tr><td>↘ fall</td><td>certain, finished · wh-questions</td><td>I live in Chicago ↘. · Where do you work ↘?</td></tr>
+      <tr><td>↗ rise</td><td>yes/no questions · more is coming</td><td>Are you ready ↗? · First ↗, we book; then ↘, we pay.</td></tr>
+      <tr><td>↘↗ fall-rise</td><td>reservation · an implied "but"</td><td>It's a good idea ↘↗… · It's Friday ↘↗… in theory.</td></tr>
+    </table>
+    <div class="tag"><span class="pill warn">UPTALK</span> "I finished the report ↗? And sent it ↗?" In an interview, how do you sound? (Unsure.) Fall to finish.</div>
+  </section>
+
+  <!-- 13 -->
+  <section class="slide">
+    <div class="eyebrow">7.2 · Freer task · 15 min</div>
+    <h2>🎙️ The Delivery Clinic</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>Threes: <b>speaker · coach · listener</b></li>
+        <li>Mark up 60–90 seconds: CAPITALS · / · ↘ ↗ ↘↗</li>
+        <li>Speaker delivers · coach follows the page and ticks the checklist</li>
+        <li>Listener (no page): the main point in one sentence</li>
+        <li>Coach: one thing that worked + <b>one</b> change, demonstrated</li>
+      </ul>
+      <div class="ccq">Does the listener see the page? <i>(No.)</i><br>How many changes? <i>(One.)</i><br>Does the coach talk about accent? <i>(No: stress, pauses, tunes.)</i><br>How long? <i>(60–90 seconds.)</i></div>
+    </div>
+  </section>
+
+  <!-- 14 -->
+  <section class="slide">
+    <div class="eyebrow">7.3 · Turn-taking · building · checking</div>
+    <h2>In · hold · over · build · check</h2>
+    <table class="g">
+      <tr><th>Come in</th><td>Could I just come <b>in</b> here ↗? · Sorry to jump in, but…</td></tr>
+      <tr><th>Hold</th><td>If I could just <b>fin</b>ish my point… · Just to finish my thought…</td></tr>
+      <tr><th>Hand over</th><td>What are your <b>thoughts</b>, Priya ↘? · Does anyone see it differently?</td></tr>
+      <tr><th>Build on</th><td>Building on what Anna said… · That ties in with Tom's point…</td></tr>
+      <tr><th>Check</th><td>When you say "flexible," do you mean…? · So if I understand you correctly, … ↗?</td></tr>
+    </table>
+    <div class="ccq">"Could I just come in here?" Question or order? <i>(A question: the speaker can say "Let me just finish.")</i> · Why say "Priya"? <i>(It draws her in and shows you're tracking everyone.)</i></div>
+  </section>
+
+  <!-- 15 -->
+  <section class="slide">
+    <div class="eyebrow">7.3 · Respectful challenge · check the meaning</div>
+    <h2>Acknowledge → soften → challenge</h2>
+    <div class="two">
+      <div class="ccq"><b>"No, that's wrong."</b><br>Stronger view? <i>(No, only a higher temperature.)</i><br><br><b>"I take your point about speed ↘↗, but I'm not sure we've thought through the cost ↘."</b><br>Agrees at all? <i>(Partly: about speed.)</i> Weak challenge? <i>(No: the cost, clearly.)</i></div>
+      <ul>
+        <li>Up to a point, yes, but…</li>
+        <li>I'd question whether…</li>
+        <li>Isn't there a risk that…?</li>
+        <li>Where we <b>do</b> agree is…</li>
+      </ul>
+    </div>
+    <div class="tag"><span class="pill warn">WATCH</span> <s>I am agree</s> · <s>discuss about</s> · <s>According to me</s> → <b>In my view</b></div>
+  </section>
+
+  <!-- 16 -->
+  <section class="slide">
+    <div class="eyebrow">7.3 · Model · a seminar in action</div>
+    <h2>The four-day week</h2>
+    <div class="dlg">
+      <p><span class="sp">Dana:</span> I think a four-day week would boost productivity. <b>What are your thoughts, Ben?</b></p>
+      <p class="b"><span class="sp">Ben:</span> <b>Building on what you said</b>, several trials found output holding steady.</p>
+      <p><span class="sp">Priya:</span> <b>Could I just come in here? I take your point</b> about productivity, <b>but I'd question whether</b> it works for a client-facing team.</p>
+      <p class="b"><span class="sp">Dana:</span> <b>So if I understand you correctly</b>, your worry is coverage?</p>
+      <p><span class="sp">Marco:</span> <b>So where does that leave us?</b> Maybe we trial it for two months?</p>
+      <p class="b"><span class="sp">Dana:</span> <b>So, to sum up</b>, we broadly agree on a trial. <b>Shall we move on</b> to who'd own it?</p>
+    </div>
+  </section>
+
+  <!-- 17 -->
+  <section class="slide">
+    <div class="eyebrow">7.3 · Freer task · 10 + 15 min</div>
+    <h2>🗣️ The Seminar</h2>
+    <div class="two">
+      <ul class="lab">
+        <li><b>Facilitator</b>: opens · hands over by name · refocuses</li>
+        <li><b>Summarizer</b>: half-time summary + final summary</li>
+        <li><b>Challenger</b>: tests <b>both</b> sides · acknowledges first</li>
+        <li><b>Contributors</b>: argue the side on the card</li>
+        <li><b>Observer</b>: silent · tallies moves · feedback at the end</li>
+        <li>4 move cards each: play one face up when you use it</li>
+      </ul>
+      <div class="ccq">Your own opinion? <i>(No, the card.)</i><br>When does the summarizer speak? <i>(Half time and the end.)</i><br>Before every challenge? <i>(Acknowledge.)</i><br>All cards down: keep arguing? <i>(No, only hand over.)</i></div>
+    </div>
+  </section>
+
+  <!-- 18 -->
+  <section class="slide section">
+    <div class="eyebrow">You can now take it in, give it out and share the floor</div>
+    <h2>Module 7 done 🎉</h2>
+    <ul class="lab">
+      <li>🎧 <b>This talk falls into three parts.</b> · <b>As an aside</b> → skip · <b>The upshot is</b> → ⭐</li>
+      <li>🎙️ I didn't say <b>SHE</b> took it. · It's a good idea ↘↗… · statements fall ↘</li>
+      <li>🗣️ <b>Building on</b> what Lena said… · <b>I take your point, but</b>… · <b>So where does that leave us?</b></li>
+    </ul>
+    <p class="lead" style="margin-top:10px;max-width:40ch">Homework: online lessons 7.1–7.3 with 🔊. Next: Module 8, fluency, spontaneity and the final project.</p>
+  </section>
+
+
+</div>
+
+<div class="count" id="count">1 / 18</div>
+<div class="nav"><button id="prev" aria-label="Previous slide"></button><button id="next" aria-label="Next slide"></button></div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const bar=document.getElementById('bar'), count=document.getElementById('count');
+  let i=0;
+  function show(n){ i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+    bar.style.width=((i+1)/slides.length*100)+'%'; count.textContent=(i+1)+' / '+slides.length; }
+  document.getElementById('next').onclick=()=>show(i+1);
+  document.getElementById('prev').onclick=()=>show(i-1);
+  addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}
+    else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+  });
+  show(0);
+</script>
+</body>
+</html>

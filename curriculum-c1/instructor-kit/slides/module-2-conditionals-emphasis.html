@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slides — Module 2</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root{--bg:#0b1220;--ink:#edf2fb;--ink2:#a8b6cf;--accent:#7fb2ff;--accent2:#2563eb;--lab:#34d3bd;--warn:#fbbf24;--line:#233252;--code:#101a2e;color-scheme:dark}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;overflow:hidden}
+  .deck{height:100%;width:100%;position:relative}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:6vh 8vw;gap:20px}
+  .slide.on{display:flex}
+  h1,h2,h3{font-family:"Archivo",sans-serif;line-height:1.1;text-wrap:balance}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  .slide h1{font-size:clamp(2rem,6vw,4rem);font-weight:800;letter-spacing:-.02em}
+  .slide h2{font-size:clamp(1.5rem,4.2vw,2.8rem);font-weight:800;letter-spacing:-.01em}
+  .slide p.lead{font-size:clamp(1.05rem,2.4vw,1.5rem);color:var(--ink2);max-width:26ch}
+  ul{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:6px}
+  ul li{position:relative;padding-left:34px;font-size:clamp(1.05rem,2.3vw,1.6rem)}
+  ul li::before{content:"";position:absolute;left:0;top:.55em;width:12px;height:12px;border-radius:3px;background:var(--accent);transform:rotate(45deg)}
+  ul.lab li::before{background:var(--lab)}
+  code.k{font-family:"JetBrains Mono",monospace;color:#cfe0ff;font-size:.92em}
+  pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:22px 26px;font-family:"JetBrains Mono",monospace;font-size:clamp(.85rem,1.9vw,1.3rem);line-height:1.55;overflow:auto;max-width:100%}
+  pre .k{color:#7dd3fc} pre .s{color:#86efac} pre .c{color:#7183a3;font-style:italic}
+  .tag{display:inline-flex;align-items:center;gap:10px;font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);color:var(--ink2)}
+  .tag .pill{background:var(--accent2);color:#fff;font-weight:700;border-radius:999px;padding:3px 12px;letter-spacing:.06em}
+  .tag .pill.lab{background:var(--lab);color:#062b26} .tag .pill.warn{background:var(--warn);color:#3a2a05}
+  .section{background:linear-gradient(135deg,#132a52,#0b1220)}
+  .section .big{font-size:clamp(3rem,12vw,8rem);font-family:"Archivo";font-weight:800;color:var(--accent2);line-height:.9}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+  @media (max-width:760px){.two{grid-template-columns:1fr}}
+  .bar{position:fixed;left:0;top:0;height:4px;background:var(--accent2);width:0;transition:width .25s;z-index:5}
+  .count{position:fixed;right:16px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink2);z-index:5}
+  .nav{position:fixed;inset:auto 0 0 0;display:flex;justify-content:space-between;pointer-events:none;z-index:4}
+  .nav button{pointer-events:auto;background:transparent;border:none;color:transparent;width:22vw;height:100vh;cursor:pointer}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+  /* ESL extras (picture vocab, grammar tables, dialogue, clocks) */
+  .pics{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,1.6vw,18px)}
+  .pics.six{grid-template-columns:repeat(6,1fr)}
+  .pic{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center}
+  .pic img{width:100%;max-width:150px;aspect-ratio:1;object-fit:cover;border-radius:10px;background:#FFF3E0;display:block;margin:0 auto}
+  .pic .emo{font-size:clamp(2.6rem,7vw,5rem);line-height:1;aspect-ratio:1;max-width:150px;margin:0 auto;display:flex;align-items:center;justify-content:center}
+  .pic .w{font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(.9rem,2vw,1.35rem);margin-top:6px}
+  @media (max-width:760px){.pics,.pics.six{grid-template-columns:repeat(3,1fr)}}
+  table.g{border-collapse:collapse;font-size:clamp(.95rem,2.1vw,1.45rem);width:100%;max-width:1000px}
+  table.g th,table.g td{border:1px solid var(--line);padding:10px 16px;text-align:left}
+  table.g th{background:var(--code);color:var(--accent);font-family:"JetBrains Mono",monospace;font-size:.8em;letter-spacing:.04em}
+  table.g b{color:#ffd166}
+  .dlg{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:18px 24px;display:flex;flex-direction:column;gap:8px;font-size:clamp(1rem,2.2vw,1.45rem);max-width:1000px}
+  .dlg .sp{display:inline-block;min-width:3.6em;font-weight:700;color:var(--accent)}
+  .dlg .b .sp{color:#c4a1ff}
+  .ccq{font-size:clamp(1rem,2.2vw,1.45rem);border:1px dashed var(--line);border-radius:12px;padding:12px 18px;background:var(--code)}
+  .ccq i{color:var(--ink2)}
+  .clocks{display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,34px);align-items:flex-start}
+  .clocks figure{text-align:center}
+  .clocks svg{width:clamp(96px,14vw,170px);height:auto}
+  .clocks figcaption{font-size:clamp(.95rem,2vw,1.3rem);margin-top:6px}
+  .clocks figcaption small{display:block;color:var(--ink2);font-size:.8em}
+  .snd{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .snd div{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:clamp(1rem,2.2vw,1.5rem)}
+  .snd div b{display:block;font-family:"Archivo";font-size:1.5em;color:var(--accent)}
+  .snd div small{color:var(--ink2)}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="deck" id="deck">
+
+  <!-- 1 -->
+  <section class="slide on section">
+    <div class="eyebrow">Advanced English (C1) · Instructor Kit</div>
+    <h1>Module 2<br>Conditionals, Inversion &amp; Emphasis</h1>
+    <p class="lead">Weigh the options. Add the weight. Place the weight.</p>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide">
+    <div class="eyebrow">Classes C4–C6 · the map</div>
+    <h2>Where does the weight fall?</h2>
+    <ul>
+      <li><b>2.1</b> Mixed conditionals &amp; alternatives to <i>if</i>: <i>If they had accepted, they'd be bigger now · provided that · but for…</i></li>
+      <li><b>2.2</b> Inversion for emphasis &amp; style: <i>Never have I… · Had we known… · So great was…</i></li>
+      <li><b>2.3</b> Clefts &amp; fronting for cohesion: <i>It wasn't the price that… · What happened was… · The first, we dismissed.</i></li>
+    </ul>
+    <div class="tag"><span class="pill">NOTE</span> Your real life, a new identity card, or an invented company: all are equally good. In role-plays, speak for the card.</div>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide">
+    <div class="eyebrow">2.1 · Mixed conditionals · diagnose each clause</div>
+    <h2>The condition and the result live in different times</h2>
+    <table class="g">
+      <tr><th>Direction</th><th>Form</th><th>Example</th></tr>
+      <tr><td>past → <b>present</b></td><td>if + had done → would do</td><td>If we <b>had accepted</b> the offer, we<b>'d be</b> twice the size <b>now</b>.</td></tr>
+      <tr><td>present → <b>past</b></td><td>if + did / were → would have done</td><td>If she <b>weren't</b> so cautious, she <b>would have invested</b> years ago.</td></tr>
+    </table>
+    <div class="ccq">"If she weren't so cautious…" Is she cautious now? <i>(Yes, it's her character.)</i> Did she invest? <i>(No.)</i> · "If I had studied medicine, I <s>would have been</s> a doctor now." Fix it? <i>(I'd be: the result is now.)</i></div>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide">
+    <div class="eyebrow">2.1 · Same event, three shades · check the meaning</div>
+    <h2>fails · should fail · were to fail</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>If-clause</th><th>Probability · register</th></tr>
+        <tr><td>If the merger <b>fails</b>…</td><td>real · we're planning for it</td></tr>
+        <tr><td>If the merger <b>should fail</b>…</td><td>unlikely · tentative</td></tr>
+        <tr><td>If the merger <b>were to fail</b>…</td><td>hypothesis · boardroom formal</td></tr>
+      </table>
+      <div class="ccq">Which is least likely? <i>(should / were to)</i><br>Which would you hear in a formal report? <i>(were to)</i><br>Does the event change? <i>(No: only the distance and the formality.)</i><br>Coming in 2.2: <b>Should</b> it fail… · <b>Were</b> it to fail…</div>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide">
+    <div class="eyebrow">2.1 · Alternatives to "if" · each adds a twist</div>
+    <h2>Choose the exact condition</h2>
+    <table class="g">
+      <tr><th>provided (that) · as long as</th><td>only on this condition</td><td>We'll sign <b>provided that</b> the date holds.</td></tr>
+      <tr><th>on condition that</th><td>formal stipulation</td><td>Funds released <b>on condition that</b> the audit continues.</td></tr>
+      <tr><th>unless</th><td>except if</td><td>We'll leave at six <b>unless</b> you object.</td></tr>
+      <tr><th>supposing · what if</th><td>a spoken hypothesis</td><td><b>Supposing</b> the client says no?</td></tr>
+      <tr><th>otherwise · even if</th><td>or else · regardless</td><td><b>Even if</b> it rains, we'll go.</td></tr>
+    </table>
+    <div class="tag"><span class="pill warn">TEST</span> <i>unless</i> only if "except if" fits · I'd be amazed <s>unless she won</s> → <b>if she didn't win</b></div>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide">
+    <div class="eyebrow">2.1 · in case ≠ if · before or when?</div>
+    <h2>A precaution, taken now</h2>
+    <div class="pics">
+      <div class="pic"><img src="../assets/vocab/umbrella.jpg" alt=""><div class="w">in case it rains</div></div>
+      <div class="pic"><img src="../assets/vocab/mobile-phone.jpg" alt=""><div class="w">a charger, in case the battery dies</div></div>
+      <div class="pic"><img src="../assets/vocab/passport.jpg" alt=""><div class="w">a copy, in case it's lost</div></div>
+      <div class="pic"><img src="../assets/vocab/key.jpg" alt=""><div class="w">a spare key, in case…</div></div>
+    </div>
+    <div class="ccq">"I'll take an umbrella <b>in case</b> it rains." When do I take it? <i>(Now, before.)</i> · "…<b>if</b> it rains." <i>(Only when it rains.)</i> · "Call me in case you need help"? <i>(Really a condition → if you need help.)</i></div>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide">
+    <div class="eyebrow">2.1 · The decisive factor · + a NOUN</div>
+    <h2>But for one detail…</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>Frame</th><th>Example</th></tr>
+        <tr><td><b>but for</b> (formal)</td><td>But for your help, I would have failed.</td></tr>
+        <tr><td><b>if it weren't for</b> (now)</td><td>If it weren't for the traffic, the commute would be pleasant.</td></tr>
+        <tr><td><b>if it hadn't been for</b> (then)</td><td>If it hadn't been for one witness, the case would have collapsed.</td></tr>
+      </table>
+      <div class="ccq">Did you help? <i>(Yes.)</i> Did I fail? <i>(No.)</i><br>Is there traffic now? <i>(Yes.)</i><br>"But for you helped me"? <i>(No: a noun → your help.)</i></div>
+    </div>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide">
+    <div class="eyebrow">2.1 · Freer task · 18 min</div>
+    <h2>📊 The Case Study Panel</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>A: <b>the story</b> · B: <b>the numbers &amp; hinge factors</b>. Tell, don't show</li>
+        <li>Harbor Fresh · Kestrel Software · Maple &amp; Stone · Northgate Textiles</li>
+        <li>3-minute analysis: 2 mixed conditionals, <i>but for</i>, terms, a <i>were to</i></li>
+        <li>The board asks: <i>Supposing…? What if…?</i></li>
+      </ul>
+      <div class="ccq">Show your card? <i>(No, tell it.)</i><br>How long? <i>(Three minutes.)</i><br>After <i>but for</i>? <i>(A noun.)</i><br>Who ticks the checklist? <i>(The language monitor.)</i><br>Real companies? <i>(No, invented.)</i></div>
+    </div>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide">
+    <div class="eyebrow">2.2 · Inversion · front the trigger, flip the auxiliary</div>
+    <h2>Never have I…</h2>
+    <table class="g">
+      <tr><th>Trigger</th><th>Plain</th><th>Inverted</th></tr>
+      <tr><td>Never</td><td>I had never seen…</td><td><b>Never had I</b> seen…</td></tr>
+      <tr><td>Little (no auxiliary)</td><td>He little knew…</td><td><b>Little did he know</b>… (<s>knew</s>)</td></tr>
+      <tr><td>Not only</td><td>She not only resigned…</td><td><b>Not only did she</b> resign, but she also…</td></tr>
+      <tr><td>Only when</td><td>We realized only when it ended.</td><td>Only when it ended <b>did we</b> realize.</td></tr>
+      <tr><td>Under no circumstances</td><td>You should not sign it.</td><td>Under no circumstances <b>should you</b> sign it.</td></tr>
+    </table>
+    <div class="tag"><span class="pill warn">NO INVERSION</span> I have never… (not fronted) · <b>Only Sarah</b> knew (a subject) · Here <b>it</b> comes · That book, I've never read</div>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide">
+    <div class="eyebrow">2.2 · Dropping "if" · so &amp; such</div>
+    <h2>Had · Were · Should</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>If…</th><th>Inverted</th></tr>
+        <tr><td>If I had known…</td><td><b>Had I known</b>…</td></tr>
+        <tr><td>If she were to accept…</td><td><b>Were she to accept</b>…</td></tr>
+        <tr><td>If you should require…</td><td><b>Should you require</b>…</td></tr>
+        <tr><td>If it had not been for…</td><td><b>Had it not been for</b>…</td></tr>
+      </table>
+      <div class="ccq">"Hadn't I known…" <i>(A question! → Had I not known.)</i><br><b>So great was</b> the demand that the servers crashed.<br><b>Such was</b> his anger that no one spoke.<br><i>In the doorway stood a stranger.</i> (literary)</div>
+    </div>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide">
+    <div class="eyebrow">2.2 · Model · the speechwriter's edit</div>
+    <h2>Weight or pomp?</h2>
+    <div class="dlg">
+      <p><span class="sp">Manager:</span> "I have never worked with anyone like Grace."</p>
+      <p class="b"><span class="sp">Writer:</span> "Never have I worked with anyone quite like Grace."</p>
+      <p><span class="sp">Manager:</span> And "So calm was she that nobody panicked"?</p>
+      <p class="b"><span class="sp">Writer:</span> That's three in a row. Keep two, and let the rest breathe.</p>
+    </div>
+    <div class="ccq">A toast: "Rarely does a team…" <i>(WEIGHT)</i> · A text: "Never have I been so hungry." <i>(POMP, unless it's a joke)</i> · Four inversions in one paragraph? <i>(POMP: one well-placed inversion beats three.)</i></div>
+  </section>
+
+  <!-- 12 -->
+  <section class="slide">
+    <div class="eyebrow">2.2 · Freer task · 20 min</div>
+    <h2>🎤 The Speechwriter</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>A brief: a tribute · an outage statement · a science fair · a safety talk</li>
+        <li>Rewrite: <b>3–5</b> inversions, 3 triggers, 1 <i>Had / Were / Should</i>, 1 <i>so / such</i></li>
+        <li>The editor <b>cuts one</b> that isn't earning its place</li>
+        <li>The podium: 60–90 seconds · WEIGHT or POMP?</li>
+      </ul>
+      <div class="ccq">As many inversions as possible? <i>(No: 3–5.)</i><br>What does the editor do? <i>(Cuts one.)</i><br>How long at the podium? <i>(60–90 seconds.)</i><br>After each speech? <i>(Praise · Probe · Polish.)</i></div>
+    </div>
+  </section>
+
+  <!-- 13 -->
+  <section class="slide">
+    <div class="eyebrow">2.3 · One fact, three shapes · check the meaning</div>
+    <h2>Her attitude impressed me.</h2>
+    <table class="g">
+      <tr><th>Structure</th><th>Sentence</th><th>Answers the question…</th></tr>
+      <tr><td>it-cleft</td><td><b>It was</b> her attitude <b>that</b> impressed me.</td><td>Was it her CV? <i>(spotlight, contrast)</i></td></tr>
+      <tr><td>what-cleft</td><td><b>What</b> impressed me <b>was</b> her attitude.</td><td>What impressed you? <i>(focus at the end)</i></td></tr>
+      <tr><td>fronting</td><td>Her attitude, I could not fault.</td><td>And her attitude? <i>(links back)</i></td></tr>
+    </table>
+    <div class="tag"><span class="pill lab">SAY IT</span> It was her <b>at</b>titude that impressed me · What impressed me ↗ | was her <b>at</b>titude ↘</div>
+  </section>
+
+  <!-- 14 -->
+  <section class="slide">
+    <div class="eyebrow">2.3 · Frames · focus, correction, explanation</div>
+    <h2>It was X, not Y, that…</h2>
+    <table class="g">
+      <tr><th>Correct politely</th><td>Actually, it was the <b>timing</b>, not the <b>price</b>, that worried us.</td></tr>
+      <tr><th>Later than expected</th><td>It wasn't until <b>Monday</b> that we noticed.</td></tr>
+      <tr><th>Explain</th><td>What happened was (that) the server overheated.</td></tr>
+      <tr><th>Minimize</th><td>All I want is a straight answer.</td></tr>
+      <tr><th>Give the reason</th><td>The reason I called is <b>that</b> the invoice is wrong. (<s>is because</s>)</td></tr>
+    </table>
+    <div class="tag"><span class="pill warn">AGREE</span> What I need <b>is</b> a break · <b>are</b> answers · What surprised us <b>was</b> the silence</div>
+  </section>
+
+  <!-- 15 -->
+  <section class="slide">
+    <div class="eyebrow">2.3 · Information flow · the two principles</div>
+    <h2>Given → new · light → heavy</h2>
+    <div class="two">
+      <div class="ccq"><b>Fronting links back:</b><br>We tried three strategies. <b>The first</b> we dismissed at once. <b>The second</b> looked promising but far too costly.<br><br><b>Extraposition moves the weight:</b><br><s>That you missed it is a pity.</s> → <b>It's</b> a pity (that) you missed it.</div>
+      <div class="ccq">Is "the first" new or known? <i>(Known: we just heard "three strategies.")</i><br>Where does the heavy clause go? <i>(To the end.)</i><br>"That book have I never read"? <i>(No: fronting a topic doesn't invert.)</i><br>Three clefts in a row? <i>(Mannered: restraint.)</i></div>
+    </div>
+  </section>
+
+  <!-- 16 -->
+  <section class="slide">
+    <div class="eyebrow">2.3 · Model · setting the record straight</div>
+    <h2>A calm, courteous correction</h2>
+    <div class="dlg">
+      <p><span class="sp">Reporter:</span> So the tool library closed because it was losing money?</p>
+      <p class="b"><span class="sp">Spokesperson:</span> Actually, it wasn't the money that closed it. It was space.</p>
+      <p><span class="sp">Reporter:</span> But people say the tools were never returned.</p>
+      <p class="b"><span class="sp">Spokesperson:</span> What the figures show is a return rate of ninety-six percent. All we're doing is moving them.</p>
+    </div>
+    <div class="ccq">Which sentence corrects the reporter? <i>(it wasn't the money that…)</i> · Which words carry the stress? <i>(<b>mon</b>ey · <b>space</b> · ninety-six <b>per</b>cent)</i></div>
+  </section>
+
+  <!-- 17 -->
+  <section class="slide">
+    <div class="eyebrow">2.3 · Freer tasks · 15 + 9 min</div>
+    <h2>✂️ The Editing Desk · 🗞️ Setting the Record Straight</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>Edit a choppy article: <b>every fact stays</b></li>
+        <li>1 it-cleft · 1 what-cleft · 2 frontings / extrapositions · <b>max 3 clefts</b></li>
+        <li>Then pairs: A reads the misconception · B corrects it politely</li>
+        <li>It wasn't X that…; it was Y · What actually happened was…</li>
+      </ul>
+      <div class="ccq">Can you delete a fact? <i>(No.)</i><br>As many clefts as possible? <i>(No: three at most.)</i><br>Given or new first? <i>(Given.)</i><br>Are you arguing? <i>(No, correcting politely.)</i></div>
+    </div>
+  </section>
+
+  <!-- 18 -->
+  <section class="slide section">
+    <div class="eyebrow">You can now weigh, add and place the weight</div>
+    <h2>Module 2 done 🎉</h2>
+    <ul class="lab">
+      <li>📊 If they <b>had accepted</b>, they<b>'d be</b> bigger now · <b>provided that</b> the date holds · <b>but for</b> one loyal customer base</li>
+      <li>🎤 <b>Never have I</b> worked with anyone quite like Grace. · <b>Had it not been for</b> Walter… · <b>So modest was he</b> that…</li>
+      <li>✂️ <b>It wasn't</b> the price <b>that</b> put them off; it was the parking. · <b>What happened was</b>… · <b>The first</b>, we dismissed.</li>
+    </ul>
+    <p class="lead" style="margin-top:10px;max-width:40ch">Homework: online lessons 2.1–2.3 with 🔊. Next: Module 3, nominalization and academic style.</p>
+  </section>
+
+
+</div>
+
+<div class="count" id="count">1 / 18</div>
+<div class="nav"><button id="prev" aria-label="Previous slide"></button><button id="next" aria-label="Next slide"></button></div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const bar=document.getElementById('bar'), count=document.getElementById('count');
+  let i=0;
+  function show(n){ i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+    bar.style.width=((i+1)/slides.length*100)+'%'; count.textContent=(i+1)+' / '+slides.length; }
+  document.getElementById('next').onclick=()=>show(i+1);
+  document.getElementById('prev').onclick=()=>show(i-1);
+  addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}
+    else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+  });
+  show(0);
+</script>
+</body>
+</html>

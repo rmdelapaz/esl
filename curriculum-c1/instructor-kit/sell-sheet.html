@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teach Advanced English</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="kit.css">
+<style>
+  :root{ --shadow:0 1px 2px rgba(20,30,45,.05),0 8px 26px rgba(20,30,45,.07); }
+  .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin:18px 0 6px; }
+  .statcard { background:var(--surface-2); border:1px solid var(--line); border-radius:10px; padding:14px 12px; text-align:center; }
+  .statcard .n { font-family:"Archivo",sans-serif; font-weight:800; font-size:1.7rem; color:var(--accent); line-height:1; }
+  .statcard .l { font-size:.72rem; color:var(--ink-3); margin-top:5px; text-transform:uppercase; letter-spacing:.04em; }
+  .strip { display:flex; gap:8px; margin:14px 0 4px; overflow:hidden; }
+  .strip img { width:calc((100% - 56px)/8); aspect-ratio:1; object-fit:cover; border-radius:10px; background:#FFF3E0; border:1px solid var(--line); }
+  .tiers { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:14px 0; }
+  .tier { border:1px solid var(--line); border-radius:var(--radius); padding:18px 18px 20px; background:var(--surface); display:flex; flex-direction:column; }
+  .tier.feature { border:2px solid var(--accent); box-shadow:var(--shadow); }
+  .tier .name { font-family:"JetBrains Mono",monospace; font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3); }
+  .tier .price { font-family:"Archivo",sans-serif; font-weight:800; font-size:1.9rem; margin:6px 0 2px; letter-spacing:-.02em; }
+  .tier .price span { font-size:.8rem; font-weight:500; color:var(--ink-3); }
+  .tier ul { margin:10px 0 0; }
+  .tier .who { font-size:.82rem; color:var(--ink-2); margin-bottom:2px; }
+  .badge { display:inline-block; align-self:flex-start; font-family:"JetBrains Mono",monospace; font-size:.62rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:#fff; background:var(--accent); border-radius:999px; padding:2px 9px; margin-bottom:8px; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  @media (max-width:680px){ .stats{grid-template-columns:1fr 1fr} .tiers{grid-template-columns:1fr} .strip img{width:calc((100% - 24px)/4)} .strip img:nth-child(n+5){display:none} }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="lbl">Sell sheet —</span>
+  <button type="button" onclick="window.print()">🖨 Print / Save as PDF</button>
+  <span class="hint">for adult-ed programs, colleges, libraries &amp; workforce partners</span>
+</div>
+
+<div class="sheet">
+
+  <header class="mast">
+    <div class="kit-eyebrow">Course-in-a-Box · Instructor License · CEFR C1</div>
+    <h1>Teach Advanced English to Adults, Ready for University and the Workplace</h1>
+    <p class="sub"><b>Advanced English (C1 Advanced)</b> is a complete 13-week classroom course for adults who have finished an upper-intermediate course or placed at C1: professionals, university-bound learners, and experienced workers whose English is already fluent and now needs to be <b>precise, academic, and professionally persuasive</b>. Every class is planned to the minute and built around a demanding task: a seminar, a writing lab, an editing workshop, a presentation, or a defense. It works for a trained ESL teacher and for a well-prepared volunteer.</p>
+    <div class="stats">
+      <div class="statcard"><div class="n">8</div><div class="l">Modules</div></div>
+      <div class="statcard"><div class="n">24</div><div class="l">Lessons</div></div>
+      <div class="statcard"><div class="n">26</div><div class="l">Classes × 90 min</div></div>
+      <div class="statcard"><div class="n">13</div><div class="l">Weeks · 2 classes / week</div></div>
+      <div class="statcard"><div class="n">39</div><div class="l">Instructional hours</div></div>
+      <div class="statcard"><div class="n">2</div><div class="l">Tests: progress + final</div></div>
+      <div class="statcard"><div class="n">C1</div><div class="l">CEFR can-do aligned</div></div>
+      <div class="statcard"><div class="n">Free</div><div class="l">Online companion course with audio</div></div>
+    </div>
+    <div class="strip" aria-hidden="true">
+      <img src="assets/vocab/doctor.jpg" alt=""><img src="assets/vocab/teacher.jpg" alt=""><img src="assets/vocab/notebook.jpg" alt=""><img src="assets/vocab/email.jpg" alt="">
+      <img src="assets/vocab/nurse.jpg" alt=""><img src="assets/vocab/desk.jpg" alt=""><img src="assets/vocab/book.jpg" alt=""><img src="assets/vocab/mobile-phone.jpg" alt="">
+    </div>
+  </header>
+
+  <div class="sec"><h2>What You Get</h2><span class="rule"></span></div>
+  <div class="grid2">
+    <div class="blk"><div class="h">For every module (×8)</div>
+      <ul class="tick">
+        <li><b>Teacher's Guide</b>: one 90-minute plan per class with a board plan, a timed stage table, concept-check questions, drill scripts, instruction checks, feedback on accuracy, range <i>and</i> appropriacy, peer-review protocols for writing labs, tips for handling dominant speakers in seminars, stretch tasks toward C2, literacy support, and L1 watch-outs</li>
+        <li><b>Student Workbook</b>: natural, sophisticated C1 English, grammar boxes, practice exercises, model texts and dialogues, a demanding task in every lesson (seminar, editing, persuasion, analysis), "I can…" checklists, and a journal</li>
+        <li><b>Answer Key</b>: every exercise answered, with acceptable alternatives (US and UK) and the errors to expect</li>
+        <li><b>Slide deck</b>: grammar, model texts, concept checks, and task slides. A single file with nothing to install</li>
+        <li><b>Classroom materials</b>: flashcards, A/B role-play and seminar cards, lecture and dictation scripts, and a game</li>
+      </ul>
+    </div>
+    <div class="blk"><div class="h">Across the kit</div>
+      <ul class="tick">
+        <li>A <b>13-week, 26-class syllabus</b> in web and print versions</li>
+        <li><b>Progress Test 1</b> (Class 13) and a <b>Final Test</b> (Class 26): listening (including a mini-lecture with note-taking), critical reading, use of English, a formal recommendation, a structured essay or report, and speaking (a pair task, then a 10-minute individual interview with a long turn, push-back, and a diplomatic register task)</li>
+        <li>An <b>assessment key</b> with CEFR-aligned speaking and writing rubrics and clear <b>next-level guidance</b> (ready for C2, C2 with a review plan, repeat C1 with support, or the IELTS Academic and Business English tracks)</li>
+        <li>A shared <b>placement test</b> (Pre-A1 → C2) and <b>can-do checklists</b> for intake and progress, from the free ESL instructor toolkit</li>
+        <li>A <b>learner welcome handout</b> in C1 English, with seminar and peer-review ground rules and QR codes to the free online lessons</li>
+        <li>Combined, print-ready <b>Teacher's Guide, Student Workbook, and Answer Key</b> books</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec"><h2>Why Programs Choose It</h2><span class="rule"></span></div>
+  <ul class="tick">
+    <li><b>Zero prep to teach.</b> Every class adds up to 90 minutes: warmer, input and analysis, focused practice, a demanding main task, feedback, and homework set-up. The skills lessons (critical reading, essay writing, note-taking, seminars) are planned as <b>workshops</b>. A teacher can open the guide and teach.</li>
+    <li><b>Academic and professional readiness.</b> Learners practice what universities and employers expect at this level: <b>reading an argument critically</b> and naming its weaknesses, <b>structuring an essay</b> with a defensible thesis, <b>writing reports, professional emails, and cover letters</b>, <b>following a lecture</b> and taking structured notes, and <b>holding their own in a seminar or meeting</b>. It fits bridge programs, pre-university pathways, professional re-licensing, and WIOA career-pathway goals.</li>
+    <li><b>Writing labs that work.</b> Every writing lesson ends in a real text, reviewed with a clear peer-review protocol and edited for concision. The course closes with a <b>position paper</b> that learners present and defend under questioning.</li>
+    <li><b>Precision, nuance, and register.</b> Advanced future forms, degrees of certainty, the subjunctive, mixed conditionals and the alternatives to <i>if</i>, inversion, clefts, nominalization, cohesion, hedging and diplomatic English, phrasal verbs, collocation and connotation, participle clauses, dependent prepositions, and academic vocabulary, taught as <b>choices</b> and always put to work.</li>
+    <li><b>Accuracy, range, and appropriacy.</b> C1 learners often plateau: fluent, correct, and still not quite right for the situation. Every lesson gives delayed, targeted feedback on all three, with stretch tasks that push strong learners toward C2.</li>
+    <li><b>Debate without division.</b> Topics stay in workplace, education, technology, health-habits, community, and everyday-science territory, never party politics or religion. Every argument task offers an <b>assigned side</b>, so nobody has to reveal a personal view, and personal tasks always allow a <b>"new identity"</b> or an imagined example.</li>
+    <li><b>A free companion course.</b> Every lesson mirrors the free online course <b>Advanced English (C1)</b> (<a href="https://rays-esl.netlify.app/curriculum-c1/">rays-esl.netlify.app/curriculum-c1</a>) with 🔊 audio on model sentences, dialogues, and a lecture. It serves as homework and review, and lets learners catch up after a missed class. A free tools page shows learners how to translate lessons into their own language.</li>
+    <li><b>A clear path forward.</b> The course is the fifth step of a complete free CEFR ladder (A1 → C2). It follows <b>Confident English (B2)</b>, and learners who finish move into <b>Mastery English (C2)</b>, with <b>IELTS Academic Preparation</b> and <b>Business English</b> available alongside.</li>
+  </ul>
+
+  <div class="sec"><h2>Who It's For</h2><span class="rule"></span></div>
+  <div class="meta-row">
+    <span class="chip">Adult education &amp; WIOA / workforce programs</span>
+    <span class="chip">Community colleges &amp; pre-university pathways</span>
+    <span class="chip">Professional re-licensing &amp; bridge programs</span>
+    <span class="chip">Workplace &amp; corporate language training</span>
+    <span class="chip">Public libraries</span>
+    <span class="chip">Refugee-resettlement &amp; career-advancement programs</span>
+    <span class="chip">Community organizations</span>
+  </div>
+
+  <div class="sec"><h2>License &amp; Pricing</h2><span class="rule"></span></div>
+  <div class="tiers">
+    <div class="tier">
+      <div class="name">Solo</div>
+      <div class="price">[$ ___ ]<span> one-time</span></div>
+      <div class="who">One teacher or volunteer · unlimited learners</div>
+      <ul class="tick">
+        <li>Full kit, all 8 modules</li>
+        <li>Print workbooks for your classes</li>
+        <li>Perpetual license</li>
+      </ul>
+    </div>
+    <div class="tier feature">
+      <div class="badge">Most popular</div>
+      <div class="name">Organization</div>
+      <div class="price">[$ ___ ]<span> one-time</span></div>
+      <div class="who">A college, library system, adult-ed program, or community organization</div>
+      <ul class="tick">
+        <li>Everything in Solo</li>
+        <li>Unlimited teachers and volunteers at one organization</li>
+        <li>Best value per class</li>
+      </ul>
+    </div>
+    <div class="tier">
+      <div class="name">White-label</div>
+      <div class="price">[$ ___ ]<span> one-time</span></div>
+      <div class="who">Rebrand &amp; adapt freely</div>
+      <ul class="tick">
+        <li>Everything in Organization</li>
+        <li>Add your own branding</li>
+        <li>Edit &amp; adapt the materials</li>
+      </ul>
+    </div>
+  </div>
+  <p style="font-size:.85rem;color:var(--ink-3)">Optional content-updates add-on: <b>[$ ___ / yr]</b>. B2 + C1 bundle: <b>[$ ___ ]</b>. Reduced pricing for non-profits, libraries, faith-based, and volunteer-led programs. Contact us for full license terms.</p>
+
+  <div class="note lab">
+    <div class="t">Ready to run it?</div>
+    <p>Get in touch for a free sample module (Teacher's Guide, workbook pages, and slides) and licensing details.<br><b>Ray de la Paz</b> · via the contact form on the site.</p>
+  </div>
+
+  <p style="font-size:.78rem;color:var(--ink-3)">The Common European Framework of Reference for Languages (CEFR) is published by the Council of Europe. This course is designed around the CEFR C1 can-do descriptors. It is an independent educational product and is not certified or endorsed by the Council of Europe, Cambridge English, IELTS, or any exam board.</p>
+
+  <div class="foot">
+    <div class="who"><b>Ray de la Paz</b><span class="bio">© 2026 Ray de la Paz · Advanced English (C1 Advanced)</span></div>
+    <div class="ver">Instructor Sell Sheet · v1.0</div>
+  </div>
+
+</div>
+</body>
+</html>
