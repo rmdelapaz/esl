@@ -39,7 +39,7 @@ to regenerate the three books, then re-render their PDFs.** Don't hand-edit the 
 
 | Path | Audience | Purpose |
 |------|----------|---------|
-| `slides/module-N-*.html` | Teacher (project it) | 8 decks, one per module — picture vocabulary, grammar, dialogues, CCQs, pair-task instructions |
+| `slides/module-N-*.html` | Teacher (project it) | 8 decks, one per module — language focus, model texts, CCQs, task and workshop instructions |
 | `materials/module-N/classroom-materials.html` | Teacher (print, cut) | Picture flashcards, role-play & information-gap cards, read-aloud listening/dictation scripts, a game |
 | `assessment/progress-test-1.{html,pdf}` | Learner + teacher | C13 test on Modules 1–4 (listening, vocabulary, grammar, reading, writing + pair speaking) |
 | `assessment/final-test.{html,pdf}` | Learner + teacher | C26 B2 exit test on all 8 modules + individual speaking interview |

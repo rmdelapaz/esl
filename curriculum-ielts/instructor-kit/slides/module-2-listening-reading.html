@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slides — Module 2</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root{--bg:#0b1220;--ink:#edf2fb;--ink2:#a8b6cf;--accent:#7fb2ff;--accent2:#2563eb;--lab:#34d3bd;--warn:#fbbf24;--line:#233252;--code:#101a2e;color-scheme:dark}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;overflow:hidden}
+  .deck{height:100%;width:100%;position:relative}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:6vh 8vw;gap:20px}
+  .slide.on{display:flex}
+  h1,h2,h3{font-family:"Archivo",sans-serif;line-height:1.1;text-wrap:balance}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  .slide h1{font-size:clamp(2rem,6vw,4rem);font-weight:800;letter-spacing:-.02em}
+  .slide h2{font-size:clamp(1.5rem,4.2vw,2.8rem);font-weight:800;letter-spacing:-.01em}
+  .slide p.lead{font-size:clamp(1.05rem,2.4vw,1.5rem);color:var(--ink2);max-width:26ch}
+  ul{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:6px}
+  ul li{position:relative;padding-left:34px;font-size:clamp(1.05rem,2.3vw,1.6rem)}
+  ul li::before{content:"";position:absolute;left:0;top:.55em;width:12px;height:12px;border-radius:3px;background:var(--accent);transform:rotate(45deg)}
+  ul.lab li::before{background:var(--lab)}
+  code.k{font-family:"JetBrains Mono",monospace;color:#cfe0ff;font-size:.92em}
+  pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:22px 26px;font-family:"JetBrains Mono",monospace;font-size:clamp(.85rem,1.9vw,1.3rem);line-height:1.55;overflow:auto;max-width:100%}
+  pre .k{color:#7dd3fc} pre .s{color:#86efac} pre .c{color:#7183a3;font-style:italic}
+  .tag{display:inline-flex;align-items:center;gap:10px;font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);color:var(--ink2)}
+  .tag .pill{background:var(--accent2);color:#fff;font-weight:700;border-radius:999px;padding:3px 12px;letter-spacing:.06em}
+  .tag .pill.lab{background:var(--lab);color:#062b26} .tag .pill.warn{background:var(--warn);color:#3a2a05}
+  .section{background:linear-gradient(135deg,#132a52,#0b1220)}
+  .section .big{font-size:clamp(3rem,12vw,8rem);font-family:"Archivo";font-weight:800;color:var(--accent2);line-height:.9}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+  @media (max-width:760px){.two{grid-template-columns:1fr}}
+  .bar{position:fixed;left:0;top:0;height:4px;background:var(--accent2);width:0;transition:width .25s;z-index:5}
+  .count{position:fixed;right:16px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink2);z-index:5}
+  .nav{position:fixed;inset:auto 0 0 0;display:flex;justify-content:space-between;pointer-events:none;z-index:4}
+  .nav button{pointer-events:auto;background:transparent;border:none;color:transparent;width:22vw;height:100vh;cursor:pointer}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+  /* ESL extras (picture vocab, grammar tables, dialogue, clocks) */
+  .pics{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,1.6vw,18px)}
+  .pics.six{grid-template-columns:repeat(6,1fr)}
+  .pic{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center}
+  .pic img{width:100%;max-width:150px;aspect-ratio:1;object-fit:cover;border-radius:10px;background:#FFF3E0;display:block;margin:0 auto}
+  .pic .emo{font-size:clamp(2.6rem,7vw,5rem);line-height:1;aspect-ratio:1;max-width:150px;margin:0 auto;display:flex;align-items:center;justify-content:center}
+  .pic .w{font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(.9rem,2vw,1.35rem);margin-top:6px}
+  @media (max-width:760px){.pics,.pics.six{grid-template-columns:repeat(3,1fr)}}
+  table.g{border-collapse:collapse;font-size:clamp(.95rem,2.1vw,1.45rem);width:100%;max-width:1000px}
+  table.g th,table.g td{border:1px solid var(--line);padding:10px 16px;text-align:left}
+  table.g th{background:var(--code);color:var(--accent);font-family:"JetBrains Mono",monospace;font-size:.8em;letter-spacing:.04em}
+  table.g b{color:#ffd166}
+  .dlg{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:18px 24px;display:flex;flex-direction:column;gap:8px;font-size:clamp(1rem,2.2vw,1.45rem);max-width:1000px}
+  .dlg .sp{display:inline-block;min-width:3.6em;font-weight:700;color:var(--accent)}
+  .dlg .b .sp{color:#c4a1ff}
+  .ccq{font-size:clamp(1rem,2.2vw,1.45rem);border:1px dashed var(--line);border-radius:12px;padding:12px 18px;background:var(--code)}
+  .ccq i{color:var(--ink2)}
+  .clocks{display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,34px);align-items:flex-start}
+  .clocks figure{text-align:center}
+  .clocks svg{width:clamp(96px,14vw,170px);height:auto}
+  .clocks figcaption{font-size:clamp(.95rem,2vw,1.3rem);margin-top:6px}
+  .clocks figcaption small{display:block;color:var(--ink2);font-size:.8em}
+  .snd{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .snd div{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:clamp(1rem,2.2vw,1.5rem)}
+  .snd div b{display:block;font-family:"Archivo";font-size:1.5em;color:var(--accent)}
+  .snd div small{color:var(--ink2)}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="deck" id="deck">
+
+  <!-- 1 -->
+  <section class="slide on section">
+    <div class="eyebrow">IELTS Academic Preparation · Instructor Kit</div>
+    <h1>Module 2<br>Listening &amp; Reading</h1>
+    <p class="lead" style="max-width:40ch">Hear it coming. Find it fast. Prove it.</p>
+    <ul class="lab">
+      <li><b>2.1</b> Listening: predict, signposts, take the correction, spell it exactly</li>
+      <li><b>2.2</b> Reading: skim, scan, paraphrase, beat the clock</li>
+      <li><b>2.3</b> True / False / Not Given &amp; matching: prove every answer</li>
+      <li><b>C8</b> Practice Test 1 under exam conditions</li>
+    </ul>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide">
+    <div class="eyebrow">2.1 · Lead-in · you will hear this once</div>
+    <h2>"The meeting's on Tuesday — oh, no, sorry, they moved it to Thursday."</h2>
+    <div class="ccq">When's the meeting? <i>(Thursday.)</i> Is "Tuesday" in the recording? <i>(Yes.)</i> Is it the answer? <i>(No.)</i> Can you ask the speaker to repeat it? <i>(No: once only.)</i></div>
+    <div class="tag"><span class="pill">TODAY</span> not better ears · better <b>habits</b></div>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide">
+    <div class="eyebrow">2.1 · The test · 4 parts · 40 questions · about 30 minutes</div>
+    <h2>Easy → hard, social → academic</h2>
+    <table class="g">
+      <tr><th>Part</th><th>Who</th><th>What</th><th>Often</th></tr>
+      <tr><td><b>1</b></td><td>2 speakers</td><td>everyday conversation</td><td>a form: names, numbers, dates</td></tr>
+      <tr><td><b>2</b></td><td>1 speaker</td><td>everyday talk</td><td>a map or plan, a tour</td></tr>
+      <tr><td><b>3</b></td><td>2–4 speakers</td><td>students + tutor</td><td>multiple choice, matching</td></tr>
+      <tr><td><b>4</b></td><td>1 speaker</td><td>a lecture</td><td>note completion · no break</td></tr>
+    </table>
+    <div class="tag"><span class="pill warn">ONCE</span> every recording plays one time only · missed it? let it go · catch the next one</div>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide">
+    <div class="eyebrow">2.1 · Habit 1 · read ahead and predict</div>
+    <h2>Where are they? What will the form ask?</h2>
+    <div class="pics">
+      <div class="pic"><img src="../assets/vocab/hotel.jpg" alt=""><div class="w">booking a room</div></div>
+      <div class="pic"><img src="../assets/vocab/restaurant.jpg" alt=""><div class="w">reserving a table</div></div>
+      <div class="pic"><img src="../assets/vocab/station.jpg" alt=""><div class="w">train tickets</div></div>
+      <div class="pic"><img src="../assets/vocab/school.jpg" alt=""><div class="w">enrolling in a course</div></div>
+    </div>
+    <div class="ccq">Enrolling in a course: what will they ask for? <i>(name · phone · course · start date · fee · room)</i> Do you know the answers yet? <i>(No, but you know what kind.)</i></div>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide">
+    <div class="eyebrow">2.1 · Predict the answer type · before the audio starts</div>
+    <h2>What kind of word fits?</h2>
+    <table class="g">
+      <tr><td>The tour leaves from the main ________ at 9:30.</td><td><b>place</b> (noun)</td></tr>
+      <tr><td>The library closes at ________ on weekdays.</td><td><b>time</b></td></tr>
+      <tr><td>Bring two forms of ________ to register.</td><td><b>plural / uncountable noun</b></td></tr>
+      <tr><td>Fee for city residents: $ ________</td><td><b>number</b> ($ already printed!)</td></tr>
+      <tr><td>Please bring spare ________.</td><td><b>plural noun</b></td></tr>
+    </table>
+    <div class="ccq">"The library closes at ___ on weekdays." Could it be "Monday"? <i>(No: "weekdays" is already there.)</i> Do you predict the exact word? <i>(No: the type.)</i></div>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide">
+    <div class="eyebrow">2.1 · Habits 2 and 3 · signposts and corrections</div>
+    <h2>The answer is coming. The answer is changing.</h2>
+    <div class="two">
+      <div>
+        <div class="tag"><span class="pill">COMING</span></div>
+        <ul>
+          <li>Let's move on to…</li>
+          <li>The main problem was…</li>
+          <li>What you need to remember is…</li>
+          <li>I'd recommend…</li>
+        </ul>
+      </div>
+      <div>
+        <div class="tag"><span class="pill warn">CHANGING</span></div>
+        <ul>
+          <li><b>actually</b>… (= in fact, not "currently")</li>
+          <li>sorry, I mean… · no, wait…</li>
+          <li>on second thought… · or rather…</li>
+          <li>it's not X, it's Y</li>
+        </ul>
+      </div>
+    </div>
+    <div class="ccq">"Room fourteen — actually, sorry, it's Room forty." Which room? <i>(40.)</i> What does <b>actually</b> mean here? <i>(The truth is… / a correction.)</i> Which one do you write? <i>(The final one.)</i></div>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide">
+    <div class="eyebrow">2.1 · Protect the mark · heard it right, write it right</div>
+    <h2>Numbers, letters, plurals, limits</h2>
+    <table class="g">
+      <tr><th>-teen / -ty</th><td>thir<b>TEEN</b> · <b>THIR</b>ty &nbsp;·&nbsp; fif<b>TEEN</b> · <b>FIF</b>ty</td></tr>
+      <tr><th>Phone</th><td>"oh-seven-seven-<b>double-oh</b>" = 07700</td></tr>
+      <tr><th>Letters</th><td><b>A</b> /eɪ/ · <b>E</b> /iː/ · <b>I</b> /aɪ/ · <b>G</b> /dʒiː/ · <b>J</b> /dʒeɪ/ · "double R" = RR</td></tr>
+      <tr><th>Dates</th><td>"the nineteenth of March" → <b>19 March</b> or <b>March 19</b></td></tr>
+      <tr><th>Plurals</th><td>battery ≠ batteries → one wrong letter = <b>0</b></td></tr>
+      <tr><th>Limit</th><td>NO MORE THAN TWO WORDS → "student identification cards" = <b>0</b></td></tr>
+    </table>
+    <div class="tag"><span class="pill lab">OK</span> CAPITAL LETTERS · British or American spelling</div>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide">
+    <div class="eyebrow">2.1 · Plans and maps · fix where you are standing first</div>
+    <h2>The Student Center, ground floor</h2>
+    <div class="two">
+      <svg viewBox="0 0 420 380" style="width:100%;max-width:440px;color:var(--ink)" role="img" aria-label="Plan of the Student Center with rooms A to H">
+        <g fill="none" stroke="currentColor" stroke-width="3">
+          <line x1="20" y1="20" x2="400" y2="20"/><line x1="20" y1="20" x2="20" y2="320"/><line x1="400" y1="20" x2="400" y2="320"/>
+          <line x1="20" y1="320" x2="185" y2="320"/><line x1="235" y1="320" x2="400" y2="320"/>
+        </g>
+        <g fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="150" y1="20" x2="150" y2="320"/><line x1="270" y1="20" x2="270" y2="320"/>
+          <line x1="20" y1="120" x2="150" y2="120"/><line x1="20" y1="220" x2="150" y2="220"/>
+          <line x1="270" y1="120" x2="400" y2="120"/><line x1="270" y1="220" x2="400" y2="220"/>
+          <line x1="150" y1="90" x2="270" y2="90"/>
+          <rect x="190" y="185" width="40" height="30"/>
+        </g>
+        <g fill="currentColor" font-family="Archivo, sans-serif" font-weight="800" font-size="26" text-anchor="middle">
+          <text x="85" y="280">A</text><text x="85" y="180">B</text><text x="85" y="80">C</text>
+          <text x="335" y="280">D</text><text x="335" y="180">E</text><text x="335" y="80">F</text>
+          <text x="210" y="64">G</text><text x="210" y="208" font-size="18">H</text>
+        </g>
+        <g fill="currentColor" font-family="Source Sans 3, sans-serif" font-size="13" text-anchor="middle">
+          <text x="210" y="145" font-style="italic">Main hall</text>
+          <text x="210" y="360">Main entrance (south)</text>
+          <text x="392" y="362">N</text>
+        </g>
+        <polygon points="210,326 202,340 218,340" fill="currentColor"/>
+        <polygon points="392,336 386,348 398,348" fill="currentColor"/>
+      </svg>
+      <div>
+        <ul class="lab">
+          <li>on your left / right</li>
+          <li>opposite · next to</li>
+          <li>halfway along · beyond</li>
+          <li>at the far end · in the far corner</li>
+          <li>in the middle</li>
+        </ul>
+        <div class="ccq" style="margin-top:14px">Where are you standing? <i>(At the entrance, at the bottom.)</i> You walk in: is A on your left? <i>(Yes.)</i> Will every letter be an answer? <i>(No: two are extra.)</i></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide">
+    <div class="eyebrow">2.1 · Model · then your turn: Build the trap · 12 min</div>
+    <h2>A Part 1 call</h2>
+    <div class="two">
+      <div class="dlg" style="font-size:clamp(.9rem,1.9vw,1.25rem)">
+        <p><span class="sp">Clerk:</span> City Bikes, good morning. How can I help?</p>
+        <p class="b"><span class="sp">Caller:</span> I'd like to rent two bikes for Saturday. The surname's Nguyen: N-G-U-Y-E-N.</p>
+        <p><span class="sp">Clerk:</span> Is that for the morning or the whole day?</p>
+        <p class="b"><span class="sp">Caller:</span> Just the morning. Oh, <b>actually</b>, could we make it the whole day?</p>
+        <p><span class="sp">Clerk:</span> Sure. We open at eight thirty on weekdays, but on Saturdays at nine.</p>
+      </div>
+      <div class="ccq"><b>Caller</b>: your real name and number? <i>(No: the card's.)</i> What must you include? <i>(A correction.)</i><br><b>Receptionist</b>: can you see the card? <i>(No.)</i> What do you do at the end? <i>(Read the form back.)</i><br>When do you swap? <i>(After the check.)</i></div>
+    </div>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide">
+    <div class="eyebrow">2.2 · Lead-in · the Reading clock</div>
+    <h2>60 minutes · 3 passages · 40 questions · no transfer time</h2>
+    <table class="g">
+      <tr><th>Passage 1</th><td>easiest</td><td>≈ 17 min</td></tr>
+      <tr><th>Passage 2</th><td>harder</td><td>≈ 20 min</td></tr>
+      <tr><th>Passage 3</th><td>hardest</td><td>≈ 23 min</td></tr>
+    </table>
+    <div class="ccq">"No transfer time": what does it mean for you? <i>(Write each answer on the answer sheet as soon as you find it.)</i> Is there a penalty for a wrong answer? <i>(No: never leave a blank.)</i></div>
+    <div class="tag"><span class="pill warn">RULE</span> at minute 20 and minute 40, move on, whatever happens</div>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide">
+    <div class="eyebrow">2.2 · Two reading modes</div>
+    <h2>Skim to map. Scan to find.</h2>
+    <table class="g">
+      <tr><th></th><th>SKIM</th><th>SCAN</th></tr>
+      <tr><th>Goal</th><td>gist + structure</td><td>one piece of information</td></tr>
+      <tr><th>Eyes</th><td>glide over everything</td><td>jump to a target</td></tr>
+      <tr><th>Read closely</th><td>title · first + last sentences · signposts</td><td>only around the keyword</td></tr>
+      <tr><th>When</th><td>first, 2–3 minutes</td><td>for each question</td></tr>
+    </table>
+    <div class="ccq">"I'm looking for the year 2011." Skim or scan? <i>(Scan.)</i> "Which paragraph gives a warning?" <i>(Skim, then scan for "critics warn".)</i> Read everything carefully first? <i>(No!)</i></div>
+  </section>
+
+  <!-- 12 -->
+  <section class="slide">
+    <div class="eyebrow">2.2 · Keyword → paraphrase · the master skill</div>
+    <h2>The answer is almost never in the question's words</h2>
+    <table class="g">
+      <tr><th>Question</th><td>Kowalski's study suggests walkers <b>consider</b> comfort and ______ <b>as well as</b> time.</td></tr>
+      <tr><th>Keyword</th><td><b>Kowalski</b> (a name can't be paraphrased) → paragraph B</td></tr>
+      <tr><th>Text</th><td>…suggesting that walkers <b>weigh</b> comfort and <b>perceived safety</b> <b>alongside</b> time.</td></tr>
+      <tr><th>Answer</th><td><b>perceived safety</b> (two words, copied exactly)</td></tr>
+    </table>
+    <div class="ccq">Option: "appear mainly on university campuses." The text says "a study of three university campuses." Same words, same meaning? <i>(No: the word-match trap.)</i></div>
+  </section>
+
+  <!-- 13 -->
+  <section class="slide">
+    <div class="eyebrow">2.2 · A strategy for every question type</div>
+    <h2>In order first. Any order last.</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>In passage order</th><th>Strategy</th></tr>
+        <tr><td>completion</td><td>predict word class · limit</td></tr>
+        <tr><td>multiple choice</td><td>read all options · eliminate</td></tr>
+        <tr><td>short answer</td><td>words from the passage</td></tr>
+        <tr><td>True / False / NG</td><td>confirm · clash · silent</td></tr>
+      </table>
+      <table class="g">
+        <tr><th>Any order · do last</th><th>Strategy</th></tr>
+        <tr><td>matching information</td><td>distinctive keyword · scan all</td></tr>
+        <tr><td>matching features</td><td>underline every name</td></tr>
+        <tr><td>matching headings</td><td>main idea, not detail</td></tr>
+      </table>
+    </div>
+    <div class="tag"><span class="pill lab">TIMED</span> Questions 8–13 · 7 minutes · alone · answers straight onto the page</div>
+  </section>
+
+  <!-- 14 -->
+  <section class="slide">
+    <div class="eyebrow">2.3 · The core rule</div>
+    <h2>Confirm. Clash. Silent.</h2>
+    <table class="g">
+      <tr><th>TRUE (YES)</th><td>the text <b>confirms</b> it</td></tr>
+      <tr><th>FALSE (NO)</th><td>the text <b>contradicts</b> it: both can't be true</td></tr>
+      <tr><th>NOT GIVEN</th><td>the text is <b>silent</b></td></tr>
+    </table>
+    <div class="ccq"><b>Can I point to the words that clash?</b> Yes → False. No → Not Given.<br>"The museum opened in 1980." → "It was the first of its kind." Clash? <i>(No.)</i> So? <i>(Not Given.)</i><br>"I know it's true in real life." Evidence? <i>(No: only the text counts.)</i></div>
+    <div class="tag"><span class="pill warn">ZERO</span> "True" on a Yes / No / Not Given task · write the labels the instructions use</div>
+  </section>
+
+  <!-- 15 -->
+  <section class="slide">
+    <div class="eyebrow">2.3 · Prove it · every answer, every time</div>
+    <h2>Locate → Underline → Label → Defend</h2>
+    <table class="g">
+      <tr><th>TRUE</th><td>the paraphrase pair</td><td>"main prey" = "main food source"</td></tr>
+      <tr><th>FALSE</th><td>quote the clash</td><td>"three years" vs "<b>more than</b> three years"</td></tr>
+      <tr><th>NOT GIVEN</th><td>name the missing piece</td><td>"The text talks about the number of learners, but not their gender."</td></tr>
+    </table>
+    <div class="two">
+      <div class="ccq"><b>Strong</b> (easy to over-claim): all · every · never · only · the most · proves</div>
+      <div class="ccq"><b>Limited</b> (careful texts): some · a few · often · tends to · may · suggests</div>
+    </div>
+  </section>
+
+  <!-- 16 -->
+  <section class="slide">
+    <div class="eyebrow">2.3 · Matching headings · then Prove it debates · 10 min</div>
+    <h2>The main idea, not the detail</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>Name the paragraph's main idea in <b>five words</b></li>
+        <li>Easy ones first · cross off used headings</li>
+        <li>More headings than paragraphs: extras are traps</li>
+        <li>A heading that fits <b>one sentence</b> = the detail trap</li>
+      </ul>
+      <div class="ccq"><b>Debates</b>: do you choose your side? <i>(No: the card gives it.)</i> Can you say "I know"? <i>(No: point to the text.)</i> How long each? <i>(30 seconds.)</i> When do you check the answer strip? <i>(After we agree.)</i></div>
+    </div>
+    <div class="tag"><span class="pill lab">SAY</span> The text says X, whereas the statement says Y. · There's no mention of… · "Only" makes it false.</div>
+  </section>
+
+  <!-- 17 -->
+  <section class="slide">
+    <div class="eyebrow">C8 · Practice Test 1 · Listening + Reading</div>
+    <h2>A map, not a verdict</h2>
+    <div class="two">
+      <ul>
+        <li>Listening ≈ 30 min · <b>once only</b> · 2 min to check</li>
+        <li>Reading · answers straight on the sheet</li>
+        <li>Phones off and away · pencil · CAPITALS are fine</li>
+        <li>No talking · no dictionaries · <b>no blanks</b></li>
+      </ul>
+      <div class="pics" style="grid-template-columns:repeat(2,1fr)">
+        <div class="pic"><img src="../assets/vocab/pencil.jpg" alt=""><div class="w">pencil</div></div>
+        <div class="pic"><img src="../assets/vocab/water.jpg" alt=""><div class="w">water</div></div>
+      </div>
+    </div>
+    <div class="ccq">Missed an answer? <i>(Let it go: catch the next one.)</i> Heart racing? <i>(Pencil down, breathe out slowly, carry on.)</i> Who sees your score? <i>(Only you, and me.)</i></div>
+  </section>
+
+  <!-- 18 -->
+  <section class="slide section">
+    <div class="eyebrow">You can now hear it coming, find it fast and prove it</div>
+    <h2>Module 2 done</h2>
+    <ul class="lab">
+      <li><b>Listening</b>: predict the type · take the correction · spell it exactly · never freeze</li>
+      <li><b>Reading</b>: skim to map · scan for the paraphrase · 20 minutes a passage · no blanks</li>
+      <li><b>Tricky types</b>: confirm, clash or silent · the main idea, not the detail</li>
+    </ul>
+    <p class="lead" style="margin-top:10px;max-width:40ch">Homework: online lessons 2.1–2.3 with 🔊. After Practice Test 1: your two leaks. Next: Module 3, <i>Academic Writing</i>.</p>
+  </section>
+
+</div>
+
+<div class="count" id="count">1 / 18</div>
+<div class="nav"><button id="prev" aria-label="Previous slide"></button><button id="next" aria-label="Next slide"></button></div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const bar=document.getElementById('bar'), count=document.getElementById('count');
+  let i=0;
+  function show(n){ i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+    bar.style.width=((i+1)/slides.length*100)+'%'; count.textContent=(i+1)+' / '+slides.length; }
+  document.getElementById('next').onclick=()=>show(i+1);
+  document.getElementById('prev').onclick=()=>show(i-1);
+  addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}
+    else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+  });
+  show(0);
+</script>
+</body>
+</html>

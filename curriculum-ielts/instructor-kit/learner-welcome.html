@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome to IELTS Preparation</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="kit.css">
+<style>
+  .big{font-size:17.5px;line-height:1.55}
+  .big .mast h1{font-size:2.3rem}
+  .big .mast .sub{font-size:1.15rem;max-width:none}
+  .hello{font-size:1.08rem;color:var(--ink-2);margin-top:6px}
+  .fill{display:grid;grid-template-columns:auto 1fr;gap:12px 14px;align-items:end;margin:10px 0;font-size:1.12rem}
+  .fill .k{font-weight:700;white-space:nowrap}
+  .fill .v{border-bottom:2px solid var(--ink-2);min-height:1.8em}
+  .bring{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:12px 0}
+  .bring div{border:1px solid var(--line);border-radius:12px;padding:10px;text-align:center;font-weight:700;font-size:1.05rem;break-inside:avoid}
+  .bring img{width:100%;max-width:1.1in;aspect-ratio:1;object-fit:cover;border-radius:10px;background:#FFF3E0;display:block;margin:0 auto 6px}
+  .bring .opt{display:block;font-weight:400;font-size:.88rem;color:var(--ink-3)}
+  .rules{list-style:none;padding:0;margin:10px 0;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .rules li{display:flex;gap:12px;align-items:center;border:1px solid var(--line);border-radius:12px;padding:10px 14px;font-size:1.05rem;break-inside:avoid}
+  .rules .ic{font-size:1.6rem;line-height:1}
+  .homebox{display:grid;grid-template-columns:1fr 150px;gap:18px;align-items:center;border:2px solid var(--accent);border-radius:14px;padding:16px 20px;margin:12px 0;break-inside:avoid}
+  .homebox.teal{border-color:var(--lab)}
+  .homebox h3{font-size:1.25rem;margin-bottom:6px}
+  .url{font-family:"JetBrains Mono",monospace;font-size:1rem;font-weight:600;background:var(--band);border:1px solid var(--line);border-radius:6px;padding:3px 8px;word-break:break-all;display:inline-block;margin:4px 0}
+  .qr svg{width:150px;height:150px;display:block}
+  .qr .cap{font-size:.8rem;color:var(--ink-3);text-align:center;margin-top:4px}
+  .big ol.steps li{font-size:1.06rem;padding:6px 0 6px 34px}
+  .big ol.steps li::before{width:24px;height:24px;font-size:.85rem}
+  .listen-btn{display:inline-block;background:var(--accent);color:#fff;font-weight:700;border-radius:8px;padding:1px 10px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .contact{border:2.5px dashed var(--ink-2);border-radius:14px;padding:16px 20px;margin:14px 0;break-inside:avoid}
+  .contact h3{font-size:1.25rem;margin-bottom:8px}
+  .say-it{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+  .say-it div{background:var(--accent-soft);border-radius:10px;padding:8px 14px;font-size:1.06rem;font-weight:600;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .say-it .h{grid-column:1/-1;background:none;padding:6px 2px 0;font-family:"JetBrains Mono",monospace;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+  .expect{border:2px solid var(--warn);background:var(--warn-soft);border-radius:14px;padding:16px 20px;margin:14px 0;break-inside:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .expect h3{font-size:1.25rem;margin-bottom:6px;color:var(--warn)}
+  .expect ul{margin:6px 0 0;padding-left:20px}
+  .expect li{margin:4px 0;font-size:1.04rem}
+  .calm{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
+  .calm div{border-left:4px solid var(--lab);background:var(--lab-soft);border-radius:0 10px 10px 0;padding:10px 14px;font-size:1.03rem;break-inside:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .calm b{display:block;margin-bottom:2px}
+  @media (max-width:680px){
+    .bring{grid-template-columns:1fr 1fr}
+    .rules,.say-it,.calm{grid-template-columns:1fr}
+    .homebox{grid-template-columns:1fr}
+    .qr svg{margin:0 auto}
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="lbl">Learner handout —</span>
+  <button type="button" onclick="window.print()">🖨 Print / Save as PDF</button>
+  <span class="hint">fill in the blanks · give out in Class 1</span>
+</div>
+
+<div class="sheet big">
+
+  <header class="mast">
+    <div class="kit-eyebrow">IELTS Academic Preparation · Target band 6.0–7.5</div>
+    <h1>Welcome to IELTS Academic Preparation</h1>
+    <p class="sub">Welcome, and thank you for joining us. Most of you are here because a number matters: a band score for a university place, for professional registration, or for a visa application. This course is designed to help you <b>show the English you already have</b>, under exam conditions. Over eight weeks you'll learn exactly how each part of the test works, practice every major question type, write and self-mark both Writing tasks, rehearse the Speaking interview, and sit <b>two full practice tests</b> so that nothing on test day is a surprise.</p>
+    <p class="hello">Some of you are engineers, nurses, teachers, or students; some of you have taken IELTS before and some have never seen a test paper. Everyone starts from a different place, and everyone is measured against <b>their own starting point</b>, not against the person sitting next to them.</p>
+  </header>
+
+  <div class="sec"><h2>📅 When and where</h2><span class="rule"></span></div>
+  <div class="fill">
+    <span class="k">📅 Days:</span><span class="v"></span>
+    <span class="k">🕐 Time:</span><span class="v"></span>
+    <span class="k">📍 Place / Room:</span><span class="v"></span>
+    <span class="k">🟢 First class:</span><span class="v"></span>
+    <span class="k">🎉 Last class:</span><span class="v"></span>
+    <span class="k">🗓 My test date (if booked):</span><span class="v"></span>
+  </div>
+  <p>✅ The course runs for <b>8 weeks</b>, with <b>2 classes</b> a week. Each class lasts <b>90 minutes</b>, so there are <b>16 classes</b> in total.</p>
+  <p>📝 <b>Class 1</b> is an orientation and a short <b>diagnostic</b> (a little Listening and Reading, a writing sample, and a three-minute speaking sample), so we know where each of you is starting. <b>Class 8</b> is <b>Practice Test 1</b> (timed Listening and Reading). <b>Classes 15 and 16</b> are <b>Practice Test 2</b>: Listening and Reading first, then Writing and a short speaking interview, followed by a band debrief and a celebration. 🎓</p>
+
+  <div class="sec"><h2>🎒 What to bring</h2><span class="rule"></span></div>
+  <div class="bring">
+    <div><img src="assets/vocab/notebook.jpg" alt="">a notebook</div>
+    <div><img src="assets/vocab/pencil.jpg" alt="">a pencil<span class="opt">and an eraser</span></div>
+    <div><img src="assets/vocab/mobile-phone.jpg" alt="">your phone<span class="opt">(for recording; on silent)</span></div>
+    <div><img src="assets/vocab/water.jpg" alt="">water<span class="opt">(if you like)</span></div>
+  </div>
+  <p>📘 Your teacher will give you a <b>workbook</b> and a <b>band tracker</b>. Please bring both to <b>every</b> class. We practice with a <b>pencil</b> because the paper-based test uses one. If you have a simple watch, bring it too: learning to pace yourself without your phone is part of the training. We also recommend an <b>error log</b>, a page at the back of your notebook where you record every mistake from practice and the reason for it. By week 8 it will be the most useful thing you own.</p>
+
+  <div class="sec"><h2>🤝 How our class works</h2><span class="rule"></span></div>
+  <ul class="rules">
+    <li><span class="ic">🕐</span><span>Please arrive <b>on time</b>. Classes start with a short warm-up, and some classes start with a timed task.</span></li>
+    <li><span class="ic">📵</span><span>Keep your phone <b>on silent</b>. We use phones only to record speaking practice and to time ourselves.</span></li>
+    <li><span class="ic">🎯</span><span>Feedback is always linked to the <b>band criteria</b>, so you know exactly which criterion a comment affects and what to do next.</span></li>
+    <li><span class="ic">🔒</span><span>Your scores are <b>private</b>. You decide whether to share them. We compare you with yourself, never with a classmate.</span></li>
+    <li><span class="ic">📩</span><span>If you can't come, please <b>let your teacher know</b>, and do the online lesson at home.</span></li>
+    <li><span class="ic">🙂</span><span>Your personal story is <b>yours</b>. In speaking practice you can always use a real or an imagined example. Examiners mark your English, not your life.</span></li>
+  </ul>
+
+  <div class="sec"><h2>⏱ When the clock is running</h2><span class="rule"></span></div>
+  <p>Many classes include <b>timed practice</b>, and three classes are full test sessions. These ground rules keep the room fair and calm for everyone, and they are close to the rules of the real test:</p>
+  <ul class="rules">
+    <li><span class="ic">🤫</span><span><b>Silence once the clock starts.</b> If you need something, raise your hand and wait for your teacher.</span></li>
+    <li><span class="ic">📱</span><span><b>Phones face down and away</b>, and no dictionaries or translation apps during timed work.</span></li>
+    <li><span class="ic">✏️</span><span><b>Pencils down when time is called</b>, even in the middle of a sentence. Honest timing gives you an honest result.</span></li>
+    <li><span class="ic">🔁</span><span><b>Finished early?</b> Check your spelling, your word limits, and any blanks. Stay quiet until everyone has finished.</span></li>
+    <li><span class="ic">🎲</span><span><b>Never leave a blank.</b> A wrong answer loses nothing, so an educated guess is always worth writing.</span></li>
+    <li><span class="ic">✅</span><span><b>Mark honestly.</b> When we self-mark, a generous score today only hides the problem we need to fix before test day.</span></li>
+  </ul>
+
+  <div class="sec"><h2>🗨️ Useful phrases for class</h2><span class="rule"></span></div>
+  <div class="say-it">
+    <div class="h">Asking about the test</div>
+    <div>❓ Would this answer be accepted if I spelled it ___?</div>
+    <div>🔢 Does "___" count as one word or two?</div>
+    <div>📊 Which criterion does this mistake affect?</div>
+    <div>🧭 What would make this a band ___ answer?</div>
+    <div class="h">In speaking practice</div>
+    <div>🔁 Sorry, could you repeat the question, please?</div>
+    <div>🤔 That's an interesting question. Let me think…</div>
+    <div>➕ The main reason is … For example, …</div>
+    <div>⏸️ Could I have a moment to collect my thoughts?</div>
+  </div>
+
+  <div class="sec"><h2>🏠 At home: free online lessons</h2><span class="rule"></span></div>
+  <div class="homebox">
+    <div>
+      <h3>📱 IELTS Academic Preparation: free</h3>
+      <p>Each of the <b>12 lessons</b> taught in class has a matching <b>online lesson</b> with the strategies, question types, annotated model answers, and exercises with answers. It's your homework, and it lets you catch up if you miss a class. It works on a phone, a tablet, or a computer.</p>
+      <span class="url">rays-esl.netlify.app/curriculum-ielts/</span>
+      <ol class="steps">
+        <li>Open the website, or scan the QR code with your phone camera. 📷</li>
+        <li>Choose the lesson your teacher gives you (for example, <b>Lesson 2.3</b>).</li>
+        <li>Press the <span class="listen-btn">🔊</span> buttons to hear the model sentences. Then <b>shadow</b> them: say each line along with the audio, copying its stress, rhythm, and pausing. <span style="font-size:.9rem;color:var(--ink-3)">(No sound? Turn up the volume, or try the Chrome browser. The 🎧 Audio control lets you choose a US or UK voice and slow it down.)</span></li>
+        <li>Do the exercises <b>before</b> you open the answers, then the lesson task. Time yourself whenever the task says so, and write your result on your band tracker.</li>
+      </ol>
+      <p>⏱ Aim for <b>45–60 minutes, 2–3 times</b> a week, plus <b>15 minutes of English every day</b>: a news article or a science feature, a podcast or a lecture, or one paragraph of writing.</p>
+      <p style="font-size:.95rem;color:var(--ink-2)">The online lessons use British spelling (<i>practise, analyse, centre, programme</i>). In class we use American English. IELTS accepts <b>both</b>; the important thing is to <b>choose one and use it consistently</b> in a piece of writing.</p>
+    </div>
+    <div class="qr"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 148 148" class="segno" role="img" aria-label="QR code: rays-esl.netlify.app/curriculum-ielts/"><g transform="scale(4)"><path fill="#fff" d="M0 0h37v37h-37z"/><path class="qrline" stroke="#16202e" d="M2 2.5h7m1 0h3m1 0h1m2 0h2m1 0h2m1 0h3m2 0h7m-33 1h1m5 0h1m3 0h4m1 0h2m4 0h1m1 0h2m1 0h1m5 0h1m-33 1h1m1 0h3m1 0h1m1 0h2m1 0h3m2 0h2m2 0h1m1 0h2m2 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m1 0h1m3 0h1m1 0h1m3 0h1m1 0h1m3 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m3 0h1m1 0h2m1 0h4m3 0h2m2 0h1m1 0h3m1 0h1m-33 1h1m5 0h1m1 0h1m1 0h2m1 0h1m2 0h1m2 0h4m1 0h1m1 0h1m5 0h1m-33 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-25 1h1m1 0h1m1 0h2m2 0h3m1 0h2m1 0h2m-24 1h1m1 0h1m1 0h4m4 0h1m1 0h2m4 0h1m1 0h5m1 0h2m1 0h1m-32 1h1m1 0h1m3 0h1m1 0h1m2 0h1m1 0h1m1 0h1m3 0h3m2 0h3m3 0h2m-32 1h1m1 0h2m1 0h2m1 0h1m1 0h1m2 0h2m1 0h1m1 0h2m1 0h1m3 0h3m1 0h1m1 0h1m-33 1h1m1 0h1m2 0h1m1 0h2m1 0h4m1 0h2m1 0h2m1 0h3m2 0h1m1 0h2m1 0h1m-32 1h1m1 0h2m2 0h2m2 0h1m1 0h1m2 0h1m2 0h1m2 0h1m3 0h3m1 0h1m1 0h1m-32 1h3m1 0h2m1 0h2m1 0h7m2 0h4m1 0h3m1 0h2m1 0h2m-30 1h2m1 0h1m2 0h1m3 0h1m1 0h1m1 0h1m3 0h3m1 0h3m2 0h2m-32 1h2m1 0h2m4 0h2m1 0h1m1 0h1m1 0h1m2 0h4m3 0h2m3 0h1m-31 1h2m1 0h1m1 0h1m3 0h2m2 0h3m1 0h1m2 0h2m3 0h1m1 0h2m1 0h1m-32 1h4m1 0h1m2 0h1m1 0h1m2 0h3m2 0h1m4 0h2m2 0h1m1 0h1m1 0h1m-31 1h4m1 0h1m2 0h2m6 0h2m7 0h1m3 0h1m1 0h1m-33 1h1m2 0h2m5 0h4m1 0h1m1 0h1m2 0h2m1 0h1m2 0h2m3 0h1m-32 1h1m1 0h1m1 0h1m1 0h2m1 0h2m1 0h3m2 0h2m2 0h2m1 0h2m6 0h1m-31 1h2m1 0h1m1 0h1m1 0h1m2 0h4m1 0h2m1 0h1m3 0h1m1 0h1m2 0h1m1 0h2m-33 1h4m1 0h3m1 0h1m1 0h1m1 0h1m3 0h1m1 0h1m2 0h1m2 0h4m1 0h1m1 0h1m-32 1h2m1 0h2m1 0h1m1 0h1m1 0h1m1 0h2m2 0h1m1 0h1m1 0h1m3 0h1m2 0h2m1 0h1m-32 1h1m1 0h1m2 0h11m2 0h1m1 0h10m1 0h1m-24 1h1m1 0h3m1 0h1m1 0h5m1 0h1m1 0h1m3 0h2m1 0h2m-33 1h7m1 0h2m1 0h1m1 0h2m1 0h3m5 0h1m1 0h1m1 0h4m-32 1h1m5 0h1m1 0h1m1 0h3m3 0h2m2 0h3m1 0h1m3 0h1m2 0h2m-33 1h1m1 0h3m1 0h1m4 0h1m1 0h1m2 0h3m1 0h3m1 0h6m2 0h1m-33 1h1m1 0h3m1 0h1m1 0h4m1 0h2m3 0h1m4 0h1m2 0h1m1 0h1m2 0h1m-32 1h1m1 0h3m1 0h1m2 0h1m1 0h5m2 0h1m2 0h1m2 0h1m3 0h1m1 0h1m1 0h1m-33 1h1m5 0h1m1 0h4m2 0h1m1 0h1m1 0h1m2 0h4m4 0h1m-30 1h7m2 0h2m3 0h1m1 0h1m2 0h1m1 0h1m2 0h1m1 0h1m1 0h2m1 0h1"/></g></svg>
+<div class="cap">Scan me 📷</div></div>
+  </div>
+
+  <div class="homebox teal">
+    <div>
+      <h3>🌍 Translation help and more practice</h3>
+      <p>This free page shows you how to <b>translate</b> a lesson into your language, and it lists free tools for listening, pronunciation, and speaking practice.</p>
+      <span class="url">rays-esl.netlify.app/curriculum/learning-tools.html</span>
+      <p style="font-size:1rem;color:var(--ink-2)">For IELTS, work in <b>English first</b> and use translation only to check an instruction or a subtle word. For listening practice, choose lectures, science programs, and podcasts about education, health, technology, and the environment, with <b>English</b> subtitles or none at all.</p>
+    </div>
+    <div class="qr"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 148 148" class="segno" role="img" aria-label="QR code: learning tools page"><g transform="scale(4)"><path fill="#fff" d="M0 0h37v37h-37z"/><path class="qrline" stroke="#16202e" d="M2 2.5h7m2 0h2m1 0h2m2 0h5m2 0h1m2 0h7m-33 1h1m5 0h1m3 0h1m1 0h5m5 0h1m3 0h1m5 0h1m-33 1h1m1 0h3m1 0h1m1 0h2m2 0h2m2 0h1m1 0h1m1 0h2m4 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m1 0h2m1 0h2m1 0h1m2 0h1m1 0h1m2 0h3m1 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m6 0h1m1 0h1m1 0h3m1 0h1m2 0h1m1 0h3m1 0h1m-33 1h1m5 0h1m1 0h3m1 0h2m1 0h1m2 0h1m1 0h3m1 0h1m1 0h1m5 0h1m-33 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-25 1h1m1 0h2m2 0h2m3 0h6m-25 1h1m1 0h5m4 0h5m1 0h1m1 0h1m2 0h1m1 0h1m1 0h5m-29 1h3m3 0h1m5 0h1m3 0h3m1 0h3m1 0h2m1 0h2m1 0h1m-33 1h2m1 0h1m2 0h2m1 0h1m1 0h1m3 0h1m1 0h2m2 0h1m3 0h2m1 0h1m1 0h2m-31 1h3m1 0h1m8 0h2m4 0h6m2 0h3m1 0h1m-33 1h1m1 0h1m1 0h4m1 0h4m2 0h1m1 0h2m3 0h1m4 0h3m-29 1h5m1 0h2m1 0h1m1 0h4m2 0h4m1 0h1m2 0h1m4 0h2m-33 1h1m2 0h5m7 0h1m1 0h1m2 0h1m4 0h2m2 0h3m-32 1h1m1 0h1m2 0h1m1 0h5m3 0h2m1 0h5m1 0h3m2 0h2m-29 1h3m1 0h2m2 0h3m1 0h1m1 0h2m1 0h2m1 0h1m2 0h1m1 0h2m3 0h1m-32 1h1m2 0h2m1 0h1m8 0h2m1 0h2m2 0h1m1 0h3m1 0h4m-32 1h4m1 0h2m1 0h2m1 0h4m1 0h1m2 0h1m1 0h1m2 0h4m1 0h2m-31 1h1m2 0h1m5 0h1m2 0h3m2 0h1m1 0h2m2 0h7m1 0h1m-31 1h1m1 0h1m1 0h2m1 0h1m1 0h1m1 0h3m1 0h1m4 0h4m2 0h2m-30 1h1m4 0h1m4 0h3m3 0h5m2 0h1m2 0h1m3 0h1m1 0h1m-33 1h1m2 0h1m2 0h3m3 0h5m1 0h1m2 0h2m4 0h1m1 0h1m1 0h1m-32 1h1m1 0h1m4 0h3m3 0h4m3 0h2m4 0h1m1 0h5m-33 1h1m3 0h6m3 0h1m2 0h3m5 0h6m2 0h1m-25 1h3m2 0h1m2 0h6m1 0h2m3 0h1m1 0h3m-33 1h7m6 0h4m1 0h1m3 0h3m1 0h1m1 0h1m1 0h2m-32 1h1m5 0h1m1 0h5m1 0h2m2 0h7m3 0h4m-32 1h1m1 0h3m1 0h1m1 0h1m1 0h6m1 0h1m1 0h2m3 0h6m1 0h1m-32 1h1m1 0h3m1 0h1m1 0h6m2 0h2m1 0h2m2 0h3m2 0h5m-33 1h1m1 0h3m1 0h1m1 0h2m1 0h2m2 0h1m1 0h1m2 0h1m1 0h1m1 0h1m1 0h2m1 0h2m-31 1h1m5 0h1m2 0h1m1 0h2m2 0h2m1 0h1m1 0h2m3 0h2m1 0h3m-31 1h7m1 0h1m1 0h6m1 0h1m1 0h1m2 0h3m2 0h1m3 0h1"/></g></svg>
+<div class="cap">Scan me 📷</div></div>
+  </div>
+
+  <div class="expect">
+    <h3>📈 What to expect: honest numbers</h3>
+    <p>We want you to plan with real information, so here it is:</p>
+    <ul>
+      <li>With regular homework, a gain of about <b>half a band</b> over eight weeks is common. Some learners gain more, especially when their main problem was <b>technique</b> (timing, word limits, the Writing task structure). A bigger jump is possible, but it is <b>not guaranteed</b>, and anyone who promises one is guessing.</li>
+      <li>Progress is usually <b>uneven</b>. Listening and Reading often move first; Writing and Speaking usually move more slowly because they depend on habits built over time.</li>
+      <li>Scores sometimes <b>dip</b> for a week or two while you change your technique. That is normal, and it usually comes before a gain.</li>
+      <li>Our practice-test bands are <b>estimates</b>. They are useful for planning, but only the official test gives an official score.</li>
+      <li>If the gap between your diagnostic band and your target is large, your teacher will talk with you privately about a <b>realistic test date</b>, or about a general English course first. That is advice, not a judgment.</li>
+    </ul>
+  </div>
+
+  <div class="sec"><h2>🌿 Keeping test nerves under control</h2><span class="rule"></span></div>
+  <p>Almost everyone feels nervous about a test that matters this much. A little tension helps you focus; too much steals your technique. These habits help:</p>
+  <div class="calm">
+    <div><b>Practice under real conditions.</b> The more timed tests you sit here, the more ordinary the real one will feel.</div>
+    <div><b>Breathe slowly before each section.</b> Breathe in for four counts and out for six, three times. It really does slow your heart rate.</div>
+    <div><b>Let one question go.</b> Missed an answer in Listening? Leave it and catch the next one. One mark is only one mark.</div>
+    <div><b>Speaking is a conversation.</b> The examiner wants you to talk. If you lose a word, describe it and keep going.</div>
+    <div><b>Sleep beats cramming.</b> In the last few days, light review and a good night's sleep will help you more than new material.</div>
+    <div><b>Talk to your teacher.</b> If worry is affecting your sleep or your practice, tell us. You are not the first, and we can help you plan.</div>
+  </div>
+
+  <div class="sec"><h2>🗓 Booking the official test</h2><span class="rule"></span></div>
+  <ul class="tick">
+    <li><b>Check your requirement first.</b> Ask your university, registration body, or immigration adviser for the exact score: the overall band <b>and</b> any minimum for each skill (for example, "6.5 overall, no skill below 6.0").</li>
+    <li><b>Choose the right version.</b> This course prepares you for <b>IELTS Academic</b>. Some visa and work routes ask for General Training instead, so check before you book.</li>
+    <li><b>Book only through the official IELTS website or an authorized test center.</b> You can usually choose a paper-based or computer-delivered test; the content and scoring are the same. Book early, because popular dates fill up.</li>
+    <li><b>Use the same ID</b> to book and on test day, usually a passport. Check the name and date of birth carefully.</li>
+    <li><b>Be careful of scams.</b> Nobody can sell you a guaranteed band or a certificate without the test. If an offer sounds too good to be true, it is.</li>
+  </ul>
+  <p style="font-size:.9rem;color:var(--ink-3)">This course is independent. It is not affiliated with or endorsed by the IELTS partners, and fees, dates, and rules are set by them, so always check the official information before you book.</p>
+
+  <div class="contact">
+    <h3>👩‍🏫 My teacher</h3>
+    <div class="fill">
+      <span class="k">Name:</span><span class="v"></span>
+      <span class="k">📞 Phone / text:</span><span class="v"></span>
+      <span class="k">✉️ Email:</span><span class="v"></span>
+      <span class="k">Other help:</span><span class="v"></span>
+    </div>
+    <p style="margin-top:12px">📩 Can't come to class? Send a short message: <b>"Hi, this is ______. I'm afraid I won't be able to make it today because ______. I'll do the online lesson at home before the next class."</b> If you miss a practice test class, ask your teacher how to sit it at home under timed conditions.</p>
+  </div>
+
+  <div class="note lab">
+    <div class="t">🌟 You're ready to start</div>
+    <p style="font-size:1.06rem">IELTS is a skill you can train, not a verdict on you as a person or on your intelligence. Much of the progress in the next eight weeks will come from <b>knowing the test</b>: where the marks are, where the traps are, and how to use every minute. The rest will come from steady, honest practice. You don't need to feel confident to begin. Confidence is what you build, one timed task at a time. We're glad you're here. Welcome.</p>
+  </div>
+
+  <div class="foot">
+    <div class="who"><b>Ray de la Paz</b><span class="bio">© 2026 Ray de la Paz · IELTS Academic Preparation</span></div>
+    <div class="ver">Learner Welcome · v1.0</div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Practice Test 2 — Full Academic Mock</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../kit.css">
+<style>
+  /* ── Test-paper components (shared look with the C1 kit's progress tests) ── */
+  .pagebreak{break-before:page}
+  .teacher-only{font-family:"JetBrains Mono",monospace;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+    color:#fff;background:var(--warn);border-radius:999px;padding:3px 11px;display:inline-block;margin-bottom:8px;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .paper{font-size:17px;line-height:1.5}
+  .paper-head{display:grid;grid-template-columns:2fr 1fr 1fr;gap:14px;margin:6px 0 14px;font-size:1.05rem}
+  .paper-head div{border-bottom:1.5px solid var(--ink-2);padding:6px 2px 4px}
+  .paper-head b{font-weight:700}
+  .part-h{display:flex;align-items:center;gap:12px;margin:30px 0 6px;padding:10px 14px;background:var(--accent-soft);
+    border-radius:10px;break-after:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .part-h h2{font-size:1.3rem;font-weight:800;flex:1}
+  .part-h .score{font-family:"JetBrains Mono",monospace;font-size:.95rem;font-weight:600;border:1.5px solid var(--ink-2);
+    border-radius:8px;padding:4px 10px;background:var(--surface);white-space:nowrap}
+  .qh{font-family:"Archivo",sans-serif;font-weight:800;font-size:1.08rem;margin:22px 0 4px;break-after:avoid}
+  .inst{font-size:1.04rem;margin:4px 0 10px;break-after:avoid}
+  .inst b{font-weight:700}
+  .limit{display:inline-block;font-family:"JetBrains Mono",monospace;font-size:.78rem;font-weight:600;letter-spacing:.04em;
+    border:1.5px solid var(--ink-2);border-radius:6px;padding:1px 8px;margin-left:4px}
+  .item{display:flex;gap:12px;align-items:baseline;margin:10px 0;font-size:1.06rem;break-inside:avoid}
+  .item .n{font-family:"JetBrains Mono",monospace;font-weight:600;color:var(--accent);min-width:1.8em}
+  .ch.stack{display:flex;flex-direction:column;align-items:flex-start;gap:4px;margin-top:4px}
+  .ch.stack span{border:1.5px solid var(--line-strong);border-radius:10px;padding:2px 12px;background:var(--surface)}
+  .gap{display:inline-block;min-width:9em;border-bottom:1.5px solid var(--ink-2);margin:0 4px;text-align:center;
+    font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--accent);font-weight:600}
+  table.form{width:100%;border-collapse:collapse;margin:8px 0 14px;font-size:1.02rem;border:1.5px solid var(--ink-2)}
+  table.form caption{font-family:"Archivo",sans-serif;font-weight:800;font-size:1.05rem;padding:8px 10px;text-align:left;
+    background:var(--surface-2);border:1.5px solid var(--ink-2);border-bottom:none}
+  table.form th,table.form td{border-bottom:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:baseline}
+  table.form th{width:38%;font-weight:600;color:var(--ink-2)}
+  .notes{border:1.5px solid var(--ink-2);border-radius:10px;padding:12px 16px;margin:8px 0 14px;font-size:1.02rem;line-height:1.75;break-inside:avoid}
+  .notes .nt{font-family:"Archivo",sans-serif;font-weight:800;font-size:1.08rem;text-align:center;margin-bottom:6px}
+  .notes h5{font-size:.98rem;font-weight:700;margin:8px 0 2px}
+  .notes ul{margin:0 0 4px 1.2em;padding:0}
+  .letters{display:grid;grid-template-columns:1fr 1fr;gap:4px 18px;margin:8px 0 12px;padding:10px 14px;border:2px dashed var(--line-strong);border-radius:10px;font-size:1.02rem}
+  .letters b{font-family:"JetBrains Mono",monospace;margin-right:6px}
+  .text{border:1px solid var(--line);border-radius:10px;padding:16px 20px;background:var(--surface-2);font-size:1.04rem;line-height:1.72;margin:10px 0}
+  .text p{margin:0 0 11px}
+  .text p:last-child{margin-bottom:0}
+  .text .ttl{font-family:"Archivo",sans-serif;font-weight:800;font-size:1.25rem;margin-bottom:4px}
+  .text .by{font-size:.92rem;color:var(--ink-3);margin:0 0 10px;font-style:italic}
+  .text .pl{font-family:"JetBrains Mono",monospace;font-weight:700;color:var(--accent);margin-right:8px}
+  .tfrow{display:grid;grid-template-columns:2.2em 1fr;gap:12px;align-items:baseline;padding:7px 0;border-bottom:1px solid var(--line);font-size:1.04rem;break-inside:avoid}
+  .tfrow .n{font-family:"JetBrains Mono",monospace;font-weight:600;color:var(--accent)}
+  .wline{border-bottom:1.5px solid var(--ink-2);height:2.1em}
+  .fig-test{border:1.5px solid var(--ink-2);border-radius:10px;padding:12px;margin:10px 0 14px;background:#fff;break-inside:avoid;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .fig-test svg{display:block;width:100%;height:auto;max-width:620px;margin:0 auto}
+  .fig-test .cap{text-align:center;font-weight:700;font-size:1rem;margin:0 0 6px;color:#1a2230}
+  table.sheet-grid{width:100%;border-collapse:collapse;margin:10px 0;font-size:.95rem}
+  table.sheet-grid td{border:1px solid var(--line-strong);padding:0 8px;height:2.15em;vertical-align:middle}
+  table.sheet-grid td.n{width:2.6em;font-family:"JetBrains Mono",monospace;font-weight:600;color:var(--accent);text-align:center;background:var(--surface-2)}
+  table.sheet-grid td.mk{width:2.4em;text-align:center;color:var(--ink-3);font-size:.75rem}
+  table.grid{width:100%;border-collapse:collapse;margin:10px 0;font-size:.9rem}
+  table.grid th,table.grid td{border:1px solid var(--line-strong);padding:8px 10px;text-align:left;vertical-align:top}
+  table.grid thead th{background:var(--surface-2);font-family:"JetBrains Mono",monospace;font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+  table.grid td.sc{width:13%;text-align:center;font-family:"JetBrains Mono",monospace;color:var(--ink-3)}
+  .cue-card{border:2px solid var(--ink-2);border-radius:10px;padding:14px 18px;background:var(--surface);break-inside:avoid;font-size:1.02rem}
+  .cue-card .ct{font-family:"JetBrains Mono",monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:6px}
+  .cue-card .topic{font-family:"Archivo",sans-serif;font-weight:800;font-size:1.15rem;margin-bottom:6px}
+  .cue-card ul{margin:4px 0 8px 1.2em;padding:0}
+  .cards .cue-card{margin:6px}
+  .done{margin-top:26px;text-align:center;font-size:1.15rem;font-weight:700}
+  .pause{font-family:"JetBrains Mono",monospace;font-size:.78rem;font-weight:700;color:var(--warn);letter-spacing:.04em}
+  .spk{font-weight:700}
+  @media (max-width:680px){
+    .paper-head{grid-template-columns:1fr}
+    .letters{grid-template-columns:1fr}
+    table.grid,table.sheet-grid{display:block;overflow-x:auto}
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="lbl">Test pack —</span>
+  <button type="button" onclick="window.print()">Print / Save as PDF</button>
+  <span class="hint">teacher notes · learner papers (Listening, Reading, Writing) · answer sheets · scripts &amp; speaking (teacher only)</span>
+</div>
+
+<div class="sheet">
+
+  <header class="mast">
+    <div class="kit-eyebrow">IELTS Academic Preparation · Assessment · Classes 15–16</div>
+    <h1>Practice Test 2 — Full Academic Mock</h1>
+    <p class="sub">The second and final full mock of the course, taken after Lesson 4.3. It has the same shape as the real IELTS Academic test: <b>Listening</b> (4 sections, 40 questions), <b>Reading</b> (3 academic passages, 40 questions), <b>Writing</b> (Task 1 data report + Task 2 essay) and a <b>Speaking</b> interview in three parts. Every passage, script, chart, prompt and cue card here is original and was written for this course. It is not taken from, or adapted from, any published IELTS test. Use the results <b>diagnostically</b>: set them beside Practice Test 1 to see what has moved, what hasn't yet, and what each learner should do between now and test day.</p>
+    <div class="meta-row">
+      <span class="chip">Class 15: Listening <b>~27 min</b> + Reading <b>60 min</b></span>
+      <span class="chip">Class 16: Writing <b>60 min</b> + Speaking <b>11–14 min</b> each</span>
+      <span class="chip">Listening <b>/40</b> · Reading <b>/40</b> · Writing &amp; Speaking <b>band estimates</b></span>
+      <span class="chip">Target band <b>6.0–7.5</b></span>
+    </div>
+  </header>
+
+  <div class="note">
+    <div class="t">How to frame the last mock</div>
+    <p>By Week 8, most learners have a real test date, and some have a university offer or a registration deadline riding on it. That is exactly why this mock should feel <b>calm and ordinary</b>. Say it plainly before you start: <b>"This is a rehearsal, not a verdict. It shows you where your marks are coming from and where you can still pick them up. Whatever the number, you will leave with a clear plan."</b> Be honest about what a mock can and can't tell you: a band from one practice test can easily be half a band above or below what the same person would get on another day, so treat it as a <b>range</b>, not a prediction. Remind learners that a <b>0.5 band gain over eight weeks is common and worth celebrating</b>; a bigger jump happens for some people, but no course can promise it.</p>
+  </div>
+
+  <div class="sec"><h2>How to Use This Pack</h2><span class="rule"></span></div>
+  <div class="grid2">
+    <div class="blk"><div class="h">What each part checks</div>
+      <ul class="tick">
+        <li><b>Listening /40</b> (Lesson 2.1): form completion with spelling and corrections (S1), multiple choice and plan labelling (S2), multiple choice and matching in an academic discussion (S3), note completion in a lecture (S4)</li>
+        <li><b>Reading /40</b> (Lessons 2.2–2.3): True/False/Not Given, note completion, matching headings, matching features, sentence completion, Yes/No/Not Given, multiple choice, and summary completion from a box</li>
+        <li><b>Writing</b> (Lessons 3.1–3.3): a line-graph report (150+ words) and a "discuss both views" essay (250+ words), estimated on the four paraphrased criteria</li>
+        <li><b>Speaking</b> (Lessons 4.1–4.2): Parts 1–3, estimated on the four paraphrased criteria</li>
+        <li>Paraphrase (1.2) and grammar range (1.3) run through every part</li>
+      </ul>
+    </div>
+    <div class="blk"><div class="h">You need</div>
+      <ul class="tick">
+        <li>Per learner: the <b>Listening paper</b>, the <b>Reading paper</b>, the <b>Writing paper</b>, and one copy of each <b>answer sheet</b>. Print at 100% so the plan, the graph and the writing lines stay usable</li>
+        <li>The teacher pages: listening scripts (Class 15) and the speaking run-sheet, cue cards and record forms (Class 16)</li>
+        <li>A clock or timer the whole room can see, pencils, erasers</li>
+        <li>The key: <code class="inline">assessment/practice-test-2-key.html</code> (answers with evidence, raw-score conversion, model answers, band-estimation sheets and the debrief plan)</li>
+        <li>Each learner's Practice Test 1 results (<code class="inline">assessment/practice-test-1.html</code>, keys in <code class="inline">assessment/answer-keys.html</code>) for the Class 16 comparison</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec"><h2>Running Class 15 — Listening + Reading (90 min)</h2><span class="rule"></span></div>
+  <p>This class is tight by design: it has the same timing as the real test. <b>Set the room up before learners arrive</b> (papers face down, one answer sheet on top, bags and phones at the side) so the whole 90 minutes is available.</p>
+  <table class="timing">
+    <thead><tr><th>Stage</th><th>Time</th><th>Interaction</th><th>Procedure</th></tr></thead>
+    <tbody>
+      <tr><td>Settle &amp; rules</td><td class="t">2 min</td><td>T–S</td><td>One slow breath together. Then give the rules exactly as in the test: <b>you will hear each recording once only</b>; write answers on the question paper as you listen; you will have 2 minutes at the end to copy them onto the answer sheet. Tell learners that on the paper-based test they get 10 minutes to transfer, and on the computer-based test they type as they go, so 2 minutes is a fair middle. Remind them: <b>no penalty for wrong answers, so never leave a blank</b>.</td></tr>
+      <tr><td>Listening S1–S4</td><td class="t">25 min</td><td>T–S</td><td>Read the four scripts on the teacher pages <b>once each</b>, at a natural pace, observing every <span class="pause">[PAUSE]</span>. Don't repeat, rephrase or slow down for a word. If someone clearly missed a whole section because of a noise outside, note it on their paper and move on. For Section 3, use three distinct voices or ask a colleague to read one part.</td></tr>
+      <tr><td>Transfer &amp; check</td><td class="t">2 min</td><td>S</td><td>Learners copy answers 1–40 onto the Listening answer sheet. "Check spelling, plurals and word limits. Fill every blank."</td></tr>
+      <tr><td>Reading</td><td class="t">60 min</td><td>S</td><td>Collect the Listening papers, then say "Turn over the Reading paper. You have one hour. There is no extra time to transfer answers." Write the checkpoints on the board: <b>:20 → Passage 2 · :40 → Passage 3 · :55 → fill every blank</b>. Announce the time at 20, 40 and 55 minutes, then say nothing else. Don't help with vocabulary.</td></tr>
+      <tr><td>Close</td><td class="t">1 min</td><td>T–S</td><td>Collect everything. Thank them, and name the effort, not the outcome: "An hour and a half of full concentration is a real achievement." Remind them that Class 16 is Writing, then speaking and results.</td></tr>
+    </tbody>
+  </table>
+  <div class="note lab">
+    <div class="t">Between Classes 15 and 16</div>
+    <p>Mark Listening and Reading with the key before Class 16 (about 3 minutes per learner once you know the answers). Write each raw score and the <b>approximate</b> band on a slip for each learner, beside their Practice Test 1 bands. Don't write comments on the scripts yet; learners will analyze their own errors in Class 16, which teaches them more than reading yours.</p>
+  </div>
+
+  <div class="sec"><h2>Running Class 16 — Writing, Speaking, Debrief (90 min)</h2><span class="rule"></span></div>
+  <table class="timing">
+    <thead><tr><th>Stage</th><th>Time</th><th>Interaction</th><th>Procedure</th></tr></thead>
+    <tbody>
+      <tr><td>Settle</td><td class="t">3 min</td><td>T–S</td><td>Hand out the Writing paper face down. Rules: 60 minutes for both tasks; the clock is theirs to manage, but you recommend <b>20 minutes for Task 1 and 40 minutes for Task 2</b>, because Task 2 carries more weight. Pencil is fine. Word counts matter: 150+ and 250+.</td></tr>
+      <tr><td>Writing Tasks 1 + 2</td><td class="t">60 min</td><td>S</td><td>Silent, timed. Announce "20 minutes: you should be moving on to Task 2" and "5 minutes left". Early finishers check their overview (Task 1) and their position in the introduction and conclusion (Task 2). Don't run speaking interviews during this hour: every minute outside the room is a minute of writing lost.</td></tr>
+      <tr><td>Break &amp; collect</td><td class="t">5 min</td><td>—</td><td>Collect the Writing papers. Set up the speaking corner (two chairs, a timer, the cue cards, record forms).</td></tr>
+      <tr><td>Results + speaking</td><td class="t">17 min</td><td>S · S–S · T–S</td><td>Return the Listening and Reading answer sheets with the result slips. Learners use the key's error-analysis grid to code every wrong answer with the same error codes as Practice Test 1 (Listening <b>D S W N L P X</b>; Reading <b>P M S W O T F K Q H X</b>) and fill in the <b>PT1 → PT2 band tracker</b>. At the same time, run the <b>speaking interviews</b> in the corner, following the run-sheet on the teacher pages.</td></tr>
+      <tr><td>Next steps &amp; celebration</td><td class="t">5 min</td><td>T–S · S</td><td>Each learner writes one sentence: "The one change with the biggest payoff for my band is ___, and this week I will ___" (the Lesson 4.3 journal prompt). Then celebrate what the group has done over eight weeks. Tell them when they will receive their Writing and Speaking estimates.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="note lab">
+    <div class="t">Access arrangements and learners with literacy gaps</div>
+    <p>The real IELTS offers arrangements (extra time, enlarged print, a scribe and others) to candidates who apply in advance with evidence; tell any learner who might qualify to ask their test center <b>well before</b> the booking deadline. In this mock, mirror what they would really get. If a learner writes much more slowly than they speak, don't change the tasks. Give extra time only if they will have it on the day, and write <b>"Adapted: +__ min"</b> on the paper so that the comparison with Practice Test 1 stays honest. For low vision, print the paper at 141% (A4 to A3) and give the Task 1 data table from the teacher pages alongside the graph. A slow writer is not a weak thinker: in the debrief, separate "I ran out of time" from "I didn't know what to write".</p>
+  </div>
+
+  <div class="note warn">
+    <div class="t">Personal information and opinions are always optional</div>
+    <p>The speaking cue cards ask about a place, a person and a piece of technology; Part 1 asks about everyday life. No question asks about home country, family members, immigration or status, and you should not add follow-ups that do. Tell every candidate before they start: <b>"You can answer as yourself or invent the details. I'm listening to your English, not checking your life."</b> The same goes for the Task 2 essay: learners may argue whichever side they can develop best.</p>
+  </div>
+
+  <!-- ═════════════════════ LEARNER PAPER · LISTENING ═════════════════════ -->
+  <div class="pagebreak"></div>
+  <div class="paper">
+    <header class="mast">
+      <div class="kit-eyebrow">IELTS Academic Preparation · Practice Test 2 · Class 15</div>
+      <h1>Listening</h1>
+      <div class="paper-head">
+        <div><b>Name:</b></div>
+        <div><b>Date:</b></div>
+        <div><b>Class:</b></div>
+      </div>
+      <p style="font-size:1.04rem;margin-top:10px"><b>Time: about 30 minutes.</b> There are four sections and 40 questions. You will hear each section <b>once only</b>. Write your answers on this paper as you listen. At the end you will have time to copy them onto the answer sheet. Check every word limit, your spelling, and your plurals.</p>
+    </header>
+
+    <!-- SECTION 1 -->
+    <div class="part-h"><h2>Section 1 · Questions 1–10</h2><span class="score">___ / 10</span></div>
+    <div class="qh">Questions 1–10</div>
+    <p class="inst">Complete the form below. Write <b>NO MORE THAN TWO WORDS AND/OR A NUMBER</b> for each answer.</p>
+    <table class="form">
+      <caption>Riverside Community Garden — New Member Form</caption>
+      <tbody>
+        <tr><th>Name</th><td>Daniel <span class="n">(1)</span> <span class="gap"></span></td></tr>
+        <tr><th>Phone number</th><td><span class="n">(2)</span> <span class="gap"></span></td></tr>
+        <tr><th>Plot size</th><td><span class="n">(3)</span> <span class="gap"></span> plot</td></tr>
+        <tr><th>Annual fee</th><td>$ <span class="n">(4)</span> <span class="gap"></span></td></tr>
+        <tr><th>Before starting</th><td>must attend an <span class="n">(5)</span> <span class="gap"></span> session</td></tr>
+        <tr><th>Date of session</th><td>Saturday, March <span class="n">(6)</span> <span class="gap"></span>, 10 a.m.</td></tr>
+        <tr><th>Members must bring</th><td>their own <span class="n">(7)</span> <span class="gap"></span></td></tr>
+        <tr><th>Tool shed key</th><td>kept at the <span class="n">(8)</span> <span class="gap"></span> across the road</td></tr>
+        <tr><th>Help with shared areas</th><td><span class="n">(9)</span> <span class="gap"></span> hours per month</td></tr>
+        <tr><th>Heard about the garden through</th><td>the <span class="n">(10)</span> <span class="gap"></span></td></tr>
+      </tbody>
+    </table>
+
+    <!-- SECTION 2 -->
+    <div class="part-h pagebreak"><h2>Section 2 · Questions 11–20</h2><span class="score">___ / 10</span></div>
+    <div class="qh">Questions 11–14</div>
+    <p class="inst">Choose the correct letter, <b>A</b>, <b>B</b> or <b>C</b>.</p>
+    <div class="item"><span class="n">11</span><span>The lamp in Harbor Point Lighthouse was first lit in
+      <span class="ch stack"><span>A &nbsp;1868.</span><span>B &nbsp;1886.</span><span>C &nbsp;1906.</span></span></span></div>
+    <div class="item"><span class="n">12</span><span>Why did the lighthouse keepers leave?
+      <span class="ch stack"><span>A &nbsp;An automatic lamp was installed.</span><span>B &nbsp;The keeper's cottage was damaged by a storm.</span><span>C &nbsp;The cost of running the lighthouse rose.</span></span></span></div>
+    <div class="item"><span class="n">13</span><span>Visitors who want to climb the tower must
+      <span class="ch stack"><span>A &nbsp;book a time at the Visitor Center.</span><span>B &nbsp;be at least twelve years old.</span><span>C &nbsp;wear suitable shoes.</span></span></span></div>
+    <div class="item"><span class="n">14</span><span>The steps down to the tide pools are closed
+      <span class="ch stack"><span>A &nbsp;during the winter months.</span><span>B &nbsp;around the time of high tide.</span><span>C &nbsp;every afternoon.</span></span></span></div>
+
+    <div class="qh">Questions 15–20</div>
+    <p class="inst">Label the plan below. Write the correct letter, <b>A–H</b>, next to Questions 15–20.</p>
+    <div class="fig-test">
+      <p class="cap">Harbor Point Lighthouse — Site Plan</p>
+      <svg viewBox="0 0 520 430" role="img" aria-labelledby="plan-t plan-d" xmlns="http://www.w3.org/2000/svg" font-family="Source Sans 3, Arial, sans-serif">
+        <title id="plan-t">Site plan of Harbor Point Lighthouse</title>
+        <desc id="plan-d">The entrance is at the bottom. A main path runs north to the lighthouse at the top. The sea is along the top and the left edge. The Visitor Center is just inside the entrance on the left. Halfway up, a side path runs left to the western cliff and right to the eastern side. Eight buildings or areas are marked with the letters A to H.</desc>
+        <rect x="0" y="0" width="520" height="430" fill="#f4f1e6"/>
+        <rect x="0" y="0" width="520" height="34" fill="#cfe2ee"/>
+        <rect x="0" y="0" width="26" height="430" fill="#cfe2ee"/>
+        <text x="40" y="22" font-size="13" fill="#2c5a74" font-weight="700" letter-spacing="3">SEA</text>
+        <text x="13" y="200" font-size="13" fill="#2c5a74" font-weight="700" transform="rotate(-90 13 200)" letter-spacing="3">SEA</text>
+        <!-- paths -->
+        <rect x="250" y="80" width="20" height="340" fill="#d8cfb8"/>
+        <rect x="100" y="216" width="320" height="14" fill="#d8cfb8"/>
+        <!-- lighthouse -->
+        <circle cx="260" cy="62" r="20" fill="#ffffff" stroke="#1a2230" stroke-width="2"/>
+        <circle cx="260" cy="62" r="7" fill="#1a2230"/>
+        <text x="232" y="56" font-size="13" fill="#1a2230" text-anchor="end" font-weight="700">Lighthouse</text>
+        <!-- given buildings -->
+        <rect x="130" y="320" width="110" height="70" fill="#e3e8ef" stroke="#1a2230" stroke-width="1.5"/>
+        <text x="185" y="351" font-size="13" text-anchor="middle" fill="#1a2230" font-weight="700">Visitor</text>
+        <text x="185" y="367" font-size="13" text-anchor="middle" fill="#1a2230" font-weight="700">Center</text>
+        <!-- lettered areas -->
+        <g fill="#ffffff" stroke="#1a2230" stroke-width="1.5">
+          <rect x="280" y="330" width="100" height="60"/>
+          <rect x="150" y="255" width="90" height="50"/>
+          <rect x="280" y="240" width="70" height="44"/>
+          <rect x="160" y="100" width="80" height="50"/>
+          <rect x="300" y="44" width="80" height="40"/>
+          <rect x="36" y="190" width="64" height="66"/>
+          <rect x="420" y="170" width="80" height="90"/>
+          <rect x="36" y="340" width="74" height="54"/>
+        </g>
+        <g font-size="20" font-weight="800" text-anchor="middle" fill="#1a2230">
+          <text x="330" y="367">A</text>
+          <text x="195" y="287">B</text>
+          <text x="315" y="269">C</text>
+          <text x="200" y="132">D</text>
+          <text x="340" y="71">E</text>
+          <text x="68" y="230">F</text>
+          <text x="460" y="222">G</text>
+          <text x="73" y="374">H</text>
+        </g>
+        <!-- entrance + north -->
+        <line x1="26" y1="421" x2="245" y2="421" stroke="#1a2230" stroke-width="2"/>
+        <line x1="275" y1="421" x2="520" y2="421" stroke="#1a2230" stroke-width="2"/>
+        <text x="260" y="414" font-size="11" text-anchor="middle" fill="#1a2230" font-weight="700">ENTRANCE</text>
+        <text x="490" y="60" font-size="14" text-anchor="middle" fill="#1a2230" font-weight="800">N</text>
+        <line x1="490" y1="92" x2="490" y2="68" stroke="#1a2230" stroke-width="2"/>
+        <polygon points="490,64 485,74 495,74" fill="#1a2230"/>
+      </svg>
+    </div>
+    <div class="item"><span class="n">15</span><span>café <span class="gap"></span></span></div>
+    <div class="item"><span class="n">16</span><span>gift shop <span class="gap"></span></span></div>
+    <div class="item"><span class="n">17</span><span>picnic area <span class="gap"></span></span></div>
+    <div class="item"><span class="n">18</span><span>steps to the tide pools <span class="gap"></span></span></div>
+    <div class="item"><span class="n">19</span><span>keeper's cottage exhibition <span class="gap"></span></span></div>
+    <div class="item"><span class="n">20</span><span>lookout platform <span class="gap"></span></span></div>
+
+    <!-- SECTION 3 -->
+    <div class="part-h pagebreak"><h2>Section 3 · Questions 21–30</h2><span class="score">___ / 10</span></div>
+    <div class="qh">Questions 21–25</div>
+    <p class="inst">Choose the correct letter, <b>A</b>, <b>B</b> or <b>C</b>.</p>
+    <div class="item"><span class="n">21</span><span>Why did the students choose the Millbrook museum for their project?
+      <span class="ch stack"><span>A &nbsp;It is close to their campus.</span><span>B &nbsp;Its director asked for students' help.</span><span>C &nbsp;It has recently changed its layout.</span></span></span></div>
+    <div class="item"><span class="n">22</span><span>What did the students notice in the entrance hall?
+      <span class="ch stack"><span>A &nbsp;Visitors spent a long time there.</span><span>B &nbsp;The floor map was difficult to read.</span><span>C &nbsp;Most visitors ignored the floor map.</span></span></span></div>
+    <div class="item"><span class="n">23</span><span>What does Dr. Hart see as the main weakness of the observations so far?
+      <span class="ch stack"><span>A &nbsp;They all took place at weekends.</span><span>B &nbsp;Too few visitors were observed.</span><span>C &nbsp;Visitors knew they were being watched.</span></span></span></div>
+    <div class="item"><span class="n">24</span><span>What do the students agree about the timeline wall?
+      <span class="ch stack"><span>A &nbsp;It should be moved to a quieter space.</span><span>B &nbsp;Its texts are too long.</span><span>C &nbsp;Visitors rarely stop there.</span></span></span></div>
+    <div class="item"><span class="n">25</span><span>How will the students record the time visitors spend at each exhibit?
+      <span class="ch stack"><span>A &nbsp;with small video cameras</span><span>B &nbsp;with a stopwatch app</span><span>C &nbsp;with a paper grid</span></span></span></div>
+
+    <div class="qh">Questions 26–30</div>
+    <p class="inst">What do the students decide to recommend for each area of the museum? Choose <b>FIVE</b> answers from the box and write the correct letter, <b>A–G</b>, next to Questions 26–30.</p>
+    <div class="letters">
+      <span><b>A</b>add seating</span>
+      <span><b>B</b>add a hands-on activity</span>
+      <span><b>C</b>improve the signs</span>
+      <span><b>D</b>change the lighting</span>
+      <span><b>E</b>reduce the number of items</span>
+      <span><b>F</b>add audio descriptions</span>
+      <span><b>G</b>move it to another room</span>
+    </div>
+    <div class="item"><span class="n">26</span><span>the entrance hall <span class="gap"></span></span></div>
+    <div class="item"><span class="n">27</span><span>the farm tools gallery <span class="gap"></span></span></div>
+    <div class="item"><span class="n">28</span><span>the textile room <span class="gap"></span></span></div>
+    <div class="item"><span class="n">29</span><span>the old schoolroom <span class="gap"></span></span></div>
+    <div class="item"><span class="n">30</span><span>the photograph corridor <span class="gap"></span></span></div>
+
+    <!-- SECTION 4 -->
+    <div class="part-h pagebreak"><h2>Section 4 · Questions 31–40</h2><span class="score">___ / 10</span></div>
+    <div class="qh">Questions 31–40</div>
+    <p class="inst">Complete the notes below. Write <b>ONE WORD ONLY</b> for each answer.</p>
+    <div class="notes">
+      <div class="nt">The Acoustics of Concert Halls</div>
+      <h5>Reverberation</h5>
+      <ul>
+        <li>sound that continues after the source stops, caused by <span class="n">(31)</span> <span class="gap"></span> from the walls, ceiling and floor</li>
+        <li>about two seconds is ideal for orchestral music; a shorter time is better for <span class="n">(32)</span> <span class="gap"></span></li>
+      </ul>
+      <h5>The first scientific study (around 1900)</h5>
+      <ul>
+        <li>a young physics lecturer timed sound with an organ pipe and a <span class="n">(33)</span> <span class="gap"></span></li>
+        <li>he reduced reverberation using <span class="n">(34)</span> <span class="gap"></span> borrowed from a nearby theater</li>
+      </ul>
+      <h5>Hall shapes</h5>
+      <ul>
+        <li>"shoebox" halls: tall and narrow; reflections from the <span class="n">(35)</span> <span class="gap"></span> walls make listeners feel surrounded by sound</li>
+        <li>"vineyard" halls: the audience sits on <span class="n">(36)</span> <span class="gap"></span> around the stage</li>
+      </ul>
+      <h5>Materials and problems</h5>
+      <ul>
+        <li>seats are designed to absorb about as much sound when they are <span class="n">(37)</span> <span class="gap"></span> as when someone is sitting in them</li>
+        <li>curved walls can focus sound and cause <span class="n">(38)</span> <span class="gap"></span></li>
+        <li>irregular surfaces called <span class="n">(39)</span> <span class="gap"></span> scatter sound in many directions</li>
+      </ul>
+      <h5>Modern halls</h5>
+      <ul>
+        <li>heavy fabric <span class="n">(40)</span> <span class="gap"></span> can be lowered to shorten reverberation for amplified concerts</li>
+      </ul>
+    </div>
+    <p class="done">End of the Listening test. Now copy your answers onto the answer sheet.</p>
+  </div>
+
+  <!-- LISTENING ANSWER SHEET -->
+  <div class="pagebreak"></div>
+  <div class="paper">
+    <header class="mast">
+      <div class="kit-eyebrow">IELTS Academic Preparation · Practice Test 2</div>
+      <h1>Listening Answer Sheet</h1>
+      <div class="paper-head">
+        <div><b>Name:</b></div>
+        <div><b>Date:</b></div>
+        <div><b>Raw score:</b> &nbsp;&nbsp;&nbsp;/ 40</div>
+      </div>
+      <p style="font-size:1rem">Write clearly. You may use CAPITAL LETTERS. Leave the narrow right-hand column for marking.</p>
+    </header>
+    <table class="sheet-grid">
+      <tbody>
+        <tr><td class="n">1</td><td></td><td class="mk">✓ ✗</td><td class="n">21</td><td></td><td class="mk">✓ ✗</td></tr>
+        <tr><td class="n">2</td><td></td><td class="mk">✓ ✗</td><td class="n">22</td><td></td><td class="mk">✓ ✗</td></tr>
+        <tr><td class="n">3</td><td></td><td class="mk">✓ ✗</td><td class="n">23</td><td></td><td class="mk">✓ ✗</td></tr>
+        <tr><td class="n">4</td><td></td><td class="mk">✓ ✗</td><td class="n">24</td><td></td><td class="mk">✓ ✗</td></tr>
+        <tr><td class="n">5</td><td></td><td class="mk">✓ ✗</td><td class="n">25</td><td></td><td class="mk">✓ ✗</td></tr>
+        <tr><td class="n">6</td><td></td><td class="mk">✓ ✗</td><td class="n">26</td><td></td><td class="mk">✓ ✗</td></tr>
+        <tr><td class="n">7</td><td></td><td class="mk">✓ ✗</td><td class="n">27</td><td></td><td class="mk">✓ ✗</td></tr>
+        <tr><td class="n">8</td><td></td><td class="mk">✓ ✗</td><td class="n">28</td><td></td><td class="mk">✓ ✗</td></tr>
+        <tr><td class="n">9</td><td></td><td class="mk">✓ ✗</td><td class="n">29</td><td></td><td class="mk">✓ ✗</td></tr>
+        <tr><td class="n">10</td><td></td><td class="mk">✓ ✗</td><td class="n">30</td><td></td><td class="mk">✓ ✗</td></tr>
+        <tr><td class="n">11</td><td></td><td class="mk">✓ ✗</td><td class="n">31</td><td></td><td class="mk">✓ ✗</td></tr>
+        <tr><td class="n">12</td><td></td><td class="mk">✓ ✗</td><td class="n">32</td><td></td><td class="mk">✓ ✗</td></tr>
+        <tr><td class="n">13</td><td></td><td class="mk">✓ ✗</td><td class="n">33</td><td></td><td class="mk">✓ ✗</td></tr>
+        <tr><td class="n">14</td><td></td><td class="mk">✓ ✗</td><td class="n">34</td><td></td><td class="mk">✓ ✗</td></tr>
+        <tr><td class="n">15</td><td></td><td class="mk">✓ ✗</td><td class="n">35</td><td></td><td class="mk">✓ ✗</td></tr>
+        <tr><td class="n">16</td><td></td><td class="mk">✓ ✗</td><td class="n">36</td><td></td><td class="mk">✓ ✗</td></tr>
+        <tr><td class="n">17</td><td></td><td class="mk">✓ ✗</td><td class="n">37</td><td></td><td class="mk">✓ ✗</td></tr>
+        <tr><td class="n">18</td><td></td><td class="mk">✓ ✗</td><td class="n">38</td><td></td><td class="mk">✓ ✗</td></tr>
+        <tr><td class="n">19</td><td></td><td class="mk">✓ ✗</td><td class="n">39</td><td></td><td class="mk">✓ ✗</td></tr>
+        <tr><td class="n">20</td><td></td><td class="mk">✓ ✗</td><td class="n">40</td><td></td><td class="mk">✓ ✗</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ═════════════════════ LEARNER PAPER · READING ═════════════════════ -->
+  <div class="pagebreak"></div>
+  <div class="paper">
+    <header class="mast">
+      <div class="kit-eyebrow">IELTS Academic Preparation · Practice Test 2 · Class 15</div>
+      <h1>Academic Reading</h1>
+      <div class="paper-head">
+        <div><b>Name:</b></div>
+        <div><b>Date:</b></div>
+        <div><b>Class:</b></div>
+      </div>
+      <p style="font-size:1.04rem;margin-top:10px"><b>Time: 60 minutes.</b> There are three passages and 40 questions. Spend about 20 minutes on each passage. Write your answers on the Reading answer sheet <b>as you go</b>: there is no extra time for transferring answers.</p>
+    </header>
+
+    <!-- PASSAGE 1 -->
+    <div class="part-h"><h2>Reading Passage 1 · Questions 1–13</h2><span class="score">___ / 13</span></div>
+    <p class="inst">You should spend about 20 minutes on <b>Questions 1–13</b>, which are based on Reading Passage 1 below.</p>
+    <div class="text">
+      <div class="ttl">Rebuilding the Oyster Reef</div>
+      <p>For most people, an oyster is something that arrives on a plate. For marine ecologists, it is one of the hardest-working animals on the coast. Oysters are filter feeders: they draw water across their gills, trap tiny particles of algae and sediment, and release the water cleaner than before. A single adult can filter dozens of gallons in a day, and when millions of oysters settle together on a reef, the effect on a bay can be dramatic. The water becomes clearer, sunlight reaches further down, and seagrass beds, which shelter young fish and crabs, are able to grow.</p>
+      <p>Oyster reefs were once a common feature of estuaries in many parts of the world. Early records from coastal settlements describe reefs so large that they were marked on navigation charts as hazards to shipping. Over the past two centuries, however, most of these reefs have disappeared. One widely cited global estimate puts the loss at around 85 percent, which would make oyster reefs one of the most severely reduced marine habitats on the planet. Overharvesting was the first and most obvious cause: reefs were dredged so intensively that the shell base itself was carried away. Disease, pollution, and the silt that rivers washed down from cleared land then made recovery harder.</p>
+      <p>The loss of the shell base matters more than it might seem. Young oysters, known as spat, spend their first days as free-swimming larvae. To survive, they must settle on a hard surface, and they show a strong preference for the shells of other oysters. Once a reef has been dredged flat, there is little for the larvae to land on, and those that settle on soft mud are quickly buried. In other words, a damaged reef cannot simply be left alone to recover: the habitat that once allowed it to rebuild itself has gone.</p>
+      <p>Restoration projects therefore begin by putting that hard surface back. In some bays, old shells are collected from restaurants and seafood processors, left in the open air for several months so that any disease dies off, and then returned to the water in carefully placed mounds. Where shell is scarce, engineers have experimented with alternatives, including limestone rock, recycled concrete, and specially designed ceramic units. Early trials suggested that the larvae were not particularly selective about the material, provided that the surface was rough and stood clear of the mud. Researchers have since found that the height of a structure matters more than what it is made of: reefs built only a few centimeters high tend to silt over within a season or two, while taller mounds keep their upper layers clean.</p>
+      <p>In waters where few wild larvae remain, volunteers play a surprisingly large role. In several coastal communities, homeowners with waterfront access hang cages of young oysters from their docks, where the animals grow for about a year before being moved to a protected reef. The approach, known as oyster gardening, produces relatively small numbers of animals, but organizers argue that its greatest value lies elsewhere. Participants become informed supporters of the wider restoration effort, and many go on to monitor water quality near their homes, adding to the data that scientists rely on.</p>
+      <p>Rebuilt reefs offer benefits beyond cleaner water. Because they rise from the seabed, they slow waves before those waves reach the shore, and several projects have placed reefs deliberately to reduce the erosion of salt marshes and beaches. Compared with concrete sea walls, living reefs have one notable advantage: they can grow upward as sea levels rise, at least up to a point. Researchers stress, however, that reefs are not a substitute for engineered defenses where storms are severe. Their protective effect is greatest in sheltered bays, where waves are modest.</p>
+      <p>Measuring success has proved difficult. A reef may look healthy in its first year, while the transplanted oysters are thriving, and then decline once they die if no new larvae settle. For this reason, many scientists now argue that a project should be judged successful only when the reef has shown natural reproduction for several consecutive years. Monitoring for this long is expensive, and funding is often provided for the construction phase alone, which leaves a gap between what has been built and what is actually known about it.</p>
+      <p>Despite these challenges, the outlook is more hopeful than it was two decades ago. Restoration techniques have improved, harvesting rules in many regions are stricter, and fishing communities that once saw restoration as a threat have in some cases become its partners, recognizing that a healthy reef eventually supports a more reliable harvest. Nobody expects the vast reefs of earlier centuries to return in full. The evidence increasingly suggests, however, that when oysters are given a firm place to settle and time to grow, they are capable of doing much of the rebuilding themselves.</p>
+    </div>
+
+    <div class="qh">Questions 1–6</div>
+    <p class="inst">Do the following statements agree with the information given in Reading Passage 1? Write<br>
+      <b>TRUE</b> if the statement agrees with the information<br>
+      <b>FALSE</b> if the statement contradicts the information<br>
+      <b>NOT GIVEN</b> if there is no information on this</p>
+    <div class="tfrow"><span class="n">1</span><span>Clearer water allows seagrass to grow.</span></div>
+    <div class="tfrow"><span class="n">2</span><span>Pollution was the main reason why oyster reefs first began to decline.</span></div>
+    <div class="tfrow"><span class="n">3</span><span>Shells collected from restaurants are put back into the water straight away.</span></div>
+    <div class="tfrow"><span class="n">4</span><span>Ceramic reef units cost more to produce than recycled concrete.</span></div>
+    <div class="tfrow"><span class="n">5</span><span>The height of an artificial reef affects whether it becomes covered in silt.</span></div>
+    <div class="tfrow"><span class="n">6</span><span>Oyster gardening is the most popular form of volunteering in coastal communities.</span></div>
+
+    <div class="qh">Questions 7–13</div>
+    <p class="inst">Complete the notes below. Choose <b>NO MORE THAN TWO WORDS</b> from the passage for each answer.</p>
+    <div class="notes">
+      <div class="nt">Oyster Reef Restoration</div>
+      <h5>Why reefs struggle to recover</h5>
+      <ul>
+        <li>rivers carried silt from <span class="n">(7)</span> <span class="gap"></span></li>
+        <li>young oysters, called <span class="n">(8)</span> <span class="gap"></span>, need a hard place to settle</li>
+      </ul>
+      <h5>Rebuilding</h5>
+      <ul>
+        <li>larvae will settle on most materials if the surface is <span class="n">(9)</span> <span class="gap"></span> and above the mud</li>
+        <li>in oyster gardening, young oysters grow in cages hung from <span class="n">(10)</span> <span class="gap"></span></li>
+        <li>many volunteers later check <span class="n">(11)</span> <span class="gap"></span> close to where they live</li>
+      </ul>
+      <h5>Protecting the shore</h5>
+      <ul>
+        <li>unlike sea walls, reefs can <span class="n">(12)</span> <span class="gap"></span> as the sea rises</li>
+        <li>reefs work best as protection in <span class="n">(13)</span> <span class="gap"></span></li>
+      </ul>
+    </div>
+
+    <!-- PASSAGE 2 -->
+    <div class="part-h pagebreak"><h2>Reading Passage 2 · Questions 14–26</h2><span class="score">___ / 13</span></div>
+    <p class="inst">You should spend about 20 minutes on <b>Questions 14–26</b>, which are based on Reading Passage 2 below.</p>
+    <div class="text">
+      <div class="ttl">Farming Without Fields</div>
+      <div class="by">Can vertical farms change the way cities are fed?</div>
+      <p><span class="pl">A</span>Picture a warehouse on the edge of a city. Inside, there is no soil, no sunlight and no change of season: only tall racks of lettuce, basil and spinach growing in stacked trays under rows of pink-and-blue lights. The roots of the plants hang in shallow channels of water enriched with exactly the nutrients each crop requires. This is a vertical farm, and in the past fifteen years such farms have moved from research laboratories into commercial buildings in many parts of the world. Supporters describe them as the future of food. Critics call them an expensive answer to a problem that ordinary farms already solve perfectly well.</p>
+      <p><span class="pl">B</span>The case in favor begins with resources. Because the water in a vertical farm circulates in a closed system and is recycled rather than draining into the ground, operators commonly report using a small fraction of the water needed to grow the same crop outdoors. Stacking crops in layers also means that a building with a modest footprint can produce as much as many acres of open land. And because the growing rooms are sealed, insects and other pests find it very hard to get in, so chemical pesticides are rarely needed.</p>
+      <p><span class="pl">C</span>A second advantage is location. A vertical farm can be built inside a city, close to the people who will eat what it grows. Leafy greens harvested in the morning can be on supermarket shelves by the afternoon, instead of spending several days in a refrigerated truck. The produce therefore tends to last longer once it reaches the customer's kitchen, and less is thrown away along the way. Retailers, for their part, value a supply that does not depend on the weather or on long-distance transport. Dr. Amina Osei, a plant scientist who has advised several growers, believes that this is where the real commercial value lies. "Companies talk a great deal about saving water," she says, "but when you ask shoppers why they buy the product, the answer is almost always that it stays fresh for longer."</p>
+      <p><span class="pl">D</span>The central difficulty is energy. Sunlight is free; electric light is not. Lighting and climate control make energy the largest single operating cost for most vertical farms, and it rises and falls with the price of electricity. Professor Martin Keller, an energy economist, has calculated the cost of growing staple foods under lights and concludes that it would be wildly uneconomic for grains such as wheat or rice. This explains why nearly every vertical farm grows the same narrow range of crops: leafy greens and herbs, which grow quickly, are mostly water, and sell for a relatively high price per kilogram. Potatoes, cereals and most fruit remain far beyond what the technology can produce at a sensible cost. Even for leafy greens, profit margins are thin: a small change in the price of electricity can decide whether a harvest makes money or loses it.</p>
+      <p><span class="pl">E</span>The industry has already had painful lessons. In recent years, a number of well-funded vertical farming companies have closed or sharply reduced their operations, most often after energy prices rose faster than they had planned for. According to Keller, the firms that came through this period in better shape tended to share one feature: they had located their farms next to a cheap and stable power supply, such as a hydroelectric plant, or had arranged to use waste heat from a neighboring factory. "In this business," he argues, "where you plug in can matter more than what you grow."</p>
+      <p><span class="pl">F</span>At the same time, the technology is improving. Lighting has become far more efficient over the last decade, and growers can now adjust the color and timing of light to suit each stage of a plant's life. Some researchers believe the next gains will come from the plants themselves. Dr. Rosa Lindqvist, a horticulturist, points out that almost every crop variety grown today was bred to cope with outdoor life, including wind, strong sun and uneven rainfall. Plants bred specifically for indoor conditions, she suggests, could be more compact, grow faster and waste less energy on features they no longer need. Lindqvist is more cautious about automation, however. Robots that move trays and harvest crops can reduce labor costs, she notes, but they bring expenses of their own, from purchase to maintenance.</p>
+      <p><span class="pl">G</span>What, then, is the realistic future of farming without fields? Most researchers now see vertical farms as a complement to conventional agriculture rather than a replacement for it. They make the most sense in places where fresh produce is otherwise difficult to supply: desert cities that import most of their vegetables, northern regions with long, dark winters, or crowded cities where land is extremely expensive. "The question was never whether vertical farms could feed the world. They can't," says Osei. "The useful question is where they make sense, and for which crops."</p>
+    </div>
+
+    <div class="qh">Questions 14–19</div>
+    <p class="inst">Reading Passage 2 has seven paragraphs, <b>A–G</b>. Choose the correct heading for paragraphs <b>B–G</b> from the list of headings below. Write the correct number, <b>i–x</b>. There are more headings than paragraphs.</p>
+    <div class="letters" style="grid-template-columns:1fr">
+      <span><b>i</b>A new kind of farm and the debate around it</span>
+      <span><b>ii</b>Why some companies closed and others survived</span>
+      <span><b>iii</b>The rising price of farmland near cities</span>
+      <span><b>iv</b>Using fewer natural resources</span>
+      <span><b>v</b>How robots are replacing farm workers</span>
+      <span><b>vi</b>The value of being close to the customer</span>
+      <span><b>vii</b>Where indoor farming fits best</span>
+      <span><b>viii</b>Why energy limits what can be grown</span>
+      <span><b>ix</b>Consumer doubts about food grown without soil</span>
+      <span><b>x</b>Improving the light and the plants</span>
+    </div>
+    <div class="item" style="color:var(--ink-2)"><span class="n">e.g.</span><span>Paragraph A &nbsp;<b>i</b></span></div>
+    <div class="item"><span class="n">14</span><span>Paragraph B <span class="gap"></span></span></div>
+    <div class="item"><span class="n">15</span><span>Paragraph C <span class="gap"></span></span></div>
+    <div class="item"><span class="n">16</span><span>Paragraph D <span class="gap"></span></span></div>
+    <div class="item"><span class="n">17</span><span>Paragraph E <span class="gap"></span></span></div>
+    <div class="item"><span class="n">18</span><span>Paragraph F <span class="gap"></span></span></div>
+    <div class="item"><span class="n">19</span><span>Paragraph G <span class="gap"></span></span></div>
+
+    <div class="qh">Questions 20–23</div>
+    <p class="inst">Look at the following statements (Questions 20–23) and the list of people below. Match each statement with the correct person, <b>A</b>, <b>B</b> or <b>C</b>. <b>NB</b> You may use any letter more than once.</p>
+    <div class="letters" style="grid-template-columns:1fr">
+      <span><b>A</b>Dr. Amina Osei</span>
+      <span><b>B</b>Professor Martin Keller</span>
+      <span><b>C</b>Dr. Rosa Lindqvist</span>
+    </div>
+    <div class="item"><span class="n">20</span><span>Customers care more about how long the product lasts than about environmental benefits. <span class="gap"></span></span></div>
+    <div class="item"><span class="n">21</span><span>A farm's source of power may decide whether the business survives. <span class="gap"></span></span></div>
+    <div class="item"><span class="n">22</span><span>Machines can reduce one cost while adding others. <span class="gap"></span></span></div>
+    <div class="item"><span class="n">23</span><span>Vertical farms will never be able to feed the world's population. <span class="gap"></span></span></div>
+
+    <div class="qh">Questions 24–26</div>
+    <p class="inst">Complete the sentences below. Choose <b>ONE WORD ONLY</b> from the passage for each answer.</p>
+    <div class="item"><span class="n">24</span><span>In a vertical farm, the plants' roots hang in channels of <span class="gap"></span> that contain nutrients.</span></div>
+    <div class="item"><span class="n">25</span><span>Vertical farms rarely use chemical pesticides because the growing rooms are <span class="gap"></span>.</span></div>
+    <div class="item"><span class="n">26</span><span>Most modern crop varieties were bred to survive strong sun, uneven rainfall and <span class="gap"></span>.</span></div>
+
+    <!-- PASSAGE 3 -->
+    <div class="part-h pagebreak"><h2>Reading Passage 3 · Questions 27–40</h2><span class="score">___ / 14</span></div>
+    <p class="inst">You should spend about 20 minutes on <b>Questions 27–40</b>, which are based on Reading Passage 3 below.</p>
+    <div class="text">
+      <div class="ttl">The Stubborn Science of Habit</div>
+      <div class="by">Why good intentions so often fail, and what works instead</div>
+      <p>Every January, gyms fill with new members and then, by the middle of February, quietly empty again. The pattern is so familiar that it is usually put down to weak willpower. Yet several decades of research in psychology suggest that this explanation is not only unkind but largely mistaken. The people who succeed in changing their behavior are not, on the whole, those with the most self-control. They are the people who have arranged their lives, often without realizing it, so that they need to use self-control as little as possible.</p>
+      <p>A habit, in the psychological sense, is not simply something we do often. It is a behavior that has become linked to a particular cue, such as a place, a time of day, or a preceding action, so that the cue triggers the behavior with very little conscious thought. Brushing one's teeth after breakfast is a classic example: few people stop to deliberate about it. This automatic quality is exactly what makes habits valuable. Some diary studies have suggested that roughly two in five of our everyday actions are repeated in the same setting almost every day. Because these actions run without much thought, they free up mental resources and leave more attention for the decisions that genuinely need it.</p>
+      <p>How long does it take to form a new habit? Popular advice often gives a precise answer, usually twenty-one days. The origin of this figure is obscure, and in my view it has done real harm, because people who have not "got the habit" by the third week tend to conclude that they have failed and give up. Research that has followed volunteers as they tried to build new routines paints a far more varied picture. In one well-known study, the time it took for a simple daily behavior, such as drinking a glass of water after breakfast, to feel automatic ranged from a few weeks to most of a year, with an average of around two months. Encouragingly, the same study found that missing an occasional day made little difference to progress.</p>
+      <p>If willpower is not the key, what is? Much of the answer lies in the environment. Researchers have repeatedly found that small changes in convenience have surprisingly large effects on what people do. In workplace experiments, simply moving healthier food to the front of a cafeteria counter increased how often it was chosen, even though nothing else had changed. People who have to walk past the stairs before they reach the elevator use the stairs more often. The principle works in both directions: adding a little effort to an unwanted behavior, such as keeping snacks on a high shelf, makes it less likely. To my mind, this is the most practical finding in the whole field, and also the most neglected.</p>
+      <p>Habits are also especially fragile at moments of transition. Moving to a new home, starting a new job or retiring disrupts the cues that used to trigger our routines, and for a while old habits lose some of their grip. Some researchers describe this period as a window of opportunity. In one study, people who had recently moved house were more likely than long-term residents to change the way they traveled to work after receiving information about local bus routes. I would argue that organizations hoping to encourage healthier behavior would do well to focus their efforts on such moments, rather than spreading them evenly across everyone.</p>
+      <p>Breaking a bad habit, however, is harder than forming a good one, because the link between cue and response survives even when motivation disappears. Someone who has decided to stop checking a phone during dinner may still find a hand reaching for it the moment it buzzes. Simply trying not to respond, a strategy psychologists call suppression, takes considerable effort, and it tends to fail when people are tired or under stress, which is precisely when old habits are strongest. Two approaches work better. The first is to remove the cue altogether, for instance by leaving the phone in another room. The second is to keep the cue but attach a different behavior to it, such as reaching for a glass of water instead.</p>
+      <p>Rewards matter too, but not all rewards are equal. The brain responds far more strongly to what happens now than to what might happen later. This is a serious problem for many healthy behaviors, whose benefits are real but distant: the reward for regular exercise may not be felt for months. One practical solution is to pair the behavior with something enjoyable that happens at once, for example allowing oneself to listen to a favorite podcast only while out walking.</p>
+      <p>None of this means that individuals carry no responsibility for their choices, or that environment is destiny. But I am convinced that the language of willpower, with its suggestion of personal weakness, discourages people from making the practical changes that actually work. A person who says, "I lack discipline" has diagnosed a flaw in their character, and there is little they can do about it by Monday. A person who says, "My running shoes are at the back of the closet" has identified a problem that can be solved in thirty seconds.</p>
+    </div>
+
+    <div class="qh">Questions 27–31</div>
+    <p class="inst">Do the following statements agree with the views of the writer in Reading Passage 3? Write<br>
+      <b>YES</b> if the statement agrees with the views of the writer<br>
+      <b>NO</b> if the statement contradicts the views of the writer<br>
+      <b>NOT GIVEN</b> if it is impossible to say what the writer thinks about this</p>
+    <div class="tfrow"><span class="n">27</span><span>Weak willpower is the main reason why people fail to change their behavior.</span></div>
+    <div class="tfrow"><span class="n">28</span><span>The idea that a habit forms in twenty-one days has discouraged some people.</span></div>
+    <div class="tfrow"><span class="n">29</span><span>The study of volunteers building new routines included too few participants.</span></div>
+    <div class="tfrow"><span class="n">30</span><span>Changing people's surroundings is an under-used way of changing their behavior.</span></div>
+    <div class="tfrow"><span class="n">31</span><span>Most people who move house want to change their daily routines.</span></div>
+
+    <div class="qh">Questions 32–35</div>
+    <p class="inst">Choose the correct letter, <b>A</b>, <b>B</b>, <b>C</b> or <b>D</b>.</p>
+    <div class="item"><span class="n">32</span><span>According to the second paragraph, what makes a behavior a habit?
+      <span class="ch stack"><span>A &nbsp;It is repeated many times each day.</span><span>B &nbsp;It is started by a cue with little conscious thought.</span><span>C &nbsp;It is something the person enjoys doing.</span><span>D &nbsp;It has been performed for at least three weeks.</span></span></span></div>
+    <div class="item"><span class="n">33</span><span>What did the study of volunteers find?
+      <span class="ch stack"><span>A &nbsp;Most new habits became automatic within a month.</span><span>B &nbsp;Complex behaviors became automatic faster than simple ones.</span><span>C &nbsp;Missing a day now and then did not seriously slow progress.</span><span>D &nbsp;Drinking water was the easiest habit to form.</span></span></span></div>
+    <div class="item"><span class="n">34</span><span>According to the writer, trying hard not to respond to a cue
+      <span class="ch stack"><span>A &nbsp;is least likely to succeed when people are tired or stressed.</span><span>B &nbsp;works well if the cue is removed at the same time.</span><span>C &nbsp;is the method psychologists most often recommend.</span><span>D &nbsp;is effective for people with strong motivation.</span></span></span></div>
+    <div class="item"><span class="n">35</span><span>Why does the writer mention running shoes in the final paragraph?
+      <span class="ch stack"><span>A &nbsp;to show that exercise habits are the easiest ones to change</span><span>B &nbsp;to suggest that the right equipment improves motivation</span><span>C &nbsp;to give an example of an immediate reward</span><span>D &nbsp;to contrast a practical explanation with one based on character</span></span></span></div>
+
+    <div class="qh">Questions 36–40</div>
+    <p class="inst">Complete the summary using the list of words, <b>A–J</b>, below.</p>
+    <div class="notes" style="line-height:1.9">
+      <div class="nt">How habits work</div>
+      A habit is a behavior connected to a <span class="n">(36)</span> <span class="gap"></span>, such as a particular place or time. Habits are useful because they save <span class="n">(37)</span> <span class="gap"></span> for more important decisions. Research suggests that making a behavior more <span class="n">(38)</span> <span class="gap"></span> is a powerful way to encourage it. Old habits can also weaken during a period of <span class="n">(39)</span> <span class="gap"></span>, such as starting a new job. To stop an unwanted habit, <span class="n">(40)</span> <span class="gap"></span> the cue works better than simply trying to resist it.
+    </div>
+    <div class="letters">
+      <span><b>A</b>cue</span><span><b>B</b>attention</span>
+      <span><b>C</b>convenient</span><span><b>D</b>transition</span>
+      <span><b>E</b>motivation</span><span><b>F</b>removing</span>
+      <span><b>G</b>reward</span><span><b>H</b>difficult</span>
+      <span><b>I</b>routine</span><span><b>J</b>ignoring</span>
+    </div>
+    <p class="done">End of the Reading test.</p>
+  </div>
+
+  <!-- READING ANSWER SHEET -->
+  <div class="pagebreak"></div>
+  <div class="paper">
+    <header class="mast">
+      <div class="kit-eyebrow">IELTS Academic Preparation · Practice Test 2</div>
+      <h1>Reading Answer Sheet</h1>
+      <div class="paper-head">
+        <div><b>Name:</b></div>
+        <div><b>Date:</b></div>
+        <div><b>Raw score:</b> &nbsp;&nbsp;&nbsp;/ 40</div>
+      </div>
+      <p style="font-size:1rem">Write each answer as you find it. For True/False/Not Given and Yes/No/Not Given, write the words the instructions ask for (you may write T / F / NG or Y / N / NG). Leave the narrow column for marking.</p>
+    </header>
+    <table class="sheet-grid">
+      <tbody>
+        <tr><td class="n">1</td><td></td><td class="mk">✓ ✗</td><td class="n">21</td><td></td><td class="mk">✓ ✗</td></tr>
+        <tr><td class="n">2</td><td></td><td class="mk">✓ ✗</td><td class="n">22</td><td></td><td class="mk">✓ ✗</td></tr>
+        <tr><td class="n">3</td><td></td><td class="mk">✓ ✗</td><td class="n">23</td><td></td><td class="mk">✓ ✗</td></tr>
+        <tr><td class="n">4</td><td></td><td class="mk">✓ ✗</td><td class="n">24</td><td></td><td class="mk">✓ ✗</td></tr>
+        <tr><td class="n">5</td><td></td><td class="mk">✓ ✗</td><td class="n">25</td><td></td><td class="mk">✓ ✗</td></tr>
+        <tr><td class="n">6</td><td></td><td class="mk">✓ ✗</td><td class="n">26</td><td></td><td class="mk">✓ ✗</td></tr>
+        <tr><td class="n">7</td><td></td><td class="mk">✓ ✗</td><td class="n">27</td><td></td><td class="mk">✓ ✗</td></tr>
+        <tr><td class="n">8</td><td></td><td class="mk">✓ ✗</td><td class="n">28</td><td></td><td class="mk">✓ ✗</td></tr>
+        <tr><td class="n">9</td><td></td><td class="mk">✓ ✗</td><td class="n">29</td><td></td><td class="mk">✓ ✗</td></tr>
+        <tr><td class="n">10</td><td></td><td class="mk">✓ ✗</td><td class="n">30</td><td></td><td class="mk">✓ ✗</td></tr>
+        <tr><td class="n">11</td><td></td><td class="mk">✓ ✗</td><td class="n">31</td><td></td><td class="mk">✓ ✗</td></tr>
+        <tr><td class="n">12</td><td></td><td class="mk">✓ ✗</td><td class="n">32</td><td></td><td class="mk">✓ ✗</td></tr>
+        <tr><td class="n">13</td><td></td><td class="mk">✓ ✗</td><td class="n">33</td><td></td><td class="mk">✓ ✗</td></tr>
+        <tr><td class="n">14</td><td></td><td class="mk">✓ ✗</td><td class="n">34</td><td></td><td class="mk">✓ ✗</td></tr>
+        <tr><td class="n">15</td><td></td><td class="mk">✓ ✗</td><td class="n">35</td><td></td><td class="mk">✓ ✗</td></tr>
+        <tr><td class="n">16</td><td></td><td class="mk">✓ ✗</td><td class="n">36</td><td></td><td class="mk">✓ ✗</td></tr>
+        <tr><td class="n">17</td><td></td><td class="mk">✓ ✗</td><td class="n">37</td><td></td><td class="mk">✓ ✗</td></tr>
+        <tr><td class="n">18</td><td></td><td class="mk">✓ ✗</td><td class="n">38</td><td></td><td class="mk">✓ ✗</td></tr>
+        <tr><td class="n">19</td><td></td><td class="mk">✓ ✗</td><td class="n">39</td><td></td><td class="mk">✓ ✗</td></tr>
+        <tr><td class="n">20</td><td></td><td class="mk">✓ ✗</td><td class="n">40</td><td></td><td class="mk">✓ ✗</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ═════════════════════ LEARNER PAPER · WRITING ═════════════════════ -->
+  <div class="pagebreak"></div>
+  <div class="paper">
+    <header class="mast">
+      <div class="kit-eyebrow">IELTS Academic Preparation · Practice Test 2 · Class 16</div>
+      <h1>Academic Writing</h1>
+      <div class="paper-head">
+        <div><b>Name:</b></div>
+        <div><b>Date:</b></div>
+        <div><b>Class:</b></div>
+      </div>
+      <p style="font-size:1.04rem;margin-top:10px"><b>Time: 60 minutes.</b> There are two tasks. Answer both. Task 2 carries more weight than Task 1, so plan your time: about <b>20 minutes for Task 1</b> and <b>40 minutes for Task 2</b>. Write in full sentences, not notes or bullet points.</p>
+    </header>
+
+    <div class="part-h"><h2>Writing Task 1</h2><span class="score">about 20 min · 150+ words</span></div>
+    <p class="inst">The graph below shows the percentage of household waste that was recycled in three cities, Northport, Easton and Westvale, between 2000 and 2025.</p>
+    <p class="inst"><b>Summarize the main features of the graph, and make comparisons where they are relevant.</b></p>
+    <p class="inst">Write <b>at least 150 words</b>.</p>
+    <div class="fig-test">
+      <p class="cap">Household waste recycled in three cities, 2000–2025 (%)</p>
+        <svg viewBox="0 0 600 390" role="img" aria-labelledby="t1-t t1-d" xmlns="http://www.w3.org/2000/svg" font-family="Source Sans 3, Arial, sans-serif">
+        <title id="t1-t">Percentage of household waste recycled in three cities, 2000 to 2025</title>
+        <desc id="t1-d">Line graph. Northport rises steadily from 12 percent to 52 percent. Easton stays fairly flat, from 25 to 33 percent. Westvale starts lowest at 5 percent, rises sharply after 2010 and ends highest at 55 percent.</desc>
+        <rect x="0" y="0" width="600" height="390" fill="#ffffff"/>
+        <line x1="70" y1="300.0" x2="550" y2="300.0" stroke="#d5dae2" stroke-width="1"/>
+        <text x="62" y="304.0" font-size="12" text-anchor="end" fill="#3a4556">0</text>
+        <line x1="70" y1="256.7" x2="550" y2="256.7" stroke="#d5dae2" stroke-width="1"/>
+        <text x="62" y="260.7" font-size="12" text-anchor="end" fill="#3a4556">10</text>
+        <line x1="70" y1="213.3" x2="550" y2="213.3" stroke="#d5dae2" stroke-width="1"/>
+        <text x="62" y="217.3" font-size="12" text-anchor="end" fill="#3a4556">20</text>
+        <line x1="70" y1="170.0" x2="550" y2="170.0" stroke="#d5dae2" stroke-width="1"/>
+        <text x="62" y="174.0" font-size="12" text-anchor="end" fill="#3a4556">30</text>
+        <line x1="70" y1="126.7" x2="550" y2="126.7" stroke="#d5dae2" stroke-width="1"/>
+        <text x="62" y="130.7" font-size="12" text-anchor="end" fill="#3a4556">40</text>
+        <line x1="70" y1="83.3" x2="550" y2="83.3" stroke="#d5dae2" stroke-width="1"/>
+        <text x="62" y="87.3" font-size="12" text-anchor="end" fill="#3a4556">50</text>
+        <line x1="70" y1="40.0" x2="550" y2="40.0" stroke="#d5dae2" stroke-width="1"/>
+        <text x="62" y="44.0" font-size="12" text-anchor="end" fill="#3a4556">60</text>
+        <line x1="70" y1="300" x2="550" y2="300" stroke="#1a2230" stroke-width="1.5"/>
+        <line x1="70" y1="40" x2="70" y2="300" stroke="#1a2230" stroke-width="1.5"/>
+        <text x="90" y="320" font-size="12" text-anchor="middle" fill="#3a4556">2000</text>
+        <text x="178" y="320" font-size="12" text-anchor="middle" fill="#3a4556">2005</text>
+        <text x="266" y="320" font-size="12" text-anchor="middle" fill="#3a4556">2010</text>
+        <text x="354" y="320" font-size="12" text-anchor="middle" fill="#3a4556">2015</text>
+        <text x="442" y="320" font-size="12" text-anchor="middle" fill="#3a4556">2020</text>
+        <text x="530" y="320" font-size="12" text-anchor="middle" fill="#3a4556">2025</text>
+        <text x="22" y="170" font-size="12" text-anchor="middle" fill="#3a4556" transform="rotate(-90 22 170)">% of household waste recycled</text>
+        <text x="310" y="340" font-size="12" text-anchor="middle" fill="#3a4556">Year</text>
+        <polyline points="90,248.0 178,222.0 266,183.0 354,135.3 442,100.7 530,74.7" fill="none" stroke="#1f5fa8" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="90" cy="248.0" r="4.5" fill="#1f5fa8"/>
+        <circle cx="178" cy="222.0" r="4.5" fill="#1f5fa8"/>
+        <circle cx="266" cy="183.0" r="4.5" fill="#1f5fa8"/>
+        <circle cx="354" cy="135.3" r="4.5" fill="#1f5fa8"/>
+        <circle cx="442" cy="100.7" r="4.5" fill="#1f5fa8"/>
+        <circle cx="530" cy="74.7" r="4.5" fill="#1f5fa8"/>
+        <polyline points="90,191.7 178,183.0 266,187.3 354,170.0 442,165.7 530,157.0" fill="none" stroke="#a8561c" stroke-width="2.5" stroke-dasharray="9 5" stroke-linecap="round"/>
+        <rect x="86" y="187.7" width="8" height="8" fill="#a8561c"/>
+        <rect x="174" y="179.0" width="8" height="8" fill="#a8561c"/>
+        <rect x="262" y="183.3" width="8" height="8" fill="#a8561c"/>
+        <rect x="350" y="166.0" width="8" height="8" fill="#a8561c"/>
+        <rect x="438" y="161.7" width="8" height="8" fill="#a8561c"/>
+        <rect x="526" y="153.0" width="8" height="8" fill="#a8561c"/>
+        <polyline points="90,278.3 178,269.7 266,239.3 354,170.0 442,109.3 530,61.7" fill="none" stroke="#2e7d4f" stroke-width="2.5" stroke-dasharray="2 5" stroke-linecap="round"/>
+        <polygon points="90,272.8 85,282.3 95,282.3" fill="#2e7d4f"/>
+        <polygon points="178,264.2 173,273.7 183,273.7" fill="#2e7d4f"/>
+        <polygon points="266,233.8 261,243.3 271,243.3" fill="#2e7d4f"/>
+        <polygon points="354,164.5 349,174.0 359,174.0" fill="#2e7d4f"/>
+        <polygon points="442,103.8 437,113.3 447,113.3" fill="#2e7d4f"/>
+        <polygon points="530,56.2 525,65.7 535,65.7" fill="#2e7d4f"/>
+        <line x1="120" y1="368" x2="154" y2="368" stroke="#1f5fa8" stroke-width="2.5"/>
+        <circle cx="137" cy="368" r="4.5" fill="#1f5fa8"/>
+        <text x="162" y="372" font-size="13" fill="#1a2230" font-weight="700">Northport</text>
+        <line x1="280" y1="368" x2="314" y2="368" stroke="#a8561c" stroke-width="2.5" stroke-dasharray="9 5"/>
+        <rect x="293" y="364" width="8" height="8" fill="#a8561c"/>
+        <text x="322" y="372" font-size="13" fill="#1a2230" font-weight="700">Easton</text>
+        <line x1="420" y1="368" x2="454" y2="368" stroke="#2e7d4f" stroke-width="2.5" stroke-dasharray="2 5"/>
+        <polygon points="437,362.5 432,372 442,372" fill="#2e7d4f"/>
+        <text x="462" y="372" font-size="13" fill="#1a2230" font-weight="700">Westvale</text>
+        </svg>
+    </div>
+    <p style="font-size:.95rem;color:var(--ink-2);margin:0 0 6px">Plan here (not marked):</p>
+    <div class="wline"></div><div class="wline"></div>
+    <p style="font-size:.95rem;color:var(--ink-2);margin:14px 0 6px">Write your answer here:</p>
+    <div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div>
+    <div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div>
+    <div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div>
+    <div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div>
+    <div class="wline"></div><div class="wline"></div>
+    <p style="text-align:right;font-size:.95rem;margin-top:8px"><b>Word count (approx.):</b> ________</p>
+
+    <div class="part-h pagebreak"><h2>Writing Task 2</h2><span class="score">about 40 min · 250+ words</span></div>
+    <p class="inst">Write about the following topic:</p>
+    <div class="text" style="font-size:1.08rem">
+      <p><b>Some people think that museums and art galleries should be free for everyone to visit. Others believe that visitors should pay an entrance fee.</b></p>
+      <p><b>Discuss both views and give your own opinion.</b></p>
+    </div>
+    <p class="inst">Support your answer with reasons and with relevant examples from your own knowledge or experience.</p>
+    <p class="inst">Write <b>at least 250 words</b>.</p>
+    <p style="font-size:.95rem;color:var(--ink-2);margin:0 0 6px">Plan here (not marked): question type · my position · Body 1 · Body 2</p>
+    <div class="wline"></div><div class="wline"></div><div class="wline"></div>
+    <p style="font-size:.95rem;color:var(--ink-2);margin:14px 0 6px">Write your answer here (continue on the back or on extra paper if you need to):</p>
+    <div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div>
+    <div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div>
+    <div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div>
+    <div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div>
+    <div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div>
+    <div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div>
+    <div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div>
+    <p style="text-align:right;font-size:.95rem;margin-top:8px"><b>Word count (approx.):</b> ________</p>
+    <p class="done">End of the Writing test. Check: an overview in Task 1? A clear position in Task 2?</p>
+
+    <table class="grid" style="margin-top:22px">
+      <thead><tr><th>For the teacher</th><th>Task Achievement / Response</th><th>Coherence &amp; Cohesion</th><th>Lexical Resource</th><th>Grammatical Range &amp; Accuracy</th><th>Task band</th></tr></thead>
+      <tbody>
+        <tr><td>Task 1</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td></tr>
+        <tr><td>Task 2</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td></tr>
+        <tr><td colspan="5"><b>Estimated Writing band</b> (Task 2 counts about twice as much as Task 1; see the key)</td><td class="sc">&nbsp;</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ═════════════════════ TEACHER PAGES ═════════════════════ -->
+  <div class="pagebreak"></div>
+  <span class="teacher-only">Teacher only · do not copy for learners</span>
+  <div class="sec" style="margin-top:6px"><h2>Listening Scripts · Class 15</h2><span class="rule"></span></div>
+  <p>Read each section <b>once only</b>, as in the real test. Keep a natural pace (about the speed of a clear radio presenter) with ordinary contractions. When a speaker corrects themselves, don't stress the correction more than the rest: catching it is the skill being tested. Time every <span class="pause">[PAUSE]</span> with a watch; learners use it to read ahead. Numbers, dates and spellings are read exactly as written. For Section 3, move your position or change your voice for each speaker, or share the reading with a colleague.</p>
+
+  <div class="blk"><div class="h">Section 1 · Riverside Community Garden (Questions 1–10)</div>
+    <div class="script">Section 1. You will hear a telephone conversation between a woman who works for a community garden and a man who would like to join. First, you have some time to look at questions 1 to 5. <span class="pause">[PAUSE 30 SECONDS]</span> Now listen carefully and answer questions 1 to 5.</div>
+    <div class="dialogue">
+      <p class="line a"><span class="speaker">Maya:</span> Good morning, Riverside Community Garden, Maya speaking.</p>
+      <p class="line b"><span class="speaker">Daniel:</span> Oh, hi. I saw that you have some garden plots available, and I'd like to find out about joining.</p>
+      <p class="line a"><span class="speaker">Maya:</span> Of course. I can take your details now and put you on the list. Could I have your name first?</p>
+      <p class="line b"><span class="speaker">Daniel:</span> Sure. It's Daniel Thorley.</p>
+      <p class="line a"><span class="speaker">Maya:</span> Could you spell your last name for me?</p>
+      <p class="line b"><span class="speaker">Daniel:</span> T-H-O-R-L-E-Y.</p>
+      <p class="line a"><span class="speaker">Maya:</span> T-H-O-R-L-E-Y. Thanks, Daniel. And what's the best phone number to reach you on?</p>
+      <p class="line b"><span class="speaker">Daniel:</span> It's five-five-five, oh-one-eight-nine.</p>
+      <p class="line a"><span class="speaker">Maya:</span> Five-five-five, oh-one-eight-nine. Great. Now, we have two sizes of plot. A full plot is about six meters by four, and a half plot is, well, exactly half that.</p>
+      <p class="line b"><span class="speaker">Daniel:</span> I was thinking of a full plot, actually. I'd like to grow quite a lot of vegetables.</p>
+      <p class="line a"><span class="speaker">Maya:</span> A lot of new members say that, but a full plot is a big commitment in the first year. Most people find that a half plot is plenty to start with.</p>
+      <p class="line b"><span class="speaker">Daniel:</span> Hmm, that's probably sensible. I work long hours, so let's say a half plot.</p>
+      <p class="line a"><span class="speaker">Maya:</span> A half plot, fine. You can always move up to a full plot next season if one's free.</p>
+      <p class="line b"><span class="speaker">Daniel:</span> And how much is the fee?</p>
+      <p class="line a"><span class="speaker">Maya:</span> For a half plot, the annual fee is fifty dollars. Oh, wait, sorry, I'm looking at last year's list. It went up in January. It's fifty-five dollars now.</p>
+      <p class="line b"><span class="speaker">Daniel:</span> That's still very reasonable.</p>
+      <p class="line a"><span class="speaker">Maya:</span> It covers your water and the shared tools, so most people think so. One more thing: before you can start, every new member has to come to an orientation session.</p>
+    </div>
+    <div class="script">Before you hear the rest of the conversation, you have some time to look at questions 6 to 10. <span class="pause">[PAUSE 30 SECONDS]</span> Now listen and answer questions 6 to 10.</div>
+    <div class="dialogue">
+      <p class="line b"><span class="speaker">Daniel:</span> What happens at the orientation?</p>
+      <p class="line a"><span class="speaker">Maya:</span> It takes about an hour. We show you around, explain the rules, and give you your plot number. The next one is on March the seventh. No, hang on, that one's already full. So the first one with space is Saturday, March the fourteenth, at ten.</p>
+      <p class="line b"><span class="speaker">Daniel:</span> March the fourteenth, fine. Do I need to bring anything?</p>
+      <p class="line a"><span class="speaker">Maya:</span> We provide all the tools, spades, forks, wheelbarrows, so you don't need to buy any of those. But please bring your own gloves. For hygiene reasons, we don't lend them out.</p>
+      <p class="line b"><span class="speaker">Daniel:</span> Gloves, OK. And how do I get into the tool shed when I'm there on my own?</p>
+      <p class="line a"><span class="speaker">Maya:</span> The shed has a padlock, and members borrow the key. A lot of people assume it's kept at the library, because the library is right next to the gate, but the library closes at five. So we keep it at the bakery across the road. They open at six in the morning.</p>
+      <p class="line b"><span class="speaker">Daniel:</span> The bakery. That's handy. Is there anything else members have to do?</p>
+      <p class="line a"><span class="speaker">Maya:</span> Yes. Everyone helps with the shared areas: the paths, the compost, the flower beds by the entrance. We ask for four hours a month, and you can do them whenever it suits you.</p>
+      <p class="line b"><span class="speaker">Daniel:</span> Four hours a month. That's fine.</p>
+      <p class="line a"><span class="speaker">Maya:</span> Last question, just for our records: how did you hear about us?</p>
+      <p class="line b"><span class="speaker">Daniel:</span> Well, my neighbor mentioned the garden last summer, but what actually made me call was an article in the local newspaper last week.</p>
+      <p class="line a"><span class="speaker">Maya:</span> Oh, good. I'll put the local newspaper, then. That article has brought us a lot of calls.</p>
+    </div>
+    <div class="script">That is the end of Section 1. You now have 30 seconds to check your answers. <span class="pause">[PAUSE 30 SECONDS]</span></div>
+  </div>
+
+  <div class="blk"><div class="h">Section 2 · Harbor Point Lighthouse (Questions 11–20)</div>
+    <div class="script">Section 2. You will hear a guide talking to a group of visitors at a lighthouse. First, you have some time to look at questions 11 to 14. <span class="pause">[PAUSE 30 SECONDS]</span> Now listen carefully and answer questions 11 to 14.</div>
+    <div class="script"><span class="spk">Guide:</span> Good morning, everyone, and welcome to Harbor Point Lighthouse. My name's Grace, and I'll give you a short introduction before you explore on your own.<br><br>
+    First, a little history. People often see the date 1868 carved above the door and assume that's when the light first shone. In fact, that's when building began. Storms and a shortage of money slowed the work down, and the lamp wasn't actually lit until 1886. So the lighthouse is a little younger than it looks.<br><br>
+    For almost ninety years, keepers and their families lived here and looked after the light. You may hear that they left because of the great storm of 1962, which took the roof off the keeper's cottage. It's a good story, but it isn't true: the cottage was repaired within a year and the keepers stayed. They finally left in 1974, when an automatic lamp was installed, and there was simply no longer any need for someone to be here through the night.<br><br>
+    Now, many of you will want to climb the tower, and I'd encourage you to, because the view from the top is wonderful. You don't need to book; just join the line at the bottom of the tower. Children are very welcome, as long as an adult comes up with them. The one thing we do insist on is sensible, flat shoes. The stairs are a narrow metal spiral, so heels, or sandals without a back, aren't allowed. If you've come in the wrong footwear, don't worry: the Visitor Center has a box of spare sneakers you can borrow.<br><br>
+    And finally, the tide pools. There are steps down to the rocks, where you can see crabs, starfish and anemones. The steps are open all year round, even in winter, but for your safety they're closed for two hours either side of high tide, because the water comes right up to them. Today, high tide is at half past twelve, so plan to go down this morning or later this afternoon.</div>
+    <div class="script">Before you hear the rest of the talk, you have some time to look at questions 15 to 20. <span class="pause">[PAUSE 30 SECONDS]</span> Now listen and answer questions 15 to 20.</div>
+    <div class="script"><span class="spk">Guide:</span> Let me show you where everything is on the plan. We're standing at the entrance, at the bottom of the plan, and the main path runs straight up to the lighthouse at the top. The Visitor Center is the large building just inside the entrance on your left, where you bought your tickets.<br><br>
+    Directly opposite the Visitor Center, on your right as you come in, is the café. Some of our regular visitors still walk all the way up to the keeper's cottage looking for it, because that's where it used to be, but it moved down here two years ago, so you can get a coffee before you set off.<br><br>
+    Just behind the Visitor Center, so to the north of it and still on the left of the path, you'll find the gift shop. It's small, but it has some lovely local crafts.<br><br>
+    Halfway up the main path, a side path crosses it. On the right, at that point, there's a small building: that's the restrooms. From there, you can take the side path to the right, and if you follow it all the way to the end, on the east side of the site, you'll come to the picnic area. It's sheltered from the wind, so it's the best place to eat.<br><br>
+    If you take the side path to the left instead, and follow it right to the end, near the cliff edge on the western side, that's where the steps down to the tide pools begin.<br><br>
+    Carry on up the main path, and just before you reach the lighthouse, on your left, is the keeper's cottage. It's now a small exhibition about the families who lived here.<br><br>
+    And finally, if you walk past the lighthouse on its right-hand side, you'll find the lookout platform, right on the cliff edge. It's the best place on the whole site to spot seals. So, enjoy your visit, and do come and find me if you have any questions.</div>
+    <div class="script">That is the end of Section 2. You now have 30 seconds to check your answers. <span class="pause">[PAUSE 30 SECONDS]</span></div>
+  </div>
+
+  <div class="blk"><div class="h">Section 3 · A museum studies project (Questions 21–30)</div>
+    <div class="script">Section 3. You will hear two students, Kofi and Lena, talking to their tutor, Dr. Hart, about a project for their museum studies course. First, you have some time to look at questions 21 to 25. <span class="pause">[PAUSE 30 SECONDS]</span> Now listen carefully and answer questions 21 to 25.</div>
+    <div class="dialogue">
+      <p class="line a"><span class="speaker">Dr. Hart:</span> Come in, both of you. So, you've started your visitor-behavior project. Remind me why you chose the Millbrook museum.</p>
+      <p class="line b"><span class="speaker">Kofi:</span> Well, it's only ten minutes from campus, which helped, but that wasn't really the reason. The director emailed the department asking if any students could study how visitors move around the building, because they're planning some changes next year.</p>
+      <p class="line a"><span class="speaker">Dr. Hart:</span> So you have a real client. That's excellent. What have you done so far?</p>
+      <p class="line b"><span class="speaker">Lena:</span> We've watched visitors on three visits and followed where they went. The first thing we noticed was in the entrance hall. There's a big floor map right in the middle, showing all the rooms, and we expected people to stop and look at it.</p>
+      <p class="line b"><span class="speaker">Kofi:</span> But almost nobody did. Most people walked straight past it and went into whichever room was nearest.</p>
+      <p class="line a"><span class="speaker">Dr. Hart:</span> Interesting. How many visitors did you observe?</p>
+      <p class="line b"><span class="speaker">Lena:</span> Twenty altogether. We were worried that wasn't enough.</p>
+      <p class="line a"><span class="speaker">Dr. Hart:</span> For a pilot study, twenty is fine. What concerns me more is when you went. You said three visits. Were they all at weekends?</p>
+      <p class="line b"><span class="speaker">Kofi:</span> Yes, two Saturdays and a Sunday.</p>
+      <p class="line a"><span class="speaker">Dr. Hart:</span> Then that's the real weakness. Weekday visitors are often school groups or retired people, and they may behave quite differently. You need some weekday sessions before you can say anything general.</p>
+      <p class="line b"><span class="speaker">Lena:</span> OK, that makes sense.</p>
+      <p class="line a"><span class="speaker">Dr. Hart:</span> What about the timeline wall? The director mentioned it.</p>
+      <p class="line b"><span class="speaker">Lena:</span> That was actually where people stopped most. It runs along the whole corridor. But each panel has around three hundred words, and we timed people. Hardly anyone read to the end of a single panel.</p>
+      <p class="line b"><span class="speaker">Kofi:</span> I did wonder about moving it somewhere quieter, but mainly I agree with Lena: the texts need to be much shorter. Fifty words, maybe, with the details in a leaflet.</p>
+      <p class="line b"><span class="speaker">Lena:</span> Yes, that's our main point there.</p>
+      <p class="line a"><span class="speaker">Dr. Hart:</span> And how are you going to record how long people stay at each exhibit?</p>
+      <p class="line b"><span class="speaker">Kofi:</span> I suggested setting up a couple of small video cameras.</p>
+      <p class="line a"><span class="speaker">Dr. Hart:</span> You'd need ethics approval to film the public, and that can take months.</p>
+      <p class="line b"><span class="speaker">Lena:</span> My idea was a stopwatch app on our phones.</p>
+      <p class="line a"><span class="speaker">Dr. Hart:</span> The trouble is that if visitors see you pointing a phone at them, they'll assume you're filming, and they'll change their behavior. A simple paper grid on a clipboard, with a box for each exhibit, and an ordinary watch, is much less noticeable.</p>
+      <p class="line b"><span class="speaker">Kofi:</span> Fine. We'll go with the grid.</p>
+    </div>
+    <div class="script">Before you hear the rest of the conversation, you have some time to look at questions 26 to 30. <span class="pause">[PAUSE 30 SECONDS]</span> Now listen and answer questions 26 to 30.</div>
+    <div class="dialogue">
+      <p class="line a"><span class="speaker">Dr. Hart:</span> Now, the director wants one recommendation for each area. Let's go through them. The entrance hall first.</p>
+      <p class="line b"><span class="speaker">Lena:</span> Well, since nobody uses the floor map, we thought about removing it. But really, the problem is that people don't know where to start. So we'd recommend clear signs: a big one saying "Start here", with arrows to the first room.</p>
+      <p class="line a"><span class="speaker">Dr. Hart:</span> Good. The farm tools gallery?</p>
+      <p class="line b"><span class="speaker">Kofi:</span> That's the room where visitors spent the least time. The objects are behind glass, and they all look quite similar. We'd like to add something hands-on. The director said they have a replica butter churn that visitors could actually try.</p>
+      <p class="line a"><span class="speaker">Dr. Hart:</span> People do remember what they touch. And the textile room?</p>
+      <p class="line b"><span class="speaker">Lena:</span> It's very dark in there. Our first thought was to recommend brighter lighting.</p>
+      <p class="line a"><span class="speaker">Dr. Hart:</span> Be careful. Old fabrics fade quickly in strong light, so textile rooms are kept dim deliberately. That's not something the museum can change.</p>
+      <p class="line b"><span class="speaker">Lena:</span> Oh, I didn't know that. Then maybe audio: a short recording describing the patterns and how each piece was made, so people know what they're looking at, even in low light.</p>
+      <p class="line a"><span class="speaker">Dr. Hart:</span> That's a far better idea.</p>
+      <p class="line b"><span class="speaker">Kofi:</span> Then there's the old schoolroom. There are rows of original desks, but they're roped off, and we saw several people, especially grandparents with children, trying to sit down.</p>
+      <p class="line b"><span class="speaker">Lena:</span> So we'd suggest putting a few replica desks and benches at the back where people can sit. It's already the room where families talk to each other the most.</p>
+      <p class="line a"><span class="speaker">Dr. Hart:</span> And finally, the photograph corridor.</p>
+      <p class="line b"><span class="speaker">Kofi:</span> That was the most crowded space. Not with people, with pictures. There are about a hundred and forty photographs on the walls.</p>
+      <p class="line b"><span class="speaker">Lena:</span> We'd like the museum to choose the best forty or so and store the rest, or show them online. At the moment, people just walk past all of them.</p>
+      <p class="line a"><span class="speaker">Dr. Hart:</span> Some curators might resist, but I think your evidence supports you. Moving the photographs to another room wouldn't solve anything, would it?</p>
+      <p class="line b"><span class="speaker">Kofi:</span> No. It's the number, not the place.</p>
+    </div>
+    <div class="script">That is the end of Section 3. You now have 30 seconds to check your answers. <span class="pause">[PAUSE 30 SECONDS]</span></div>
+  </div>
+
+  <div class="blk"><div class="h">Section 4 · Lecture: the acoustics of concert halls (Questions 31–40)</div>
+    <div class="script">Section 4. You will hear part of a lecture on architectural acoustics. First, you have some time to look at questions 31 to 40. <span class="pause">[PAUSE 45 SECONDS]</span> Now listen carefully and answer questions 31 to 40.</div>
+    <div class="script"><span class="spk">Lecturer:</span> Good morning. In today's lecture, I'm going to look at why some concert halls sound wonderful while others, sometimes very expensive ones, disappoint both musicians and audiences. The key idea is something called reverberation. When a musician plays a note and then stops, the sound doesn't disappear at once. It continues for a moment because of reflections from the walls, the ceiling and the floor, which reach our ears slightly later than the original sound. That lingering sound is reverberation.<br><br>
+    How much reverberation do we want? It depends on what the room is for. For orchestral music, around two seconds is generally considered ideal: it makes the sound rich and warm. For speech, though, a shorter time is far better, because long reverberation blurs one syllable into the next, and listeners struggle to follow what is being said.<br><br>
+    For most of history, halls were designed by trial and error. Architects copied halls that seemed to work and hoped for the best. The first scientific study came at the very end of the nineteenth century, when a young physics lecturer at an American university was asked to fix a lecture room where students simply couldn't understand the speaker. He had no electronic equipment, so he played a note on an organ pipe and timed how long the sound lasted with a stopwatch. Then, late at night, he and his assistants carried in hundreds of cushions borrowed from a nearby theater and measured again. Each time more cushions were added, the reverberation became shorter, and from these experiments he worked out the first formula for predicting it.<br><br>
+    Let's turn to shape. Many of the halls that musicians love are what we call "shoebox" halls: long, tall and relatively narrow. Their success seems to come largely from the side walls. Reflections from the side walls reach listeners from the left and right, and this gives the feeling of being surrounded by the music. A more recent design is the "vineyard" hall, where the audience sits on terraces around the stage, a little like the rows of a vineyard on a hillside. This brings everyone closer to the performers, although it is harder to get right acoustically.<br><br>
+    Materials matter just as much. Hard surfaces, such as plaster and wood, reflect sound, while soft ones absorb it, and one of the biggest absorbers in any hall is the audience itself, with all its clothing. This created a problem: a hall that sounded perfect in rehearsal could sound dull and dry once it was full. The solution is surprisingly simple. Modern seats are designed to absorb about the same amount of sound when they are empty as when someone is sitting in them, so the hall sounds much the same at a rehearsal as at a sold-out concert.<br><br>
+    Designers also have to avoid certain problems. Curved walls, for example, can focus sound on one part of the audience, like a mirror focusing light, and cause echoes. To prevent this, many halls use diffusers: irregular surfaces, often made of carved wood, which scatter sound in many directions so that it spreads evenly.<br><br>
+    Finally, modern halls often host very different kinds of events, from string quartets to amplified pop concerts. So some are now built with adjustable features. The most common are heavy fabric banners that can be lowered from the ceiling to absorb sound and shorten the reverberation when a band brings its own loudspeakers, and raised again for an orchestra.</div>
+    <div class="script">That is the end of the Listening test. You now have 2 minutes to copy your answers onto the answer sheet. <span class="pause">[2 MINUTES]</span></div>
+  </div>
+
+  <div class="blk"><div class="h">Task 1 data table (for learners with low vision; give with the graph)</div>
+    <table class="grid">
+      <thead><tr><th>City</th><th>2000</th><th>2005</th><th>2010</th><th>2015</th><th>2020</th><th>2025</th></tr></thead>
+      <tbody>
+        <tr><td><b>Northport</b></td><td>12%</td><td>18%</td><td>27%</td><td>38%</td><td>46%</td><td>52%</td></tr>
+        <tr><td><b>Easton</b></td><td>25%</td><td>27%</td><td>26%</td><td>30%</td><td>31%</td><td>33%</td></tr>
+        <tr><td><b>Westvale</b></td><td>5%</td><td>7%</td><td>14%</td><td>30%</td><td>44%</td><td>55%</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:.86rem;color:var(--ink-2)">The figures are invented for this course. Most learners should work from the graph alone, as in the real test: estimating values from a graph ("just over half", "roughly a quarter") is part of the skill.</p>
+  </div>
+
+  <!-- ═════════════════════ SPEAKING (TEACHER) ═════════════════════ -->
+  <div class="sec pagebreak"><h2>Speaking · Run-Sheet for Class 16</h2><span class="rule"></span></div>
+  <p>The real Speaking test is a one-to-one interview of <b>11–14 minutes</b> in three parts. A class of twelve would need nearly three hours of full interviews, so be realistic and <b>combine the options below</b>. Whatever you choose, every learner gets at least one scored long turn (Part 2) and some Part 3 discussion before the course ends.</p>
+  <div class="grid2">
+    <div class="blk"><div class="h">Option A · Short-form interviews in class (about 6 min each)</div>
+      <ul class="tick">
+        <li>During the 17-minute results block in Class 16, interview <b>2–3 learners</b> in a quiet corner: Part 1 (4 questions, ~1.5 min) → Part 2 (1 min preparation + up to 2 min talk) → Part 3 (2–3 questions, ~2 min)</li>
+        <li><b>Save time:</b> hand the next candidate their cue card and pencil while the current candidate is doing Part 3, so their preparation minute overlaps</li>
+        <li>Priority: learners whose Speaking target is closest to a cut-off, and anyone who missed the Class 14 mini mock</li>
+        <li>Write <b>"SF"</b> (short form) on the record form. A short interview gives a rougher estimate, especially for Fluency &amp; Coherence</li>
+      </ul>
+    </div>
+    <div class="blk"><div class="h">Option B · Full interviews outside class (13–15 min each)</div>
+      <ul class="tick">
+        <li>Offer 15-minute slots before or after class, or on a video call, within about a week of Class 16. In the real test, too, Speaking can take place on a different day from the other sections</li>
+        <li>Use the full-format script below. Let learners book a slot. Don't make the full interview compulsory for anyone who finds a one-to-one interview stressful: the short form is fine</li>
+        <li><b>A second interviewer</b> (co-teacher, trained volunteer) can run Option A in parallel during Class 16 if you brief them with this page and the band-estimation sheet in the key</li>
+      </ul>
+    </div>
+  </div>
+  <div class="blk"><div class="h">Option C · Peer interviews for everyone else (during the same 17 minutes)</div>
+    <p>Learners who are not being interviewed pair up once they have finished their error analysis. <b>Student A</b> is the examiner: they read three Part 1 questions from one set, hand over a cue card, time one minute of preparation and up to two minutes of talking, then ask two Part 3 questions. <b>Student B</b> answers and records the whole thing on a phone. Then they swap, using a different card. At home, each learner listens back and scores themselves with the speaking band-estimation sheet in the key, then writes one sentence about the criterion that is holding them back (the Lesson 4.2 routine). Check the instructions first:</p>
+    <div class="say">Who asks the questions first? (Student A.) How long is the preparation time? (One minute.) How long is the talk? (Up to two minutes.) Do you stop your partner if they are still talking at two minutes? (Yes, politely.) What do you do with the recording? (Listen at home and score it with the sheet.) Do you have to tell the truth about yourself? (No. Real or invented, both are fine.)</div>
+  </div>
+
+  <div class="sec"><h2>Full-Format Interview Script (11–14 min)</h2><span class="rule"></span></div>
+  <p>Sit at an angle to the candidate, not directly opposite. Keep your face friendly but neutral, and don't nod "yes" to correct grammar. Use a timer the candidate can't see. Don't correct, teach or give feedback during the interview. That comes later, and in writing. If a candidate freezes, repeat the question once more slowly, then move on: in the real test, the examiner does the same.</p>
+  <table class="timing">
+    <thead><tr><th>Part</th><th>Time</th><th>You say / do</th></tr></thead>
+    <tbody>
+      <tr><td><b>Opening</b></td><td class="t">~30 sec</td><td>"Hello, and thanks for coming. My name is ___. Could you tell me your full name? And what would you like me to call you? This is a practice interview in three parts. I'll ask you some questions, and at times I may stop you. That's part of the timing; it doesn't mean anything is wrong." <i>(In the real test, the examiner also checks identification. Skip that here.)</i></td></tr>
+      <tr><td><b>Part 1</b> · everyday topics</td><td class="t">4–5 min</td><td>"First, let's talk about some everyday things." Choose <b>one set</b> below and ask the questions from <b>2–3 topics</b>, about 4 questions per topic. Let answers run for 2–4 sentences. If an answer is one word, wait two seconds before asking the next question; many candidates will extend on their own.</td></tr>
+      <tr><td><b>Part 2</b> · long turn</td><td class="t">3–4 min</td><td>"Now I'll give you a card with a topic on it. You'll have one minute to prepare, and you can write notes on this paper. Then I'd like you to talk for up to two minutes. I'll stop you when the time is up." Hand over the card, paper and pencil. After 1 minute: "Please begin when you're ready." Stop them at 2 minutes: "Thank you." Then ask the <b>rounding-off question</b> on the card (one or two sentences are enough). Collect the card and notes.</td></tr>
+      <tr><td><b>Part 3</b> · discussion</td><td class="t">4–5 min</td><td>"We've been talking about ___. Now I'd like to ask you some more general questions connected to this." Ask the Part 3 questions for the same card, following up with <i>Why?</i>, <i>Can you give an example?</i> or <i>Is that true everywhere?</i> The aim is to find the highest level at which the candidate can speculate, compare and justify.</td></tr>
+      <tr><td><b>Close</b></td><td class="t">~10 sec</td><td>"Thank you. That's the end of the interview." Smile; say nothing about how it went. Fill in the record form immediately, before the next candidate sits down.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="sec"><h2>Part 1 · Question Sets</h2><span class="rule"></span></div>
+  <p style="font-size:.9rem;color:var(--ink-2)">Use a different set for each candidate who is interviewed within earshot of others. None of these questions asks about home country, family or status; don't add follow-ups that do. "The place where you live now" can be real or invented.</p>
+  <div class="cards">
+    <div class="card-cut">
+      <div class="ct">Part 1 · Set 1</div>
+      <h4>Work or studies</h4>
+      <ol class="steps">
+        <li>Do you work, or are you a student at the moment?</li>
+        <li>What do you enjoy most about your work or studies?</li>
+        <li>Is there anything about it you would like to change?</li>
+        <li>Do you find it easier to concentrate in the morning or in the evening? Why?</li>
+      </ol>
+      <h4>Reading</h4>
+      <ol class="steps">
+        <li>Do you read much in your free time?</li>
+        <li>What kinds of things do you like to read?</li>
+        <li>Do you prefer printed books or reading on a screen? Why?</li>
+        <li>Is there a book you would recommend to a friend?</li>
+      </ol>
+      <h4>Weather</h4>
+      <ol class="steps">
+        <li>What kind of weather do you enjoy most?</li>
+        <li>Does the weather ever change your plans?</li>
+        <li>Is there a time of year you particularly look forward to?</li>
+      </ol>
+    </div>
+    <div class="card-cut b">
+      <div class="ct">Part 1 · Set 2</div>
+      <h4>The place where you live now</h4>
+      <ol class="steps">
+        <li>What do you like about the area where you live now?</li>
+        <li>Is it a quiet place or a busy one?</li>
+        <li>What is one thing that would make it a better place to live?</li>
+        <li>Do you think you will live there for a long time?</li>
+      </ol>
+      <h4>Cooking</h4>
+      <ol class="steps">
+        <li>Do you enjoy cooking?</li>
+        <li>How did you learn to cook?</li>
+        <li>Is there a dish you would like to learn to make?</li>
+        <li>Do you prefer eating at home or eating out? Why?</li>
+      </ol>
+      <h4>Music</h4>
+      <ol class="steps">
+        <li>What kind of music do you listen to?</li>
+        <li>When do you usually listen to music?</li>
+        <li>Have your tastes in music changed over the years?</li>
+      </ol>
+    </div>
+    <div class="card-cut">
+      <div class="ct">Part 1 · Set 3</div>
+      <h4>Daily routine</h4>
+      <ol class="steps">
+        <li>What is the busiest part of your day?</li>
+        <li>Do you usually do the same things every day?</li>
+        <li>Is there anything you would like to change about your routine?</li>
+        <li>What do you like to do when you have a free hour?</li>
+      </ol>
+      <h4>Getting around</h4>
+      <ol class="steps">
+        <li>How do you usually travel around your town or city?</li>
+        <li>What do you think of public transport where you live now?</li>
+        <li>Would you rather walk or cycle for short trips? Why?</li>
+      </ol>
+      <h4>Photographs</h4>
+      <ol class="steps">
+        <li>Do you enjoy taking photographs?</li>
+        <li>What do you usually do with your photos?</li>
+        <li>Do you prefer taking photos or being in them?</li>
+      </ol>
+    </div>
+    <div class="card-cut b">
+      <div class="ct">Stretch and support</div>
+      <h4>If a candidate is very strong</h4>
+      <p>Part 1 should stay simple, so don't make the questions harder. Save the challenge for Part 3 and push further there: "Why do you think that is?", "Would that be true in twenty years' time?", "What would someone who disagrees say?"</p>
+      <h4>If a candidate is struggling</h4>
+      <p>Repeat the question once, slowly. Don't rephrase it, because in the real test the examiner repeats but does not explain. In Part 2, if they stop after 40 seconds, say only: "Can you tell me any more about that?" If they still can't continue, move on kindly. A short Part 2 is information for the debrief, not a failure.</p>
+    </div>
+  </div>
+
+  <div class="sec pagebreak"><h2>Part 2 · Cue Cards (cut out)</h2><span class="rule"></span></div>
+  <div class="cards">
+    <div class="cue-card">
+      <div class="ct">Card 1</div>
+      <div class="topic">Describe a public place in your town or city where you like to spend time.</div>
+      <p>You should say:</p>
+      <ul>
+        <li>where it is</li>
+        <li>what it looks like</li>
+        <li>what people usually do there</li>
+      </ul>
+      <p>and explain why you enjoy spending time there.</p>
+      <p style="font-size:.88rem;color:var(--ink-3);margin-top:8px">Rounding-off (teacher): Do you usually go there alone or with other people?</p>
+    </div>
+    <div class="cue-card">
+      <div class="ct">Card 2</div>
+      <div class="topic">Describe a time when someone taught you something useful.</div>
+      <p>You should say:</p>
+      <ul>
+        <li>who the person was</li>
+        <li>what they taught you</li>
+        <li>how they taught it</li>
+      </ul>
+      <p>and explain why it turned out to be useful.</p>
+      <p style="font-size:.88rem;color:var(--ink-3);margin-top:8px">Rounding-off (teacher): Have you ever taught this to anyone else?</p>
+    </div>
+    <div class="cue-card">
+      <div class="ct">Card 3</div>
+      <div class="topic">Describe a piece of technology, other than a phone, that you find useful.</div>
+      <p>You should say:</p>
+      <ul>
+        <li>what it is</li>
+        <li>when you started using it</li>
+        <li>how often you use it</li>
+      </ul>
+      <p>and explain how it has changed the way you do something.</p>
+      <p style="font-size:.88rem;color:var(--ink-3);margin-top:8px">Rounding-off (teacher): Is there anything you dislike about it?</p>
+    </div>
+    <div class="cue-card">
+      <div class="ct">New identity prompts (optional)</div>
+      <p style="font-size:.95rem">Any candidate may invent the details. Quick ideas to offer if someone asks: <b>Card 1</b> a riverside walk with benches and a food market on Sundays · <b>Card 2</b> a former colleague who taught you to use spreadsheets for a household budget · <b>Card 3</b> a slow cooker, a pair of noise-canceling headphones, or an e-reader.</p>
+    </div>
+  </div>
+
+  <div class="sec"><h2>Part 3 · Discussion Questions</h2><span class="rule"></span></div>
+  <p style="font-size:.9rem;color:var(--ink-2)">Ask the set that matches the Part 2 card. You won't need all of them: 4–5 well-developed answers fill 4–5 minutes. Move from the more concrete questions (first) to the more abstract ones (last).</p>
+  <div class="grid2">
+    <div class="blk"><div class="h">After Card 1 · Public places</div>
+      <ol class="steps">
+        <li>Why do cities need public spaces such as parks and squares?</li>
+        <li>Should public spaces be designed mainly for young people, or for everyone equally?</li>
+        <li>How has technology changed the way people behave in public places?</li>
+        <li>Who should pay to maintain public spaces: local government, businesses, or the people who use them?</li>
+        <li>Some people say modern cities are becoming less friendly. How far do you agree?</li>
+        <li>How do you think public spaces might be different thirty years from now?</li>
+      </ol>
+    </div>
+    <div class="blk"><div class="h">After Card 2 · Learning from others</div>
+      <ol class="steps">
+        <li>Do people learn practical skills better from family and friends or from professionals? Why?</li>
+        <li>Is it easier to learn something from an online video than from a person?</li>
+        <li>What qualities make someone good at explaining things?</li>
+        <li>Should employers be responsible for teaching new staff, or should people arrive already trained?</li>
+        <li>Which practical skills do you think young adults today are not learning? Does it matter?</li>
+        <li>How might the way adults learn new skills change in the future?</li>
+      </ol>
+    </div>
+    <div class="blk"><div class="h">After Card 3 · Technology in daily life</div>
+      <ol class="steps">
+        <li>Has technology made daily life more stressful or less stressful? Why?</li>
+        <li>Why do some people find it hard to start using new technology?</li>
+        <li>Should schools teach people how to repair everyday machines?</li>
+        <li>Is it a good thing that machines now do so many household tasks?</li>
+        <li>How do you think technology will change the way people work over the next twenty years?</li>
+        <li>Are there situations where people should choose <i>not</i> to use technology?</li>
+      </ol>
+    </div>
+    <div class="blk"><div class="h">What to listen for in Part 3</div>
+      <ul class="tick">
+        <li>A clear answer first, then a reason, an example, and a contrast or qualification (the Lesson 4.1 extension routine)</li>
+        <li>Speculation and hypothesis: <i>It's likely that…, If cities invested in…, people would…</i></li>
+        <li>General, not only personal, examples: <i>In many cities…, For older people…</i></li>
+        <li>Paraphrase when a word is missing (Lesson 4.2), without long silences</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec"><h2>Speaking Record Form (one per candidate)</h2><span class="rule"></span></div>
+  <p style="font-size:.95rem">Candidate: ______________________ &nbsp; Date: __________ &nbsp; Format: Full / SF &nbsp; Part 1 set: ___ &nbsp; Card: ___ &nbsp; Part 2 length: ___ min ___ sec</p>
+  <table class="grid">
+    <thead><tr><th>Criterion</th><th>Notes while listening (examples, errors, strengths)</th><th>Band estimate</th></tr></thead>
+    <tbody>
+      <tr><td><b>Fluency &amp; Coherence</b></td><td>length of answers · pauses (searching for language, or thinking about ideas?) · self-correction · linking and signposting</td><td class="sc">&nbsp;</td></tr>
+      <tr><td><b>Lexical Resource</b></td><td>topic words · collocation · less common or idiomatic items · paraphrase when a word is missing · repetition of basic words</td><td class="sc">&nbsp;</td></tr>
+      <tr><td><b>Grammatical Range &amp; Accuracy</b></td><td>complex sentences (conditionals, relative clauses, passives) · tense control · how many sentences are error-free</td><td class="sc">&nbsp;</td></tr>
+      <tr><td><b>Pronunciation</b></td><td>how easy to follow · word and sentence stress · intonation · chunking and linking</td><td class="sc">&nbsp;</td></tr>
+      <tr><td colspan="2"><b>Estimated Speaking band</b> (average of the four, rounded to the nearest half band) · one strength · one next step</td><td class="sc">&nbsp;</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:.88rem;color:var(--ink-2)">Use the band-estimation sheet in <code class="inline">assessment/practice-test-2-key.html</code>. It paraphrases the public IELTS band descriptors in plain language. Your estimate is a teacher's estimate, not an official score: say so when you give it back.</p>
+
+  <div class="note lab">
+    <div class="t">After Class 16: close the loop</div>
+    <p>Estimate each Writing script and each speaking record with the key within a week, and give every learner a one-page result: <b>four skill bands (two raw-score conversions, two estimates), an approximate overall, their Practice Test 1 bands beside them, one strength, and the one change with the biggest payoff</b>. The key's debrief plan has wording for a gain, for no change, and for a drop, plus retake guidance for learners who have already taken the real test.</p>
+  </div>
+
+  <div class="foot">
+    <div class="who"><b>Ray de la Paz</b><span class="bio">© 2026 Ray de la Paz · IELTS Academic Preparation</span></div>
+    <div class="ver">Assessment · Practice Test 2 · v1.0</div>
+  </div>
+
+</div>
+</body>
+</html>

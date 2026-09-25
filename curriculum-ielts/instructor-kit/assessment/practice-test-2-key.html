@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Practice Test 2 — Key &amp; Debrief</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../kit.css">
+<style>
+  table.rubric { width:100%; border-collapse:collapse; margin:12px 0; font-size:.85rem; }
+  table.rubric th, table.rubric td { border:1px solid var(--line); padding:8px 10px; vertical-align:top; text-align:left; }
+  table.rubric thead th { background:var(--surface-2); font-family:"JetBrains Mono",monospace; font-size:.66rem; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-3); font-weight:600; }
+  table.rubric td.crit { font-weight:600; color:var(--ink); width:16%; }
+  table.rubric td .pts { display:block; font-family:"JetBrains Mono",monospace; font-size:.66rem; color:var(--accent); margin-top:3px; }
+  table.rubric tbody tr:nth-child(even) td { background:var(--surface); }
+  table.ans { width:100%; border-collapse:collapse; margin:8px 0 12px; font-size:.88rem; }
+  table.ans th, table.ans td { border-bottom:1px solid var(--line); padding:6px 9px; text-align:left; vertical-align:top; }
+  table.ans th { font-family:"JetBrains Mono",monospace; font-size:.64rem; letter-spacing:.07em; text-transform:uppercase; color:var(--ink-3); font-weight:600; }
+  table.ans td.n { font-family:"JetBrains Mono",monospace; color:var(--accent); font-weight:600; width:2.6em; }
+  table.ans td.a { font-weight:700; color:var(--lab); white-space:nowrap; }
+  table.ans td.acc { font-size:.82rem; color:var(--ink-2); width:17%; }
+  table.ans td.tr { font-size:.82rem; color:var(--ink-2); width:24%; }
+  .ev { font-style:italic; color:var(--ink); }
+  .ev::before { content:"\201C"; } .ev::after { content:"\201D"; }
+  table.conv { border-collapse:collapse; margin:8px 0 12px; font-size:.86rem; width:100%; }
+  table.conv th, table.conv td { border:1px solid var(--line-strong); padding:5px 8px; text-align:center; }
+  table.conv th { background:var(--surface-2); font-family:"JetBrains Mono",monospace; font-size:.66rem; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-3); }
+  table.conv td:first-child { font-weight:700; }
+  table.grid { width:100%; border-collapse:collapse; margin:10px 0; font-size:.88rem; }
+  table.grid th, table.grid td { border:1px solid var(--line-strong); padding:7px 9px; text-align:left; vertical-align:top; }
+  table.grid thead th { background:var(--surface-2); font-family:"JetBrains Mono",monospace; font-size:.64rem; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-3); }
+  table.grid td.sc { width:11%; text-align:center; font-family:"JetBrains Mono",monospace; color:var(--ink-3); }
+  .model { font-size:.92rem; color:var(--ink); border:1px solid var(--line); border-radius:10px; padding:12px 16px; background:var(--surface-2); margin:8px 0; }
+  .model p { margin:0 0 9px; }
+  .model p:last-child { margin-bottom:0; }
+  .model sup { font-family:"JetBrains Mono",monospace; font-size:.66rem; font-weight:700; color:var(--accent); }
+  ol.notes-list { font-size:.88rem; color:var(--ink-2); margin:6px 0 10px 1.3em; padding:0; }
+  ol.notes-list li { margin:3px 0; }
+  .band { display:inline-block; font-family:"JetBrains Mono",monospace; font-size:.7rem; font-weight:700; border-radius:999px; padding:2px 10px; color:#fff; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  .band.go { background:var(--lab); } .band.mid { background:var(--accent); } .band.rep { background:var(--warn); }
+  @media (max-width:680px){ table.rubric, table.ans, table.grid, table.conv { display:block; overflow-x:auto } }
+  @media print { table.rubric, table.ans, table.grid { break-inside:auto; } table.rubric tr, table.ans tr, table.grid tr { break-inside:avoid; } }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="lbl">Teacher copy —</span>
+  <button type="button" onclick="window.print()">Print / Save as PDF</button>
+  <span class="hint">answers with evidence · band conversion · model answers · band-estimation sheets · debrief · not for learners until Class 16</span>
+</div>
+
+<div class="sheet">
+
+  <header class="mast">
+    <div class="kit-eyebrow">IELTS Academic Preparation · Assessment Key · Classes 15–16</div>
+    <h1>Practice Test 2 — Key, Band Estimates &amp; Debrief</h1>
+    <p class="sub">Everything you need to score <b>Practice Test 2</b> (<code class="inline">assessment/practice-test-2.html</code>) and to turn the result into a plan: the Listening and Reading answers with the exact line of script or passage that proves each one, accepted variants, the trap each question sets, an <b>approximate</b> raw-score-to-band table, annotated model answers for both Writing tasks at about band 7, a Writing and a Speaking band-estimation sheet with the criteria <b>paraphrased from the public IELTS band descriptors</b>, and a debrief plan that compares Practice Test 1 with Practice Test 2.</p>
+    <div class="meta-row">
+      <span class="chip">Listening <b>/40</b></span>
+      <span class="chip">Reading <b>/40</b></span>
+      <span class="chip">Writing &amp; Speaking: <b>teacher estimates</b></span>
+      <span class="chip">Confidential · teacher only</span>
+    </div>
+  </header>
+
+  <div class="note">
+    <div class="t">Scoring principles (mark as strictly as the real test)</div>
+    <p><b>One mark per question; no half marks; no penalty for wrong answers.</b> In Listening and Reading completion items, the answer must be <b>spelled correctly</b> and must stay <b>within the word limit</b>: a correct answer that breaks the limit scores zero, exactly as Lessons 1.1 and 2.1 teach. Plurals count (<i>gloves</i>, not <i>glove</i>). Capital letters, lower case, or a mix are all fine. <b>American and British spellings are both accepted</b> (<i>center/centre, neighbor/neighbour, upward/upwards, color/colour</i>), as the online lessons explain. Numbers may be written as digits or words. Words already printed on the paper ($, <i>plot</i>, <i>the</i>) don't need to be repeated; if a learner repeats them and stays within the limit, accept the answer. On the Reading answer sheet, learners were told they may write T / F / NG and Y / N / NG. Writing <b>True</b> for a Yes/No/Not Given item scores zero in the real test; do the same here, and say why in the debrief (Lesson 2.3).</p>
+    <p><b>Why strict?</b> A generous mock gives a comfortable number and an unpleasant surprise on test day. Marking strictly shows each learner exactly which marks are "free": spelling, plurals and word limits usually account for 1–3 marks, which can be half a band.</p>
+  </div>
+
+  <div class="sec"><h2>At a Glance</h2><span class="rule"></span></div>
+  <table class="ans">
+    <thead><tr><th>Paper</th><th>Question types</th><th>Score</th></tr></thead>
+    <tbody>
+      <tr><td>Listening S1</td><td>form completion (names, numbers, a date, corrections)</td><td>/10</td></tr>
+      <tr><td>Listening S2</td><td>multiple choice (4) · plan labelling (6)</td><td>/10</td></tr>
+      <tr><td>Listening S3</td><td>multiple choice (5) · matching (5)</td><td>/10</td></tr>
+      <tr><td>Listening S4</td><td>note completion, ONE WORD ONLY (10)</td><td>/10</td></tr>
+      <tr><td>Reading P1</td><td>True/False/Not Given (6) · note completion (7)</td><td>/13</td></tr>
+      <tr><td>Reading P2</td><td>matching headings (6) · matching features (4) · sentence completion (3)</td><td>/13</td></tr>
+      <tr><td>Reading P3</td><td>Yes/No/Not Given (5) · multiple choice (4) · summary completion from a box (5)</td><td>/14</td></tr>
+      <tr><td>Writing</td><td>Task 1 line graph (150+) · Task 2 discuss both views + opinion (250+)</td><td>band estimate</td></tr>
+      <tr><td>Speaking</td><td>Parts 1–3, full form or short form</td><td>band estimate</td></tr>
+    </tbody>
+  </table>
+
+  <!-- ═════════════ LISTENING ═════════════ -->
+  <div class="sec"><h2>Listening · Answer Key with Evidence</h2><span class="rule"></span></div>
+  <table class="ans">
+    <thead><tr><th>#</th><th>Answer</th><th>Also accept</th><th>Evidence in the script</th><th>The trap</th></tr></thead>
+    <tbody>
+      <tr><td class="n">1</td><td class="a">Thorley</td><td class="acc">THORLEY. Spelling must be exact</td><td><span class="ev">T-H-O-R-L-E-Y.</span></td><td class="tr">spelled-out name; confusable letters (Lesson 2.1)</td></tr>
+      <tr><td class="n">2</td><td class="a">555-0189</td><td class="acc">5550189 · 555 0189</td><td><span class="ev">It's five-five-five, oh-one-eight-nine.</span></td><td class="tr">"oh" = zero</td></tr>
+      <tr><td class="n">3</td><td class="a">half</td><td class="acc">a half · half plot</td><td><span class="ev">I work long hours, so let's say a half plot.</span></td><td class="tr">"full plot" is his first idea; the change of mind is the answer</td></tr>
+      <tr><td class="n">4</td><td class="a">55</td><td class="acc">fifty-five · $55</td><td><span class="ev">It went up in January. It's fifty-five dollars now.</span></td><td class="tr">50 is last year's price (a correction cue: "Oh, wait, sorry")</td></tr>
+      <tr><td class="n">5</td><td class="a">orientation</td><td class="acc">—</td><td><span class="ev">every new member has to come to an orientation session</span></td><td class="tr">spelling (<i>orientation</i>, not <i>orientación</i> / <i>orientaion</i>)</td></tr>
+      <tr><td class="n">6</td><td class="a">14</td><td class="acc">14th · fourteenth</td><td><span class="ev">So the first one with space is Saturday, March the fourteenth, at ten.</span></td><td class="tr">the 7th is full ("No, hang on")</td></tr>
+      <tr><td class="n">7</td><td class="a">gloves</td><td class="acc">— (<i>glove</i> = wrong)</td><td><span class="ev">But please bring your own gloves.</span></td><td class="tr">tools are listed first but are provided; plural -s</td></tr>
+      <tr><td class="n">8</td><td class="a">bakery</td><td class="acc">—</td><td><span class="ev">So we keep it at the bakery across the road.</span></td><td class="tr">the library is mentioned first ("A lot of people assume…")</td></tr>
+      <tr><td class="n">9</td><td class="a">4</td><td class="acc">four</td><td><span class="ev">We ask for four hours a month</span></td><td class="tr">a direct answer: a reminder that not every item hides a distractor</td></tr>
+      <tr><td class="n">10</td><td class="a">local newspaper</td><td class="acc">newspaper · newspaper article</td><td><span class="ev">what actually made me call was an article in the local newspaper last week</span></td><td class="tr">the neighbor is mentioned first; "what actually made me…" is the signpost</td></tr>
+      <tr><td class="n">11</td><td class="a">B</td><td class="acc"></td><td><span class="ev">the lamp wasn't actually lit until 1886</span></td><td class="tr">A: 1868 is when building began; -sixty-eight vs -eighty-six</td></tr>
+      <tr><td class="n">12</td><td class="a">A</td><td class="acc"></td><td><span class="ev">They finally left in 1974, when an automatic lamp was installed</span></td><td class="tr">B: the storm story is mentioned and then rejected ("It's a good story, but it isn't true")</td></tr>
+      <tr><td class="n">13</td><td class="a">C</td><td class="acc"></td><td><span class="ev">The one thing we do insist on is sensible, flat shoes.</span></td><td class="tr">A: "You don't need to book"; B: children are welcome with an adult</td></tr>
+      <tr><td class="n">14</td><td class="a">B</td><td class="acc"></td><td><span class="ev">they're closed for two hours either side of high tide</span></td><td class="tr">A: "open all year round, even in winter"; C: afternoon visits are recommended, not banned</td></tr>
+      <tr><td class="n">15</td><td class="a">A</td><td class="acc"></td><td><span class="ev">Directly opposite the Visitor Center, on your right as you come in, is the café.</span></td><td class="tr">D: where the café <i>used to be</i></td></tr>
+      <tr><td class="n">16</td><td class="a">B</td><td class="acc"></td><td><span class="ev">Just behind the Visitor Center, so to the north of it and still on the left of the path, you'll find the gift shop.</span></td><td class="tr">"behind" = further north, not further south</td></tr>
+      <tr><td class="n">17</td><td class="a">G</td><td class="acc"></td><td><span class="ev">if you follow it all the way to the end, on the east side of the site, you'll come to the picnic area</span></td><td class="tr">C is the restrooms, mentioned in the same breath</td></tr>
+      <tr><td class="n">18</td><td class="a">F</td><td class="acc"></td><td><span class="ev">near the cliff edge on the western side, that's where the steps down to the tide pools begin</span></td><td class="tr">left = west when you face north from the entrance</td></tr>
+      <tr><td class="n">19</td><td class="a">D</td><td class="acc"></td><td><span class="ev">just before you reach the lighthouse, on your left, is the keeper's cottage</span></td><td class="tr">—</td></tr>
+      <tr><td class="n">20</td><td class="a">E</td><td class="acc"></td><td><span class="ev">if you walk past the lighthouse on its right-hand side, you'll find the lookout platform, right on the cliff edge</span></td><td class="tr">H is never used; C is not in the list (two spare letters)</td></tr>
+      <tr><td class="n">21</td><td class="a">B</td><td class="acc"></td><td><span class="ev">The director emailed the department asking if any students could study how visitors move around the building</span></td><td class="tr">A: "which helped, but that wasn't really the reason"</td></tr>
+      <tr><td class="n">22</td><td class="a">C</td><td class="acc"></td><td><span class="ev">Most people walked straight past it and went into whichever room was nearest.</span></td><td class="tr">B: nobody says the map is hard to read</td></tr>
+      <tr><td class="n">23</td><td class="a">A</td><td class="acc"></td><td><span class="ev">Then that's the real weakness.</span> (after <span class="ev">Were they all at weekends?</span>)</td><td class="tr">B: the students worry about it, but <span class="ev">For a pilot study, twenty is fine.</span></td></tr>
+      <tr><td class="n">24</td><td class="a">B</td><td class="acc"></td><td><span class="ev">mainly I agree with Lena: the texts need to be much shorter</span></td><td class="tr">A: only Kofi "did wonder" about moving it; C: the opposite is said</td></tr>
+      <tr><td class="n">25</td><td class="a">C</td><td class="acc"></td><td><span class="ev">Fine. We'll go with the grid.</span></td><td class="tr">A and B are both suggested and rejected</td></tr>
+      <tr><td class="n">26</td><td class="a">C</td><td class="acc"></td><td><span class="ev">So we'd recommend clear signs</span></td><td class="tr">removing the map is considered, then dropped</td></tr>
+      <tr><td class="n">27</td><td class="a">B</td><td class="acc"></td><td><span class="ev">We'd like to add something hands-on.</span></td><td class="tr">—</td></tr>
+      <tr><td class="n">28</td><td class="a">F</td><td class="acc"></td><td><span class="ev">Then maybe audio</span> … <span class="ev">That's a far better idea.</span></td><td class="tr">D: brighter lighting is their first thought, then ruled out</td></tr>
+      <tr><td class="n">29</td><td class="a">A</td><td class="acc"></td><td><span class="ev">putting a few replica desks and benches at the back where people can sit</span></td><td class="tr">paraphrase: "where people can sit" = seating</td></tr>
+      <tr><td class="n">30</td><td class="a">E</td><td class="acc"></td><td><span class="ev">We'd like the museum to choose the best forty or so and store the rest</span></td><td class="tr">G: <span class="ev">It's the number, not the place.</span></td></tr>
+      <tr><td class="n">31</td><td class="a">reflections</td><td class="acc">— (<i>reflection</i> = wrong)</td><td><span class="ev">because of reflections from the walls, the ceiling and the floor</span></td><td class="tr">plural -s; the note paraphrases "because of" as "caused by"</td></tr>
+      <tr><td class="n">32</td><td class="a">speech</td><td class="acc">—</td><td><span class="ev">For speech, though, a shorter time is far better</span></td><td class="tr">"orchestral music" is the two-second case, already in the note</td></tr>
+      <tr><td class="n">33</td><td class="a">stopwatch</td><td class="acc">stop-watch</td><td><span class="ev">timed how long the sound lasted with a stopwatch</span></td><td class="tr"><i>stop watch</i> (two words) breaks the ONE WORD limit</td></tr>
+      <tr><td class="n">34</td><td class="a">cushions</td><td class="acc">— (<i>cushion</i> = wrong)</td><td><span class="ev">carried in hundreds of cushions borrowed from a nearby theater</span></td><td class="tr">plural -s</td></tr>
+      <tr><td class="n">35</td><td class="a">side</td><td class="acc">—</td><td><span class="ev">Reflections from the side walls reach listeners from the left and right</span></td><td class="tr"><i>left</i> / <i>right</i> alone don't describe both walls</td></tr>
+      <tr><td class="n">36</td><td class="a">terraces</td><td class="acc">—</td><td><span class="ev">where the audience sits on terraces around the stage</span></td><td class="tr">"rows of a vineyard" is a comparison, not the answer; spelling counts</td></tr>
+      <tr><td class="n">37</td><td class="a">empty</td><td class="acc">—</td><td><span class="ev">designed to absorb about the same amount of sound when they are empty as when someone is sitting in them</span></td><td class="tr">"rehearsal" is the context, not the word that fits the grammar</td></tr>
+      <tr><td class="n">38</td><td class="a">echoes</td><td class="acc">— (<i>echos</i>, <i>echo</i> = wrong)</td><td><span class="ev">can focus sound on one part of the audience, like a mirror focusing light, and cause echoes</span></td><td class="tr">irregular plural spelling</td></tr>
+      <tr><td class="n">39</td><td class="a">diffusers</td><td class="acc">diffusors</td><td><span class="ev">many halls use diffusers: irregular surfaces</span></td><td class="tr">a technical term: spelling and plural both count</td></tr>
+      <tr><td class="n">40</td><td class="a">banners</td><td class="acc">—</td><td><span class="ev">heavy fabric banners that can be lowered from the ceiling</span></td><td class="tr">"loudspeakers" is mentioned in the same sentence</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:.86rem;color:var(--ink-2)"><b>Where the marks go:</b> Section 1 tests spelling, numbers and corrections (items 3, 4, 6, 7, 8, 10 each contain a distractor). Section 2 tests rejected information (11–14) and orientation (15–20). Section 3 tests <i>agreement</i>: the answer is what the speakers settle on, not the first idea (23–30). Section 4 tests plural and spelling accuracy with less familiar words under speed (31, 33, 34, 36, 38, 39). If a learner has lost most marks in one section, the online review is <a href="https://rays-esl.netlify.app/curriculum-ielts/lesson_04.html">Lesson 2.1</a>.</p>
+
+  <!-- ═════════════ READING ═════════════ -->
+  <div class="sec"><h2>Reading · Answer Key with Evidence</h2><span class="rule"></span></div>
+  <div class="blk"><div class="h">Passage 1 · Rebuilding the Oyster Reef (1–13)</div>
+  <table class="ans">
+    <thead><tr><th>#</th><th>Answer</th><th>Also accept</th><th>Evidence in the passage</th><th>Why / the trap</th></tr></thead>
+    <tbody>
+      <tr><td class="n">1</td><td class="a">TRUE</td><td class="acc">T</td><td><span class="ev">The water becomes clearer, sunlight reaches further down, and seagrass beds, which shelter young fish and crabs, are able to grow.</span></td><td class="tr">cause and effect paraphrased: "allows" = "are able to grow"</td></tr>
+      <tr><td class="n">2</td><td class="a">FALSE</td><td class="acc">F</td><td><span class="ev">Overharvesting was the first and most obvious cause</span></td><td class="tr">pollution is named, but later: it "made recovery harder"</td></tr>
+      <tr><td class="n">3</td><td class="a">FALSE</td><td class="acc">F</td><td><span class="ev">left in the open air for several months so that any disease dies off, and then returned to the water</span></td><td class="tr">"straight away" vs "several months": a clear clash</td></tr>
+      <tr><td class="n">4</td><td class="a">NOT GIVEN</td><td class="acc">NG</td><td>Materials are listed (<span class="ev">limestone rock, recycled concrete, and specially designed ceramic units</span>), but their costs are never compared.</td><td class="tr">world knowledge ("ceramics must be expensive") is not evidence (Lesson 2.3, Trap 1)</td></tr>
+      <tr><td class="n">5</td><td class="a">TRUE</td><td class="acc">T</td><td><span class="ev">reefs built only a few centimeters high tend to silt over within a season or two, while taller mounds keep their upper layers clean</span></td><td class="tr">"covered in silt" = "silt over"</td></tr>
+      <tr><td class="n">6</td><td class="a">NOT GIVEN</td><td class="acc">NG</td><td>The passage describes oyster gardening (<span class="ev">produces relatively small numbers of animals</span>) but never compares its popularity with other kinds of volunteering.</td><td class="tr">"most popular" is an extreme claim the text never makes</td></tr>
+      <tr><td class="n">7</td><td class="a">cleared land</td><td class="acc">—</td><td><span class="ev">the silt that rivers washed down from cleared land</span></td><td class="tr"><i>land</i> alone loses the meaning; accept only with <i>cleared</i></td></tr>
+      <tr><td class="n">8</td><td class="a">spat</td><td class="acc">—</td><td><span class="ev">Young oysters, known as spat</span></td><td class="tr"><i>larvae</i> is a stage, not the name given</td></tr>
+      <tr><td class="n">9</td><td class="a">rough</td><td class="acc">—</td><td><span class="ev">provided that the surface was rough and stood clear of the mud</span></td><td class="tr">"above the mud" in the note = "stood clear of the mud"</td></tr>
+      <tr><td class="n">10</td><td class="a">docks</td><td class="acc">their docks</td><td><span class="ev">hang cages of young oysters from their docks</span></td><td class="tr">plural -s</td></tr>
+      <tr><td class="n">11</td><td class="a">water quality</td><td class="acc">—</td><td><span class="ev">many go on to monitor water quality near their homes</span></td><td class="tr">"check" = "monitor"; "close to where they live" = "near their homes"</td></tr>
+      <tr><td class="n">12</td><td class="a">grow upward</td><td class="acc">grow · grow upwards</td><td><span class="ev">they can grow upward as sea levels rise</span></td><td class="tr">—</td></tr>
+      <tr><td class="n">13</td><td class="a">sheltered bays</td><td class="acc">—</td><td><span class="ev">Their protective effect is greatest in sheltered bays, where waves are modest.</span></td><td class="tr"><i>bays</i> alone: accept only with <i>sheltered</i> (the qualifier is the point)</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="blk"><div class="h">Passage 2 · Farming Without Fields (14–26)</div>
+  <table class="ans">
+    <thead><tr><th>#</th><th>Answer</th><th>Also accept</th><th>Evidence in the passage</th><th>Why / the trap</th></tr></thead>
+    <tbody>
+      <tr><td class="n">14</td><td class="a">iv</td><td class="acc"></td><td>B: water recycled, many acres in a small footprint, few pesticides (<span class="ev">The case in favor begins with resources.</span>)</td><td class="tr">topic sentence gives it away</td></tr>
+      <tr><td class="n">15</td><td class="a">vi</td><td class="acc"></td><td>C: <span class="ev">A second advantage is location.</span></td><td class="tr">the Osei quotation is a detail; the paragraph's point is proximity</td></tr>
+      <tr><td class="n">16</td><td class="a">viii</td><td class="acc"></td><td>D: <span class="ev">The central difficulty is energy.</span> … <span class="ev">This explains why nearly every vertical farm grows the same narrow range of crops</span></td><td class="tr">—</td></tr>
+      <tr><td class="n">17</td><td class="a">ii</td><td class="acc"></td><td>E: companies <span class="ev">have closed or sharply reduced their operations</span>; survivors <span class="ev">tended to share one feature</span></td><td class="tr">—</td></tr>
+      <tr><td class="n">18</td><td class="a">x</td><td class="acc"></td><td>F: <span class="ev">Lighting has become far more efficient</span> … <span class="ev">the next gains will come from the plants themselves</span></td><td class="tr">v (robots) is a detail trap: automation is one cautious sentence</td></tr>
+      <tr><td class="n">19</td><td class="a">vii</td><td class="acc"></td><td>G: <span class="ev">They make the most sense in places where fresh produce is otherwise difficult to supply</span></td><td class="tr">iii (farmland prices) picks up <span class="ev">land is extremely expensive</span>, a single detail</td></tr>
+      <tr><td class="n">20</td><td class="a">A</td><td class="acc"></td><td><span class="ev">the answer is almost always that it stays fresh for longer</span></td><td class="tr">"how long the product lasts" = "stays fresh for longer"</td></tr>
+      <tr><td class="n">21</td><td class="a">B</td><td class="acc"></td><td><span class="ev">where you plug in can matter more than what you grow</span></td><td class="tr">a metaphor for the power supply</td></tr>
+      <tr><td class="n">22</td><td class="a">C</td><td class="acc"></td><td><span class="ev">can reduce labor costs, she notes, but they bring expenses of their own</span></td><td class="tr">—</td></tr>
+      <tr><td class="n">23</td><td class="a">A</td><td class="acc"></td><td><span class="ev">The question was never whether vertical farms could feed the world. They can't,</span></td><td class="tr">letters can repeat (the NB in the instructions)</td></tr>
+      <tr><td class="n">24</td><td class="a">water</td><td class="acc">—</td><td><span class="ev">The roots of the plants hang in shallow channels of water</span></td><td class="tr"><i>nutrients</i> is already in the sentence</td></tr>
+      <tr><td class="n">25</td><td class="a">sealed</td><td class="acc">—</td><td><span class="ev">because the growing rooms are sealed</span></td><td class="tr"><i>pests</i> doesn't fit after "are"</td></tr>
+      <tr><td class="n">26</td><td class="a">wind</td><td class="acc">—</td><td><span class="ev">including wind, strong sun and uneven rainfall</span></td><td class="tr">the list is re-ordered in the question</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="blk"><div class="h">Passage 3 · The Stubborn Science of Habit (27–40)</div>
+  <table class="ans">
+    <thead><tr><th>#</th><th>Answer</th><th>Also accept</th><th>Evidence in the passage</th><th>Why / the trap</th></tr></thead>
+    <tbody>
+      <tr><td class="n">27</td><td class="a">NO</td><td class="acc">N</td><td><span class="ev">this explanation is not only unkind but largely mistaken</span></td><td class="tr">the statement repeats "willpower", the popular view the writer rejects</td></tr>
+      <tr><td class="n">28</td><td class="a">YES</td><td class="acc">Y</td><td><span class="ev">in my view it has done real harm</span>, because people <span class="ev">tend to conclude that they have failed and give up</span></td><td class="tr">opinion signal: "in my view"</td></tr>
+      <tr><td class="n">29</td><td class="a">NOT GIVEN</td><td class="acc">NG</td><td>The writer reports the study's findings but never mentions how many people took part or criticizes its size.</td><td class="tr">a sensible criticism, but not the writer's</td></tr>
+      <tr><td class="n">30</td><td class="a">YES</td><td class="acc">Y</td><td><span class="ev">To my mind, this is the most practical finding in the whole field, and also the most neglected.</span></td><td class="tr">"under-used" = "neglected"</td></tr>
+      <tr><td class="n">31</td><td class="a">NOT GIVEN</td><td class="acc">NG</td><td>The study found recent movers <span class="ev">were more likely than long-term residents to change the way they traveled to work</span>; nothing is said about what most movers <i>want</i>.</td><td class="tr">"more likely to change" ≠ "want to change"</td></tr>
+      <tr><td class="n">32</td><td class="a">B</td><td class="acc"></td><td><span class="ev">so that the cue triggers the behavior with very little conscious thought</span></td><td class="tr">A: the writer says a habit is <span class="ev">not simply something we do often</span>; D: the 21-day myth</td></tr>
+      <tr><td class="n">33</td><td class="a">C</td><td class="acc"></td><td><span class="ev">missing an occasional day made little difference to progress</span></td><td class="tr">A: the average was <span class="ev">around two months</span>; D: water was only an example</td></tr>
+      <tr><td class="n">34</td><td class="a">A</td><td class="acc"></td><td><span class="ev">it tends to fail when people are tired or under stress</span></td><td class="tr">B mixes two separate strategies; D: the link survives <span class="ev">even when motivation disappears</span></td></tr>
+      <tr><td class="n">35</td><td class="a">D</td><td class="acc"></td><td><span class="ev">has diagnosed a flaw in their character</span> vs <span class="ev">has identified a problem that can be solved in thirty seconds</span></td><td class="tr">a question about the writer's purpose: ask "why is this example here?"</td></tr>
+      <tr><td class="n">36</td><td class="a">A</td><td class="acc">cue</td><td><span class="ev">a behavior that has become linked to a particular cue</span></td><td class="tr">I (routine) looks possible but doesn't match "such as a place or time"</td></tr>
+      <tr><td class="n">37</td><td class="a">B</td><td class="acc">attention</td><td><span class="ev">leave more attention for the decisions that genuinely need it</span></td><td class="tr">E (motivation) is never described as "saved"</td></tr>
+      <tr><td class="n">38</td><td class="a">C</td><td class="acc">convenient</td><td><span class="ev">small changes in convenience have surprisingly large effects on what people do</span></td><td class="tr">H (difficult) works for <i>discouraging</i> a behavior, the opposite</td></tr>
+      <tr><td class="n">39</td><td class="a">D</td><td class="acc">transition</td><td><span class="ev">Habits are also especially fragile at moments of transition.</span></td><td class="tr">—</td></tr>
+      <tr><td class="n">40</td><td class="a">F</td><td class="acc">removing</td><td><span class="ev">The first is to remove the cue altogether</span></td><td class="tr">J (ignoring) = suppression, which the writer says often fails</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:.86rem;color:var(--ink-2)">Items 36–40: the instructions ask for letters. In this mock, accept the correct word too, but point out that on the day a word copied with a spelling mistake could cost the mark, while a letter can't be misspelled.</p></div>
+
+  <!-- ═════════════ CONVERSION ═════════════ -->
+  <div class="sec"><h2>Raw Score → Band (Approximate)</h2><span class="rule"></span></div>
+  <div class="note warn">
+    <div class="t">Read this before you use the table</div>
+    <p>The official conversion varies slightly from one test version to another, and it is not published for each test. The table below reflects <b>ranges that are widely reported publicly</b> for Listening and Academic Reading. It is an approximation, not an official scale, and this mock was not statistically calibrated against real test versions. Treat a converted band as <b>"about"</b>, for example "about 6.5", and never tell a learner that a mock band guarantees a real score. It matches the guide in Lesson 1.1 (about 30/40 ≈ band 7; about 23/40 ≈ band 6). Use the same table for both Practice Tests (<code class="inline">assessment/answer-keys.html</code> has the version for Practice Test 1) so the comparison is like for like.</p>
+  </div>
+  <div class="grid2">
+    <table class="conv">
+      <thead><tr><th>Band (about)</th><th>Listening /40</th><th>Academic Reading /40</th></tr></thead>
+      <tbody>
+        <tr><td>9</td><td>39–40</td><td>39–40</td></tr>
+        <tr><td>8.5</td><td>37–38</td><td>37–38</td></tr>
+        <tr><td>8</td><td>35–36</td><td>35–36</td></tr>
+        <tr><td>7.5</td><td>32–34</td><td>33–34</td></tr>
+        <tr><td>7</td><td>30–31</td><td>30–32</td></tr>
+        <tr><td>6.5</td><td>26–29</td><td>27–29</td></tr>
+        <tr><td>6</td><td>23–25</td><td>23–26</td></tr>
+        <tr><td>5.5</td><td>18–22</td><td>19–22</td></tr>
+        <tr><td>5</td><td>16–17</td><td>15–18</td></tr>
+        <tr><td>4.5</td><td>13–15</td><td>13–14</td></tr>
+        <tr><td>4</td><td>10–12</td><td>10–12</td></tr>
+      </tbody>
+    </table>
+    <div class="blk"><div class="h">Overall band (as Lesson 1.1 teaches)</div>
+      <p style="font-size:.9rem">Average the four skill bands and round to the nearest half band: an average ending in <b>.25</b> rounds <b>up</b> to .5, and one ending in <b>.75</b> rounds <b>up</b> to the next whole band. Example: L 6.5 · R 6.0 · W 6.0 · S 6.5 → 25 ÷ 4 = 6.25 → <b>about 6.5</b>.</p>
+      <p style="font-size:.9rem">Because Writing and Speaking are your <b>estimates</b>, the overall is doubly approximate. Report it as a range if one skill sits on a boundary: "about 6.0–6.5".</p>
+      <p style="font-size:.9rem"><b>One mark matters most at the edges.</b> A learner on 29 in Listening is one mark from about 7.0. Show them which of their wrong answers were spelling, plural or word-limit slips: that is their quickest half band.</p>
+    </div>
+  </div>
+
+  <div class="sec"><h2>Error-Analysis Grid (learners, Class 16)</h2><span class="rule"></span></div>
+  <p style="font-size:.9rem">Print one per learner. For every wrong Listening and Reading answer, the learner writes the question number in <b>one</b> row, using the same error codes as Practice Test 1. The fullest row is their priority, and it is usually a habit, not a language gap. Compare it with their Practice Test 1 tally: a drop in the top code is progress.</p>
+  <table class="grid">
+    <thead><tr><th>Code</th><th>What happened</th><th>Listening Q numbers</th><th>Reading Q numbers</th><th>Lesson: the fix</th></tr></thead>
+    <tbody>
+      <tr><td><b>D</b></td><td>distractor (wrote the first / corrected-away answer)</td><td></td><td style="text-align:center;color:var(--ink-3)">—</td><td style="font-size:.8rem;color:var(--ink-2)">Lesson 2.1: take the <i>final</i> version</td></tr>
+      <tr><td><b>S</b></td><td>spelling or plural (L) · copied a word wrongly (R)</td><td></td><td></td><td style="font-size:.8rem;color:var(--ink-2)">Lesson 2.1 (L), 2.2 (R): check -s, copy letter by letter</td></tr>
+      <tr><td><b>W</b></td><td>word limit / wrong form</td><td></td><td></td><td style="font-size:.8rem;color:var(--ink-2)">Lesson 2.1 (L), 2.2 (R): circle the limit, count</td></tr>
+      <tr><td><b>N</b></td><td>number, letter or date misheard</td><td></td><td style="text-align:center;color:var(--ink-3)">—</td><td style="font-size:.8rem;color:var(--ink-2)">Lesson 2.1: numbers and spelled names</td></tr>
+      <tr><td><b>L</b></td><td>lost my place / froze</td><td></td><td style="text-align:center;color:var(--ink-3)">—</td><td style="font-size:.8rem;color:var(--ink-2)">Lesson 2.1: read ahead, never freeze</td></tr>
+      <tr><td><b>P</b></td><td>missed the paraphrase</td><td></td><td></td><td style="font-size:.8rem;color:var(--ink-2)">Lesson 1.2 &amp; 2.1 (L) / 2.2 (R): synonym mapping, topic banks</td></tr>
+      <tr><td><b>M</b></td><td>word-match trap (same words, different meaning)</td><td style="text-align:center;color:var(--ink-3)">—</td><td></td><td style="font-size:.8rem;color:var(--ink-2)">Lesson 2.2: a word match is a warning</td></tr>
+      <tr><td><b>O</b></td><td>looked in the wrong place</td><td style="text-align:center;color:var(--ink-3)">—</td><td></td><td style="font-size:.8rem;color:var(--ink-2)">Lesson 2.2: locate first, passage order</td></tr>
+      <tr><td><b>T</b></td><td>ran out of time / left a blank</td><td style="text-align:center;color:var(--ink-3)">—</td><td></td><td style="font-size:.8rem;color:var(--ink-2)">Lesson 2.2 &amp; 4.3: 20-minute caps, never leave a blank</td></tr>
+      <tr><td><b>F</b></td><td>confused False and Not Given</td><td style="text-align:center;color:var(--ink-3)">—</td><td></td><td style="font-size:.8rem;color:var(--ink-2)">Lesson 2.3: "Can I point to the words that clash?"</td></tr>
+      <tr><td><b>K</b></td><td>used own knowledge, not the text</td><td style="text-align:center;color:var(--ink-3)">—</td><td></td><td style="font-size:.8rem;color:var(--ink-2)">Lesson 2.3: where does the <i>text</i> say it?</td></tr>
+      <tr><td><b>Q</b></td><td>missed a qualifier (<i>all, some, only…</i>)</td><td style="text-align:center;color:var(--ink-3)">—</td><td></td><td style="font-size:.8rem;color:var(--ink-2)">Lesson 2.3: circle every qualifier</td></tr>
+      <tr><td><b>H</b></td><td>heading matched a detail, not the main idea</td><td style="text-align:center;color:var(--ink-3)">—</td><td></td><td style="font-size:.8rem;color:var(--ink-2)">Lesson 2.3: main idea in five words first</td></tr>
+      <tr><td><b>X</b></td><td>transfer error (right answer, wrong box / illegible)</td><td></td><td></td><td style="font-size:.8rem;color:var(--ink-2)">Lesson 4.3: transfer in blocks, capitals</td></tr>
+      <tr><td></td><td>Other</td><td></td><td></td><td></td></tr>
+    </tbody>
+  </table>
+
+  <!-- ═════════════ WRITING ═════════════ -->
+  <div class="sec pagebreak"><h2>Writing · Band-Estimation Sheet</h2><span class="rule"></span></div>
+  <p style="font-size:.9rem">The four criteria below are <b>paraphrased from the public IELTS band descriptors</b> in plain language for classroom use. They are not the official wording, and your result is a <b>teacher's estimate</b>. Read the whole script once for a general impression, then decide each criterion separately, starting from band 6 and moving up or down. A script usually sits within one band across the four criteria; if one criterion is two bands lower than the others, that criterion is the learner's biggest opportunity.</p>
+  <table class="rubric">
+    <thead><tr><th>Criterion</th><th>about 5</th><th>about 6</th><th>about 7</th><th>about 8</th></tr></thead>
+    <tbody>
+      <tr><td class="crit">Task Achievement<span class="pts">Task 1</span></td>
+        <td>Reads like a list of numbers, often in the order they appear; no sentence gives the reader the big picture; an important feature is left out, or the writer explains causes the graph doesn't show.</td>
+        <td>There is a big-picture sentence, but the choice of detail is uneven: some important points are thin while minor ones get too much space; a few figures are misread.</td>
+        <td>The big picture is stated clearly and early; the most important trends and contrasts are chosen and backed up with correct figures; some points could go a little further.</td>
+        <td>Nothing important is missing; the big picture is sharp; figures are chosen selectively and are accurate; any weaknesses are small and rare.</td></tr>
+      <tr><td class="crit">Task Response<span class="pts">Task 2</span></td>
+        <td>Answers only part of the question, or wanders away from it; the reader can't be sure what the writer thinks; ideas are few, thin, or not relevant.</td>
+        <td>Every part of the question gets some attention, but not equally; the writer's view is there but may be vague, or only repeated at the end; some points are stated rather than explained.</td>
+        <td>Every part is answered, and the writer's view is clear from start to finish; main points are explained and supported, though some are a little general or lose focus.</td>
+        <td>The question is answered fully, and the view is clear and well argued; points are relevant and well supported, with only the occasional gap.</td></tr>
+      <tr><td class="crit">Coherence &amp; Cohesion</td>
+        <td>Some sense of order, but the argument doesn't clearly move forward; the same few linking words appear again and again, or are misused; paragraphs are missing or don't match the ideas.</td>
+        <td>The reader can follow the overall line; linking words do their job but can feel mechanical or be misused; it isn't always clear what <i>this</i> or <i>it</i> refers to; paragraphs are sometimes uneven.</td>
+        <td>Ideas are in a sensible order and the text moves forward clearly; a variety of linking devices, perhaps a few too many or too few; each paragraph is about one main thing.</td>
+        <td>The text is easy to follow from beginning to end; paragraphs are well judged; linking and reference feel natural and are hardly noticed.</td></tr>
+      <tr><td class="crit">Lexical Resource</td>
+        <td>Enough basic words to do the task, but little choice; spelling and word-form mistakes are frequent enough to slow the reader down.</td>
+        <td>Vocabulary is adequate; the writer reaches for less common words and sometimes misses; spelling and word-form mistakes occur, but the meaning stays clear.</td>
+        <td>Some real choice and precision; less common words and good word partnerships (collocations) appear, with a sense of formal style; mistakes are occasional.</td>
+        <td>Wide, precise and natural word choice, including less common items; mistakes in word choice or collocation are rare.</td></tr>
+      <tr><td class="crit">Grammatical Range &amp; Accuracy</td>
+        <td>Mostly short, simple sentences; longer ones are attempted but usually go wrong, and the reader sometimes has to reread.</td>
+        <td>Both simple and complex sentences (<i>because…, which…, if…</i>); grammar and punctuation mistakes are common, especially in the longer ones, but seldom confuse the reader.</td>
+        <td>Plenty of complex sentences, many of them completely correct; the writer is clearly in control, with a few mistakes left.</td>
+        <td>A wide variety of sentence types; the great majority are correct; the few mistakes look like slips, not patterns.</td></tr>
+    </tbody>
+  </table>
+  <div class="grid2">
+    <div class="blk warn"><div class="h">Quick caps to check first (Lessons 3.1–3.3)</div>
+      <ul class="tick">
+        <li><b>Task 1 with no overview</b> is unlikely to reach 6 for Task Achievement, however accurate the details are</li>
+        <li><b>Under 150 / 250 words</b> lowers Task Achievement/Response. Count the words; don't guess</li>
+        <li><b>Task 2 that gives only one view</b>, or no opinion, doesn't answer "discuss both views <i>and</i> give your own opinion"</li>
+        <li><b>Memorized chunks</b> that don't fit the question are not credited as the candidate's own language</li>
+        <li><b>No paragraphs</b> limits Coherence &amp; Cohesion, however good the linking words are</li>
+      </ul>
+    </div>
+    <div class="blk"><div class="h">Combining the two tasks</div>
+      <p style="font-size:.9rem">Task 2 counts for about twice as much as Task 1. The exact method is not published in full, so for this mock use: <b>Writing ≈ (Task 1 band + 2 × Task 2 band) ÷ 3</b>, rounded to the nearest half band. Example: Task 1 about 6.0, Task 2 about 6.5 → (6 + 13) ÷ 3 = 6.33 → <b>about 6.5</b>. If you are between two bands, report the lower one: a pleasant surprise on results day is kinder than a disappointing one.</p>
+      <p style="font-size:.9rem"><b>Moderation.</b> If two teachers can each estimate the same five scripts on their own and then compare, do it: aim to agree within half a band, and talk through any script where you differ by more.</p>
+    </div>
+  </div>
+
+  <div class="sec"><h2>Task 1 · What a Strong Answer Includes</h2><span class="rule"></span></div>
+  <div class="grid2">
+    <div class="blk lab"><div class="h">Key features (the "must-mentions")</div>
+      <ul class="tick lab">
+        <li><b>Overview:</b> recycling rose in all three cities, but at very different rates; Westvale moved from the lowest rate to the highest</li>
+        <li><b>Easton:</b> the highest in 2000 (25%), then almost flat (25–31% until 2020, 33% in 2025)</li>
+        <li><b>Northport:</b> steady, uninterrupted growth from 12% to 52%, overtaking Easton around 2010</li>
+        <li><b>Westvale:</b> slow at first (5% → 14% by 2010), then the steepest rise, level with Easton at 30% in 2015, ending at 55%, just above Northport</li>
+      </ul>
+    </div>
+    <div class="blk warn"><div class="h">What to watch for</div>
+      <ul class="tick">
+        <li><b>Year-by-year listing</b> of all 18 figures: accurate but mechanical (Task Achievement about 5–6)</li>
+        <li><b>Invented causes</b> ("because the government introduced new bins"): the graph gives no reasons</li>
+        <li><b>Misread crossovers</b>, e.g. "Westvale overtook Northport in 2020" (44% vs 46%: it didn't)</li>
+        <li><b>Trend-language errors:</b> "increased 40%" vs "increased <i>by</i> 40 percentage points"; "the recycling was grown"</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="blk"><div class="h">Model answer · Task 1 · about band 7 (163 words)</div>
+    <div class="model">
+      <p>The line graph compares the proportion of household waste that was recycled in three cities, Northport, Easton and Westvale, over the 25 years from 2000 to 2025.<sup>1</sup></p>
+      <p>Overall, recycling rates increased in all three cities, but the pace of change varied considerably. Northport and Westvale saw dramatic growth, while Easton's rate rose only modestly, and by 2025 Westvale, which had started with the lowest figure, had the highest.<sup>2</sup></p>
+      <p>In 2000, Easton recycled a quarter of its household waste, compared with 12% in Northport and only 5% for Westvale.<sup>3</sup> Easton's figure then changed very little, fluctuating between 25% and 31% until 2020 and reaching 33% by 2025.</p>
+      <p>Northport, by contrast, grew steadily throughout the period. It overtook Easton in 2010 and had reached just over half (52%) by 2025.<sup>4</sup> Westvale's rate rose slowly at first, to 14% in 2010, but then increased sharply. It drew level with Easton at 30% in 2015 and went on to reach 55% in 2025, slightly above Northport's figure.<sup>5</sup></p>
+    </div>
+    <ol class="notes-list">
+      <li><b>Introduction</b> paraphrases the prompt (<i>percentage → proportion; between 2000 and 2025 → over the 25 years from…</i>) instead of copying it (Lesson 1.2).</li>
+      <li><b>A clear overview with no numbers</b>, placed second so it can't be forgotten, and it names the single most striking feature (the change of rank). This is what lifts Task Achievement to 7 (Lesson 3.1).</li>
+      <li><b>Grouping:</b> the writer groups the "stable" city first and the two "growing" cities together, rather than going year by year. One small slip: <i>in Northport … for Westvale</i> mixes prepositions. It is minor and doesn't affect the meaning (Grammatical Range &amp; Accuracy stays about 7).</li>
+      <li>Approximation language (<i>just over half</i>) plus the exact figure in brackets: accurate and reader-friendly.</li>
+      <li><b>Why about 7 and not 8:</b> the comparison between Northport and Westvale could be sharper (for example, Westvale's rise of 41 percentage points in 15 years against Northport's 25), and the trend vocabulary repeats <i>rose / increased / grew</i> without much variety of structure (<i>a steep rise</i>, <i>the sharpest increase</i>). Coherence &amp; Cohesion is secure (about 7); Lexical Resource is about 7 (<i>fluctuating, drew level, dramatic growth</i> are well chosen).</li>
+    </ol>
+    <p style="font-size:.88rem"><b>Estimate:</b> <span class="band mid">TA 7</span> <span class="band mid">CC 7</span> <span class="band mid">LR 7</span> <span class="band mid">GRA 7</span> → Task 1 about 7.0.</p>
+  </div>
+
+  <div class="sec"><h2>Task 2 · What a Strong Answer Includes</h2><span class="rule"></span></div>
+  <div class="grid2">
+    <div class="blk lab"><div class="h">Question analysis (Lesson 3.2)</div>
+      <ul class="tick lab">
+        <li><b>Type:</b> discussion ("Discuss both views <i>and</i> give your own opinion"): three jobs, not two</li>
+        <li><b>Structure it pushes:</b> Body 1 = the view for fees · Body 2 = the view for free entry · the writer's position clear in the introduction <i>and</i> the conclusion (a partial position or a compromise is fine if it is clear)</li>
+        <li><b>Typical ideas, fees:</b> running and conservation costs; less reliance on taxes or donors; people may value what they pay for; tourists could contribute</li>
+        <li><b>Typical ideas, free:</b> education and culture for everyone; low-income families; repeat and short visits; wider benefits for society</li>
+      </ul>
+    </div>
+    <div class="blk warn"><div class="h">What to watch for</div>
+      <ul class="tick">
+        <li>An essay that argues <b>only one side</b> (Task Response about 5–6, however fluent)</li>
+        <li><b>An opinion that appears only in the last line</b>, or that changes between the introduction and the conclusion</li>
+        <li><b>Lists of reasons with no development:</b> each main idea needs a "why" and an example (Lesson 3.2, "Developing ideas")</li>
+        <li><b>Over-linking</b> (<i>Moreover… Furthermore… In addition…</i> in every sentence), which lowers Coherence &amp; Cohesion (Lesson 3.3)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="blk"><div class="h">Model answer · Task 2 · about band 7 (299 words)</div>
+    <div class="model">
+      <p>Museums and galleries hold some of a society's most valuable objects, and people disagree about whether the public should pay to see them. While there are reasonable arguments for charging an entrance fee, I believe that free admission, at least to permanent collections, brings greater benefits overall.<sup>1</sup></p>
+      <p>Those who support entrance fees point out that museums are expensive to run. Buildings must be heated, lit and secured, and delicate objects require specialist care. If visitors pay even a small amount, this money can reduce a museum's dependence on public funding or private donors, and it may allow it to open for longer hours or to improve its exhibitions.<sup>2</sup> It is also argued that people value what they pay for, so a fee might encourage visitors to spend longer and look more carefully.</p>
+      <p>On the other hand, supporters of free entry argue that museums exist to educate everyone, not only those who can afford a ticket. A family on a low income may be unable to pay for four tickets, and yet such families are precisely the people who might benefit most from a day of learning together.<sup>3</sup> Free entry also encourages short, repeated visits: a student can drop in for twenty minutes to look at a single painting, which would hardly be worth paying for.</p>
+      <p>In my view, the second argument is more convincing, because the main purpose of a public museum is to share knowledge as widely as possible. However, the financial concerns are real, so a sensible compromise would be to keep permanent collections free while charging for special temporary exhibitions and inviting visitors to make voluntary donations.<sup>4</sup></p>
+      <p>In conclusion, although fees can help museums to survive financially, free access to their core collections serves the public better, provided that museums find other ways to raise income.<sup>5</sup></p>
+    </div>
+    <ol class="notes-list">
+      <li><b>Introduction:</b> a paraphrase of the question plus a clear, qualified thesis (<i>at least to permanent collections</i>). The reader knows the position from the start (Task Response).</li>
+      <li><b>Body 1 is developed:</b> claim → explanation (costs) → consequence (less dependence, longer hours). A second idea is added more briefly. A band 8 answer would develop that second idea with an example.</li>
+      <li><b>Body 2</b> gives a concrete, general example (a low-income family, a student's twenty-minute visit) rather than a personal story. <i>precisely the people who</i> and <i>would hardly be worth</i> show a good range of structure (Grammatical Range &amp; Accuracy about 7).</li>
+      <li><b>A separate opinion paragraph with a compromise:</b> this fully answers "give your own opinion" and keeps the position consistent with the introduction.</li>
+      <li><b>Conclusion</b> restates the position without repeating the introduction word for word. <i>provided that</i> is a precise conditional.</li>
+    </ol>
+    <p style="font-size:.88rem"><b>Why about 7 and not 8:</b> the ideas are relevant and clear, but some are predictable and only briefly supported (the "people value what they pay for" point is asserted, not explained); the vocabulary is accurate and natural but mostly common (<i>expensive to run</i>, <i>afford a ticket</i>), with a few stronger items such as <i>dependence on</i> and <i>voluntary donations</i>; linking is correct but a little formulaic (<i>On the other hand, In my view, In conclusion</i>). There are no errors that affect meaning. <b>Estimate:</b> <span class="band mid">TR 7</span> <span class="band mid">CC 7</span> <span class="band mid">LR 7</span> <span class="band mid">GRA 7</span> → Task 2 about 7.0. Writing overall: (7 + 2 × 7) ÷ 3 = <b>about 7.0</b>.</p>
+  </div>
+
+  <div class="note">
+    <div class="t">Using the models with learners</div>
+    <p>Don't hand out the models before learners have seen their own estimate, or they will compare surface features ("it's longer than mine") instead of criteria. In the feedback session, give the Task 1 model with the notes <b>removed</b> and ask learners to find (1) the overview, (2) how the data is grouped, and (3) one sentence they could write in the same way about their own graph. Then give them the notes. For Task 2, ask them to underline the thesis and the opinion paragraph, then check that their own essay has the same "three jobs".</p>
+  </div>
+
+  <!-- ═════════════ SPEAKING ═════════════ -->
+  <div class="sec pagebreak"><h2>Speaking · Band-Estimation Sheet</h2><span class="rule"></span></div>
+  <p style="font-size:.9rem">The four criteria below are <b>paraphrased from the public IELTS band descriptors</b> for classroom use (not the official wording). Each criterion counts equally; the Speaking band is the average, rounded to the nearest half band. Listen for the candidate's <b>typical</b> performance across the whole interview, not their best or worst moment. Part 3 usually shows the ceiling.</p>
+  <table class="rubric">
+    <thead><tr><th>Criterion</th><th>about 5</th><th>about 6</th><th>about 7</th><th>about 8</th></tr></thead>
+    <tbody>
+      <tr><td class="crit">Fluency &amp; Coherence</td>
+        <td>Keeps talking, but slowly or with a lot of repeating and restarting; the same simple linkers (<i>and, but, because</i>) carry everything; long answers lose their thread.</td>
+        <td>Happy to give long answers, but hesitations, repeats or restarts sometimes break the thread; uses a range of linking words, not always well.</td>
+        <td>Long answers come without obvious strain; pauses are mostly to find a word; discourse markers (<i>actually, as a result, that said</i>) sound natural.</td>
+        <td>Speech flows; the occasional pause is for thinking about ideas, not searching for words; topics are developed logically.</td></tr>
+      <tr><td class="crit">Lexical Resource</td>
+        <td>Copes with everyday topics but struggles with less familiar ones; attempts to explain around a missing word don't always work.</td>
+        <td>Can talk about topics at length and make the meaning clear, even when a word choice is a little off; usually explains around a missing word successfully.</td>
+        <td>Moves between topics with flexible vocabulary; some less common words, idioms and natural collocations; explains around gaps smoothly.</td>
+        <td>A wide range, available instantly, used to say exactly what is meant; less common and idiomatic items used well, with the odd slip.</td></tr>
+      <tr><td class="crit">Grammatical Range &amp; Accuracy</td>
+        <td>Simple sentences are mostly correct; longer or complex ones are rare and usually contain mistakes that can cause confusion.</td>
+        <td>Both simple and complex sentences, but little flexibility; mistakes in the complex ones are frequent, though they don't usually cause confusion.</td>
+        <td>Complex sentences are used flexibly, and many are completely correct; some typical mistakes remain.</td>
+        <td>A wide range of structures used with ease; most sentences are correct, with only the occasional mistake.</td></tr>
+      <tr><td class="crit">Pronunciation</td>
+        <td>Can be understood, but mispronounced words and flat or misplaced stress sometimes make the listener work hard.</td>
+        <td>Understood throughout, although some sounds or words are unclear at times; stress and intonation are used, with uneven control.</td>
+        <td>Easy to follow; stress, intonation and linking mostly help the message; the accent makes little difference to understanding.</td>
+        <td>Easy to follow throughout; a wide range of features (stress, rhythm, intonation, chunking) with only the odd lapse; the accent makes almost no difference.</td></tr>
+    </tbody>
+  </table>
+  <div class="grid2">
+    <div class="blk"><div class="h">Deciding between two bands</div>
+      <ul class="tick">
+        <li><b>Fluency 6 or 7?</b> Ask: are the pauses about <i>words</i> (6) or about <i>ideas</i> (7)? Can they develop a Part 3 answer for 30–40 seconds without drifting?</li>
+        <li><b>Lexical 6 or 7?</b> Count less common items or collocations that were used <i>accurately</i> (<i>a steep learning curve, it's a double-edged sword</i>). One or two memorized idioms aren't range</li>
+        <li><b>Grammar 6 or 7?</b> Are errors mainly in complex sentences (6), or are there many completely correct complex sentences (7)?</li>
+        <li><b>Pronunciation:</b> judge how much effort <i>you</i> need to follow. An accent is never a fault in itself (Lesson 4.2)</li>
+      </ul>
+    </div>
+    <div class="blk warn"><div class="h">Short-form ("SF") interviews</div>
+      <p style="font-size:.9rem">With only about 6 minutes, Fluency &amp; Coherence and Lexical Resource are harder to judge, because there are fewer chances to recover from a slow start. Give the estimate as a range ("about 6.0–6.5") and make the lower end the headline. If a learner's target depends on Speaking, offer a full interview before their test date.</p>
+    </div>
+  </div>
+
+  <!-- ═════════════ DEBRIEF ═════════════ -->
+  <div class="sec pagebreak"><h2>Debrief Plan · Practice Test 1 → Practice Test 2</h2><span class="rule"></span></div>
+  <p>The debrief is the most valuable part of the mock. The aim is for every learner to leave with <b>three things</b>: an honest picture of where they are now, evidence of what has changed since Week 4, and one specific next step. Keep the tone of Lesson 4.3: this is a skill that people train, not a verdict on their worth.</p>
+
+  <div class="blk"><div class="h">Band tracker (one per learner: copy onto the result slip)</div>
+    <table class="grid">
+      <thead><tr><th>Skill</th><th>PT1 raw</th><th>PT1 band</th><th>PT2 raw</th><th>PT2 band</th><th>Change</th><th>Required</th><th>Gap</th></tr></thead>
+      <tbody>
+        <tr><td><b>Listening</b></td><td class="sc">/40</td><td class="sc"></td><td class="sc">/40</td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td></tr>
+        <tr><td><b>Reading</b></td><td class="sc">/40</td><td class="sc"></td><td class="sc">/40</td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td></tr>
+        <tr><td><b>Writing</b> (estimate)</td><td class="sc">—</td><td class="sc"></td><td class="sc">—</td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td></tr>
+        <tr><td><b>Speaking</b> (estimate)</td><td class="sc">—</td><td class="sc"></td><td class="sc">—</td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td></tr>
+        <tr><td><b>Overall</b> (about)</td><td class="sc">—</td><td class="sc"></td><td class="sc">—</td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:.86rem;color:var(--ink-2)">Practice Test 1 covered Listening and Reading only (Class 8). For Writing and Speaking, use the diagnostic writing sample and speaking sample from Class 1 (<code class="inline">assessment/diagnostic.html</code>) or any estimate you made during Module 3–4 practice, and mark it "(earlier estimate)". "Required" = the learner's institution's requirement, overall <b>and</b> per skill (Lesson 1.1). Always compare <b>raw scores</b> as well as bands: 24 → 28 in Reading may not change the band, but it is a real gain of four marks.</p>
+  </div>
+
+  <div class="blk"><div class="h">How to read the change, and what to say</div>
+    <table class="ans">
+      <thead><tr><th>Result</th><th>What it most likely means</th><th>What to say</th><th>What to do next</th></tr></thead>
+      <tbody>
+        <tr><td><span class="band go">up 0.5 or more</span></td><td>The technique and practice are working. A 0.5 gain in eight weeks is common; more is possible but not typical, so don't treat a big jump as the new normal on the strength of one test.</td><td>"This is real progress, and it came from the habits you've built, like reading ahead and checking word limits. Let's keep exactly those habits going until the test."</td><td>Keep the same weekly routine; add one more timed practice in the skill closest to its requirement.</td></tr>
+        <tr><td><span class="band mid">no change</span></td><td>Very common, and not a sign that nothing has improved. Mock bands vary by about half a band either way from one test to the next, and PT2 had different topics. Check the raw score: it often moved inside the band.</td><td>"Your band is the same, but your raw score moved from __ to __, and your errors have changed: you lost fewer marks to __. Progress often shows in the raw score before the band catches up."</td><td>Use the error-analysis grid: the fullest column is the next target. Plan two weeks on that one habit, then re-test one section.</td></tr>
+        <tr><td><span class="band rep">down 0.5</span></td><td>Usually within normal variation: an unfamiliar topic, a tired day, or running out of time on Passage 3. It is rarely a real loss of English.</td><td>"One mock can be half a band lower on a hard day, and today's reading was a different kind of text. Let's look at <i>where</i> the marks went, because that is more useful than the number."</td><td>Check timing first (did they finish?), then the grid. Retest the same section type within two weeks, using official free practice material.</td></tr>
+        <tr><td><span class="band rep">down 1 or more</span></td><td>Something specific went wrong: illness, stress, misunderstanding an instruction (e.g. True vs Yes), or a blank section. Look for it before drawing any conclusion.</td><td>"This doesn't match what I've seen from you in class, so I don't think it shows your real level. Let's find out what happened on the day."</td><td>Talk one-to-one, not in front of the group. If the cause is anxiety, revisit the test-day routine in Lesson 4.3 and do one more timed section under calm conditions.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="grid2">
+    <div class="blk lab"><div class="h">Realistic next steps by profile</div>
+      <ul class="tick lab">
+        <li><b>Listening below target:</b> the error grid usually points to <b>D</b> (distractors) or <b>S</b> (spelling or plural). Twice a week: one full section, single play, marked strictly, with every error written in a "traps I fell for" list</li>
+        <li><b>Reading below target:</b> check timing first. If Passage 3 was rushed, practice the 20-minute cap and the "quick types first" order (Lesson 2.2). If True/False/Not Given is the leak, practice the "point to the clashing words" test (Lesson 2.3)</li>
+        <li><b>Writing below target:</b> find the lowest criterion. The quickest gains are an overview in Task 1, a clear position in Task 2, and developed (not listed) ideas. One timed Task 2 a week with feedback beats three without</li>
+        <li><b>Speaking below target:</b> record a Part 2 three times a week and score it with the sheet; practice the Part 3 extension routine (answer → reason → example → contrast)</li>
+        <li><b>At or above target in every skill:</b> keep practicing lightly, and consider booking the test while the skills are fresh</li>
+      </ul>
+    </div>
+    <div class="blk warn"><div class="h">When the gap is large and the date is close</div>
+      <p style="font-size:.9rem">If the weakest skill is <b>a full band or more below</b> the requirement and the test is less than a month away, say so honestly and kindly. Outline the options: keep the date and treat it as experience; ask the test center about moving the date (fees and deadlines vary, so check the terms); or check whether the institution accepts a later result. Never say "you won't pass". Say: <b>"Based on today, I think you'd give yourself a better chance with more time on Writing. It's your decision, and I'll help with either plan."</b> The online course's rule of thumb (Lessons 1.1 and 4.3) is worth repeating: at higher levels a half band often takes around <b>12 weeks</b> of focused study, and technique gains come faster than language gains.</p>
+    </div>
+  </div>
+
+  <div class="blk"><div class="h">Booking and retake guidance</div>
+    <ul class="tick">
+      <li><b>When to book:</b> when the weakest skill has reached its required band in at least two timed practice tests (this course's two, or one plus a free official practice test), or is within half a band with a clear plan and several weeks left.</li>
+      <li><b>Check the exact requirement</b> in writing: the overall band <i>and</i> the minimum for each skill, how recent the result must be (results are usually valid for two years), and whether the institution will accept results combined from different sittings (many don't).</li>
+      <li><b>Already taken the real test and missed by half a band in one skill?</b> There are usually three routes. Rules, fees and availability change, so learners must check the official IELTS website and their test center for current details: (1) a full retake after focused work on that one skill; (2) at some centers, a retake of the one skill only, within a limited period after a recent test; (3) a formal request for the paper to be re-marked, which carries a fee and a deadline and is generally worth considering only when the other skills are consistent and one is just below the cut-off.</li>
+      <li><b>Don't rebook straight away with the same preparation.</b> The same preparation tends to produce a similar result. Change something first: the weakest criterion, the timing habit, or the amount of marked writing practice.</li>
+      <li><b>Look after the person as well as the score.</b> Some learners carry a lot of pressure, such as a job offer, a visa timeline or family expectations. Make sure they know where to find support, and remind them that a band score describes one performance on one day, not their intelligence or their future.</li>
+    </ul>
+  </div>
+
+  <div class="note lab">
+    <div class="t">Closing the course: the celebration</div>
+    <p>End Class 16 with the group, not the numbers. Ask each learner to name <b>one thing they can do now that they couldn't do in Week 1</b> (writing an overview in two minutes, catching a correction, speaking for two minutes without stopping). Read out the Lesson 4.3 journal prompt and let them keep their answer: <i>"The one change with the biggest payoff for my band is ___, and this week I will ___."</i> Thank them for eight weeks of hard, often tiring work around jobs and families. Whatever their test date, they are now candidates who understand the test and train deliberately, and that is the part a course can give them.</p>
+  </div>
+
+  <div class="foot">
+    <div class="who"><b>Ray de la Paz</b><span class="bio">© 2026 Ray de la Paz · IELTS Academic Preparation</span></div>
+    <div class="ver">Assessment · Practice Test 2 Key · v1.0</div>
+  </div>
+
+</div>
+</body>
+</html>

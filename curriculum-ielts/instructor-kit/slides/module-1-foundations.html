@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slides — Module 1</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root{--bg:#0b1220;--ink:#edf2fb;--ink2:#a8b6cf;--accent:#7fb2ff;--accent2:#2563eb;--lab:#34d3bd;--warn:#fbbf24;--line:#233252;--code:#101a2e;color-scheme:dark}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;overflow:hidden}
+  .deck{height:100%;width:100%;position:relative}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:6vh 8vw;gap:20px}
+  .slide.on{display:flex}
+  h1,h2,h3{font-family:"Archivo",sans-serif;line-height:1.1;text-wrap:balance}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  .slide h1{font-size:clamp(2rem,6vw,4rem);font-weight:800;letter-spacing:-.02em}
+  .slide h2{font-size:clamp(1.5rem,4.2vw,2.8rem);font-weight:800;letter-spacing:-.01em}
+  .slide p.lead{font-size:clamp(1.05rem,2.4vw,1.5rem);color:var(--ink2);max-width:26ch}
+  ul{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:6px}
+  ul li{position:relative;padding-left:34px;font-size:clamp(1.05rem,2.3vw,1.6rem)}
+  ul li::before{content:"";position:absolute;left:0;top:.55em;width:12px;height:12px;border-radius:3px;background:var(--accent);transform:rotate(45deg)}
+  ul.lab li::before{background:var(--lab)}
+  code.k{font-family:"JetBrains Mono",monospace;color:#cfe0ff;font-size:.92em}
+  pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:22px 26px;font-family:"JetBrains Mono",monospace;font-size:clamp(.85rem,1.9vw,1.3rem);line-height:1.55;overflow:auto;max-width:100%}
+  pre .k{color:#7dd3fc} pre .s{color:#86efac} pre .c{color:#7183a3;font-style:italic}
+  .tag{display:inline-flex;align-items:center;gap:10px;font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);color:var(--ink2)}
+  .tag .pill{background:var(--accent2);color:#fff;font-weight:700;border-radius:999px;padding:3px 12px;letter-spacing:.06em}
+  .tag .pill.lab{background:var(--lab);color:#062b26} .tag .pill.warn{background:var(--warn);color:#3a2a05}
+  .section{background:linear-gradient(135deg,#132a52,#0b1220)}
+  .section .big{font-size:clamp(3rem,12vw,8rem);font-family:"Archivo";font-weight:800;color:var(--accent2);line-height:.9}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+  @media (max-width:760px){.two{grid-template-columns:1fr}}
+  .bar{position:fixed;left:0;top:0;height:4px;background:var(--accent2);width:0;transition:width .25s;z-index:5}
+  .count{position:fixed;right:16px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink2);z-index:5}
+  .nav{position:fixed;inset:auto 0 0 0;display:flex;justify-content:space-between;pointer-events:none;z-index:4}
+  .nav button{pointer-events:auto;background:transparent;border:none;color:transparent;width:22vw;height:100vh;cursor:pointer}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+  /* ESL extras (picture vocab, grammar tables, dialogue, clocks) */
+  .pics{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,1.6vw,18px)}
+  .pics.six{grid-template-columns:repeat(6,1fr)}
+  .pic{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center}
+  .pic img{width:100%;max-width:150px;aspect-ratio:1;object-fit:cover;border-radius:10px;background:#FFF3E0;display:block;margin:0 auto}
+  .pic .emo{font-size:clamp(2.6rem,7vw,5rem);line-height:1;aspect-ratio:1;max-width:150px;margin:0 auto;display:flex;align-items:center;justify-content:center}
+  .pic .w{font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(.9rem,2vw,1.35rem);margin-top:6px}
+  @media (max-width:760px){.pics,.pics.six{grid-template-columns:repeat(3,1fr)}}
+  table.g{border-collapse:collapse;font-size:clamp(.95rem,2.1vw,1.45rem);width:100%;max-width:1000px}
+  table.g th,table.g td{border:1px solid var(--line);padding:10px 16px;text-align:left}
+  table.g th{background:var(--code);color:var(--accent);font-family:"JetBrains Mono",monospace;font-size:.8em;letter-spacing:.04em}
+  table.g b{color:#ffd166}
+  .dlg{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:18px 24px;display:flex;flex-direction:column;gap:8px;font-size:clamp(1rem,2.2vw,1.45rem);max-width:1000px}
+  .dlg .sp{display:inline-block;min-width:3.6em;font-weight:700;color:var(--accent)}
+  .dlg .b .sp{color:#c4a1ff}
+  .ccq{font-size:clamp(1rem,2.2vw,1.45rem);border:1px dashed var(--line);border-radius:12px;padding:12px 18px;background:var(--code)}
+  .ccq i{color:var(--ink2)}
+  .clocks{display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,34px);align-items:flex-start}
+  .clocks figure{text-align:center}
+  .clocks svg{width:clamp(96px,14vw,170px);height:auto}
+  .clocks figcaption{font-size:clamp(.95rem,2vw,1.3rem);margin-top:6px}
+  .clocks figcaption small{display:block;color:var(--ink2);font-size:.8em}
+  .snd{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .snd div{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:clamp(1rem,2.2vw,1.5rem)}
+  .snd div b{display:block;font-family:"Archivo";font-size:1.5em;color:var(--accent)}
+  .snd div small{color:var(--ink2)}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="deck" id="deck">
+
+  <!-- 1 -->
+  <section class="slide on section">
+    <div class="eyebrow">IELTS Academic Preparation · Instructor Kit</div>
+    <h1>Module 1<br>The Test &amp; Foundations</h1>
+    <p class="lead" style="max-width:40ch">Know the test. Know the words. Control the grammar.</p>
+    <ul class="lab">
+      <li><b>C1</b> Welcome, our contract and the diagnostic</li>
+      <li><b>1.1</b> Format, bands, myths and your study plan</li>
+      <li><b>1.2</b> Academic vocabulary and paraphrasing</li>
+      <li><b>1.3</b> Grammar for a high band: range you can control</li>
+    </ul>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide">
+    <div class="eyebrow">C1 · Welcome · a feelings check (anonymous)</div>
+    <h2>How do you feel about IELTS today?</h2>
+    <div class="pics">
+      <div class="pic"><img src="../assets/vocab/nervous.jpg" alt=""><div class="w">nervous</div></div>
+      <div class="pic"><img src="../assets/vocab/worried.jpg" alt=""><div class="w">worried</div></div>
+      <div class="pic"><img src="../assets/vocab/excited.jpg" alt=""><div class="w">excited</div></div>
+      <div class="pic"><img src="../assets/vocab/happy.jpg" alt=""><div class="w">happy</div></div>
+    </div>
+    <div class="ccq">One sticky dot, no names. Lots of "nervous"? <i>That's normal. It means this matters to you.</i></div>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide">
+    <div class="eyebrow">C1 · The diagnostic · about 50 minutes + a short chat</div>
+    <h2>A map, not a verdict</h2>
+    <div class="two">
+      <ul>
+        <li><b>Listening</b>: short section · you hear it once</li>
+        <li><b>Reading</b>: strict time · no penalty for guessing</li>
+        <li><b>Writing sample</b>: one short task</li>
+        <li><b>Speaking sample</b>: 3 minutes with your teacher</li>
+      </ul>
+      <div class="ccq">A real IELTS test? <i>(No, a practice map.)</i><br>Who sees your score? <i>(Only you and your teacher.)</i><br>Wrong answer = minus a mark? <i>(No: fill every gap.)</i><br>Results? <i>(L + R in C2 · W + S by C4, privately.)</i></div>
+    </div>
+    <div class="tag"><span class="pill lab">BREATHE</span> feet flat · in for 4 · hold for 2 · out for 6 · read the first instruction</div>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide">
+    <div class="eyebrow">C1 · Our course · 16 classes · 8 weeks · 90 minutes</div>
+    <h2>The route to test day</h2>
+    <table class="g">
+      <tr><th>Weeks 1–2</th><td>C1 Welcome + diagnostic · Module 1: the test, paraphrasing, grammar</td></tr>
+      <tr><th>Weeks 3–4</th><td>Module 2: Listening &amp; Reading · <b>C8 Practice Test 1</b> (L + R, timed)</td></tr>
+      <tr><th>Weeks 5–6</th><td>Module 3: Academic Writing, Task 1 and Task 2</td></tr>
+      <tr><th>Weeks 7–8</th><td>Module 4: Speaking &amp; test strategy · <b>C15–C16 Practice Test 2</b> · celebration</td></tr>
+    </table>
+    <div class="ccq"><b>Teacher's promises:</b> scores are private · honest information · practice tests are information, not judgment · personal information is always optional.</div>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide">
+    <div class="eyebrow">C1 · My target · my gap</div>
+    <h2>Target − now = my gap</h2>
+    <div class="two">
+      <ul>
+        <li>Required <b>overall</b> band: ___</li>
+        <li><b>No skill below</b>: ___ (check!)</li>
+        <li>Test date: ___ · weeks: ___</li>
+        <li>Now: we find out in C2</li>
+      </ul>
+      <div class="ccq"><b>Realistic:</b> about <b>half a band</b> in 8 weeks is common with steady work. More is possible, especially when the gap is <i>technique</i>, but nobody can promise it.</div>
+    </div>
+    <div class="tag"><span class="pill">HOMEWORK</span> find your exact requirement on the official website of your university, professional body or employer</div>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide">
+    <div class="eyebrow">1.1 · The test map · about 2 hours 45 minutes</div>
+    <h2>Four sections, one score profile</h2>
+    <table class="g" style="font-size:clamp(.85rem,1.8vw,1.2rem)">
+      <tr><th>Section</th><th>Time</th><th>What you do</th><th>Watch out</th></tr>
+      <tr><td><b>Listening</b></td><td>~30 min</td><td>4 recordings · 40 questions</td><td>you hear it once · spelling counts</td></tr>
+      <tr><td><b>Reading</b></td><td>60 min</td><td>3 long passages · 40 questions</td><td>no transfer time · ~20 min each</td></tr>
+      <tr><td><b>Writing</b></td><td>60 min</td><td>Task 1: data or process, 150+ · Task 2: essay, 250+</td><td>Task 2 counts <b>double</b> · 20 + 40 min</td></tr>
+      <tr><td><b>Speaking</b></td><td>11–14 min</td><td>Part 1 interview · Part 2 cue card · Part 3 discussion</td><td>a real examiner, not a machine</td></tr>
+    </table>
+    <div class="tag"><span class="pill">NOTE</span> Academic vs General Training: only Reading and Writing differ · paper or computer: same content, same scoring</div>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide">
+    <div class="eyebrow">1.1 · The bands · check the meaning</div>
+    <h2>Average the four, then round to the nearest half</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>Band</th><th>Plain meaning (paraphrased)</th></tr>
+        <tr><td><b>9</b> expert</td><td>full command</td></tr>
+        <tr><td><b>8</b> very good</td><td>full command, rare slips</td></tr>
+        <tr><td><b>7</b> good</td><td>works well; some inaccuracies</td></tr>
+        <tr><td><b>6</b> competent</td><td>effective despite errors</td></tr>
+        <tr><td><b>5</b> modest</td><td>gets the overall meaning</td></tr>
+      </table>
+      <div>
+        <div class="ccq">6.125 → <b>6.0</b> · 6.25 → <b>6.5</b> · 6.375 → <b>6.5</b><br>6.625 → <b>6.5</b> · 6.75 → <b>7.0</b></div>
+        <div class="ccq" style="margin-top:14px">"Overall 6.5, <b>no band below 6.0</b>." L 7.5 · R 7.0 · W 5.5 · S 6.5. Overall? <i>(6.625 → 6.5.)</i> Enough? <i>(No! Writing is below 6.0.)</i></div>
+      </div>
+    </div>
+    <div class="tag"><span class="pill lab">SAY IT</span> "six <b>point</b> five" · "six and a half" · not "six comma five" · raw score: ~30/40 ≈ 7 · ~23/40 ≈ 6 (varies)</div>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide">
+    <div class="eyebrow">1.1 · Card sort · 6 + 6 min · groups of 3</div>
+    <h2>Myth or fact?</h2>
+    <div class="two">
+      <ul class="lab">
+        <li><b>Reader</b>: reads each card aloud</li>
+        <li><b>Decider</b>: places it after you discuss</li>
+        <li><b>Challenger</b>: disagrees at least once, with a reason</li>
+        <li>Piles: MYTH · FACT · NOT SURE</li>
+      </ul>
+      <div class="ccq">"Memorized answers get a high Speaking band." · "A wrong answer loses a mark." · "Task 2 is worth more than Task 1." · "You need a British or American accent."<br><br>Who must disagree? <i>(The challenger.)</i> Not sure? <i>(Use the third pile.)</i></div>
+    </div>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide">
+    <div class="eyebrow">1.1 · Strategy · where marks really go</div>
+    <h2>Three principles</h2>
+    <ul>
+      <li><b>1 Manage the clock.</b> A hard question = 1 mark = an easy question. Guess, mark it, move on.</li>
+      <li><b>2 Never leave a blank.</b> No penalty for a wrong answer.</li>
+      <li><b>3 Answer what they asked.</b> Word limits, the task, the topic.</li>
+    </ul>
+    <div class="ccq"><b>NO MORE THAN TWO WORDS AND/OR A NUMBER.</b> "the old library"? <i>(3 words = zero → "old library".)</i> "15 May"? <i>(OK.)</i> "well-known"? <i>(One word.)</i></div>
+    <div class="two">
+      <div class="pics" style="grid-template-columns:repeat(2,1fr)">
+        <div class="pic"><img src="../assets/vocab/passport.jpg" alt=""><div class="w">your ID</div></div>
+        <div class="pic"><img src="../assets/vocab/pencil.jpg" alt=""><div class="w">paper test: pencil</div></div>
+      </div>
+      <div class="tag" style="align-self:center"><span class="pill warn">CHECK</span> rules on what to bring vary: check your test center</div>
+    </div>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide">
+    <div class="eyebrow">1.1 · Freer task · 8 + 8 min · pairs</div>
+    <h2>My plan → the study-plan interview</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>Target + no skill below</li>
+        <li>Test date · weeks left</li>
+        <li>Now (diagnostic) → <b>gap</b></li>
+        <li><b>Weakest skill first</b></li>
+        <li>Weekly commitment <b>with numbers</b></li>
+        <li>End: one suggestion + "because"</li>
+      </ul>
+      <div class="ccq">Your real target? <i>(Real, or a new identity card.)</i><br>Must you say why you need IELTS? <i>(No.)</i><br>"Study more" is a plan? <i>(No: how many, how often?)</i><br>What does the interviewer give at the end? <i>(One suggestion, with "because.")</i></div>
+    </div>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide">
+    <div class="eyebrow">1.2 · Lead-in · find the answer</div>
+    <h2>Question: "The museum's income fell after the entry fee was removed."</h2>
+    <table class="g">
+      <tr><th>A</th><td>"The museum removed several paintings after its income fell."</td></tr>
+      <tr><th>B</th><td>"Once admission became free, the gallery saw its revenue decline."</td></tr>
+      <tr><th>C</th><td>"Entry fees at the museum rose sharply last year."</td></tr>
+    </table>
+    <div class="ccq">Which one matches? <i>(B.)</i> Which words repeat the question? <i>(None!)</i> Why are A and C tempting? <i>(They share words: museum, removed, income, fell, entry fee.)</i></div>
+    <div class="tag"><span class="pill lab">RULE</span> hunt the meaning, not the word</div>
+  </section>
+
+  <!-- 12 -->
+  <section class="slide">
+    <div class="eyebrow">1.2 · The paraphrase ladder · climb at least two rungs</div>
+    <h2>"Young people pollute the air when they drive cars."</h2>
+    <table class="g">
+      <tr><th>5 · General word</th><td>cars → <b>private transport</b></td></tr>
+      <tr><th>4 · Structure</th><td>when they drive → <b>by driving</b></td></tr>
+      <tr><th>3 · Voice</th><td>drivers cause it → <b>it is caused by</b> drivers</td></tr>
+      <tr><th>2 · Word class</th><td>pollute → <b>pollution</b></td></tr>
+      <tr><th>1 · Synonym</th><td>young people → <b>adolescents</b> · cars → <b>vehicles</b></td></tr>
+    </table>
+    <div class="ccq">"Adolescents contribute to air pollution through their use of vehicles." Same meaning? <i>(Yes.)</i> · "<b>All</b> teenagers are <b>destroying</b> the planet." <i>(Meaning drift!)</i> · "Young people pollute the air when they drive <b>vehicles</b>." <i>(One word: not enough.)</i></div>
+  </section>
+
+  <!-- 13 -->
+  <section class="slide">
+    <div class="eyebrow">1.2 · AWL-style word families · the stress moves</div>
+    <h2>One root, four jobs</h2>
+    <table class="g">
+      <tr><th>Verb</th><th>Noun</th><th>Adjective</th><th>Adverb</th></tr>
+      <tr><td><b>AN</b>alyze</td><td>a<b>NAL</b>ysis</td><td>ana<b>LYT</b>ical</td><td>ana<b>LYT</b>ically</td></tr>
+      <tr><td><b>BEN</b>efit</td><td><b>BEN</b>efit</td><td>bene<b>FI</b>cial</td><td>bene<b>FI</b>cially</td></tr>
+      <tr><td><b>VAR</b>y</td><td>vari<b>A</b>tion</td><td><b>VAR</b>ious · <b>VAR</b>iable</td><td>—</td></tr>
+      <tr><td>—</td><td>e<b>CON</b>omy</td><td>eco<b>NOM</b>ic · eco<b>NOM</b>ical</td><td>eco<b>NOM</b>ically</td></tr>
+      <tr><td>sus<b>TAIN</b></td><td>sustaina<b>BIL</b>ity</td><td>sus<b>TAIN</b>able</td><td>sus<b>TAIN</b>ably</td></tr>
+    </table>
+    <div class="ccq">"economic growth" or "an economical car": which one saves money? <i>(Economical.)</i> · Upgrade + partner: <b>have a detrimental effect on</b> · <b>give rise to</b> · <b>acquire</b> skills · <b>facilitate</b> communication</div>
+  </section>
+
+  <!-- 14 -->
+  <section class="slide">
+    <div class="eyebrow">1.2 · Topic banks · collect collocations, not single words</div>
+    <h2>IELTS recycles its topics</h2>
+    <div class="pics six">
+      <div class="pic"><img src="../assets/vocab/school.jpg" alt=""><div class="w">education</div></div>
+      <div class="pic"><img src="../assets/vocab/bus.jpg" alt=""><div class="w">urban transport</div></div>
+      <div class="pic"><img src="../assets/vocab/mobile-phone.jpg" alt=""><div class="w">technology</div></div>
+      <div class="pic"><img src="../assets/vocab/vegetable.jpg" alt=""><div class="w">health habits</div></div>
+      <div class="pic"><img src="../assets/vocab/park.jpg" alt=""><div class="w">environment</div></div>
+      <div class="pic"><img src="../assets/vocab/desk.jpg" alt=""><div class="w">work</div></div>
+    </div>
+    <div class="ccq">higher education · public transport · screen time · a balanced diet · carbon emissions · remote work · <i>Three columns: the collocation · a paraphrase · my own sentence.</i></div>
+  </section>
+
+  <!-- 15 -->
+  <section class="slide">
+    <div class="eyebrow">1.2 · Freer task · 8 + 6 min · pairs</div>
+    <h2>Paraphrase Relay → No-Echo</h2>
+    <div class="two">
+      <ul class="lab">
+        <li><b>Relay</b>: A reads a Task 2 prompt · B thinks 30 sec, then restates it aloud · A checks the "don't repeat" words</li>
+        <li><b>No-Echo</b>: A asks Part 1 questions · B answers in 2–3 sentences without the question's words · A taps for each echo</li>
+        <li>Starters: <i>It is sometimes argued that… · There is some debate about whether…</i></li>
+      </ul>
+      <div class="ccq">How long to think? <i>(30 seconds.)</i><br>Must B agree with the prompt? <i>(No: restate it.)</i><br>"Some people" → "everybody"? <i>(No: drift.)</i><br>What does A do when B echoes? <i>(Tap the table.)</i><br>Your real hometown? <i>(Or a new identity card.)</i></div>
+    </div>
+  </section>
+
+  <!-- 16 -->
+  <section class="slide">
+    <div class="eyebrow">1.3 · Lead-in · rank them for grammar</div>
+    <h2>Which paragraph scores higher?</h2>
+    <table class="g" style="font-size:clamp(.85rem,1.8vw,1.2rem)">
+      <tr><th>A</th><td>Many people use buses. Buses are cheap. They reduce traffic. Cities should buy more buses.</td></tr>
+      <tr><th>B</th><td>Although buses are cheap, but many people prefer drive their cars. The number of passengers are falling in many cities. Buses, which are cheaper than cars, reduce traffic. If cities will buy more buses, people would use them.</td></tr>
+      <tr><th>C</th><td>Although buses are cheaper than cars, passenger numbers are falling in many cities. If cities invested in faster, more frequent services, more people would leave their cars at home, which would reduce traffic.</td></tr>
+    </table>
+    <div class="ccq">A: range? <i>(Low.)</i> Accuracy? <i>(High.)</i> · B: how many error-free sentences? <i>(1 of 4.)</i> · C: range <b>and</b> control. <i>That's the target.</i></div>
+  </section>
+
+  <!-- 17 -->
+  <section class="slide">
+    <div class="eyebrow">1.3 · The toolkit · a reliable handful</div>
+    <h2>Grammatical Range &amp; Accuracy</h2>
+    <div class="two">
+      <table class="g" style="font-size:clamp(.85rem,1.8vw,1.2rem)">
+        <tr><th>Structure</th><th>Frame</th></tr>
+        <tr><td>subordinate</td><td><b>Although</b> X, Y. (✘ …, but)</td></tr>
+        <tr><td>relative</td><td>Students <b>who</b>… · Solar power, <b>which</b>…, …</td></tr>
+        <tr><td>conditional</td><td><b>If</b> + present, <b>will</b> · <b>If</b> + past, <b>would</b></td></tr>
+        <tr><td>participle</td><td><b>Having</b> doubled, prices…</td></tr>
+        <tr><td>noun clause</td><td><b>What is clear is that</b>…</td></tr>
+        <tr><td>comparison</td><td><b>far higher than</b>…</td></tr>
+      </table>
+      <table class="g" style="font-size:clamp(.85rem,1.8vw,1.2rem)">
+        <tr><th>Band</th><th>Range + accuracy (paraphrased)</th></tr>
+        <tr><td><b>5</b></td><td>mostly simple · frequent errors</td></tr>
+        <tr><td><b>6</b></td><td>simple + complex · errors, meaning clear</td></tr>
+        <tr><td><b>7</b></td><td>variety of complex · <b>many error-free sentences</b></td></tr>
+        <tr><td><b>8</b></td><td>wide range · <b>most</b> sentences error-free</td></tr>
+      </table>
+    </div>
+    <div class="ccq">"Although it is convenient, but it lacks contact." Correct? <i>(No: one connector.)</i> · "If fees were lower…": are they lower now? <i>(No: hypothetical.)</i></div>
+  </section>
+
+  <!-- 18 -->
+  <section class="slide">
+    <div class="eyebrow">1.3 · Tenses by task · the band-limiting seven · error density</div>
+    <h2>Read the dates first. Count the clean sentences.</h2>
+    <div class="two">
+      <table class="g" style="font-size:clamp(.85rem,1.8vw,1.2rem)">
+        <tr><th>Context</th><th>Tense</th></tr>
+        <tr><td>chart 1990–2010</td><td>rose</td></tr>
+        <tr><td>chart to now</td><td>has risen</td></tr>
+        <tr><td>forecast</td><td>is expected to rise</td></tr>
+        <tr><td>process</td><td>is heated</td></tr>
+        <tr><td>Task 2 opinion</td><td>plays a role</td></tr>
+      </table>
+      <ul style="gap:8px">
+        <li>articles</li>
+        <li>agreement: <i>the number of X <b>is</b></i></li>
+        <li>prepositions: <i>increase <b>in</b></i></li>
+        <li>comma splices</li>
+        <li>uncountables: <i>information</i></li>
+        <li>word form: <i>affect / effect</i></li>
+        <li>one structure on repeat</li>
+      </ul>
+    </div>
+    <div class="tag"><span class="pill warn">WORKSHOP</span> upgrade 8 min · error hunt 6 min · Part 3 frames 6 min · four structures, no new errors · count ✔ sentences, not errors</div>
+  </section>
+
+  <!-- 19 -->
+  <section class="slide section">
+    <div class="eyebrow">You now know the test, the words and the grammar</div>
+    <h2>Module 1 done 🎉</h2>
+    <ul class="lab">
+      <li><b>Know the test</b>: average to the nearest half · no blanks · obey the word limit · weakest skill first</li>
+      <li><b>Know the words</b>: climb two rungs · hunt the meaning, not the word · word family + partner</li>
+      <li><b>Control the grammar</b>: a reliable handful · most sentences error-free · dates decide the tense</li>
+    </ul>
+    <p class="lead" style="margin-top:10px;max-width:40ch">Homework: online lessons 1.1–1.3 with 🔊. Next: Module 2, <i>Listening and Reading</i>, then Practice Test 1 in C8.</p>
+  </section>
+
+</div>
+
+<div class="count" id="count">1 / 19</div>
+<div class="nav"><button id="prev" aria-label="Previous slide"></button><button id="next" aria-label="Next slide"></button></div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const bar=document.getElementById('bar'), count=document.getElementById('count');
+  let i=0;
+  function show(n){ i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+    bar.style.width=((i+1)/slides.length*100)+'%'; count.textContent=(i+1)+' / '+slides.length; }
+  document.getElementById('next').onclick=()=>show(i+1);
+  document.getElementById('prev').onclick=()=>show(i-1);
+  addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}
+    else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+  });
+  show(0);
+</script>
+</body>
+</html>

@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slides — Module 4</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root{--bg:#0b1220;--ink:#edf2fb;--ink2:#a8b6cf;--accent:#7fb2ff;--accent2:#2563eb;--lab:#34d3bd;--warn:#fbbf24;--line:#233252;--code:#101a2e;color-scheme:dark}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;overflow:hidden}
+  .deck{height:100%;width:100%;position:relative}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:6vh 8vw;gap:20px}
+  .slide.on{display:flex}
+  h1,h2,h3{font-family:"Archivo",sans-serif;line-height:1.1;text-wrap:balance}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  .slide h1{font-size:clamp(2rem,6vw,4rem);font-weight:800;letter-spacing:-.02em}
+  .slide h2{font-size:clamp(1.5rem,4.2vw,2.8rem);font-weight:800;letter-spacing:-.01em}
+  .slide p.lead{font-size:clamp(1.05rem,2.4vw,1.5rem);color:var(--ink2);max-width:26ch}
+  ul{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:6px}
+  ul li{position:relative;padding-left:34px;font-size:clamp(1.05rem,2.3vw,1.6rem)}
+  ul li::before{content:"";position:absolute;left:0;top:.55em;width:12px;height:12px;border-radius:3px;background:var(--accent);transform:rotate(45deg)}
+  ul.lab li::before{background:var(--lab)}
+  code.k{font-family:"JetBrains Mono",monospace;color:#cfe0ff;font-size:.92em}
+  pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:22px 26px;font-family:"JetBrains Mono",monospace;font-size:clamp(.85rem,1.9vw,1.3rem);line-height:1.55;overflow:auto;max-width:100%}
+  pre .k{color:#7dd3fc} pre .s{color:#86efac} pre .c{color:#7183a3;font-style:italic}
+  .tag{display:inline-flex;align-items:center;gap:10px;font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);color:var(--ink2)}
+  .tag .pill{background:var(--accent2);color:#fff;font-weight:700;border-radius:999px;padding:3px 12px;letter-spacing:.06em}
+  .tag .pill.lab{background:var(--lab);color:#062b26} .tag .pill.warn{background:var(--warn);color:#3a2a05}
+  .section{background:linear-gradient(135deg,#132a52,#0b1220)}
+  .section .big{font-size:clamp(3rem,12vw,8rem);font-family:"Archivo";font-weight:800;color:var(--accent2);line-height:.9}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+  @media (max-width:760px){.two{grid-template-columns:1fr}}
+  .bar{position:fixed;left:0;top:0;height:4px;background:var(--accent2);width:0;transition:width .25s;z-index:5}
+  .count{position:fixed;right:16px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink2);z-index:5}
+  .nav{position:fixed;inset:auto 0 0 0;display:flex;justify-content:space-between;pointer-events:none;z-index:4}
+  .nav button{pointer-events:auto;background:transparent;border:none;color:transparent;width:22vw;height:100vh;cursor:pointer}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+  /* ESL extras (picture vocab, grammar tables, dialogue, clocks) */
+  .pics{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,1.6vw,18px)}
+  .pics.six{grid-template-columns:repeat(6,1fr)}
+  .pic{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center}
+  .pic img{width:100%;max-width:150px;aspect-ratio:1;object-fit:cover;border-radius:10px;background:#FFF3E0;display:block;margin:0 auto}
+  .pic .emo{font-size:clamp(2.6rem,7vw,5rem);line-height:1;aspect-ratio:1;max-width:150px;margin:0 auto;display:flex;align-items:center;justify-content:center}
+  .pic .w{font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(.9rem,2vw,1.35rem);margin-top:6px}
+  @media (max-width:760px){.pics,.pics.six{grid-template-columns:repeat(3,1fr)}}
+  table.g{border-collapse:collapse;font-size:clamp(.95rem,2.1vw,1.45rem);width:100%;max-width:1000px}
+  table.g th,table.g td{border:1px solid var(--line);padding:10px 16px;text-align:left}
+  table.g th{background:var(--code);color:var(--accent);font-family:"JetBrains Mono",monospace;font-size:.8em;letter-spacing:.04em}
+  table.g b{color:#ffd166}
+  .dlg{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:18px 24px;display:flex;flex-direction:column;gap:8px;font-size:clamp(1rem,2.2vw,1.45rem);max-width:1000px}
+  .dlg .sp{display:inline-block;min-width:3.6em;font-weight:700;color:var(--accent)}
+  .dlg .b .sp{color:#c4a1ff}
+  .ccq{font-size:clamp(1rem,2.2vw,1.45rem);border:1px dashed var(--line);border-radius:12px;padding:12px 18px;background:var(--code)}
+  .ccq i{color:var(--ink2)}
+  .clocks{display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,34px);align-items:flex-start}
+  .clocks figure{text-align:center}
+  .clocks svg{width:clamp(96px,14vw,170px);height:auto}
+  .clocks figcaption{font-size:clamp(.95rem,2vw,1.3rem);margin-top:6px}
+  .clocks figcaption small{display:block;color:var(--ink2);font-size:.8em}
+  .snd{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .snd div{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:clamp(1rem,2.2vw,1.5rem)}
+  .snd div b{display:block;font-family:"Archivo";font-size:1.5em;color:var(--accent)}
+  .snd div small{color:var(--ink2)}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="deck" id="deck">
+
+  <!-- 1 -->
+  <section class="slide on section">
+    <div class="eyebrow">IELTS Academic Preparation · Instructor Kit</div>
+    <h1>Module 4<br>Speaking &amp; Test Mastery</h1>
+    <p class="lead" style="max-width:40ch">Say more. Say it better. Deliver it on the day.</p>
+    <ul class="lab">
+      <li><b>4.1</b> Speaking Parts 1–3: extend, the long turn, the discussion</li>
+      <li><b>4.2</b> Pronunciation, lexical range and the four criteria</li>
+      <li><b>4.3</b> Full practice and test-day strategy</li>
+      <li><b>C15–C16</b> Practice Test 2, your band profile, and a celebration</li>
+    </ul>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide">
+    <div class="eyebrow">4.1 · Lead-in · the interview in three parts</div>
+    <h2>11–14 minutes with a person, not a machine</h2>
+    <table class="g">
+      <tr><th>Part</th><th>Time</th><th>What happens</th><th>How long are your answers?</th></tr>
+      <tr><td><b>Part 1</b></td><td>4–5 min</td><td>familiar topics: home, work or study, free time</td><td>2–3 sentences</td></tr>
+      <tr><td><b>Part 2</b></td><td>3–4 min</td><td>a cue card · <b>1 min</b> notes · talk for up to <b>2 min</b></td><td>until "Thank you"</td></tr>
+      <tr><td><b>Part 3</b></td><td>4–5 min</td><td>general, abstract questions on the Part 2 topic</td><td>3–4 sentences</td></tr>
+    </table>
+    <div class="ccq">A machine or a person? <i>(A person.)</i> Can you make notes? <i>(Yes, in Part 2.)</i> Part 2 topic: a park you like. Part 3 question? <i>(Why do cities need green spaces?)</i> Personal → general.</div>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide">
+    <div class="eyebrow">4.1 · Strategy · the core skill</div>
+    <h2>Grow the answer</h2>
+    <div class="two">
+      <div>
+        <div class="ccq"><b>Do you like cooking?</b><br>✘ "Yes, I do." <i>(What can the examiner mark?)</i></div>
+        <table class="g" style="margin-top:14px">
+          <tr><th>Answer</th><td>Yes, I really <b>do</b>, especially on weekends,</td></tr>
+          <tr><th>Why</th><td>because it helps me switch <b>off</b> after work.</td></tr>
+          <tr><th>Example</th><td>Last Sunday, for instance, I made soup for my whole building.</td></tr>
+        </table>
+      </div>
+      <ul>
+        <li><b>Contrast</b>: Unlike my brother, I…</li>
+        <li><b>Experience</b>: I remember…</li>
+        <li><b>Hypothetical</b>: If I had more time, I'd…</li>
+        <li><b>Chunks</b>: Yes, I really DO | especially on WEEKends | because it helps me switch OFF</li>
+      </ul>
+    </div>
+    <div class="tag"><span class="pill warn">NOT</span> a speech: Part 1 = 2–3 sentences · and never a memorized script</div>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide">
+    <div class="eyebrow">4.1 · Drill · answer + why + example in 20 seconds</div>
+    <h2>Do you like…?</h2>
+    <div class="pics">
+      <div class="pic"><img src="../assets/vocab/read.jpg" alt=""><div class="w">reading</div></div>
+      <div class="pic"><img src="../assets/vocab/cook.jpg" alt=""><div class="w">cooking</div></div>
+      <div class="pic"><img src="../assets/vocab/hike.jpg" alt=""><div class="w">hiking</div></div>
+      <div class="pic"><img src="../assets/vocab/swim.jpg" alt=""><div class="w">swimming</div></div>
+      <div class="pic"><img src="../assets/vocab/play-the-guitar.jpg" alt=""><div class="w">playing music</div></div>
+      <div class="pic"><img src="../assets/vocab/park.jpg" alt=""><div class="w">parks</div></div>
+      <div class="pic"><img src="../assets/vocab/market.jpg" alt=""><div class="w">markets</div></div>
+      <div class="pic"><img src="../assets/vocab/mobile-phone.jpg" alt=""><div class="w">your phone</div></div>
+    </div>
+    <div class="tag"><span class="pill lab">YOU</span> your life · a new identity card · or invented details: all fine</div>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide">
+    <div class="eyebrow">4.1 · Part 2 · the cue card</div>
+    <h2>One minute of keywords. Two minutes of talk.</h2>
+    <div class="two">
+      <div class="ccq" style="font-size:clamp(1rem,2.2vw,1.4rem)"><b>Describe a piece of technology you find useful in your daily life.</b><br>You should say:<br>· what it is<br>· how long you have had it<br>· how you use it<br>and explain why it is so useful to you.</div>
+      <div>
+        <div class="ccq"><b>My notes:</b> rice cooker + timer · 3 yrs, longer hours · rinse → timer 6:00 → hot rice · porridge (friend!) · saves time + $ · no takeout · reliable → "biggest difference"</div>
+        <div class="ccq" style="margin-top:14px">Sentences or keywords? <i>(Keywords.)</i> Stop at 1:20 if no one speaks? <i>(No: keep going until "Thank you.")</i> Out of ideas? <i>(A reason, an example, a comparison, a feeling.)</i></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide">
+    <div class="eyebrow">4.1 · Part 3 · a small argument</div>
+    <h2>Opinion → reason → other view → resolution → future</h2>
+    <div class="dlg">
+      <div><span class="sp">Examiner</span> Do you think technology makes life simpler or more complicated?</div>
+      <div class="b"><span class="sp">You</span> I'd argue that it makes everyday tasks simpler. Paying bills used to take real effort; now it takes seconds. <b>That said</b>, we're expected to be available all the time. <b>So perhaps</b> it simplifies tasks but complicates our time. <b>In the long run, I imagine</b> people will get better at setting limits.</div>
+    </div>
+    <div class="ccq">Is the examiner asking about <i>your</i> phone? <i>(No: people in general.)</i> Must you have a strong opinion? <i>(No: "It depends on…" is fine, if you explain.)</i></div>
+    <div class="tag"><span class="pill">HEDGE</span> I tend to think… · It's likely that… · I suppose… · I suspect…</div>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide">
+    <div class="eyebrow">4.1 · Timed practice · 3 rounds × 8 min · trios</div>
+    <h2>Mock-examiner trios</h2>
+    <div class="two">
+      <ul class="lab">
+        <li><b>Candidate</b>: speaks</li>
+        <li><b>Examiner</b>: script and cards only</li>
+        <li><b>Timekeeper</b>: times, says "Thank you" at 2:00, fills the observer sheet</li>
+        <li>Part 1 · 1½ min → Part 2 · 1 + 2 min → Part 3 · 2 min → feedback · 1½ min</li>
+      </ul>
+      <div class="ccq">Can the examiner help? <i>(No: just the script.)</i><br>Prep minute: sentences? <i>(No: keywords.)</i><br>Who chooses the cue card? <i>(Nobody: take the top one.)</i><br>Your real life? <i>(Or a new identity card.)</i><br>Feedback? <i>(One strength + one next step, with a quote.)</i></div>
+    </div>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide">
+    <div class="eyebrow">4.2 · Lead-in · how talk becomes a number</div>
+    <h2>Four criteria, 25% each</h2>
+    <table class="g">
+      <tr><th>Fluency &amp; Coherence</th><td>keep going without long pauses · ideas easy to follow</td></tr>
+      <tr><th>Lexical Resource</th><td>range and precision · some less common and idiomatic words · paraphrase</td></tr>
+      <tr><th>Grammatical Range &amp; Accuracy</th><td>a mix of simple and complex sentences · few errors that block meaning</td></tr>
+      <tr><th>Pronunciation</th><td>easy to understand · stress, intonation, chunks · <b>accent is not marked</b></td></tr>
+    </table>
+    <div class="tag"><span class="pill">NOTE</span> Paraphrased from the public IELTS band descriptors, in our own words.</div>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide">
+    <div class="eyebrow">4.2 · Pronunciation · clarity, not accent</div>
+    <h2>Chunks and stress</h2>
+    <div class="snd">
+      <div><b>Chunks</b>What I love about it / is the sense of SPACE / especially in the EARly morning<br><small>one idea, one main stress, a short pause</small></div>
+      <div><b>Word stress</b>PHOtograph<br>phoTOgraphy<br>photoGRAphic<br><small>eCOnomy · ecoNOmic · COMFtable</small></div>
+      <div><b>Sentence stress</b>I didn't say SHE took it.<br><small>(someone else took it)</small><br>It's not the COST, it's the TIME.</div>
+    </div>
+    <div class="ccq">A British accent? <i>(No.)</i> An American one? <i>(No.)</i> What does the examiner want? <i>(To understand you easily, first time.)</i> Fix every sound? <i>(No: only the ones that confuse.)</i></div>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide">
+    <div class="eyebrow">4.2 · Pronunciation · the voice goes up and down</div>
+    <h2>Intonation and linking</h2>
+    <table class="g">
+      <tr><th>Yes/no question</th><td>Do you live nearby? ↗</td></tr>
+      <tr><th>Wh- question</th><td>Where do you live? ↘</td></tr>
+      <tr><th>List</th><td>reading ↗, cooking ↗ and hiking ↘</td></tr>
+      <tr><th>Enthusiasm</th><td>It was absolutely ↗ a<b>MA</b>zing ↘!</td></tr>
+      <tr><th>Linking</th><td>an apple → a-napple · turn it off → tur-ni-toff · a lot of → a-lo-tof</td></tr>
+    </table>
+    <div class="tag"><span class="pill warn">FLAT</span> a monotone hides your meaning, even when every sound is right</div>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide">
+    <div class="eyebrow">4.2 · Lexical Resource · precise and natural</div>
+    <h2>Range, used naturally</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>Over-used</th><th>Sharper</th></tr>
+        <tr><td>good</td><td>rewarding · worthwhile</td></tr>
+        <tr><td>nice</td><td>welcoming · scenic</td></tr>
+        <tr><td>thing</td><td>aspect · drawback</td></tr>
+        <tr><td>very tired</td><td>exhausted</td></tr>
+        <tr><td>a lot of</td><td>a wide range of</td></tr>
+      </table>
+      <div>
+        <div class="ccq"><b>Collocation:</b> strike a balance · a heavy workload · pay close attention · vividly remember</div>
+        <div class="ccq" style="margin-top:14px"><b>Idiom:</b> it's not really my cup of tea · it's grown on me · I'm in two minds about it<br><i>In a Task 2 essay? (No.) In Speaking? (Yes, once, naturally.)</i></div>
+        <div class="ccq" style="margin-top:14px"><b>Gap?</b> It's a kind of… · It's the thing you use to… · I don't know the exact word, but…</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12 -->
+  <section class="slide">
+    <div class="eyebrow">4.2 · Model dialogue · giving a band with evidence</div>
+    <h2>A band is a quote, not a feeling</h2>
+    <div class="dlg">
+      <div><span class="sp">Mina</span> Fluency, I'd say a 7. You kept going for two minutes and used "That said" really naturally.</div>
+      <div class="b"><span class="sp">Tomás</span> Really? It felt like I was rambling.</div>
+      <div><span class="sp">Mina</span> Lexical Resource is more like a 6. You said "nice" three times, but "a heavy workload" was great.</div>
+      <div class="b"><span class="sp">Tomás</span> Fair enough. And pronunciation?</div>
+      <div><span class="sp">Mina</span> Clear, easy to follow: a 6 or a 7. Your lists were a bit flat. One target: swap "nice" for something more precise.</div>
+    </div>
+    <div class="ccq">What does Mina give with every band? <i>(A quote.)</i> Which criterion first? <i>(The strongest.)</i> How many targets? <i>(One.)</i></div>
+  </section>
+
+  <!-- 13 -->
+  <section class="slide">
+    <div class="eyebrow">4.2 · Timed practice · 3 rounds × 7½ min · trios</div>
+    <h2>Band-estimation trios</h2>
+    <div class="two">
+      <ul class="lab">
+        <li><b>Part 2</b> (1 + 2 min) + one Part 3 question (1 min)</li>
+        <li><b>Rater</b>: a quote per criterion → a whole band (or "6/7") → one target (2 min)</li>
+        <li><b>Re-try</b>: the first 30 seconds again, hitting the target (1 min)</li>
+        <li><b>Calibration</b>: we all rate one answer and compare</li>
+      </ul>
+      <div class="ccq">Quotes or opinions? <i>(Quotes.)</i><br>Half bands? <i>(No: whole, or "6/7".)</i><br>Who hears your bands? <i>(Only you.)</i><br>The real score? <i>(No: an estimate.)</i></div>
+    </div>
+    <div class="tag"><span class="pill lab">SAME IDEA</span> "a very nice place… a lot of things" ≈ 5 · "my go-to place… bustling… I vividly remember…" ≈ 7</div>
+  </section>
+
+  <!-- 14 -->
+  <section class="slide">
+    <div class="eyebrow">4.3 · Strategy · the clock is part of the test</div>
+    <h2>Your timing plan</h2>
+    <table class="g">
+      <tr><th>Listening</th><td>about 30 min · 4 parts · 40 Q</td><td>read ahead · once only · never a blank</td></tr>
+      <tr><th>Reading</th><td>60 min · 3 passages · 40 Q</td><td>~20 min each · <b>no extra transfer time</b> · guess and move on</td></tr>
+      <tr><th>Writing</th><td>60 min · 2 tasks</td><td>Task 1 ~20 min, 150+ · Task 2 ~40 min, 250+ (<b>worth more</b>)</td></tr>
+      <tr><th>Speaking</th><td>11–14 min</td><td>face to face · extend · ask for repetition</td></tr>
+    </table>
+    <div class="ccq"><b>Computer or paper?</b> Same content, timing and difficulty. Speaking is with a person in both. Computer: type, word count shown. Paper: answer sheet, count your own words. Practice in the format you booked.</div>
+  </section>
+
+  <!-- 15 -->
+  <section class="slide">
+    <div class="eyebrow">4.3 · Test day · bring, leave, check</div>
+    <h2>Pack it the night before</h2>
+    <div class="pics six">
+      <div class="pic"><img src="../assets/vocab/passport.jpg" alt=""><div class="w">your ID ✔</div></div>
+      <div class="pic"><img src="../assets/vocab/pencil.jpg" alt=""><div class="w">pencils ✔</div></div>
+      <div class="pic"><img src="../assets/vocab/pen.jpg" alt=""><div class="w">a pen ✔</div></div>
+      <div class="pic"><img src="../assets/vocab/water.jpg" alt=""><div class="w">water ✔</div></div>
+      <div class="pic"><img src="../assets/vocab/mobile-phone.jpg" alt="" style="filter:grayscale(1);opacity:.6"><div class="w">phone ✘</div></div>
+      <div class="pic"><img src="../assets/vocab/notebook.jpg" alt="" style="filter:grayscale(1);opacity:.6"><div class="w">notes ✘</div></div>
+    </div>
+    <div class="ccq">The one thing you can't take the test without? <i>(The ID you registered with.)</i> Where's your phone? <i>(Off, in the locker.)</i> Check: address · travel time · reporting time · format · Speaking date.</div>
+  </section>
+
+  <!-- 16 -->
+  <section class="slide">
+    <div class="eyebrow">4.3 · Nerves and results</div>
+    <h2>Calm, prepared, on strategy</h2>
+    <div class="two">
+      <ul class="lab">
+        <li><b>Breathe</b>: in for 4, out for 6, three times</li>
+        <li><b>Self-talk</b>: "One mark each: guess, mark it, move on."</li>
+        <li><b>If–then</b>: If I miss an answer, I'll go to the next one.</li>
+        <li><b>Routine</b>: normal breakfast · arrive early · no cramming</li>
+      </ul>
+      <div class="ccq"><b>After the test:</b> results online first, then the Test Report Form. Think a score is wrong? Ask your <b>test center</b> for a <b>remark</b> within the allowed period (a fee, refunded if your score goes up). Retake the full test, or in many places <b>one skill</b>. Check that your university or employer accepts it.</div>
+    </div>
+    <div class="tag"><span class="pill">FACTS</span> Fees, dates and deadlines vary: read your test provider's official information.</div>
+  </section>
+
+  <!-- 17 -->
+  <section class="slide">
+    <div class="eyebrow">C15 · C16 · Practice Test 2</div>
+    <h2>Two classes, one full test</h2>
+    <div class="two">
+      <div class="ccq"><b>C15 · Part A</b><br>Listening (once only) → Reading 60 min<br>Pencil · eraser · water · phone off<br>Answers on the sheet as you go<br>Questions about instructions only<br><br><b>C16 · Part B</b><br>Writing 60 min: Task 1 ~20 · Task 2 ~40<br>Short speaking interviews in the side area: write your out and back times, and you get every minute back<br>Then: mark → band profile → next step → 🎉</div>
+      <div class="ccq">How many times do you hear the Listening? <i>(Once.)</i><br>Extra time to copy Reading answers? <i>(No.)</i><br>Called for your interview: do you lose Writing time? <i>(No: you get it back.)</i><br>Is a practice band a verdict? <i>(No: a snapshot.)</i><br>Half a band in eight weeks? <i>(A real gain.)</i></div>
+    </div>
+  </section>
+
+  <!-- 18 -->
+  <section class="slide section">
+    <div class="eyebrow">You can now say more, say it better and deliver it on the day</div>
+    <h2>Module 4 done 🎉</h2>
+    <ul class="lab">
+      <li><b>Say more</b>: answer + why + example · keywords, then two minutes · opinion → reason → other view</li>
+      <li><b>Say it better</b>: chunks, stress, a fall at the end · the precise word · one natural idiom · paraphrase around a gap</li>
+      <li><b>Deliver it on the day</b>: the timing plan · the right ID · breathe out slowly · guess, mark it, move on</li>
+    </ul>
+    <p class="lead" style="margin-top:10px;max-width:44ch">Homework: online lessons 4.1–4.3 with 🔊, your countdown plan, and a recorded Part 2 every week until your test. Go and get the band you need.</p>
+  </section>
+
+</div>
+
+<div class="count" id="count">1 / 18</div>
+<div class="nav"><button id="prev" aria-label="Previous slide"></button><button id="next" aria-label="Next slide"></button></div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const bar=document.getElementById('bar'), count=document.getElementById('count');
+  let i=0;
+  function show(n){ i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+    bar.style.width=((i+1)/slides.length*100)+'%'; count.textContent=(i+1)+' / '+slides.length; }
+  document.getElementById('next').onclick=()=>show(i+1);
+  document.getElementById('prev').onclick=()=>show(i-1);
+  addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}
+    else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+  });
+  show(0);
+</script>
+</body>
+</html>

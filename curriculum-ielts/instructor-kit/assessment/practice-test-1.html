@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Practice Test 1 — Class 8</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../kit.css">
+<style>
+  /* ── Test-paper components (shared with diagnostic.html) ── */
+  .pagebreak{break-before:page}
+  .teacher-only{font-family:"JetBrains Mono",monospace;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+    color:#fff;background:var(--warn);border-radius:999px;padding:3px 11px;display:inline-block;margin-bottom:8px;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .paper{font-size:17px;line-height:1.5}
+  .paper-head{display:grid;grid-template-columns:2fr 1fr 1fr;gap:14px;margin:6px 0 14px;font-size:1.05rem}
+  .paper-head div{border-bottom:1.5px solid var(--ink-2);padding:6px 2px 4px}
+  .paper-head b{font-weight:700}
+  .part-h{display:flex;align-items:center;gap:12px;margin:30px 0 6px;padding:10px 14px;background:var(--accent-soft);
+    border-radius:10px;break-after:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .part-h h2{font-size:1.3rem;font-weight:800;flex:1}
+  .part-h .score{font-family:"JetBrains Mono",monospace;font-size:.95rem;font-weight:600;border:1.5px solid var(--ink-2);
+    border-radius:8px;padding:4px 10px;background:var(--surface);white-space:nowrap}
+  .inst{font-size:1.08rem;font-weight:600;margin:18px 0 8px;break-after:avoid}
+  .inst .sub{display:block;font-weight:400;color:var(--ink-2);font-size:.97rem;margin-top:2px}
+  .inst .caps{font-weight:800;letter-spacing:.02em}
+  .item{display:flex;gap:12px;align-items:baseline;margin:10px 0;font-size:1.06rem;break-inside:avoid}
+  .item .n{font-family:"JetBrains Mono",monospace;font-weight:600;color:var(--accent);min-width:1.8em}
+  .opts{display:flex;flex-direction:column;gap:4px;margin-top:4px}
+  .opts span{padding-left:4px}
+  .notes-box{border:1.5px solid var(--line-strong);border-radius:10px;padding:12px 18px;margin:10px 0;break-inside:avoid;background:var(--surface)}
+  .notes-box .ttl{font-family:"Archivo",sans-serif;font-weight:800;font-size:1.12rem;margin-bottom:6px;text-align:center}
+  .notes-box .hd{font-weight:700;margin:10px 0 2px}
+  .notes-box p{margin:6px 0;font-size:1.04rem}
+  .notes-box .n,.ftab .n{font-family:"JetBrains Mono",monospace;font-weight:600;color:var(--accent)}
+  table.ftab{width:100%;border-collapse:collapse;margin:10px 0;font-size:1.02rem;break-inside:avoid}
+  table.ftab th,table.ftab td{border:1px solid var(--line-strong);padding:8px 10px;text-align:left;vertical-align:top}
+  table.ftab th{background:var(--surface-2);font-weight:700}
+  .letters{display:grid;grid-template-columns:1fr;gap:4px;margin:8px 0 12px;padding:10px 14px;border:2px dashed var(--line-strong);border-radius:10px;font-size:1.02rem;break-inside:avoid}
+  .letters.two{grid-template-columns:1fr 1fr;gap:4px 18px}
+  .letters b{font-family:"JetBrains Mono",monospace;color:var(--accent);margin-right:6px}
+  .text{border:1px solid var(--line);border-radius:10px;padding:14px 18px;background:var(--surface-2);font-size:1.02rem;line-height:1.68;margin:10px 0}
+  .text p{margin:0 0 10px}
+  .text p:last-child{margin-bottom:0}
+  .text .ttl{font-family:"Archivo",sans-serif;font-weight:800;font-size:1.2rem;margin-bottom:6px}
+  .text .pl{font-family:"JetBrains Mono",monospace;font-weight:700;color:var(--accent);margin-right:6px}
+  .tfrow{display:grid;grid-template-columns:2em 1fr 9em;gap:12px;align-items:end;padding:7px 0;border-bottom:1px solid var(--line);font-size:1.04rem;break-inside:avoid}
+  .tfrow .n{font-family:"JetBrains Mono",monospace;font-weight:600;color:var(--accent)}
+  .tfrow .wl{border-bottom:1.5px solid var(--ink-2);height:1.6em}
+  .map{max-width:460px;margin:10px auto;display:block}
+  .map text{font-family:"Source Sans 3",sans-serif}
+  .asheet{display:grid;grid-template-columns:1fr 1fr;gap:0 26px;margin:10px 0}
+  .asheet .row{display:grid;grid-template-columns:2.4em 1fr 1.6em;gap:8px;align-items:end;border-bottom:1px solid var(--line);padding:5px 0;font-size:1rem;break-inside:avoid}
+  .asheet .row .n{font-family:"JetBrains Mono",monospace;font-weight:600;color:var(--accent)}
+  .asheet .row .mk{border:1.5px solid var(--line-strong);border-radius:4px;height:1.3em}
+  .done{margin-top:26px;text-align:center;font-size:1.2rem;font-weight:700}
+  table.grid{width:100%;border-collapse:collapse;margin:10px 0;font-size:.9rem}
+  table.grid th,table.grid td{border:1px solid var(--line-strong);padding:8px 10px;text-align:left;vertical-align:top}
+  table.grid thead th{background:var(--surface-2);font-family:"JetBrains Mono",monospace;font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+  @media (max-width:680px){
+    .paper-head{grid-template-columns:1fr}
+    .letters.two{grid-template-columns:1fr}
+    .asheet{grid-template-columns:1fr}
+    table.grid,table.ftab{display:block;overflow-x:auto}
+    .tfrow{grid-template-columns:2em 1fr}
+    .tfrow .wl{grid-column:2}
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="lbl">Test pack —</span>
+  <button type="button" onclick="window.print()">🖨 Print / Save as PDF</button>
+  <span class="hint">teacher notes · Listening paper · Reading paper · answer sheet · listening scripts (teacher only)</span>
+</div>
+
+<div class="sheet">
+
+  <header class="mast">
+    <div class="kit-eyebrow">IELTS Academic Preparation · Assessment · Class 8</div>
+    <h1>Practice Test 1 — Listening &amp; Academic Reading</h1>
+    <p class="sub">A full-length, timed Listening test (4 sections, 40 questions, teacher-read) and a full-length Academic Reading test (3 passages, 40 questions, 60 minutes), taken after Module 2. It uses every question type from Lessons 2.1–2.3. Learners self-mark it in Class 9, convert their raw scores to an approximate band, and sort their mistakes by <b>cause</b>. That error analysis, not the band, is the real product of this class.</p>
+    <div class="meta-row">
+      <span class="chip">Listening <b>~28 min</b> · <b>/40</b></span>
+      <span class="chip">Reading <b>60 min</b> · <b>/40</b></span>
+      <span class="chip">Self-marked in <b>Class 9</b></span>
+      <span class="chip">All texts <b>original</b></span>
+    </div>
+  </header>
+
+  <div class="note">
+    <div class="t">How to frame it</div>
+    <p>This is the first time most learners will sit a <b>full</b> Listening and Reading test against the clock, and the pressure is real. Name it: <b>"Today is a rehearsal. It's supposed to feel like the real thing so that the real thing feels familiar. The score tells us which question types to work on in Weeks 5 to 7; it doesn't decide anything about you."</b> Remind them of three rules from Module 2: <b>read ahead and take the final version</b> in Listening, <b>about 20 minutes per passage</b> in Reading, and <b>never leave a blank</b>, because a wrong answer costs nothing. Many learners score lower on a full test than on a single passage; tell them in advance, so the drop doesn't feel like failure.</p>
+  </div>
+
+  <div class="sec"><h2>Running Class 8 (90 min)</h2><span class="rule"></span></div>
+  <table class="timing">
+    <thead><tr><th>Stage</th><th>Time</th><th>Interaction</th><th>Procedure</th></tr></thead>
+    <tbody>
+      <tr><td>Set-up</td><td class="t">2 min</td><td>T–S</td><td>Before learners arrive, put the Listening paper, the Reading paper and the answer sheet <b>face down</b> on each desk. Phones off and in bags. Learners write their names on the answer sheet. Say the framing above in one breath; save longer conversations for Class 9.</td></tr>
+      <tr><td>Listening</td><td class="t">28 min</td><td>T–S</td><td>Whole class. Read the four scripts on the teacher pages <b>once each</b>, including the reading-time announcements and pauses (time them with a phone). Learners write answers <b>directly on the answer sheet</b>, as on the computer test. At the end, give <b>2 minutes</b> to check spelling and fill any blanks. Collect the Listening papers; learners keep their answer sheets for the Reading.</td></tr>
+      <tr><td>Reading</td><td class="t">60 min</td><td>S</td><td>Individual and silent. Write the start and end times on the board. Announce the time <b>only</b> at 20, 40 and 50 minutes ("You have 10 minutes left"). Stop at exactly 60 minutes. No extra transfer time: learners write on the answer sheet as they go, just like the real test.</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:.9rem;color:var(--ink-2)"><b>If you start late:</b> shorten the 2-minute Listening check, never the Reading time. On the paper-based test, candidates get about 10 minutes at the end of Listening to transfer answers; mention this to learners who will take the paper test, and let them practice transferring in Class 9 if you like. <b>Collect everything</b> at the end and keep the papers until Class 9, so no one checks answers online in between.</p>
+
+  <div class="grid2">
+    <div class="blk"><div class="h">You need</div>
+      <ul class="tick">
+        <li>One Listening paper, one Reading paper and one answer sheet per learner (print the map in Section 2 clearly)</li>
+        <li>The teacher pages: the four scripts. If you can, record them in advance with a colleague (Sections 1 and 3 have two or three voices)</li>
+        <li>A clock the class can see; a phone timer for the pauses</li>
+        <li>For Class 9: <code class="inline">assessment/answer-keys.html</code> (keys, evidence lines, accepted variants, conversion tables)</li>
+      </ul>
+    </div>
+    <div class="blk"><div class="h">What the test covers</div>
+      <ul class="tick">
+        <li><b>Listening /40</b>: S1 everyday conversation (form and table), S2 everyday monologue (map, multiple choice, choose two), S3 academic discussion (multiple choice, matching, notes), S4 academic lecture (note completion)</li>
+        <li><b>Reading /40</b>: P1 True / False / Not Given + summary completion; P2 matching headings, matching information, short answer; P3 Yes / No / Not Given, multiple choice, matching features, sentence completion</li>
+        <li>Answers are scored the IELTS way: correct spelling, within the word limit, one mark each. Both American and British spelling are accepted.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="note lab">
+    <div class="t">Reading the scripts aloud well</div>
+    <p>Read at a natural conversational speed (about the speed of a radio interview), with contractions and normal rhythm. Section 4 should be a little faster and denser, like a real lecture. <b>Never repeat a line, slow down for an answer, or look at a learner when an answer comes.</b> Distractors are part of the test: say the wrong detail naturally, then the correction naturally. For Sections 1 and 3, change your voice or your position for each speaker, or better, read with a colleague or a confident former learner. Spell names letter by letter at a normal pace, as a receptionist would.</p>
+  </div>
+
+  <div class="note warn">
+    <div class="t">Learners who need adjustments</div>
+    <p>A learner with a documented need (dyslexia, a visual or hearing impairment) can have the same arrangements here that they will request from the test center: an enlarged paper, extra time for Reading, or a seat close to you for Listening. Note it on the answer sheet ("Adapted: +15 min Reading"). The official test offers special arrangements, but they must be requested well before the test date, so remind the learner privately to contact their test center early.</p>
+  </div>
+
+  <!-- ═════════════════════ LISTENING PAPER ═════════════════════ -->
+  <div class="pagebreak"></div>
+  <div class="paper">
+    <header class="mast">
+      <div class="kit-eyebrow">IELTS Academic Preparation · Practice Test 1</div>
+      <h1>Listening</h1>
+      <div class="paper-head">
+        <div><b>Name:</b></div>
+        <div><b>Date:</b></div>
+        <div><b>Time:</b> about 30 min</div>
+      </div>
+      <p style="font-size:1.03rem;margin-top:10px">There are four sections and 40 questions. You will hear each section <b>once only</b>. Write your answers on the <b>answer sheet</b> as you listen. Before each part, you will have time to read the questions. Check the word limit for every task.</p>
+    </header>
+
+    <!-- SECTION 1 -->
+    <div class="part-h"><h2>Section 1 · Questions 1–10</h2></div>
+    <div class="inst">Questions 1–6
+      <span class="sub">Complete the form below. Write <span class="caps">NO MORE THAN TWO WORDS AND/OR A NUMBER</span> for each answer.</span></div>
+    <div class="notes-box">
+      <div class="ttl">Greenway Community Gardens — Plot Application</div>
+      <p>First name: <i>Martina</i> &nbsp;&nbsp; Surname: <span class="n">1</span> <span class="blank"></span></p>
+      <p>Address: Flat 3, 18 <span class="n">2</span> <span class="blank"></span> Road</p>
+      <p>Phone: <span class="n">3</span> <span class="blank long"></span></p>
+      <p>Plot size: <span class="n">4</span> <span class="blank"></span> square meters</p>
+      <p>Would like to start in: <span class="n">5</span> <span class="blank"></span></p>
+      <p>First heard about the gardens from: a <span class="n">6</span> <span class="blank"></span></p>
+    </div>
+
+    <div class="inst">Questions 7–10
+      <span class="sub">Complete the table below. Write <span class="caps">ONE WORD AND/OR A NUMBER</span> for each answer.</span></div>
+    <table class="ftab">
+      <thead><tr><th>Item</th><th>Details</th></tr></thead>
+      <tbody>
+        <tr><td>Annual fee (half plot)</td><td>$ <span class="n">7</span> <span class="blank"></span></td></tr>
+        <tr><td>Gate key deposit</td><td>$ <span class="n">8</span> <span class="blank"></span> (returned with the key)</td></tr>
+        <tr><td>Not allowed</td><td>any chemical <span class="n">9</span> <span class="blank"></span></td></tr>
+        <tr><td>Monthly workday</td><td>the first <span class="n">10</span> <span class="blank"></span> of each month</td></tr>
+      </tbody>
+    </table>
+
+    <!-- SECTION 2 -->
+    <div class="part-h pagebreak"><h2>Section 2 · Questions 11–20</h2></div>
+    <div class="inst">Questions 11–15
+      <span class="sub">Label the map below. Write the correct letter, <b>A–G</b>, next to Questions 11–15.</span></div>
+    <svg class="map" viewBox="0 0 440 440" role="img" aria-label="Map of Marsh Lane Nature Reserve. North is at the top. A lake is at the top. The visitor center is at the south entrance at the bottom. A main path runs north from the visitor center to the lake. About a third of the way down from the lake, a second path branches off to the east. Letter A is to the left of the visitor center and B to its right. C is on the left of the main path, about halfway up. D is at the far end of the eastern path. E is in the corner above the eastern path where it leaves the main path. F is on the left of the main path where it reaches the lake. G is on the lake shore further to the right, to the east of the main path.">
+      <rect x="1" y="1" width="438" height="438" rx="10" fill="#f2f7ec" stroke="#9aa7b8" stroke-width="2"/>
+      <ellipse cx="220" cy="62" rx="170" ry="42" fill="#cfe3f3" stroke="#7aa6c9" stroke-width="2"/>
+      <text x="220" y="68" text-anchor="middle" font-size="17" font-weight="700" fill="#2f5d86">Lake</text>
+      <rect x="208" y="100" width="24" height="250" fill="#e6d7b8" stroke="#c7b48c"/>
+      <rect x="232" y="170" width="150" height="20" fill="#e6d7b8" stroke="#c7b48c"/>
+      <text x="300" y="210" text-anchor="middle" font-size="12" fill="#6f7c8e">east path</text>
+      <text x="201" y="295" text-anchor="middle" font-size="12" fill="#6f7c8e" transform="rotate(-90 201 295)">main path</text>
+      <rect x="160" y="350" width="120" height="44" rx="4" fill="#dfe4ea" stroke="#45536a" stroke-width="2"/>
+      <text x="220" y="377" text-anchor="middle" font-size="14" font-weight="700" fill="#16202e">Visitor Center</text>
+      <text x="220" y="428" text-anchor="middle" font-size="13" fill="#45536a">South entrance ↑ (you are here)</text>
+      <g transform="translate(408,28)"><path d="M0 18 L0 -12 M-7 -3 L0 -14 L7 -3" stroke="#16202e" stroke-width="2.5" fill="none"/><text x="0" y="34" text-anchor="middle" font-size="14" font-weight="700" fill="#16202e">N</text></g>
+      <g font-size="15" font-weight="800" text-anchor="middle" fill="#1f5fc9">
+        <circle cx="115" cy="372" r="14" fill="#fff" stroke="#1f5fc9" stroke-width="2"/><text x="115" y="377">A</text>
+        <circle cx="325" cy="372" r="14" fill="#fff" stroke="#1f5fc9" stroke-width="2"/><text x="325" y="377">B</text>
+        <circle cx="180" cy="240" r="14" fill="#fff" stroke="#1f5fc9" stroke-width="2"/><text x="180" y="245">C</text>
+        <circle cx="408" cy="180" r="14" fill="#fff" stroke="#1f5fc9" stroke-width="2"/><text x="408" y="185">D</text>
+        <circle cx="256" cy="148" r="14" fill="#fff" stroke="#1f5fc9" stroke-width="2"/><text x="256" y="153">E</text>
+        <circle cx="180" cy="120" r="14" fill="#fff" stroke="#1f5fc9" stroke-width="2"/><text x="180" y="125">F</text>
+        <circle cx="330" cy="122" r="14" fill="#fff" stroke="#1f5fc9" stroke-width="2"/><text x="330" y="127">G</text>
+      </g>
+    </svg>
+    <div class="item"><span class="n">11</span><span>bike racks &nbsp;<span class="blank"></span></span></div>
+    <div class="item"><span class="n">12</span><span>start of the children's trail &nbsp;<span class="blank"></span></span></div>
+    <div class="item"><span class="n">13</span><span>picnic area &nbsp;<span class="blank"></span></span></div>
+    <div class="item"><span class="n">14</span><span>wildflower meadow &nbsp;<span class="blank"></span></span></div>
+    <div class="item"><span class="n">15</span><span>bird hide &nbsp;<span class="blank"></span></span></div>
+
+    <div class="inst">Questions 16–18
+      <span class="sub">Choose the correct letter, <b>A</b>, <b>B</b> or <b>C</b>.</span></div>
+    <div class="item"><span class="n">16</span><span>The reserve was originally created
+      <span class="opts"><span><b>A</b> to protect a rare plant.</span><span><b>B</b> as part of a flood-control project.</span><span><b>C</b> to give local farmers more land.</span></span></span></div>
+    <div class="item"><span class="n">17</span><span>According to the guide, the best time to see otters is
+      <span class="opts"><span><b>A</b> early in the morning.</span><span><b>B</b> around midday.</span><span><b>C</b> in the evening.</span></span></span></div>
+    <div class="item"><span class="n">18</span><span>The Sunday guided walks
+      <span class="opts"><span><b>A</b> cost five dollars per person.</span><span><b>B</b> must be booked online.</span><span><b>C</b> last two hours.</span></span></span></div>
+
+    <div class="inst">Questions 19–20
+      <span class="sub">Choose <b>TWO</b> letters, <b>A–E</b>. Which <b>TWO</b> things are visitors asked <b>not</b> to do?</span></div>
+    <div class="letters">
+      <span><b>A</b> bring dogs</span>
+      <span><b>B</b> take photographs</span>
+      <span><b>C</b> feed the birds</span>
+      <span><b>D</b> walk off the path in the meadow</span>
+      <span><b>E</b> fly drones</span>
+    </div>
+
+    <!-- SECTION 3 -->
+    <div class="part-h pagebreak"><h2>Section 3 · Questions 21–30</h2></div>
+    <div class="inst">Questions 21–24
+      <span class="sub">Choose the correct letter, <b>A</b>, <b>B</b> or <b>C</b>.</span></div>
+    <div class="item"><span class="n">21</span><span>Why did the students choose food waste as their topic?
+      <span class="opts"><span><b>A</b> The cafeteria manager suggested it.</span><span><b>B</b> Laura had worked in a restaurant kitchen.</span><span><b>C</b> They had found a gap in earlier research.</span></span></span></div>
+    <div class="item"><span class="n">22</span><span>What was the main problem with their first data collection?
+      <span class="opts"><span><b>A</b> The scales were not accurate.</span><span><b>B</b> They collected data on too few days.</span><span><b>C</b> The kitchen staff did not help.</span></span></span></div>
+    <div class="item"><span class="n">23</span><span>What does the tutor recommend?
+      <span class="opts"><span><b>A</b> adding a second cafeteria to the study</span><span><b>B</b> interviewing students immediately</span><span><b>C</b> collecting data for a longer period</span></span></span></div>
+    <div class="item"><span class="n">24</span><span>What surprised the students about their results?
+      <span class="opts"><span><b>A</b> the amount of vegetables thrown away</span><span><b>B</b> the amount of food left on plates</span><span><b>C</b> the amount of food prepared but never served</span></span></span></div>
+
+    <div class="inst">Questions 25–28
+      <span class="sub">What do the students decide to do with each section of their report? Choose <b>FOUR</b> answers from the box and write the correct letter, <b>A–E</b>, next to Questions 25–28.</span></div>
+    <div class="letters two">
+      <span><b>A</b> expand it</span>
+      <span><b>B</b> remove it completely</span>
+      <span><b>C</b> move it to an appendix</span>
+      <span><b>D</b> rewrite it with the tutor</span>
+      <span><b>E</b> keep it as it is</span>
+    </div>
+    <div class="item"><span class="n">25</span><span>literature review &nbsp;<span class="blank"></span></span></div>
+    <div class="item"><span class="n">26</span><span>photographs of waste bins &nbsp;<span class="blank"></span></span></div>
+    <div class="item"><span class="n">27</span><span>cost estimates &nbsp;<span class="blank"></span></span></div>
+    <div class="item"><span class="n">28</span><span>recommendations &nbsp;<span class="blank"></span></span></div>
+
+    <div class="inst">Questions 29–30
+      <span class="sub">Complete the notes below. Write <span class="caps">NO MORE THAN TWO WORDS AND/OR A NUMBER</span> for each answer.</span></div>
+    <div class="notes-box">
+      <div class="ttl">Next steps</div>
+      <p>Posters asking students to do the survey: get permission from the <span class="n">29</span> <span class="blank long"></span></p>
+      <p>New deadline for the draft: <span class="n">30</span> <span class="blank"></span></p>
+    </div>
+
+    <!-- SECTION 4 -->
+    <div class="part-h pagebreak"><h2>Section 4 · Questions 31–40</h2></div>
+    <div class="inst">Questions 31–40
+      <span class="sub">Complete the notes below. Write <span class="caps">ONE WORD AND/OR A NUMBER</span> for each answer.</span></div>
+    <div class="notes-box">
+      <div class="ttl">Urban Heat Islands</div>
+      <p class="hd">Definition</p>
+      <p>A city that is warmer than the surrounding <span class="n">31</span> <span class="blank"></span> areas</p>
+      <p>The temperature difference is usually greatest at <span class="n">32</span> <span class="blank"></span></p>
+      <p class="hd">Causes</p>
+      <p>• Dark surfaces, e.g. roofs and the <span class="n">33</span> <span class="blank"></span> used on roads</p>
+      <p>• Loss of <span class="n">34</span> <span class="blank"></span>, which cools the air as water evaporates</p>
+      <p>• Waste heat from <span class="n">35</span> <span class="blank"></span>, factories and air conditioners</p>
+      <p>• Tall buildings trap heat and block the <span class="n">36</span> <span class="blank"></span></p>
+      <p class="hd">Consequences</p>
+      <p>• Higher demand for <span class="n">37</span> <span class="blank"></span></p>
+      <p>• A health risk, especially for <span class="n">38</span> <span class="blank"></span> people who live alone</p>
+      <p class="hd">Solutions</p>
+      <p>• "Cool roofs": roofs painted <span class="n">39</span> <span class="blank"></span></p>
+      <p>• Street trees: in one study, shaded pavements were up to <span class="n">40</span> <span class="blank"></span> °C cooler</p>
+    </div>
+    <p class="done">End of the Listening test. Check your spelling and fill every blank.</p>
+  </div>
+
+  <!-- ═════════════════════ READING PAPER ═════════════════════ -->
+  <div class="pagebreak"></div>
+  <div class="paper">
+    <header class="mast">
+      <div class="kit-eyebrow">IELTS Academic Preparation · Practice Test 1</div>
+      <h1>Academic Reading</h1>
+      <div class="paper-head">
+        <div><b>Name:</b></div>
+        <div><b>Date:</b></div>
+        <div><b>Time:</b> 60 minutes</div>
+      </div>
+      <p style="font-size:1.03rem;margin-top:10px">There are three passages and 40 questions. Write your answers on the <b>answer sheet</b> as you go; there is no extra time to transfer them. Spend about 20 minutes on each passage. Passage 3 is the hardest.</p>
+    </header>
+
+    <!-- PASSAGE 1 -->
+    <div class="part-h"><h2>Reading Passage 1 · Questions 1–13</h2></div>
+    <p>You should spend about 20 minutes on <b>Questions 1–13</b>, which are based on Reading Passage 1 below.</p>
+    <div class="text">
+      <div class="ttl">Pen, Keyboard and Memory</div>
+      <p>For most of the twentieth century, a student who wanted to record a lecture had one option: a pen and a notebook. Today, in many universities, the typical sound of a lecture hall is the soft tapping of keys, and many students also photograph the lecture slides with their phones. Laptops allow students to take notes faster, to store them neatly and to search them later, and few would argue that these are trivial advantages. Yet over the past two decades, a growing body of research has asked whether the speed of typing might come at a cost to learning.</p>
+      <p>The question is not simply which method records more information. Typists almost always capture more words than people writing by hand; in one classroom study conducted by the educational psychologist Mara Lindqvist, students using laptops recorded on average about 60 percent more words than those using pens. The puzzle is what happens to those words afterward. Lindqvist found that when both groups were tested a week later on the content of the lecture, the handwriters performed slightly better on questions that required them to explain or apply a concept, although the two groups did equally well on questions about simple facts.</p>
+      <p>Lindqvist's explanation centers on what she calls "processing on the way in." Because handwriting is slow, a student cannot write down everything a lecturer says. Instead, they must decide what matters, condense it and put it into their own words. Typists, by contrast, tend to transcribe the lecture almost word for word. In Lindqvist's view, it is the summarizing, not the pen itself, that strengthens memory. This distinction matters, because it suggests that a typist who deliberately summarizes might gain the same benefit.</p>
+      <p>Later studies have partly supported this view. When a team led by Tomás Arriaga instructed laptop users not to copy the lecturer's words but to paraphrase them, the gap between the two groups became smaller, though it did not disappear entirely. Arriaga suspects that the habit of word-for-word typing is hard to break: many participants, he reported, drifted back into transcription after the first ten minutes, particularly when the lecturer spoke quickly.</p>
+      <p>Other researchers have looked beyond note-taking to the physical act of forming letters. Studies of young children learning to read suggest that writing letters by hand, rather than selecting them on a keyboard, helps children to recognize those letters more quickly. Whether this effect continues into adulthood is less clear. Adults already know the alphabet thoroughly, and it is uncertain whether the movement of the hand adds anything to their memory for complex ideas. Even so, many schools continue to teach handwriting in the early years, even where pupils later move on to keyboards.</p>
+      <p>There are also practical factors that experiments in quiet laboratories tend to overlook. In a real lecture hall, a laptop offers constant temptation: messages, news and shopping sites are only a click away. In a survey of 900 undergraduates, almost two-thirds admitted to doing unrelated tasks on their laptops during lectures, and those who did so reported lower satisfaction with their courses. Critics point out, however, that a bored student with a notebook can simply doodle in the margins, and that the laptop may be blamed for a lack of interest that has other causes.</p>
+      <p>For students with certain disabilities, meanwhile, the keyboard is not a convenience but a necessity. Students who find handwriting physically painful, or whose handwriting is very difficult to read, may learn far better with a laptop, and many universities provide one as a matter of course. Any policy that banned devices from lecture halls, researchers warn, would need to take such students into account.</p>
+      <p>What, then, should a student do? The emerging consensus is less dramatic than newspaper headlines sometimes suggest. Neither method guarantees good learning, and neither condemns a student to poor results. The key appears to be active engagement with the material: selecting, summarizing and connecting ideas rather than recording them passively. For some students, the slowness of handwriting forces this engagement; others can achieve it on a keyboard with deliberate practice. Perhaps the most useful advice is also the oldest: notes are only valuable if they are reviewed, and a notebook left unopened until the night before an exam will help little, whether it was written in ink or stored in the cloud.</p>
+    </div>
+
+    <div class="inst">Questions 1–7
+      <span class="sub">Do the following statements agree with the information given in Reading Passage 1? Write<br>
+      <b>TRUE</b> if the statement agrees with the information<br>
+      <b>FALSE</b> if the statement contradicts the information<br>
+      <b>NOT GIVEN</b> if there is no information on this</span></div>
+    <div class="tfrow"><span class="n">1</span><span>Students using laptops usually record more words than students writing by hand.</span><span class="wl"></span></div>
+    <div class="tfrow"><span class="n">2</span><span>In Lindqvist's study, the handwriters did better on questions about simple facts.</span><span class="wl"></span></div>
+    <div class="tfrow"><span class="n">3</span><span>Lindqvist believes that using a pen is the main reason why handwritten notes help memory.</span><span class="wl"></span></div>
+    <div class="tfrow"><span class="n">4</span><span>Arriaga's study took place at several different universities.</span><span class="wl"></span></div>
+    <div class="tfrow"><span class="n">5</span><span>When laptop users were told to paraphrase, they performed as well as the handwriters.</span><span class="wl"></span></div>
+    <div class="tfrow"><span class="n">6</span><span>Writing letters by hand can help young children to recognize letters faster.</span><span class="wl"></span></div>
+    <div class="tfrow"><span class="n">7</span><span>Students who did unrelated tasks on their laptops received lower exam grades.</span><span class="wl"></span></div>
+
+    <div class="inst">Questions 8–13
+      <span class="sub">Complete the summary below. Choose <span class="caps">ONE WORD ONLY</span> from the passage for each answer.</span></div>
+    <div class="notes-box">
+      <div class="ttl">Beyond the laboratory</div>
+      <p style="line-height:2">In real lecture halls, laptops offer a constant <span class="n">8</span> <span class="blank"></span>, and students who use them for unrelated tasks report lower <span class="n">9</span> <span class="blank"></span> with their courses. However, critics say that students with notebooks can lose focus too, for example by doodling in the <span class="n">10</span> <span class="blank"></span>. For some students with <span class="n">11</span> <span class="blank"></span>, a laptop is essential rather than simply convenient. Overall, researchers now emphasize active <span class="n">12</span> <span class="blank"></span> with the material, and they remind students that notes are only useful if they are <span class="n">13</span> <span class="blank"></span>.</p>
+    </div>
+
+    <!-- PASSAGE 2 -->
+    <div class="part-h pagebreak"><h2>Reading Passage 2 · Questions 14–26</h2></div>
+    <p>You should spend about 20 minutes on <b>Questions 14–26</b>, which are based on Reading Passage 2 below.</p>
+    <div class="text">
+      <div class="ttl">Farming Upward</div>
+      <p><span class="pl">A</span>On an industrial estate at the edge of a large city, a windowless warehouse produces around fifty tons of salad leaves every year. Inside, lettuce, basil and other herbs grow in shallow trays stacked twelve levels high, lit by rows of pink-purple LEDs. There is no soil. Instead, the roots hang in a thin, slowly moving film of water that carries a carefully measured mixture of nutrients, while sensors adjust the temperature, humidity and light for each crop. This is vertical farming, and its most enthusiastic supporters describe it as the biggest change in food production since the invention of the tractor.</p>
+      <p><span class="pl">B</span>The appeal of the idea is easy to understand. Because the crops are grown indoors, they are protected from drought, floods, storms and insect pests, so the farm does not need pesticides, and harvests can be planned to the day, all year round. Because conditions never change, crops can also be grown to the same size and flavor every time, which appeals to restaurants and supermarkets. Water is collected and recycled through the system, and operators claim to use as little as five percent of the water that field agriculture requires for the same crop. And because the farms can be built close to the people who will eat the food, produce can reach supermarket shelves within hours of harvest, rather than after several days in a refrigerated truck.</p>
+      <p><span class="pl">C</span>The greatest obstacle is energy. Sunlight is free; electric light is not. Although LEDs have become far more efficient over the past fifteen years, a vertical farm still needs a great deal of electricity for lighting, heating, cooling and pumping water. When energy prices rose sharply in several countries, a number of well-funded vertical-farming companies were forced to cut production, and some closed altogether. According to the agricultural economist Helen Mwangi, energy can account for between a quarter and a third of a vertical farm's running costs, a far higher share than on a conventional farm. This makes the business unusually sensitive to changes in the price of electricity. Some operators have tried to reduce their bills by running the lights at night, when power is cheaper.</p>
+      <p><span class="pl">D</span>There is also the question of what can be grown. Leafy greens and herbs are ideal: they grow quickly, are small enough to stack, are harvested whole and sell at relatively high prices. Some companies are experimenting with strawberries and tomatoes, but these fruiting crops need more light and more careful handling than leaves. Staple crops such as wheat and rice are a different matter. They need large amounts of light to produce grain, only part of the plant is eaten, and they sell cheaply. Mwangi calculates that wheat grown indoors would currently cost many times more to produce than wheat grown in fields, which is why she believes that vertical farms are unlikely ever to feed the world on their own. "They are a supplement to traditional farming, not a replacement for it," she says.</p>
+      <p><span class="pl">E</span>Environmental comparisons are more complicated than they first appear. A vertical farm uses very little land and far less water than a field, but if its electricity is generated from coal or gas, the carbon emissions linked to each kilogram of lettuce may be higher than those of lettuce grown outdoors and transported a long distance. The engineer Sofia Brandt, who has studied the energy use of indoor farms in northern Europe, argues that the environmental case depends almost entirely on where the power comes from. Farms that run on renewable energy, or that are built beside factories and data centers so that they can use the waste heat those buildings produce, compare much more favorably.</p>
+      <p><span class="pl">F</span>Some of the most interesting projects are small. Schools, hospitals and community centers have begun to install compact growing units, often no bigger than a wardrobe, which supply fresh herbs and salad to their own kitchens. These units rarely make money in a narrow financial sense, but their supporters argue that they have other kinds of value. Teachers report that children who have watched a lettuce grow from seed are more willing to eat it, and hospital staff say that patients enjoy seeing food growing nearby. In several cities, empty stores and unused parking lots have been turned into small farms that also offer training to local people who want to work in the industry.</p>
+    </div>
+
+    <div class="inst">Questions 14–19
+      <span class="sub">Reading Passage 2 has six paragraphs, <b>A–F</b>. Choose the correct heading for each paragraph from the list of headings below. Write the correct number, <b>i–viii</b>.</span></div>
+    <div class="letters two">
+      <span><b>i</b> Why the range of suitable crops is limited</span>
+      <span><b>ii</b> Value that cannot be measured only in money</span>
+      <span><b>iii</b> A new way of producing food</span>
+      <span><b>iv</b> The high price of land in cities</span>
+      <span><b>v</b> A business exposed to the cost of power</span>
+      <span><b>vi</b> The advantages of growing indoors</span>
+      <span><b>vii</b> A green reputation that depends on the energy supply</span>
+      <span><b>viii</b> How governments are supporting the industry</span>
+    </div>
+    <div class="item"><span class="n">14</span><span>Paragraph A &nbsp;<span class="blank"></span></span></div>
+    <div class="item"><span class="n">15</span><span>Paragraph B &nbsp;<span class="blank"></span></span></div>
+    <div class="item"><span class="n">16</span><span>Paragraph C &nbsp;<span class="blank"></span></span></div>
+    <div class="item"><span class="n">17</span><span>Paragraph D &nbsp;<span class="blank"></span></span></div>
+    <div class="item"><span class="n">18</span><span>Paragraph E &nbsp;<span class="blank"></span></span></div>
+    <div class="item"><span class="n">19</span><span>Paragraph F &nbsp;<span class="blank"></span></span></div>
+
+    <div class="inst">Questions 20–23
+      <span class="sub">Reading Passage 2 has six paragraphs, <b>A–F</b>. Which paragraph contains the following information? Write the correct letter, <b>A–F</b>. <i>You may use any letter more than once.</i></span></div>
+    <div class="item"><span class="n">20</span><span>a comparison of the cost of growing a staple crop indoors and outdoors</span></div>
+    <div class="item"><span class="n">21</span><span>an example of a place where patients can see food growing</span></div>
+    <div class="item"><span class="n">22</span><span>a reference to businesses that had to stop operating</span></div>
+    <div class="item"><span class="n">23</span><span>a description of how plants receive nutrients without soil</span></div>
+
+    <div class="inst">Questions 24–26
+      <span class="sub">Answer the questions below. Choose <span class="caps">NO MORE THAN THREE WORDS</span> from the passage for each answer.</span></div>
+    <div class="item"><span class="n">24</span><span>What type of lighting is used in the warehouse described at the start of the passage?</span></div>
+    <div class="item"><span class="n">25</span><span>Apart from factories, what kind of building produces waste heat that a vertical farm could use?</span></div>
+    <div class="item"><span class="n">26</span><span>Apart from empty stores, what unused spaces have been turned into small farms?</span></div>
+
+    <!-- PASSAGE 3 -->
+    <div class="part-h pagebreak"><h2>Reading Passage 3 · Questions 27–40</h2></div>
+    <p>You should spend about 20 minutes on <b>Questions 27–40</b>, which are based on Reading Passage 3 below.</p>
+    <div class="text">
+      <div class="ttl">The Uses of Boredom</div>
+      <p>Boredom has a poor reputation. It is associated with dull meetings, long journeys and wasted afternoons, and an entire industry of entertainment exists to make sure that we never have to experience it. With a smartphone in almost every pocket, it is now possible to fill every spare moment (a line at the bank, a bus ride, the minute before a meeting begins) with news, messages or games. It is worth asking, however, whether in escaping boredom so efficiently, we have lost something of value.</p>
+      <p>Psychologists have not always agreed on what boredom actually is. For much of the twentieth century, it was treated mainly as a problem of the environment: a task or a place was simply not stimulating enough. More recent work, however, treats boredom as a signal generated by the mind itself. The psychologist Hana Okafor describes it as "an alarm that tells us our current activity is not using our abilities," comparable in some ways to hunger, which tells us to find food. On this view, boredom is not a failure but a message, one that pushes us to look for something more meaningful to do.</p>
+      <p>The most widely publicized claim is that boredom encourages creativity. In a frequently cited experiment, Lucas Brenner asked one group of participants to spend fifteen minutes copying numbers from a telephone directory, a deliberately tedious task, while a second group went straight to the next stage. Both groups were then asked to think of as many uses as possible for a pair of plastic cups. The bored group produced more ideas, and their ideas were judged to be more original. Brenner concluded that boredom may push the mind to wander, and that mind-wandering helps people to make unusual connections.</p>
+      <p>I find this result intriguing, but I think it has been overstated. The experiment measured a short burst of creative thinking in a laboratory, immediately after a boring task; it tells us little about whether a life with more boredom produces more creative work. Moreover, attempts to repeat Brenner's study have produced mixed results. Ines Castillo, who ran a larger version with more than 400 participants, found only a small effect, and no effect at all among participants who had been allowed to keep their phones during the boring task. Castillo's interpretation is revealing: boredom seems to help only when people cannot immediately escape from it.</p>
+      <p>That last point deserves more attention than it usually receives. The problem with the smartphone is not that it prevents boredom altogether, but that it interrupts it at the earliest possible moment, before the mind has had time to wander anywhere interesting. Rafael Kim, who studies attention in adolescents, has found that teenagers who reach for their phones as soon as they feel bored report being bored more often, not less. Kim suggests that constant stimulation may raise the level at which ordinary life feels interesting enough, in the same way that a diet high in sugar makes fruit taste less sweet.</p>
+      <p>None of this means that boredom is always good. Chronic boredom, the kind that persists for weeks or months, is associated with low mood, overeating and risk-taking, and it is often a symptom of deeper problems such as unsuitable work or social isolation. Telling a person in this situation to "embrace boredom" would be unhelpful and possibly unkind. The kind of boredom that may be useful is brief and situational: the ten minutes on a train with nothing to read, not the months in a job that offers no challenge.</p>
+      <p>It also seems to me that the value of boredom lies less in the feeling itself than in what we do next. Okafor's "alarm" can be answered in many ways. We can reach for the nearest distraction, or we can take the signal seriously and ask what we would rather be doing. Some people use such moments to plan, to reflect or simply to notice their surroundings. Schools that have experimented with short, unstructured periods in the day report that, after some initial complaints, many students begin to fill the time with their own projects, although these reports come mostly from teachers and have not yet been studied systematically.</p>
+      <p>Should we, then, try to be bored more often? I would not go that far. Deliberately seeking out boredom sounds rather like deliberately seeking out hunger, and there is little evidence that it would make anyone happier. A more modest conclusion seems justified: we should be less afraid of the occasional empty moment, and less quick to fill it. The next time the bus is late, leaving the phone in a pocket for a few minutes may not produce a great idea. But it will give the mind the chance to go looking for one.</p>
+    </div>
+
+    <div class="inst">Questions 27–31
+      <span class="sub">Do the following statements agree with the claims of the writer in Reading Passage 3? Write<br>
+      <b>YES</b> if the statement agrees with the claims of the writer<br>
+      <b>NO</b> if the statement contradicts the claims of the writer<br>
+      <b>NOT GIVEN</b> if it is impossible to say what the writer thinks about this</span></div>
+    <div class="tfrow"><span class="n">27</span><span>It is now easier than it used to be to avoid feeling bored.</span><span class="wl"></span></div>
+    <div class="tfrow"><span class="n">28</span><span>The findings of Brenner's experiment have been given more importance than they deserve.</span><span class="wl"></span></div>
+    <div class="tfrow"><span class="n">29</span><span>Brenner's experiment should not have been published.</span><span class="wl"></span></div>
+    <div class="tfrow"><span class="n">30</span><span>People suffering from chronic boredom should be encouraged to accept the feeling.</span><span class="wl"></span></div>
+    <div class="tfrow"><span class="n">31</span><span>People should deliberately try to be bored more often.</span><span class="wl"></span></div>
+
+    <div class="inst">Questions 32–34
+      <span class="sub">Choose the correct letter, <b>A</b>, <b>B</b>, <b>C</b> or <b>D</b>.</span></div>
+    <div class="item"><span class="n">32</span><span>According to the second paragraph, more recent views of boredom differ from older ones because they
+      <span class="opts"><span><b>A</b> see it as caused by a person's surroundings.</span><span><b>B</b> describe it as a message produced by the mind.</span><span><b>C</b> link it to a lack of food.</span><span><b>D</b> treat it as a sign of personal failure.</span></span></span></div>
+    <div class="item"><span class="n">33</span><span>In Brenner's experiment, the participants who had copied numbers
+      <span class="opts"><span><b>A</b> finished the second task faster than the other group.</span><span><b>B</b> were asked to find new uses for the telephone directory.</span><span><b>C</b> produced more original ideas than the other group.</span><span><b>D</b> said they felt less bored at the end of the experiment.</span></span></span></div>
+    <div class="item"><span class="n">34</span><span>What does the writer say about the reports from schools?
+      <span class="opts"><span><b>A</b> They show that students dislike unstructured time.</span><span><b>B</b> They have not yet been properly researched.</span><span><b>C</b> They were written mainly by students.</span><span><b>D</b> They prove that boredom improves creativity.</span></span></span></div>
+
+    <div class="inst">Questions 35–37
+      <span class="sub">Look at the following statements (Questions 35–37) and the list of researchers below. Match each statement with the correct researcher, <b>A–D</b>. <i>You may use any letter more than once.</i></span></div>
+    <div class="letters two">
+      <span><b>A</b> Hana Okafor</span>
+      <span><b>B</b> Lucas Brenner</span>
+      <span><b>C</b> Ines Castillo</span>
+      <span><b>D</b> Rafael Kim</span>
+    </div>
+    <div class="item"><span class="n">35</span><span>Boredom seems to help creative thinking only when people cannot get away from it.</span></div>
+    <div class="item"><span class="n">36</span><span>Picking up a phone whenever boredom begins may make people feel bored more frequently.</span></div>
+    <div class="item"><span class="n">37</span><span>Boredom works in a similar way to a physical signal such as hunger.</span></div>
+
+    <div class="inst">Questions 38–40
+      <span class="sub">Complete the sentences below. Choose <span class="caps">NO MORE THAN TWO WORDS</span> from the passage for each answer.</span></div>
+    <div class="item"><span class="n">38</span><span>Kim compares constant stimulation to a diet high in sugar, which makes <span class="blank"></span> taste less sweet.</span></div>
+    <div class="item"><span class="n">39</span><span>Unlike useful boredom, chronic boredom can last for weeks or <span class="blank"></span>.</span></div>
+    <div class="item"><span class="n">40</span><span>Some people use moments of boredom to plan, to reflect or to notice their <span class="blank"></span>.</span></div>
+    <p class="done">End of the Reading test.</p>
+  </div>
+
+  <!-- ═════════════════════ ANSWER SHEET ═════════════════════ -->
+  <div class="pagebreak"></div>
+  <div class="paper">
+    <header class="mast">
+      <div class="kit-eyebrow">IELTS Academic Preparation · Practice Test 1</div>
+      <h1>Answer Sheet</h1>
+      <div class="paper-head">
+        <div><b>Name:</b></div>
+        <div><b>Date:</b></div>
+        <div><b>Class:</b></div>
+      </div>
+      <p style="font-size:.98rem">Write clearly. Capital letters are fine. Leave the small box on the right empty; you will use it to mark your answers in Class 9 (✓ or ✗).</p>
+    </header>
+
+    <div class="part-h"><h2>Listening</h2><span class="score">___ / 40</span></div>
+    <div class="asheet">
+      <div>
+        <div class="row"><span class="n">1</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">2</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">3</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">4</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">5</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">6</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">7</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">8</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">9</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">10</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">11</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">12</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">13</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">14</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">15</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">16</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">17</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">18</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">19</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">20</span><span></span><span class="mk"></span></div>
+      </div>
+      <div>
+        <div class="row"><span class="n">21</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">22</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">23</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">24</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">25</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">26</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">27</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">28</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">29</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">30</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">31</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">32</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">33</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">34</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">35</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">36</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">37</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">38</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">39</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">40</span><span></span><span class="mk"></span></div>
+      </div>
+    </div>
+    <p style="font-size:.9rem;color:var(--ink-2)">Questions 19–20: write one letter on each line, in either order.</p>
+
+    <div class="part-h pagebreak"><h2>Academic Reading</h2><span class="score">___ / 40</span></div>
+    <div class="asheet">
+      <div>
+        <div class="row"><span class="n">1</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">2</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">3</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">4</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">5</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">6</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">7</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">8</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">9</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">10</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">11</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">12</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">13</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">14</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">15</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">16</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">17</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">18</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">19</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">20</span><span></span><span class="mk"></span></div>
+      </div>
+      <div>
+        <div class="row"><span class="n">21</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">22</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">23</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">24</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">25</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">26</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">27</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">28</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">29</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">30</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">31</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">32</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">33</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">34</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">35</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">36</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">37</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">38</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">39</span><span></span><span class="mk"></span></div>
+        <div class="row"><span class="n">40</span><span></span><span class="mk"></span></div>
+      </div>
+    </div>
+    <p style="font-size:.9rem;color:var(--ink-2)">Questions 1–7: write TRUE, FALSE or NOT GIVEN. Questions 27–31: write YES, NO or NOT GIVEN. (T / F / NG and Y / N / NG are also fine here, but in the real test, write the words the instructions ask for.)</p>
+  </div>
+
+  <!-- ═════════════════════ TEACHER PAGES ═════════════════════ -->
+  <div class="pagebreak"></div>
+  <span class="teacher-only">Teacher only · do not hand out</span>
+  <div class="sec"><h2>Listening Scripts</h2><span class="rule"></span></div>
+  <p>Read each section <b>once</b>. Words in square brackets are stage directions, not to be read aloud. Time every pause with a phone; the pauses are part of the test, because they are when learners read ahead. Answers are in bold for your marking only. The total running time is about 25–28 minutes including the final check.</p>
+  <div class="say">This is Practice Test 1, Listening. There are four sections. You will hear each section once only. Write your answers on the answer sheet as you listen. At the end of the test you will have two minutes to check your answers.</div>
+
+  <div class="blk"><div class="h">Section 1 · Greenway Community Gardens (Tom, a clerk · Martina, a caller)</div>
+    <div class="script">Section 1. You will hear a woman calling a community garden office to ask about renting a garden plot. First, you have some time to look at Questions 1 to 6. [pause 30 seconds] Now listen carefully and answer Questions 1 to 6.</div>
+    <div class="dialogue">
+      <p class="line a"><span class="speaker">Tom:</span> Good morning, Greenway Community Gardens, Tom speaking.</p>
+      <p class="line b"><span class="speaker">Martina:</span> Oh, hi. I'm calling about renting a plot. I saw your poster in the library.</p>
+      <p class="line a"><span class="speaker">Tom:</span> Great, we have a few plots available at the moment. Can I take some details and put you on our list?</p>
+      <p class="line b"><span class="speaker">Martina:</span> Sure.</p>
+      <p class="line a"><span class="speaker">Tom:</span> What's your name, please?</p>
+      <p class="line b"><span class="speaker">Martina:</span> Martina <b>Ferreira</b>. That's F-E-double R-E-I-R-A.</p>
+      <p class="line a"><span class="speaker">Tom:</span> F-E-R-R-E-I-R-A. Thanks. And your address?</p>
+      <p class="line b"><span class="speaker">Martina:</span> It's Flat 3, 18 <b>Juniper</b> Road. Juniper is J-U-N-I-P-E-R.</p>
+      <p class="line a"><span class="speaker">Tom:</span> Got it. Juniper Road. That's very close to our east gate, actually. And a phone number?</p>
+      <p class="line b"><span class="speaker">Martina:</span> It's oh-four-one-two, five-five-eight, three-nine-oh. Oh, sorry, no, it's five-five-<i>nine</i>, three-nine-oh. It's a new number and I always get it wrong.</p>
+      <p class="line a"><span class="speaker">Tom:</span> So that's <b>oh-four-one-two, five-five-nine, three-nine-oh</b>.</p>
+      <p class="line b"><span class="speaker">Martina:</span> That's right.</p>
+      <p class="line a"><span class="speaker">Tom:</span> Now, we have two sizes of plot. A full plot is fifty square meters, and a half plot is twenty-five.</p>
+      <p class="line b"><span class="speaker">Martina:</span> I think fifty would be far too much for me. I work full-time. I'll go for the smaller one.</p>
+      <p class="line a"><span class="speaker">Tom:</span> A half plot, then: <b>twenty-five</b> square meters. And when would you like to start? Most people start in February, to prepare the soil.</p>
+      <p class="line b"><span class="speaker">Martina:</span> February's difficult; I'm away for most of it. Could I start in <b>March</b>?</p>
+      <p class="line a"><span class="speaker">Tom:</span> March is fine. Oh, and just for our records, how did you first hear about us? You mentioned the poster.</p>
+      <p class="line b"><span class="speaker">Martina:</span> Well, actually, my <b>neighbor</b> told me about the gardens last year. I only saw the poster last week.</p>
+      <p class="line a"><span class="speaker">Tom:</span> So, first from a neighbor. Lovely.</p>
+    </div>
+    <div class="script">Before you hear the rest of the conversation, you have some time to look at Questions 7 to 10. [pause 30 seconds] Now listen and answer Questions 7 to 10.</div>
+    <div class="dialogue">
+      <p class="line a"><span class="speaker">Tom:</span> Let me tell you about the costs and the rules. The annual fee for a full plot is sixty dollars, and for a half plot it's forty.</p>
+      <p class="line b"><span class="speaker">Martina:</span> Is there any discount?</p>
+      <p class="line a"><span class="speaker">Tom:</span> Only for people over sixty-five, I'm afraid, so for you it's <b>forty</b>.</p>
+      <p class="line b"><span class="speaker">Martina:</span> That's fine.</p>
+      <p class="line a"><span class="speaker">Tom:</span> You'll also need a key to the gate, and there's a deposit for that. It used to be fifteen dollars, but it went up to <b>twenty</b> this year. You get it back when you return the key.</p>
+      <p class="line b"><span class="speaker">Martina:</span> OK. Are there any rules I should know about?</p>
+      <p class="line a"><span class="speaker">Tom:</span> A few. You can use a hose, and you can put up a small shed if you ask the committee first. But you mustn't use any chemical <b>sprays</b>: no weedkillers, no pesticides. We're an organic garden.</p>
+      <p class="line b"><span class="speaker">Martina:</span> That suits me.</p>
+      <p class="line a"><span class="speaker">Tom:</span> And finally, we have a workday once a month, when everyone helps with the shared areas: cutting the grass, fixing fences, that kind of thing. It's on the first <b>Saturday</b> of each month. It used to be Sundays, but more people can come on Saturdays.</p>
+      <p class="line b"><span class="speaker">Martina:</span> Great, I'll put it in my calendar.</p>
+      <p class="line a"><span class="speaker">Tom:</span> Wonderful. I'll email you an application form today.</p>
+    </div>
+    <div class="script">That is the end of Section 1. You now have half a minute to check your answers. [pause 30 seconds]</div>
+  </div>
+
+  <div class="blk"><div class="h">Section 2 · Marsh Lane Nature Reserve (Grace, a volunteer guide)</div>
+    <div class="script">Section 2. You will hear a guide talking to a group of visitors at a nature reserve. First, you have some time to look at Questions 11 to 15. [pause 30 seconds] Now listen carefully and answer Questions 11 to 15.<br><br>
+    Good morning, and welcome to Marsh Lane Nature Reserve. I'm Grace, one of the volunteer guides. Before you set off, I'll show you where everything is on the map in your leaflet, and then I'll tell you a bit about the reserve itself.<br><br>
+    So, we're standing in the visitor center, at the south entrance; that's at the bottom of your map. When you come out of the front door and face the lake, you'll see the <b>bike racks immediately on your right</b>, so if you've cycled here, that's where to leave your bike.<br><br>
+    Now, the old leaflet says that the children's trail starts on the left of the visitor center, opposite the bike racks. That was true until last spring, but we've moved it: <b>the children's trail now starts halfway up the main path, on the left-hand side</b>. You'll see a big wooden sign shaped like a frog.<br><br>
+    Keep walking up the main path and you'll come to the place where the path forks, with one branch heading east. <b>In the corner above the east path, where the two paths meet, there's the picnic area</b>. There are plenty of tables, and it's quite sheltered.<br><br>
+    If you take that eastern branch and follow it <b>right to the end, you'll reach the wildflower meadow</b>, which is at its best in early summer.<br><br>
+    And if you stay on the main path instead, it takes you all the way up to the lake. When you get there, <b>the bird hide is on your left</b>. It's a small wooden building where you can watch the birds without disturbing them.<br><br>
+    [pause] Now you have some time to look at Questions 16 to 20. [pause 30 seconds] Now listen and answer Questions 16 to 20.<br><br>
+    Let me tell you a little about the reserve itself. Many visitors assume that this land has always been wild, and some people think it was set up to protect a rare orchid that grows here. In fact, twelve years ago these were ordinary farm fields. <b>The reserve was created as part of a flood-control project</b>: the fields were allowed to flood so that water would be held here rather than in the town downstream. The wildlife arrived afterward, and much faster than anyone expected.<br><br>
+    People often ask about otters. We do have a family living by the lake, but they're shy. Binoculars will certainly help you with the birds, but for otters the key thing is timing: they're most active just after sunrise, so if you want to see them, <b>you'll need to come early in the morning</b>.<br><br>
+    We also run guided walks every Sunday. The old leaflet says they last two hours, but they're actually about ninety minutes now. They're free; there's no charge for anyone. But places are limited, so <b>you do need to book them on our website</b>.<br><br>
+    Finally, a few requests. Dogs are welcome on a short lead, and please take as many photographs as you like. But <b>please don't feed the birds</b>; bread in particular makes them ill. And <b>please don't fly drones</b> anywhere on the reserve, as they frighten the nesting birds. In the meadow, you're welcome to walk off the path and have a closer look at the flowers. Enjoy your visit!<br><br>
+    That is the end of Section 2. You now have half a minute to check your answers. [pause 30 seconds]</div>
+  </div>
+
+  <div class="blk"><div class="h">Section 3 · A food-waste project (Dr. Adeyemi, a tutor · Laura and Kenji, students)</div>
+    <div class="script">Section 3. You will hear two students, Laura and Kenji, talking to their tutor, Dr. Adeyemi, about their research project on food waste. First, you have some time to look at Questions 21 to 24. [pause 30 seconds] Now listen carefully and answer Questions 21 to 24.</div>
+    <div class="dialogue">
+      <p class="line a"><span class="speaker">Dr. Adeyemi:</span> Come in, both of you. So, how's the food-waste project going?</p>
+      <p class="line b"><span class="speaker">Laura:</span> Pretty well, I think. We've got our first set of data.</p>
+      <p class="line a"><span class="speaker">Dr. Adeyemi:</span> Good. Remind me: why did you choose this topic in the first place? Was it the cafeteria manager's suggestion?</p>
+      <p class="line b"><span class="speaker">Laura:</span> No. She's been really helpful, but it wasn't her idea. To be honest, <b>it started because I worked in a restaurant kitchen for two years before university</b>, and I was shocked by how much food got thrown away. I wanted to see if it was the same here.</p>
+      <p class="line b"><span class="speaker">Kenji:</span> And I just liked the idea of a project with real numbers.</p>
+      <p class="line a"><span class="speaker">Dr. Adeyemi:</span> Have you checked whether anyone's done something similar on campus?</p>
+      <p class="line b"><span class="speaker">Kenji:</span> Not properly yet. That's on our list.</p>
+      <p class="line a"><span class="speaker">Dr. Adeyemi:</span> OK. So tell me about the data collection.</p>
+      <p class="line b"><span class="speaker">Kenji:</span> Well, we weighed all the food waste from the main cafeteria at the end of each day. We were worried at first about the scales, but we tested them against known weights and they were accurate. And the kitchen staff were brilliant; they separated everything for us.</p>
+      <p class="line b"><span class="speaker">Laura:</span> The trouble is, <b>we only managed to weigh the waste on three days</b>, and one of those was a public holiday, when the cafeteria was half empty. So we don't think the figures are representative.</p>
+      <p class="line a"><span class="speaker">Dr. Adeyemi:</span> No, three days isn't enough to say much. You could add a second cafeteria for comparison, but that would double your workload. I think the better option is to <b>extend the weighing at the main cafeteria to a full four weeks</b>. Interviews with students would be interesting, but leave them until later, if you have time.</p>
+      <p class="line b"><span class="speaker">Kenji:</span> Four weeks. OK, that's doable.</p>
+      <p class="line a"><span class="speaker">Dr. Adeyemi:</span> And what have you found so far?</p>
+      <p class="line b"><span class="speaker">Laura:</span> Well, we expected vegetables to be the biggest item thrown away, and they were. No surprise there. What we didn't expect was where the waste came from. <b>More than half of it was food that was prepared in the kitchen but never served</b>, rather than food left on people's plates.</p>
+      <p class="line a"><span class="speaker">Dr. Adeyemi:</span> That is interesting. It changes what your recommendations might focus on.</p>
+    </div>
+    <div class="script">Before you hear the rest of the discussion, you have some time to look at Questions 25 to 30. [pause 30 seconds] Now listen and answer Questions 25 to 30.</div>
+    <div class="dialogue">
+      <p class="line a"><span class="speaker">Dr. Adeyemi:</span> Now, let's look at the draft outline you sent me. Your literature review is very short at the moment.</p>
+      <p class="line b"><span class="speaker">Kenji:</span> We know. We found a few more articles last week.</p>
+      <p class="line a"><span class="speaker">Dr. Adeyemi:</span> Then I'd definitely make that section longer. It's where you show you understand the field.</p>
+      <p class="line b"><span class="speaker">Laura:</span> OK, <b>we'll expand it</b>.</p>
+      <p class="line a"><span class="speaker">Dr. Adeyemi:</span> What about all these photographs of the waste bins? There are twelve of them in the middle of the report.</p>
+      <p class="line b"><span class="speaker">Laura:</span> We thought they made it more vivid.</p>
+      <p class="line a"><span class="speaker">Dr. Adeyemi:</span> They do, but they interrupt the argument.</p>
+      <p class="line b"><span class="speaker">Kenji:</span> Should we delete them?</p>
+      <p class="line a"><span class="speaker">Dr. Adeyemi:</span> I wouldn't delete them. <b>Put them at the end, in an appendix</b>, and refer to them in the text.</p>
+      <p class="line b"><span class="speaker">Laura:</span> Good idea.</p>
+      <p class="line a"><span class="speaker">Dr. Adeyemi:</span> Then there's the section on costs, where you estimate how much money the wasted food represents.</p>
+      <p class="line b"><span class="speaker">Kenji:</span> Yes, I was going to ask about that. We got the prices from the cafeteria menu, but those are selling prices, not what the food actually costs the university.</p>
+      <p class="line b"><span class="speaker">Laura:</span> And the manager couldn't give us the real figures. So I think <b>we should just take that section out</b>. We can't check the numbers.</p>
+      <p class="line a"><span class="speaker">Dr. Adeyemi:</span> I agree. It's better to leave it out than to include figures you can't support.</p>
+      <p class="line b"><span class="speaker">Kenji:</span> And the recommendations? Should we rewrite them with you?</p>
+      <p class="line a"><span class="speaker">Dr. Adeyemi:</span> I was going to suggest that, but after what you've told me about the kitchen waste... actually, no. The recommendations you've drafted already focus on portion planning in the kitchen. <b>They're fine as they are.</b></p>
+      <p class="line b"><span class="speaker">Laura:</span> Great.</p>
+      <p class="line a"><span class="speaker">Dr. Adeyemi:</span> So, next steps. You mentioned putting up posters to ask students to fill in a short survey.</p>
+      <p class="line b"><span class="speaker">Kenji:</span> Yes, in the cafeteria.</p>
+      <p class="line a"><span class="speaker">Dr. Adeyemi:</span> You'll need permission for that. Not from me, and not from the cafeteria manager: posters on campus have to be approved by the <b>student union</b>.</p>
+      <p class="line b"><span class="speaker">Laura:</span> OK, we'll email them today.</p>
+      <p class="line a"><span class="speaker">Dr. Adeyemi:</span> And the draft. The original deadline was the tenth of March, but since you're extending the data collection, I'll give you until the <b>fourteenth</b>.</p>
+      <p class="line b"><span class="speaker">Kenji:</span> The fourteenth of March. Thank you!</p>
+    </div>
+    <div class="script">That is the end of Section 3. You now have half a minute to check your answers. [pause 30 seconds]</div>
+  </div>
+
+  <div class="blk"><div class="h">Section 4 · A lecture on urban heat islands</div>
+    <div class="script">Section 4. You will hear part of a lecture on urban heat islands. First, you have some time to look at Questions 31 to 40. [pause 45 seconds] Now listen carefully and answer Questions 31 to 40.<br><br>
+    Good afternoon. Today I want to look at a phenomenon that affects almost every large city in the world: the urban heat island. Put simply, an urban heat island is a city, or part of a city, that is noticeably warmer than the <b>rural</b> areas around it. On a summer day, the difference can be several degrees.<br><br>
+    Now, you might expect the difference to be greatest in the middle of the day, when the sun is strongest. In fact, it's usually greatest at <b>night</b>. That's because city surfaces absorb heat during the day and then release it slowly after sunset, so cities cool down far more slowly than the countryside.<br><br>
+    So what causes the effect? I'll mention four main factors. The first is the materials that cities are built from. Dark surfaces absorb much more of the sun's energy than light ones, and cities are full of them: dark roofs and, above all, the <b>asphalt</b> we use on roads and parking lots.<br><br>
+    The second factor is the lack of <b>vegetation</b>. Plants release water through their leaves, and as that water evaporates, it cools the surrounding air. When we replace fields and trees with concrete, we lose that natural cooling.<br><br>
+    Third, cities produce heat of their own. <b>Vehicles</b>, factories and air conditioners all release waste heat into the street. Air conditioners are a particularly unfortunate case, since they cool the inside of a building by pumping heat outside.<br><br>
+    And the fourth factor is the shape of the city itself. Tall buildings close together create what are sometimes called urban canyons. These trap heat, and they also block the <b>wind</b> that would otherwise carry the warm air away.<br><br>
+    What are the consequences? The most obvious is higher demand for <b>electricity</b>, as people turn up their air conditioning, which, as I've just said, makes the problem worse. More seriously, heat islands are a risk to health. During heat waves, the danger is greatest for <b>elderly</b> people, especially those who live alone and may not have anyone checking on them.<br><br>
+    Fortunately, there are solutions, and some of them are surprisingly simple. One is the so-called "cool roof." Many cities now encourage building owners to paint their roofs <b>white</b>, so that they reflect sunlight rather than absorbing it. Another is to plant more trees, particularly along streets and in school playgrounds. Trees provide shade, and they cool the air through evaporation, as I described earlier.<br><br>
+    In one study, researchers measured the temperature of pavements in the afternoon sun and compared them with pavements shaded by trees. The shaded pavements were up to <b>twelve</b> degrees Celsius cooler. You may see a figure of fifteen degrees quoted in some newspapers, but that was recorded on a single, exceptionally hot day, so twelve is the more reliable figure.<br><br>
+    Of course, none of these measures is a complete answer on its own, and next week we'll look at how city planners combine them.<br><br>
+    That is the end of Section 4. You now have two minutes to check your answers. [pause 2 minutes] That is the end of the Listening test.</div>
+  </div>
+
+  <div class="note lab">
+    <div class="t">Class 9: self-marking and error analysis (plan for about 25 minutes)</div>
+    <p>Hand back the answer sheets and project or print the keys from <code class="inline">answer-keys.html</code>. Learners mark their <b>own</b> sheets in a different color (✓ / ✗ in the small box), strictly: spelling and word limits count. Then they do three things. <b>①</b> Convert each raw score to an approximate band with the conversion table. <b>②</b> For every ✗, write a <b>cause code</b> in the margin (the same codes as the Module 2 workbook and the Set F tally sheet). <b>Listening:</b> <b>D</b> distractor · <b>S</b> spelling or plural · <b>W</b> word limit / wrong form · <b>N</b> number, letter or date misheard · <b>L</b> lost my place / froze · <b>P</b> missed the paraphrase · <b>X</b> transfer error (right answer, wrong box or illegible). <b>Reading:</b> <b>P</b> missed the paraphrase · <b>M</b> word-match trap · <b>S</b> copied a word wrongly · <b>W</b> word limit / wrong form · <b>O</b> looked in the wrong place · <b>T</b> ran out of time / left a blank · <b>F</b> confused False and Not Given · <b>K</b> used own knowledge, not the text · <b>Q</b> missed a qualifier · <b>H</b> heading matched a detail, not the main idea · <b>X</b> transfer error. <b>③</b> Count the codes: the most frequent one becomes their focus for Weeks 5–7, with the online lesson that trains it. The key's "From errors to a study plan" table does the matching. Collect the sheets afterward and keep them for comparison with Practice Test 2.</p>
+  </div>
+  <p style="font-size:.88rem;color:var(--ink-2)">All passages, scripts, names, organizations, studies and figures in this test were written for this kit. The researchers and studies are invented for testing purposes; don't quote them as facts. The general science (for example, that city heat islands are usually strongest at night) reflects widely reported findings.</p>
+
+  <div class="foot">
+    <div class="who"><b>Ray de la Paz</b><span class="bio">© 2026 Ray de la Paz · IELTS Academic Preparation</span></div>
+    <div class="ver">Assessment · Practice Test 1 · v1.0</div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IELTS Band Tracker</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="kit.css">
+<style>
+  .tracker{font-size:13.5px;line-height:1.4;padding-top:26px;padding-bottom:30px}
+  .tracker .mast{padding-bottom:10px;margin-bottom:4px}
+  .tracker .mast h1{font-size:1.6rem;margin:4px 0 2px}
+  .tracker .mast .sub{font-size:.9rem;max-width:none}
+  .tracker .sec{margin:12px 0 6px}
+  .tracker .sec h2{font-size:.95rem}
+  .fill{display:grid;grid-template-columns:auto 1fr auto 1fr;gap:8px 12px;align-items:end;margin:6px 0}
+  .fill .k{font-weight:700;white-space:nowrap}
+  .fill .v{border-bottom:1.5px solid var(--ink-2);min-height:1.5em}
+  table.bt{width:100%;border-collapse:collapse;margin:4px 0;font-size:.86rem}
+  table.bt th,table.bt td{border:1px solid var(--line-strong);padding:4px 6px;text-align:left;vertical-align:middle}
+  table.bt th{background:var(--surface-2);font-weight:600;font-size:.8rem;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  table.bt th .s{display:block;font-weight:400;color:var(--ink-3);font-size:.72rem}
+  table.bt td.sk{font-weight:700;white-space:nowrap}
+  table.bt td.cell{height:26px}
+  table.bt td.raw{color:var(--ink-3);font-size:.74rem;white-space:nowrap}
+  table.bt td.na{background:repeating-linear-gradient(135deg,var(--surface-2) 0 6px,#fff 6px 12px);color:var(--ink-3);font-size:.72rem;text-align:center;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  table.bt tr.overall td{border-top:2px solid var(--ink-2);font-weight:700}
+  table.bt.tally td{padding:3px 6px;font-size:.8rem} table.bt.tally td.cell{height:20px}
+  table.bt .grp td{background:var(--accent-soft);font-family:"JetBrains Mono",monospace;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:600;padding:2px 6px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  table.bt.plan td.cell{height:28px}
+  .tw{overflow-x:auto}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
+  .three{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  table.bt.plan td.raw{text-align:center}
+  table.bt.plan td.cell{text-align:center}
+  .hint{font-size:.76rem;color:var(--ink-3);margin:2px 0}
+  .box{border:1px dashed var(--line-strong);border-radius:8px;min-height:62px;padding:6px 10px;font-size:.78rem;color:var(--ink-3)}
+  .tracker .foot{margin-top:10px;padding-top:8px}
+  .tracker .foot{break-inside:avoid}
+  @media (max-width:680px){ .two,.three{grid-template-columns:1fr} .fill{grid-template-columns:auto 1fr} table.bt{font-size:.78rem} }
+  @page{size:Letter;margin:.4in}
+  @media print{
+    .tracker{padding:0;font-size:12.5px;zoom:.80}
+    .tracker .sec{margin:8px 0 4px}
+    table.bt td.cell{height:22px}
+    table.bt.tally td{padding:1px 6px;line-height:1.2} table.bt.tally td.cell{height:14px}
+    table.bt.plan td.cell{height:24px}
+    .box{min-height:48px}
+    .tracker .mast h1{font-size:1.45rem}
+    .tracker .foot{margin-top:6px;padding-top:6px}
+    .tracker .mast{padding-bottom:10px}
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="lbl">Learner tracker —</span>
+  <button type="button" onclick="window.print()">🖨 Print / Save as PDF</button>
+  <span class="hint">one per learner · give out in Class 1 · learners keep it in their workbook</span>
+</div>
+
+<div class="sheet tracker">
+
+  <header class="mast">
+    <div class="kit-eyebrow">IELTS Academic Preparation · My Band Tracker</div>
+    <h1>My Band Tracker</h1>
+    <p class="sub">Record your results here after every test class, and look at it before you plan each week. Compare yourself only with <b>yourself</b>. Practice-test bands are estimates, not official scores.</p>
+  </header>
+
+  <div class="fill">
+    <span class="k">Name:</span><span class="v"></span>
+    <span class="k">Test date (if booked):</span><span class="v"></span>
+    <span class="k">I need IELTS for:</span><span class="v"></span>
+    <span class="k">Required by (date):</span><span class="v"></span>
+  </div>
+
+  <div class="sec"><h2>1 · My bands</h2><span class="rule"></span></div>
+  <div class="tw"><table class="bt">
+    <tr>
+      <th style="width:14%">Skill</th>
+      <th style="width:14%">My target<span class="s">band I need</span></th>
+      <th style="width:18%">Diagnostic<span class="s">Class 1</span></th>
+      <th style="width:18%">Practice Test 1<span class="s">Class 8</span></th>
+      <th style="width:18%">Practice Test 2<span class="s">Classes 15–16</span></th>
+      <th>Change<span class="s">Diagnostic → PT2</span></th>
+    </tr>
+    <tr><td class="sk">Listening</td><td class="cell"></td><td class="raw">raw ___ / ___ → band ____</td><td class="raw">raw ___ / 40 → band ____</td><td class="raw">raw ___ / 40 → band ____</td><td class="cell"></td></tr>
+    <tr><td class="sk">Reading</td><td class="cell"></td><td class="raw">raw ___ / ___ → band ____</td><td class="raw">raw ___ / 40 → band ____</td><td class="raw">raw ___ / 40 → band ____</td><td class="cell"></td></tr>
+    <tr><td class="sk">Writing</td><td class="cell"></td><td class="raw">sample → est. band ____</td><td class="na">not in Practice Test 1</td><td class="raw">Task 1 + Task 2 → est. band ____</td><td class="cell"></td></tr>
+    <tr><td class="sk">Speaking</td><td class="cell"></td><td class="raw">3-min sample → est. band ____</td><td class="na">not in Practice Test 1</td><td class="raw">interview → est. band ____</td><td class="cell"></td></tr>
+    <tr class="overall"><td class="sk">Overall</td><td class="cell"></td><td class="cell"></td><td class="na">L + R only</td><td class="cell"></td><td class="cell"></td></tr>
+  </table></div>
+  <p class="hint"><b>Overall band</b> = the average of the four skills, rounded to the nearest half band (an average ending in .25 rounds up to the next half band; .75 rounds up to the next whole band). Example: 6.5 + 6.0 + 6.0 + 7.0 = 25.5 ÷ 4 = 6.375 → <b>6.5</b>. Also check each skill against any <b>minimum per skill</b> your institution sets. Your teacher converts raw scores to bands with the tables in the answer key.</p>
+
+  <div class="sec"><h2>2 · My error tally</h2><span class="rule"></span></div>
+  <p class="hint">After each test, make one tally mark (|) for every point lost to each type of error, using the error codes from Module 2 (the same codes are on the tally sheet and in the answer key). Your biggest number is next week's focus.</p>
+  <div class="two">
+    <div>
+      <div class="tw"><table class="bt tally">
+        <tr><th>Error type</th><th style="width:15%">Diag.</th><th style="width:15%">PT1</th><th style="width:15%">PT2</th></tr>
+        <tr class="grp"><td colspan="4">Listening</td></tr>
+        <tr><td><b>D</b> distractor</td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
+        <tr><td><b>S</b> spelling or plural</td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
+        <tr><td><b>W</b> word limit / wrong form</td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
+        <tr><td><b>N</b> number, letter or date misheard</td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
+        <tr><td><b>L</b> lost my place / froze</td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
+        <tr><td><b>P</b> missed the paraphrase</td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
+        <tr><td><b>X</b> transfer error</td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
+        <tr class="grp"><td colspan="4">Writing</td></tr>
+        <tr><td>Task 1: no clear overview</td><td class="cell"></td><td class="na">—</td><td class="cell"></td></tr>
+        <tr><td>Task 2: not fully answered</td><td class="cell"></td><td class="na">—</td><td class="cell"></td></tr>
+        <tr><td>Articles, agreement, run-ons</td><td class="cell"></td><td class="na">—</td><td class="cell"></td></tr>
+        <tr class="grp"><td colspan="4">Speaking</td></tr>
+        <tr><td>Short answers (not extended)</td><td class="cell"></td><td class="na">—</td><td class="cell"></td></tr>
+        <tr><td>Long pauses / repeated words</td><td class="cell"></td><td class="na">—</td><td class="cell"></td></tr>
+        <tr><td>Unclear stress or sounds</td><td class="cell"></td><td class="na">—</td><td class="cell"></td></tr>
+      </table></div>
+    </div>
+    <div>
+      <div class="tw"><table class="bt tally">
+        <tr><th>Error type</th><th style="width:15%">Diag.</th><th style="width:15%">PT1</th><th style="width:15%">PT2</th></tr>
+        <tr class="grp"><td colspan="4">Reading</td></tr>
+        <tr><td><b>P</b> missed the paraphrase</td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
+        <tr><td><b>M</b> word-match trap</td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
+        <tr><td><b>S</b> copied a word wrongly</td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
+        <tr><td><b>W</b> word limit / wrong form</td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
+        <tr><td><b>O</b> looked in the wrong place</td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
+        <tr><td><b>T</b> ran out of time / left a blank</td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
+        <tr><td><b>F</b> confused False and Not Given</td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
+        <tr><td><b>K</b> used own knowledge, not the text</td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
+        <tr><td><b>Q</b> missed a qualifier</td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
+        <tr><td><b>H</b> heading matched a detail</td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
+        <tr><td><b>X</b> transfer error</td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
+      </table></div>
+    </div>
+  </div>
+
+  <div class="sec"><h2>3 · My weekly study plan</h2><span class="rule"></span></div>
+  <p class="hint">Plan 2–3 sessions of 45–60 minutes a week: the online lesson, your focus skill, and one timed task. Tick when it's done.</p>
+  <div class="tw"><table class="bt plan">
+    <tr><th style="width:12%"></th><th>Week 1<span class="s">C1–2</span></th><th>Week 2<span class="s">C3–4</span></th><th>Week 3<span class="s">C5–6</span></th><th>Week 4<span class="s">C7–8</span></th><th>Week 5<span class="s">C9–10</span></th><th>Week 6<span class="s">C11–12</span></th><th>Week 7<span class="s">C13–14</span></th><th>Week 8<span class="s">C15–16</span></th></tr>
+    <tr><td class="sk">Online lessons</td><td class="raw">1.1</td><td class="raw">1.2 · 1.3</td><td class="raw">2.1 · 2.2</td><td class="raw">2.3 · PT1</td><td class="raw">3.1 · 3.2</td><td class="raw">3.3 · 4.1</td><td class="raw">4.2 · 4.3</td><td class="raw">PT2 · review</td></tr>
+    <tr><td class="sk">My focus</td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
+    <tr><td class="sk">Timed task</td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
+    <tr><td class="sk">Done</td><td class="cell">☐</td><td class="cell">☐</td><td class="cell">☐</td><td class="cell">☐</td><td class="cell">☐</td><td class="cell">☐</td><td class="cell">☐</td><td class="cell">☐</td></tr>
+  </table></div>
+
+  <div class="sec"><h2>4 · Notes</h2><span class="rule"></span></div>
+  <div class="three">
+    <div class="box">My strongest skill: ____________<br>My priority skill: ____________</div>
+    <div class="box">One thing my teacher told me to keep doing, and one thing to change:</div>
+    <div class="box">After the course, my next step (test date, more practice, or a general English course first):</div>
+  </div>
+
+  <div class="foot">
+    <div class="who"><b>Ray de la Paz</b><span class="bio">© 2026 Ray de la Paz · IELTS Academic Preparation</span></div>
+    <div class="ver">Band Tracker · v1.0</div>
+  </div>
+
+</div>
+</body>
+</html>

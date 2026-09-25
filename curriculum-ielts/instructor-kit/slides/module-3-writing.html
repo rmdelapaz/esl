@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slides — Module 3</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root{--bg:#0b1220;--ink:#edf2fb;--ink2:#a8b6cf;--accent:#7fb2ff;--accent2:#2563eb;--lab:#34d3bd;--warn:#fbbf24;--line:#233252;--code:#101a2e;color-scheme:dark}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;overflow:hidden}
+  .deck{height:100%;width:100%;position:relative}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:6vh 8vw;gap:20px}
+  .slide.on{display:flex}
+  h1,h2,h3{font-family:"Archivo",sans-serif;line-height:1.1;text-wrap:balance}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  .slide h1{font-size:clamp(2rem,6vw,4rem);font-weight:800;letter-spacing:-.02em}
+  .slide h2{font-size:clamp(1.5rem,4.2vw,2.8rem);font-weight:800;letter-spacing:-.01em}
+  .slide p.lead{font-size:clamp(1.05rem,2.4vw,1.5rem);color:var(--ink2);max-width:26ch}
+  ul{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:6px}
+  ul li{position:relative;padding-left:34px;font-size:clamp(1.05rem,2.3vw,1.6rem)}
+  ul li::before{content:"";position:absolute;left:0;top:.55em;width:12px;height:12px;border-radius:3px;background:var(--accent);transform:rotate(45deg)}
+  ul.lab li::before{background:var(--lab)}
+  code.k{font-family:"JetBrains Mono",monospace;color:#cfe0ff;font-size:.92em}
+  pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:22px 26px;font-family:"JetBrains Mono",monospace;font-size:clamp(.85rem,1.9vw,1.3rem);line-height:1.55;overflow:auto;max-width:100%}
+  pre .k{color:#7dd3fc} pre .s{color:#86efac} pre .c{color:#7183a3;font-style:italic}
+  .tag{display:inline-flex;align-items:center;gap:10px;font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);color:var(--ink2)}
+  .tag .pill{background:var(--accent2);color:#fff;font-weight:700;border-radius:999px;padding:3px 12px;letter-spacing:.06em}
+  .tag .pill.lab{background:var(--lab);color:#062b26} .tag .pill.warn{background:var(--warn);color:#3a2a05}
+  .section{background:linear-gradient(135deg,#132a52,#0b1220)}
+  .section .big{font-size:clamp(3rem,12vw,8rem);font-family:"Archivo";font-weight:800;color:var(--accent2);line-height:.9}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+  @media (max-width:760px){.two{grid-template-columns:1fr}}
+  .bar{position:fixed;left:0;top:0;height:4px;background:var(--accent2);width:0;transition:width .25s;z-index:5}
+  .count{position:fixed;right:16px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink2);z-index:5}
+  .nav{position:fixed;inset:auto 0 0 0;display:flex;justify-content:space-between;pointer-events:none;z-index:4}
+  .nav button{pointer-events:auto;background:transparent;border:none;color:transparent;width:22vw;height:100vh;cursor:pointer}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+  /* ESL extras (picture vocab, grammar tables, dialogue, clocks) */
+  .pics{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,1.6vw,18px)}
+  .pics.six{grid-template-columns:repeat(6,1fr)}
+  .pic{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center}
+  .pic img{width:100%;max-width:150px;aspect-ratio:1;object-fit:cover;border-radius:10px;background:#FFF3E0;display:block;margin:0 auto}
+  .pic .emo{font-size:clamp(2.6rem,7vw,5rem);line-height:1;aspect-ratio:1;max-width:150px;margin:0 auto;display:flex;align-items:center;justify-content:center}
+  .pic .w{font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(.9rem,2vw,1.35rem);margin-top:6px}
+  @media (max-width:760px){.pics,.pics.six{grid-template-columns:repeat(3,1fr)}}
+  table.g{border-collapse:collapse;font-size:clamp(.95rem,2.1vw,1.45rem);width:100%;max-width:1000px}
+  table.g th,table.g td{border:1px solid var(--line);padding:10px 16px;text-align:left}
+  table.g th{background:var(--code);color:var(--accent);font-family:"JetBrains Mono",monospace;font-size:.8em;letter-spacing:.04em}
+  table.g b{color:#ffd166}
+  .dlg{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:18px 24px;display:flex;flex-direction:column;gap:8px;font-size:clamp(1rem,2.2vw,1.45rem);max-width:1000px}
+  .dlg .sp{display:inline-block;min-width:3.6em;font-weight:700;color:var(--accent)}
+  .dlg .b .sp{color:#c4a1ff}
+  .ccq{font-size:clamp(1rem,2.2vw,1.45rem);border:1px dashed var(--line);border-radius:12px;padding:12px 18px;background:var(--code)}
+  .ccq i{color:var(--ink2)}
+  .clocks{display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,34px);align-items:flex-start}
+  .clocks figure{text-align:center}
+  .clocks svg{width:clamp(96px,14vw,170px);height:auto}
+  .clocks figcaption{font-size:clamp(.95rem,2vw,1.3rem);margin-top:6px}
+  .clocks figcaption small{display:block;color:var(--ink2);font-size:.8em}
+  .snd{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .snd div{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:clamp(1rem,2.2vw,1.5rem)}
+  .snd div b{display:block;font-family:"Archivo";font-size:1.5em;color:var(--accent)}
+  .snd div small{color:var(--ink2)}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="deck" id="deck">
+
+  <!-- 1 -->
+  <section class="slide on section">
+    <div class="eyebrow">IELTS Academic Preparation · Instructor Kit</div>
+    <h1>Module 3<br>Academic Writing</h1>
+    <p class="lead" style="max-width:40ch">Report it. Argue it. Judge it.</p>
+    <ul class="lab">
+      <li><b>3.1</b> Task 1: the overview, trends, proportions, processes</li>
+      <li><b>3.2</b> Task 2: question types, the 5-minute plan, developed paragraphs</li>
+      <li><b>3.3</b> The four criteria, cohesion, and the Examiner Panel</li>
+    </ul>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide">
+    <div class="eyebrow">C9 · Warmer · Practice Test 1 results</div>
+    <h2>A map, not a verdict</h2>
+    <div class="two">
+      <table class="g" style="font-size:clamp(.85rem,1.8vw,1.2rem)">
+        <tr><th>Listening</th><th>Reading</th></tr>
+        <tr><td><b>D</b> distractor</td><td><b>P</b> paraphrase · <b>M</b> word-match trap</td></tr>
+        <tr><td><b>S</b> spelling or plural</td><td><b>S</b> copied wrongly · <b>W</b> word limit / form</td></tr>
+        <tr><td><b>W</b> word limit / wrong form</td><td><b>O</b> wrong place · <b>T</b> time / blank</td></tr>
+        <tr><td><b>N</b> number, letter, date</td><td><b>F</b> False vs NG · <b>K</b> own knowledge</td></tr>
+        <tr><td><b>L</b> lost my place / froze</td><td><b>Q</b> qualifier · <b>H</b> heading = detail</td></tr>
+        <tr><td><b>P</b> paraphrase · <b>X</b> transfer</td><td><b>X</b> transfer (wrong box)</td></tr>
+      </table>
+      <ul class="lab">
+        <li><b>1</b> Raw score → approximate band → band tracker</li>
+        <li><b>2</b> One stroke for every lost mark</li>
+        <li><b>3</b> Circle your <b>biggest</b> error type</li>
+        <li><b>4</b> Write <b>one</b> concrete fix</li>
+      </ul>
+    </div>
+    <div class="tag"><span class="pill lab">REMEMBER</span> In 8 weeks, about half a band is a common, real gain. Errors are habits, and habits change.</div>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide">
+    <div class="eyebrow">3.1 · Lead-in · five seconds only</div>
+    <h2>Tell me <i>one</i> thing about this chart.</h2>
+    <div class="two">
+      <div style="max-width:560px"><svg viewBox="0 0 560 320" role="img" aria-labelledby="t-line1" style="width:100%;max-width:560px;height:auto;font-family:Source Sans 3,system-ui,sans-serif"><title id="t-line1">Line graph: percentage of commuters who cycle to work in Northport, Eastvale and Riverton, 2004 to 2024</title><line x1="60" y1="260.0" x2="440" y2="260.0" stroke="#33476e" stroke-width="1"/><text x="52" y="264.0" font-size="12" text-anchor="end" fill="#a8b6cf">0</text><line x1="60" y1="227.1" x2="440" y2="227.1" stroke="#33476e" stroke-width="1"/><text x="52" y="231.1" font-size="12" text-anchor="end" fill="#a8b6cf">5</text><line x1="60" y1="194.3" x2="440" y2="194.3" stroke="#33476e" stroke-width="1"/><text x="52" y="198.3" font-size="12" text-anchor="end" fill="#a8b6cf">10</text><line x1="60" y1="161.4" x2="440" y2="161.4" stroke="#33476e" stroke-width="1"/><text x="52" y="165.4" font-size="12" text-anchor="end" fill="#a8b6cf">15</text><line x1="60" y1="128.6" x2="440" y2="128.6" stroke="#33476e" stroke-width="1"/><text x="52" y="132.6" font-size="12" text-anchor="end" fill="#a8b6cf">20</text><line x1="60" y1="95.7" x2="440" y2="95.7" stroke="#33476e" stroke-width="1"/><text x="52" y="99.7" font-size="12" text-anchor="end" fill="#a8b6cf">25</text><line x1="60" y1="62.9" x2="440" y2="62.9" stroke="#33476e" stroke-width="1"/><text x="52" y="66.9" font-size="12" text-anchor="end" fill="#a8b6cf">30</text><line x1="60" y1="30.0" x2="440" y2="30.0" stroke="#33476e" stroke-width="1"/><text x="52" y="34.0" font-size="12" text-anchor="end" fill="#a8b6cf">35</text><text x="60.0" y="278" font-size="12" text-anchor="middle" fill="#a8b6cf">2004</text><text x="136.0" y="278" font-size="12" text-anchor="middle" fill="#a8b6cf">2008</text><text x="212.0" y="278" font-size="12" text-anchor="middle" fill="#a8b6cf">2012</text><text x="288.0" y="278" font-size="12" text-anchor="middle" fill="#a8b6cf">2016</text><text x="364.0" y="278" font-size="12" text-anchor="middle" fill="#a8b6cf">2020</text><text x="440.0" y="278" font-size="12" text-anchor="middle" fill="#a8b6cf">2024</text><text x="16" y="145.0" font-size="12" fill="#a8b6cf" transform="rotate(-90 16 145.0)" text-anchor="middle">% of commuters</text><polyline points="60.0,220.6 136.0,207.4 212.0,181.1 288.0,135.1 364.0,82.6 440.0,56.3" fill="none" stroke="#7fb2ff" stroke-width="3" stroke-dasharray="" stroke-linejoin="round"/><circle cx="60.0" cy="220.6" r="4.5" fill="#7fb2ff"/><circle cx="136.0" cy="207.4" r="4.5" fill="#7fb2ff"/><circle cx="212.0" cy="181.1" r="4.5" fill="#7fb2ff"/><circle cx="288.0" cy="135.1" r="4.5" fill="#7fb2ff"/><circle cx="364.0" cy="82.6" r="4.5" fill="#7fb2ff"/><circle cx="440.0" cy="56.3" r="4.5" fill="#7fb2ff"/><text x="450" y="60.3" font-size="13" font-weight="700" fill="#7fb2ff">Northport</text><polyline points="60.0,168.0 136.0,174.6 212.0,181.1 288.0,187.7 364.0,194.3 440.0,194.3" fill="none" stroke="#fbbf24" stroke-width="3" stroke-dasharray="7 5" stroke-linejoin="round"/><rect x="56.0" y="164.0" width="8" height="8" fill="#fbbf24"/><rect x="132.0" y="170.6" width="8" height="8" fill="#fbbf24"/><rect x="208.0" y="177.1" width="8" height="8" fill="#fbbf24"/><rect x="284.0" y="183.7" width="8" height="8" fill="#fbbf24"/><rect x="360.0" y="190.3" width="8" height="8" fill="#fbbf24"/><rect x="436.0" y="190.3" width="8" height="8" fill="#fbbf24"/><text x="450" y="198.3" font-size="13" font-weight="700" fill="#fbbf24">Eastvale</text><polyline points="60.0,240.3 136.0,233.7 212.0,220.6 288.0,187.7 364.0,148.3 440.0,115.4" fill="none" stroke="#34d3bd" stroke-width="3" stroke-dasharray="2 4" stroke-linejoin="round"/><path d="M60.0,235.3 L65.0,244.3 L55.0,244.3 Z" fill="#34d3bd"/><path d="M136.0,228.7 L141.0,237.7 L131.0,237.7 Z" fill="#34d3bd"/><path d="M212.0,215.6 L217.0,224.6 L207.0,224.6 Z" fill="#34d3bd"/><path d="M288.0,182.7 L293.0,191.7 L283.0,191.7 Z" fill="#34d3bd"/><path d="M364.0,143.3 L369.0,152.3 L359.0,152.3 Z" fill="#34d3bd"/><path d="M440.0,110.4 L445.0,119.4 L435.0,119.4 Z" fill="#34d3bd"/><text x="450" y="119.4" font-size="13" font-weight="700" fill="#34d3bd">Riverton</text></svg></div>
+      <div class="ccq">% of commuters who cycle to work, three cities, 2004–2024 <i>(invented data)</i><br><br>That one sentence is the <b>overview</b>. "Overall, …" · the big picture · <b>no numbers</b>.</div>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide">
+    <div class="eyebrow">3.1 · Strategy · 150+ words · about 20 minutes</div>
+    <h2>Four paragraphs, four jobs</h2>
+    <table class="g">
+      <tr><th>1 Introduction</th><td>paraphrase the task: what · where · when</td><td>The line graph <b>compares</b> the <b>proportion</b> of…</td></tr>
+      <tr><th>2 Overview</th><td>the 1–2 biggest features · <b>no figures</b></td><td><b>Overall</b>, cycling became far more common in…</td></tr>
+      <tr><th>3 Body A</th><td>figures, grouped</td><td>In 2004, 14% … compared with just 6% …</td></tr>
+      <tr><th>4 Body B</th><td>figures, grouped + comparisons</td><td>Riverton followed a similar but later pattern…</td></tr>
+    </table>
+    <div class="tag"><span class="pill warn">CAREFUL</span> No opinions · no reasons the chart doesn't show · no conclusion (the overview does that job)</div>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide">
+    <div class="eyebrow">3.1 · Language · two ways to say it</div>
+    <h2>rose sharply = a sharp rise <b style="color:var(--accent)">in</b></h2>
+    <table class="g">
+      <tr><th>Movement</th><th>Verb (+ adverb)</th><th>Noun (adjective +)</th></tr>
+      <tr><td>up</td><td>rise · <b>rose</b> · risen · increase · climb · double</td><td>a sharp <b>rise in</b> · an <b>IN</b>crease in</td></tr>
+      <tr><td>down</td><td>fall · <b>fell</b> · decline · drop · plummet</td><td>a gradual <b>decline in</b></td></tr>
+      <tr><td>flat · up and down</td><td>remain stable · level off · fluctuate</td><td>a plateau · a fluctuation</td></tr>
+      <tr><td>points</td><td>peak <b>at</b> · overtake · draw level with</td><td>a peak <b>of</b> 31%</td></tr>
+    </table>
+    <div class="ccq">6 → 12 hours: rose <b>to</b> ___? rose <b>by</b> ___? <i>(12 · 6)</i> · From 10% to 12% in ten years: sharply or slightly? <i>(slightly)</i> · ✘ rised ✔ rose</div>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide">
+    <div class="eyebrow">3.1 · Language · no time? compare · processes</div>
+    <h2>Proportion, approximation, process</h2>
+    <div class="two">
+      <div style="max-width:520px"><svg viewBox="0 0 560 300" role="img" aria-labelledby="t-pie1" style="width:100%;max-width:560px;height:auto;font-family:Source Sans 3,system-ui,sans-serif"><title id="t-pie1">Pie chart: sources of electricity in Lakeland, 2024</title><path d="M150,150 L150.0,30.0 A120,120 0 0 1 251.3,214.3 Z" fill="#7fb2ff" stroke="#0b1220" stroke-width="2"/><text x="215.2" y="119.2" font-size="15" font-weight="700" text-anchor="middle" fill="#111827">34%</text><path d="M150,150 L251.3,214.3 A120,120 0 0 1 79.5,247.1 Z" fill="#34d3bd" stroke="#0b1220" stroke-width="2"/><text x="163.9" y="228.1" font-size="15" font-weight="700" text-anchor="middle" fill="#111827">26%</text><path d="M150,150 L79.5,247.1 A120,120 0 0 1 32.1,127.5 Z" fill="#fbbf24" stroke="#0b1220" stroke-width="2"/><text x="80.8" y="182.4" font-size="15" font-weight="700" text-anchor="middle" fill="#111827">18%</text><path d="M150,150 L32.1,127.5 A120,120 0 0 1 79.5,52.9 Z" fill="#fde68a" stroke="#0b1220" stroke-width="2"/><text x="87.2" y="115.1" font-size="15" font-weight="700" text-anchor="middle" fill="#111827">12%</text><path d="M150,150 L79.5,52.9 A120,120 0 0 1 120.2,33.8 Z" fill="#a8b6cf" stroke="#0b1220" stroke-width="2"/><path d="M150,150 L120.2,33.8 A120,120 0 0 1 150.0,30.0 Z" fill="#475a80" stroke="#0b1220" stroke-width="2"/><rect x="320" y="49" width="18" height="18" fill="#7fb2ff" stroke="#a8b6cf"/><text x="348" y="63" font-size="15" fill="#e5ecf8">Hydroelectric <tspan font-weight="700">34%</tspan></text><rect x="320" y="81" width="18" height="18" fill="#34d3bd" stroke="#a8b6cf"/><text x="348" y="95" font-size="15" fill="#e5ecf8">Wind <tspan font-weight="700">26%</tspan></text><rect x="320" y="113" width="18" height="18" fill="#fbbf24" stroke="#a8b6cf"/><text x="348" y="127" font-size="15" fill="#e5ecf8">Natural gas <tspan font-weight="700">18%</tspan></text><rect x="320" y="145" width="18" height="18" fill="#fde68a" stroke="#a8b6cf"/><text x="348" y="159" font-size="15" fill="#e5ecf8">Solar <tspan font-weight="700">12%</tspan></text><rect x="320" y="177" width="18" height="18" fill="#a8b6cf" stroke="#a8b6cf"/><text x="348" y="191" font-size="15" fill="#e5ecf8">Coal <tspan font-weight="700">6%</tspan></text><rect x="320" y="209" width="18" height="18" fill="#475a80" stroke="#a8b6cf"/><text x="348" y="223" font-size="15" fill="#e5ecf8">Other <tspan font-weight="700">4%</tspan></text></svg></div>
+      <div>
+        <ul>
+          <li>Hydro <b>accounted for</b> roughly a third</li>
+          <li>Wind: <b>just over a quarter</b></li>
+          <li>Hydro produced <b>almost twice as much as</b> gas</li>
+          <li>Process: <b>is collected → is stored → is pumped</b> · First, … Next, … Finally, …</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide">
+    <div class="eyebrow">3.1 · Chart Talk (6 min) · then Timed Task 1 (20 min)</div>
+    <h2>Describe it. Then write it.</h2>
+    <div class="two">
+      <ul class="lab">
+        <li><b>Chart Talk</b>: overview first, 3 key features; partner sketches, asks 1 question</li>
+        <li><b>Timed</b>: bar chart, Workbook 3.1</li>
+        <li>2 min plan · 14 min write · 4 min count &amp; check</li>
+        <li>Then: Task Achievement checklist</li>
+      </ul>
+      <div class="ccq">Show your card? <i>(No.)</i> First sentence: number or big picture? <i>(Big picture.)</i><br>How many minutes? <i>(20.)</i> Words? <i>(150+.)</i><br>Can you say <b>why</b> paid work rose? <i>(No: only what the chart shows.)</i><br>A conclusion? <i>(No.)</i></div>
+    </div>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide section">
+    <div class="eyebrow">3.2 · Lead-in · same topic, same essay?</div>
+    <h2>What's the job?</h2>
+    <ul>
+      <li>People work longer hours than before. <b>To what extent do you agree</b> that this is a problem?</li>
+      <li>Some say long hours help careers; others say they harm health. <b>Discuss both views and give your opinion.</b></li>
+      <li><b>Why</b> do people work long hours, and <b>what can be done</b> about it?</li>
+      <li><b>Do the advantages</b> of long hours <b>outweigh the disadvantages</b>?</li>
+    </ul>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide">
+    <div class="eyebrow">3.2 · Strategy · read the instruction words · count the parts</div>
+    <h2>Five question types</h2>
+    <table class="g" style="font-size:clamp(.85rem,1.9vw,1.3rem)">
+      <tr><th>Type</th><th>Instruction words</th><th>The job</th></tr>
+      <tr><td><b>Opinion</b></td><td>To what extent do you agree or disagree?</td><td>one position, held throughout</td></tr>
+      <tr><td><b>Discussion</b></td><td>Discuss both views and give your own opinion.</td><td>view A · view B · <b>you</b> ①②③</td></tr>
+      <tr><td><b>Problem–solution</b></td><td>What problems…? What can be done?</td><td>problems · solutions ①②</td></tr>
+      <tr><td><b>Advantages–disadvantages</b></td><td>Do the advantages outweigh…?</td><td>both + a <b>verdict</b></td></tr>
+      <tr><td><b>Two-part</b></td><td>Why…? Is it positive?</td><td>answer <b>each</b> question</td></tr>
+    </table>
+    <div class="ccq">"Discuss both views…": how many jobs? <i>(Three.)</i> Only the view you agree with? <i>(Task Response capped.)</i> "Outweigh": two lists enough? <i>(No: a verdict.)</i></div>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide">
+    <div class="eyebrow">3.2 · Strategy · five minutes · 250+ words · 40 minutes</div>
+    <h2>The five-minute plan</h2>
+    <pre><span class="c">// write this on the question paper</span>
+<span class="k">Type:</span>        discussion  ①②③
+<span class="k">Position:</span>    businesses bear greater responsibility
+<span class="k">Body 1:</span>      households waste a lot → <span class="s">because</span> … → e.g. cooking course
+<span class="k">Body 2:</span>      businesses push over-buying → <span class="s">because</span> … → e.g. multipacks
+<span class="k">Conclusion:</span>  position again · <span class="s">no new idea</span></pre>
+    <div class="tag"><span class="pill lab">TIP</span> Two developed ideas beat four thin ones. Task 2 counts twice as much as Task 1.</div>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide">
+    <div class="eyebrow">3.2 · Language · paragraph architecture</div>
+    <h2>One idea, pushed: "So what?"</h2>
+    <div class="two">
+      <div class="ccq"><b>✘ Thin:</b> Working from home is convenient. It saves time. People like it. Companies benefit.<br><i>(four claims · no proof)</i></div>
+      <table class="g" style="font-size:clamp(.85rem,1.9vw,1.25rem)">
+        <tr><th>Topic sentence</th><td>The most serious problem is the effect on health.</td></tr>
+        <tr><th>Why?</th><td>This is because the body burns very little energy…</td></tr>
+        <tr><th>So what?</th><td>…, which means more sick days.</td></tr>
+        <tr><th>Example</th><td>A call-center worker, for example, …</td></tr>
+      </table>
+    </div>
+    <div class="ccq">"…which means workers start the day rested." Why or so what? <i>(So what: a consequence.)</i> Must the example be a real statistic? <i>(No: specific and plausible. Never invent exact data.)</i></div>
+  </section>
+
+  <!-- 12 -->
+  <section class="slide">
+    <div class="eyebrow">3.2 · Everyday topics · any topic can be any type</div>
+    <h2>What could the examiner ask?</h2>
+    <div class="pics six">
+      <div class="pic"><img src="../assets/vocab/book.jpg" alt=""><div class="w">libraries</div></div>
+      <div class="pic"><img src="../assets/vocab/school.jpg" alt=""><div class="w">schools</div></div>
+      <div class="pic"><img src="../assets/vocab/bus.jpg" alt=""><div class="w">commuting</div></div>
+      <div class="pic"><img src="../assets/vocab/mobile-phone.jpg" alt=""><div class="w">screens</div></div>
+      <div class="pic"><img src="../assets/vocab/hospital.jpg" alt=""><div class="w">health</div></div>
+      <div class="pic"><img src="../assets/vocab/supermarket.jpg" alt=""><div class="w">food waste</div></div>
+      <div class="pic"><img src="../assets/vocab/email.jpg" alt=""><div class="w">remote work</div></div>
+      <div class="pic"><img src="../assets/vocab/teacher.jpg" alt=""><div class="w">adult learning</div></div>
+      <div class="pic"><img src="../assets/vocab/water.jpg" alt=""><div class="w">resources</div></div>
+      <div class="pic"><img src="../assets/vocab/tv.jpg" alt=""><div class="w">media</div></div>
+      <div class="pic"><img src="../assets/vocab/notebook.jpg" alt=""><div class="w">the plan</div></div>
+      <div class="pic"><img src="../assets/vocab/pen.jpg" alt=""><div class="w">the essay</div></div>
+    </div>
+  </section>
+
+  <!-- 13 -->
+  <section class="slide">
+    <div class="eyebrow">3.2 · Plan Pitch · then Timed: 5 min plan + 15 min writing</div>
+    <h2>Say the plan. Then write the opening.</h2>
+    <div class="dlg">
+      <div class="a"><span class="sp">Ana:</span> I'm going to write about why it's good.</div>
+      <div class="b"><span class="sp">Ben:</span> "Why is this happening? Is it positive?" That's <b>two</b> questions.</div>
+      <div class="a"><span class="sp">Ana:</span> Reasons: jobs are changing, so people need new skills.</div>
+      <div class="b"><span class="sp">Ben:</span> Push it. Why? So what?</div>
+      <div class="a"><span class="sp">Ana:</span> Technology replaces some tasks, which means a second career. For example, a bank clerk retraining as a nurse.</div>
+    </div>
+    <div class="ccq">Plan Pitch: plan for? <i>(2 min.)</i> Listener asks? <i>("So what?")</i> · Timed: write what? <i>(Introduction + body 1.)</i> How many ideas in body 1? <i>(One, developed.)</i> Homework? <i>(Finish it: 40 min, bring it to C11.)</i></div>
+  </section>
+
+  <!-- 14 -->
+  <section class="slide">
+    <div class="eyebrow">3.3 · Four criteria · 25% each · paraphrased from the public band descriptors</div>
+    <h2>Four examiners read your essay</h2>
+    <table class="g">
+      <tr><th>TR</th><td>Task Response (Task 1: Task Achievement)</td><td>answered <b>all</b> of it? clear position? developed?</td></tr>
+      <tr><th>CC</th><td>Coherence &amp; Cohesion</td><td>logical order? paragraphs? <b>natural</b> links?</td></tr>
+      <tr><th>LR</th><td>Lexical Resource</td><td>range? precise? spelling &amp; collocation?</td></tr>
+      <tr><th>GRA</th><td>Grammatical Range &amp; Accuracy</td><td>variety? error-free sentences?</td></tr>
+    </table>
+    <div class="tag"><span class="pill warn">KEY</span> Your band is held down by your <b>weakest</b> criterion. Fix that one first.</div>
+  </section>
+
+  <!-- 15 -->
+  <section class="slide">
+    <div class="eyebrow">3.3 · Coherence = order · Cohesion = links</div>
+    <h2>The over-linking trap</h2>
+    <div class="two">
+      <div class="ccq"><b>✘ Mechanical</b><br>Firstly, cycling saves money. Moreover, it is healthy. In addition, it reduces traffic. Furthermore, it causes no pollution. Consequently, cities support it.</div>
+      <div class="ccq"><b>✔ Natural</b><br>Cycling to work offers several practical benefits. It costs almost nothing, and regular riders tend to be fitter. <b>These advantages</b> extend beyond the individual: … Many cities now support <b>this trend</b>.</div>
+    </div>
+    <div class="ccq">More linkers = higher band? <i>(No: overuse is marked down.)</i> What does version 2 use instead? <i>(Reference: summary nouns; combined ideas.)</i> No paragraphs: which criterion? <i>(CC, capped around 5.)</i></div>
+  </section>
+
+  <!-- 16 -->
+  <section class="slide">
+    <div class="eyebrow">3.3 · The most useful cohesive move</div>
+    <h2>this / these + summary noun</h2>
+    <table class="g">
+      <tr><th>✘ Repeats</th><td>Governments could raise fuel taxes. <s>Raising fuel taxes</s> would reduce car use.</td></tr>
+      <tr><th>✔ Refers</th><td>Governments could raise fuel taxes. <b>This measure</b> would reduce car use.</td></tr>
+      <tr><th>Nouns</th><td>trend · measure · approach · problem · change · view · risk · pressures</td></tr>
+    </table>
+    <div class="ccq">"Cities face traffic, pollution and crowded trains. <b>This</b> makes action essential." Clear? <i>(Vague.)</i> Better? <i>(<b>These pressures</b> make action essential.)</i></div>
+  </section>
+
+  <!-- 17 -->
+  <section class="slide">
+    <div class="eyebrow">3.3 · Examiner Panel · 30 min · groups of 4</div>
+    <h2>Judge the script, not the writer</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>Three anonymous scripts · one prompt (public libraries)</li>
+        <li>One criterion each · rotate every script</li>
+        <li>A band (5–8) + <b>one quotation</b> as evidence</li>
+        <li>Average → overall estimate · then the reveal</li>
+      </ul>
+      <div class="ccq">How many criteria per person? <i>(One.)</i><br>What goes with every band? <i>(A quotation.)</i><br>Is the commentary the "right answer"? <i>(An expert estimate: disagree with evidence.)</i><br>When do we turn it over? <i>(After every panel commits.)</i></div>
+    </div>
+  </section>
+
+  <!-- 18 -->
+  <section class="slide section">
+    <div class="eyebrow">You can now report it, argue it and judge it</div>
+    <h2>Module 3 done</h2>
+    <ul class="lab">
+      <li><b>Report it</b>: "Overall, …" (no numbers) · rose sharply / a sharp rise in · grouped, not listed</li>
+      <li><b>Argue it</b>: type → position → two developed ideas · every part answered</li>
+      <li><b>Judge it</b>: TR · CC · LR · GRA · <i>these pressures</i>, not <i>Firstly, Moreover</i></li>
+    </ul>
+    <p class="lead" style="margin-top:10px;max-width:44ch">Homework: online lessons 3.1–3.3 with 🔊 · update your band tracker. Next: Module 4, <i>Speaking and test mastery</i>.</p>
+  </section>
+
+</div>
+
+<div class="count" id="count">1 / 18</div>
+<div class="nav"><button id="prev" aria-label="Previous slide"></button><button id="next" aria-label="Next slide"></button></div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const bar=document.getElementById('bar'), count=document.getElementById('count');
+  let i=0;
+  function show(n){ i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+    bar.style.width=((i+1)/slides.length*100)+'%'; count.textContent=(i+1)+' / '+slides.length; }
+  document.getElementById('next').onclick=()=>show(i+1);
+  document.getElementById('prev').onclick=()=>show(i-1);
+  addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}
+    else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+  });
+  show(0);
+</script>
+</body>
+</html>

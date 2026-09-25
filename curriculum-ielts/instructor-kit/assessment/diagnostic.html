@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diagnostic — Class 1</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../kit.css">
+<style>
+  /* ── Test-paper components (shared with practice-test-1.html) ── */
+  .pagebreak{break-before:page}
+  .teacher-only{font-family:"JetBrains Mono",monospace;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+    color:#fff;background:var(--warn);border-radius:999px;padding:3px 11px;display:inline-block;margin-bottom:8px;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .paper{font-size:17px;line-height:1.5}
+  .paper-head{display:grid;grid-template-columns:2fr 1fr 1fr;gap:14px;margin:6px 0 14px;font-size:1.05rem}
+  .paper-head div{border-bottom:1.5px solid var(--ink-2);padding:6px 2px 4px}
+  .paper-head b{font-weight:700}
+  .part-h{display:flex;align-items:center;gap:12px;margin:30px 0 6px;padding:10px 14px;background:var(--accent-soft);
+    border-radius:10px;break-after:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .part-h h2{font-size:1.3rem;font-weight:800;flex:1}
+  .part-h .score{font-family:"JetBrains Mono",monospace;font-size:.95rem;font-weight:600;border:1.5px solid var(--ink-2);
+    border-radius:8px;padding:4px 10px;background:var(--surface);white-space:nowrap}
+  .inst{font-size:1.08rem;font-weight:600;margin:18px 0 8px;break-after:avoid}
+  .inst .sub{display:block;font-weight:400;color:var(--ink-2);font-size:.97rem;margin-top:2px}
+  .inst .caps{font-weight:800;letter-spacing:.02em}
+  .item{display:flex;gap:12px;align-items:baseline;margin:10px 0;font-size:1.06rem;break-inside:avoid}
+  .item .n{font-family:"JetBrains Mono",monospace;font-weight:600;color:var(--accent);min-width:1.8em}
+  .opts{display:flex;flex-direction:column;gap:4px;margin-top:4px}
+  .opts span{padding-left:4px}
+  .notes-box{border:1.5px solid var(--line-strong);border-radius:10px;padding:12px 18px;margin:10px 0;break-inside:avoid;background:var(--surface)}
+  .notes-box .ttl{font-family:"Archivo",sans-serif;font-weight:800;font-size:1.12rem;margin-bottom:6px;text-align:center}
+  .notes-box p{margin:6px 0;font-size:1.04rem}
+  .notes-box .n{font-family:"JetBrains Mono",monospace;font-weight:600;color:var(--accent)}
+  .letters{display:grid;grid-template-columns:1fr;gap:4px;margin:8px 0 12px;padding:10px 14px;border:2px dashed var(--line-strong);border-radius:10px;font-size:1.02rem}
+  .letters.two{grid-template-columns:1fr 1fr;gap:4px 18px}
+  .letters b{font-family:"JetBrains Mono",monospace;color:var(--accent);margin-right:6px}
+  .text{border:1px solid var(--line);border-radius:10px;padding:14px 18px;background:var(--surface-2);font-size:1.03rem;line-height:1.68;margin:10px 0}
+  .text p{margin:0 0 10px}
+  .text p:last-child{margin-bottom:0}
+  .text .ttl{font-family:"Archivo",sans-serif;font-weight:800;font-size:1.2rem;margin-bottom:6px}
+  .text .pl{font-family:"JetBrains Mono",monospace;font-weight:700;color:var(--accent);margin-right:6px}
+  .tfrow{display:grid;grid-template-columns:2em 1fr 9em;gap:12px;align-items:end;padding:7px 0;border-bottom:1px solid var(--line);font-size:1.04rem;break-inside:avoid}
+  .tfrow .n{font-family:"JetBrains Mono",monospace;font-weight:600;color:var(--accent)}
+  .tfrow .wl{border-bottom:1.5px solid var(--ink-2);height:1.6em}
+  .cue-card{border:2px solid var(--ink-2);border-radius:12px;padding:14px 20px;max-width:520px;margin:12px 0;break-inside:avoid;background:var(--surface)}
+  .cue-card h4{font-size:1.15rem;margin-bottom:6px}
+  .cue-card ul{margin:4px 0 6px 1.2em;padding:0}
+  .wline{border-bottom:1.5px solid var(--ink-2);height:2.1em}
+  table.grid{width:100%;border-collapse:collapse;margin:10px 0;font-size:.9rem}
+  table.grid th,table.grid td{border:1px solid var(--line-strong);padding:8px 10px;text-align:left;vertical-align:top}
+  table.grid thead th{background:var(--surface-2);font-family:"JetBrains Mono",monospace;font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+  table.grid td.sc{width:13%;text-align:center;font-family:"JetBrains Mono",monospace;color:var(--ink-3)}
+  .done{margin-top:26px;text-align:center;font-size:1.2rem;font-weight:700}
+  @media (max-width:680px){
+    .paper-head{grid-template-columns:1fr}
+    .letters.two{grid-template-columns:1fr}
+    table.grid{display:block;overflow-x:auto}
+    .tfrow{grid-template-columns:2em 1fr}
+    .tfrow .wl{grid-column:2}
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="lbl">Test pack —</span>
+  <button type="button" onclick="window.print()">🖨 Print / Save as PDF</button>
+  <span class="hint">teacher notes · learner paper · listening script, speaking cards &amp; target sheet (teacher only)</span>
+</div>
+
+<div class="sheet">
+
+  <header class="mast">
+    <div class="kit-eyebrow">IELTS Academic Preparation · Assessment · Class 1</div>
+    <h1>Diagnostic — Where Are We Starting?</h1>
+    <p class="sub">A short, low-stakes sample of all four IELTS skills, taken in the first class: one Listening section (10 questions), one Academic Reading passage (13 questions), a 20-minute Writing Task 2 sample and a 3-minute Speaking sample. It gives you and each learner a <b>cautious starting band estimate</b>, a clear picture of the gap to their target, and a first idea of which skill to prioritize. It is a map, not a verdict.</p>
+    <div class="meta-row">
+      <span class="chip"><b>~60 min</b> in class</span>
+      <span class="chip">Listening <b>/10</b> · Reading <b>/13</b></span>
+      <span class="chip">Writing &amp; Speaking: <b>band estimate</b></span>
+      <span class="chip">Target <b>6.0–7.5</b></span>
+    </div>
+  </header>
+
+  <div class="note">
+    <div class="t">How to frame it (say this before anything is handed out)</div>
+    <p>Many learners in this class have a great deal riding on IELTS: a university place, a professional license, a visa. For some, the first test of the course feels like the real thing. Lower the temperature straight away: <b>"This is not a test you can pass or fail. It shows us where you are today, so we can spend the next eight weeks on the things that will move your score most. Everyone finds something hard today. That's the point."</b> Tell them that the result is a rough estimate from a short sample, that it stays between you and them, and that <b>nobody's band is announced to the class</b>. Remind them that the real test does not penalize wrong answers, so they should answer every question.</p>
+  </div>
+
+  <div class="sec"><h2>Running Class 1 (90 min)</h2><span class="rule"></span></div>
+  <table class="timing">
+    <thead><tr><th>Stage</th><th>Time</th><th>Interaction</th><th>Procedure</th></tr></thead>
+    <tbody>
+      <tr><td>Welcome &amp; orientation</td><td class="t">20 min</td><td>T–S · S–S</td><td>Names, the course map (16 classes, two practice tests), and the four IELTS papers at a glance (Lesson 1.1). Pairs share <i>why</i> they need IELTS and the band they need, only as much as they want to share. Then the framing above. The Module 1 Teacher's Guide has the full orientation plan.</td></tr>
+      <tr><td>Listening</td><td class="t">10 min</td><td>T–S</td><td>Whole class. Give <b>45 seconds</b> to read Questions 1–10, then read the script on the teacher pages <b>once</b>, at a natural pace, as in the real test. Pause for 20 seconds where the script says <i>[pause]</i>. Give 1 minute at the end to check spelling.</td></tr>
+      <tr><td>Reading</td><td class="t">20 min</td><td>S</td><td>Individual and silent. Write the start and finish times on the board. Say at 10 minutes: "You should be about halfway." Collect or turn over the Reading at 20 minutes, finished or not; an unfinished section is useful information.</td></tr>
+      <tr><td>Writing sample</td><td class="t">20 min</td><td>S</td><td>Individual. Learners write on the lined page. <b>While the class writes</b>, start calling learners one at a time to a quiet corner for the 3-minute Speaking sample (script and card on the teacher pages).</td></tr>
+      <tr><td>Speaking samples (continued) &amp; self-reflection</td><td class="t">15 min</td><td>T–S · S</td><td>Keep calling learners for Speaking. Everyone else fills in the "How did it feel?" box at the end of their paper, then starts the online Lesson 1.1 on a phone or reads its section on band scores. With more than about 11 learners, finish the Speaking samples in the Class 2 warmer, or ask learners to record Part 2 on their phone at home and send it to you.</td></tr>
+      <tr><td>Close &amp; homework</td><td class="t">5 min</td><td>T–S</td><td>Thank them. Explain that you will return a short <b>target sheet</b> in Class 2 or 3. Homework: online Lesson 1.1 (<code class="inline">https://rays-esl.netlify.app/curriculum-ielts/lesson_01.html</code>) and the journal prompt: target band, test date, and the skill they <i>think</i> is weakest.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="grid2">
+    <div class="blk"><div class="h">You need</div>
+      <ul class="tick">
+        <li>One learner paper per person (the middle section of this pack), printed at 100%</li>
+        <li>The teacher pages: the listening script, the Speaking frame and cue card, the Speaking note grid (one per learner), and the Target &amp; Gap sheet</li>
+        <li>A clock the class can see, pens or pencils, and a phone timer for Speaking</li>
+        <li>The answer key, the paraphrased band criteria and the conversion tables: <code class="inline">assessment/answer-keys.html</code></li>
+      </ul>
+    </div>
+    <div class="blk"><div class="h">What each part samples</div>
+      <ul class="tick">
+        <li><b>Listening /10</b>: one monologue at about the level of Part 2, with note completion, multiple choice and a choose-two item, plus the classic distractor (a detail stated, then corrected)</li>
+        <li><b>Reading /13</b>: one academic passage (about 600 words), with matching headings, True / False / Not Given and sentence completion</li>
+        <li><b>Writing</b>: a Task 2 opinion essay in 20 minutes (half the real time), for an estimate of all four writing criteria</li>
+        <li><b>Speaking</b>: a short Part 1 and a shortened Part 2 long turn, for an estimate of fluency, vocabulary, grammar and pronunciation</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="note warn">
+    <div class="t">Personal information is always optional</div>
+    <p>The Speaking questions are about study habits and a useful app or website, not about home country, family or immigration history. Even so, any learner may answer as a <b>"new identity"</b> (the card on the teacher pages) or invent details. Say: <b>"You can invent anything. I'm listening to your English, not checking your life story."</b> In the orientation pair work, learners share only what they want to share about why they need IELTS. Never ask follow-up questions about visas, legal status or family members who are absent.</p>
+  </div>
+
+  <div class="note lab">
+    <div class="t">Learners who read and write more slowly than they speak</div>
+    <p>At this level it is uncommon, but you may have a learner with dyslexia, a visual impairment, or a history of learning English mainly by ear. Use the <b>same paper</b> and change the conditions, not the content: enlarge the paper, give extra time for Reading and Writing, and note on the paper what you changed ("Adapted: +10 min Reading"). Treat the result as a separate kind of evidence rather than comparing it with others. Tell the learner, privately, that the official test offers <b>special arrangements</b> (for example, extra time or an enlarged paper) that must be requested from the test center well before the test date, and that you can help them find out how.</p>
+  </div>
+
+  <!-- ═════════════════════ LEARNER PAPER ═════════════════════ -->
+  <div class="pagebreak"></div>
+  <div class="paper">
+    <header class="mast">
+      <div class="kit-eyebrow">IELTS Academic Preparation · Diagnostic</div>
+      <h1>Where Am I Starting?</h1>
+      <div class="paper-head">
+        <div><b>Name:</b></div>
+        <div><b>Date:</b></div>
+        <div><b>Target band:</b></div>
+      </div>
+      <p style="font-size:1.03rem;margin-top:10px">This is a short sample of the four IELTS skills. It is <b>not</b> pass or fail. Answer every question: a guess may be right, and a blank never is. Read each instruction carefully, especially word limits.</p>
+    </header>
+
+    <!-- LISTENING -->
+    <div class="part-h"><h2>Listening</h2><span class="score">___ / 10</span></div>
+    <p>You will hear a talk given to new students at a university's Learning Commons. You will hear the talk <b>once only</b>. First, you have some time to read Questions 1–10.</p>
+
+    <div class="inst">Questions 1–5
+      <span class="sub">Complete the notes below. Write <span class="caps">NO MORE THAN TWO WORDS AND/OR A NUMBER</span> for each answer.</span></div>
+    <div class="notes-box">
+      <div class="ttl">The Learning Commons — Key Information</div>
+      <p>Weekday closing time: <span class="n">1</span> <span class="blank"></span></p>
+      <p>Group study rooms can be booked up to <span class="n">2</span> <span class="blank"></span> days in advance</p>
+      <p>Each group may use a room for a maximum of <span class="n">3</span> <span class="blank"></span> hours a day</p>
+      <p>Writing tutors: on the <span class="n">4</span> <span class="blank"></span> floor, next to the map collection</p>
+      <p>To borrow a laptop, bring your <span class="n">5</span> <span class="blank long"></span></p>
+    </div>
+
+    <div class="inst">Questions 6–8
+      <span class="sub">Choose the correct letter, <b>A</b>, <b>B</b> or <b>C</b>.</span></div>
+    <div class="item"><span class="n">6</span><span>What does the speaker say about the silent zone?
+      <span class="opts"><span><b>A</b> Phones may be used if they are on silent mode.</span><span><b>B</b> Water is allowed, but food is not.</span><span><b>C</b> The rules apply only during exam periods.</span></span></span></div>
+    <div class="item"><span class="n">7</span><span>According to the speaker, the most common problem for new students is
+      <span class="opts"><span><b>A</b> forgetting to cancel room bookings.</span><span><b>B</b> not knowing how to find journal articles.</span><span><b>C</b> the cost of printing.</span></span></span></div>
+    <div class="item"><span class="n">8</span><span>This year, the referencing workshop takes place on
+      <span class="opts"><span><b>A</b> Monday mornings.</span><span><b>B</b> Wednesday afternoons.</span><span><b>C</b> Wednesday mornings.</span></span></span></div>
+
+    <div class="inst">Questions 9–10
+      <span class="sub">Choose <b>TWO</b> letters, <b>A–E</b>. Which <b>TWO</b> services does the help desk offer?</span></div>
+    <div class="letters">
+      <span><b>A</b> replacing lost student cards</span>
+      <span><b>B</b> lending headphones</span>
+      <span><b>C</b> collecting library fines</span>
+      <span><b>D</b> booking a meeting with a subject librarian</span>
+      <span><b>E</b> printing posters</span>
+    </div>
+    <div class="item"><span class="n">9–10</span><span><span class="blank"></span> and <span class="blank"></span></span></div>
+
+    <!-- READING -->
+    <div class="part-h pagebreak"><h2>Reading</h2><span class="score">___ / 13</span></div>
+    <p>You should spend about <b>20 minutes</b> on Questions 1–13, which are based on the passage below.</p>
+
+    <div class="text">
+      <div class="ttl">Pocket Forests</div>
+      <p><span class="pl">A</span>Across many cities, small patches of dense woodland, some no larger than a tennis court, are appearing on school grounds, beside highways and in the corners of parks, often on land that was previously covered with asphalt or hard, compacted soil. Known informally as "pocket forests," they are planted in a way that differs sharply from conventional tree planting. Instead of a few widely spaced saplings, volunteers plant three or four young trees and shrubs in every square meter, choosing only species that are native to the local area. The aim is to reproduce, within a few years, the layered structure of tall trees, smaller trees and shrubs that a natural forest might take a century to develop.</p>
+      <p><span class="pl">B</span>The method rests on an idea borrowed from natural regeneration: that crowding forces young trees to compete for light, pushing them to grow upward quickly. Supporters claim that pocket forests grow up to ten times faster than conventional plantings. Independent researchers are more cautious. A three-year study by the Northfield Urban Ecology Group found that the trees did grow faster in height during the first two years, but that the difference narrowed considerably by the third year, and that between a fifth and a quarter of the saplings died as the canopy closed above them. "Some loss is expected and even healthy," the group's lead author, Dr. Priya Raman, noted, "but it means the headline figures should be treated with care."</p>
+      <p><span class="pl">C</span>Where pocket forests appear to perform well is in attracting wildlife. Surveys at the eleven sites in the Northfield study recorded significantly more insect species than on nearby areas of mown grass of the same size, and nesting birds were found at several sites within two years of planting. Pollinators such as bees and hoverflies were especially common, and two sites attracted hedgehogs, which had not been recorded in those streets for many years. The dense planting also seems to reduce noise from nearby traffic, although the researchers point out that this effect was measured at only three of the sites and needs further investigation.</p>
+      <p><span class="pl">D</span>The social side of these projects may matter as much as the ecological one. Most pocket forests are planted in a single day by local residents, many of whom have never planted a tree before. Because the planting is so dense, a site the size of a tennis court may need several hundred young plants, so a single planting day can bring together dozens of people of all ages. Organizers report that many volunteers return to weed and water the site during the first two summers, when the young forest is most vulnerable to drought. In one neighborhood, a school turned its forest into an outdoor classroom, where students measure the growth of the trees and record the birds they see.</p>
+      <p><span class="pl">E</span>Critics, however, warn against seeing pocket forests as a quick fix for urban environmental problems. A small plot of trees, they argue, cannot replace the benefits of large, connected green spaces, such as their ability to cool a whole district during a heat wave. There are also practical costs: the initial soil preparation is expensive, and the sites need regular care for at least three years. Dr. Raman believes the method is best understood as "one useful tool among many" rather than a solution in itself. Cities that plant pocket forests, she suggests, should also protect the older trees they already have, since a mature street tree provides far more shade than any newly planted sapling.</p>
+    </div>
+
+    <div class="inst">Questions 1–5
+      <span class="sub">The passage has five paragraphs, <b>A–E</b>. Choose the correct heading for each paragraph from the list of headings below. Write the correct number, <b>i–vii</b>. There are more headings than paragraphs.</span></div>
+    <div class="letters two">
+      <span><b>i</b> A strong record for animal life</span>
+      <span><b>ii</b> Growth claims under examination</span>
+      <span><b>iii</b> The high price of city land</span>
+      <span><b>iv</b> What makes the planting method unusual</span>
+      <span><b>v</b> A useful approach, but not a complete answer</span>
+      <span><b>vi</b> Bringing people together around the trees</span>
+      <span><b>vii</b> Why governments pay for tree planting</span>
+    </div>
+    <div class="item"><span class="n">1</span><span>Paragraph A &nbsp;<span class="blank"></span></span></div>
+    <div class="item"><span class="n">2</span><span>Paragraph B &nbsp;<span class="blank"></span></span></div>
+    <div class="item"><span class="n">3</span><span>Paragraph C &nbsp;<span class="blank"></span></span></div>
+    <div class="item"><span class="n">4</span><span>Paragraph D &nbsp;<span class="blank"></span></span></div>
+    <div class="item"><span class="n">5</span><span>Paragraph E &nbsp;<span class="blank"></span></span></div>
+
+    <div class="inst">Questions 6–10
+      <span class="sub">Do the following statements agree with the information in the passage? Write<br>
+      <b>TRUE</b> if the statement agrees with the information<br>
+      <b>FALSE</b> if the statement contradicts the information<br>
+      <b>NOT GIVEN</b> if there is no information on this</span></div>
+    <div class="tfrow"><span class="n">6</span><span>In pocket forests, trees are planted further apart than in conventional planting.</span><span class="wl"></span></div>
+    <div class="tfrow"><span class="n">7</span><span>Pocket forests use only species that grow naturally in the local area.</span><span class="wl"></span></div>
+    <div class="tfrow"><span class="n">8</span><span>Some saplings in the Northfield study died as the trees grew closer together overhead.</span><span class="wl"></span></div>
+    <div class="tfrow"><span class="n">9</span><span>The Northfield researchers measured traffic noise at all eleven sites.</span><span class="wl"></span></div>
+    <div class="tfrow"><span class="n">10</span><span>The outdoor classroom has improved the students' science test results.</span><span class="wl"></span></div>
+
+    <div class="inst">Questions 11–13
+      <span class="sub">Complete the sentences below. Choose <span class="caps">NO MORE THAN TWO WORDS</span> from the passage for each answer.</span></div>
+    <div class="item"><span class="n">11</span><span>Supporters claim that pocket forests can grow up to <span class="blank"></span> faster than conventional plantings.</span></div>
+    <div class="item"><span class="n">12</span><span>Organizers say that many volunteers come back to weed and water the site during the first <span class="blank"></span>.</span></div>
+    <div class="item"><span class="n">13</span><span>Dr. Raman points out that a mature street tree provides much more <span class="blank"></span> than a young sapling.</span></div>
+
+    <!-- WRITING -->
+    <div class="part-h pagebreak"><h2>Writing sample</h2><span class="score">band ___</span></div>
+    <p>You should spend about <b>20 minutes</b> on this task. In the real test, Task 2 takes 40 minutes and needs at least 250 words. Today, write <b>at least 180 words</b>: an introduction with your position, one or two body paragraphs, and a short conclusion if you have time.</p>
+    <div class="notes-box" style="text-align:left">
+      <p style="font-size:1.08rem">Write about the following topic:</p>
+      <p style="font-size:1.1rem;font-style:italic;margin:8px 0">Some people think that every university student should be required to take at least one course outside their main subject, for example a science student taking a course in art, or a business student taking a course in history.</p>
+      <p style="font-size:1.1rem;font-weight:700">To what extent do you agree or disagree?</p>
+      <p>Give reasons for your answer and include any relevant examples from your own knowledge or experience.</p>
+    </div>
+    <p style="font-size:.95rem;color:var(--ink-2)">Planning space (2–3 minutes): my position · idea 1 + example · idea 2 + example</p>
+    <div class="wline"></div><div class="wline"></div>
+    <div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div>
+    <div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div>
+    <div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div>
+    <div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div>
+    <div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div>
+    <div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div>
+    <p style="font-size:.95rem;color:var(--ink-2);text-align:right">Number of words (approximately): ______</p>
+
+    <div class="part-h"><h2>How did it feel?</h2></div>
+    <p style="font-size:1rem">For your eyes and your teacher's only. Tick one box in each row.</p>
+    <table class="grid">
+      <thead><tr><th>Skill</th><th>Comfortable</th><th>OK</th><th>Hard</th><th>Very hard</th></tr></thead>
+      <tbody>
+        <tr><td><b>Listening</b></td><td class="sc">☐</td><td class="sc">☐</td><td class="sc">☐</td><td class="sc">☐</td></tr>
+        <tr><td><b>Reading</b></td><td class="sc">☐</td><td class="sc">☐</td><td class="sc">☐</td><td class="sc">☐</td></tr>
+        <tr><td><b>Writing</b></td><td class="sc">☐</td><td class="sc">☐</td><td class="sc">☐</td><td class="sc">☐</td></tr>
+        <tr><td><b>Speaking</b></td><td class="sc">☐</td><td class="sc">☐</td><td class="sc">☐</td><td class="sc">☐</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:1rem">The band I need: overall ______ · no skill below ______ &nbsp; My test date (real or planned): ____________</p>
+    <p style="font-size:1rem">One thing I want from this course:</p>
+    <div class="wline"></div>
+    <p class="done">Thank you. That's the end of the diagnostic.</p>
+  </div>
+
+  <!-- ═════════════════════ TEACHER PAGES ═════════════════════ -->
+  <div class="pagebreak"></div>
+  <span class="teacher-only">Teacher only · do not hand out</span>
+  <div class="sec"><h2>Listening Script · The Learning Commons</h2><span class="rule"></span></div>
+  <p>Read the whole script <b>once</b>, at a natural, unhurried pace, with normal contractions. Don't slow down or stress the answers; in the real test the answers arrive inside ordinary speech, often after a wrong detail (the distractor). Before you start, say: <b>"You have 45 seconds to read Questions 1 to 10."</b> The answers are in bold here so you can mark quickly; don't let your voice bold them.</p>
+
+  <div class="script">You will hear a talk given to new students at a university's Learning Commons. You will hear the talk once only. [Start after the 45 seconds of reading time.]<br><br>
+  Good morning, everyone, and welcome to the Learning Commons. My name's Dana Whitfield, and I coordinate student services here. I'll take about ten minutes to explain how things work, and then you're free to explore.<br><br>
+  Let's start with opening hours, because that's what people ask about most. Until last year, the building closed at ten in the evening. Since September, though, we've stayed open until <b>midnight</b> from Monday to Friday. On weekends it's nine till six.<br><br>
+  Now, the group study rooms on the first floor. These are very popular, so you need to book them online. We used to let you book a week in advance, but people were reserving rooms they never used, so now you can only book up to <b>three days</b> ahead. And each group can have a room for a maximum of <b>two hours</b> a day. If you need longer, you can join the waiting list at the desk, but I can't promise anything.<br><br>
+  If you want help with your assignments, our writing tutors are available every afternoon. Some of you may have heard that the writing center is on the ground floor. That was true in the old building, but the tutors are now on the <b>second floor</b>, right next to the map collection.<br><br>
+  You can also borrow a laptop for up to four hours. You don't need your passport or a letter from your department. Just bring your <b>student card</b>, and the desk staff will scan it.<br><br>
+  [pause 20 seconds] Right. A few words about the silent zone, which is the whole of the top floor. Phones must be switched off completely up there, not just on silent. <b>You're welcome to bring water, as long as it's in a bottle with a lid, but no food of any kind</b>, and I should stress that this rule applies all year round, not only during exam periods.<br><br>
+  People often ask me about printing. Yes, it costs ten cents a page, and you pay with your card. And some students forget to cancel room bookings, which is frustrating for everyone else. But honestly, <b>the problem I see most often with new students is that they don't know how to find journal articles</b>. They rely on general web searches and miss the best sources. So please come to our workshops.<br><br>
+  Which brings me to the referencing workshop. Last year we ran it on Monday mornings, but hardly anyone came, so this year it's on <b>Wednesday afternoons</b>, at two o'clock.<br><br>
+  Finally, the help desk by the main entrance. At the help desk you can <b>borrow headphones</b> and phone chargers, and you can <b>book a one-to-one meeting with a subject librarian</b>, who can show you the key databases in your field. Please note that replacement student cards are handled by Student Services in the main administration building, not by us. And there are no library fines anymore. We abolished them two years ago, so don't worry if you're a day late returning a book.<br><br>
+  That's everything from me. Enjoy the building, and do come and say hello at the desk.<br><br>
+  [Say:] You now have one minute to check your answers.</div>
+  <p style="font-size:.9rem;color:var(--ink-2)">Answers: 1 midnight · 2 3 · 3 2 · 4 second · 5 student card · 6 B · 7 B · 8 B · 9–10 B, D (either order). Accepted variants and the script line for each answer are in <code class="inline">answer-keys.html</code>.</p>
+
+  <div class="sec"><h2>Speaking Sample · 3 minutes per learner</h2><span class="rule"></span></div>
+  <p>Sit beside the learner rather than opposite, if you can; it feels less like an interrogation. Keep your own talk to the questions below. Don't correct, don't teach, and don't react to mistakes; nod and move on. Time Part 2 with a phone. If a learner freezes in Part 2, one gentle prompt is fine ("Tell me more about how you use it"). Make brief notes on the grid below <b>after</b> the learner leaves, not while they speak.</p>
+  <div class="grid2">
+    <div class="blk"><div class="h">Part 1 · about 1 minute</div>
+      <div class="say">Thank you for coming over. I'm going to ask you a few questions about studying and learning. Real answers or invented ones are both fine.</div>
+      <ol class="steps">
+        <li>Do you prefer to study in the morning or in the evening? Why?</li>
+        <li>Where do you usually study or read? What makes it a good place?</li>
+        <li>Have you learned a new skill recently, outside school or work? (If "no": Is there a skill you'd like to learn?)</li>
+      </ol>
+      <p style="font-size:.88rem;color:var(--ink-2)">If a learner answers in five words or fewer, ask once: "Why?" Note it. Very short answers are the most common Part 1 habit, and they are fixed in Lesson 4.1.</p>
+    </div>
+    <div class="blk"><div class="h">Part 2 · about 2 minutes</div>
+      <div class="say">Now I'm going to give you a topic. You have 30 seconds to think and make notes if you like, and then I'd like you to talk for about one minute. I'll tell you when to stop.</div>
+      <p style="font-size:.9rem">Give the cue card and a pencil. After 30 seconds: <i>"Please start now."</i> Stop the learner gently at about 1½ minutes: <i>"Thank you."</i> In the real test, preparation is 1 minute and the talk is up to 2 minutes; this is a shortened version.</p>
+    </div>
+  </div>
+
+  <div class="cards">
+    <div class="card-cut">
+      <div class="ct">Cue card · cut out</div>
+      <h4>Describe a website or app that you find useful.</h4>
+      <p>You should say:</p>
+      <ul class="tick">
+        <li>what it is</li>
+        <li>how often you use it</li>
+        <li>what you use it for</li>
+      </ul>
+      <p>and explain why you find it useful.</p>
+    </div>
+    <div class="card-cut b">
+      <div class="ct">New identity card (optional)</div>
+      <h4>Alex Moreno</h4>
+      <p>Studies in the evening after work, at the kitchen table · Recently learned to change a bicycle tire from online videos · Useful app: a bus-times app, used every morning, to avoid waiting in the cold · Would like to learn to swim properly</p>
+    </div>
+  </div>
+
+  <div class="sec"><h2>Speaking &amp; Writing Note Grid · one per learner</h2><span class="rule"></span></div>
+  <p style="font-size:.9rem;color:var(--ink-2)">For each criterion, write a band (5, 5.5, 6, 6.5, 7, 7.5, 8) and <b>one short piece of evidence</b>. Use the paraphrased band criteria in <code class="inline">answer-keys.html</code>. A diagnostic estimate is only accurate to about <b>±0.5</b>, so when you're unsure between two bands, record the lower one and write "or ___" beside it.</p>
+  <p style="font-size:.95rem">Learner: ______________________ &nbsp; Date: __________</p>
+  <table class="grid">
+    <thead><tr><th>Writing criterion</th><th>Band</th><th>Evidence (a phrase, a pattern)</th></tr></thead>
+    <tbody>
+      <tr><td><b>Task Response</b></td><td class="sc">&nbsp;</td><td>Clear position? All parts answered? Ideas developed? Word count ≈ ___</td></tr>
+      <tr><td><b>Coherence &amp; Cohesion</b></td><td class="sc">&nbsp;</td><td>Paragraphs? Topic sentences? Linkers natural or mechanical? Referencing (<i>this, these…</i>)?</td></tr>
+      <tr><td><b>Lexical Resource</b></td><td class="sc">&nbsp;</td><td>Range, precision, collocation, spelling</td></tr>
+      <tr><td><b>Grammatical Range &amp; Accuracy</b></td><td class="sc">&nbsp;</td><td>Complex sentences? Error-free sentences? Repeated error types?</td></tr>
+      <tr><td colspan="3"><b>Writing estimate</b> (average of the four, rounded down to the nearest half band for a cautious estimate): ______</td></tr>
+    </tbody>
+  </table>
+  <table class="grid">
+    <thead><tr><th>Speaking criterion</th><th>Band</th><th>Evidence (a phrase, a pattern)</th></tr></thead>
+    <tbody>
+      <tr><td><b>Fluency &amp; Coherence</b></td><td class="sc">&nbsp;</td><td>Answer length, pauses, self-correction, linking; did Part 2 fill the time?</td></tr>
+      <tr><td><b>Lexical Resource</b></td><td class="sc">&nbsp;</td><td>Range, less common words, paraphrase when a word is missing</td></tr>
+      <tr><td><b>Grammatical Range &amp; Accuracy</b></td><td class="sc">&nbsp;</td><td>Simple vs complex forms, tense control, errors that affect meaning</td></tr>
+      <tr><td><b>Pronunciation</b></td><td class="sc">&nbsp;</td><td>Easy to understand? Word and sentence stress, intonation, linking. Accent itself is <b>not</b> scored.</td></tr>
+      <tr><td colspan="3"><b>Speaking estimate</b> (average of the four, rounded down to the nearest half band for a cautious estimate): ______</td></tr>
+    </tbody>
+  </table>
+
+  <div class="sec"><h2>Estimating a Starting Band</h2><span class="rule"></span></div>
+  <p>A diagnostic of about an hour <b>cannot</b> produce an official-style band. What it can do is place each learner in a range, show which skill is furthest from the target, and give you a baseline to compare with Practice Test 1 (Class 8). Be deliberately cautious: an estimate that is a little low leads to a pleasant surprise; one that is too high leads to a painful one on test day.</p>
+  <div class="grid2">
+    <div class="blk"><div class="h">Listening /10 → rough band</div>
+      <table class="grid">
+        <thead><tr><th>Raw</th><th>Rough band</th></tr></thead>
+        <tbody>
+          <tr><td>10</td><td>7.0 or higher</td></tr>
+          <tr><td>9</td><td>6.5–7.0</td></tr>
+          <tr><td>7–8</td><td>6.0–6.5</td></tr>
+          <tr><td>5–6</td><td>5.5</td></tr>
+          <tr><td>3–4</td><td>5.0</td></tr>
+          <tr><td>0–2</td><td>below 5.0</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="blk"><div class="h">Reading /13 → rough band</div>
+      <table class="grid">
+        <thead><tr><th>Raw</th><th>Rough band</th></tr></thead>
+        <tbody>
+          <tr><td>12–13</td><td>7.0 or higher</td></tr>
+          <tr><td>10–11</td><td>6.5</td></tr>
+          <tr><td>8–9</td><td>6.0</td></tr>
+          <tr><td>6–7</td><td>5.5</td></tr>
+          <tr><td>4–5</td><td>5.0</td></tr>
+          <tr><td>0–3</td><td>below 5.0</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <p style="font-size:.9rem;color:var(--ink-2)">Why these are lower than a simple "multiply by four": the diagnostic uses one section at about Part 2 level and one passage at about Passage 1–2 level. A full test gets harder in Listening Parts 3–4 and Reading Passage 3, where most candidates drop marks. These tables are the kit's own rough guide, not an official conversion. For full 40-question tests, use the conversion table in <code class="inline">answer-keys.html</code>.</p>
+  <ol class="steps">
+    <li><b>Listening and Reading:</b> mark with the key and read the rough band from the tables above.</li>
+    <li><b>Writing and Speaking:</b> give a band for each of the four criteria on the note grid, using the paraphrased criteria in the key, and average them. For a 20-minute sample, don't penalize length heavily (180+ words is fine), but do note whether the learner stated a position.</li>
+    <li><b>Overall:</b> average the four skills and round it as the test does: an average ending in .25 goes up to the next half band, and one ending in .75 goes up to the next whole band (for example, 6.25 → 6.5; 6.75 → 7.0). Write it as a range: "about 6.0 (5.5–6.5)".</li>
+    <li><b>Cross-check with the learner's own "How did it feel?" box.</b> When a learner rates a skill "Very hard" but scores well, their confidence is the issue, not their English. Tell them.</li>
+  </ol>
+
+  <div class="sec"><h2>Target &amp; Gap Sheet · return in Class 2 or 3</h2><span class="rule"></span></div>
+  <p>Fill in one sheet per learner and give it back privately (in an envelope, or at the start of Class 2 while the class does the warmer). Ask the learner to <b>check their required bands</b> with their university, employer or registration body before Class 3; many don't know that a minimum per skill (for example "no band below 6.0") may apply, and that rule often matters more than the overall score.</p>
+  <table class="grid">
+    <thead><tr><th>&nbsp;</th><th>Listening</th><th>Reading</th><th>Writing</th><th>Speaking</th><th>Overall</th></tr></thead>
+    <tbody>
+      <tr><td><b>Required</b> (overall / per skill)</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td></tr>
+      <tr><td><b>Diagnostic estimate</b></td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td></tr>
+      <tr><td><b>Gap</b> (required − estimate)</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td></tr>
+      <tr><td><b>Practice Test 1</b> (Class 8)</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td><td class="sc">—</td><td class="sc">—</td><td class="sc">—</td></tr>
+      <tr><td><b>Practice Test 2</b> (Classes 15–16)</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:.95rem"><b>My priority skill:</b> ________________ &nbsp; <b>Because:</b> ☐ it is below the per-skill minimum ☐ it has the biggest gap ☐ it is the easiest half band to gain</p>
+  <p style="font-size:.95rem"><b>One thing that went well:</b> ______________________________________________</p>
+  <p style="font-size:.95rem"><b>First focus for the next two weeks</b> (with the online lesson): ______________________________________________</p>
+
+  <div class="grid2">
+    <div class="blk"><div class="h">Choosing the priority skill</div>
+      <ul class="tick">
+        <li>First, any skill that is <b>below a per-skill minimum</b>. A strong overall score cannot rescue it (Lesson 1.1).</li>
+        <li>Then the skill with the <b>largest gap</b>.</li>
+        <li>When the gaps are similar, choose the one where <b>technique</b> can help fastest. Reading and Listening often move quickly with strategy (skimming and scanning, predicting, distractors); Writing and Speaking usually need more time and feedback.</li>
+      </ul>
+    </div>
+    <div class="blk warn"><div class="h">Talking about the gap honestly and kindly</div>
+      <ul class="tick">
+        <li>Be realistic: a gain of <b>about half a band</b> in eight weeks is common with steady work; a whole band or more is possible but <b>not guaranteed</b>, and language gains take longer than strategy gains.</li>
+        <li>If a learner's gap is more than about 1.0, don't say "you won't make it." Say: "Let's plan a realistic route. This course will build the technique; you may want to give yourself more weeks before booking the test." Then help them look at the date together.</li>
+        <li>If the estimate is already at or above the target, the plan is to <b>secure</b> it under timed conditions and protect the weakest skill.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div class="who"><b>Ray de la Paz</b><span class="bio">© 2026 Ray de la Paz · IELTS Academic Preparation</span></div>
+    <div class="ver">Assessment · Diagnostic · v1.0</div>
+  </div>
+
+</div>
+</body>
+</html>
