@@ -5,14 +5,14 @@
 
   /* ── Dark-mode contrast rescue ──────────────────────────────────────────
      Many lessons paint callout boxes with hard-coded LIGHT backgrounds (in
-     per-file <style> rules or inline style="") but never set a text colour.
+     per-file <style> rules or inline style="") but never set a text color.
      In light mode that inherits dark text and reads fine; in dark mode the
      inherited text/strong/link colours flip light, giving light-on-light —
      effectively invisible. Rather than patch hundreds of ad-hoc classes, we
      detect every element that actually sits on a light surface and force a
-     dark, readable text colour there — only while the dark theme is active.
+     dark, readable text color there — only while the dark theme is active.
      Headings, code, blockquotes and coloured chips carry their own dark
-     backgrounds (or their own explicit colour), so they are left untouched:
+     backgrounds (or their own explicit color), so they are left untouched:
      an element whose nearest surface is dark is skipped, which also protects
      coloured buttons nested inside a light box. */
   const DM_TEXT = '#1f2937';   /* slate-800  */
