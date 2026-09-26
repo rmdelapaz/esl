@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome to Business English</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="kit.css">
+<style>
+  .big{font-size:15.5px;line-height:1.5}
+  .big .mast{padding-bottom:14px}
+  .big .mast h1{font-size:2.1rem}
+  .big .mast .sub{font-size:1.06rem;max-width:none}
+  .big .sec{margin:20px 0 8px}
+  .hello{font-size:1rem;color:var(--ink-2);margin-top:6px}
+  .fill{display:grid;grid-template-columns:auto 1fr auto 1fr;gap:10px 14px;align-items:end;margin:8px 0;font-size:1.02rem}
+  .fill .k{font-weight:700;white-space:nowrap}
+  .fill .v{border-bottom:2px solid var(--ink-2);min-height:1.7em}
+  table.map{width:100%;border-collapse:collapse;margin:8px 0;font-size:.92rem}
+  table.map th,table.map td{border:1px solid var(--line-strong);padding:3px 8px;text-align:left;vertical-align:top}
+  table.map th{background:var(--surface-2);font-weight:600;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  table.map td.wk{font-weight:700;white-space:nowrap;width:9%}
+  table.map td.c{font-family:"JetBrains Mono",monospace;font-size:.78rem;color:var(--ink-3);white-space:nowrap;width:6%}
+  table.map tr.test td{background:var(--accent-soft);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .bringrow{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center}
+  .bring{display:grid;grid-template-columns:repeat(4,86px);gap:8px;margin:6px 0}
+  .bring div{border:1px solid var(--line);border-radius:10px;padding:6px;text-align:center;font-weight:700;font-size:.85rem;line-height:1.2;break-inside:avoid}
+  .bring img{width:100%;max-width:62px;aspect-ratio:1;object-fit:cover;border-radius:8px;background:#FFF3E0;display:block;margin:0 auto 4px}
+  .flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:8px 0;font-size:.92rem}
+  .flow span{border:1px solid var(--line-strong);border-radius:999px;padding:3px 11px;background:var(--surface-2);font-weight:600;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .flow i{color:var(--ink-3);font-style:normal}
+  .rules{list-style:none;padding:0;margin:8px 0;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .rules li{display:flex;gap:10px;align-items:center;border:1px solid var(--line);border-radius:10px;padding:7px 12px;font-size:.96rem;break-inside:avoid}
+  .rules .ic{font-size:1.3rem;line-height:1}
+  .private{border:2px solid var(--lab);background:var(--lab-soft);border-radius:14px;padding:12px 18px;margin:10px 0;break-inside:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .private h3{font-size:1.12rem;margin-bottom:4px;color:var(--lab)}
+  .private p{margin:.35rem 0}
+  table.rub{width:100%;border-collapse:collapse;margin:8px 0;font-size:.93rem}
+  table.rub th,table.rub td{border:1px solid var(--line-strong);padding:4px 9px;text-align:left;vertical-align:top}
+  table.rub th{background:var(--surface-2);font-weight:600;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  table.rub td.cr{font-weight:700;white-space:nowrap;width:24%}
+  .scale{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin:6px 0;font-size:.86rem}
+  .scale div{border:1px solid var(--line);border-radius:8px;padding:4px 8px;line-height:1.25}
+  .scale b{display:block;font-family:"Archivo",sans-serif;font-size:1.05rem;color:var(--accent)}
+  .homebox{display:grid;grid-template-columns:1fr 124px;gap:16px;align-items:center;border:2px solid var(--accent);border-radius:14px;padding:12px 18px;margin:10px 0;break-inside:avoid}
+  .homebox h3{font-size:1.14rem;margin-bottom:4px}
+  .homebox p{margin:.35rem 0}
+  .url{font-family:"JetBrains Mono",monospace;font-size:.92rem;font-weight:600;background:var(--band);border:1px solid var(--line);border-radius:6px;padding:2px 8px;word-break:break-all;display:inline-block;margin:3px 0}
+  .qr svg{width:124px;height:124px;display:block}
+  .qr .cap{font-size:.76rem;color:var(--ink-3);text-align:center;margin-top:3px}
+  .big ol.steps{margin:4px 0}
+  .big ol.steps li{font-size:.96rem;padding:3px 0 3px 30px}
+  .big ol.steps li::before{width:21px;height:21px;font-size:.78rem}
+  .listen-btn{display:inline-block;background:var(--accent);color:#fff;font-weight:700;border-radius:8px;padding:0 9px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .say-it{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin:8px 0}
+  .say-it div{background:var(--accent-soft);border-radius:8px;padding:5px 12px;font-size:.96rem;font-weight:600;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .say-it .h{grid-column:1/-1;background:none;padding:4px 2px 0;font-family:"JetBrains Mono",monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+  .expect{border:2px solid var(--warn);background:var(--warn-soft);border-radius:14px;padding:12px 18px;margin:10px 0;break-inside:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .expect h3{font-size:1.14rem;margin-bottom:4px;color:var(--warn)}
+  .expect ul{margin:4px 0 0;padding-left:20px}
+  .expect li{margin:3px 0;font-size:.97rem}
+  .contact{border:2.5px dashed var(--ink-2);border-radius:14px;padding:12px 18px;margin:10px 0;break-inside:avoid}
+  .contact h3{font-size:1.14rem;margin-bottom:4px}
+  .big .note{margin:10px 0}
+  .big .foot{margin-top:12px}
+  @media (max-width:680px){
+    .fill{grid-template-columns:auto 1fr}
+    .bringrow{grid-template-columns:1fr}
+    .bring{grid-template-columns:repeat(4,1fr)}
+    .rules,.say-it{grid-template-columns:1fr}
+    .scale{grid-template-columns:1fr 1fr}
+    .homebox{grid-template-columns:1fr}
+    .qr svg{margin:0 auto}
+    table.map,table.rub{font-size:.84rem}
+  }
+  @page{size:Letter;margin:.4in}
+  @media print{
+    .big{zoom:.65}
+    .big .sec{margin:14px 0 6px}
+    .pb{break-before:page}
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="lbl">Learner handout —</span>
+  <button type="button" onclick="window.print()">🖨 Print / Save as PDF</button>
+  <span class="hint">fill in the blanks · give out in Class 1 · prints on 2 pages</span>
+</div>
+
+<div class="sheet big">
+
+  <header class="mast">
+    <div class="kit-eyebrow">Business English · B1+ · Professional communication</div>
+    <h1>Welcome to Business English</h1>
+    <p class="sub">Welcome, and thank you for joining us. This course is about <b>using the English you already have at work</b>: writing clear emails and messages, handling phone and video calls, taking part in meetings, giving your opinion politely, presenting, negotiating, and applying for jobs. Every class is a practical workshop. You will hear a model, learn the key phrases, practice them out loud, and then use them in a realistic role-play.</p>
+    <p class="hello">Some of you use English at work every day; some of you are looking for a new job; some of you had a successful career in another country and are rebuilding it here. Your experience and your qualifications are <b>valued in this room</b>. Everyone starts from a different place, and everyone is measured against <b>their own starting point</b>, not against the person next to them.</p>
+  </header>
+
+  <div class="sec"><h2>📅 When and where</h2><span class="rule"></span></div>
+  <div class="fill">
+    <span class="k">Days:</span><span class="v"></span>
+    <span class="k">Time:</span><span class="v"></span>
+    <span class="k">Place / Room:</span><span class="v"></span>
+    <span class="k">First class:</span><span class="v"></span>
+    <span class="k">Last class:</span><span class="v"></span>
+    <span class="k">Break:</span><span class="v"></span>
+  </div>
+  <p>The course runs for <b>8 weeks</b>, with <b>2 classes</b> a week. Each class lasts <b>90 minutes</b>, so there are <b>16 classes</b> in total. Here is the plan:</p>
+  <table class="map">
+    <tr><th>Week</th><th colspan="2">First class of the week</th><th colspan="2">Second class of the week</th></tr>
+    <tr class="test"><td class="wk">Week 1</td><td class="c">C1</td><td><b>Orientation and needs analysis</b>: a short survey, a reply email, a 3-minute speaking sample</td><td class="c">C2</td><td>1.1 Register, tone &amp; first impressions</td></tr>
+    <tr><td class="wk">Week 2</td><td class="c">C3</td><td>1.2 Professional emails &amp; messaging</td><td class="c">C4</td><td>1.3 Telephoning &amp; virtual calls</td></tr>
+    <tr><td class="wk">Week 3</td><td class="c">C5</td><td>2.1 Meetings: participating &amp; chairing</td><td class="c">C6</td><td>2.2 Small talk, networking &amp; rapport</td></tr>
+    <tr><td class="wk">Week 4</td><td class="c">C7</td><td>2.3 Diplomatic &amp; assertive communication</td><td class="c">C8</td><td><b>Midpoint performance check</b>: an email and a message, a phone call and a short meeting</td></tr>
+    <tr><td class="wk">Week 5</td><td class="c">C9</td><td>3.1 Presentations: structure &amp; delivery</td><td class="c">C10</td><td>3.2 Negotiations: language &amp; strategy</td></tr>
+    <tr><td class="wk">Week 6</td><td class="c">C11</td><td>3.3 Pitching, persuasion &amp; objections</td><td class="c">C12</td><td>4.1 Reports, proposals &amp; documents</td></tr>
+    <tr><td class="wk">Week 7</td><td class="c">C13</td><td>4.2 CVs, cover letters &amp; job interviews</td><td class="c">C14</td><td>4.3 Review project: plan and rehearse</td></tr>
+    <tr class="test"><td class="wk">Week 8</td><td class="c">C15</td><td><b>Final, part A</b>: timed writing + a negotiation in pairs</td><td class="c">C16</td><td><b>Final, part B</b>: your presentation or pitch + a short mock interview, then certificates 🎓</td></tr>
+  </table>
+
+  <div class="sec"><h2>🎒 What to bring</h2><span class="rule"></span></div>
+  <div class="bringrow">
+    <div class="bring">
+      <div><img src="assets/vocab/notebook.jpg" alt="">a notebook</div>
+      <div><img src="assets/vocab/pen.jpg" alt="">a pen</div>
+      <div><img src="assets/vocab/mobile-phone.jpg" alt="">your phone<span style="display:block;font-weight:400;font-size:.76rem;color:var(--ink-3)">(on silent)</span></div>
+      <div><img src="assets/vocab/water.jpg" alt="">water</div>
+    </div>
+    <p style="margin:0">Your teacher will give you a <b>workbook</b> and a <b>performance tracker</b>. Please bring both to <b>every</b> class, with a folder for your written work. We use phones to record practice calls and presentations, so you can hear yourself. <b>Optional:</b> a job advertisement or an email from work that you want help with (remove any private details first).</p>
+  </div>
+
+  <div class="sec"><h2>🤝 How a class works</h2><span class="rule"></span></div>
+  <div class="flow"><span>Link to your work</span><i>→</i><span>See a model</span><i>→</i><span>Notice the key phrases</span><i>→</i><span>Say them out loud</span><i>→</i><span>Practice on paper</span><i>→</i><span>Role-play</span><i>→</i><span>Feedback</span></div>
+  <ul class="rules">
+    <li><span class="ic">🕐</span><span>Please arrive <b>on time</b>. We start with a short warm-up that reviews the last class.</span></li>
+    <li><span class="ic">📵</span><span>Keep your phone <b>on silent</b>, and use it for class tasks only.</span></li>
+    <li><span class="ic">🎭</span><span>Role-plays are <b>practice, not a performance</b>. Everyone plays roles, and everyone makes mistakes.</span></li>
+    <li><span class="ic">📝</span><span>Your teacher notes mistakes during a role-play and discusses them <b>afterwards</b>, without names.</span></li>
+    <li><span class="ic">🌍</span><span>Workplaces differ. We compare what is <b>usual</b> in different places, and no way is "wrong".</span></li>
+    <li><span class="ic">📩</span><span>If you can't come, please <b>let your teacher know</b>, and do the online lesson at home.</span></li>
+  </ul>
+
+  <div class="private">
+    <h3>🔒 Your private information stays private: the role-card option</h3>
+    <p>You <b>never</b> have to share your salary, whether you are working, your immigration status, or the name of your employer. For <b>any</b> task about your job or career, you can choose a <b>role card</b>: a fictional job at a fictional company (for example, a project coordinator at <i>Northwind Logistics</i>). Use your real situation or a role card, whichever you prefer, and you can change your mind at any time. Your teacher marks your <b>English</b>, not your story. The same is true for your CV and interview practice in Week 7.</p>
+  </div>
+
+  <div class="sec pb"><h2>✅ How your work is marked</h2><span class="rule"></span></div>
+  <p>Every email, call, meeting, presentation, and interview in this course is marked with the <b>same four criteria</b>. Each one gets a score from <b>1 to 5</b>, so the total is <b>out of 20</b>.</p>
+  <table class="rub">
+    <tr><th>Criterion</th><th>In plain words, the question is…</th></tr>
+    <tr><td class="cr">Task &amp; Purpose</td><td>Did you do the job? Did you cover all the points, and is it clear what happens next?</td></tr>
+    <tr><td class="cr">Register &amp; Tone</td><td>Is it right for the person and the situation: polite, not too formal and not too casual, diplomatic when it needs to be?</td></tr>
+    <tr><td class="cr">Language Range &amp; Accuracy</td><td>Did you use useful work phrases, correct grammar, and the right words?</td></tr>
+    <tr><td class="cr">Organization &amp; Delivery</td><td>Is it easy to follow? A clear structure, signposts, and, when you speak, clear pronunciation and good listening.</td></tr>
+  </table>
+  <div class="scale">
+    <div><b>1</b>Not yet: the message is hard to understand</div>
+    <div><b>2</b>Partly there: some points are missing or unclear</div>
+    <div><b>3</b>Gets the job done, with some problems</div>
+    <div><b>4</b>Clear and appropriate, with small slips</div>
+    <div><b>5</b>Confident and professional</div>
+  </div>
+  <p>You get scores in <b>Class 1</b> (your starting point), <b>Class 8</b> (the midpoint check), and <b>Classes 15–16</b> (the final). Write them on your <b>performance tracker</b>. Your scores are <b>private</b>: you decide whether to share them.</p>
+
+  <div class="sec"><h2>🗨️ Useful phrases for class</h2><span class="rule"></span></div>
+  <div class="say-it">
+    <div class="h">Asking about language</div>
+    <div>Is this too formal for an email to a colleague?</div>
+    <div>What's a more polite way to say "___"?</div>
+    <div>Would you say this in a meeting?</div>
+    <div class="h">In a role-play</div>
+    <div>Sorry, could you say that again, please?</div>
+    <div>Just to check, do you mean…?</div>
+    <div>Could I just come in here?</div>
+  </div>
+
+  <div class="sec"><h2>🏠 At home: free online lessons</h2><span class="rule"></span></div>
+  <div class="homebox">
+    <div>
+      <h3>📱 Business English: free</h3>
+      <p>Each of the <b>12 lessons</b> we teach in class has a matching <b>online lesson</b> with the phrase banks, model emails and conversations, and exercises with answers. It's your homework, and it helps you catch up if you miss a class. It works on a phone, a tablet, or a computer.</p>
+      <span class="url">rays-esl.netlify.app/curriculum-business/</span>
+      <ol class="steps">
+        <li>Open the website, or scan the QR code with your phone camera.</li>
+        <li>Choose the lesson your teacher gives you (for example, <b>Lesson 1.2</b>).</li>
+        <li>Press the <span class="listen-btn">🔊 Listen</span> buttons to hear the model sentences. Say each line <b>with</b> the audio, copying the stress and the polite, friendly intonation. <span style="font-size:.86rem;color:var(--ink-3)">(No sound? Turn up the volume, or try the Chrome browser.)</span></li>
+        <li>Do the exercises <b>before</b> you check the answers. Then use one new phrase in real life that week.</li>
+      </ol>
+      <p>Aim for <b>45–60 minutes, 2 times</b> a week. Translation help and free practice tools: <span class="url">rays-esl.netlify.app/curriculum/learning-tools.html</span></p>
+      <p style="font-size:.88rem;color:var(--ink-2)">The class and the online lessons both use American English (<i>CV</i> and <i>résumé</i> mean the same document). British forms are correct too: choose one style and keep it consistent.</p>
+    </div>
+    <div class="qr"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 148 148" class="segno" role="img" aria-label="QR code: rays-esl.netlify.app/curriculum-business/"><g transform="scale(4)"><path fill="#fff" d="M0 0h37v37h-37z"/><path class="qrline" stroke="#16202e" d="M2 2.5h7m2 0h3m1 0h1m2 0h5m2 0h1m2 0h7m-33 1h1m5 0h1m4 0h1m1 0h5m4 0h1m3 0h1m5 0h1m-33 1h1m1 0h3m1 0h1m1 0h2m2 0h2m2 0h3m1 0h2m4 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m1 0h3m1 0h1m1 0h1m2 0h2m1 0h3m1 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m1 0h2m2 0h1m2 0h1m1 0h2m2 0h1m1 0h1m2 0h1m1 0h3m1 0h1m-33 1h1m5 0h1m1 0h1m1 0h1m1 0h2m1 0h2m1 0h1m1 0h3m3 0h1m5 0h1m-33 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-25 1h1m3 0h1m1 0h2m5 0h2m1 0h1m-25 1h1m1 0h5m2 0h1m1 0h5m1 0h1m4 0h3m1 0h5m-31 1h1m3 0h2m2 0h1m2 0h2m1 0h1m3 0h7m1 0h2m1 0h2m1 0h1m-33 1h3m2 0h3m4 0h1m2 0h1m2 0h1m2 0h2m2 0h2m1 0h1m1 0h2m-31 1h1m3 0h1m3 0h4m1 0h2m4 0h6m2 0h3m1 0h1m-33 1h1m3 0h4m1 0h2m1 0h1m2 0h1m2 0h1m3 0h1m1 0h1m2 0h3m-30 1h4m1 0h1m2 0h2m2 0h1m1 0h3m3 0h4m2 0h1m4 0h2m-33 1h1m1 0h2m2 0h1m3 0h1m2 0h1m3 0h1m1 0h1m5 0h2m2 0h3m-32 1h4m5 0h2m1 0h2m2 0h1m1 0h9m2 0h2m-28 1h1m2 0h1m1 0h2m6 0h2m1 0h2m1 0h1m2 0h1m1 0h2m3 0h1m-30 1h1m1 0h1m3 0h2m5 0h2m1 0h3m1 0h1m1 0h3m1 0h4m-33 1h2m2 0h1m1 0h2m3 0h1m3 0h1m1 0h1m2 0h1m4 0h4m1 0h2m-32 1h1m2 0h2m4 0h1m1 0h1m3 0h1m1 0h2m1 0h3m1 0h2m1 0h4m1 0h1m-32 1h2m1 0h6m2 0h1m2 0h2m5 0h2m1 0h1m2 0h2m-30 1h1m2 0h3m1 0h3m1 0h2m2 0h1m1 0h2m3 0h2m2 0h1m3 0h1m1 0h1m-33 1h1m5 0h1m1 0h2m3 0h1m1 0h2m1 0h1m2 0h2m4 0h1m1 0h1m1 0h1m-32 1h1m1 0h1m1 0h2m2 0h2m1 0h2m2 0h1m5 0h1m4 0h1m1 0h4m-32 1h1m2 0h2m1 0h5m1 0h1m2 0h4m5 0h6m-22 1h1m1 0h2m1 0h1m2 0h1m1 0h4m1 0h2m3 0h1m1 0h3m-33 1h7m2 0h1m1 0h2m2 0h2m1 0h1m4 0h2m1 0h1m1 0h1m1 0h2m-32 1h1m5 0h1m1 0h1m1 0h1m1 0h2m1 0h1m3 0h6m3 0h4m-32 1h1m1 0h3m1 0h1m1 0h2m4 0h2m2 0h2m4 0h6m1 0h1m-32 1h1m1 0h3m1 0h1m1 0h6m1 0h3m5 0h3m2 0h5m-33 1h1m1 0h3m1 0h1m1 0h1m1 0h3m1 0h1m2 0h1m2 0h1m1 0h1m1 0h1m1 0h2m1 0h2m-31 1h1m5 0h1m2 0h2m2 0h1m2 0h1m1 0h4m1 0h1m4 0h3m-31 1h7m1 0h1m8 0h1m1 0h1m2 0h3m1 0h2m3 0h1"/></g></svg>
+<div class="cap">Scan me 📷</div></div>
+  </div>
+
+  <div class="expect">
+    <h3>📈 What to expect: realistic progress</h3>
+    <ul>
+      <li>In eight weeks, most learners notice the biggest change in <b>confidence</b> and in <b>register and tone</b>: knowing which phrase fits which situation. These changes show quickly.</li>
+      <li><b>Grammar accuracy</b> and <b>fluency</b> improve more slowly, because they depend on habits built over months. That is normal.</li>
+      <li>A gain of <b>2–4 points out of 20</b> between Class 1 and the final is a good result. Some learners gain more; nobody can promise a number.</li>
+      <li>No course can guarantee a job or a promotion. This one gives you <b>tools</b> for emails, calls, meetings, and interviews that you keep using.</li>
+    </ul>
+  </div>
+
+  <div class="contact">
+    <h3>👩‍🏫 My teacher</h3>
+    <div class="fill">
+      <span class="k">Name:</span><span class="v"></span>
+      <span class="k">Phone / text:</span><span class="v"></span>
+      <span class="k">Email:</span><span class="v"></span>
+      <span class="k">Office hours:</span><span class="v"></span>
+    </div>
+    <p style="margin-top:6px">Can't come? Send a short, professional message (good practice!): <b>"Hi ______, I'm afraid I can't attend today's class. I'll complete the online lesson before the next one. Best regards, ______."</b></p>
+  </div>
+
+  <div class="note lab">
+    <div class="t">🌟 You're ready to start</div>
+    <p>Good workplace English is not about perfect grammar. It is about <b>getting things done</b> with people: being clear, being polite, and being understood. You already have these skills in your own language; this course helps you bring them into English, one role-play at a time. We're glad you're here. Welcome.</p>
+  </div>
+
+  <div class="foot">
+    <div class="who"><b>Ray de la Paz</b><span class="bio">© 2026 Ray de la Paz · Business English</span></div>
+    <div class="ver">Learner Welcome · v1.0</div>
+  </div>
+
+</div>
+</body>
+</html>

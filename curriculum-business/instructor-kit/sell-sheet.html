@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teach Business English</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="kit.css">
+<style>
+  :root{ --shadow:0 1px 2px rgba(20,30,45,.05),0 8px 26px rgba(20,30,45,.07); }
+  .ss .mast{padding-bottom:14px}
+  .ss .mast .sub{max-width:none}
+  .ss .mast h1{font-size:1.8rem}
+  .ss .sec{margin:18px 0 8px}
+  .stats { display:grid; grid-template-columns:repeat(8,1fr); gap:8px; margin:14px 0 4px; }
+  .statcard { background:var(--surface-2); border:1px solid var(--line); border-radius:10px; padding:8px 6px; text-align:center; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  .statcard .n { font-family:"Archivo",sans-serif; font-weight:800; font-size:1.35rem; color:var(--accent); line-height:1; }
+  .statcard .l { font-size:.62rem; line-height:1.25; color:var(--ink-3); margin-top:5px; text-transform:uppercase; letter-spacing:.04em; }
+  .ss ul.tick li{margin:3px 0}
+  .ss .blk{margin:6px 0}
+  .outcomes{display:grid;grid-template-columns:1fr 1fr;gap:8px 18px}
+  .tiers { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:10px 0; }
+  .tier { border:1px solid var(--line); border-radius:var(--radius); padding:12px 16px 14px; background:var(--surface); display:flex; flex-direction:column; }
+  .tier.feature { border:2px solid var(--accent); box-shadow:var(--shadow); }
+  .tier .name { font-family:"JetBrains Mono",monospace; font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3); }
+  .tier .price { font-family:"Archivo",sans-serif; font-weight:800; font-size:1.6rem; margin:4px 0 2px; letter-spacing:-.02em; }
+  .tier .price span { font-size:.8rem; font-weight:500; color:var(--ink-3); }
+  .tier ul { margin:8px 0 0; }
+  .tier .who { font-size:.82rem; color:var(--ink-2); margin-bottom:2px; }
+  .badge { display:inline-block; align-self:flex-start; font-family:"JetBrains Mono",monospace; font-size:.62rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:#fff; background:var(--accent); border-radius:999px; padding:2px 9px; margin-bottom:6px; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  .ss .meta-row{margin-top:8px}
+  .ss .note{margin:10px 0}
+  .ss .foot{margin-top:10px}
+  @media (max-width:680px){ .stats{grid-template-columns:repeat(4,1fr)} .tiers,.outcomes{grid-template-columns:1fr} }
+  @page{size:Letter;margin:.4in}
+  @media print{
+    .ss{zoom:.62}
+    .ss .sec{margin:12px 0 6px}
+    .tier.feature{box-shadow:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="lbl">Sell sheet —</span>
+  <button type="button" onclick="window.print()">🖨 Print / Save as PDF</button>
+  <span class="hint">for adult-ed &amp; WIOA programs, colleges, libraries, employers &amp; workforce partners · prints on 1 page</span>
+</div>
+
+<div class="sheet ss">
+
+  <header class="mast">
+    <div class="kit-eyebrow">Course-in-a-Box · Instructor License · Business English</div>
+    <h1>Teach Business English: Workplace Communication for Working Adults</h1>
+    <p class="sub"><b>Business English</b> is a complete 8-week classroom course for working adults at <b>B1 and above</b>: employees who use English on the job, job seekers, and newcomers rebuilding a professional career. Learners practice the communication that decides how they are seen at work: <b>emails and messages, calls, meetings, small talk, diplomatic feedback, presentations, negotiations, reports, CVs, and job interviews</b>. Every class is a workshop planned to the minute: model, key phrases, spoken drill, practice, role-play or simulation, and feedback on register, tone, and clarity. It works for a trained ESL teacher and for a well-prepared volunteer; no business background required.</p>
+    <div class="stats">
+      <div class="statcard"><div class="n">4</div><div class="l">Modules</div></div>
+      <div class="statcard"><div class="n">12</div><div class="l">Lessons</div></div>
+      <div class="statcard"><div class="n">16</div><div class="l">Classes × 90 min</div></div>
+      <div class="statcard"><div class="n">24</div><div class="l">Hours over 8 weeks</div></div>
+      <div class="statcard"><div class="n">B1+</div><div class="l">Mixed B1–C1 classes</div></div>
+      <div class="statcard"><div class="n">3</div><div class="l">Scored checkpoints</div></div>
+      <div class="statcard"><div class="n">/20</div><div class="l">One shared rubric</div></div>
+      <div class="statcard"><div class="n">Free</div><div class="l">Online course with audio</div></div>
+    </div>
+  </header>
+
+  <div class="sec"><h2>What You Get</h2><span class="rule"></span></div>
+  <div class="grid2">
+    <div class="blk"><div class="h">For every module (×4)</div>
+      <ul class="tick">
+        <li><b>Teacher's Guide</b>: one 90-minute plan per class with a board plan, a timed stage table, concept-check and instruction-check questions, drill scripts for stress and polite intonation, role-play management, support and stretch tasks, and cross-cultural watch-outs</li>
+        <li><b>Student Workbook</b>: clear B1/B2 English, phrase banks, formal-neutral-informal language boxes, model emails and dialogues, rewrite-for-tone exercises, role-plays, "I can…" checklists, and a journal</li>
+        <li><b>Answer Key</b>: every item answered, with model emails and documents, acceptable alternatives, and the errors to expect</li>
+        <li><b>Slide deck</b> and <b>classroom materials</b>: A/B role-play and information-gap cards, read-aloud listening scripts (voicemails, meetings, pitches), phrase cards, and a game</li>
+      </ul>
+    </div>
+    <div class="blk"><div class="h">Across the kit</div>
+      <ul class="tick">
+        <li>An <b>8-week, 16-class syllabus</b> in web and print versions</li>
+        <li><b>Needs analysis &amp; diagnostic</b> (Class 1): a workplace-needs survey, a reply email, and a speaking sample</li>
+        <li><b>Midpoint performance check</b> (Class 8): timed email and message writing, plus phone-call and meeting simulations</li>
+        <li><b>Final assessment</b> (Classes 15–16): a proposal or report section, a cover letter or formal email, a negotiation, a capstone presentation or pitch, and a mock job interview</li>
+        <li>An <b>assessment key</b> with the shared rubric, model answers, role cards, and scoring sheets</li>
+        <li>A <b>learner welcome handout</b>, a one-page <b>performance tracker</b>, and the three combined, print-ready books</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec"><h2>Workplace &amp; WIOA-Friendly Outcomes</h2><span class="rule"></span></div>
+  <div class="outcomes">
+    <ul class="tick">
+      <li><b>Employability skills, built in.</b> A CV and cover letter, STAR interview answers, and a mock interview in the final week support workforce-preparation and job-search goals.</li>
+      <li><b>Evidence of progress.</b> The same four-criterion rubric (Task &amp; Purpose, Register &amp; Tone, Language Range &amp; Accuracy, Organization &amp; Delivery) is scored at the start, midpoint, and end, giving learners, teachers, and funders a clear pre/mid/post record. It complements, and does not replace, your required standardized assessment.</li>
+    </ul>
+    <ul class="tick">
+      <li><b>Useful to employers.</b> Incumbent-worker groups practice the exact tasks of the job: status updates, chairing a meeting, handling a delay with a client, saying no politely, and presenting a proposal.</li>
+      <li><b>Respectful by design.</b> Learners never have to disclose salary, employment or immigration status, or an employer; every personal task offers a fictional role card. Foreign credentials are treated as assets, and cross-cultural notes describe tendencies, never stereotypes. All companies and figures are fictional.</li>
+    </ul>
+  </div>
+
+  <div class="sec"><h2>Who It's For</h2><span class="rule"></span></div>
+  <div class="meta-row">
+    <span class="chip">Adult education &amp; WIOA Title II programs</span>
+    <span class="chip">IELCE &amp; integrated education and training</span>
+    <span class="chip">Workforce boards &amp; job centers</span>
+    <span class="chip">Employers (incumbent-worker training)</span>
+    <span class="chip">Community colleges &amp; continuing education</span>
+    <span class="chip">Refugee &amp; newcomer career programs</span>
+    <span class="chip">Public libraries &amp; community organizations</span>
+  </div>
+
+  <div class="sec"><h2>License &amp; Pricing</h2><span class="rule"></span></div>
+  <div class="tiers">
+    <div class="tier">
+      <div class="name">Solo</div>
+      <div class="price">[$ ___ ]<span> one-time</span></div>
+      <div class="who">One teacher or volunteer · unlimited learners</div>
+      <ul class="tick">
+        <li>Full kit, all 4 modules and all assessments</li>
+        <li>Print workbooks and assessments for your classes</li>
+        <li>Perpetual license</li>
+      </ul>
+    </div>
+    <div class="tier feature">
+      <div class="badge">Most popular</div>
+      <div class="name">Organization</div>
+      <div class="price">[$ ___ ]<span> one-time</span></div>
+      <div class="who">A college, adult-ed program, employer, library system, or community organization</div>
+      <ul class="tick">
+        <li>Everything in Solo</li>
+        <li>Unlimited teachers and trainers at one organization</li>
+      </ul>
+    </div>
+    <div class="tier">
+      <div class="name">White-label</div>
+      <div class="price">[$ ___ ]<span> one-time</span></div>
+      <div class="who">Rebrand &amp; adapt freely</div>
+      <ul class="tick">
+        <li>Everything in Organization</li>
+        <li>Add your own branding; edit &amp; adapt, e.g. to your industry</li>
+      </ul>
+    </div>
+  </div>
+  <p style="font-size:.85rem;color:var(--ink-3);margin:4px 0">Optional content-updates add-on: <b>[$ ___ / yr]</b>. Reduced pricing for non-profits, libraries, faith-based, and volunteer-led programs.</p>
+  <div class="note lab">
+    <div class="t">Ready to run it?</div>
+    <p>Ask for a free sample module (Teacher's Guide, workbook pages, and slides) and full license terms: <b>Ray de la Paz</b>, via the contact form on the site. Free online course: <a href="https://rays-esl.netlify.app/curriculum-business/">rays-esl.netlify.app/curriculum-business</a>.</p>
+  </div>
+
+
+  <p style="font-size:.76rem;color:var(--ink-3);margin:4px 0">All companies, people, products, and figures in the materials are fictional; any resemblance to real organizations is coincidental. The course is an independent educational product and does not certify job readiness or guarantee employment outcomes. The Common European Framework of Reference for Languages (CEFR) is published by the Council of Europe.</p>
+
+  <div class="foot">
+    <div class="who"><b>Ray de la Paz</b><span class="bio">© 2026 Ray de la Paz · Business English</span></div>
+    <div class="ver">Instructor Sell Sheet · v1.0</div>
+  </div>
+
+</div>
+</body>
+</html>

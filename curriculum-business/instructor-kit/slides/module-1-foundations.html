@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slides — Module 1</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root{--bg:#0b1220;--ink:#edf2fb;--ink2:#a8b6cf;--accent:#7fb2ff;--accent2:#2563eb;--lab:#34d3bd;--warn:#fbbf24;--line:#233252;--code:#101a2e;color-scheme:dark}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;overflow:hidden}
+  .deck{height:100%;width:100%;position:relative}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:6vh 8vw;gap:20px}
+  .slide.on{display:flex}
+  h1,h2,h3{font-family:"Archivo",sans-serif;line-height:1.1;text-wrap:balance}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  .slide h1{font-size:clamp(2rem,6vw,4rem);font-weight:800;letter-spacing:-.02em}
+  .slide h2{font-size:clamp(1.5rem,4.2vw,2.8rem);font-weight:800;letter-spacing:-.01em}
+  .slide p.lead{font-size:clamp(1.05rem,2.4vw,1.5rem);color:var(--ink2);max-width:26ch}
+  ul{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:6px}
+  ul li{position:relative;padding-left:34px;font-size:clamp(1.05rem,2.3vw,1.6rem)}
+  ul li::before{content:"";position:absolute;left:0;top:.55em;width:12px;height:12px;border-radius:3px;background:var(--accent);transform:rotate(45deg)}
+  ul.lab li::before{background:var(--lab)}
+  code.k{font-family:"JetBrains Mono",monospace;color:#cfe0ff;font-size:.92em}
+  pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:22px 26px;font-family:"JetBrains Mono",monospace;font-size:clamp(.85rem,1.9vw,1.3rem);line-height:1.55;overflow:auto;max-width:100%}
+  pre .k{color:#7dd3fc} pre .s{color:#86efac} pre .c{color:#7183a3;font-style:italic}
+  .tag{display:inline-flex;align-items:center;gap:10px;font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);color:var(--ink2)}
+  .tag .pill{background:var(--accent2);color:#fff;font-weight:700;border-radius:999px;padding:3px 12px;letter-spacing:.06em}
+  .tag .pill.lab{background:var(--lab);color:#062b26} .tag .pill.warn{background:var(--warn);color:#3a2a05}
+  .section{background:linear-gradient(135deg,#132a52,#0b1220)}
+  .section .big{font-size:clamp(3rem,12vw,8rem);font-family:"Archivo";font-weight:800;color:var(--accent2);line-height:.9}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+  @media (max-width:760px){.two{grid-template-columns:1fr}}
+  .bar{position:fixed;left:0;top:0;height:4px;background:var(--accent2);width:0;transition:width .25s;z-index:5}
+  .count{position:fixed;right:16px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink2);z-index:5}
+  .nav{position:fixed;inset:auto 0 0 0;display:flex;justify-content:space-between;pointer-events:none;z-index:4}
+  .nav button{pointer-events:auto;background:transparent;border:none;color:transparent;width:22vw;height:100vh;cursor:pointer}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+  /* ESL extras (picture vocab, grammar tables, dialogue, clocks) */
+  .pics{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,1.6vw,18px)}
+  .pics.six{grid-template-columns:repeat(6,1fr)}
+  .pic{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center}
+  .pic img{width:100%;max-width:150px;aspect-ratio:1;object-fit:cover;border-radius:10px;background:#FFF3E0;display:block;margin:0 auto}
+  .pic .emo{font-size:clamp(2.6rem,7vw,5rem);line-height:1;aspect-ratio:1;max-width:150px;margin:0 auto;display:flex;align-items:center;justify-content:center}
+  .pic .w{font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(.9rem,2vw,1.35rem);margin-top:6px}
+  @media (max-width:760px){.pics,.pics.six{grid-template-columns:repeat(3,1fr)}}
+  table.g{border-collapse:collapse;font-size:clamp(.95rem,2.1vw,1.45rem);width:100%;max-width:1000px}
+  table.g th,table.g td{border:1px solid var(--line);padding:10px 16px;text-align:left}
+  table.g th{background:var(--code);color:var(--accent);font-family:"JetBrains Mono",monospace;font-size:.8em;letter-spacing:.04em}
+  table.g b{color:#ffd166}
+  .dlg{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:18px 24px;display:flex;flex-direction:column;gap:8px;font-size:clamp(1rem,2.2vw,1.45rem);max-width:1000px}
+  .dlg .sp{display:inline-block;min-width:3.6em;font-weight:700;color:var(--accent)}
+  .dlg .b .sp{color:#c4a1ff}
+  .ccq{font-size:clamp(1rem,2.2vw,1.45rem);border:1px dashed var(--line);border-radius:12px;padding:12px 18px;background:var(--code)}
+  .ccq i{color:var(--ink2)}
+  .clocks{display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,34px);align-items:flex-start}
+  .clocks figure{text-align:center}
+  .clocks svg{width:clamp(96px,14vw,170px);height:auto}
+  .clocks figcaption{font-size:clamp(.95rem,2vw,1.3rem);margin-top:6px}
+  .clocks figcaption small{display:block;color:var(--ink2);font-size:.8em}
+  .snd{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .snd div{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:clamp(1rem,2.2vw,1.5rem)}
+  .snd div b{display:block;font-family:"Archivo";font-size:1.5em;color:var(--accent)}
+  .snd div small{color:var(--ink2)}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="deck" id="deck">
+
+  <!-- 1 -->
+  <section class="slide on section">
+    <div class="eyebrow">Business English · Instructor Kit</div>
+    <h1>Module 1<br>Professional Communication Foundations</h1>
+    <p class="lead" style="max-width:40ch">Choose the register. Write it clearly. Say it clearly.</p>
+    <ul class="lab">
+      <li><b>C1</b> Welcome, your workplace needs, the diagnostic and your goals</li>
+      <li><b>1.1</b> Register, tone and first impressions</li>
+      <li><b>1.2</b> Professional emails and messaging</li>
+      <li><b>1.3</b> Telephoning and video calls</li>
+    </ul>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide">
+    <div class="eyebrow">C1 · Our course · 16 classes · 8 weeks · 90 minutes</div>
+    <h2>The route through the course</h2>
+    <table class="g">
+      <tr><th>Weeks 1–2</th><td>C1 Welcome + diagnostic · Module 1: register and tone, emails, calls</td></tr>
+      <tr><th>Weeks 3–4</th><td>Module 2: meetings, networking, diplomacy · <b>C8 Midpoint Performance Check</b></td></tr>
+      <tr><th>Weeks 5–6</th><td>Module 3: presentations, negotiations, pitching</td></tr>
+      <tr><th>Weeks 7–8</th><td>Module 4: reports, CVs, interviews · <b>C15–C16 Final Assessment</b> · celebration</td></tr>
+    </table>
+    <div class="ccq"><b>Promises:</b> results are private · honest feedback · personal information is always optional · we correct the language, never the person.<br><i>Your real job, a role card, or a job you invent: all equally good.</i></div>
+    <div class="tag"><span class="pill lab">ONE RUBRIC</span> Task &amp; Purpose · Register &amp; Tone · Language Range &amp; Accuracy · Organization &amp; Delivery · 1–5 each · /20</div>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide">
+    <div class="eyebrow">C1 · Your needs · the diagnostic · your goals</div>
+    <h2>A map, not a verdict</h2>
+    <div class="two">
+      <ul>
+        <li><b>Needs survey</b>: which situations? how often? how confident?</li>
+        <li><b>Writing sample</b>: a reply email</li>
+        <li><b>Speaking sample</b>: 3 minutes with me · introduce yourself (or a role card) · leave a phone message</li>
+        <li><b>My goals</b>: By ___, I want to be able to ___ when I ___.</li>
+      </ul>
+      <div class="ccq">Company name on the survey? <i>(No.)</i><br>Not working right now? <i>(Answer for the job you want, or use a role card.)</i><br>A test with a grade? <i>(No, a starting map.)</i><br>Called to the side table? <i>(You get the minutes back.)</i></div>
+    </div>
+    <div class="tag"><span class="pill">HOMEWORK</span> online lesson 1.1, first half · notice the register of three work messages this week</div>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide">
+    <div class="eyebrow">1.1 · Lead-in · same request, three impressions</div>
+    <h2>"Send me the report."</h2>
+    <div class="two">
+      <div class="dlg">
+        <div><span class="sp">A</span> Could you send that over when you get a sec?</div>
+        <div class="b"><span class="sp">B</span> I would be grateful if you could forward the document at your earliest convenience.</div>
+        <div><span class="sp">C</span> Could you send me the document, please?</div>
+      </div>
+      <div class="ccq">Most formal → least? <i>(B → C → A)</i><br>To a client? <i>(B)</i> · your manager? <i>(C)</i> · a close colleague? <i>(A or C)</i><br>How formal = <b>register</b>. What attitude = <b>tone</b>.</div>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide">
+    <div class="eyebrow">1.1 · The register spectrum</div>
+    <h2>Neutral is the safe default</h2>
+    <table class="g" style="font-size:clamp(.85rem,1.8vw,1.2rem)">
+      <tr><th>Register</th><th>When</th><th>Making a request</th></tr>
+      <tr><td><b>Formal</b></td><td>first contact · senior · external · bad news</td><td>I would be grateful if you could send me the report by Friday.</td></tr>
+      <tr><td><b>Neutral</b></td><td>most everyday work</td><td>Could you send me the report by Friday, please?</td></tr>
+      <tr><td><b>Friendly-pro</b></td><td>close colleagues</td><td>Could you send the report over by Friday? Thanks!</td></tr>
+      <tr><td><b>Too casual</b></td><td>avoid at work</td><td>send me the report by fri</td></tr>
+    </table>
+    <div class="tag"><span class="pill lab">MARKERS</span> I would / I'd · do not / don't · request / ask · assistance / help · regarding / about · Dear Ms. Alvarez / Hi Sara</div>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide">
+    <div class="eyebrow">1.1 · Tone · polite and clear</div>
+    <h2>Soften it once, not five times</h2>
+    <div class="two">
+      <table class="g">
+        <tr><th>Too blunt</th><th>Courteous</th></tr>
+        <tr><td>Send the figures now.</td><td>Could you send the figures when you get a moment?</td></tr>
+        <tr><td>You're wrong.</td><td>I see it a little differently. Could we look at it again?</td></tr>
+        <tr><td>I want a meeting.</td><td>Would it be possible to arrange a quick meeting?</td></tr>
+        <tr><td>No.</td><td>I'm afraid that won't be possible, but here's what I <b>can</b> do…</td></tr>
+      </table>
+      <div>
+        <ul style="gap:8px">
+          <li><b>1</b> modal question: <i>Could you…?</i></li>
+          <li><b>2</b> hedge: <i>just · a little · when you get a chance</i></li>
+          <li><b>3</b> positive framing: <i>I can have it ready by Monday.</i></li>
+        </ul>
+        <div class="ccq" style="margin-top:14px">"Could you possibly maybe send it sometime if that's OK?" Polite? <i>(Too polite.)</i> How does it sound? <i>(Unsure.)</i></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide">
+    <div class="eyebrow">1.1 · Greetings &amp; introductions · the first thirty seconds</div>
+    <h2>Names, a warm line, a question back</h2>
+    <div class="two">
+      <div class="dlg">
+        <div><span class="sp">Rafael</span> Good morning. Rafael Mendes, from Northwind Logistics. It's a pleasure to meet you.</div>
+        <div class="b"><span class="sp">Karen</span> Likewise. Please, call me Karen.</div>
+        <div><span class="sp">Rafael</span> Thanks, Karen. And please call me Rafael. Thanks for making the time.</div>
+        <div class="b"><span class="sp">Karen</span> Can I introduce you to my colleague? This is Dev, who leads our warehouse team.</div>
+      </div>
+      <div class="ccq">"Nice to meet you." → <b>Nice to meet you too.</b> / <b>Likewise.</b><br>"How do you do?" → <b>How do you do?</b> <i>(not "I'm fine")</i><br>First names? <i>Start with Ms. Grant; switch when invited.</i><br>"Mr. Rafael"? <i>(No: Mr. Mendes, or Rafael.)</i></div>
+    </div>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide">
+    <div class="eyebrow">1.1 · Elevator pitch · Welcome Reception · groups of 3 · 3 × 5 min</div>
+    <h2>Name + role + what you do + a hook</h2>
+    <div class="two">
+      <div>
+        <div class="ccq">"Hi, I'm Ana Ruiz. I'm a marketing analyst, and I help our sales team find the right customers using data. I understand we'll be working together on the launch. I'm really looking forward to it."</div>
+        <ul class="lab" style="gap:8px;margin-top:14px">
+          <li><b>Host</b>: welcome · introduce the colleague</li>
+          <li><b>Visitor</b>: pitch · ask a question back</li>
+          <li><b>Colleague</b>: respond · suggest a next step</li>
+        </ul>
+      </div>
+      <div class="ccq">Your real job? <i>(Real, a role card, or invented.)</i><br>Who introduces the colleague? <i>(The host.)</i><br>After the pitch, the visitor…? <i>(Asks a question back.)</i><br>Round 3? <i>(One person observes with the checklist.)</i></div>
+    </div>
+    <div class="tag"><span class="pill warn">EXIT LINE</span> "It was great to meet you. I'll let you get back to the others."</div>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide">
+    <div class="eyebrow">1.2 · Your inbox · which one do you open first?</div>
+    <h2>Seven parts, one purpose</h2>
+    <div class="two">
+      <table class="g" style="font-size:clamp(.85rem,1.8vw,1.2rem)">
+        <tr><th>Weak</th><th>Strong</th></tr>
+        <tr><td>Report</td><td>Q3 report: feedback needed by Fri</td></tr>
+        <tr><td>Meeting</td><td>Move Tue budget meeting to Thu 2 p.m.?</td></tr>
+        <tr><td>Question</td><td>Quick question re: invoice #4821</td></tr>
+        <tr><td>(blank)</td><td>Action needed: approve travel by 5 p.m. today</td></tr>
+      </table>
+      <ul style="gap:6px">
+        <li><b>1</b> subject line</li><li><b>2</b> greeting</li><li><b>3</b> opening line (reason)</li><li><b>4</b> body: <b>one</b> ask + deadline</li><li><b>5</b> closing line (next step)</li><li><b>6</b> sign-off (matches 2)</li><li><b>7</b> name + signature</li>
+      </ul>
+    </div>
+    <div class="ccq">Three unrelated asks in one email? <i>(The reader answers one. Split it, or number them.)</i> Where does the ask go? <i>(Near the top, with a deadline.)</i></div>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide">
+    <div class="eyebrow">1.2 · The frame · greeting and sign-off match</div>
+    <h2>Dear Sir … Cheers? Never.</h2>
+    <table class="g" style="font-size:clamp(.85rem,1.8vw,1.2rem)">
+      <tr><th>Register</th><th>Greeting</th><th>Sign-off</th></tr>
+      <tr><td><b>Formal</b></td><td>Dear Mr. / Ms. + family name, · Dear Sir or Madam,</td><td>Sincerely, (US) · Yours sincerely, (UK, named) · Yours faithfully, (UK, Sir or Madam)</td></tr>
+      <tr><td><b>Neutral</b></td><td>Dear Sara, · Hi Sara,</td><td>Kind regards, · Best regards,</td></tr>
+      <tr><td><b>Friendly-pro</b></td><td>Hi Sara, · Hello Sara,</td><td>Best, · Thanks,</td></tr>
+    </table>
+    <div class="ccq">"Dear Sir or Madam": know the name? <i>(No.)</i> UK sign-off? <i>(Yours faithfully.)</i> US? <i>(Sincerely.)</i> · "Dear Sara," too stiff? <i>(No: neutral and warm.)</i> · "Dear Mr. Daniel"? <i>(No: Mr. Okoro.)</i></div>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide">
+    <div class="eyebrow">1.2 · Phrase banks · learn two from each</div>
+    <h2>Build any email in minutes</h2>
+    <table class="g" style="font-size:clamp(.85rem,1.8vw,1.2rem)">
+      <tr><th>Opening</th><td>I'm writing to confirm… · Thank you for your email of May 3. · Further to our conversation, …</td></tr>
+      <tr><th>Request</th><td>Could you please send me…? · I would be grateful if you could… · Would it be possible to…?</td></tr>
+      <tr><th>Attachment</th><td>Please find attached… · I've attached… for your review.</td></tr>
+      <tr><th>Follow-up</th><td>I'm just following up on… · As a gentle reminder, …</td></tr>
+      <tr><th>Bad news</th><td>Unfortunately, … · I'm afraid there's been a delay. · Please accept my apologies for…</td></tr>
+      <tr><th>Closing</th><td>Please let me know if you have any questions. · I look forward to <b>hearing</b> from you.</td></tr>
+    </table>
+    <div class="tag"><span class="pill lab">SAY IT</span> I look <b>FOR</b>ward to <b>HEAR</b>ing from you · Please find at<b>TACHED</b> · I'm just <b>FOL</b>lowing <b>UP</b></div>
+  </section>
+
+  <!-- 12 -->
+  <section class="slide">
+    <div class="eyebrow">1.2 · Chat, CC &amp; Reply All · nothing is truly private</div>
+    <h2>Does everyone need to read this?</h2>
+    <div class="two">
+      <table class="g" style="font-size:clamp(.85rem,1.8vw,1.2rem)">
+        <tr><th>Use</th><th>When</th></tr>
+        <tr><td><b>Chat</b></td><td>quick, informal, right now · one message, not ten</td></tr>
+        <tr><td><b>Email</b></td><td>detailed, external, formal, needs a record</td></tr>
+        <tr><td><b>To</b> / <b>CC</b></td><td>must act / only needs to know</td></tr>
+        <tr><td><b>BCC</b></td><td>a big group who shouldn't see each other's addresses</td></tr>
+        <tr><td><b>Reply All</b></td><td>only if everyone genuinely needs it</td></tr>
+      </table>
+      <div class="ccq">Your manager should know but not act? <i>(CC.)</i><br>30 people got it; you want to say "Thanks!" to the sender? <i>(Reply.)</i><br>Is a chat message private? <i>(No: it can be forwarded.)</i></div>
+    </div>
+  </section>
+
+  <!-- 13 -->
+  <section class="slide">
+    <div class="eyebrow">1.2 · The email exchange · 3 + 8 + 7 minutes</div>
+    <h2>Request, then reply in role</h2>
+    <div class="two">
+      <ul class="lab">
+        <li><b>Round 1</b>: listen twice to Lena's voicemail · notes only</li>
+        <li><b>Round 2</b>: write the formal request · all seven parts</li>
+        <li><b>Round 3</b>: swap · you are <b>Mr. Daniel Okoro</b> · reply with your Supplier Reply card</li>
+      </ul>
+      <div class="ccq">How many times do you hear it? <i>(Twice.)</i><br>Formal or friendly? <i>(Formal: first contact.)</i><br>The subject line must include…? <i>(The topic + the deadline.)</i><br>In round 3, whose workbook? <i>(My partner's.)</i></div>
+    </div>
+    <div class="tag"><span class="pill warn">CHECK</span> Could Mr. Okoro answer without asking you a question?</div>
+  </section>
+
+  <!-- 14 -->
+  <section class="slide">
+    <div class="eyebrow">1.3 · The call, stage by stage</div>
+    <h2>A phrase for every stage</h2>
+    <table class="g" style="font-size:clamp(.8rem,1.7vw,1.15rem)">
+      <tr><th>Stage</th><th>Receiver</th><th>Caller</th></tr>
+      <tr><td><b>1</b> Answer</td><td>Northwind Logistics, Ana speaking. How can I help?</td><td>Hello, <b>this is</b> Kim Tran from Brightline Foods.</td></tr>
+      <tr><td><b>2</b> Purpose</td><td>May I ask what it's regarding?</td><td>I'm calling about… · Could I speak to…?</td></tr>
+      <tr><td><b>3</b> Hold</td><td>Bear with me a moment. · I'll put you through.</td><td>Sure, thanks.</td></tr>
+      <tr><td><b>4</b> Unavailable</td><td>I'm afraid he's in a meeting. Can I take a message?</td><td>When is a good time to call back?</td></tr>
+      <tr><td><b>5</b> Message</td><td>Let me read that back to you…</td><td>Could you ask him to call me back at…?</td></tr>
+      <tr><td><b>6</b> End</td><td>I'll make sure he gets it.</td><td>Thanks for your help. Have a good day.</td></tr>
+    </table>
+    <div class="ccq">"I'll put you through." Who speaks next? <i>(A new person.)</i> "Can I take a message?" Who writes? <i>(The receiver.)</i> "I am Ana" on the phone? <i>(No: This is Ana / Ana speaking.)</i></div>
+  </section>
+
+  <!-- 15 -->
+  <section class="slide">
+    <div class="eyebrow">1.3 · Clarify &amp; confirm · the risky bits</div>
+    <h2>Names, numbers, dates: never guess</h2>
+    <div class="two">
+      <table class="g" style="font-size:clamp(.85rem,1.8vw,1.2rem)">
+        <tr><th>On the page</th><th>Say it</th></tr>
+        <tr><td>(312) 555-0147</td><td>three-one-two · five-five-five · oh-one-four-seven</td></tr>
+        <tr><td>7700</td><td>seven-seven-oh-oh · double seven, double oh</td></tr>
+        <tr><td>15 / 50</td><td>fif<b>TEEN</b>, one-five · <b>FIF</b>ty, five-oh</td></tr>
+        <tr><td>the 14th</td><td>the fourteenth, one-four</td></tr>
+        <tr><td>Nowak</td><td>N as in November, O, W as in Whiskey…</td></tr>
+      </table>
+      <div class="ccq">Could you spell that, please?<br>Would you mind speaking a little more slowly?<br>Sorry, the line's not great. Could you repeat the last part?<br><b>Let me read that back to you…</b></div>
+    </div>
+    <div class="tag"><span class="pill lab">FIVE PARTS</span> name · company · number · reason · callback</div>
+  </section>
+
+  <!-- 16 -->
+  <section class="slide">
+    <div class="eyebrow">1.3 · Phone calls · back to back · 5 minutes each</div>
+    <h2>Take it, then read it back</h2>
+    <div class="two">
+      <div class="dlg">
+        <div><span class="sp">B</span> Let me read that back: Kim Tran, T-R-A-N, Brightline Foods, at (312) 555-0164, about order 5216. Is that right?</div>
+        <div class="b"><span class="sp">A</span> That's perfect. Thanks very much for your help.</div>
+      </div>
+      <div class="ccq">Can you look at your partner? <i>(No: back to back.)</i><br>Show your card? <i>(No.)</i><br>Who writes the message? <i>(The receiver, on the pad.)</i><br>Before you end the call? <i>(Read it back.)</i><br>After the call, A checks…? <i>(The pad against card A.)</i></div>
+    </div>
+    <div class="tag"><span class="pill warn">SMILE</span> it's audible · slow down a little · signpost every hold</div>
+  </section>
+
+  <!-- 17 -->
+  <section class="slide">
+    <div class="eyebrow">1.3 · Video meetings · groups of 4 · 4 minutes per chair</div>
+    <h2>Open the meeting, fix the tech</h2>
+    <div class="two">
+      <ul style="gap:8px">
+        <li>Can everyone hear me OK?</li>
+        <li>I think you're on mute.</li>
+        <li>Sorry, you go ahead.</li>
+        <li>You're breaking up a little. Could you repeat that?</li>
+        <li>I think we've lost you.</li>
+        <li>Let's use the chat for questions.</li>
+        <li>Priya, over to you.</li>
+      </ul>
+      <div class="ccq">Who opens? <i>(The chair.)</i><br>Tell the group your problem card? <i>(No, act it.)</i><br>Chair must…? <i>(Check audio · handle problems · share the agenda · one ground rule · hand over by name.)</i></div>
+    </div>
+    <div class="tag"><span class="pill lab">ETIQUETTE</span> join on time · mute when not speaking · use names · pause before you jump in</div>
+  </section>
+
+  <!-- 18 -->
+  <section class="slide section">
+    <div class="eyebrow">You can now choose it, write it and say it</div>
+    <h2>Module 1 done 🎉</h2>
+    <ul class="lab">
+      <li><b>Register &amp; tone</b>: neutral by default · one softener, not five · names, a question back, a warm voice</li>
+      <li><b>Email</b>: seven parts · one purpose · a specific subject line and a dated ask · a matched frame</li>
+      <li><b>Calls</b>: identify yourself · signpost the hold · five parts, read back · spell with words</li>
+    </ul>
+    <p class="lead" style="margin-top:10px;max-width:44ch">Homework: online lessons 1.1–1.3 with 🔊. Next: Module 2, <i>Meetings &amp; Interpersonal Skills</i>, then the Performance Check in C8.</p>
+  </section>
+
+</div>
+
+<div class="count" id="count">1 / 18</div>
+<div class="nav"><button id="prev" aria-label="Previous slide"></button><button id="next" aria-label="Next slide"></button></div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const bar=document.getElementById('bar'), count=document.getElementById('count');
+  let i=0;
+  function show(n){ i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+    bar.style.width=((i+1)/slides.length*100)+'%'; count.textContent=(i+1)+' / '+slides.length; }
+  document.getElementById('next').onclick=()=>show(i+1);
+  document.getElementById('prev').onclick=()=>show(i-1);
+  addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}
+    else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+  });
+  show(0);
+</script>
+</body>
+</html>

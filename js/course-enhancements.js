@@ -690,11 +690,13 @@ var VOCAB_ALIASES = {
     'swimming':'swim',
     'phone':'mobile-phone','mobile':'mobile-phone','mobile phone':'mobile-phone',
     'cell phone':'mobile-phone','cellphone':'mobile-phone','smartphone':'mobile-phone',
-    'play football':'football','soccer':'football',
+    'play football':'football','soccer':'football','play soccer':'football',
     'mum':'mother','mom':'mother','mummy':'mother','mommy':'mother',
     'dad':'father','daddy':'father',
     'grandma':'grandmother','grandpa':'grandfather',
     'refrigerator':'fridge',
+    'the check':'bill','store':'shop','a store':'shop',
+    'sales clerk':'shop-assistant','salesclerk':'shop-assistant','store clerk':'shop-assistant','salesperson':'shop-assistant',
     'e-mail':'email',
     'metro':'subway','underground':'subway',
     'physician':'doctor',
@@ -752,6 +754,8 @@ function initVocabImages() {
         img.setAttribute('aria-hidden', 'true');
         img.loading = 'lazy';
         img.width = 56; img.height = 56;
+        // Some catalog slugs have no artwork yet: drop the image rather than show a broken icon.
+        img.onerror = function () { img.remove(); li.classList.remove('has-vocab-img'); };
         li.insertBefore(img, li.firstChild);
     }
 

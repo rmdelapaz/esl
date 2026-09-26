@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slides — Module 4</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root{--bg:#0b1220;--ink:#edf2fb;--ink2:#a8b6cf;--accent:#7fb2ff;--accent2:#2563eb;--lab:#34d3bd;--warn:#fbbf24;--line:#233252;--code:#101a2e;color-scheme:dark}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;overflow:hidden}
+  .deck{height:100%;width:100%;position:relative}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:6vh 8vw;gap:20px}
+  .slide.on{display:flex}
+  h1,h2,h3{font-family:"Archivo",sans-serif;line-height:1.1;text-wrap:balance}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  .slide h1{font-size:clamp(2rem,6vw,4rem);font-weight:800;letter-spacing:-.02em}
+  .slide h2{font-size:clamp(1.5rem,4.2vw,2.8rem);font-weight:800;letter-spacing:-.01em}
+  .slide p.lead{font-size:clamp(1.05rem,2.4vw,1.5rem);color:var(--ink2);max-width:26ch}
+  ul{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:6px}
+  ul li{position:relative;padding-left:34px;font-size:clamp(1.05rem,2.3vw,1.6rem)}
+  ul li::before{content:"";position:absolute;left:0;top:.55em;width:12px;height:12px;border-radius:3px;background:var(--accent);transform:rotate(45deg)}
+  ul.lab li::before{background:var(--lab)}
+  code.k{font-family:"JetBrains Mono",monospace;color:#cfe0ff;font-size:.92em}
+  pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:22px 26px;font-family:"JetBrains Mono",monospace;font-size:clamp(.85rem,1.9vw,1.3rem);line-height:1.55;overflow:auto;max-width:100%}
+  pre .k{color:#7dd3fc} pre .s{color:#86efac} pre .c{color:#7183a3;font-style:italic}
+  .tag{display:inline-flex;align-items:center;gap:10px;font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);color:var(--ink2)}
+  .tag .pill{background:var(--accent2);color:#fff;font-weight:700;border-radius:999px;padding:3px 12px;letter-spacing:.06em}
+  .tag .pill.lab{background:var(--lab);color:#062b26} .tag .pill.warn{background:var(--warn);color:#3a2a05}
+  .section{background:linear-gradient(135deg,#132a52,#0b1220)}
+  .section .big{font-size:clamp(3rem,12vw,8rem);font-family:"Archivo";font-weight:800;color:var(--accent2);line-height:.9}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+  @media (max-width:760px){.two{grid-template-columns:1fr}}
+  .bar{position:fixed;left:0;top:0;height:4px;background:var(--accent2);width:0;transition:width .25s;z-index:5}
+  .count{position:fixed;right:16px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink2);z-index:5}
+  .nav{position:fixed;inset:auto 0 0 0;display:flex;justify-content:space-between;pointer-events:none;z-index:4}
+  .nav button{pointer-events:auto;background:transparent;border:none;color:transparent;width:22vw;height:100vh;cursor:pointer}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+  /* ESL extras (picture vocab, grammar tables, dialogue, clocks) */
+  .pics{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,1.6vw,18px)}
+  .pics.six{grid-template-columns:repeat(6,1fr)}
+  .pic{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center}
+  .pic img{width:100%;max-width:150px;aspect-ratio:1;object-fit:cover;border-radius:10px;background:#FFF3E0;display:block;margin:0 auto}
+  .pic .emo{font-size:clamp(2.6rem,7vw,5rem);line-height:1;aspect-ratio:1;max-width:150px;margin:0 auto;display:flex;align-items:center;justify-content:center}
+  .pic .w{font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(.9rem,2vw,1.35rem);margin-top:6px}
+  @media (max-width:760px){.pics,.pics.six{grid-template-columns:repeat(3,1fr)}}
+  table.g{border-collapse:collapse;font-size:clamp(.95rem,2.1vw,1.45rem);width:100%;max-width:1000px}
+  table.g th,table.g td{border:1px solid var(--line);padding:10px 16px;text-align:left}
+  table.g th{background:var(--code);color:var(--accent);font-family:"JetBrains Mono",monospace;font-size:.8em;letter-spacing:.04em}
+  table.g b{color:#ffd166}
+  .dlg{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:18px 24px;display:flex;flex-direction:column;gap:8px;font-size:clamp(1rem,2.2vw,1.45rem);max-width:1000px}
+  .dlg .sp{display:inline-block;min-width:3.6em;font-weight:700;color:var(--accent)}
+  .dlg .b .sp{color:#c4a1ff}
+  .ccq{font-size:clamp(1rem,2.2vw,1.45rem);border:1px dashed var(--line);border-radius:12px;padding:12px 18px;background:var(--code)}
+  .ccq i{color:var(--ink2)}
+  .clocks{display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,34px);align-items:flex-start}
+  .clocks figure{text-align:center}
+  .clocks svg{width:clamp(96px,14vw,170px);height:auto}
+  .clocks figcaption{font-size:clamp(.95rem,2vw,1.3rem);margin-top:6px}
+  .clocks figcaption small{display:block;color:var(--ink2);font-size:.8em}
+  .snd{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .snd div{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:clamp(1rem,2.2vw,1.5rem)}
+  .snd div b{display:block;font-family:"Archivo";font-size:1.5em;color:var(--accent)}
+  .snd div small{color:var(--ink2)}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="deck" id="deck">
+
+  <!-- 1 -->
+  <section class="slide on section">
+    <div class="eyebrow">Business English · Instructor Kit</div>
+    <h1>Module 4<br>Business Writing &amp; Career</h1>
+    <p class="lead" style="max-width:40ch">Write it so they can decide. Present yourself so they can say yes. Bring it all together.</p>
+    <ul class="lab">
+      <li><b>4.1 · C12</b> Reports, proposals &amp; the executive summary</li>
+      <li><b>4.2 · C13</b> CVs, cover letters &amp; job interviews</li>
+      <li><b>4.3 · C14</b> Review project: cross-cultural skills + your capstone</li>
+      <li><b>C15–C16</b> Final Assessment · celebration</li>
+    </ul>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide">
+    <div class="eyebrow">4.1 · Lead-in · "I'll only read the summary."</div>
+    <h2>Report or proposal?</h2>
+    <table class="g">
+      <tr><th></th><th>Report</th><th>Proposal</th></tr>
+      <tr><td>Core question</td><td>What happened? What does the evidence show?</td><td>What should we do next, and why?</td></tr>
+      <tr><td>Time</td><td>past · present</td><td>future</td></tr>
+      <tr><td>Main job</td><td>inform (sometimes advise)</td><td><b>persuade</b> and win approval</td></tr>
+      <tr><td>Trigger</td><td>"Give me the findings."</td><td>"Convince me to fund this."</td></tr>
+    </table>
+    <div class="ccq">"Convince me to fund a second van." <i>(Proposal.)</i> · Can a report recommend? <i>(Yes, often.)</i> · Which one must sell? <i>(The proposal.)</i></div>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide">
+    <div class="eyebrow">4.1 · Structure · busy readers scan, jump and dip in</div>
+    <h2>Standard sections</h2>
+    <div class="two">
+      <table class="g" style="font-size:clamp(.85rem,1.8vw,1.2rem)">
+        <tr><th>Report</th></tr>
+        <tr><td>Title</td></tr>
+        <tr><td><b>Executive Summary</b></td></tr>
+        <tr><td>Introduction (purpose, scope)</td></tr>
+        <tr><td>Findings</td></tr>
+        <tr><td>Conclusions</td></tr>
+        <tr><td>Recommendations</td></tr>
+        <tr><td>Appendices</td></tr>
+      </table>
+      <table class="g" style="font-size:clamp(.85rem,1.8vw,1.2rem)">
+        <tr><th>Proposal</th></tr>
+        <tr><td>Background / Problem</td></tr>
+        <tr><td>Objectives</td></tr>
+        <tr><td>Proposed plan</td></tr>
+        <tr><td><b>Benefits</b> (sell it)</td></tr>
+        <tr><td>Costs, resources &amp; timeline</td></tr>
+        <tr><td>Risks</td></tr>
+        <tr><td>Recommendation / call to action</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide">
+    <div class="eyebrow">4.1 · Model · written last, read first, stands alone</div>
+    <h2>The executive summary</h2>
+    <div class="dlg" style="font-size:clamp(.9rem,1.9vw,1.25rem)">
+      <div><span class="sp">P</span> This report examines the causes of late deliveries in the Northern Region in the first quarter and recommends a response.</div>
+      <div class="b"><span class="sp">F</span> Late deliveries rose from 6% to 14%. It was found that routes are still planned by hand and one van was out of service for five weeks. <b>Notably</b>, 70% of late orders were on Monday and Tuesday routes.</div>
+      <div><span class="sp">R</span> We recommend three actions: (1) route-planning software by the end of May; (2) a leased van for early-week routes; (3) a review of driver schedules in Q3. Together, these steps are expected to bring late deliveries below 6% by July.</div>
+    </div>
+    <div class="ccq">Written first? <i>(No: last.)</i> · "This report will discuss…"? <i>(No: state the results.)</i> · Can the director decide from this alone? <i>(She must be able to.)</i></div>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide">
+    <div class="eyebrow">4.1 · Register · objective, evidence-based, clear</div>
+    <h2>Email style → document style</h2>
+    <table class="g">
+      <tr><th>Email (often)</th><th>Document</th></tr>
+      <tr><td>I think we lost customers because…</td><td>The data indicates that customer loss was driven by…</td></tr>
+      <tr><td>We found out that…</td><td>It was found that… / The analysis shows that…</td></tr>
+      <tr><td>I'm pretty sure this means…</td><td>This suggests that… / It appears that…</td></tr>
+      <tr><td>You should hire more people.</td><td>We recommend hiring… · It is recommended that the team <b>be</b> expanded.</td></tr>
+    </table>
+    <div class="ccq">"…that the team be expanded." Expanded yet? <i>(No.)</i> An order? <i>(No: a formal recommendation.)</i> · <b>should</b> = firm · <b>could</b> = an option · Formal ≠ jargon: <i>leverage synergies</i> ✘</div>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide">
+    <div class="eyebrow">4.1 · Recommendations that get approved · S-A-P-C-T</div>
+    <h2>Could someone act on it on Monday?</h2>
+    <div class="two">
+      <ul>
+        <li><b>S</b>pecific</li>
+        <li><b>A</b>ctionable: who, what, by when</li>
+        <li><b>P</b>rioritized</li>
+        <li><b>C</b>ost/benefit-aware</li>
+        <li><b>T</b>ied to the findings</li>
+      </ul>
+      <table class="g" style="font-size:clamp(.85rem,1.8vw,1.2rem)">
+        <tr><th>Vague ✘</th><th>Approvable ✔</th></tr>
+        <tr><td>We should improve customer support.</td><td>We recommend hiring two agents by the end of Q3 to bring waits below five minutes.</td></tr>
+        <tr><td>Marketing needs more budget.</td><td>We propose moving 20% of the social budget to email, which returned $6 per $1 (Appendix B).</td></tr>
+      </table>
+    </div>
+    <div class="tag"><span class="pill">SAY IT</span> We re<b>COM</b>mend | <b>HIR</b>ing two <b>A</b>gents | by the <b>END</b> of Q3 · four<b>TEEN</b> ≠ <b>FOR</b>ty · per<b>CENT</b>, never "percents"</div>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide">
+    <div class="eyebrow">4.1 · Role-play · pairs · brief cards A/B</div>
+    <h2>The decision-maker</h2>
+    <div class="two">
+      <ul class="lab">
+        <li><b>Write</b> (10 min): your executive summary, 80–120 words</li>
+        <li><b>Read</b> (60 sec only): your partner's summary</li>
+        <li><b>Ask</b> two questions from your card</li>
+        <li><b>Decide</b>: approve · approve with changes · not yet + one reason</li>
+        <li><b>Swap</b></li>
+      </ul>
+      <div class="ccq">I'm happy to approve this on one condition… · Could you clarify…? · I'd need to see… before I can approve it. · Let's start with phase one.<br><br><b>ICQs:</b> How many words? <i>(80–120.)</i> What comes first? <i>(The purpose.)</i> How long do you read? <i>(60 seconds.)</i> Show your budget? <i>(No.)</i></div>
+    </div>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide">
+    <div class="eyebrow">4.2 · CV bullets · which one gets the interview?</div>
+    <h2>Duties → achievements</h2>
+    <table class="g">
+      <tr><th>Duty ✘</th><th>Achievement ✔ = action verb + what + result</th></tr>
+      <tr><td>Responsible for customer complaints.</td><td><b>Resolved</b> 40+ customer issues a week, lifting satisfaction from 78% to 91%.</td></tr>
+      <tr><td>Was in charge of a team.</td><td><b>Managed</b> a team of 8, cutting delivery time by 15%.</td></tr>
+      <tr><td>Did the monthly reports.</td><td><b>Streamlined</b> monthly reporting, saving about 6 hours a month.</td></tr>
+    </table>
+    <div class="ccq">Led · Delivered · Increased · Reduced · Streamlined · Built · Negotiated · Trained · Achieved · No number? Scale, frequency, time saved, before → after. <i>Invent one? (No: estimate honestly.)</i> · CV (UK and many countries) = résumé (US, Canada)</div>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide">
+    <div class="eyebrow">4.2 · The professional summary + the cover letter</div>
+    <h2>Why you, and why here?</h2>
+    <div class="two">
+      <div class="ccq" style="font-size:clamp(.9rem,1.9vw,1.25rem)">"Operations coordinator with seven years' experience in food distribution. Skilled in route planning, stock control and staff training. Looking to bring a record of fewer errors and faster deliveries to a growing logistics team."<br><i>who + strengths + what you offer · no "hard-working team player"</i></div>
+      <table class="g" style="font-size:clamp(.85rem,1.8vw,1.2rem)">
+        <tr><th>1 Opening</th><td>I am writing to apply for the position of…</td></tr>
+        <tr><th>2 Why you</th><td>This directly matches your requirement for…</td></tr>
+        <tr><th>3 Why them</th><td>I am particularly drawn to your company because…</td></tr>
+        <tr><th>4 Closing</th><td>I would welcome the opportunity to discuss…</td></tr>
+      </table>
+    </div>
+    <div class="tag"><span class="pill warn">TEST</span> Could you swap in any company's name without changing a word? Then it isn't targeted.</div>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide">
+    <div class="eyebrow">4.2 · Behavioral questions · "Tell me about a time…"</div>
+    <h2>STAR</h2>
+    <table class="g" style="font-size:clamp(.85rem,1.8vw,1.2rem)">
+      <tr><th>S · Situation</th><td>Last spring, a client brought their launch forward by two weeks.</td></tr>
+      <tr><th>T · Task</th><td>As the coordinator, I had to deliver forty displays in half the time.</td></tr>
+      <tr><th>A · Action (I!)</th><td>So I split the job into daily targets, asked the printer to run two shifts, and checked progress every morning.</td></tr>
+      <tr><th>R · Result</th><td>As a result, the displays arrived a day early, and the client has since signed a two-year contract.</td></tr>
+    </table>
+    <div class="ccq">Longest part? <i>(Action.)</i> I or we? <i>(I.)</i> No Result: finished? <i>(No.)</i> · Tell me about yourself = present → past → future, under a minute ↘</div>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide">
+    <div class="eyebrow">4.2 · Your path · you choose what to share</div>
+    <h2>Short, true, positive, then move on</h2>
+    <table class="g" style="font-size:clamp(.85rem,1.8vw,1.2rem)">
+      <tr><th>Career break</th><td>From 2021 to 2023, I took a career break for family reasons. During that time, I completed a certificate in…</td></tr>
+      <tr><th>Qualifications</th><td>I hold a degree in industrial engineering. It has been assessed as equivalent to a U.S. bachelor's degree.</td></tr>
+      <tr><th>Career change</th><td>After six years in design, I'm moving into project coordination. My transferable skills include…</td></tr>
+      <tr><th>New start</th><td>I'm building my career here, and I'm keen to bring my experience in… to…</td></tr>
+    </table>
+    <div class="ccq">Private details? <i>(No: one sentence is enough.)</i> Apologize? <i>(No.)</i> Hide the dates? <i>(Never.)</i> · Real history, a role card, or a mix: always your choice.</div>
+  </section>
+
+  <!-- 12 -->
+  <section class="slide">
+    <div class="eyebrow">4.2 · Role-play · trios · 3 rounds × 7½ min</div>
+    <h2>Mock interview</h2>
+    <div class="two">
+      <ul class="lab">
+        <li><b>Interviewer</b>: the card only · friendly, professional</li>
+        <li><b>Candidate</b>: real history, role card or mix</li>
+        <li><b>Observer</b>: time + checklist · 1 strength + 1 next step, quoted</li>
+        <li>Tell me about yourself → STAR → one more → "Any questions for us?" → close</li>
+      </ul>
+      <div class="ccq"><b>Ask them:</b> What does success look like in this role in the first six months? ↘ · What are the next steps? ↘<br><br><b>ICQs:</b> Real history required? <i>(No.)</i> Tell me about yourself? <i>(Under a minute.)</i> Ask about age, family or gaps? <i>(Never.)</i></div>
+    </div>
+  </section>
+
+  <!-- 13 -->
+  <section class="slide">
+    <div class="eyebrow">4.3 · Cross-cultural · tendencies, not stereotypes</div>
+    <h2>What varies between workplaces</h2>
+    <table class="g" style="font-size:clamp(.85rem,1.8vw,1.2rem)">
+      <tr><th>Directness</th><td>say it plainly ↔ imply it politely</td></tr>
+      <tr><th>Formality</th><td>first names early ↔ titles and seniority</td></tr>
+      <tr><th>Relationship vs task</th><td>agenda first ↔ trust first</td></tr>
+      <tr><th>Time</th><td>fixed ↔ flexible</td></tr>
+      <tr><th>Disagreement</th><td>open, in the room ↔ quiet signals</td></tr>
+      <tr><th>Decisions</th><td>one leader, fast ↔ consensus, slower</td></tr>
+      <tr><th>Context</th><td>low: say it and write it ↔ high: tone and relationship</td></tr>
+    </table>
+    <div class="ccq">Everyone in a culture the same? <i>(No: people and companies vary.)</i> Different = wrong? <i>(No.)</i> Not sure? <i>(Observe, mirror, ask.)</i></div>
+  </section>
+
+  <!-- 14 -->
+  <section class="slide">
+    <div class="eyebrow">4.3 · Script 4.3-A · Kestrel Design → Harborview Retail</div>
+    <h2>Misstep → repair</h2>
+    <div class="dlg" style="font-size:clamp(.9rem,1.9vw,1.25rem)">
+      <div><span class="sp">✘</span> Hi Laura! Let's skip the chit-chat and dive into the numbers. Bottom line, we need a decision today.</div>
+      <div class="b"><span class="sp">…</span> That may be somewhat difficult on our side today. <i>(a soft "no")</i></div>
+      <div><span class="sp">✔</span> Good morning, Ms. Quinn, and thank you for making the time. Before we turn to the details, I'd love to hear how your side is approaching the year. And please, there's no need to decide today: we'll send a written summary. What timeline would suit you?</div>
+    </div>
+    <div class="tag"><span class="pill lab">GOLDEN RULES</span> observe &amp; mirror · start formal · no idioms · confirm in writing · different ≠ wrong · ask</div>
+  </section>
+
+  <!-- 15 -->
+  <section class="slide">
+    <div class="eyebrow">4.3 · Scenario trios · then your capstone</div>
+    <h2>Rehearse it all</h2>
+    <div class="two">
+      <ul class="lab">
+        <li><b>R1 Meeting</b>: welcome · small talk · light agenda</li>
+        <li><b>R2 Pitch</b>: feature → "which means you…" → call to action</li>
+        <li><b>R3 Negotiate</b>: 15%? → "If you can commit to two years, we could offer 10%."</li>
+        <li><b>Capstone</b>: 5 min + Q&amp;A · opening → problem → solution → benefits → evidence → call to action · 2 objections ready</li>
+      </ul>
+      <div class="ccq"><b>ICQs:</b> Can Harborview agree today? <i>(No.)</i> Can Kestrel offer 15%? <i>(No: 10% max, with a condition.)</i> Pitch length? <i>(5 minutes; pairs: 2+ minutes each.)</i> Script or keywords? <i>(Keywords.)</i></div>
+    </div>
+  </section>
+
+  <!-- 16 -->
+  <section class="slide">
+    <div class="eyebrow">C15 · Final Assessment, Part A · 90 minutes</div>
+    <h2>Writing + negotiations</h2>
+    <table class="g">
+      <tr><th>Writing · 60 min</th><td>Task 1 (~35 min): Executive Summary + Recommendations · Task 2 (~25 min): choose ONE: cover letter <b>or</b> formal email · last 5 min: greeting, sign-off, figures</td></tr>
+      <tr><th>Negotiations · 3 × 7 min</th><td>two pairs per round · private role cards · friendly opening → their interests → trade → summarize · then your <b>deal memo</b></td></tr>
+    </table>
+    <div class="ccq">How many tasks? <i>(Two.)</i> Both Task 2 options? <i>(No: choose one.)</i> Show your card? <i>(No.)</i> Give something for free? <i>(No: always trade.)</i> At the end? <i>(Summarize and confirm.)</i></div>
+  </section>
+
+  <!-- 17 -->
+  <section class="slide">
+    <div class="eyebrow">C16 · Final Assessment, Part B · 90 minutes</div>
+    <h2>Pitches, interviews, celebration</h2>
+    <table class="g">
+      <tr><th>Pitches</th><td>5 min + Q&amp;A · pairs: each speaks 2+ min · the teacher asks one question, the audience asks one</td></tr>
+      <tr><th>Interviews</th><td>practice in pairs (8 min each way) · scored interviews in 10-minute slots</td></tr>
+      <tr><th>Scores</th><td><b>Writing /20</b> · <b>Speaking /20</b> · Task &amp; Purpose · Register &amp; Tone · Language Range &amp; Accuracy · Organization &amp; Delivery · results privately within a week</td></tr>
+    </table>
+    <div class="ccq">Your question slip? <i>(One real question for the speaker.)</i> Real work history? <i>(Your choice: a role card is fine.)</i></div>
+  </section>
+
+  <!-- 18 -->
+  <section class="slide section">
+    <div class="eyebrow">You now write, present and adapt like a professional</div>
+    <h2>Module 4 done 🎉</h2>
+    <ul class="lab">
+      <li><b>Write it so they can decide</b>: the answer first · a standalone summary · S-A-P-C-T recommendations</li>
+      <li><b>Present yourself</b>: action verb + result · STAR with I and a result · your path in one positive sentence · two questions at the end</li>
+      <li><b>Bring it together</b>: start formal · read the soft signal · trade conditionally · confirm in writing</li>
+    </ul>
+    <p class="lead" style="margin-top:10px;max-width:40ch">Homework: online lessons 4.1–4.3 with 🔊. Next: the Final Assessment (C15–C16), then celebrate.</p>
+  </section>
+
+</div>
+
+<div class="count" id="count">1 / 18</div>
+<div class="nav"><button id="prev" aria-label="Previous slide"></button><button id="next" aria-label="Next slide"></button></div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const bar=document.getElementById('bar'), count=document.getElementById('count');
+  let i=0;
+  function show(n){ i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+    bar.style.width=((i+1)/slides.length*100)+'%'; count.textContent=(i+1)+' / '+slides.length; }
+  document.getElementById('next').onclick=()=>show(i+1);
+  document.getElementById('prev').onclick=()=>show(i-1);
+  addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}
+    else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+  });
+  show(0);
+</script>
+</body>
+</html>

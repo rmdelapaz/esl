@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Assessment Key &amp; Rubric</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../kit.css">
+<style>
+  @page{size:auto;margin:.55in}   /* prints on Letter or A4: the printer's paper size wins */
+  .pagebreak{break-before:page}
+  .confidential{font-family:"JetBrains Mono",monospace;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+    color:#fff;background:var(--warn);border-radius:999px;padding:3px 11px;display:inline-block;margin-bottom:8px;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact}
+  table.rubric{width:100%;border-collapse:collapse;margin:12px 0;font-size:.84rem}
+  table.rubric th,table.rubric td{border:1px solid var(--line);padding:8px 10px;vertical-align:top;text-align:left}
+  table.rubric thead th{background:var(--surface-2);font-family:"JetBrains Mono",monospace;font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);font-weight:600}
+  table.rubric td.crit{font-weight:600;color:var(--ink);width:17%}
+  table.rubric td.crit span{display:block;font-weight:400;font-size:.78rem;color:var(--ink-2);margin-top:3px}
+  table.rubric td.mid{width:8%;text-align:center;color:var(--ink-3);font-size:.78rem}
+  table.ans{width:100%;border-collapse:collapse;margin:8px 0 12px;font-size:.88rem}
+  table.ans th,table.ans td{border-bottom:1px solid var(--line);padding:6px 9px;text-align:left;vertical-align:top}
+  table.ans th{font-family:"JetBrains Mono",monospace;font-size:.64rem;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3);font-weight:600}
+  table.ans td.n{font-family:"JetBrains Mono",monospace;color:var(--accent);font-weight:600;width:3em;white-space:nowrap}
+  table.ans td.v{font-size:.82rem;color:var(--ink-2)}
+  table.grid{width:100%;border-collapse:collapse;margin:10px 0;font-size:.86rem}
+  table.grid th,table.grid td{border:1px solid var(--line-strong);padding:6px 8px;text-align:left;vertical-align:top}
+  table.grid thead th{background:var(--surface-2);font-family:"JetBrains Mono",monospace;font-size:.6rem;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3)}
+  table.grid td.sc{text-align:center;font-family:"JetBrains Mono",monospace;color:var(--ink-3)}
+  table.grid tr{break-inside:avoid}
+  .model{font-size:.92rem;color:var(--ink);border-left:3px solid var(--lab);padding:4px 0 4px 14px;margin:10px 0;break-inside:avoid}
+  .model p{margin:0 0 7px}
+  .model .hd{font-family:"JetBrains Mono",monospace;font-size:.76rem;color:var(--ink-3)}
+  .wc{font-family:"JetBrains Mono",monospace;font-size:.74rem;color:var(--lab);font-weight:600;margin:-4px 0 10px}
+  .src{font-size:.8rem;color:var(--ink-3);font-style:italic;margin:-4px 0 10px}
+  @media (max-width:680px){ table.rubric,table.ans,table.grid{display:block;overflow-x:auto} }
+  @media print{ table.rubric,table.ans{break-inside:auto} table.rubric tr,table.ans tr{break-inside:avoid} }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="lbl">Teacher copy · confidential —</span>
+  <button type="button" onclick="window.print()">🖨 Print / Save as PDF</button>
+  <span class="hint">the rubric · model answers · examiner &amp; role-card notes · what to listen for · scoring sheets · targets</span>
+</div>
+
+<div class="sheet">
+
+  <header class="mast">
+    <span class="confidential">Teacher only · confidential · do not copy for learners</span>
+    <div class="kit-eyebrow">Business English · Assessment Key</div>
+    <h1>The Rubric, Model Answers &amp; Next Steps</h1>
+    <p class="sub">Everything you need to score the three checkpoints consistently: <b>the one analytic rubric</b> used for every task in the course, a rough (approximate) CEFR guide, model answers for every writing task with checked word counts, notes on the role cards and what to listen for in each simulation, a class scoring sheet for each checkpoint, and a method for turning scores into two or three individual targets.</p>
+    <div class="meta-row">
+      <span class="chip">4 criteria × <b>1–5</b> = <b>/20</b></span>
+      <span class="chip">Each checkpoint: <b>Writing /20</b> + <b>Speaking /20</b></span>
+      <span class="chip">Class 1 · Class 8 · Classes 15–16</span>
+      <span class="chip">Teacher copy</span>
+    </div>
+  </header>
+
+  <div class="note">
+    <div class="t">Scoring principles</div>
+    <p><b>One rubric, everywhere.</b> Every task in this course (diagnostic, performance check, final, and any role-play you choose to mark in class) is scored on the same four criteria: <b>Task &amp; Purpose</b>, <b>Register &amp; Tone</b>, <b>Language Range &amp; Accuracy</b> and <b>Organization &amp; Delivery</b>. Each criterion gets a whole number from 1 to 5; the total is out of 20. At each checkpoint a learner receives <b>two</b> scores, a <b>Writing /20</b> and a <b>Speaking /20</b>, never one combined number; they record both in the Performance Tracker. When a checkpoint has several writing or speaking tasks, give each criterion <b>one</b> score that reflects all the evidence for that skill.</p>
+    <p><b>Score what the task asks for.</b> This is workplace communication, so a message that achieves its purpose with a few small errors outscores a grammatically perfect one that misses the point. Accents are never scored; only whether the listener can understand without effort. American and British spelling and conventions are both accepted (<i>organize / organise</i>, <i>Mr. / Mr</i>).</p>
+  </div>
+
+  <div class="sec"><h2>At a Glance</h2><span class="rule"></span></div>
+  <table class="ans">
+    <thead><tr><th>Checkpoint</th><th>Writing /20 from…</th><th>Speaking /20 from…</th><th>Document</th></tr></thead>
+    <tbody>
+      <tr><td><b>Class 1</b> · Needs Analysis &amp; Diagnostic</td><td>A reply email to a colleague, 100–150 words, 20 min</td><td>A 3-minute sample: introduction + a phone-message role-play</td><td class="v">needs-analysis.html</td></tr>
+      <tr><td><b>Class 8</b> · Performance Check (Modules 1–2)</td><td>A client email, 120–170 words + 3 register rewrites, 35 min</td><td>Two phone calls + a 3-minute meeting, ~7 min per pair</td><td class="v">performance-check.html</td></tr>
+      <tr><td><b>Classes 15–16</b> · Final Assessment</td><td>Executive summary + recommendations; a cover letter <i>or</i> a formal email, 60 min</td><td>A negotiation, a 5-minute pitch + Q&amp;A, an ~8-minute mock interview</td><td class="v">final-assessment.html</td></tr>
+    </tbody>
+  </table>
+
+  <!-- ═════════════ THE RUBRIC ═════════════ -->
+  <div class="sec pagebreak"><h2>The Course Rubric · four criteria, 1–5 each</h2><span class="rule"></span></div>
+  <p>Use the descriptors for <b>1</b>, <b>3</b> and <b>5</b>. A <b>2</b> or a <b>4</b> means the performance sits between two described levels (some features of each). Read or listen to the whole performance before scoring. In short: 1 = not yet · 2 = emerging · 3 = workable · 4 = strong · 5 = confident and professional.</p>
+  <table class="rubric">
+    <thead><tr><th>Criterion</th><th>1 · Not yet</th><th>2</th><th>3 · Workable</th><th>4</th><th>5 · Confident &amp; professional</th></tr></thead>
+    <tbody>
+      <tr><td class="crit">Task &amp; Purpose<span>Did it achieve the goal: all points covered, clear action?</span></td>
+        <td>The goal is not achieved. Several required points are missing or misunderstood, or the text or talk is mostly off-task. The reader or listener can't tell what should happen next. Writing well under half the target length; a call with no usable message; a pitch with no request.</td>
+        <td class="mid">between 1 and 3</td>
+        <td>The goal is mostly achieved. Most points are covered, but one is missing, unclear or only mentioned. There is a next step, but it's vague ("let me know"). Noticeably short or long, or a talk that runs well under or over time. A STAR answer without a clear Result.</td>
+        <td class="mid">between 3 and 5</td>
+        <td>The goal is fully achieved. Every required point is covered accurately and developed where it needs to be. The next step is unmistakable (a dated ask, a decision, action points, a call to action). Length and timing fit the task. In speaking, details are checked and confirmed.</td></tr>
+      <tr><td class="crit">Register &amp; Tone<span>Appropriate formality, politeness, diplomacy</span></td>
+        <td>The register is mostly wrong for the reader or the situation (text-speak to a client; a stiff formal letter to a close colleague). Requests and refusals sound like orders ("I want you send…", "No.") or are so hedged that the point is lost. Greeting and sign-off missing or mismatched. Flat intonation that sounds rude throughout.</td>
+        <td class="mid">between 1 and 3</td>
+        <td>Generally appropriate, with noticeable lapses: an over-formal formula ("I am writing to inform you that…", "Kindly do the needful") or a casual slip; one or two blunt lines; softening sometimes missing or piled up. The reader would not be offended but might notice.</td>
+        <td class="mid">between 3 and 5</td>
+        <td>The formality is right for the reader, channel and relationship throughout, and shifts smoothly when needed. Requests, bad news, disagreement and refusals are diplomatic <i>and</i> clear (one softener, a reason, a way forward). Tone is confident, warm and courteous. Greeting and sign-off match. Intonation sounds interested and polite.</td></tr>
+      <tr><td class="crit">Language Range &amp; Accuracy<span>Phrases, grammar, vocabulary</span></td>
+        <td>A very limited range: the task needs phrases and words the learner doesn't have. Frequent errors in basic structures (tense, word order, missing verbs) often make the meaning unclear.</td>
+        <td class="mid">between 1 and 3</td>
+        <td>Enough phrases and vocabulary for the task, with some repetition or reliance on a few set phrases. Simple structures are mostly accurate. Errors are noticeable (articles, prepositions, "discuss about", "I am agree", tense slips) and sometimes make the reader pause, but the meaning is clear.</td>
+        <td class="mid">between 3 and 5</td>
+        <td>A wide range of business phrases from the course (requests, softeners, conditionals for bargaining, document phrases, signposts) used naturally and precisely. Complex structures are mostly accurate. Errors are rare, minor, and never cause confusion. Names, figures and dates are accurate.</td></tr>
+      <tr><td class="crit">Organization &amp; Delivery<span>Structure, signposting, fluency, pronunciation, interaction</span></td>
+        <td><i>Writing:</i> little visible structure (one block, or disordered fragments); the main point is hard to find. <i>Speaking:</i> frequent long pauses or breakdowns; hard to follow; pronunciation often makes understanding difficult; little or no interaction.</td>
+        <td class="mid">between 1 and 3</td>
+        <td><i>Writing:</i> an overall structure is visible (opening, body, close), but paragraphing or order is uneven, linking is mechanical, or the ask is buried. <i>Speaking:</i> some hesitation and restarts, but easy enough to follow; basic signposting; generally understandable, though the listener sometimes needs effort; interaction mostly reactive.</td>
+        <td class="mid">between 3 and 5</td>
+        <td><i>Writing:</i> logical and easy to scan: a specific subject line, the purpose up front, one idea per paragraph, headings or bullets where they help, a clear close. <i>Speaking:</i> fluent with natural pauses; clearly staged and signposted; easy to understand, with stress on key words and numbers; manages interaction well (turn-taking, checking, reading back, bringing others in, handling questions).</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:.9rem"><b>Total /20</b> = Task &amp; Purpose + Register &amp; Tone + Language Range &amp; Accuracy + Organization &amp; Delivery.</p>
+
+  <div class="grid2">
+    <div class="blk"><div class="h">Rules that keep scoring consistent</div>
+      <ul class="tick">
+        <li><b>Caps.</b> Under half the target length, or more than one required point missing: <b>Task &amp; Purpose 2 at most</b>. A memorized text that doesn't answer the task: Task &amp; Purpose 2 at most.</li>
+        <li><b>Count an error once</b>, under the criterion it affects most. "I want you send me" is Register &amp; Tone if the problem is directness; the missing "to" alone is Language Range &amp; Accuracy.</li>
+        <li><b>Intonation</b> that makes a polite sentence sound rude belongs to Register &amp; Tone; unclear sounds, stress and pace belong to Organization &amp; Delivery.</li>
+        <li><b>Pairs and groups:</b> score each learner on what <i>they</i> said. A partner who dominates doesn't lower a quiet learner's score if that learner's turns were effective; note the problem and adjust pairings next time.</li>
+        <li><b>Unsure between two scores?</b> Re-read the 3 and 5 descriptors, then choose. On the diagnostic only, choose the lower score and write "or ___".</li>
+      </ul>
+    </div>
+    <div class="blk"><div class="h">A rough CEFR guide (approximate)</div>
+      <table class="ans">
+        <thead><tr><th>Total /20</th><th>Performance on these tasks is roughly like…</th></tr></thead>
+        <tbody>
+          <tr><td class="n">18–20</td><td>a confident <b>C1</b> user in these work situations</td></tr>
+          <tr><td class="n">14–17</td><td><b>B2</b> (16–17 is a strong B2)</td></tr>
+          <tr><td class="n">10–13</td><td><b>B1+ to low B2</b></td></tr>
+          <tr><td class="n">6–9</td><td><b>B1</b>, working with support</td></tr>
+          <tr><td class="n">4–5</td><td><b>below B1</b> on this task (around A2)</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:.84rem;color:var(--ink-2)">This mapping is <b>approximate</b>. The rubric measures performance on specific workplace tasks, not general proficiency, and a single task can't give a reliable CEFR level. Use it to plan support and stretch and to talk about progress. Don't report it as an official level or print it on a certificate.</p>
+    </div>
+  </div>
+
+  <!-- ═════════════ CLASS 1 ═════════════ -->
+  <div class="sec pagebreak"><h2>Class 1 · Diagnostic Reply Email · model answer</h2><span class="rule"></span></div>
+  <p class="src">Word counts in this key cover everything from the greeting to the sign-off, counted as a word processor does (numbers and hyphenated words count as one word each). Subject lines, headings, names and signature blocks are not counted.</p>
+  <div class="model">
+    <p class="hd">Subject: Re: Customer Service Skills Day — please reply by Thursday</p>
+    <p>Hi Mateo,</p>
+    <p>Thank you for your email and for including me in the Skills Day.</p>
+    <p>I would prefer the morning session, from 9:00 to 12:30, if there is still space.</p>
+    <p>One topic I would find really useful is handling complaints on the phone, especially how to stay calm and polite when a customer is upset about a late delivery.</p>
+    <p>On the day, I will need a parking permit, because I will be driving from the Eastfield office. I have my own laptop, so I don't need one from you.</p>
+    <p>I also have a quick question: is there anything I should read or prepare before the session?</p>
+    <p>Thanks again, and I look forward to it.</p>
+    <p>Best regards,<br>[Name]<br>Customer Service, Northwind Logistics</p>
+  </div>
+  <p class="wc">116 words (target 100–150)</p>
+  <div class="grid2">
+    <div class="blk"><div class="h">Why this is a 5 on every criterion</div>
+      <ul class="tick">
+        <li><b>Task &amp; Purpose:</b> answers all three questions (session, topic, needs) in order, asks one relevant question, and makes Mateo's job easy.</li>
+        <li><b>Register &amp; Tone:</b> neutral-professional to a colleague not yet met: "Hi Mateo" + "Best regards" match; "I would prefer", "if there is still space".</li>
+        <li><b>Language:</b> useful email phrases ("Thank you for your email", "I look forward to it"); accurate.</li>
+        <li><b>Organization:</b> one point per paragraph, in Mateo's order; the question is signposted ("I also have a quick question").</li>
+      </ul>
+    </div>
+    <div class="blk warn"><div class="h">Common at this stage</div>
+      <ul class="tick">
+        <li>Answers only one or two of the questions, or forgets to ask one (Task &amp; Purpose 3 at most).</li>
+        <li>"Dear Mr. Brandt, … Yours faithfully" to a colleague who wrote "Hi": over-formal (Register &amp; Tone 3).</li>
+        <li>"I am writing to inform you that I want the morning." Over-formal opening plus a blunt "I want."</li>
+        <li>No greeting, or "Hello Mateo" with "Cheers" and emoji.</li>
+        <li>All one paragraph; "I'm agree"; "discuss about"; missing articles ("I need parking permit").</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec"><h2>Class 1 · Speaking Sample · what to listen for</h2><span class="rule"></span></div>
+  <table class="ans">
+    <thead><tr><th>Part</th><th>A strong sample (4–5) sounds like…</th><th>Watch for</th></tr></thead>
+    <tbody>
+      <tr><td>Introduction</td><td>"Hi, I'm Jordan Reyes. I'm a customer service coordinator at Northwind Logistics, where I help clients track their deliveries. I've been there about three years, and I really enjoy solving problems quickly." Then a question back or some "free information."</td><td class="v">A job title only ("I'm accountant."); a long life story; no question back; very quiet or flat delivery</td></tr>
+      <tr><td>Phone message</td><td>"Good morning. This is Alex from Kestrel Design. Could I speak to Ms. Lindgren, please?" … spells the family name with clear words ("M for Mike") … leaves number, reason and callback time … <b>corrects the read-back</b>: "Sorry, that's 0-1-4-8, not 1-8-4."</td><td class="v">"I want to speak Rosa."; no reason given; numbers said too fast; accepts the wrong number (the single clearest sign that a learner needs Lesson 1.3 work)</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:.9rem"><b>Examiner note (receptionist card):</b> read back the wrong number (<b>555-0184</b>) naturally, without stress, and wait. If the learner says "Yes, that's right," don't correct them; close the call and note "missed read-back error." Tell them the answer only when you return results.</p>
+
+  <!-- ═════════════ CLASS 8 ═════════════ -->
+  <div class="sec pagebreak"><h2>Class 8 · Task 1 · Reply to a client · model answer</h2><span class="rule"></span></div>
+  <div class="model">
+    <p class="hd">Subject: Order BF-2291 — new delivery on Thursday before 11 a.m.</p>
+    <p>Dear Ms. Varga,</p>
+    <p>Thank you for your email, and please accept my apologies for the missing delivery and for the lack of contact from our side. On Monday, our sorting center had a computer system failure, and several deliveries, including your order BF-2291, were delayed.</p>
+    <p>I am pleased to confirm that your 40 cartons will now be delivered on Thursday before 11 a.m., in good time for your promotion on Saturday. We will not charge you for delivery on this order.</p>
+    <p>From now on, I will be your contact for this order. If anything else comes up, please call me directly on 555-0162.</p>
+    <p>Could you please confirm that someone will be available to receive the delivery on Thursday morning?</p>
+    <p>Once again, I am sorry for the inconvenience.</p>
+    <p>Kind regards,<br>[Name]<br>Customer Account Coordinator, Northwind Logistics</p>
+  </div>
+  <p class="wc">129 words (target 120–170)</p>
+  <table class="ans">
+    <thead><tr><th>Content point</th><th>Must include</th><th>Acceptable alternatives</th></tr></thead>
+    <tbody>
+      <tr><td class="n">1</td><td>An apology <b>and</b> the reason (system failure at the sorting center on Monday)</td><td class="v">"I'm very sorry that…", "We apologize for…", "Unfortunately, a technical problem at our sorting center…"</td></tr>
+      <tr><td class="n">2</td><td>Thursday before 11 a.m. <b>and</b> no delivery charge</td><td class="v">"free of charge", "we will waive the delivery fee", "at no cost to you"</td></tr>
+      <tr><td class="n">3</td><td>You as the contact with the number <b>and</b> the request to confirm Thursday-morning receipt</td><td class="v">"I will personally look after…", "Could you let me know whether someone can…"; "call me at" (US) or "on" (UK) both fine</td></tr>
+    </tbody>
+  </table>
+  <div class="grid2">
+    <div class="blk"><div class="h">Scoring notes</div>
+      <ul class="tick">
+        <li>All three points, each with both parts: Task &amp; Purpose can reach 5. One part missing: 4. One whole point missing: 3. Two points missing: 2 at most.</li>
+        <li>A specific subject line and an ask near the end are Organization &amp; Delivery evidence; a missing subject line alone doesn't drop the score below 4.</li>
+        <li>Blaming a colleague or the client ("your warehouse gave the wrong address") is a Register &amp; Tone problem.</li>
+        <li>"Dear Ms. Varga … Kind regards" and "Dear Ms. Varga … Yours sincerely" are both fine.</li>
+      </ul>
+    </div>
+    <div class="blk warn"><div class="h">Top errors to expect</div>
+      <ul class="tick">
+        <li>Over-apologizing in every sentence, which sounds unsure; or no apology at all.</li>
+        <li>Burying the new date in the middle of a long paragraph.</li>
+        <li>"We will deliver you the goods" / "deliver to you on Thursday at before 11."</li>
+        <li>"Please confirm me…" (confirm <i>that</i>…); "the informations"; "I am sorry for the inconvenient."</li>
+        <li>Forgetting the <b>clear action</b>: no request to confirm Thursday receipt.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec"><h2>Class 8 · Task 2 · Fix the register · models</h2><span class="rule"></span></div>
+  <table class="ans">
+    <thead><tr><th>#</th><th>Model rewrite</th><th>Also accept / don't accept</th></tr></thead>
+    <tbody>
+      <tr><td class="n">a</td><td>"Hi Rosa, I'm afraid I won't be able to finish the report by Friday, because the sales figures arrived late. Would it be OK if I sent it on Monday morning? I can send you the first half on Friday if that helps." <span style="color:var(--ink-3)">(43 words)</span></td><td class="v"><b>Accept:</b> any polite, neutral message with a greeting, the problem, a clear request for Monday and, ideally, a reason or partial offer. Contractions are fine on chat. <b>Don't accept as fully correct:</b> "Dear Rosa, I regret to inform you…" (too formal for chat) or keeping "need till mon" (still a demand).</td></tr>
+      <tr><td class="n">b</td><td>"Dear Mr. Ferris, Thank you for sending the files. I will review them today and get back to you by Thursday with any questions. Kind regards," <span style="color:var(--ink-3)">(26 words)</span></td><td class="v"><b>Accept:</b> "Dear Mr. Ferris" or "Hello Mr. Ferris"; "I have received the files"; any specific time for the reply; "Best regards" / "Kind regards" / "Yours sincerely". <b>Don't accept:</b> first name only to a new external client; any text-speak or emoji left in; "I will look later" (no commitment).</td></tr>
+      <tr><td class="n">c</td><td>"Hi Tom, could you take a look at the second-floor printer when you get a chance? It's jammed again. Thanks!" <span style="color:var(--ink-3)">(20 words)</span></td><td class="v"><b>Accept:</b> any friendly-professional chat line with a greeting, a softened request and thanks. <b>Don't accept:</b> keeping "I am writing to inform you", "kindly do the needful" or "Yours faithfully"; a bare order ("Fix the printer.").</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:.88rem">Task 2 is the strongest single piece of evidence for <b>Register &amp; Tone</b> in writing: three correct shifts (down to chat, up to a client, down from over-formal) with softening supports a 5 even if Task 1 is a 4. The expression "do the needful" is standard in some varieties of English; the point is that it sounds out of place in a quick chat to a close colleague in most English-speaking workplaces, not that it is wrong.</p>
+
+  <div class="sec"><h2>Class 8 · Reading &amp; Ranking task · key (not scored)</h2><span class="rule"></span></div>
+  <table class="ans">
+    <thead><tr><th>#</th><th>Answer</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td class="n">1</td><td><b>1 Maple Street · 2 Grainhouse · 3 Linden · 4 Old Mill</b></td><td class="v">Maple Street meets every must-have within budget ($1,380); only the start time needs checking. Grainhouse is cheapest and meets the musts if Northwind brings a projector, but isn't private (a nice-to-have). Linden is over budget ($1,650, plus parking). Accept Grainhouse and Linden in either order with a sound reason.</td></tr>
+      <tr><td class="n">2</td><td><b>The Old Mill</b>: no step-free access (second floor, stairs only)</td><td class="v">This can't be fixed by negotiation, so it's last whatever the price.</td></tr>
+      <tr><td class="n">3</td><td>"Hi Dana, I recommend the Maple Street Conference Center. It meets every must-have on the brief, including step-free access and free parking, and at $1,380 it is within budget. The only issue is timing: the room is free from 8:30, so I'll ask whether an 8:00 start is possible, or we could move the breakfast to 8:30–10:30." <span style="color:var(--ink-3)">(57 words)</span></td><td class="v">Any 2–3 sentences with a choice, a reason tied to the brief, and one thing to check.</td></tr>
+      <tr><td class="n">4</td><td>Reply 2: "Unfortunately, we don't have a projector, but you're welcome to bring your own." · Reply 4: "The loft is on the second floor and can only be reached by stairs." / "Please pay the $300 deposit to confirm your booking."</td><td class="v">Any neutral-professional version: full words, no text-speak or capitals for emphasis, no archaic formulas.</td></tr>
+      <tr><td class="n">5</td><td>"Hi Sara, Thank you for your quick reply. The Cedar Room sounds ideal. Would it be possible to start at 8:00 instead of 8:30? If that's not possible, we can move our breakfast to 8:30–10:30. Could you let me know by Friday? Best regards," <span style="color:var(--ink-3)">(44 words)</span></td><td class="v">Look for a softened request and a conditional fallback: a nice preview of Lesson 3.2.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="sec"><h2>Class 8 · Speaking · role-card notes &amp; what to listen for</h2><span class="rule"></span></div>
+  <table class="ans">
+    <thead><tr><th>Simulation</th><th>The completed message pad should read</th><th>Listen for</th></tr></thead>
+    <tbody>
+      <tr><td><b>Call 1</b><br>A calls Northwind</td><td>For Sam Ortiz · from [A's name, correctly spelled] · Kestrel Design · 555-0137 · move Tuesday's pickup of 12 boxes to Wednesday afternoon · call back before 3 p.m. today</td><td class="v"><b>A:</b> states name, company and purpose at once; spells clearly; checks the read-back. <b>B:</b> answers with company + name; "I'm afraid he's in a meeting until four"; offers to take a message; asks for spelling; <b>reads everything back</b>. Stretch: offers Dana as an alternative.</td></tr>
+      <tr><td><b>Call 2</b><br>B calls Kestrel</td><td>For Lena Park · from [B's name] · Brightline Foods · 555-0193 · menu design: can final files be ready on the <b>13th</b> instead of the <b>30th</b>? · call back tomorrow morning</td><td class="v">The <b>13th / 30th</b> pair is deliberate. Strong learners stress it (thir<b>TEEN</b> / <b>THIR</b>ty) or clarify it ("that's one-three"). A receiver who writes 30th and doesn't check loses Task &amp; Purpose evidence.</td></tr>
+      <tr><td><b>Meeting</b><br>A chairs</td><td>A decision on the date and the budget, with reasons, and at least two action points (for example: "B contacts the caterer by Wednesday; A sends invitations by Friday")</td><td class="v"><b>Chair:</b> opens with the purpose, moves item by item, invites B (and C), summarizes, confirms ("Can I confirm…?"), closes on time. <b>Participants:</b> opinions with reasons; "I see your point, but…"; a polite interruption or a clarification question; a compromise (for example, the 16th with a $750 budget, or the 9th with coffee only).</td></tr>
+    </tbody>
+  </table>
+  <div class="note warn">
+    <div class="t">Top speaking errors at the midpoint</div>
+    <p>Direct translations that sound like orders ("I want speak with Sam"; "Give me your number"). Numbers said as one fast block. Receivers who write the message but <b>never read it back</b>. In meetings: silence until asked, then a very long turn; disagreeing with "No, is not good"; a chair who gives their own opinions at length and forgets action points; flat intonation on "Sorry to interrupt," which makes it sound annoyed.</p>
+  </div>
+
+  <!-- ═════════════ FINAL ═════════════ -->
+  <div class="sec pagebreak"><h2>Final · Writing Task 1 · Proposal sections · model answer</h2><span class="rule"></span></div>
+  <div class="model">
+    <p><b>Executive Summary</b></p>
+    <p>This proposal sets out how to reduce packing errors at the Riverside warehouse. Error returns rose from 2.1% of orders in Q1 to 4.8% in Q2, or about 580 orders a month, at a cost of approximately $22,000 per month. Wrong labels and wrong items caused 83% of these returns.</p>
+    <p>We recommend two actions: first, installing barcode scanners at all eight packing stations ($16,000, plus $150 a month for support); second, a half-day refresher training course for all packers ($3,500). Together, these measures are projected to save approximately $12,000 per month, and the scanners should pay for themselves within two months. Hiring two additional quality checkers is not recommended at this stage.</p>
+  </div>
+  <p class="wc">112 words (target 90–130), heading not counted</p>
+  <div class="model">
+    <p><b>Recommendations</b></p>
+    <p>1. Install barcode scanners at all eight packing stations (priority). This addresses the two largest causes of returns, wrong labels (52%) and wrong items (31%). In the Eastfield pilot, scanners reduced these errors by about 60%. At Riverside, this would mean around 290 fewer returns and savings of approximately $11,000 per month. It is recommended that installation be completed by the end of next month.</p>
+    <p>2. Provide refresher training for all 24 packers. The training ($3,500) targets damage during packing, which caused 17% of returns. If damage errors fall by a third, as expected, the saving would be about $1,250 per month.</p>
+    <p>3. Review results after three months. Hiring two quality checkers ($84,000 per year) would cover only 30% of orders. We therefore suggest that this option be reconsidered only if error rates remain above 2.5% after the review.</p>
+  </div>
+  <p class="wc">139 words (target 130–180), heading not counted, list numbers counted (136 without them)</p>
+  <div class="grid2">
+    <div class="blk"><div class="h">The figures, checked</div>
+      <ul class="tick">
+        <li>Error cost: 580 × $38 ≈ $22,000 per month.</li>
+        <li>Labels + wrong items: 52% + 31% = 83% of 580 ≈ 480 returns; 60% fewer ≈ 290; 290 × $38 ≈ $11,000 per month.</li>
+        <li>Damage: 17% of 580 ≈ 99; a third ≈ 33; 33 × $38 ≈ $1,250 per month.</li>
+        <li>Scanners pay back in about 1.5 months ($16,000 ÷ roughly $10,800 net monthly saving).</li>
+        <li>Learners may round differently; accept any figure that is reasonable and clearly derived from the data. Don't penalize arithmetic slips under Task &amp; Purpose unless they change the recommendation.</li>
+      </ul>
+    </div>
+    <div class="blk"><div class="h">What earns the top scores</div>
+      <ul class="tick">
+        <li><b>Task &amp; Purpose 5:</b> the summary stands alone (purpose + findings + recommendations); at least two recommendations <b>in priority order</b>, each with a cost and a benefit; option B rejected with a reason.</li>
+        <li><b>Register &amp; Tone 5:</b> objective and impersonal ("The data indicates…", "It is recommended that…"); hedged where honest ("projected", "approximately").</li>
+        <li><b>Language 5:</b> document phrases, accurate numbers, passive and subjunctive used correctly.</li>
+        <li><b>Organization 5:</b> headings, the answer first, numbered recommendations.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="note warn">
+    <div class="t">Top errors to expect</div>
+    <p>An executive summary that "teases" ("This proposal will discuss…") instead of stating the recommendation · retelling all the data with no recommendation · recommending all three options with no priority · "I think we should buy scanners because they are good" (chatty, no evidence) · percentages confused with orders ("4.8 orders") · "It is recommended to install…" (acceptable) versus "It is recommended that the scanners are installed" (acceptable in British English; the subjunctive <i>be installed</i> is more formal; don't penalize either).</p>
+  </div>
+
+  <div class="sec"><h2>Final · Writing Task 2A · Cover letter · model answer</h2><span class="rule"></span></div>
+  <div class="model">
+    <p>Dear Ms. Hale,</p>
+    <p>I am writing to apply for the position of Operations Coordinator, as advertised on the Kestrel Design careers page. I have followed your studio's work for some time, and I would welcome the chance to help your projects run smoothly.</p>
+    <p>For the past five years, I have worked as a logistics coordinator at Corran Trading, a mid-size importer. In this role, I introduced a shared delivery calendar that cut late deliveries by 20% in one year. I also prepare weekly status reports for three department heads, which matches your need for someone who can keep clients and colleagues clearly informed.</p>
+    <p>I am a calm and organized communicator. Last year, I trained four new team members on our scheduling software, and I am confident I could learn your systems quickly. My degree in business administration was earned abroad and has been evaluated as equivalent to a U.S. bachelor's degree.</p>
+    <p>I would welcome the opportunity to discuss how my experience could support your team. I am available for an interview at your convenience, and I have attached my résumé for your review.</p>
+    <p>Thank you for your time and consideration.</p>
+    <p>Sincerely,<br>Sam Rivera</p>
+  </div>
+  <p class="wc">191 words (target 180–230)</p>
+  <p style="font-size:.9rem"><b>Look for:</b> the role named in the first line; evidence matched to the ad (scheduling, reports, communication, software); one "why them" sentence; a confident close with availability. <b>Accept</b> "Yours sincerely" or "Sincerely"; "résumé" or "CV". A learner who used their <b>own</b> experience is scored exactly the same way. <b>Common problems:</b> copying the role card as a list; empty adjectives ("hard-working, dynamic team player"); a generic letter that could go to any company; "I am applying for the job" with no role name; over-long sentences that bury the evidence.</p>
+
+  <div class="sec"><h2>Final · Writing Task 2B · Formal email · model answer</h2><span class="rule"></span></div>
+  <div class="model">
+    <p class="hd">Subject: Your contract renewal — pricing and Saturday deliveries</p>
+    <p>Dear Mr. Ferris,</p>
+    <p>Thank you for your email and for your continued business. We value our partnership with Tallis Print Co., and I have looked carefully at both of your requests.</p>
+    <p>I am afraid we are not able to reduce our prices by 12%, as our fuel and staff costs have risen this year. However, if you are able to sign a two-year contract, we would be pleased to offer a 6% reduction on all deliveries.</p>
+    <p>Regarding Saturday deliveries, these are available at an additional $45 per delivery. Alternatively, we could offer a guaranteed two-hour morning window on weekdays at no extra cost, which may meet the same need.</p>
+    <p>Would you be available for a short call next Tuesday or Wednesday to discuss which option suits you best? I would be happy to send you a revised quote before our call. Please let me know if you have any questions in the meantime.</p>
+    <p>I look forward to hearing from you.</p>
+    <p>Yours sincerely,<br>[Name]<br>Account Manager, Northwind Logistics</p>
+  </div>
+  <p class="wc">162 words (target 150–200)</p>
+  <p style="font-size:.9rem"><b>Look for:</b> thanks and relationship first; a refusal with a reason ("I am afraid… as…"); a <b>conditional</b> offer (if + two-year contract → 6%); both Saturday options; a specific next step. <b>Register &amp; Tone 3 or below:</b> a flat "We cannot accept your request"; "You must sign for two years"; an unconditional 6% ("We'll give you 6%"). <b>Common problems:</b> "discuss about the options"; "a two years contract"; forgetting the Saturday request entirely (Task &amp; Purpose 3 at most).</p>
+
+  <div class="sec pagebreak"><h2>Final · Speaking · what to listen for</h2><span class="rule"></span></div>
+  <table class="ans">
+    <thead><tr><th>Task</th><th>Strong performance (4–5)</th><th>Weak performance (1–2)</th></tr></thead>
+    <tbody>
+      <tr><td><b>Negotiation</b></td><td>A warm opening; asks about interests ("What's most important to you here?", "Is it the price itself, or the timing?"); signals flexibility ("There may be some room on that…"); trades with conditionals ("If you can commit to two years, we can…"); labels a concession; handles a "no" with a reason and an alternative; closes with a clear summary ("So, to confirm…"). The deal memo matches what was said.</td><td>Opens with a number; repeats a position; gives concessions for nothing; "No, impossible"; accepts the first offer without exploring; no summary, or the two deal memos disagree.</td></tr>
+      <tr><td><b>Pitch + Q&amp;A</b></td><td>Opening does its five jobs with a hook; problem → solution → benefit → evidence → call to action; features turned into benefits ("…which means that…"); signposts at every turn; a figure described and interpreted; eye contact and pauses; within 4:30–5:30. In Q&amp;A: acknowledges ("That's a fair concern"), clarifies if needed, answers briefly with evidence, confirms ("Does that answer your question?").</td><td>Reads a script or slide aloud; no call to action; lists features; runs far under or over time; argues with or dismisses the objection; a long, wandering answer.</td></tr>
+      <tr><td><b>Interview</b></td><td>"Tell me about yourself" in under a minute (present → past → future); STAR answers with a brief S and T, a detailed A with "I", and a clear R with a number; strengths backed by examples; positive about past roles; a thoughtful question and a courteous close.</td><td>A life story; "we" throughout the Action; no Result; one-sentence answers; empty adjectives; no questions for the interviewer.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="grid2">
+    <div class="blk"><div class="h">Model deal memo · Scenario 1 (66 words)</div>
+      <div class="model" style="margin-top:0">
+        <p class="hd">Subject: Confirming our agreement — delivery contract renewal</p>
+        <p>Hi Chris,</p>
+        <p>Thanks for a productive meeting today. Just to confirm what we agreed:</p>
+        <p>• A two-year contract at $81 per delivery, fixed for both years.<br>
+        • A guaranteed two-hour morning delivery window (7:00–9:00 a.m.) for all store deliveries.<br>
+        • Payment within 45 days.<br>
+        • Free pickup of returned goods.</p>
+        <p>I'll send the contract over by Friday for your review. Please let me know if I've missed anything.</p>
+        <p>Best regards,</p>
+      </div>
+    </div>
+    <div class="blk"><div class="h">Model STAR answer · "a tight deadline" (115 words)</div>
+      <div class="model" style="margin-top:0">
+        <p><b>(S)</b> In my last role, one of our biggest customers moved a large order forward by a full week, just before a holiday weekend. <b>(T)</b> I was responsible for arranging the deliveries, so it was my job to make the new date work. <b>(A)</b> First, I called our two carriers and split the order into three smaller deliveries, so no single truck was overloaded. Then I updated the shared delivery calendar and sent the customer a short status email every afternoon, so they never had to chase us. <b>(R)</b> As a result, all 60 pallets arrived on time, and the customer increased their next order by 15%. I also learned to build a buffer day into every urgent plan.</p>
+      </div>
+    </div>
+  </div>
+  <div class="blk"><div class="h">Model pitch opening · Brief 1 (72 words, about 30 seconds)</div>
+    <div class="model" style="margin-top:0">
+      <p>"Good morning, everyone, and thank you for coming. I'm Jordan Reyes from customer service. Here's a number to start with: almost one in five of our home deliveries fails the first time, because nobody is home. Today I'd like to show you how a simple text message could cut that in half. I'll cover three things: the problem, the idea, and what a trial would cost. I'll take questions at the end."</p>
+    </div>
+  </div>
+  <div class="note">
+    <div class="t">Examiner notes for Classes 15–16</div>
+    <p><b>Negotiation:</b> score the language and process, not the outcome; a respectful "no deal, here's the next step" can score 5 on Task &amp; Purpose if interests were explored and the close is clear. <b>Pitch:</b> in a pair pitch, score each partner on their own section and their own Q&amp;A answer; both can share the same Organization evidence only if both signposted. <b>Interview:</b> the learner may use a role card; don't probe for real details. If a learner opted in to the "more experience than the role requires" question, listen for a positive, forward-looking answer ("I'm looking for a role where I can…"), never an apology for their past. <b>Speaking /20:</b> one score per criterion from all three tasks (see the score sheet); if the interview is missing, score from the negotiation and pitch and note it.</p>
+  </div>
+
+  <!-- ═════════════ SCORING SHEETS ═════════════ -->
+  <div class="sec pagebreak"><h2>Scoring Sheet · Class 1 · Diagnostic</h2><span class="rule"></span></div>
+  <p style="font-size:.86rem;color:var(--ink-2)">T&amp;P = Task &amp; Purpose · R&amp;T = Register &amp; Tone · LRA = Language Range &amp; Accuracy · O&amp;D = Organization &amp; Delivery. Per-learner note grids are in <code class="inline">needs-analysis.html</code>.</p>
+  <table class="grid">
+    <thead><tr><th>Learner</th><th>W T&amp;P</th><th>W R&amp;T</th><th>W LRA</th><th>W O&amp;D</th><th>W /20</th><th>S T&amp;P</th><th>S R&amp;T</th><th>S LRA</th><th>S O&amp;D</th><th>S /20</th><th>Targets (2–3)</th></tr></thead>
+    <tbody>
+      <tr><td>&nbsp;</td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td></td></tr>
+      <tr><td>&nbsp;</td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td></td></tr>
+      <tr><td>&nbsp;</td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td></td></tr>
+      <tr><td>&nbsp;</td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td></td></tr>
+      <tr><td>&nbsp;</td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td></td></tr>
+      <tr><td>&nbsp;</td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td></td></tr>
+      <tr><td>&nbsp;</td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td></td></tr>
+      <tr><td>&nbsp;</td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td></td></tr>
+      <tr><td>&nbsp;</td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td></td></tr>
+      <tr><td>&nbsp;</td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td></td></tr>
+      <tr><td>&nbsp;</td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td></td></tr>
+      <tr><td>&nbsp;</td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td></td></tr>
+    </tbody>
+  </table>
+
+  <div class="sec"><h2>Scoring Sheet · Class 8 · Performance Check</h2><span class="rule"></span></div>
+  <p style="font-size:.86rem;color:var(--ink-2)">Writing = Task 1 email + Task 2 rewrites. Speaking = Call 1 + Call 2 + meeting. Per-learner sheets are in <code class="inline">performance-check.html</code>.</p>
+  <table class="grid">
+    <thead><tr><th>Learner</th><th>W T&amp;P</th><th>W R&amp;T</th><th>W LRA</th><th>W O&amp;D</th><th>W /20</th><th>S T&amp;P</th><th>S R&amp;T</th><th>S LRA</th><th>S O&amp;D</th><th>S /20</th><th>Change from C1 (W / S)</th></tr></thead>
+    <tbody>
+      <tr><td>&nbsp;</td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td></td></tr>
+      <tr><td>&nbsp;</td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td></td></tr>
+      <tr><td>&nbsp;</td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td></td></tr>
+      <tr><td>&nbsp;</td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td></td></tr>
+      <tr><td>&nbsp;</td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td></td></tr>
+      <tr><td>&nbsp;</td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td></td></tr>
+      <tr><td>&nbsp;</td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td></td></tr>
+      <tr><td>&nbsp;</td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td></td></tr>
+      <tr><td>&nbsp;</td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td></td></tr>
+      <tr><td>&nbsp;</td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td></td></tr>
+      <tr><td>&nbsp;</td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td></td></tr>
+      <tr><td>&nbsp;</td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td></td></tr>
+    </tbody>
+  </table>
+
+  <div class="sec pagebreak"><h2>Scoring Sheet · Classes 15–16 · Final Assessment</h2><span class="rule"></span></div>
+  <p style="font-size:.86rem;color:var(--ink-2)">Writing = proposal sections + cover letter or formal email. Speaking = negotiation + pitch + interview. Per-learner sheets are in <code class="inline">final-assessment.html</code>.</p>
+  <table class="grid">
+    <thead><tr><th>Learner</th><th>W T&amp;P</th><th>W R&amp;T</th><th>W LRA</th><th>W O&amp;D</th><th>W /20</th><th>S T&amp;P</th><th>S R&amp;T</th><th>S LRA</th><th>S O&amp;D</th><th>S /20</th><th>C1 → final (W / S)</th></tr></thead>
+    <tbody>
+      <tr><td>&nbsp;</td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td></td></tr>
+      <tr><td>&nbsp;</td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td></td></tr>
+      <tr><td>&nbsp;</td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td></td></tr>
+      <tr><td>&nbsp;</td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td></td></tr>
+      <tr><td>&nbsp;</td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td></td></tr>
+      <tr><td>&nbsp;</td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td></td></tr>
+      <tr><td>&nbsp;</td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td></td></tr>
+      <tr><td>&nbsp;</td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td></td></tr>
+      <tr><td>&nbsp;</td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td></td></tr>
+      <tr><td>&nbsp;</td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td></td></tr>
+      <tr><td>&nbsp;</td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td></td></tr>
+      <tr><td>&nbsp;</td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td></td></tr>
+    </tbody>
+  </table>
+
+  <!-- ═════════════ TARGETS ═════════════ -->
+  <div class="sec"><h2>From Scores to Targets</h2><span class="rule"></span></div>
+  <p>A score is only useful if it leads to a next step. After each checkpoint, turn each learner's two scores into <b>two or three targets</b> that they copy into section 4 of their Performance Tracker.</p>
+  <ol class="steps">
+    <li><b>Find the lowest criterion</b> in Writing and in Speaking. If several are tied, choose the one that affects the learner's own goals (Class 1, Part 3) most.</li>
+    <li><b>Look at the evidence, not the number.</b> Which two or three things caused the low score? (A missing ask? Blunt requests? Numbers said too fast?)</li>
+    <li><b>Write the target as a habit you can see</b>: specific, practiced in 2–4 weeks, and checkable. Not "improve my emails" but "put the ask and the deadline in the first two lines of every email."</li>
+    <li><b>Attach the practice</b>: one online lesson (<code class="inline">https://rays-esl.netlify.app/curriculum-business/lesson_NN.html</code>) and one real-life use.</li>
+    <li><b>Add one "keep doing"</b> from the highest criterion, so feedback is never only about problems.</li>
+    <li><b>Review at the next checkpoint</b>: "Achieved?" ☐ yes ☐ nearly. A target reached is worth naming out loud, privately.</li>
+  </ol>
+  <table class="ans">
+    <thead><tr><th>Low criterion</th><th>Typical evidence</th><th>Example target</th><th>Practice with</th></tr></thead>
+    <tbody>
+      <tr><td><b>Task &amp; Purpose</b> · writing</td><td>Points missing; vague ask; no deadline</td><td>"Before sending, I tick every question in the email I'm answering, and my ask includes a day or time."</td><td class="v">1.2 · lesson_02<br>4.1 · lesson_10</td></tr>
+      <tr><td><b>Task &amp; Purpose</b> · speaking</td><td>Incomplete messages; no summary at the end of a meeting or negotiation; STAR with no Result</td><td>"I finish every call and meeting by reading back or summarizing: 'So, just to confirm…'"</td><td class="v">1.3 · lesson_03<br>2.1 · lesson_04 · 3.2 · lesson_08</td></tr>
+      <tr><td><b>Register &amp; Tone</b></td><td>Blunt requests ("I want…", "Send me…"); over-formal formulas; flat refusals</td><td>"I use one softener in every request (Could you…? / Would it be possible…?) and a reason plus an alternative when I say no."</td><td class="v">1.1 · lesson_01<br>2.3 · lesson_06</td></tr>
+      <tr><td><b>Language Range &amp; Accuracy</b></td><td>The same few phrases; repeated errors (articles, "discuss about", tense)</td><td>"I learn three new phrases from one phrase bank each week and use each in a real message. I keep a list of my top two errors and check for them before sending."</td><td class="v">Phrase banks in any lesson; 3.2 · lesson_08 for conditionals</td></tr>
+      <tr><td><b>Organization &amp; Delivery</b> · writing</td><td>One long block; ask buried; no subject line or headings</td><td>"Every email has a specific subject line, one idea per paragraph, and the ask at the top or the end, never in the middle."</td><td class="v">1.2 · lesson_02<br>4.1 · lesson_10</td></tr>
+      <tr><td><b>Organization &amp; Delivery</b> · speaking</td><td>Hesitation; no signposting; numbers too fast; waits to be asked in meetings</td><td>"I record a 60-second update twice a week using 'First… then… finally…' and slow down for numbers. In meetings, I make one contribution in the first ten minutes."</td><td class="v">3.1 · lesson_07<br>2.1 · lesson_04</td></tr>
+    </tbody>
+  </table>
+
+  <div class="sec"><h2>Returning Results Kindly</h2><span class="rule"></span></div>
+  <div class="grid2">
+    <div class="blk"><div class="h">Principles</div>
+      <ul class="tick">
+        <li><b>Private, never public.</b> No rankings, no reading scores aloud. Hand results back folded or in an envelope.</li>
+        <li><b>Evidence before numbers.</b> Start with a real strength and a quotation from their work; give the scores after.</li>
+        <li><b>Two scores, two stories.</b> Writing and speaking often move at different speeds. Say so.</li>
+        <li><b>Name what is fixable.</b> Most lost points come from habits (a missing ask, no read-back, no softener) that change within weeks.</li>
+        <li><b>Respect experience.</b> For learners with strong professional backgrounds, make clear the targets are about English, not about their competence.</li>
+      </ul>
+    </div>
+    <div class="blk"><div class="h">Things you can say</div>
+      <div class="say">Your email answered every point, and the client would know exactly what to do next. That's the hardest part. Now let's make the tone a little warmer.</div>
+      <div class="say">You caught my mistake with the phone number. That's the habit that saves real money at work.</div>
+      <div class="say">Your speaking score went up three points since Class 1, mostly because you now summarize before you finish. Keep doing that.</div>
+      <div class="say">You clearly know this field very well. Your target is about showing that in English: shorter sentences and one number in every example.</div>
+    </div>
+  </div>
+  <div class="note warn">
+    <div class="t">When a result is hard to hear</div>
+    <p>Some learners need this course for a job search or a promotion, and a score can feel personal. Give time and privacy, offer a short conversation after class, and keep the discussion on what the next four weeks can change. Don't make promises about job outcomes, and don't give advice about employment law, credential recognition or immigration: point learners to the appropriate service in your organization or community. If a learner mentions serious distress, follow your organization's support and referral procedures.</p>
+  </div>
+
+  <p style="font-size:.85rem;color:var(--ink-3)">All companies, people, products, figures and scenarios in this kit are fictional. Any resemblance to real organizations is coincidental.</p>
+
+  <div class="foot">
+    <div class="who"><b>Ray de la Paz</b><span class="bio">© 2026 Ray de la Paz · Business English</span></div>
+    <div class="ver">Assessment · Key, Rubric &amp; Scoring · v1.0</div>
+  </div>
+
+</div>
+</body>
+</html>

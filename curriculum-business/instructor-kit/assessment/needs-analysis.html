@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Needs Analysis &amp; Diagnostic — Class 1</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../kit.css">
+<style>
+  /* ── Test-paper components (shared by the four assessment documents) ── */
+  @page{size:auto;margin:.55in}   /* prints on Letter or A4: the printer's paper size wins */
+  .pagebreak{break-before:page}
+  .teacher-only{font-family:"JetBrains Mono",monospace;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+    color:#fff;background:var(--warn);border-radius:999px;padding:3px 11px;display:inline-block;margin-bottom:8px;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .paper{font-size:16.5px;line-height:1.5}
+  .paper-head{display:grid;grid-template-columns:2fr 1fr 1fr;gap:14px;margin:6px 0 14px;font-size:1.05rem}
+  .paper-head div{border-bottom:1.5px solid var(--ink-2);padding:6px 2px 4px}
+  .paper-head b{font-weight:700}
+  .part-h{display:flex;align-items:center;gap:12px;margin:28px 0 6px;padding:10px 14px;background:var(--accent-soft);
+    border-radius:10px;break-after:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .part-h h2{font-size:1.25rem;font-weight:800;flex:1}
+  .part-h .score{font-family:"JetBrains Mono",monospace;font-size:.9rem;font-weight:600;border:1.5px solid var(--ink-2);
+    border-radius:8px;padding:4px 10px;background:var(--surface);white-space:nowrap}
+  .inst{font-size:1.05rem;font-weight:600;margin:16px 0 8px;break-after:avoid}
+  .inst .sub{display:block;font-weight:400;color:var(--ink-2);font-size:.95rem;margin-top:2px}
+  .text{border:1px solid var(--line);border-radius:10px;padding:14px 18px;background:var(--surface-2);font-size:1rem;line-height:1.6;margin:10px 0;break-inside:avoid}
+  .text p{margin:0 0 8px}
+  .text p:last-child{margin-bottom:0}
+  .text .hd{font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink-2);border-bottom:1px solid var(--line);padding-bottom:6px;margin-bottom:8px}
+  .text .ttl{font-family:"Archivo",sans-serif;font-weight:800;font-size:1.12rem;margin-bottom:6px}
+  .wline{border-bottom:1.5px solid var(--ink-2);height:2.05em}
+  .tickrow{display:flex;flex-wrap:wrap;gap:6px 18px;margin:6px 0 10px;font-size:1rem}
+  .goalbox{border:2px solid var(--ink-2);border-radius:12px;padding:12px 18px;margin:12px 0;break-inside:avoid}
+  .goalbox h4{font-size:1.08rem;margin-bottom:4px}
+  table.grid{width:100%;border-collapse:collapse;margin:10px 0;font-size:.9rem}
+  table.grid th,table.grid td{border:1px solid var(--line-strong);padding:7px 9px;text-align:left;vertical-align:top}
+  table.grid thead th{background:var(--surface-2);font-family:"JetBrains Mono",monospace;font-size:.64rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+  table.grid td.sc{width:9%;text-align:center;font-family:"JetBrains Mono",monospace;color:var(--ink-3)}
+  table.grid tr{break-inside:avoid}
+  .msgpad{border:1.5px solid var(--ink-2);border-radius:8px;padding:8px 12px;margin-top:8px;font-size:.92rem}
+  .msgpad div{border-bottom:1px solid var(--line-strong);padding:5px 0 3px}
+  .done{margin-top:24px;text-align:center;font-size:1.15rem;font-weight:700}
+  @media (max-width:680px){
+    .paper-head{grid-template-columns:1fr}
+    table.grid{display:block;overflow-x:auto}
+    .cards{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="lbl">Test pack —</span>
+  <button type="button" onclick="window.print()">🖨 Print / Save as PDF</button>
+  <span class="hint">teacher notes · learner paper (survey, email, goals) · speaking cards, note grid &amp; profile sheet (teacher only)</span>
+</div>
+
+<div class="sheet">
+
+  <header class="mast">
+    <div class="kit-eyebrow">Business English · Assessment · Class 1</div>
+    <h1>Needs Analysis &amp; Diagnostic — Where Are We Starting?</h1>
+    <p class="sub">A friendly first-class pack. It has three parts: a <b>workplace-needs survey</b> (which situations, how often, how confident, what goals), a <b>20-minute diagnostic reply email</b> to a fictional message, and a <b>3-minute speaking sample</b> (a short introduction and a phone-message role-play). Learners finish with a <b>goal-setting box</b>. Together these give you a baseline on the course rubric, a map of what this group actually needs at work, and the information to plan support and stretch from Class 2. It is a starting point, not a verdict.</p>
+    <div class="meta-row">
+      <span class="chip"><b>~60 min</b> of the 90-minute class</span>
+      <span class="chip">Writing sample <b>/20</b> · Speaking sample <b>/20</b></span>
+      <span class="chip">Rubric: <b>assessment-key.html</b></span>
+      <span class="chip">Level <b>B1+</b> (B1–C1 mixed)</span>
+    </div>
+  </header>
+
+  <div class="note">
+    <div class="t">How to frame it (say this before anything is handed out)</div>
+    <p>Adults in a Business English class often carry a lot of professional pride, and some have had to start again below the level they worked at before. Make it clear straight away that this is about the course, not about them: <b>"Nothing today is pass or fail. I want to know which work situations matter to you and how your English works in them right now, so the next eight weeks fit this group. Everyone will find something difficult today. That's useful information, not a problem."</b> Tell them that results are <b>private</b>, that nobody's score is shared with the class, and that every personal question on the survey is <b>optional</b>.</p>
+  </div>
+
+  <div class="sec"><h2>Running Class 1 (90 min)</h2><span class="rule"></span></div>
+  <table class="timing">
+    <thead><tr><th>Stage</th><th>Time</th><th>Interaction</th><th>Procedure</th></tr></thead>
+    <tbody>
+      <tr><td>Welcome &amp; course map</td><td class="t">15 min</td><td>T–S · S–S</td><td>Names (first names or titles, as each learner prefers; ask them, and write it on your list). The course map: 4 modules, 16 classes, the Performance Check in Class 8 and the Final Assessment in Classes 15–16, the online lessons as homework. A 3-minute pair warmer: "What's one thing you do in English at work, or want to do?" The Module 1 Teacher's Guide has the full orientation plan. Then the framing above.</td></tr>
+      <tr><td>Part 1 · Workplace-needs survey</td><td class="t">15 min</td><td>S</td><td>Individual. Read the privacy line at the top of the survey aloud. <b>ICQs:</b> "Do you have to write the name of your company?" (No.) "Can you tick 'Not yet' for a situation?" (Yes.) "How many priorities do you circle?" (Three.) Circulate and help with vocabulary; don't comment on answers.</td></tr>
+      <tr><td>Part 2 · Diagnostic reply email</td><td class="t">20 min</td><td>S</td><td>Individual and silent. Write the start and finish times on the board. <b>ICQs:</b> "Who are you writing to?" (Mateo, the training coordinator.) "How many of his questions do you answer?" (All three.) "And then?" (Ask him one question.) "About how many words?" (100–150.) <b>While the class writes</b>, start calling learners one at a time to a quiet corner for the 3-minute speaking sample (teacher pages).</td></tr>
+      <tr><td>Speaking samples (continued) &amp; Part 3 · Goals</td><td class="t">30 min</td><td>T–S · S</td><td>Keep calling learners for speaking (about 4 minutes each, including changeover: about 12 learners in the 50 minutes of Parts 2 and 3). Everyone else completes the goal-setting box, then opens the online Lesson 1.1 on a phone and reads "The Professional Register Spectrum." With more than about 12 learners, finish the samples in the Class 2 warmer.</td></tr>
+      <tr><td>Share &amp; close</td><td class="t">10 min</td><td>S–S · T–S</td><td>Pairs share <b>one</b> goal only, and only if they want to (a learner can say "Mine is private"). Collect all papers. Tell them you'll return a short, private <b>starting profile</b> in Class 2 or 3. Homework: online Lesson 1.1 (<code class="inline">https://rays-esl.netlify.app/curriculum-business/lesson_01.html</code>) and a 3–4 sentence self-introduction for the Class 2 warmer (real or role card).</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:.85rem;color:var(--ink-3)">Total: 15 + 15 + 20 + 30 + 10 = 90 minutes.</p>
+
+  <div class="grid2">
+    <div class="blk"><div class="h">You need</div>
+      <ul class="tick">
+        <li>One learner paper per person (the middle section of this pack), printed at 100%</li>
+        <li>The teacher pages: speaking script and cards (cut out), one note grid per learner, the class overview, the profile sheet</li>
+        <li>A clock the class can see and a phone timer for speaking</li>
+        <li>The course rubric and model email: <code class="inline">assessment/assessment-key.html</code></li>
+      </ul>
+    </div>
+    <div class="blk"><div class="h">What each part tells you</div>
+      <ul class="tick">
+        <li><b>Survey</b>: which situations matter and how often, where confidence is low, and practical constraints (time, devices, comfort with role-play)</li>
+        <li><b>Reply email /20</b>: all four rubric criteria in writing: did they answer everything, in a suitable register, with control of language and a clear email structure?</li>
+        <li><b>Speaking sample /20</b>: the same four criteria in speech, including listening, clarifying and reading back details on a call</li>
+        <li><b>Goals</b>: what each learner wants, in their words, so targets later are theirs, not only yours</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="note warn">
+    <div class="t">Personal information is always optional</div>
+    <p>No task in this pack asks for salary, employment status, immigration status, nationality, age or the name of a real employer. Every personal item can be answered with a <b>role card</b> (four are on the teacher pages; a learner can also invent one). Say: <b>"You can use your real job, the job you want, or a role card. I'm listening to your English, not checking your CV."</b> Some learners worked at a senior level before a move or a career change. If a learner mentions this, respond with respect and interest ("That's a lot of experience to bring. Let's make sure your English shows it."), never with pity, and don't ask follow-up questions about why.</p>
+  </div>
+
+  <div class="note lab">
+    <div class="t">Adapting the conditions, not the content</div>
+    <p>If a learner has a visual impairment, dyslexia, or reads more slowly than they speak, keep the <b>same tasks</b> and change the conditions: enlarge the paper, give 10 extra minutes for the email, or let them type it. Write the change on the paper ("Adapted: +10 min, typed"). Treat the result as the same kind of evidence; the aim of a diagnostic is to see what they can do, not how fast they can handwrite.</p>
+  </div>
+
+  <!-- ═════════════════════ LEARNER PAPER ═════════════════════ -->
+  <div class="pagebreak"></div>
+  <div class="paper">
+    <header class="mast">
+      <div class="kit-eyebrow">Business English · Class 1</div>
+      <h1>My Work, My English, My Goals</h1>
+      <div class="paper-head">
+        <div><b>Name:</b></div>
+        <div><b>Date:</b></div>
+        <div><b>I'd like to be called:</b></div>
+      </div>
+      <p style="font-size:1rem;margin-top:10px">This is <b>not</b> a test you can pass or fail. It helps your teacher plan a course that fits your work. <b>Every personal question is optional.</b> You never need to write your salary, your visa or employment status, or the name of your company. You can answer as yourself or use a role card (a fictional job).</p>
+    </header>
+
+    <!-- PART 1 -->
+    <div class="part-h"><h2>Part 1 · My workplace needs</h2><span class="score">about 15 min</span></div>
+
+    <p class="inst">A. About my work <span class="sub">Optional. Tick one, and write as much or as little as you like.</span></p>
+    <div class="tickrow">
+      <span>☐ I use English at work now</span>
+      <span>☐ I'm looking for a job</span>
+      <span>☐ I'm returning to my profession or changing field</span>
+      <span>☐ I'm using a role card</span>
+      <span>☐ I'd prefer not to say</span>
+    </div>
+    <p style="margin:4px 0">My field or industry (for example: logistics, health care, IT, retail, finance, education):</p>
+    <div class="wline"></div>
+    <p style="margin:8px 0 4px">My job, or the job I want (a job title is enough):</p>
+    <div class="wline"></div>
+    <p style="margin:8px 0 4px">I communicate in English mainly with: ☐ colleagues ☐ managers ☐ customers or clients ☐ suppliers ☐ people in other countries ☐ not yet</p>
+
+    <p class="inst">B. Work situations in English <span class="sub">For each row: tick how often you do this now (or will need to), and circle your confidence from 1 (not confident) to 4 (very confident). Then put a star ★ next to your <b>three</b> most important situations.</span></p>
+    <table class="grid">
+      <thead><tr><th>Situation</th><th>Often</th><th>Some&shy;times</th><th>Rarely</th><th>Not yet</th><th>Confidence</th><th>★</th></tr></thead>
+      <tbody>
+        <tr><td>Writing emails</td><td class="sc">☐</td><td class="sc">☐</td><td class="sc">☐</td><td class="sc">☐</td><td class="sc">1 2 3 4</td><td class="sc">&nbsp;</td></tr>
+        <tr><td>Chat or instant messages at work</td><td class="sc">☐</td><td class="sc">☐</td><td class="sc">☐</td><td class="sc">☐</td><td class="sc">1 2 3 4</td><td class="sc">&nbsp;</td></tr>
+        <tr><td>Phone calls and taking or leaving messages</td><td class="sc">☐</td><td class="sc">☐</td><td class="sc">☐</td><td class="sc">☐</td><td class="sc">1 2 3 4</td><td class="sc">&nbsp;</td></tr>
+        <tr><td>Video calls</td><td class="sc">☐</td><td class="sc">☐</td><td class="sc">☐</td><td class="sc">☐</td><td class="sc">1 2 3 4</td><td class="sc">&nbsp;</td></tr>
+        <tr><td>Taking part in meetings</td><td class="sc">☐</td><td class="sc">☐</td><td class="sc">☐</td><td class="sc">☐</td><td class="sc">1 2 3 4</td><td class="sc">&nbsp;</td></tr>
+        <tr><td>Chairing (leading) meetings</td><td class="sc">☐</td><td class="sc">☐</td><td class="sc">☐</td><td class="sc">☐</td><td class="sc">1 2 3 4</td><td class="sc">&nbsp;</td></tr>
+        <tr><td>Small talk and networking</td><td class="sc">☐</td><td class="sc">☐</td><td class="sc">☐</td><td class="sc">☐</td><td class="sc">1 2 3 4</td><td class="sc">&nbsp;</td></tr>
+        <tr><td>Disagreeing politely, saying no, giving feedback</td><td class="sc">☐</td><td class="sc">☐</td><td class="sc">☐</td><td class="sc">☐</td><td class="sc">1 2 3 4</td><td class="sc">&nbsp;</td></tr>
+        <tr><td>Giving presentations</td><td class="sc">☐</td><td class="sc">☐</td><td class="sc">☐</td><td class="sc">☐</td><td class="sc">1 2 3 4</td><td class="sc">&nbsp;</td></tr>
+        <tr><td>Negotiating (prices, deadlines, workload)</td><td class="sc">☐</td><td class="sc">☐</td><td class="sc">☐</td><td class="sc">☐</td><td class="sc">1 2 3 4</td><td class="sc">&nbsp;</td></tr>
+        <tr><td>Pitching an idea or persuading</td><td class="sc">☐</td><td class="sc">☐</td><td class="sc">☐</td><td class="sc">☐</td><td class="sc">1 2 3 4</td><td class="sc">&nbsp;</td></tr>
+        <tr><td>Writing reports or proposals</td><td class="sc">☐</td><td class="sc">☐</td><td class="sc">☐</td><td class="sc">☐</td><td class="sc">1 2 3 4</td><td class="sc">&nbsp;</td></tr>
+        <tr><td>Résumés (CVs) and cover letters</td><td class="sc">☐</td><td class="sc">☐</td><td class="sc">☐</td><td class="sc">☐</td><td class="sc">1 2 3 4</td><td class="sc">&nbsp;</td></tr>
+        <tr><td>Job interviews</td><td class="sc">☐</td><td class="sc">☐</td><td class="sc">☐</td><td class="sc">☐</td><td class="sc">1 2 3 4</td><td class="sc">&nbsp;</td></tr>
+      </tbody>
+    </table>
+
+    <p class="inst">C. What makes it hard? <span class="sub">Tick up to three.</span></p>
+    <div class="tickrow">
+      <span>☐ understanding fast speakers</span>
+      <span>☐ finding the right words quickly</span>
+      <span>☐ sounding polite, not rude</span>
+      <span>☐ knowing how formal to be</span>
+      <span>☐ grammar in my writing</span>
+      <span>☐ being understood (pronunciation)</span>
+      <span>☐ names, numbers and dates on the phone</span>
+      <span>☐ getting a turn to speak in meetings</span>
+      <span>☐ knowing what to talk about (small talk)</span>
+      <span>☐ writing quickly</span>
+      <span>☐ other: ______________</span>
+    </div>
+
+    <p class="inst">D. How I learn best</p>
+    <p style="margin:4px 0">I will do the online lessons on: ☐ a phone ☐ a computer or tablet ☐ both &nbsp;&nbsp; Time for homework each week: ☐ under 1 hour ☐ 1–2 hours ☐ more</p>
+    <p style="margin:4px 0">Role-plays in class: ☐ I enjoy them ☐ OK, if I can prepare first ☐ I prefer to watch one first</p>
+    <p style="margin:4px 0">Something my teacher should know (optional):</p>
+    <div class="wline"></div>
+
+    <!-- PART 2 -->
+    <div class="part-h pagebreak"><h2>Part 2 · Reply to an email</h2><span class="score">20 minutes</span></div>
+    <p>Imagine you work at <b>Northwind Logistics</b>, a delivery company, as a new member of the <b>customer service team</b>. (If you prefer, keep your own job title in your signature. Everything else stays the same.) You receive this email from a colleague in another office. You have not met him yet.</p>
+    <div class="text">
+      <div class="hd">From: Mateo Brandt &nbsp;·&nbsp; To: you &nbsp;·&nbsp; Subject: Customer Service Skills Day — please reply by Thursday</div>
+      <p>Hi,</p>
+      <p>I'm organizing a Customer Service Skills Day next month for new staff from our three offices. You're on the list, so I'd like to check a few things.</p>
+      <p>1. We're running the day twice: a morning session (9:00–12:30) and an afternoon session (1:30–5:00). Which one would you prefer?<br>
+      2. What is one topic you would like the trainers to cover?<br>
+      3. Do you need anything on the day, for example a parking permit or a laptop?</p>
+      <p>Please reply by Thursday so I can confirm numbers with the venue.</p>
+      <p>Best regards,<br>Mateo Brandt<br>Training Coordinator, Northwind Logistics</p>
+    </div>
+    <p class="inst">Write a reply to Mateo.
+      <span class="sub">• Answer <b>all three</b> of his questions. &nbsp;• Ask him <b>one question</b> of your own. &nbsp;• Use a suitable greeting, closing line and sign-off. &nbsp;• Write about <b>100–150 words</b> (the subject line and your name do not count).</span></p>
+    <p style="font-size:.95rem;color:var(--ink-2)">Subject: Re: Customer Service Skills Day — please reply by Thursday</p>
+    <div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div>
+    <div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div>
+    <div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div>
+    <div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div>
+    <p style="font-size:.95rem;color:var(--ink-2);text-align:right">Number of words (approximately): ______</p>
+
+    <!-- PART 3 -->
+    <div class="part-h pagebreak"><h2>Part 3 · My goals for this course</h2><span class="score">about 10 min</span></div>
+    <p style="font-size:1rem">Look at your three ★ situations in Part 1. Turn them into goals. A good goal names a <b>situation</b>, something you will be <b>able to do</b>, and a way to <b>check</b> it. Real or role-card goals are both fine.</p>
+    <p style="font-size:.95rem;color:var(--ink-2)">Example: "By Week 8, I can <b>leave a clear phone message</b> (name, number, reason, callback time) <b>without writing it out first</b>. I'll check by recording one message a week."</p>
+    <div class="goalbox">
+      <h4>Goal 1</h4>
+      <p style="margin:4px 0">By Week 8, I can ____________________________________________________________</p>
+      <p style="margin:4px 0">I'll practice by ______________________________ &nbsp; I'll know it's working when ______________________________</p>
+    </div>
+    <div class="goalbox">
+      <h4>Goal 2</h4>
+      <p style="margin:4px 0">By Week 8, I can ____________________________________________________________</p>
+      <p style="margin:4px 0">I'll practice by ______________________________ &nbsp; I'll know it's working when ______________________________</p>
+    </div>
+    <div class="goalbox">
+      <h4>Goal 3 (optional)</h4>
+      <p style="margin:4px 0">By Week 8, I can ____________________________________________________________</p>
+      <p style="margin:4px 0">I'll practice by ______________________________ &nbsp; I'll know it's working when ______________________________</p>
+    </div>
+    <p style="font-size:1rem">How did today feel? Tick one: ☐ comfortable ☐ OK ☐ difficult ☐ very difficult &nbsp;&nbsp; One real situation coming up soon (optional): __________________________</p>
+    <p class="done">Thank you. That's everything for today.</p>
+  </div>
+
+  <!-- ═════════════════════ TEACHER PAGES ═════════════════════ -->
+  <div class="pagebreak"></div>
+  <span class="teacher-only">Teacher only · do not hand out</span>
+  <div class="sec"><h2>Speaking Sample · 3 minutes per learner</h2><span class="rule"></span></div>
+  <p>Sit beside the learner rather than opposite, if the room allows; it feels less like a job interview. Keep your own talk to the script. Don't correct, don't teach, and don't react to mistakes; nod and move on. Make notes on the grid <b>after</b> the learner leaves (or in single words while they speak, if you must). Time with a phone.</p>
+  <div class="grid2">
+    <div class="blk"><div class="h">Part 1 · Introductions · about 1 minute</div>
+      <div class="say">Thanks for coming over. Imagine we've just met at a work event. Could you introduce yourself? You can use your real job, the job you want, or a role card.</div>
+      <p style="font-size:.9rem">Offer the role cards (below) face up. After the introduction, ask <b>one or two</b> follow-ups:</p>
+      <ol class="steps">
+        <li>What does a normal day look like for you? (or: What would a normal day look like in that job?)</li>
+        <li>What's one situation at work where you'd like to feel more confident in English?</li>
+      </ol>
+      <p style="font-size:.86rem;color:var(--ink-2)">Listen for: a clear one-line role (name + role + what you do), "free information", and whether they ask anything back. A learner who answers in five words or fewer: ask once, "Could you tell me a bit more?" and note it.</p>
+    </div>
+    <div class="blk"><div class="h">Part 2 · Phone-message role-play · about 2 minutes</div>
+      <div class="say">Now a short phone call. Here's your card. Take thirty seconds to read it. I'm the receptionist. When you're ready, say "Ring ring" and I'll answer.</div>
+      <p style="font-size:.9rem">Give the learner card. Play the receptionist from your card. Stop kindly after the goodbye: <i>"Thank you. That's all."</i></p>
+      <p style="font-size:.86rem;color:var(--ink-2)">The deliberate mistake in your read-back tests the single most useful call habit (Lesson 1.3): <b>does the learner notice and correct it?</b> Note exactly what they say.</p>
+    </div>
+  </div>
+
+  <div class="cards">
+    <div class="card-cut">
+      <div class="ct">Learner card · phone message</div>
+      <h4>You work at Kestrel Design, a design studio.</h4>
+      <p>Call <b>Brightline Foods</b>. Ask to speak to <b>Ms. Rosa Lindgren</b> in Marketing.</p>
+      <p>Why: the photos for her new menu cards are ready. You need her to <b>approve them by Friday</b>.</p>
+      <p>If she is not available, leave a message: your name (spell your family name), your number <b>555-0148</b>, the reason, and ask her to call back <b>before 5 p.m. tomorrow</b>.</p>
+      <p>Check that the receptionist has the details right.</p>
+    </div>
+    <div class="card-cut b">
+      <div class="ct">Teacher card · receptionist</div>
+      <h4>You answer the phone at Brightline Foods.</h4>
+      <ol class="steps">
+        <li>"Good morning, Brightline Foods, [your name] speaking. How can I help?"</li>
+        <li>"I'm afraid Ms. Lindgren is in a meeting until three. Can I take a message?"</li>
+        <li>"Can I take your name, please? … Could you spell your family name?"</li>
+        <li>"And the best number to reach you on?" · "What's it regarding?"</li>
+        <li>Read back with <b>one mistake</b>: say the number as <b>555-0184</b> (not 0148). "Is that right?"</li>
+        <li>After any correction: "Thanks. I'll make sure she gets the message. Have a good day."</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="cards">
+    <div class="card-cut">
+      <div class="ct">Role card 1 · optional</div>
+      <h4>Jordan Reyes · Customer Service Coordinator</h4>
+      <p>Northwind Logistics (a delivery company) · 3 years in the role · answers client calls and emails about deliveries · enjoys solving problems quickly · wants to sound more confident on the phone</p>
+    </div>
+    <div class="card-cut b">
+      <div class="ct">Role card 2 · optional</div>
+      <h4>Sam Castell · Junior Accountant</h4>
+      <p>Brightline Foods (a food producer) · prepares monthly cost reports · works with the sales and purchasing teams · enjoys making numbers clear for non-accountants · wants to speak up more in meetings</p>
+    </div>
+    <div class="card-cut">
+      <div class="ct">Role card 3 · optional</div>
+      <h4>Alex Moreno · Project Assistant</h4>
+      <p>Kestrel Design (a design studio) · schedules projects and books suppliers · emails clients every day · enjoys planning and organizing · wants to write shorter, clearer emails</p>
+    </div>
+    <div class="card-cut b">
+      <div class="ct">Role card 4 · optional</div>
+      <h4>Robin Laine · Laboratory Technician (job seeker)</h4>
+      <p>8 years' experience in a hospital laboratory · looking for a lab or quality-control role · currently volunteering at a community health center · enjoys careful, accurate work · wants to be ready for interviews</p>
+    </div>
+  </div>
+
+  <div class="sec"><h2>Writing &amp; Speaking Note Grid · one per learner</h2><span class="rule"></span></div>
+  <p style="font-size:.9rem;color:var(--ink-2)">Score each criterion <b>1–5</b> with the course rubric (full band descriptors in <code class="inline">assessment-key.html</code>), and write <b>one short piece of evidence</b>: a phrase, a pattern, a moment. A diagnostic is only a snapshot: when you're unsure between two scores, record the lower one and write "or ___" beside it.</p>
+  <p style="font-size:.95rem">Learner: ______________________ &nbsp; Date: __________ &nbsp; Role card used? ☐ yes ☐ no</p>
+  <table class="grid">
+    <thead><tr><th>Reply email</th><th>1–5</th><th>Evidence</th></tr></thead>
+    <tbody>
+      <tr><td><b>Task &amp; Purpose</b></td><td class="sc">&nbsp;</td><td>All 3 questions answered? Own question asked? Clear enough to act on without a follow-up? Words ≈ ___</td></tr>
+      <tr><td><b>Register &amp; Tone</b></td><td class="sc">&nbsp;</td><td>Neutral-professional to a new colleague? Greeting and sign-off match? Too casual ("hey", "u") or over-formal ("I am writing to inform you…")?</td></tr>
+      <tr><td><b>Language Range &amp; Accuracy</b></td><td class="sc">&nbsp;</td><td>Useful email phrases? Polite forms (I'd prefer…, Could you…?)? Errors that confuse the reader?</td></tr>
+      <tr><td><b>Organization &amp; Delivery</b></td><td class="sc">&nbsp;</td><td>Opening line, one point per paragraph or clear order, closing line? Easy to scan?</td></tr>
+      <tr><td colspan="3"><b>Writing total</b> ______ / 20</td></tr>
+    </tbody>
+  </table>
+  <table class="grid">
+    <thead><tr><th>Speaking sample</th><th>1–5</th><th>Evidence</th></tr></thead>
+    <tbody>
+      <tr><td><b>Task &amp; Purpose</b></td><td class="sc">&nbsp;</td><td>Clear role in the introduction? Message complete: name, number, reason, callback time? Did they catch and correct 0184?</td></tr>
+      <tr><td><b>Register &amp; Tone</b></td><td class="sc">&nbsp;</td><td>Polite request forms ("Could I speak to…?")? Warm, not flat or abrupt?</td></tr>
+      <tr><td><b>Language Range &amp; Accuracy</b></td><td class="sc">&nbsp;</td><td>Call phrases, spelling letters, saying numbers; grammar that affects meaning</td></tr>
+      <tr><td><b>Organization &amp; Delivery</b></td><td class="sc">&nbsp;</td><td>Fluency and pauses; clear pronunciation (accent itself is <b>not</b> scored); stress on key words; interaction (asks back, checks)</td></tr>
+      <tr><td colspan="3"><b>Speaking total</b> ______ / 20</td></tr>
+    </tbody>
+  </table>
+
+  <div class="sec"><h2>Class Overview · after marking</h2><span class="rule"></span></div>
+  <p style="font-size:.9rem;color:var(--ink-2)">Copy the totals and the three ★ situations for each learner. The patterns tell you where to spend extra time, how to pair people, and who needs support or stretch from Class 2.</p>
+  <table class="grid">
+    <thead><tr><th>Learner</th><th>Writing /20</th><th>Speaking /20</th><th>Lowest criterion</th><th>★ situations (from survey)</th><th>Support / stretch</th></tr></thead>
+    <tbody>
+      <tr><td>&nbsp;</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+      <tr><td>&nbsp;</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+      <tr><td>&nbsp;</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+      <tr><td>&nbsp;</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+      <tr><td>&nbsp;</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+      <tr><td>&nbsp;</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+      <tr><td>&nbsp;</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+      <tr><td>&nbsp;</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+      <tr><td>&nbsp;</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+      <tr><td>&nbsp;</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+      <tr><td>&nbsp;</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+      <tr><td>&nbsp;</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    </tbody>
+  </table>
+  <div class="grid2">
+    <div class="blk"><div class="h">Reading the survey as a class</div>
+      <ul class="tick">
+        <li>Count the ★ for each situation. The top three are where to add extra practice time or examples (the course order stays the same).</li>
+        <li>Note which situations are "Not yet" for many learners (often negotiating or chairing). Give them more scaffolding: a model first, then a card with sentence frames.</li>
+        <li>Group "What makes it hard?" ticks. If many ticked <i>knowing how formal to be</i>, spend longer on the register spectrum in Class 2.</li>
+        <li>Check role-play comfort. For "I prefer to watch one first," demo each role-play with a stronger learner before pairs start.</li>
+      </ul>
+    </div>
+    <div class="blk"><div class="h">Using the scores for support and stretch</div>
+      <ul class="tick">
+        <li><b>Around 6–10 / 20</b>: plan <b>support</b>: sentence frames, a partly completed model, fewer items, the easier role card.</li>
+        <li><b>Around 11–15 / 20</b>: the core tasks as written; push one criterion (usually Register &amp; Tone or Organization &amp; Delivery).</li>
+        <li><b>Around 16–20 / 20</b>: plan <b>stretch</b>: tougher role-card constraints, register-shifting tasks, chairing roles.</li>
+        <li>Mixed profiles are normal (for example, strong writing and hesitant speaking). Pair them with someone whose profile is the reverse.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec"><h2>Starting Profile · return privately in Class 2 or 3</h2><span class="rule"></span></div>
+  <p>Fill in one per learner and hand it back folded, or in an envelope, while the class does the warmer. Keep a copy: you'll compare it with the Performance Check (Class 8) and the Final Assessment (Classes 15–16). Every checkpoint gives <b>two</b> scores, a Writing /20 and a Speaking /20, never one combined number. The key explains how to choose targets from scores (<code class="inline">assessment-key.html</code>, "From Scores to Targets").</p>
+  <table class="grid">
+    <thead><tr><th>&nbsp;</th><th>Task &amp; Purpose</th><th>Register &amp; Tone</th><th>Language Range &amp; Accuracy</th><th>Organization &amp; Delivery</th><th>Total</th></tr></thead>
+    <tbody>
+      <tr><td><b>Writing</b> (Class 1)</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td><td class="sc">/20</td></tr>
+      <tr><td><b>Speaking</b> (Class 1)</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td><td class="sc">/20</td></tr>
+      <tr><td><b>Performance Check · Writing</b> (Class 8)</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td><td class="sc">/20</td></tr>
+      <tr><td><b>Performance Check · Speaking</b> (Class 8)</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td><td class="sc">/20</td></tr>
+      <tr><td><b>Final · Writing</b> (Class 15)</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td><td class="sc">/20</td></tr>
+      <tr><td><b>Final · Speaking</b> (Classes 15–16)</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td><td class="sc">/20</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:.95rem"><b>Something you already do well:</b> ______________________________________________________</p>
+  <p style="font-size:.95rem"><b>Your goals (from Part 3), in your words:</b> ______________________________________________________</p>
+  <p style="font-size:.95rem"><b>Target 1</b> (for Weeks 1–4): ______________________________ &nbsp; <b>Practice with:</b> online Lesson ____</p>
+  <p style="font-size:.95rem"><b>Target 2</b> (for Weeks 1–4): ______________________________ &nbsp; <b>Practice with:</b> online Lesson ____</p>
+  <p style="font-size:.95rem"><b>Target 3</b> (optional): ______________________________ &nbsp; <b>Practice with:</b> online Lesson ____</p>
+  <p style="font-size:.88rem;color:var(--ink-2)">Learners copy their scores (W and S) and targets into section 2 and section 4 of their <b>Performance Tracker</b> (<code class="inline">performance-tracker.html</code>).</p>
+  <div class="blk warn"><div class="h">Talking about the starting point kindly</div>
+    <ul class="tick">
+      <li>Start with a real strength, with evidence ("Your email answered every question, in a clear order").</li>
+      <li>Give <b>two or three</b> targets at most. Five targets means none.</li>
+      <li>Connect each target to a learner goal when you can ("You want to feel confident on the phone, so let's start with reading back numbers").</li>
+      <li>Never compare learners, and never read scores aloud. A learner with senior experience and a low speaking score needs to hear that the gap is <b>language, not professional ability</b>.</li>
+    </ul>
+  </div>
+
+  <div class="foot">
+    <div class="who"><b>Ray de la Paz</b><span class="bio">© 2026 Ray de la Paz · Business English</span></div>
+    <div class="ver">Assessment · Needs Analysis &amp; Diagnostic · v1.0</div>
+  </div>
+
+</div>
+</body>
+</html>

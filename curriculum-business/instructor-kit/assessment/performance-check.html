@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Performance Check — Class 8</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../kit.css">
+<style>
+  /* ── Test-paper components (shared by the four assessment documents) ── */
+  @page{size:auto;margin:.55in}   /* prints on Letter or A4: the printer's paper size wins */
+  .pagebreak{break-before:page}
+  .teacher-only{font-family:"JetBrains Mono",monospace;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+    color:#fff;background:var(--warn);border-radius:999px;padding:3px 11px;display:inline-block;margin-bottom:8px;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .paper{font-size:16.5px;line-height:1.5}
+  .paper-head{display:grid;grid-template-columns:2fr 1fr 1fr;gap:14px;margin:6px 0 14px;font-size:1.05rem}
+  .paper-head div{border-bottom:1.5px solid var(--ink-2);padding:6px 2px 4px}
+  .paper-head b{font-weight:700}
+  .part-h{display:flex;align-items:center;gap:12px;margin:28px 0 6px;padding:10px 14px;background:var(--accent-soft);
+    border-radius:10px;break-after:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .part-h h2{font-size:1.25rem;font-weight:800;flex:1}
+  .part-h .score{font-family:"JetBrains Mono",monospace;font-size:.9rem;font-weight:600;border:1.5px solid var(--ink-2);
+    border-radius:8px;padding:4px 10px;background:var(--surface);white-space:nowrap}
+  .inst{font-size:1.05rem;font-weight:600;margin:16px 0 8px;break-after:avoid}
+  .inst .sub{display:block;font-weight:400;color:var(--ink-2);font-size:.95rem;margin-top:2px}
+  .text{border:1px solid var(--line);border-radius:10px;padding:14px 18px;background:var(--surface-2);font-size:1rem;line-height:1.6;margin:10px 0;break-inside:avoid}
+  .text p{margin:0 0 8px}
+  .text p:last-child{margin-bottom:0}
+  .text .hd{font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink-2);border-bottom:1px solid var(--line);padding-bottom:6px;margin-bottom:8px}
+  .text .ttl{font-family:"Archivo",sans-serif;font-weight:800;font-size:1.08rem;margin-bottom:4px}
+  .notes-box{border:1.5px solid var(--line-strong);border-radius:10px;padding:10px 16px;margin:10px 0;break-inside:avoid;background:var(--surface)}
+  .notes-box p{margin:5px 0}
+  .wline{border-bottom:1.5px solid var(--ink-2);height:2.05em}
+  .msg{border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:10px 0;break-inside:avoid}
+  .msg .who{font-family:"JetBrains Mono",monospace;font-size:.75rem;color:var(--ink-3);margin-bottom:4px}
+  .msg .orig{font-style:italic;margin:4px 0 6px}
+  table.grid{width:100%;border-collapse:collapse;margin:10px 0;font-size:.9rem}
+  table.grid th,table.grid td{border:1px solid var(--line-strong);padding:7px 9px;text-align:left;vertical-align:top}
+  table.grid thead th{background:var(--surface-2);font-family:"JetBrains Mono",monospace;font-size:.64rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+  table.grid td.sc{width:9%;text-align:center;font-family:"JetBrains Mono",monospace;color:var(--ink-3)}
+  table.grid tr{break-inside:avoid}
+  .msgpad{border:1.5px solid var(--ink-2);border-radius:8px;padding:6px 12px;margin-top:8px;font-size:.9rem}
+  .msgpad div{border-bottom:1px solid var(--line-strong);padding:5px 0 3px}
+  .msgpad div:last-child{border-bottom:none}
+  .done{margin-top:24px;text-align:center;font-size:1.15rem;font-weight:700}
+  @media (max-width:680px){
+    .paper-head{grid-template-columns:1fr}
+    table.grid{display:block;overflow-x:auto}
+    .cards{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="lbl">Test pack —</span>
+  <button type="button" onclick="window.print()">🖨 Print / Save as PDF</button>
+  <span class="hint">teacher notes · Part A writing paper · reading &amp; ranking task · speaking cards &amp; score sheets (teacher only)</span>
+</div>
+
+<div class="sheet">
+
+  <header class="mast">
+    <div class="kit-eyebrow">Business English · Assessment · Class 8</div>
+    <h1>Midpoint Performance Check — Modules 1–2</h1>
+    <p class="sub">A realistic check of the first half of the course, done the way work is done. <b>Part A</b> is a 35-minute timed writing paper: an email reply that covers three content points, and three chat messages rewritten into the right register. <b>Part B</b> is a set of pair speaking simulations at your table: two short phone calls and a short meeting, marked on the course rubric while the rest of the class works quietly on a reading and ranking task. Results go back privately in the Class 9 warmer.</p>
+    <div class="meta-row">
+      <span class="chip">Part A <b>35 min</b> · Writing <b>/20</b></span>
+      <span class="chip">Part B <b>~7 min per pair</b> · Speaking <b>/20</b></span>
+      <span class="chip">Covers Lessons <b>1.1–2.3</b></span>
+      <span class="chip">Rubric &amp; models: <b>assessment-key.html</b></span>
+    </div>
+  </header>
+
+  <div class="note">
+    <div class="t">How to frame it (say this at the start)</div>
+    <p><b>"Today is a check-up, not a final exam. You'll do the same kinds of tasks we've practiced: an email, some chat messages, two phone calls and a short meeting. I'll use the same four criteria we've used all course, so nothing will be a surprise. You'll get two scores, one for writing and one for speaking, plus one or two targets for the second half."</b> Put the four criteria on the board (Task &amp; Purpose · Register &amp; Tone · Language Range &amp; Accuracy · Organization &amp; Delivery) and leave them there all class.</p>
+  </div>
+
+  <div class="sec"><h2>Running Class 8 (90 min)</h2><span class="rule"></span></div>
+  <table class="timing">
+    <thead><tr><th>Stage</th><th>Time</th><th>Interaction</th><th>Procedure</th></tr></thead>
+    <tbody>
+      <tr><td>Warmer &amp; framing</td><td class="t">4 min</td><td>T–S · S–S</td><td>Pairs: "Say one polite way to interrupt, and one way to decline a request." Then the framing above and the running order on the board.</td></tr>
+      <tr><td>Part A · Timed writing</td><td class="t">35 min</td><td>S</td><td>Individual and silent. Start and finish times on the board; suggest about <b>25 minutes for Task 1</b> and <b>10 for Task 2</b>. <b>ICQs:</b> "Who are you writing to in Task 1?" (Ms. Varga, a client.) "How many points from the notes must you include?" (All three.) "In Task 2, do you correct the grammar only?" (No, change the register for the reader.) Say at 25 minutes: "You should be starting Task 2." Collect at 35 minutes.</td></tr>
+      <tr><td>Reset &amp; instructions</td><td class="t">4 min</td><td>T–S</td><td>Hand out the <b>Reading &amp; Ranking task</b> to everyone. Explain Part B: pairs come to your table when called; everyone else works silently on the reading task and returns to it after their turn. Announce the pairs (see the run-sheet). <b>ICQs:</b> "When you're not at my table, can you talk?" (No, it's silent work.) "How many venues do you rank?" (Four.)</td></tr>
+      <tr><td>Part B · Speaking simulations</td><td class="t">45 min</td><td>S–S (at T's table) · S</td><td>About <b>7 minutes per pair</b>: Call 1 (A calls B), Call 2 (B calls A), then the meeting. Score each learner on the speaking sheet <b>as soon as the pair leaves</b> (30 seconds of notes, then call the next pair). With an odd number, make one group of three and use Card C in the meeting. Six pairs fit comfortably; with more than seven pairs, finish in the Class 9 warmer.</td></tr>
+      <tr><td>Close</td><td class="t">2 min</td><td>T–S</td><td>Collect the reading tasks (not scored). Thank them for a long, focused class. Homework: online Lesson 3.1 (<code class="inline">https://rays-esl.netlify.app/curriculum-business/lesson_07.html</code>) and a journal entry: "Which part of today felt easiest, and which felt hardest? Why?"</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:.85rem;color:var(--ink-3)">Total: 4 + 35 + 4 + 45 + 2 = 90 minutes.</p>
+
+  <div class="grid2">
+    <div class="blk"><div class="h">You need</div>
+      <ul class="tick">
+        <li>Per learner: the Part A paper and the Reading &amp; Ranking task, printed at 100%</li>
+        <li>One set of speaking cards per pair (Call 1, Call 2, meeting), cut out; one speaking score sheet per learner</li>
+        <li>A table at one side of the room, two chairs back to back for the calls (so they can't lip-read), a phone timer</li>
+        <li>The rubric, model answers and speaking notes: <code class="inline">assessment/assessment-key.html</code></li>
+      </ul>
+    </div>
+    <div class="blk"><div class="h">What each part checks</div>
+      <ul class="tick">
+        <li><b>Task 1 email</b>: covering every point, a clear ask, apologizing and giving bad news politely (Lessons 1.1, 1.2)</li>
+        <li><b>Task 2 rewrites</b>: moving up and down the register spectrum for different readers and channels (Lessons 1.1, 1.2)</li>
+        <li><b>Calls</b>: call stages, taking and leaving messages, spelling, numbers and read-back (Lesson 1.3)</li>
+        <li><b>Meeting</b>: opinions, polite disagreement, interrupting, clarifying, chairing and action points (Lessons 2.1, 2.3); small talk opens the meeting (Lesson 2.2)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="note warn">
+    <div class="t">Keep it fair and low-pressure</div>
+    <p>Every name, company and number on the cards is fictional; no one plays themselves. Seat the calls <b>back to back</b>, as on a real phone, and don't let partners show each other their cards. If a learner freezes, give one neutral prompt ("What would you say to the receptionist now?") and note it; don't rescue with the answer. Pair learners of <b>similar confidence</b> rather than a very strong with a very hesitant speaker, so nobody's score depends on a partner who dominates. A learner who needs adapted conditions (extra writing time, a typed paper) keeps the same tasks; note the change on the paper.</p>
+  </div>
+
+  <div class="note lab">
+    <div class="t">Returning results in the Class 9 warmer</div>
+    <p>Mark Part A before Class 9 (about 6 minutes per script once you know the models). In the Class 9 warmer (10 minutes), hand back each learner's score sheet folded: Writing /20, Speaking /20, one strength with evidence, and <b>one or two targets</b> for Modules 3–4. Learners copy the scores and targets into their Performance Tracker. While they read, the class does a quiet pair task: "Rewrite one sentence from your email that you'd now write differently." Don't discuss individual scores in front of the class; offer two-minute conversations at the break. The Module 2 Teacher's Guide has the full warmer plan.</p>
+  </div>
+
+  <!-- ═════════════════════ LEARNER PAPER · PART A ═════════════════════ -->
+  <div class="pagebreak"></div>
+  <div class="paper">
+    <header class="mast">
+      <div class="kit-eyebrow">Business English · Performance Check · Part A</div>
+      <h1>Writing at Work</h1>
+      <div class="paper-head">
+        <div><b>Name:</b></div>
+        <div><b>Date:</b></div>
+        <div><b>Start time:</b></div>
+      </div>
+      <p style="font-size:1rem;margin-top:10px">You have <b>35 minutes</b> for both tasks. Spend about <b>25 minutes on Task 1</b> and <b>10 minutes on Task 2</b>. Read each task carefully: who are you writing to, and why?</p>
+    </header>
+
+    <div class="part-h"><h2>Task 1 · Reply to a client</h2><span class="score">about 25 min</span></div>
+    <p>You are a <b>Customer Account Coordinator</b> at <b>Northwind Logistics</b>, a delivery company. This morning you received this email from a client.</p>
+    <div class="text">
+      <div class="hd">From: Leila Varga, Purchasing Manager, Brightline Foods &nbsp;·&nbsp; Subject: Missing delivery — order BF-2291</div>
+      <p>Hello,</p>
+      <p>Our delivery of 40 cartons of packaging (order BF-2291) was due yesterday, but it has not arrived, and nobody has contacted us. We have a store promotion starting on Saturday, and we need this packaging before then.</p>
+      <p>Could you tell me what has happened and when we can expect the delivery? I would also like to know who I should contact if there are any more problems with this order.</p>
+      <p>Regards,<br>Leila Varga<br>Purchasing Manager, Brightline Foods</p>
+    </div>
+    <div class="notes-box">
+      <p><b>Your manager's notes</b> (include all three points):</p>
+      <p>1. Apologize and explain: our sorting center had a <b>computer system failure on Monday</b>; several deliveries were delayed.</p>
+      <p>2. New delivery: <b>Thursday, before 11 a.m.</b> (guaranteed). <b>No delivery charge</b> on this order.</p>
+      <p>3. You are her contact from now on (direct line <b>555-0162</b>). Ask her to <b>confirm that someone can receive the delivery on Thursday morning</b>.</p>
+    </div>
+    <p class="inst">Write your reply to Ms. Varga.
+      <span class="sub">Write about <b>120–170 words</b> (the subject line and your name do not count). Use a suitable greeting, a clear structure, and a matching sign-off.</span></p>
+    <p style="font-size:.95rem;color:var(--ink-2)">Subject: ______________________________________________</p>
+    <div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div>
+    <div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div>
+    <div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div>
+    <div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div>
+    <div class="wline"></div><div class="wline"></div>
+    <p style="font-size:.95rem;color:var(--ink-2);text-align:right">Number of words (approximately): ______</p>
+
+    <div class="part-h pagebreak"><h2>Task 2 · Fix the register</h2><span class="score">about 10 min</span></div>
+    <p>Each message below is written in the <b>wrong register</b> for its reader. Rewrite it so it is right for the reader and the channel. Keep the same meaning, and add any small detail that makes it clear and polite (a reason, a thank-you, a time).</p>
+
+    <div class="msg">
+      <div class="who">a) Team chat → your manager, Rosa · should be: neutral-professional, one clear message</div>
+      <p class="orig">"rosa the report for fri. i cant finish. need till mon"</p>
+      <div class="wline"></div><div class="wline"></div><div class="wline"></div>
+    </div>
+    <div class="msg">
+      <div class="who">b) Email → Mr. Julian Ferris, a new client you have never met · should be: formal or neutral email</div>
+      <p class="orig">"hey!! got ur files, will look l8r &amp; get back 2 u 👍"</p>
+      <div class="wline"></div><div class="wline"></div><div class="wline"></div>
+    </div>
+    <div class="msg">
+      <div class="who">c) Team chat → Tom, a colleague you work with every day · should be: friendly-professional chat</div>
+      <p class="orig">"Dear Tom, I am writing to inform you that I would be grateful if you could kindly do the needful regarding the printer on the second floor at your earliest convenience. Yours faithfully"</p>
+      <div class="wline"></div><div class="wline"></div><div class="wline"></div>
+    </div>
+    <p class="done">Stop here. Check your spelling, your greeting and sign-off, and that you included all three points in Task 1.</p>
+  </div>
+
+  <!-- ═════════════════════ LEARNER HANDOUT · READING & RANKING ═════════════════════ -->
+  <div class="pagebreak"></div>
+  <div class="paper">
+    <header class="mast">
+      <div class="kit-eyebrow">Business English · Performance Check · Quiet Task</div>
+      <h1>Reading &amp; Ranking: Choose the Venue</h1>
+      <div class="paper-head">
+        <div><b>Name:</b></div>
+        <div><b>Date:</b></div>
+        <div><b>&nbsp;</b></div>
+      </div>
+      <p style="font-size:1rem;margin-top:10px">Work <b>silently</b> and on your own. This task is <b>not scored</b>. When your teacher calls you for Part B, stop, and continue when you come back.</p>
+    </header>
+    <p>You work at Northwind Logistics. Your manager asked four venues about a <b>customer breakfast</b>. Read her brief and the four replies.</p>
+    <div class="notes-box">
+      <p><b>The brief</b> (from your manager, Dana Olsen)</p>
+      <p><b>Must have:</b> room for 35–40 guests · Thursday the 21st, 8:00–10:00 a.m. · <b>total budget $1,400</b>, food included · projector and screen · step-free access (no stairs) · parking or close to public transit</p>
+      <p><b>Nice to have:</b> a private room</p>
+    </div>
+    <div class="text">
+      <div class="ttl">1 · Linden Hotel, the Harbor Room</div>
+      <p>Dear Ms. Olsen, Thank you for your inquiry. The Harbor Room seats up to 50 guests and is fully private, with a projector, screen and step-free access from the main lobby. We are pleased to confirm availability on Thursday the 21st from 8:00 a.m. Our breakfast package for 40 guests is $1,650. Parking in the hotel garage is $12 per car. Kind regards, Events Team</p>
+    </div>
+    <div class="text">
+      <div class="ttl">2 · Grainhouse Café</div>
+      <p>Hey there!! We'd LOVE to have u 😀 We can do 40 ppl in our back section (it's not a separate room but it's pretty quiet in the morning lol). No projector sorry, but u can bring ur own, there's a wall that works fine. No steps, and there's free parking on the street. Breakfast for 40 = $980. The 21st 8–10 is totally fine!!</p>
+    </div>
+    <div class="text">
+      <div class="ttl">3 · Maple Street Conference Center</div>
+      <p>Hi Dana, Thanks for getting in touch. Our Cedar Room holds 60 people and is private, with a projector and screen. There's a free parking lot, and step-free access is through the side entrance, which has a ramp. The price for breakfast for 40 is $1,380. One thing to flag: on the 21st, the room is only available from 8:30 to 10:30. Would that work for you? Best, Sara</p>
+    </div>
+    <div class="text">
+      <div class="ttl">4 · The Old Mill Event Space</div>
+      <p>Dear Sir or Madam, We humbly beg to inform you that our esteemed second-floor loft (reached by our historic staircase) can accommodate 40 persons with a projector. Kindly do the needful and remit the deposit of $300 at your earliest convenience. The total fee of $1,200 includes breakfast and parking. Yours faithfully, The Management</p>
+    </div>
+    <p class="inst">1. Rank the venues from 1 (best) to 4 for the brief.</p>
+    <p>1st: ________________ &nbsp; 2nd: ________________ &nbsp; 3rd: ________________ &nbsp; 4th: ________________</p>
+    <p class="inst">2. Which venue fails a "must have" that you <b>cannot</b> fix? Which "must have" is it?</p>
+    <div class="wline"></div>
+    <p class="inst">3. Write 2–3 sentences to Dana recommending your first choice. Give your reason and mention one thing to check.</p>
+    <div class="wline"></div><div class="wline"></div><div class="wline"></div>
+    <p class="inst">4. Register: rewrite <b>one</b> sentence from reply 2 and <b>one</b> from reply 4 in neutral-professional English.</p>
+    <div class="wline"></div><div class="wline"></div><div class="wline"></div>
+    <p class="inst">5. Extra (if you have time): write a short reply to Sara at Maple Street. Ask, politely, whether an 8:00 start might be possible, and say what you can do if it is not.</p>
+    <div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div>
+  </div>
+
+  <!-- ═════════════════════ TEACHER PAGES ═════════════════════ -->
+  <div class="pagebreak"></div>
+  <span class="teacher-only">Teacher only · do not hand out</span>
+  <div class="sec"><h2>Part B · Speaking Run-Sheet</h2><span class="rule"></span></div>
+  <div class="grid2">
+    <div class="blk"><div class="h">One pair, about 7 minutes</div>
+      <ol class="steps">
+        <li><b>Seat</b> the pair back to back. Give Call 1 cards (A: caller, B: receptionist). 30 seconds to read. "A, say 'Ring ring' when you're ready." <i>(~2 min)</i></li>
+        <li><b>Call 2</b>: swap roles with the Call 2 cards (B: caller, A: receptionist). 30 seconds to read. <i>(~2 min)</i></li>
+        <li><b>Meeting</b>: turn the chairs to face each other. Give the meeting cards. 45 seconds to read. "A, you're the chair. You have three minutes." Say "One minute left" at 2:00. <i>(~3 min)</i></li>
+        <li><b>Thank them</b>, collect the cards and message pads, call the next pair, and write your scores <b>now</b>.</li>
+      </ol>
+    </div>
+    <div class="blk"><div class="h">Pairs and roles</div>
+      <ul class="tick">
+        <li>Card A chairs the meeting. Give the chair to the learner who needs <b>stretch</b> on chairing, or who hasn't chaired in class yet.</li>
+        <li><b>Trio</b> (odd number): in Call 1, <b>C</b> takes Card B (receptionist) while B waits; Call 2 runs as normal (B calls, A answers). Everyone then joins the meeting with Card C added. Allow about 9 minutes, with 4 for the meeting.</li>
+        <li><b>Support</b>: allow the phrase card from the Module 1 materials on the table for a B1 learner; note "phrase card used" on the sheet.</li>
+        <li><b>Stretch</b>: tell a C1 learner before Call 1: "Offer the caller an alternative contact, and deal with one request you can't meet."</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec"><h2>Speaking Cards · cut out · one set per pair</h2><span class="rule"></span></div>
+  <div class="cards">
+    <div class="card-cut">
+      <div class="ct">Call 1 · Card A · caller</div>
+      <h4>You work at Kestrel Design (project coordinator).</h4>
+      <p>Call <b>Northwind Logistics</b>. Ask for <b>Sam Ortiz</b> in Deliveries.</p>
+      <p>You need to move <b>Tuesday's pickup of 12 boxes</b> to <b>Wednesday afternoon</b>.</p>
+      <p>If Sam is not available, leave a message: your name (spell your family name), your number <b>555-0137</b>, the reason, and ask for a <b>callback before 3 p.m. today</b>.</p>
+      <p>Check that the receptionist reads the details back correctly.</p>
+    </div>
+    <div class="card-cut b">
+      <div class="ct">Call 1 · Card B · receptionist</div>
+      <h4>You answer the phone at Northwind Logistics.</h4>
+      <p>Answer professionally (company + your name). <b>Sam Ortiz is in a meeting until 4 p.m.</b> Offer to take a message.</p>
+      <p>Get: name (ask for the spelling), company, number, reason, callback time. <b>Read it all back</b> before you end the call.</p>
+      <div class="msgpad">
+        <div><b>Message for:</b> Sam Ortiz</div>
+        <div><b>From:</b></div>
+        <div><b>Company:</b></div>
+        <div><b>Number:</b></div>
+        <div><b>About:</b></div>
+        <div><b>Call back by:</b></div>
+      </div>
+    </div>
+    <div class="card-cut">
+      <div class="ct">Call 2 · Card A · receptionist</div>
+      <h4>You answer the phone at Kestrel Design.</h4>
+      <p>Answer professionally (company + your name). <b>Lena Park is out of the office until tomorrow.</b> Offer to take a message.</p>
+      <p>Get: name (ask for the spelling), company, number, reason, best time to call back. Check any dates and numbers. <b>Read it all back.</b></p>
+      <div class="msgpad">
+        <div><b>Message for:</b> Lena Park</div>
+        <div><b>From:</b></div>
+        <div><b>Company:</b></div>
+        <div><b>Number:</b></div>
+        <div><b>About:</b></div>
+        <div><b>Call back:</b></div>
+      </div>
+    </div>
+    <div class="card-cut b">
+      <div class="ct">Call 2 · Card B · caller</div>
+      <h4>You work at Brightline Foods (marketing assistant).</h4>
+      <p>Call <b>Kestrel Design</b>. Ask for <b>Lena Park</b>. It's about the <b>new menu design</b>.</p>
+      <p>You want to know if the final files can be ready on <b>the 13th</b> instead of <b>the 30th</b>, because the menus must be printed earlier.</p>
+      <p>If Lena is not available, leave a message: your name (spell it), your number <b>555-0193</b>, the reason, and the best time to call back: <b>tomorrow morning</b>.</p>
+    </div>
+  </div>
+
+  <div class="cards">
+    <div class="card-cut">
+      <div class="ct">Meeting · Card A · chair</div>
+      <h4>Planning the customer open day (Kestrel Design)</h4>
+      <p><b>Agenda:</b> 1. Date: Thursday the 9th or Thursday the 16th? · 2. Catering budget: $600 or $900? · 3. Action points</p>
+      <p><b>Your job:</b> open the meeting, go through the agenda, make sure everyone gives a view, reach a decision on each item, and close with action points (who does what by when). <b>Three minutes.</b></p>
+      <p><b>Your information:</b> the showroom is free on both dates. The director wants a decision today. <i>In a pair only:</i> you also hold Card C's views; give them as your own.</p>
+    </div>
+    <div class="card-cut b">
+      <div class="ct">Meeting · Card B · participant</div>
+      <h4>Planning the customer open day (Kestrel Design)</h4>
+      <p><b>You prefer the 16th.</b> The new product samples arrive on the 12th; on the 9th, there would be nothing new to show.</p>
+      <p><b>You think $600 is enough</b> for coffee and pastries.</p>
+      <p>You can contact the caterer this week.</p>
+      <p><b>During the meeting:</b> give your opinion, disagree politely at least once, and ask for clarification or interrupt politely at least once.</p>
+    </div>
+    <div class="card-cut">
+      <div class="ct">Meeting · Card C · participant (trio only)</div>
+      <h4>Planning the customer open day (Kestrel Design)</h4>
+      <p><b>You prefer the 9th.</b> Many clients are at a trade fair in the week of the 16th.</p>
+      <p><b>You'd like $900</b> for a light hot lunch, because clients stay longer and talk more when there's food.</p>
+      <p>You can send the invitations by Friday.</p>
+      <p><b>During the meeting:</b> give your opinion, disagree politely at least once, and ask for clarification or interrupt politely at least once.</p>
+    </div>
+    <div class="card-cut b">
+      <div class="ct">Observer prompt · for you</div>
+      <h4>Listen for these moves</h4>
+      <p>Chair: opening + purpose · "First on the agenda…" · brings others in · summarizes · "Can I confirm…?" · action points with names and days</p>
+      <p>Participants: "In my view…" · "I see your point, but…" · "Sorry to interrupt, but…" · "Could you clarify…?" · a reason with every opinion · a compromise ("What if we…?")</p>
+    </div>
+  </div>
+
+  <div class="sec"><h2>Score Sheet · one per learner</h2><span class="rule"></span></div>
+  <p style="font-size:.9rem;color:var(--ink-2)">Two scores, both on the course rubric: <b>Writing /20</b> (Task 1 and Task 2 together) and <b>Speaking /20</b> (both calls and the meeting together). Give each criterion <b>one</b> score, 1–5, based on all the evidence for that skill; use the task columns for quick notes. Band descriptors, model answers and what to listen for are in <code class="inline">assessment-key.html</code>.</p>
+  <p style="font-size:.95rem">Learner: ______________________ &nbsp; Partner: ______________________ &nbsp; Role: ☐ A ☐ B ☐ C &nbsp; Adapted? ______</p>
+  <table class="grid">
+    <thead><tr><th>Writing</th><th>Task 1 email · notes</th><th>Task 2 rewrites · notes</th><th>1–5</th></tr></thead>
+    <tbody>
+      <tr><td><b>Task &amp; Purpose</b></td><td>3 points: apology + reason ☐ · Thursday + no charge ☐ · contact + confirm request ☐ · words ≈ ___</td><td>Meaning kept in a, b, c? Clear ask in (a) and (c)?</td><td class="sc">&nbsp;</td></tr>
+      <tr><td><b>Register &amp; Tone</b></td><td>Formal/neutral to a client; sincere apology; not over-formal</td><td>(a) neutral ☐ (b) formal/neutral ☐ (c) friendly ☐</td><td class="sc">&nbsp;</td></tr>
+      <tr><td><b>Language Range &amp; Accuracy</b></td><td>Bad-news and request phrases; errors that confuse?</td><td>Softeners; spelling; no text-speak left</td><td class="sc">&nbsp;</td></tr>
+      <tr><td><b>Organization &amp; Delivery</b></td><td>Subject line; opening; one idea per paragraph; clear ask near the end; sign-off matches greeting</td><td>One complete message each, not fragments</td><td class="sc">&nbsp;</td></tr>
+      <tr><td colspan="3"><b>Writing total</b></td><td class="sc">/20</td></tr>
+    </tbody>
+  </table>
+  <table class="grid">
+    <thead><tr><th>Speaking</th><th>Calls · notes</th><th>Meeting · notes</th><th>1–5</th></tr></thead>
+    <tbody>
+      <tr><td><b>Task &amp; Purpose</b></td><td>Caller: all details left? Receiver: message pad complete and correct? Read-back done?</td><td>Views given with reasons; decision reached; action points (chair)</td><td class="sc">&nbsp;</td></tr>
+      <tr><td><b>Register &amp; Tone</b></td><td>"Could I speak to…?" · "I'm afraid…" · warm, not abrupt</td><td>Polite disagreement; signals before interrupting; no flat "No"</td><td class="sc">&nbsp;</td></tr>
+      <tr><td><b>Language Range &amp; Accuracy</b></td><td>Stage phrases; spelling letters; numbers and dates (13th / 30th)</td><td>Opinion, agreeing, clarifying and chairing phrases; grammar</td><td class="sc">&nbsp;</td></tr>
+      <tr><td><b>Organization &amp; Delivery</b></td><td>Clear call stages; fluency; clear pronunciation (accent itself is <b>not</b> scored); stress on key numbers</td><td>Turn-taking; brings others in; stays within 3 minutes</td><td class="sc">&nbsp;</td></tr>
+      <tr><td colspan="3"><b>Speaking total</b></td><td class="sc">/20</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:.95rem"><b>Strength (with evidence):</b> ________________________________________________</p>
+  <p style="font-size:.95rem"><b>Target(s) for Modules 3–4:</b> 1. ______________________________ 2. ______________________________</p>
+
+  <div class="sec"><h2>Class Record · Performance Check</h2><span class="rule"></span></div>
+  <table class="grid">
+    <thead><tr><th>Learner</th><th>W · T&amp;P</th><th>W · R&amp;T</th><th>W · LRA</th><th>W · O&amp;D</th><th>W /20</th><th>S · T&amp;P</th><th>S · R&amp;T</th><th>S · LRA</th><th>S · O&amp;D</th><th>S /20</th></tr></thead>
+    <tbody>
+      <tr><td>&nbsp;</td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td></tr>
+      <tr><td>&nbsp;</td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td></tr>
+      <tr><td>&nbsp;</td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td></tr>
+      <tr><td>&nbsp;</td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td></tr>
+      <tr><td>&nbsp;</td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td></tr>
+      <tr><td>&nbsp;</td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td></tr>
+      <tr><td>&nbsp;</td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td></tr>
+      <tr><td>&nbsp;</td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td></tr>
+      <tr><td>&nbsp;</td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td></tr>
+      <tr><td>&nbsp;</td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td></tr>
+      <tr><td>&nbsp;</td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td></tr>
+      <tr><td>&nbsp;</td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td><td class="sc"></td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:.85rem;color:var(--ink-2)">T&amp;P = Task &amp; Purpose · R&amp;T = Register &amp; Tone · LRA = Language Range &amp; Accuracy · O&amp;D = Organization &amp; Delivery. Look down each column: a criterion that is low for most of the class is a teaching point for Modules 3–4, not an individual target.</p>
+
+  <div class="foot">
+    <div class="who"><b>Ray de la Paz</b><span class="bio">© 2026 Ray de la Paz · Business English</span></div>
+    <div class="ver">Assessment · Performance Check (Class 8) · v1.0</div>
+  </div>
+
+</div>
+</body>
+</html>

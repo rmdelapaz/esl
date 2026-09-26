@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slides — Module 2</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root{--bg:#0b1220;--ink:#edf2fb;--ink2:#a8b6cf;--accent:#7fb2ff;--accent2:#2563eb;--lab:#34d3bd;--warn:#fbbf24;--line:#233252;--code:#101a2e;color-scheme:dark}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;overflow:hidden}
+  .deck{height:100%;width:100%;position:relative}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:6vh 8vw;gap:20px}
+  .slide.on{display:flex}
+  h1,h2,h3{font-family:"Archivo",sans-serif;line-height:1.1;text-wrap:balance}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  .slide h1{font-size:clamp(2rem,6vw,4rem);font-weight:800;letter-spacing:-.02em}
+  .slide h2{font-size:clamp(1.5rem,4.2vw,2.8rem);font-weight:800;letter-spacing:-.01em}
+  .slide p.lead{font-size:clamp(1.05rem,2.4vw,1.5rem);color:var(--ink2);max-width:26ch}
+  ul{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:6px}
+  ul li{position:relative;padding-left:34px;font-size:clamp(1.05rem,2.3vw,1.6rem)}
+  ul li::before{content:"";position:absolute;left:0;top:.55em;width:12px;height:12px;border-radius:3px;background:var(--accent);transform:rotate(45deg)}
+  ul.lab li::before{background:var(--lab)}
+  code.k{font-family:"JetBrains Mono",monospace;color:#cfe0ff;font-size:.92em}
+  pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:22px 26px;font-family:"JetBrains Mono",monospace;font-size:clamp(.85rem,1.9vw,1.3rem);line-height:1.55;overflow:auto;max-width:100%}
+  pre .k{color:#7dd3fc} pre .s{color:#86efac} pre .c{color:#7183a3;font-style:italic}
+  .tag{display:inline-flex;align-items:center;gap:10px;font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);color:var(--ink2)}
+  .tag .pill{background:var(--accent2);color:#fff;font-weight:700;border-radius:999px;padding:3px 12px;letter-spacing:.06em}
+  .tag .pill.lab{background:var(--lab);color:#062b26} .tag .pill.warn{background:var(--warn);color:#3a2a05}
+  .section{background:linear-gradient(135deg,#132a52,#0b1220)}
+  .section .big{font-size:clamp(3rem,12vw,8rem);font-family:"Archivo";font-weight:800;color:var(--accent2);line-height:.9}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+  @media (max-width:760px){.two{grid-template-columns:1fr}}
+  .bar{position:fixed;left:0;top:0;height:4px;background:var(--accent2);width:0;transition:width .25s;z-index:5}
+  .count{position:fixed;right:16px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink2);z-index:5}
+  .nav{position:fixed;inset:auto 0 0 0;display:flex;justify-content:space-between;pointer-events:none;z-index:4}
+  .nav button{pointer-events:auto;background:transparent;border:none;color:transparent;width:22vw;height:100vh;cursor:pointer}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+  /* ESL extras (picture vocab, grammar tables, dialogue, clocks) */
+  .pics{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,1.6vw,18px)}
+  .pics.six{grid-template-columns:repeat(6,1fr)}
+  .pic{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center}
+  .pic img{width:100%;max-width:150px;aspect-ratio:1;object-fit:cover;border-radius:10px;background:#FFF3E0;display:block;margin:0 auto}
+  .pic .emo{font-size:clamp(2.6rem,7vw,5rem);line-height:1;aspect-ratio:1;max-width:150px;margin:0 auto;display:flex;align-items:center;justify-content:center}
+  .pic .w{font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(.9rem,2vw,1.35rem);margin-top:6px}
+  @media (max-width:760px){.pics,.pics.six{grid-template-columns:repeat(3,1fr)}}
+  table.g{border-collapse:collapse;font-size:clamp(.95rem,2.1vw,1.45rem);width:100%;max-width:1000px}
+  table.g th,table.g td{border:1px solid var(--line);padding:10px 16px;text-align:left}
+  table.g th{background:var(--code);color:var(--accent);font-family:"JetBrains Mono",monospace;font-size:.8em;letter-spacing:.04em}
+  table.g b{color:#ffd166}
+  .dlg{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:18px 24px;display:flex;flex-direction:column;gap:8px;font-size:clamp(1rem,2.2vw,1.45rem);max-width:1000px}
+  .dlg .sp{display:inline-block;min-width:3.6em;font-weight:700;color:var(--accent)}
+  .dlg .b .sp{color:#c4a1ff}
+  .ccq{font-size:clamp(1rem,2.2vw,1.45rem);border:1px dashed var(--line);border-radius:12px;padding:12px 18px;background:var(--code)}
+  .ccq i{color:var(--ink2)}
+  .clocks{display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,34px);align-items:flex-start}
+  .clocks figure{text-align:center}
+  .clocks svg{width:clamp(96px,14vw,170px);height:auto}
+  .clocks figcaption{font-size:clamp(.95rem,2vw,1.3rem);margin-top:6px}
+  .clocks figcaption small{display:block;color:var(--ink2);font-size:.8em}
+  .snd{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .snd div{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:clamp(1rem,2.2vw,1.5rem)}
+  .snd div b{display:block;font-family:"Archivo";font-size:1.5em;color:var(--accent)}
+  .snd div small{color:var(--ink2)}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="deck" id="deck">
+
+  <!-- 1 -->
+  <section class="slide on section">
+    <div class="eyebrow">Business English · Instructor Kit</div>
+    <h1>Module 2<br>Meetings &amp; Interpersonal Skills</h1>
+    <p class="lead" style="max-width:40ch">Be heard. Build relationships. Say hard things well.</p>
+    <ul class="lab">
+      <li><b>2.1</b> Meetings: participating and chairing</li>
+      <li><b>2.2</b> Small talk, networking and building rapport</li>
+      <li><b>2.3</b> Diplomatic and assertive communication</li>
+      <li><b>C8</b> Midpoint Performance Check</li>
+    </ul>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide">
+    <div class="eyebrow">Module 2 · weeks 3–4 · four classes</div>
+    <h2>One habit connects everything</h2>
+    <table class="g">
+      <tr><th>Class</th><th>We practice</th><th>Acknowledge first…</th></tr>
+      <tr><td><b>C5</b></td><td>meetings: opinions, interrupting, chairing</td><td><i>Sorry to interrupt, but… · I see your point, but…</i></td></tr>
+      <tr><td><b>C6</b></td><td>small talk, networking, follow-up</td><td><i>Oh really? What was that like?</i></td></tr>
+      <tr><td><b>C7</b></td><td>disagreeing, feedback, saying no, conflict</td><td><i>I understand this is frustrating. Let's…</i></td></tr>
+      <tr><td><b>C8</b></td><td>Midpoint Check: writing + speaking</td><td>…then act.</td></tr>
+    </table>
+    <div class="tag"><span class="pill lab">YOUR CHOICE</span> real job · past job · or a role card: nobody will ask which</div>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide">
+    <div class="eyebrow">2.1 · Lead-in · rank them 1 (hardest) → 5 (easiest)</div>
+    <h2>What's hardest for you in meetings?</h2>
+    <div class="two">
+      <ul>
+        <li>getting a word in</li>
+        <li>disagreeing with someone senior</li>
+        <li>following fast speakers</li>
+        <li>understanding what was decided</li>
+        <li>chairing</li>
+      </ul>
+      <div class="ccq">Think of any workplace you know, in any country, or a role card.<br><i>Compare with a partner. Today: phrases for all five.</i></div>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide">
+    <div class="eyebrow">2.1 · Roles and documents · Kestrel Design weekly sync</div>
+    <h2>Agenda → minutes → action points</h2>
+    <div class="two">
+      <table class="g" style="font-size:clamp(.85rem,1.8vw,1.2rem)">
+        <tr><th colspan="2">AGENDA · Tue 10:00 (30 min)</th></tr>
+        <tr><td>1</td><td>Northwind website launch: on track for the 12th?</td></tr>
+        <tr><td>2</td><td>Budget update</td></tr>
+        <tr><td>3</td><td>Any other business</td></tr>
+        <tr><th colspan="2">ACTION POINTS</th></tr>
+        <tr><td colspan="2"><b>Tom</b> · call the client about the photos · <b>by tomorrow</b></td></tr>
+        <tr><td colspan="2"><b>Marco</b> · ______________ · <b>by ___</b></td></tr>
+        <tr><td colspan="2"><b>Priya</b> · ______________ · <b>by ___</b></td></tr>
+      </table>
+      <div class="ccq">Minutes: time? <i>(No: the written record.)</i><br>"We should look at the budget." An action point? <i>(No.)</i> What's missing? <i>(Who and when.)</i><br>Agenda: before or after? <i>(Before.)</i></div>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide">
+    <div class="eyebrow">2.1 · Participating · the phrase banks</div>
+    <h2>Reliable, ready-made phrases</h2>
+    <table class="g" style="font-size:clamp(.85rem,1.8vw,1.2rem)">
+      <tr><th>Function</th><th>Phrases</th></tr>
+      <tr><td>Opinion</td><td>In my view… · It seems to me that… · I'd suggest (that) we…</td></tr>
+      <tr><td>Agree</td><td>Absolutely. · I'm with you on that. · That's a good point.</td></tr>
+      <tr><td>Disagree politely</td><td><b>I see your point, but…</b> · I'm not sure I agree. · Have we considered…?</td></tr>
+      <tr><td>Clarify</td><td>Could you expand on that? · Just so I'm clear, are you saying…?</td></tr>
+      <tr><td>Suggest</td><td>Why don't we <b>ask</b>…? · How about <b>asking</b>…? · I'd suggest we <b>ask</b>…</td></tr>
+    </table>
+    <div class="ccq">"I am agree." Correct? <i>(No: I agree.)</i> · "discuss about the budget"? <i>(No: discuss the budget.)</i> · "I suggest to wait"? <i>(No: I suggest waiting.)</i></div>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide">
+    <div class="eyebrow">2.1 · Interrupting and turn-taking · signal first</div>
+    <h2>Interrupting is a skill, not a sin</h2>
+    <div class="two">
+      <table class="g" style="font-size:clamp(.85rem,1.8vw,1.2rem)">
+        <tr><th>Do this</th><th>Say this</th></tr>
+        <tr><td>come in</td><td>Sorry to inter<b>RUPT</b>, but… ↗ · Can I just come <b>IN</b> here? ↗</td></tr>
+        <tr><td>build on</td><td>Just to build on that… · To add to Ana's point…</td></tr>
+        <tr><td>hold the floor</td><td>If I could just <b>FIN</b>ish…</td></tr>
+        <tr><td>bring others in</td><td>What do you think, <b>SA</b>ra?</td></tr>
+      </table>
+      <div class="ccq">Are you really sorry? <i>(Not really: it's a signal.)</i><br>What does <i>just</i> do? <i>(Makes it softer.)</i><br>"If I could just finish…": who says it? <i>(The person being interrupted.)</i><br>Flat and fast = <i>rude</i>. Friendly and rising = <i>teamwork</i>.</div>
+    </div>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide">
+    <div class="eyebrow">2.1 · Chairing · five stages</div>
+    <h2>Talk least on content, most on process</h2>
+    <table class="g" style="font-size:clamp(.85rem,1.8vw,1.2rem)">
+      <tr><th>Stage</th><th>The chair says…</th></tr>
+      <tr><td>1 Open</td><td>Thanks everyone for coming. Shall we get started? The purpose of today's meeting is…</td></tr>
+      <tr><td>2 Agenda</td><td>First on the agenda is… · Let's move on to… · That's item one covered.</td></tr>
+      <tr><td>3 Time &amp; people</td><td>Let's hear from Tom. · We're running short on time. · Let's <b>park</b> that and take it <b>offline</b>.</td></tr>
+      <tr><td>4 Decide</td><td>So, to summarize… ↘ · Are we all agreed? · Can I confirm, you'll handle this by Friday?</td></tr>
+      <tr><td>5 Close</td><td>To recap the action points… · Thanks everyone, that was productive.</td></tr>
+    </table>
+    <div class="ccq">"Let's park that." Discuss it now? <i>(No.)</i> Forget it? <i>(No: later.)</i> Offline = internet off? <i>(No: after the meeting.)</i></div>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide">
+    <div class="eyebrow">2.1 · Freer task · groups of 4 · 6 min plan + 10 min meeting</div>
+    <h2>Run the meeting</h2>
+    <div class="two">
+      <ul class="lab">
+        <li><b>Chair</b>: open · follow the agenda · decide · recap the action points</li>
+        <li><b>Participants</b>: an opinion · disagree politely once · interrupt with a signal once · one clarification question</li>
+        <li><b>Observer</b>: tick the checklist · write the action points</li>
+      </ul>
+      <div class="ccq">Show your card to the others? <i>(No.)</i><br>Chair: before you finish? <i>(Recap the action points.)</i><br>How do you disagree? <i>(Acknowledge, then differ.)</i><br>Observers: do you speak? <i>(No.)</i><br>Your real company? <i>(No: the card's.)</i></div>
+    </div>
+    <div class="tag"><span class="pill warn">FEEDBACK</span> Task &amp; Purpose · Register &amp; Tone · Language Range &amp; Accuracy · Organization &amp; Delivery</div>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide">
+    <div class="eyebrow">2.2 · Lead-in and model · the coffee line</div>
+    <h2>Small talk: a waste of time?</h2>
+    <div class="two">
+      <div class="dlg">
+        <div><span class="sp">H:</span> Are you enjoying the expo?</div>
+        <div class="b"><span class="sp">J:</span> Yes, it's fine.</div>
+        <div><span class="sp">H:</span> Good. It's busy.</div>
+        <div class="b"><span class="sp">J:</span> Yes. <i>(walks away)</i></div>
+      </div>
+      <div class="dlg">
+        <div><span class="sp">H:</span> This line for coffee is quite something, isn't it?</div>
+        <div class="b"><span class="sp">J:</span> It really is! Everyone had the same idea.</div>
+        <div><span class="sp">H:</span> What did you think of that last session?</div>
+        <div class="b"><span class="sp">J:</span> Really useful. We're changing our tracking system at the moment…</div>
+      </div>
+    </div>
+    <div class="ccq">Why does the first one die? <i>(Closed questions, one-word answers, no free information.)</i></div>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide">
+    <div class="eyebrow">2.2 · The rapport engine</div>
+    <h2>Ask, react, add, pass the ball back</h2>
+    <div class="two">
+      <ul>
+        <li><b>Open questions</b>: <i>How · What · Which · Why</i> → "<b>What</b> are you enjoying most so far?"</li>
+        <li><b>React</b>: Oh <b>REAL</b>ly? ↗ · That sounds interesting, tell me more.</li>
+        <li><b>Free information</b>: answer + extra + question back</li>
+        <li><b>Common ground</b>: Same here, actually!</li>
+      </ul>
+      <div class="ccq">"How are you finding the conference?" Where is it? <i>(No: your opinion so far.)</i><br>Free information: free of cost? <i>(Extra detail you give.)</i> Why? <i>(It gives them a hook.)</i><br>"Great turnout, isn't it? ↘" A real question? <i>(No: you expect agreement.)</i></div>
+    </div>
+    <div class="tag"><span class="pill lab">50 / 50</span> listen at least as much as you talk</div>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide">
+    <div class="eyebrow">2.2 · Topics · watch, then follow their lead</div>
+    <h2>Safe vs risky with someone new</h2>
+    <div class="two">
+      <table class="g" style="font-size:clamp(.85rem,1.8vw,1.2rem)">
+        <tr><th>Usually safe</th><th>Usually risky</th></tr>
+        <tr><td>work, role, industry</td><td>politics, religion</td></tr>
+        <tr><td>the event, venue, speakers</td><td>money, salary, prices</td></tr>
+        <tr><td>the trip in, food, coffee</td><td>health, age, appearance</td></tr>
+        <tr><td>sport, hobbies, weekend</td><td>relationships, gossip</td></tr>
+      </table>
+      <div class="ccq">Is "safe" the same everywhere? <i>(No: family questions are warm in some cultures, too personal in others.)</i><br>So what do you do? <i>(Start safe, watch, follow their lead.)</i><br>Asked something you don't want to answer? <i>"Oh, that's a long story! What brings you here?"</i></div>
+    </div>
+  </section>
+
+  <!-- 12 -->
+  <section class="slide">
+    <div class="eyebrow">2.2 · Freer task · 15 min mingle + 8 min follow-up</div>
+    <h2>The Riverside Business Breakfast</h2>
+    <div class="two">
+      <ul class="lab">
+        <li>Talk to at least <b>three</b> people</li>
+        <li>Find <b>common ground</b> with two</li>
+        <li>Exchange cards · bell = <b>exit politely</b> and move</li>
+        <li>Then: a follow-up email (60–90 words) to one contact: reminder + something specific + a light next step</li>
+      </ul>
+      <div class="ccq">How many people? <i>(At least three.)</i><br>Bell rings: just walk away? <i>(No: an exit line.)</i><br>Ask about salary? <i>(No: safe topics.)</i><br>Your real job? <i>(Or the card.)</i><br>Follow up when? <i>(Within 48 hours.)</i></div>
+    </div>
+  </section>
+
+  <!-- 13 -->
+  <section class="slide">
+    <div class="eyebrow">2.3 · Lead-in · "Can you take on the Harlow report by Friday?"</div>
+    <h2>Passive · assertive · aggressive</h2>
+    <table class="g" style="font-size:clamp(.85rem,1.8vw,1.2rem)">
+      <tr><th>Passive (you lose)</th><th>Assertive (the goal)</th><th>Aggressive (they lose)</th></tr>
+      <tr><td>"Um, sure, no problem." <i>(already at capacity)</i></td><td>"I'd like to help. To do it well by Friday, I'd need to move the client summary. Which is the priority?"</td><td>"No. I've got too much already."</td></tr>
+      <tr><td>needs unmet · resentment</td><td><b>honest AND considerate</b></td><td>point made · relationship damaged</td></tr>
+    </table>
+    <div class="ccq">Assertive = aggressive? <i>(No.)</i> Says what they need? <i>(Yes.)</i> Respects the other person? <i>(Yes.)</i><br><b>Firm on substance · soft on delivery.</b></div>
+  </section>
+
+  <!-- 14 -->
+  <section class="slide">
+    <div class="eyebrow">2.3 · The softening toolkit · one or two, not five</div>
+    <h2>Seasoning, not the meal</h2>
+    <table class="g" style="font-size:clamp(.85rem,1.8vw,1.2rem)">
+      <tr><th>Move</th><th>Example</th></tr>
+      <tr><td>hedging</td><td>I think we <b>might</b> be underestimating the timeline.</td></tr>
+      <tr><td>qualifier</td><td>I have a <b>slight</b> concern about the budget.</td></tr>
+      <tr><td>question form</td><td><b>Would it be possible to</b> push it a week? · <b>Have we considered</b>…?</td></tr>
+      <tr><td>distance</td><td><b>I was wondering if</b> we <b>could</b> revisit the deadline.</td></tr>
+      <tr><td>positive framing</td><td>I can <b>definitely</b> get you the draft by Thursday.</td></tr>
+      <tr><td>prefacing</td><td><b>I take your point, but</b>… · <b>I see it a little differently</b>…</td></tr>
+    </table>
+    <div class="ccq">"I was wondering…": about the past? <i>(No: it's more polite now.)</i> · "A slight concern": always small? <i>(No: it may be big.)</i> · "I'm at capacity": lazy? <i>(No: no more time.)</i></div>
+  </section>
+
+  <!-- 15 -->
+  <section class="slide">
+    <div class="eyebrow">2.3 · Feedback · give it and receive it</div>
+    <h2>Situation → Behavior → Impact</h2>
+    <div class="two">
+      <div class="dlg">
+        <div><span class="sp">✘</span> "Your reports are always late. Be more organized. Anyway, good job on the chart."</div>
+        <div class="b"><span class="sp">✔</span> "One thing that worked really well was the new chart. <b>(S)</b> In the last two months, <b>(B)</b> the report reached me on the morning it's due, <b>(I)</b> so I couldn't check the figures. How do you feel it's going?"</div>
+      </div>
+      <div class="ccq">"You're careless." Behavior or person? <i>(Person.)</i><br><b>Receive:</b> Thanks for telling me. · Could you give me an example? · Let me take that on board.<br><i>Drill: "Your email was confusing." · "You were late to the call." · "The slides had a lot of text."</i></div>
+    </div>
+  </section>
+
+  <!-- 16 -->
+  <section class="slide">
+    <div class="eyebrow">2.3 · Freer task · groups of 3 · 3 rounds × 5 min</div>
+    <h2>The hard-conversation carousel</h2>
+    <div class="two">
+      <ul class="lab">
+        <li><b>Say no</b>: alternative · trade-off · buy time</li>
+        <li><b>Conflict</b>: acknowledge the feeling → problem, not person → common ground → way forward</li>
+        <li><b>A</b> says the hard thing · <b>B</b> follows the card · <b>C</b> observes</li>
+        <li>1 min plan · 3 min talk · 1 min feedback · rotate</li>
+      </ul>
+      <div class="ccq">A: what first? <i>(Acknowledge.)</i><br>Change the real message? <i>(No: firm on substance.)</i><br>B: agree at once? <i>(No: follow your card.)</i><br>How many rounds? <i>(Three: everyone is A once.)</i><br>A real situation? <i>(No: the card's.)</i></div>
+    </div>
+  </section>
+
+  <!-- 17 -->
+  <section class="slide">
+    <div class="eyebrow">C8 · Midpoint Performance Check · a check-in, not a verdict</div>
+    <h2>Show what you can do now</h2>
+    <div class="two">
+      <ul>
+        <li><b>Part A · writing</b>: 35 min · reply to a client email + fix the register of three messages</li>
+        <li><b>Part B · speaking</b>: pairs, about 7 min · two short calls + a short meeting</li>
+        <li>While you wait: a quiet reading and ranking task</li>
+        <li>Results: <b>privately</b>, next class</li>
+      </ul>
+      <table class="g" style="font-size:clamp(.85rem,1.8vw,1.2rem)">
+        <tr><th>Criterion</th><th>1–5</th></tr>
+        <tr><td>Task &amp; Purpose</td><td></td></tr>
+        <tr><td>Register &amp; Tone</td><td></td></tr>
+        <tr><td>Language Range &amp; Accuracy</td><td></td></tr>
+        <tr><td>Organization &amp; Delivery</td><td></td></tr>
+        <tr><td><b>Writing · Speaking</b></td><td><b>/20 · /20</b></td></tr>
+      </table>
+    </div>
+    <div class="tag"><span class="pill lab">RULES</span> phones off · no dictionaries in Part A · listen and respond to your partner · one breath, then carry on</div>
+  </section>
+
+  <!-- 18 -->
+  <section class="slide section">
+    <div class="eyebrow">Acknowledge first, then act</div>
+    <h2>Module 2 done 🎉</h2>
+    <ul class="lab">
+      <li><b>Meetings</b>: signal before you interrupt · acknowledge, then differ · close with who / what / when</li>
+      <li><b>Networking</b>: open questions · answer + free info + question back · exit warmly, follow up within 48 hours</li>
+      <li><b>Diplomacy</b>: firm on substance, soft on delivery · SBI · alternative, trade-off or buy time</li>
+    </ul>
+    <p class="lead" style="margin-top:10px;max-width:44ch">Homework: online lessons 2.1–2.3 with 🔊. Next: the Midpoint Check (C8), then Module 3, <i>Presenting, Negotiating &amp; Persuading</i>.</p>
+  </section>
+
+</div>
+
+<div class="count" id="count">1 / 18</div>
+<div class="nav"><button id="prev" aria-label="Previous slide"></button><button id="next" aria-label="Next slide"></button></div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const bar=document.getElementById('bar'), count=document.getElementById('count');
+  let i=0;
+  function show(n){ i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+    bar.style.width=((i+1)/slides.length*100)+'%'; count.textContent=(i+1)+' / '+slides.length; }
+  document.getElementById('next').onclick=()=>show(i+1);
+  document.getElementById('prev').onclick=()=>show(i-1);
+  addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}
+    else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+  });
+  show(0);
+</script>
+</body>
+</html>

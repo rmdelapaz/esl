@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Final Assessment — Classes 15–16</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../kit.css">
+<style>
+  /* ── Test-paper components (shared by the four assessment documents) ── */
+  @page{size:auto;margin:.55in}   /* prints on Letter or A4: the printer's paper size wins */
+  .pagebreak{break-before:page}
+  .teacher-only{font-family:"JetBrains Mono",monospace;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+    color:#fff;background:var(--warn);border-radius:999px;padding:3px 11px;display:inline-block;margin-bottom:8px;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .paper{font-size:16.5px;line-height:1.5}
+  .paper-head{display:grid;grid-template-columns:2fr 1fr 1fr;gap:14px;margin:6px 0 14px;font-size:1.05rem}
+  .paper-head div{border-bottom:1.5px solid var(--ink-2);padding:6px 2px 4px}
+  .paper-head b{font-weight:700}
+  .part-h{display:flex;align-items:center;gap:12px;margin:28px 0 6px;padding:10px 14px;background:var(--accent-soft);
+    border-radius:10px;break-after:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .part-h h2{font-size:1.25rem;font-weight:800;flex:1}
+  .part-h .score{font-family:"JetBrains Mono",monospace;font-size:.9rem;font-weight:600;border:1.5px solid var(--ink-2);
+    border-radius:8px;padding:4px 10px;background:var(--surface);white-space:nowrap}
+  .inst{font-size:1.05rem;font-weight:600;margin:16px 0 8px;break-after:avoid}
+  .inst .sub{display:block;font-weight:400;color:var(--ink-2);font-size:.95rem;margin-top:2px}
+  .text{border:1px solid var(--line);border-radius:10px;padding:14px 18px;background:var(--surface-2);font-size:1rem;line-height:1.6;margin:10px 0;break-inside:avoid}
+  .text p{margin:0 0 8px}
+  .text p:last-child{margin-bottom:0}
+  .text .hd{font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink-2);border-bottom:1px solid var(--line);padding-bottom:6px;margin-bottom:8px}
+  .text .ttl{font-family:"Archivo",sans-serif;font-weight:800;font-size:1.08rem;margin-bottom:4px}
+  .notes-box{border:1.5px solid var(--line-strong);border-radius:10px;padding:10px 16px;margin:10px 0;break-inside:avoid;background:var(--surface)}
+  .notes-box p{margin:5px 0}
+  .wline{border-bottom:1.5px solid var(--ink-2);height:2.05em}
+  .choice{border:2px solid var(--ink-2);border-radius:12px;padding:10px 16px;margin:12px 0;break-inside:avoid}
+  .choice h4{font-size:1.08rem;margin-bottom:4px}
+  table.grid{width:100%;border-collapse:collapse;margin:10px 0;font-size:.9rem}
+  table.grid th,table.grid td{border:1px solid var(--line-strong);padding:7px 9px;text-align:left;vertical-align:top}
+  table.grid thead th{background:var(--surface-2);font-family:"JetBrains Mono",monospace;font-size:.64rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+  table.grid td.sc{width:9%;text-align:center;font-family:"JetBrains Mono",monospace;color:var(--ink-3)}
+  table.grid td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+  table.grid tr{break-inside:avoid}
+  .card-cut ul.tick li{padding:2px 0 2px 20px}
+  .card-cut p{margin:.35rem 0}
+  .plan{font-size:.9rem;border-top:1px dashed var(--line-strong);margin-top:6px;padding-top:4px}
+  .done{margin-top:24px;text-align:center;font-size:1.15rem;font-weight:700}
+  @media (max-width:680px){
+    .paper-head{grid-template-columns:1fr}
+    table.grid{display:block;overflow-x:auto}
+    .cards{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="lbl">Test pack —</span>
+  <button type="button" onclick="window.print()">🖨 Print / Save as PDF</button>
+  <span class="hint">teacher notes · C15 writing paper · negotiation cards · C16 pitch &amp; interview briefs · interviewer card · score sheets</span>
+</div>
+
+<div class="sheet">
+
+  <header class="mast">
+    <div class="kit-eyebrow">Business English · Assessment · Classes 15–16</div>
+    <h1>Final Assessment — The Whole Course</h1>
+    <p class="sub">Two classes, five realistic tasks, one rubric. <b>Part A (Class 15)</b>: a 60-minute timed writing paper (a short proposal section with an executive summary, then a cover letter <i>or</i> a formal email) and a pair negotiation with private priorities and tradeable variables. <b>Part B (Class 16)</b>: a capstone pitch (5 minutes + Q&amp;A) and a mock job interview with STAR questions, followed by a debrief and celebration. Each learner receives a <b>Writing /20</b> and a <b>Speaking /20</b>, comparable with Class 1 and Class 8.</p>
+    <div class="meta-row">
+      <span class="chip">C15 · Writing <b>60 min</b> + negotiation <b>~7 min</b></span>
+      <span class="chip">C16 · Pitch <b>5 + 2–3 min</b> · Interview <b>~8 min</b></span>
+      <span class="chip">Writing <b>/20</b> · Speaking <b>/20</b></span>
+      <span class="chip">Rubric &amp; models: <b>assessment-key.html</b></span>
+    </div>
+  </header>
+
+  <div class="note">
+    <div class="t">How to frame it</div>
+    <p><b>"These are the tasks you'll really meet at work or in a job search: a proposal, a formal letter, a negotiation, a pitch and an interview. You've practiced every one. I'm scoring the same four criteria as always. What matters most is that you finish each task: cover the points, keep the register right, and make the next step clear."</b> Remind learners that any task can be done with a <b>role card</b>, and that the interview never asks about salary, visas, age, family or gaps in employment.</p>
+  </div>
+
+  <div class="sec"><h2>Running Class 15 · Part A (90 min)</h2><span class="rule"></span></div>
+  <table class="timing">
+    <thead><tr><th>Stage</th><th>Time</th><th>Interaction</th><th>Procedure</th></tr></thead>
+    <tbody>
+      <tr><td>Settle &amp; instructions</td><td class="t">3 min</td><td>T–S</td><td>Running order on the board. Hand out the writing paper face down. <b>ICQs:</b> "How many tasks are there?" (Two.) "In Task 2, do you write both options?" (No, choose one.) "How long for Task 1?" (About 35 minutes.)</td></tr>
+      <tr><td>Timed writing</td><td class="t">60 min</td><td>S</td><td>Individual and silent. Start and finish times on the board. Say at 35 minutes: "You should be starting Task 2." Say at 55 minutes: "Five minutes: check your greeting, your sign-off and your figures." Collect at 60.</td></tr>
+      <tr><td>Negotiation preparation</td><td class="t">5 min</td><td>S</td><td>Announce pairs and rounds (see the run-sheet). Hand out role cards: <b>Scenario 1</b> to rounds 1 and 3, <b>Scenario 2</b> to round 2, so neighbors never share a scenario. Each learner reads their card silently and fills in the planning lines. <b>ICQs:</b> "Can you show your partner your card?" (No.) "Can you give something away for free?" (No, always trade.) "What do you do at the end?" (Summarize and confirm.)</td></tr>
+      <tr><td>Negotiations · 3 rounds</td><td class="t">21 min</td><td>S–S</td><td>Two pairs per round, 7 minutes each round, seated either side of you. Say "One minute" at 6:00; the pair must summarize their deal before time. After their round, each learner writes a short <b>deal memo</b> on the back of their card (the confirming email, 3–5 bullet points). Waiting pairs continue planning silently. Write your notes on the score sheet between rounds.</td></tr>
+      <tr><td>Collect &amp; close</td><td class="t">1 min</td><td>T–S</td><td>Collect cards and deal memos. Remind them: Class 16 is pitches, interviews and the celebration. Bring the pitch notes and the interview preparation sheet.</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:.85rem;color:var(--ink-3)">Total: 3 + 60 + 5 + 21 + 1 = 90 minutes. Six pairs fit in three rounds. With four pairs or fewer, run two rounds of 9 minutes and use the spare time for a quick debrief. With seven or eight pairs, seat three pairs per round and rely more on the deal memos, or move the last round to the start of Class 16 and use pair pitches there.</p>
+
+  <div class="sec"><h2>Running Class 16 · Part B (90 min)</h2><span class="rule"></span></div>
+  <table class="timing">
+    <thead><tr><th>Stage</th><th>Time</th><th>Interaction</th><th>Procedure</th></tr></thead>
+    <tbody>
+      <tr><td>Welcome &amp; running order</td><td class="t">4 min</td><td>T–S</td><td>Running order on the board. Give every audience member two blank question slips. <b>ICQs:</b> "When you're in the audience, what do you write on the slip?" (One real question for the speaker.) "How long is each pitch?" (Five minutes.)</td></tr>
+      <tr><td>Capstone pitches</td><td class="t">56 min</td><td>S → Ss · T–S</td><td><b>Up to 8 learners</b>: individual pitches, 5 minutes + 2 minutes of Q&amp;A (7 min each). <b>9–14 learners</b>: pair pitches, a joint 5 minutes + 3 minutes of Q&amp;A (8 min per pair); each partner speaks for at least 2 minutes and answers at least one question, and each is scored individually. Use a phone timer: hold up "1 minute" at 4:00, stop kindly at 5:30. You ask the first question (an objection card); the audience asks the second.</td></tr>
+      <tr><td>Mock interviews</td><td class="t">18 min</td><td>S–S · T–S</td><td>The class runs <b>peer practice interviews</b> in pairs with the learner interviewer card (8 minutes each way, 2 minutes to swap). Meanwhile, you hold <b>scored interviews</b> with two learners in a quiet corner (interviewer card). All other scored interviews happen in 10-minute slots before or after class, or by video call, within a week (see "Scheduling the scored interviews").</td></tr>
+      <tr><td>Debrief, certificates &amp; celebration</td><td class="t">12 min</td><td>T–S · S–S</td><td>Pairs: "One moment from this course I'm proud of; one phrase I'll keep using." Hand out certificates if your program provides them, and name each learner's biggest improvement in one sentence (never a score). Final results go back privately within a week. Final homework: online Lesson 4.3 review (<code class="inline">https://rays-esl.netlify.app/curriculum-business/lesson_12.html</code>) and the last Performance Tracker entry.</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:.85rem;color:var(--ink-3)">Total: 4 + 56 + 18 + 12 = 90 minutes.</p>
+
+  <div class="grid2">
+    <div class="blk"><div class="h">Scheduling the scored interviews</div>
+      <ul class="tick">
+        <li>A teacher-led interview takes about <b>8 minutes</b> plus 2 for notes: allow 10-minute slots.</li>
+        <li><b>Option A</b>: two learners during the Class 16 interview block, the rest in slots before or after Classes 15–16 or on a video call within a week.</li>
+        <li><b>Option B</b>: a second interviewer (co-teacher, trained volunteer, or a colleague who hires people) runs interviews in parallel during the pitch block, using this pack and the rubric.</li>
+        <li><b>Option C</b>: if you can free time in Class 14's rehearsal block, hold three or four scored interviews there.</li>
+        <li>The interview is scored with the pitch and negotiation into one <b>Speaking /20</b>, so a learner who can't attend a slot still gets a speaking score (note "no interview" on the sheet).</li>
+      </ul>
+    </div>
+    <div class="blk"><div class="h">You need</div>
+      <ul class="tick">
+        <li><b>C15</b>: per learner, the writing paper; one negotiation card each (cut out); the score sheet; a phone timer</li>
+        <li><b>C16</b>: the pitch brief and the interview preparation sheet (give both out in Class 14); question slips; the objection cards and interviewer card (teacher pages); a screen if learners use one slide</li>
+        <li>The rubric, the model answers and "what to listen for": <code class="inline">assessment/assessment-key.html</code></li>
+        <li>Each learner's Class 1 and Class 8 scores, for the progress row</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="note warn">
+    <div class="t">Fairness and sensitivity</div>
+    <p>All companies, people, products and figures are fictional. The cover letter and interview can use the learner's real experience <b>or</b> the role-card profile; both are scored the same way. Learners with foreign qualifications or a career change may describe them as they wish ("My degree was earned abroad and has been evaluated as…"). Never ask why they left a job, why there is a gap, or about immigration or family. In the negotiation, keep the conflict commercial (price, dates, terms); if a pair drifts into a personal argument, pause them with "Let's go back to the terms on your cards."</p>
+  </div>
+
+  <!-- ═════════════════════ LEARNER PAPER · C15 WRITING ═════════════════════ -->
+  <div class="pagebreak"></div>
+  <div class="paper">
+    <header class="mast">
+      <div class="kit-eyebrow">Business English · Final Assessment · Part A · Class 15</div>
+      <h1>Writing: Proposal &amp; Letter</h1>
+      <div class="paper-head">
+        <div><b>Name:</b></div>
+        <div><b>Date:</b></div>
+        <div><b>Start time:</b></div>
+      </div>
+      <p style="font-size:1rem;margin-top:10px">You have <b>60 minutes</b>. Spend about <b>35 minutes on Task 1</b> and <b>25 minutes on Task 2</b>. In Task 2, <b>choose one</b> option.</p>
+    </header>
+
+    <div class="part-h"><h2>Task 1 · Proposal: executive summary &amp; recommendations</h2><span class="score">about 35 min</span></div>
+    <p>You are an operations analyst at the <b>Riverside warehouse</b> of <b>Northwind Logistics</b>. The Operations Director, <b>Ines Carvalho</b>, has asked for a short proposal on how to reduce packing errors. Your colleagues have written the background and findings. You write the two most important sections.</p>
+    <table class="grid">
+      <thead><tr><th>Key data (Riverside warehouse)</th><th>Q1</th><th>Q2</th></tr></thead>
+      <tbody>
+        <tr><td>Orders shipped per month</td><td class="num">about 12,000</td><td class="num">about 12,000</td></tr>
+        <tr><td>Orders returned because of packing errors</td><td class="num">2.1% (about 250/month)</td><td class="num">4.8% (about 580/month)</td></tr>
+        <tr><td>Average cost of one error return (shipping, repacking, staff time)</td><td class="num">$38</td><td class="num">$38</td></tr>
+        <tr><td>Customer complaints that mention packing</td><td colspan="2">up 70% from Q1 to Q2</td></tr>
+      </tbody>
+    </table>
+    <table class="grid">
+      <thead><tr><th>Causes of error returns in Q2</th><th>Share</th></tr></thead>
+      <tbody>
+        <tr><td>Wrong label</td><td class="num">52%</td></tr>
+        <tr><td>Wrong item packed</td><td class="num">31%</td></tr>
+        <tr><td>Item damaged during packing</td><td class="num">17%</td></tr>
+      </tbody>
+    </table>
+    <table class="grid">
+      <thead><tr><th>Option</th><th>Cost</th><th>Evidence</th></tr></thead>
+      <tbody>
+        <tr><td><b>A.</b> Barcode scanners at all 8 packing stations</td><td>$16,000 one-off + $150/month support</td><td>A pilot at the Eastfield warehouse cut label and wrong-item errors by about 60%.</td></tr>
+        <tr><td><b>B.</b> Two extra quality checkers</td><td>$84,000 per year</td><td>Together they could check about 30% of orders.</td></tr>
+        <tr><td><b>C.</b> Half-day refresher training for all 24 packers</td><td>$3,500</td><td>The trainer expects damage-in-packing errors to fall by about a third.</td></tr>
+      </tbody>
+    </table>
+    <p class="inst">Write two sections of the proposal to Ms. Carvalho:
+      <span class="sub"><b>1. Executive Summary</b> (about 90–130 words): the purpose, the key findings, and your main recommendations. It must make sense on its own.<br>
+      <b>2. Recommendations</b> (about 130–180 words): at least two actions <b>in priority order</b>, each with its cost and expected benefit, tied to the data. Say which option you do <b>not</b> recommend, and why.<br>
+      Use a formal, objective register, headings, and numbers from the data. You may round figures.</span></p>
+    <div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div>
+    <div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div>
+    <div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div>
+    <div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div>
+    <div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div>
+    <div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div>
+    <div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div>
+    <p style="font-size:.95rem;color:var(--ink-2);text-align:right">Words: Executive Summary ______ · Recommendations ______</p>
+
+    <div class="part-h pagebreak"><h2>Task 2 · Choose ONE: a cover letter or a formal email</h2><span class="score">about 25 min</span></div>
+
+    <div class="choice">
+      <h4>Option A · Cover letter (about 180–230 words)</h4>
+      <div class="text">
+        <div class="ttl">Operations Coordinator — Kestrel Design</div>
+        <p>Kestrel Design is a design studio of 40 people. We are looking for an Operations Coordinator to keep our projects running smoothly.</p>
+        <p><b>You will:</b> coordinate project schedules and supplier deliveries · prepare weekly status reports · be the first point of contact for clients' logistics questions.</p>
+        <p><b>You have:</b> 3+ years coordinating operations or projects · clear written English · a calm, organized communication style · experience with scheduling software.</p>
+        <p>Apply to: Ms. Joanne Hale, Studio Manager.</p>
+      </div>
+      <p>Write a cover letter to Ms. Hale. Use <b>your own experience</b> (real, or from a previous job) <b>or</b> the role-card profile below. Include: an opening that names the role, a "why you" paragraph with evidence that matches the ad, a "why them" sentence, and a confident close.</p>
+      <p style="font-size:.95rem;color:var(--ink-2)"><b>Role-card profile (optional): Sam Rivera.</b> 5 years as a logistics coordinator at Corran Trading, a mid-size importer · introduced a shared delivery calendar that cut late deliveries by 20% in one year · writes weekly status reports for three department heads · trained four new team members on the company's scheduling software · degree in business administration, earned abroad and evaluated as equivalent to a U.S. bachelor's degree.</p>
+    </div>
+
+    <div class="choice">
+      <h4>Option B · Formal email (about 150–200 words)</h4>
+      <p>You are an account manager at <b>Northwind Logistics</b>. A client, <b>Mr. Julian Ferris</b> of <b>Tallis Print Co.</b>, has asked for (1) a <b>12% price reduction</b> on next year's delivery contract and (2) <b>Saturday deliveries</b>.</p>
+      <div class="notes-box">
+        <p><b>Your manager's notes</b></p>
+        <p>• 12% is not possible (fuel and staff costs have gone up this year).</p>
+        <p>• We can offer <b>6%</b> if they sign a <b>two-year</b> contract.</p>
+        <p>• Saturday deliveries: possible at <b>+$45 per delivery</b>. Or offer a guaranteed <b>two-hour weekday morning window</b> at no extra cost.</p>
+        <p>• Suggest a short call next week to agree the details.</p>
+      </div>
+      <p>Write a formal reply to Mr. Ferris. Thank him, decline the 12% diplomatically with a reason, make a <b>conditional</b> offer, answer the Saturday request, and propose the next step.</p>
+    </div>
+    <p style="font-size:.95rem">I chose: ☐ Option A &nbsp; ☐ Option B &nbsp;&nbsp; (Option A: I used ☐ my own experience ☐ the role card)</p>
+    <div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div>
+    <div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div>
+    <div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div>
+    <div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div>
+    <div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div>
+    <div class="wline"></div><div class="wline"></div><div class="wline"></div>
+    <p style="font-size:.95rem;color:var(--ink-2);text-align:right">Number of words (approximately): ______</p>
+    <p class="done">Stop here. Check names, figures, your greeting and your sign-off.</p>
+  </div>
+
+  <!-- ═════════════════════ C15 NEGOTIATION CARDS ═════════════════════ -->
+  <div class="pagebreak"></div>
+  <span class="teacher-only">Cut out · one card per learner · do not show your partner</span>
+  <div class="sec"><h2>Negotiation · Scenario 1 · Delivery contract renewal</h2><span class="rule"></span></div>
+  <div class="cards">
+    <div class="card-cut">
+      <div class="ct">Scenario 1 · Card A · seller</div>
+      <h4>Account Manager, Northwind Logistics</h4>
+      <p>Brightline Foods' one-year delivery contract ends next month. You're meeting their purchasing lead to renew it. Current terms: <b>$85 per delivery</b>, standard 4-hour delivery window, payment in 30 days.</p>
+      <ul class="tick">
+        <li><b>High priority:</b> a <b>two-year</b> contract (it lets you plan trucks and staff).</li>
+        <li><b>Price:</b> ideally keep $85. Your absolute minimum is <b>$80</b>.</li>
+        <li><b>Payment:</b> you prefer 30 days; you can accept 45 days <i>if</i> they sign for two years. Never 60.</li>
+        <li><b>Morning 2-hour windows</b> cost you a little more to plan, but you can offer them.</li>
+        <li><b>In reserve:</b> free pickup of returned goods (it costs you very little).</li>
+        <li><b>Your alternative (BATNA):</b> another client wants this truck capacity. Below $80, walk away politely.</li>
+      </ul>
+      <p class="plan">Planning: opening line · one question about their interests · two "If you…, we'll…" offers · what you keep for the close</p>
+    </div>
+    <div class="card-cut b">
+      <div class="ct">Scenario 1 · Card B · buyer</div>
+      <h4>Purchasing Lead, Brightline Foods</h4>
+      <p>You're renewing your delivery contract with Northwind Logistics. Current terms: <b>$85 per delivery</b>, standard 4-hour delivery window, payment in 30 days.</p>
+      <ul class="tick">
+        <li><b>Price:</b> your budget has been cut by 8%. Target: <b>$78</b>. You'd like to stay below $83.</li>
+        <li><b>High priority (the real problem):</b> deliveries that arrive after 11 a.m. disrupt shelf-stocking in your stores. A <b>guaranteed 2-hour morning window</b> is worth a lot to you.</li>
+        <li><b>Contract length:</b> you can commit to two years if the price is fixed for both years.</li>
+        <li><b>Payment:</b> your finance team wants 60 days; 45 is acceptable.</li>
+        <li><b>Nice to have:</b> pickup of returned goods.</li>
+        <li><b>Your alternative (BATNA):</b> another carrier offered $78, but with no morning windows.</li>
+      </ul>
+      <p class="plan">Planning: opening line · one question about their interests · two "If you…, we'll…" offers · what you keep for the close</p>
+    </div>
+  </div>
+
+  <div class="sec"><h2>Negotiation · Scenario 2 · Website redesign</h2><span class="rule"></span></div>
+  <div class="cards">
+    <div class="card-cut">
+      <div class="ct">Scenario 2 · Card A · agency</div>
+      <h4>Project Lead, Kestrel Design</h4>
+      <p>You're agreeing a website redesign with Oakridge Garden Centers. Your quote: <b>$24,000</b>, launch in <b>10 weeks</b>, 2 rounds of revisions, 50% paid upfront.</p>
+      <ul class="tick">
+        <li><b>High priority:</b> a <b>12-month support contract</b> at <b>$400/month</b> (steady income for your studio).</li>
+        <li><b>Price:</b> your minimum is <b>$21,000</b>.</li>
+        <li><b>Timing:</b> a faster launch is possible only if the scope is smaller (for example, the shop pages first, the blog later) or for <b>+$3,000</b> (an extra designer).</li>
+        <li><b>Revisions:</b> 3 rounds is fine; 4 is too many.</li>
+        <li><b>Payment:</b> you can accept 40% upfront <i>if</i> they sign the support contract.</li>
+        <li><b>Your alternative (BATNA):</b> your studio is busy; another client can start in two weeks.</li>
+      </ul>
+      <p class="plan">Planning: opening line · one question about their interests · two "If you…, we'll…" offers · what you keep for the close</p>
+    </div>
+    <div class="card-cut b">
+      <div class="ct">Scenario 2 · Card B · client</div>
+      <h4>Marketing Manager, Oakridge Garden Centers</h4>
+      <p>Kestrel Design quoted <b>$24,000</b> for your new website: launch in 10 weeks, 2 rounds of revisions, 50% paid upfront, plus a monthly support contract.</p>
+      <ul class="tick">
+        <li><b>High priority (the real problem):</b> your <b>spring sale starts in 7 weeks</b>. The <b>shop</b> and <b>opening-hours</b> pages must be live by then. The blog can wait.</li>
+        <li><b>Price:</b> your maximum budget is <b>$23,000</b>.</li>
+        <li><b>Revisions:</b> you'd like 4 rounds; 3 is acceptable.</li>
+        <li><b>Payment:</b> 30% upfront is best for your cash flow; 40% is possible.</li>
+        <li><b>Support contract:</b> you'd sign for a year if it is <b>$350/month or less</b>.</li>
+        <li><b>Your alternative (BATNA):</b> a freelancer offered $18,000, but can't launch before the sale.</li>
+      </ul>
+      <p class="plan">Planning: opening line · one question about their interests · two "If you…, we'll…" offers · what you keep for the close</p>
+    </div>
+  </div>
+  <div class="blk"><div class="h">Deal memo · write on the back of your card after the negotiation (3–5 minutes)</div>
+    <p style="font-size:.95rem">Write the confirming email you'd send straight after the meeting: <b>Subject</b> · greeting · "Just to confirm what we agreed:" · 3–4 bullet points (every term, with numbers) · the next step · a warm close. If you did <b>not</b> reach a deal, write what was agreed so far and the next step.</p>
+  </div>
+
+  <!-- ═════════════════════ C16 LEARNER BRIEFS ═════════════════════ -->
+  <div class="pagebreak"></div>
+  <div class="paper">
+    <header class="mast">
+      <div class="kit-eyebrow">Business English · Final Assessment · Part B · Class 16</div>
+      <h1>Capstone Pitch Brief</h1>
+      <div class="paper-head">
+        <div><b>Name:</b></div>
+        <div><b>Partner (pair pitch):</b></div>
+        <div><b>My slot:</b></div>
+      </div>
+      <p style="font-size:1rem;margin-top:10px">Prepare and rehearse this in Class 14 and at home. In Class 16, you'll pitch for <b>5 minutes</b>, then answer <b>questions</b> (your teacher asks one; the audience asks one). In a pair pitch, <b>each</b> of you speaks for at least 2 minutes and answers at least one question.</p>
+    </header>
+    <p class="inst">1. Choose your topic</p>
+    <ul class="tick">
+      <li><b>Your own idea</b>: an improvement at your workplace (real or role card), or, if you're looking for work, an idea for a company you'd like to join.</li>
+      <li><b>The Review Project</b>: the approach you prepared for Lesson 4.3.</li>
+      <li><b>A brief from the list below</b> (all figures are fictional; you may invent sensible extra details).</li>
+    </ul>
+    <div class="text">
+      <div class="ttl">Brief 1 · Northwind Logistics: "Arrival alerts"</div>
+      <p>18% of home deliveries fail the first time because nobody is home. Each failed delivery costs about $22. Idea: an automatic text message to the customer 30 minutes before the driver arrives. A test on two routes cut failed deliveries by half. <b>Ask:</b> approve a 3-month trial on 10 routes ($2,400).</p>
+    </div>
+    <div class="text">
+      <div class="ttl">Brief 2 · Brightline Foods: "Crates, not cardboard"</div>
+      <p>Brightline spends about $4,100 a month on cardboard boxes for deliveries to grocery stores. Idea: 1,500 reusable plastic crates ($9,000) that stores return with the next delivery; crates last about three years. One store has already agreed to try. <b>Ask:</b> approve a 6-month pilot with two stores.</p>
+    </div>
+    <div class="text">
+      <div class="ttl">Brief 3 · Kestrel Design: "Focus Friday mornings"</div>
+      <p>Designers spend about 14 hours a week in internal meetings; in a staff survey, 68% said they can't find time for focused work. Idea: no internal meetings on Friday mornings. One team tried it: on-time project delivery rose from 71% to 85%. Cost: none. <b>Ask:</b> approve an 8-week trial for the whole studio.</p>
+    </div>
+    <p class="inst">2. Build it (tick when done)</p>
+    <table class="grid">
+      <thead><tr><th>Part</th><th>What to include</th><th>✓</th></tr></thead>
+      <tbody>
+        <tr><td><b>Opening</b> (about 45 sec)</td><td>Greet · introduce yourself and the topic · a hook (a question, a striking number, a short story) · the purpose and what's in it for them · outline · questions at the end</td><td class="sc">☐</td></tr>
+        <tr><td><b>Problem</b></td><td>The pain the audience feels, with one number</td><td class="sc">☐</td></tr>
+        <tr><td><b>Solution</b></td><td>Your idea, in one or two sentences</td><td class="sc">☐</td></tr>
+        <tr><td><b>Benefits</b></td><td>At least two features turned into benefits: "…which means that…"</td><td class="sc">☐</td></tr>
+        <tr><td><b>Evidence</b></td><td>A result, a pilot, a comparison; describe one chart or figure if you use a slide (introduce it → point to what matters → say what it means)</td><td class="sc">☐</td></tr>
+        <tr><td><b>Close</b></td><td>"So, to sum up…" · one clear, specific call to action · thanks · invite questions</td><td class="sc">☐</td></tr>
+        <tr><td><b>Signposts</b></td><td>One transition between every part ("This brings me to…", "Let's move on to…")</td><td class="sc">☐</td></tr>
+        <tr><td><b>Q&amp;A</b></td><td>Two objections you expect, and how you'll acknowledge, clarify and respond to each</td><td class="sc">☐</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:.95rem">Notes on one card or one slide only. Keywords, not sentences. Rehearse aloud at least twice with a timer.</p>
+    <p style="font-size:.95rem"><b>My call to action:</b> ______________________________________________________</p>
+    <p style="font-size:.95rem"><b>Objection 1 I expect:</b> ______________________ <b>My answer:</b> ______________________</p>
+    <p style="font-size:.95rem"><b>Objection 2 I expect:</b> ______________________ <b>My answer:</b> ______________________</p>
+  </div>
+
+  <div class="pagebreak"></div>
+  <div class="paper">
+    <header class="mast">
+      <div class="kit-eyebrow">Business English · Final Assessment · Part B · Class 16</div>
+      <h1>Mock Interview: Preparation Sheet</h1>
+      <div class="paper-head">
+        <div><b>Name:</b></div>
+        <div><b>Job:</b></div>
+        <div><b>Slot:</b></div>
+      </div>
+      <p style="font-size:1rem;margin-top:10px">Your teacher will interview you for about <b>8 minutes</b> (6–8 questions). Choose a job below, or bring a real job ad for a job you want. You can use your real experience or a role card. You will <b>not</b> be asked about salary, visa status, age, family, or gaps in your employment.</p>
+    </header>
+    <div class="grid2">
+      <div class="text">
+        <div class="ttl">A · Operations Coordinator, Kestrel Design</div>
+        <p>Coordinate project schedules and supplier deliveries · weekly status reports · first contact for clients' logistics questions. <i>(The same ad as Class 15.)</i></p>
+      </div>
+      <div class="text">
+        <div class="ttl">B · Customer Success Associate, Brightline Foods</div>
+        <p>Look after 30 grocery-store accounts · solve order and delivery problems by phone and email · run a monthly check-in call with each store.</p>
+      </div>
+      <div class="text">
+        <div class="ttl">C · Logistics Planner, Northwind Logistics</div>
+        <p>Plan daily delivery routes for 25 drivers · work with the warehouse and customer service · find ways to cut late and failed deliveries.</p>
+      </div>
+      <div class="text">
+        <div class="ttl">D · My own target job</div>
+        <p>Job title: __________________________<br>Three key requirements from the ad: __________________________</p>
+      </div>
+    </div>
+    <p class="inst">1. "Tell me about yourself" (present → past → future, under a minute)</p>
+    <div class="wline"></div><div class="wline"></div>
+    <p class="inst">2. Two STAR stories <span class="sub">Useful for: a tight deadline · a disagreement with a colleague · a difficult customer · improving a process · a mistake you learned from. Use "I" in the Action. End with a result, with a number if you can.</span></p>
+    <table class="grid">
+      <thead><tr><th>&nbsp;</th><th>Story 1</th><th>Story 2</th></tr></thead>
+      <tbody>
+        <tr><td><b>S</b> · Situation</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+        <tr><td><b>T</b> · Task</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+        <tr><td><b>A</b> · Action (I…)</td><td>&nbsp;<br>&nbsp;</td><td>&nbsp;<br>&nbsp;</td></tr>
+        <tr><td><b>R</b> · Result</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+      </tbody>
+    </table>
+    <p class="inst">3. One strength with an example · 4. Two questions to ask the interviewer</p>
+    <div class="wline"></div><div class="wline"></div><div class="wline"></div>
+    <p style="font-size:.95rem;color:var(--ink-2)">In the peer practice round, your partner uses the <b>learner interviewer card</b> below. Swap after 8 minutes.</p>
+    <div class="cards">
+      <div class="card-cut">
+        <div class="ct">Learner interviewer card · practice round</div>
+        <h4>Ask these, in order. Listen; don't interrupt.</h4>
+        <ol class="steps">
+          <li>Tell me about yourself.</li>
+          <li>Why are you interested in this role?</li>
+          <li>Tell me about a time you had a very tight deadline.</li>
+          <li>What would you say is your greatest strength?</li>
+          <li>Tell me about a time you disagreed with a colleague.</li>
+          <li>Do you have any questions for us?</li>
+        </ol>
+      </div>
+      <div class="card-cut b">
+        <div class="ct">Feedback for your partner · after the interview</div>
+        <h4>Tell them one thing for each</h4>
+        <p>☐ The answer I remember best, and why</p>
+        <p>☐ Did the STAR answer have a clear Result?</p>
+        <p>☐ Did they say "I" (not only "we") in the Action?</p>
+        <p>☐ One phrase or habit to keep; one to change</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═════════════════════ TEACHER PAGES ═════════════════════ -->
+  <div class="pagebreak"></div>
+  <span class="teacher-only">Teacher only · do not hand out</span>
+  <div class="sec"><h2>Negotiation Run-Sheet · Class 15</h2><span class="rule"></span></div>
+  <div class="grid2">
+    <div class="blk"><div class="h">Rounds (6 pairs)</div>
+      <table class="grid">
+        <thead><tr><th>Round</th><th>Pairs</th><th>Scenario</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>____ &amp; ____ · ____ &amp; ____</td><td>1 · Delivery contract</td></tr>
+          <tr><td>2</td><td>____ &amp; ____ · ____ &amp; ____</td><td>2 · Website redesign</td></tr>
+          <tr><td>3</td><td>____ &amp; ____ · ____ &amp; ____</td><td>1 · Delivery contract</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:.88rem">Give Card A (seller / agency) to the learner who needs <b>stretch</b>: they must protect a minimum and push for a long-term commitment. For <b>support</b>, allow the Lesson 3.2 phrase card on the table and note it on the sheet.</p>
+    </div>
+    <div class="blk"><div class="h">Say, before round 1</div>
+      <div class="say">You have seven minutes. Start with a friendly opening, find out what matters to the other side, and trade: nothing for nothing. Before time is up, summarize what you've agreed. A deal isn't required. A clear, polite "we can't agree today, so here's the next step" is a good result too.</div>
+      <p style="font-size:.88rem">Don't intervene in the negotiation. If a pair reaches a deal in 3 minutes, say "Check every item on your card: have you agreed all of them?"</p>
+    </div>
+  </div>
+  <div class="blk"><div class="h">The shape of a good deal (don't tell learners in advance)</div>
+    <p style="font-size:.92rem"><b>Scenario 1:</b> the buyer's real interest is the <b>morning window</b>, not only price. A strong outcome: about $80–82, two years with the price fixed, a 2-hour morning window, 45 days' payment, and (traded at the close) free returns pickup. <b>Scenario 2:</b> the client's real interest is <b>launching before the spring sale</b>. A strong outcome: a phased launch (shop and opening-hours pages in about 6–7 weeks, the blog later), about $22,000–23,000, 3 revision rounds, 40% upfront, and a support contract at $350–400. You score the <b>language and process</b>, not the numbers: a learner who reaches a poor deal politely and clearly can still score well; a learner who "wins" by refusing to trade or by being rude cannot score high on Register &amp; Tone.</p>
+  </div>
+
+  <div class="sec"><h2>Objection Cards · Class 16 Q&amp;A (you ask one per pitch)</h2><span class="rule"></span></div>
+  <div class="cards">
+    <div class="card-cut"><div class="ct">Objection · cost</div><h4>"It sounds expensive. Why should we pay for this now?"</h4></div>
+    <div class="card-cut b"><div class="ct">Objection · adoption</div><h4>"What if people don't actually use it?"</h4></div>
+    <div class="card-cut"><div class="ct">Objection · history</div><h4>"We tried something similar two years ago and it didn't work."</h4></div>
+    <div class="card-cut b"><div class="ct">Objection · timing</div><h4>"This isn't a good time. Why not wait until next year?"</h4></div>
+    <div class="card-cut"><div class="ct">Objection · evidence</div><h4>"How will we know it's working? What will you measure?"</h4></div>
+    <div class="card-cut b"><div class="ct">Objection · ownership</div><h4>"Who is going to manage this, and how much of their time will it take?"</h4></div>
+  </div>
+  <p style="font-size:.88rem">Choose the card that fits the pitch best. For <b>support</b>, use the evidence or ownership card (they invite a factual answer). For <b>stretch</b>, use the history or timing card and add one follow-up: "And if the pilot fails?"</p>
+
+  <div class="sec"><h2>Interviewer Card · scored interview (about 8 minutes)</h2><span class="rule"></span></div>
+  <div class="grid2">
+    <div class="blk"><div class="h">Before you start</div>
+      <div class="say">Thanks for coming in. This is a practice interview for the [job] role, so treat me as the hiring manager. It will take about eight minutes. You can use your real experience or your role card. Ready?</div>
+      <ul class="tick">
+        <li>Stand up to greet, offer a handshake if culturally comfortable for the learner, and invite them to sit: the opening is part of the interview.</li>
+        <li>Ask <b>6–8 questions</b>: always 1, 2, 3 and 8; choose the others to fit the job and the time.</li>
+        <li>Keep a neutral, friendly face. Use one follow-up per STAR answer if the Result is missing: "And what was the result?"</li>
+      </ul>
+    </div>
+    <div class="blk warn"><div class="h">Never ask</div>
+      <ul class="tick">
+        <li>Salary history or expectations</li>
+        <li>Visa, immigration or citizenship status; nationality; "Where are you really from?"</li>
+        <li>Age, family, children, religion, health</li>
+        <li>Why they left a job, or about gaps in employment</li>
+        <li>Anything about a real current employer they haven't mentioned</li>
+      </ul>
+      <p style="font-size:.86rem">If a learner raises one of these themselves (for example, a career change after a move), respond briefly and respectfully and move to the next question.</p>
+    </div>
+  </div>
+  <table class="grid">
+    <thead><tr><th>#</th><th>Question</th><th>Follow-up / what it tests</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>Tell me about yourself.</td><td>Present → past → future in under a minute; ends by pointing at this job (Lesson 4.2)</td></tr>
+      <tr><td>2</td><td>Why are you interested in this role, and in our company?</td><td>Uses the ad's words; one specific reason about the company</td></tr>
+      <tr><td>3</td><td><b>STAR:</b> Tell me about a time you had to meet a very tight deadline.</td><td>"What exactly did <i>you</i> do?" · "And what was the result?"</td></tr>
+      <tr><td>4</td><td><b>STAR:</b> Tell me about a time you disagreed with a colleague or manager. How did you handle it?</td><td>Diplomatic language when retelling a conflict (Lesson 2.3); no blaming</td></tr>
+      <tr><td>5</td><td>What would you say is your greatest strength? Can you give me an example?</td><td>Evidence, not adjectives ("I'm hard-working")</td></tr>
+      <tr><td>6</td><td><b>STAR:</b> Tell me about a time you dealt with a difficult customer or client.</td><td>Acknowledge → solve → confirm; calm register</td></tr>
+      <tr><td>7</td><td><b>STAR:</b> Tell me about a time you improved a process or made something work better. <i>(or:</i> Tell me about a mistake you made and what you learned.<i>)</i></td><td>A quantified result; honest reflection</td></tr>
+      <tr><td>8</td><td>Do you have any questions for us?</td><td>At least one thoughtful question; a polite close ("Thank you for your time…")</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:.88rem"><b>Stretch</b> (C1 learners, only if they opt in on their preparation sheet): "You have more experience than this role requires. Why this job?" · "Where do you see yourself in five years?" <b>Support</b> (B1 learners): let them keep the preparation sheet on the table, and ask 6 questions rather than 8.</p>
+
+  <div class="sec"><h2>Score Sheet · Final Assessment · one per learner</h2><span class="rule"></span></div>
+  <p style="font-size:.9rem;color:var(--ink-2)">Two scores on the course rubric: <b>Writing /20</b> (Task 1 and Task 2 together) and <b>Speaking /20</b> (negotiation, pitch and interview together). Give each criterion <b>one</b> score, 1–5, based on all the evidence; the task columns are for quick notes. If the tasks point to different scores for a criterion, give the score that most of the evidence supports, and prefer the longer, more demanding task when it's evenly split (the proposal for writing; the pitch for speaking).</p>
+  <p style="font-size:.95rem">Learner: ______________________ &nbsp; Task 2 option: ☐ A ☐ B &nbsp; Role card: ☐ &nbsp; Adapted? ______</p>
+  <table class="grid">
+    <thead><tr><th>Writing</th><th>Task 1 · proposal notes</th><th>Task 2 · letter / email notes</th><th>1–5</th></tr></thead>
+    <tbody>
+      <tr><td><b>Task &amp; Purpose</b></td><td>Summary standalone? ≥2 prioritized recommendations with cost + benefit? Rejects B with a reason? Words ≈ ___ / ___</td><td>All content points? Clear call to action / next step? Words ≈ ___</td><td class="sc">&nbsp;</td></tr>
+      <tr><td><b>Register &amp; Tone</b></td><td>Formal, objective; evidence-based, not "I think"</td><td>Formal throughout; confident but not boastful (A); diplomatic refusal (B)</td><td class="sc">&nbsp;</td></tr>
+      <tr><td><b>Language Range &amp; Accuracy</b></td><td>Document phrases ("It is recommended that…"); accurate figures</td><td>Cover-letter / refusal / conditional phrases; errors that confuse?</td><td class="sc">&nbsp;</td></tr>
+      <tr><td><b>Organization &amp; Delivery</b></td><td>Headings; answer first; numbered, ordered recommendations</td><td>Paragraph plan; greeting and sign-off match</td><td class="sc">&nbsp;</td></tr>
+      <tr><td colspan="3"><b>Writing total</b></td><td class="sc">/20</td></tr>
+    </tbody>
+  </table>
+  <table class="grid">
+    <thead><tr><th>Speaking</th><th>Negotiation</th><th>Pitch + Q&amp;A</th><th>Interview</th><th>1–5</th></tr></thead>
+    <tbody>
+      <tr><td><b>Task &amp; Purpose</b></td><td>Explored interests; traded; clear summary (deal memo)</td><td>All parts; clear call to action; answered the question asked</td><td>Answers the question; STAR complete with Result</td><td class="sc">&nbsp;</td></tr>
+      <tr><td><b>Register &amp; Tone</b></td><td>Firm but polite; no flat "no"</td><td>Confident, honest, "you"-focused</td><td>Professional, positive, no badmouthing</td><td class="sc">&nbsp;</td></tr>
+      <tr><td><b>Language Range &amp; Accuracy</b></td><td>Conditionals; proposing, rejecting, conceding</td><td>Signposting; features → benefits; describing data</td><td>Action verbs; past tenses in STAR; numbers</td><td class="sc">&nbsp;</td></tr>
+      <tr><td><b>Organization &amp; Delivery</b></td><td>Stages; turn-taking; listening</td><td>Structure; eye contact; pace; stress; timing</td><td>Structured answers; fluency; pronunciation (accent itself is <b>not</b> scored)</td><td class="sc">&nbsp;</td></tr>
+      <tr><td colspan="4"><b>Speaking total</b> &nbsp;<span style="font-weight:400;color:var(--ink-3)">☐ no interview (scored from negotiation + pitch)</span></td><td class="sc">/20</td></tr>
+    </tbody>
+  </table>
+  <table class="grid">
+    <thead><tr><th>Progress</th><th>Class 1</th><th>Class 8</th><th>Final</th><th>Change C1 → final</th></tr></thead>
+    <tbody>
+      <tr><td><b>Writing /20</b></td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td></tr>
+      <tr><td><b>Speaking /20</b></td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td><td class="sc">&nbsp;</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:.95rem"><b>Biggest improvement (with evidence):</b> ________________________________________________</p>
+  <p style="font-size:.95rem"><b>Next step after the course</b> (at work, in a job search, or in another course): ________________________________</p>
+
+  <div class="foot">
+    <div class="who"><b>Ray de la Paz</b><span class="bio">© 2026 Ray de la Paz · Business English</span></div>
+    <div class="ver">Assessment · Final Assessment (Classes 15–16) · v1.0</div>
+  </div>
+
+</div>
+</body>
+</html>
