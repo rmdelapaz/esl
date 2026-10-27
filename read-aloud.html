@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hear any English text read aloud. Take a photo of a letter, sign or form, or paste text, and listen slowly — sentence by sentence, word by word. Free, and nothing is uploaded.">
+    <meta name="author" content="Ray de la Paz">
+    <title>Read Aloud - English as a Second Language</title>
+    <link rel="stylesheet" href="/styles/course.css">
+    <link rel="icon" type="image/png" href="/favicon.png">
+</head>
+<body class="ra-page">
+    <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="/read-aloud.html" class="nav-logo">🔊 Read Aloud</a>
+            <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-expanded="false" aria-controls="nav-links">☰</button>
+            <div class="nav-links" id="nav-links">
+                <a href="/">ESL Hub</a>
+                <a href="/curriculum/learning-tools.html">🌍 Free Tools</a>
+                <span class="nav-divider"></span>
+                <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+                <a href="https://rays-home.netlify.app/contact">Contact</a>
+                <button id="theme-toggle" aria-label="Toggle dark/light mode">🌙</button>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <div class="container">
+            <header>
+                <h1>🔊 Read Aloud</h1>
+                <p class="lead">Hear <strong>any</strong> English read to you. Take a photo of a letter, a sign,
+                a form or a page in a book — or paste some text. Then listen, slowly, one sentence at a time.</p>
+            </header>
+
+            <section class="card reader-panel" aria-label="Read aloud tool">
+                <div id="reader-ocr" class="ocr-bar" data-ocr-lang="eng">
+                    <h2 class="ra-step"><span class="ra-num">1</span> Get the words</h2>
+                    <div class="ocr-buttons">
+                        <label class="reader-btn reader-btn-primary ocr-pick">📷&nbsp; Take a photo
+                            <input type="file" id="ocr-camera" accept="image/*" capture="environment">
+                        </label>
+                        <label class="reader-btn ocr-pick">🖼️&nbsp; Choose a picture
+                            <input type="file" id="ocr-file" accept="image/*" multiple>
+                        </label>
+                        <label class="ocr-append"><input type="checkbox" id="ocr-append"> Add to the words already here</label>
+                    </div>
+                    <p class="ocr-hint">You can also drag a picture here, or paste a screenshot (Ctrl+V / ⌘+V).
+                    🔒 Your picture stays on your device. It is never uploaded.</p>
+                    <div id="ocr-status" class="ocr-status" role="status" aria-live="polite" hidden>
+                        <span id="ocr-status-text"></span>
+                        <progress id="ocr-progress" max="1" value="0" hidden></progress>
+                        <button type="button" id="ocr-cancel" class="reader-btn" hidden>Cancel</button>
+                    </div>
+                    <div id="ocr-thumbs" class="ocr-thumbs"></div>
+                </div>
+
+                <label class="reader-label" for="reader-input">The English words <span class="ra-or">(or type / paste here)</span></label>
+                <textarea id="reader-input" class="reader-input" rows="6" lang="en" spellcheck="false"
+>Dear parents,
+The school will be closed on Monday, May 25, for Memorial Day. Classes start again on Tuesday at 8:15 a.m. Please sign the field trip form and bring it back by Friday. If you have questions, call the front office at 555-0142. Thank you!</textarea>
+                <div class="ra-textbtns">
+                    <button type="button" id="ra-translate" class="reader-btn">🌐&nbsp; Translate</button>
+                    <button type="button" id="ra-clear" class="reader-btn">✕&nbsp; Clear</button>
+                </div>
+
+                <h2 class="ra-step"><span class="ra-num">2</span> Listen</h2>
+                <div class="reader-controls">
+                    <div class="reader-control">
+                        <label for="ra-voice">Voice</label>
+                        <select id="ra-voice"></select>
+                    </div>
+                    <div class="reader-control">
+                        <label for="ra-rate">Speed <span id="ra-rate-value">0.90×</span></label>
+                        <input type="range" id="ra-rate" min="0.5" max="1.25" step="0.05" value="0.9">
+                    </div>
+                    <div class="reader-buttons">
+                        <button type="button" id="ra-play" class="reader-btn reader-btn-primary">▶&nbsp; Read it to me</button>
+                        <button type="button" id="ra-stop" class="reader-btn" disabled>■&nbsp; Stop</button>
+                    </div>
+                </div>
+                <label class="ra-repeat"><input type="checkbox" id="ra-repeat">
+                    🗣️ <strong>Listen &amp; repeat:</strong> stop after each sentence, so I can say it too</label>
+
+                <p id="ra-noaudio" class="reader-notice" hidden>
+                    🔇 <strong>No English voice was found in this browser.</strong> Scanning still works, but
+                    nothing can be read aloud here. This works on most phones and on Windows, Mac and Chromebook.
+                    Try another browser (Chrome, Edge or Safari), or add an English voice in your device's
+                    language settings, then reload.
+                </p>
+
+                <div id="reader-display" class="reader-display" lang="en" aria-live="off"></div>
+                <p id="ra-summary" class="reader-summary"></p>
+            </section>
+
+            <section class="card card-info">
+                <h2>👆 How to use it</h2>
+                <ul>
+                    <li><strong>▶ Read it to me</strong> reads everything. The word you hear is <span class="ra-demo">colored</span>.</li>
+                    <li><strong>Tap a word</strong> in the gray box to hear only that word.</li>
+                    <li>Tap the small <strong>▶</strong> before a sentence to hear only that sentence. Tap it again and again — that's OK!</li>
+                    <li><strong>Too fast?</strong> Move <em>Speed</em> to the left.</li>
+                    <li><strong>Listen &amp; repeat</strong> waits after each sentence. Say the sentence out loud, then it goes on.</li>
+                    <li><strong>🌐 Translate</strong> opens Google Translate with your words (so they are sent to Google). To translate only a part, select it first.</li>
+                </ul>
+            </section>
+
+            <section class="card card-success">
+                <h2>📷 Tips for a good photo</h2>
+                <ul>
+                    <li>Put the paper <strong>flat</strong> on a table. Hold the phone straight above it.</li>
+                    <li>Use good <strong>light</strong>. No shadows on the paper.</li>
+                    <li>Get <strong>close</strong>. The words should fill the photo.</li>
+                    <li>Printed words work best. Handwriting is hard to read.</li>
+                    <li>Always <strong>check the words</strong> in the box. You can fix mistakes before you listen.</li>
+                </ul>
+            </section>
+
+            <section class="card card-accent">
+                <h2>💡 Ideas: what can I read?</h2>
+                <ul>
+                    <li>Letters from your child's <strong>school</strong>, or from the <strong>doctor</strong> or the <strong>bank</strong></li>
+                    <li><strong>Forms</strong> — a job application, a rental form</li>
+                    <li><strong>Labels</strong> — food, medicine, cleaning products</li>
+                    <li><strong>Signs</strong> and notices at work or in your building</li>
+                    <li>A page from a <strong>book</strong> or a lesson you are studying</li>
+                </ul>
+                <p>⚠️ For medicine and important papers, ask a pharmacist, doctor or another person to check too.
+                The scanner can make mistakes.</p>
+            </section>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Ray de la Paz. English as a Second Language. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="/">ESL Hub</a>
+            <a href="/curriculum/learning-tools.html">Free Tools</a>
+            <a href="https://rays-home.netlify.app/contact">Contact</a>
+            <a href="#" id="print-button">Print Page</a>
+        </div>
+    </footer>
+
+    <script src="/js/clipboard.js"></script>
+    <script src="/js/course-enhancements.js"></script>
+    <script src="/js/read-aloud.js"></script>
+    <script src="/js/reader-ocr.js"></script>
+</body>
+</html>
